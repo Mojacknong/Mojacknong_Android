@@ -3,10 +3,9 @@ import 'package:get/get.dart';
 import 'package:mojacknong_android/common/farmus_theme_data.dart';
 import 'package:mojacknong_android/common/primary_app_bar.dart';
 import 'package:mojacknong_android/view/farmclub/component/challenge/challenge_step.dart';
-import 'package:mojacknong_android/view_model/controllers/farmclub/farmclub_etc_controller.dart';
+import 'package:mojacknong_android/view/farmclub/component/record/record_picture.dart';
 
 import '../../repository/mypage_repository.dart';
-import '../community/component/community_picture.dart';
 
 class MyFarmclubHistoryScreen extends StatefulWidget {
   final String? detailId;
@@ -74,7 +73,8 @@ class _MyFarmclubHistoryScreenState extends State<MyFarmclubHistoryScreen> {
                     SizedBox(
                       height: 16,
                     ),
-                    CommunityPicture(
+                    RecordPicture(
+                        like: 0.obs,
                         image: snapshot
                             .data?.farmClubHistoryList[index].postImage),
                     Row(

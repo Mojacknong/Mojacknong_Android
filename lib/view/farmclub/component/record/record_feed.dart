@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mojacknong_android/model/farmclub_diary.dart';
 import 'package:mojacknong_android/common/farmus_theme_data.dart';
-import 'package:mojacknong_android/view/community/component/community_picture.dart';
+import 'package:mojacknong_android/model/farmclub_diary.dart';
 import 'package:mojacknong_android/view/farmclub/component/record/record_picture.dart';
 import 'package:mojacknong_android/view/farmclub/component/record/record_profile.dart';
-import 'package:mojacknong_android/view_model/controllers/farmclub/farmclub_diary_controller.dart';
 
-import '../../../../model/farmclub_mine.dart';
-import '../../../../model/farmclub_mine_detail.dart';
 import '../../farmclub_record_screen.dart';
 
 class RecordFeed extends StatefulWidget {
@@ -60,7 +56,8 @@ class _RecordFeedState extends State<RecordFeed> {
               ),
             );
           },
-          child: CommunityPicture(
+          child: RecordPicture(
+            like: 0.obs,
             image: widget.farmclubDiary.image,
           ),
         ),

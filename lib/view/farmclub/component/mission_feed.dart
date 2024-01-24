@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mojacknong_android/common/farmus_theme_data.dart';
-import 'package:mojacknong_android/view/community/component/community_picture.dart';
 import 'package:mojacknong_android/view/farmclub/component/record/record_picture.dart';
 import 'package:mojacknong_android/view/farmclub/component/record/record_profile.dart';
 
@@ -35,7 +34,8 @@ class _MissionFeedState extends State<MissionFeed> {
         SizedBox(
           height: 8,
         ),
-        CommunityPicture(
+        RecordPicture(
+          like: 0.obs,
           image: widget.mission.image,
         ),
         Padding(
@@ -43,7 +43,7 @@ class _MissionFeedState extends State<MissionFeed> {
           child: Container(
             alignment: Alignment.centerLeft,
             child: Text(
-              widget.mission.content ?? '', // null이면 빈 문자열 또는 다른 기본값으로 변경
+              widget.mission.content,
               style: FarmusThemeData.darkStyle14,
               textAlign: TextAlign.start,
             ),
