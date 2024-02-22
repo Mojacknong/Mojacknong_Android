@@ -10,7 +10,7 @@ import 'package:mojacknong_android/model/farmus_user.dart';
 import 'package:mojacknong_android/repository/login_repository.dart';
 import 'package:mojacknong_android/view/login/app_interceptor.dart';
 import 'package:mojacknong_android/view/main/main_screen.dart';
-import 'package:mojacknong_android/view/onboarding/onboarding_screen.dart';
+import 'package:mojacknong_android/view/on_boarding/on_boarding_screen.dart';
 
 import '../newonboarding/onboard_first.dart';
 import '../newonboarding/onboard_fourth.dart';
@@ -193,7 +193,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
         if (value.early == true) {
           Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => OnboardingScreen()),
+            MaterialPageRoute(builder: (context) => const OnBoardingScreen()),
           );
         } else {
           Navigator.of(context).push(
@@ -224,7 +224,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
         if (value.early == true) {
           Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => OnboardingScreen()),
+            MaterialPageRoute(builder: (context) => OnBoardingScreen()),
           );
         } else {
           Navigator.of(context).push(

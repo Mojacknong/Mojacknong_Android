@@ -1,15 +1,9 @@
-// ignore_for_file: unused_import
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mojacknong_android/common/farmus_theme_data.dart';
 import 'package:mojacknong_android/view/home/component/result/home_final_controller.dart';
 import 'package:mojacknong_android/view/home/component/result/home_final_dialog.dart';
-import 'package:mojacknong_android/view/home/component/result/home_final_first.dart';
-import 'package:mojacknong_android/view/home/component/result/home_next_botton.dart';
 import 'package:mojacknong_android/view/home/component/result/home_select_box.dart';
-import 'package:mojacknong_android/view/main/main_screen.dart';
-import 'package:mojacknong_android/view/onboarding/component/previous_button.dart';
 
 class HomeFinalThird extends StatefulWidget {
   const HomeFinalThird({Key? key}) : super(key: key);

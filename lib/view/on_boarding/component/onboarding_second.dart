@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mojacknong_android/repository/onboarding_repository.dart';
-import 'package:mojacknong_android/view/onboarding/component/select_box.dart';
+import 'package:mojacknong_android/view/on_boarding/component/select_box.dart';
 import 'package:mojacknong_android/view_model/controllers/onboarding_controller.dart';
 
 class OnboardingSecond extends StatefulWidget {

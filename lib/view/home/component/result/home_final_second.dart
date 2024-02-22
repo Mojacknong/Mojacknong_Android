@@ -1,4 +1,3 @@
-// ignore_for_file: unused_import
 
 import 'dart:io';
 
@@ -7,10 +6,8 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mojacknong_android/common/farmus_theme_data.dart';
 import 'package:mojacknong_android/view/community/component/image_add.dart';
-import 'package:mojacknong_android/view/home/component/result/custom_button.dart';
 import 'package:mojacknong_android/view/home/component/result/home_final_dialog.dart';
 import 'package:mojacknong_android/view/home/component/result/home_text_controller.dart';
-import 'package:mojacknong_android/view/onboarding/component/previous_button.dart';
 
 class HomeFinalSecond extends StatefulWidget {
   const HomeFinalSecond({Key? key}) : super(key: key);

@@ -4,9 +4,6 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mojacknong_android/common/farmus_theme_data.dart';
 import 'package:mojacknong_android/view/login/login_screen.dart';
-import 'package:mojacknong_android/view/newonboarding/onboard_screen.dart';
-import 'package:mojacknong_android/view/newonboarding/onboard_second.dart';
-import 'package:mojacknong_android/view/onboarding/onboarding_screen.dart';
 import 'package:mojacknong_android/view_model/controllers/bottom_sheet_controller.dart';
 
 import '../../repository/mypage_repository.dart';

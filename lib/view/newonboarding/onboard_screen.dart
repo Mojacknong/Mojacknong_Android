@@ -14,7 +14,6 @@ import 'package:mojacknong_android/view/newonboarding/onboard_first.dart';
 import 'package:mojacknong_android/view/newonboarding/onboard_fourth.dart';
 import 'package:mojacknong_android/view/newonboarding/onboard_second.dart';
 import 'package:mojacknong_android/view/newonboarding/onboard_third.dart';
-import 'package:mojacknong_android/view/onboarding/onboarding_screen.dart';
 
 // login
 final GoogleSignIn googleSignIn = GoogleSignIn();
@@ -223,7 +222,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
 
         if (value.early == true) {
           Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const OnboardingScreen()),
+            MaterialPageRoute(builder: (context) => const OnBoardScreen()),
           );
         } else {
           Navigator.of(context).push(

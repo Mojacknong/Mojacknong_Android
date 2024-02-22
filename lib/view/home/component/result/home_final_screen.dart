@@ -12,7 +12,7 @@ import 'package:mojacknong_android/view/home/component/result/home_final_third.d
 import 'package:mojacknong_android/view/home/component/result/home_next_botton.dart';
 import 'package:mojacknong_android/view/home/component/result/home_text_controller.dart';
 import 'package:mojacknong_android/view/main/main_screen.dart';
-import 'package:mojacknong_android/view/onboarding/component/previous_button.dart';
+import 'package:mojacknong_android/view/on_boarding/component/previous_button.dart';
 
 class HomeFinalScreen extends StatefulWidget {
   const HomeFinalScreen({Key? key}) : super(key: key);
