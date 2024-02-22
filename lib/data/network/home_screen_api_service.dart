@@ -60,7 +60,6 @@ class HomeScreenApiService {
       }
     } on DioException catch (e) {
       print(e.message);
-      print("현재 미션 조회 실패");
     }
     return null;
   }

@@ -6,11 +6,8 @@ import 'package:mojacknong_android/common/farmus_theme_data.dart';
 import 'package:mojacknong_android/firebase_options.dart';
 import 'package:mojacknong_android/view/login/login_screen.dart';
 
-
-
 Future<void> main() async {
-
-  await dotenv.load(fileName: ".env");
+  await dotenv.load(fileName: 'lib/.env');
 
   // 웹 환경에서 카카오 로그인을 정상적으로 완료하기 위함
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,6 +36,7 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
