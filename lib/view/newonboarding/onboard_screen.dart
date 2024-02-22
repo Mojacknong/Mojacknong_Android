@@ -91,7 +91,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                 kakaoLogin();
               },
               child: SvgPicture.asset(
-                "assets/image/kakao_login.svg",
+                "assets/image/login_kakao.svg",
               ),
             ),
           ),
@@ -108,7 +108,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                 googleLogin();
               },
               child: SvgPicture.asset(
-                "assets/image/google_login.svg",
+                "assets/image/login_google.svg",
               ),
             ),
           ),

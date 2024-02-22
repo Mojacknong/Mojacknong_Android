@@ -6,8 +6,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk_talk.dart';
 import 'package:mojacknong_android/common/bouncing.dart';
-import 'package:mojacknong_android/common/custom_app_bar.dart';
-import 'package:mojacknong_android/common/farmus_theme_data.dart';
 import 'package:mojacknong_android/model/farmus_user.dart';
 import 'package:mojacknong_android/repository/login_repository.dart';
 import 'package:mojacknong_android/view/login/app_interceptor.dart';
@@ -94,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     kakaoLogin();
                   },
                   child: SvgPicture.asset(
-                    "assets/image/kakao_login.svg",
+                    "assets/image/login_kakao.svg",
                   ),
                 ),
               ),
@@ -111,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     googleLogin();
                   },
                   child: SvgPicture.asset(
-                    "assets/image/google_login.svg",
+                    "assets/image/login_google.svg",
                   ),
                 ),
               ),

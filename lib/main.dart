@@ -4,7 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk_template.dart';
 import 'package:mojacknong_android/common/farmus_theme_data.dart';
 import 'package:mojacknong_android/firebase_options.dart';
-import 'package:mojacknong_android/view/login/login_screen.dart';
+import 'package:mojacknong_android/view/onboarding/onboarding_screen.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: 'lib/.env');
@@ -27,7 +27,7 @@ Future<void> main() async {
   runApp(
     MaterialApp(
       title: "Farmus",
-      home: const LoginScreen(),
+      home: const OnboardingScreen(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Pretendard'),
     ),
