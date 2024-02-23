@@ -4,7 +4,6 @@ import 'package:mojacknong_android/model/farmus_user.dart';
 class LoginRepository {
   static Future<FarmusUser> kakaoLoginApi(token) async {
     FarmusUser user = await LoginApiServices().fetchKaKaoData(token);
-    print("데이터데이터 $user");
     return user;
   }
 

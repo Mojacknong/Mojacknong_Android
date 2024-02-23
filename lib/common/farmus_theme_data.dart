@@ -32,7 +32,6 @@ class FarmusThemeData {
   static const Color brown3 = Color(0xFFF6F1EB);
 
   static const Color red = Color(0xFFFF4040);
-
   static const Color black = Color(0xFF000000);
   static const Color white = Color(0xFFFFFFFF);
 
