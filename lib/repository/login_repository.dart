@@ -1,5 +1,7 @@
-import 'package:mojacknong_android/data/network/login_api_service.dart';
-import 'package:mojacknong_android/model/farmus_user.dart';
+
+
+import '../data/network/login_api_service.dart';
+import '../model/farmus_user.dart';
 
 class LoginRepository {
   static Future<FarmusUser> kakaoLoginApi(token) async {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:mojacknong_android/common/farmus_theme_data.dart';
+
+import 'farmus_theme_data.dart';
 
 class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? leading;

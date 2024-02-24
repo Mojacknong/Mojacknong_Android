@@ -6,8 +6,7 @@ class AppUrl {
 
   static Future<void> initialize() async {
     await dotenv.load(fileName: 'lib/.env');
-    loginUrl = dotenv.env['APP_URL'] ?? '';
-
+    appUrl = dotenv.env['APP_URL'] ?? '';
     loginUrl = dotenv.env['LOGIN_URL'] ?? '';
   }
 }

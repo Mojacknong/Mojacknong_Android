@@ -1,15 +1,16 @@
 import 'package:dio/dio.dart';
+import 'package:farmus_android/model/farmus_user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk_talk.dart';
-import 'package:mojacknong_android/common/bouncing.dart';
-import 'package:mojacknong_android/model/farmus_user.dart';
-import 'package:mojacknong_android/repository/login_repository.dart';
-import 'package:mojacknong_android/res/app_url/app_url.dart';
-import 'package:mojacknong_android/view/login/app_interceptor.dart';
+
+import '../../common/bouncing.dart';
+import '../../repository/login_repository.dart';
+import '../../res/app_url/app_url.dart';
+import 'app_interceptor.dart';
 
 final GoogleSignIn googleSignIn = GoogleSignIn();
 const storage = FlutterSecureStorage();
@@ -30,6 +31,7 @@ class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _LoginScreenState createState() => _LoginScreenState();
 }
 
@@ -37,7 +39,6 @@ class _LoginScreenState extends State<LoginScreen> {
   late FarmusUser user;
   final PageController _pageController = PageController();
   final List<String> _pageContents = ['Page 1', 'Page 2', 'Page 3', 'Page 4'];
-  int _currentPage = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -50,9 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
           controller: _pageController,
           itemCount: _pageContents.length,
           onPageChanged: (int page) {
-            setState(() {
-              _currentPage = page;
-            });
+            setState(() {});
           },
           itemBuilder: (context, index) {
             if (index == 0) {
@@ -64,12 +63,6 @@ class _LoginScreenState extends State<LoginScreen> {
             }
             return null;
           },
-        ),
-        Positioned(
-          left: 0,
-          right: 0,
-          bottom: 220,
-          child: buildPageIndicator(),
         ),
         Positioned(
           left: 0,
@@ -106,30 +99,6 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ],
     ));
-  }
-
-  Widget buildPageIndicator() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(
-        _pageContents.length,
-        (index) => buildIndicator(index),
-      ),
-    );
-  }
-
-  Widget buildIndicator(int index) {
-    return Container(
-      width: 6.0,
-      height: 6.0,
-      margin: const EdgeInsets.symmetric(horizontal: 4.0),
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: _currentPage == index
-            ? const Color(0x7e000000)
-            : const Color(0x33000000),
-      ),
-    );
   }
 
   kakaoLogin() async {

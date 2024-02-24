@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mojacknong_android/common/bouncing.dart';
+
+import 'bouncing.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String text;

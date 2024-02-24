@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-final storage = FlutterSecureStorage();
+import '../../res/app_url/app_url.dart';
+
+const storage = FlutterSecureStorage();
 
 class AppInterceptor extends InterceptorsWrapper {
   Dio dio;
@@ -41,16 +43,14 @@ class AppInterceptor extends InterceptorsWrapper {
       print("토큰 $newToken");
 
       Response response = await dio.get(
-        "http://ec2-13-125-15-222.ap-northeast-2.compute.amazonaws.com/api/user/reissue-token",
+        "${AppUrl.loginUrl}/api/user/reissue-token",
         options: Options(
           headers: {'Authorization': 'Bearer $token'},
         ),
       );
       print(response.data);
-      print("성공성공성공성공");
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       print(e.message);
-      print("실패");
     }
     return "response";
   }

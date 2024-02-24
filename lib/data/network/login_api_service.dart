@@ -1,8 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:mojacknong_android/model/farmus_user.dart';
-import 'package:mojacknong_android/res/app_url/app_url.dart';
+
+import '../../model/farmus_user.dart';
+import '../../res/app_url/app_url.dart';
 
 final GoogleSignIn googleSignIn = GoogleSignIn();
 const storage = FlutterSecureStorage();
@@ -93,7 +94,7 @@ class LoginApiServices {
       print("새 액세스 토큰 : $newAccessToken");
 
       return user;
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       print(e.message);
       print(e.response);
       print("reissue 실패");
@@ -142,7 +143,7 @@ class LoginApiServices {
           accessToken: "",
         );
       }
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       print("로그아웃 실패 : ${e.message}");
       if (e.response != null) {
         print("응답 : ${e.response}");
