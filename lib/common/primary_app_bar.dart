@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import 'farmus_theme_data.dart';
 
 class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? leading;
@@ -10,8 +9,6 @@ class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   const PrimaryAppBar({super.key, this.leading, this.title, this.actions});
 
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context) {
@@ -30,18 +27,17 @@ class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
         title: title != null
             ? Text(
                 title!,
-                style: const TextStyle(
-                  color: FarmusThemeData.dark,
-                  fontFamily: "Pretendard",
-                  fontSize: 16,
-                ),
+                style: const TextStyle(),
               )
             : null,
         centerTitle: true,
         actions: actions,
         elevation: 0,
-        backgroundColor: FarmusThemeData.white,
       ),
     );
   }
+
+  @override
+  get preferredSize => throw UnimplementedError();
+
 }
