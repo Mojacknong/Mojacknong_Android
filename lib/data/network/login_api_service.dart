@@ -9,13 +9,13 @@ const storage = FlutterSecureStorage();
 
 Dio dio = Dio(
   BaseOptions(
-    baseUrl: AppUrl.url,
+    baseUrl: AppUrl.appUrl,
   ),
 );
 
 Dio authDio = Dio(
   BaseOptions(
-    baseUrl: AppUrl.url,
+    baseUrl: AppUrl.appUrl,
   ),
 );
 

@@ -5,7 +5,7 @@ import 'package:mojacknong_android/res/app_url/app_url.dart';
 const storage = FlutterSecureStorage();
 
 class ApiClient {
-  Dio dio = Dio(BaseOptions(baseUrl: AppUrl.url));
+  Dio dio = Dio(BaseOptions(baseUrl: AppUrl.appUrl));
 
   ApiClient() {
     dio.interceptors.add(InterceptorsWrapper(

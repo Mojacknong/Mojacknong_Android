@@ -8,6 +8,7 @@ import 'package:kakao_flutter_sdk/kakao_flutter_sdk_talk.dart';
 import 'package:mojacknong_android/common/bouncing.dart';
 import 'package:mojacknong_android/model/farmus_user.dart';
 import 'package:mojacknong_android/repository/login_repository.dart';
+import 'package:mojacknong_android/res/app_url/app_url.dart';
 import 'package:mojacknong_android/view/login/app_interceptor.dart';
 
 final GoogleSignIn googleSignIn = GoogleSignIn();
@@ -15,13 +16,13 @@ const storage = FlutterSecureStorage();
 
 Dio dio = Dio(
   BaseOptions(
-    baseUrl: "http://ec2-13-125-15-222.ap-northeast-2.compute.amazonaws.com",
+    baseUrl: AppUrl.loginUrl,
   ),
 );
 
 Dio authDio = Dio(
   BaseOptions(
-    baseUrl: "http://ec2-13-125-15-222.ap-northeast-2.compute.amazonaws.com",
+    baseUrl: AppUrl.loginUrl,
   ),
 );
 
