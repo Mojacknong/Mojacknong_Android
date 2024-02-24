@@ -1,40 +1,38 @@
-import 'package:farmus_android/res/app_url/app_url.dart';
-import 'package:farmus_android/view/login/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
-
-import 'firebase_options.dart';
+import 'package:kakao_flutter_sdk/kakao_flutter_sdk_template.dart';
+import 'package:mojacknong_android/common/farmus_theme_data.dart';
+import 'package:mojacknong_android/firebase_options.dart';
+import 'package:mojacknong_android/view/on_boarding/on_boarding_screen.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: 'lib/.env');
-  await AppUrl.initialize();
 
-  // Firebase 앱이 이미 초기화되었는지 확인하고, 초기화되지 않았을 경우에만 초기화합니다.
-  if (Firebase.apps.isEmpty) {
-    await Firebase.initializeApp(
-      name: "팜어스",
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
-  }
+  // 웹 환경에서 카카오 로그인을 정상적으로 완료하기 위함
+  WidgetsFlutterBinding.ensureInitialized();
 
-  KakaoSdk.init(
-    nativeAppKey: dotenv.env['NATIVE_APP_KEY']!,
-    javaScriptAppKey: dotenv.env['JAVA_SCRIPT_APP_KEY']!,
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  // runApp() 호출 전 Flutter SDK 초기화
+  KakaoSdk.init(
+    nativeAppKey: dotenv.env['NATIVE_APP_KEY'],
+    javaScriptAppKey: dotenv.env['JAVA_SCRIPT_APP_KEY'],
+  );
+
+  WidgetsFlutterBinding.ensureInitialized();
 
   runApp(
     MaterialApp(
-      title: "팜어스",
-      home: const LoginScreen(),
+      title: "Farmus",
+      home: const OnBoardingScreen(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Pretendard'),
     ),
   );
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -45,8 +43,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(),
-        // backgroundColor: FarmusThemeData.white,
+        backgroundColor: FarmusThemeData.white,
       ),
+      theme: ThemeData(fontFamily: 'Pretendard', useMaterial3: true),
     );
   }
 }
