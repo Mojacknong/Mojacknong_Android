@@ -1,4 +1,4 @@
-package com.example.mojacknong_android
+package com.farmus
 
 import io.flutter.embedding.android.FlutterActivity
 

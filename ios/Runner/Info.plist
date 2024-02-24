@@ -5,7 +5,7 @@
 		<key>CFBundleDevelopmentRegion</key>
 		<string>$(DEVELOPMENT_LANGUAGE)</string>
 		<key>CFBundleDisplayName</key>
-		<string>Mojacknong Android</string>
+		<string>팜어스</string>
 		<key>CFBundleExecutable</key>
 		<string>$(EXECUTABLE_NAME)</string>
 		<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 		<key>CFBundleInfoDictionaryVersion</key>
 		<string>6.0</string>
 		<key>CFBundleName</key>
-		<string>mojacknong_android</string>
+		<string>팜어스</string>
 		<key>CFBundlePackageType</key>
 		<string>APPL</string>
 		<key>CFBundleShortVersionString</key>
@@ -52,6 +52,8 @@
 				<array>
 					<!-- kakao login -->
 					<string>kakaoe0e5595eef76546ac7d980217627e9bf</string>
+					<!-- google login -->
+					<string>com.googleusercontent.apps.173867017246-argke175998frc50cmps14a10baeijdg</string>
 				</array>
 			</dict>
 		</array>
@@ -59,5 +61,7 @@
 		<true/>
 		<key>UIViewControllerBasedStatusBarAppearance</key>
 		<false/>
+		<key>FLTEnableImpeller</key>
+        <false />
 	</dict>
 </plist>
