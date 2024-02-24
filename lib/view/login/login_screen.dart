@@ -75,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 kakaoLogin();
               },
               child: SvgPicture.asset(
-                "assets/image/kakao_login.svg",
+                "assets/image/login_kakao.svg",
               ),
             ),
           ),
@@ -92,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 googleLogin();
               },
               child: SvgPicture.asset(
-                "assets/image/google_login.svg",
+                "assets/image/login_google.svg",
               ),
             ),
           ),

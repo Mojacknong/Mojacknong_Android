@@ -1,4 +1,4 @@
-package com.farmus
+package com.farm.us
 
 import io.flutter.embedding.android.FlutterActivity
 
