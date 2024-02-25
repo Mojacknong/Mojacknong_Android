@@ -1,3 +1,12 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class AppUrl {
-  static const url = "http://13.125.15.222:8080";
+  static late String appUrl;
+  static late String loginUrl;
+
+  static Future<void> initialize() async {
+    await dotenv.load(fileName: 'lib/.env');
+    appUrl = dotenv.env['APP_URL'] ?? '';
+    loginUrl = dotenv.env['LOGIN_URL'] ?? '';
+  }
 }

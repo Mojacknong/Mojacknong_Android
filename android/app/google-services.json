@@ -7,20 +7,45 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:173867017246:android:ad274d0382e2f1fe96ba0f",
+        "mobilesdk_app_id": "1:173867017246:android:c9783614eb41898d96ba0f",
         "android_client_info": {
-          "package_name": "com.example.mojacknong_android"
+          "package_name": "com.farmus"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "173867017246-sm2du6v8a1pth75tbhdkhnoe0iqub9me.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.farmus",
+            "certificate_hash": "0b944d1b1cdbd3064b73d7ebee5372b0d8183b33"
+          }
+        },
+        {
+          "client_id": "173867017246-q0sdofre956s21ipabceu3paf26n7g3m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyC_94ZdTGmouAdANdzTUWxmwgtSIJxhvBU"
+          "current_key": "AIzaSyAA-BGPTKluJb5as04HV1NQ2QAcpJTTopw"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "173867017246-q0sdofre956s21ipabceu3paf26n7g3m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "173867017246-argke175998frc50cmps14a10baeijdg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.farmus"
+              }
+            }
+          ]
         }
       }
     }

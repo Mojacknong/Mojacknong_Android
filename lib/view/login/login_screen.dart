@@ -1,37 +1,29 @@
 import 'package:dio/dio.dart';
+import 'package:farmus_android/model/farmus_user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:kakao_flutter_sdk/kakao_flutter_sdk_talk.dart';
-import 'package:mojacknong_android/common/bouncing.dart';
-import 'package:mojacknong_android/common/custom_app_bar.dart';
-import 'package:mojacknong_android/common/farmus_theme_data.dart';
-import 'package:mojacknong_android/model/farmus_user.dart';
-import 'package:mojacknong_android/repository/login_repository.dart';
-import 'package:mojacknong_android/view/login/app_interceptor.dart';
-import 'package:mojacknong_android/view/main/main_screen.dart';
-import 'package:mojacknong_android/view/onboarding/onboarding_screen.dart';
+import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 
-import '../newonboarding/onboard_first.dart';
-import '../newonboarding/onboard_fourth.dart';
-import '../newonboarding/onboard_second.dart';
-import '../newonboarding/onboard_third.dart';
-
+import '../../common/bouncing.dart';
+import '../../repository/login_repository.dart';
+import '../../res/app_url/app_url.dart';
+import 'app_interceptor.dart';
 
 final GoogleSignIn googleSignIn = GoogleSignIn();
 const storage = FlutterSecureStorage();
 
 Dio dio = Dio(
   BaseOptions(
-    baseUrl: "http://ec2-13-125-15-222.ap-northeast-2.compute.amazonaws.com",
+    baseUrl: AppUrl.loginUrl,
   ),
 );
 
 Dio authDio = Dio(
   BaseOptions(
-    baseUrl: "http://ec2-13-125-15-222.ap-northeast-2.compute.amazonaws.com",
+    baseUrl: AppUrl.loginUrl,
   ),
 );
 
@@ -39,6 +31,7 @@ class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _LoginScreenState createState() => _LoginScreenState();
 }
 
@@ -46,7 +39,6 @@ class _LoginScreenState extends State<LoginScreen> {
   late FarmusUser user;
   final PageController _pageController = PageController();
   final List<String> _pageContents = ['Page 1', 'Page 2', 'Page 3', 'Page 4'];
-  int _currentPage = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -54,98 +46,64 @@ class _LoginScreenState extends State<LoginScreen> {
 
     return Scaffold(
         body: Stack(
-          children: [
-            PageView.builder(
-              controller: _pageController,
-              itemCount: _pageContents.length,
-              onPageChanged: (int page) {
-                setState(() {
-                  _currentPage = page;
-                });
+      children: [
+        PageView.builder(
+          controller: _pageController,
+          itemCount: _pageContents.length,
+          onPageChanged: (int page) {
+            setState(() {});
+          },
+          itemBuilder: (context, index) {
+            if (index == 0) {
+            } else if (index == 1) {
+            } else if (index == 2) {
+            } else if (index == 3) {
+            } else {
+              return Container();
+            }
+            return null;
+          },
+        ),
+        Positioned(
+          left: 0,
+          right: 0,
+          bottom: 120,
+          child: Bouncing(
+            onPress: () {},
+            child: GestureDetector(
+              onTap: () {
+                kakaoLogin();
               },
-              itemBuilder: (context, index) {
-                if (index == 0) {
-                  return const OnboardFirst();
-                } else if (index == 1) {
-                  return const OnboardSecond();
-                } else if (index == 2) {
-                  return const OnboardThird();
-                } else if (index == 3) {
-                  return const OnboardFourth();
-                } else {
-                  return Container();
-                }
-              },
-            ),
-            Positioned(
-              left: 0,
-              right: 0,
-              bottom: 220,
-              child: buildPageIndicator(),
-            ),
-            Positioned(
-              left: 0,
-              right: 0,
-              bottom: 120,
-              child: Bouncing(
-                onPress: () {},
-                child: GestureDetector(
-                  onTap: () {
-                    kakaoLogin();
-                  },
-                  child: SvgPicture.asset(
-                    "assets/image/kakao_login.svg",
-                  ),
-                ),
+              child: SvgPicture.asset(
+                "assets/image/kakao_login.svg",
               ),
             ),
-            const SizedBox(height: 10),
-            Positioned(
-              left: 0,
-              right: 0,
-              bottom: 50,
-              child: Bouncing(
-                onPress: () {},
-                child: GestureDetector(
-                  onTap: () {
-                    googleLogin();
-                  },
-                  child: SvgPicture.asset(
-                    "assets/image/google_login.svg",
-                  ),
-                ),
+          ),
+        ),
+        const SizedBox(height: 10),
+        Positioned(
+          left: 0,
+          right: 0,
+          bottom: 50,
+          child: Bouncing(
+            onPress: () {},
+            child: GestureDetector(
+              onTap: () {
+                googleLogin();
+              },
+              child: SvgPicture.asset(
+                "assets/image/google_login.svg",
               ),
             ),
-          ],
-        ));
-  }
-
-  Widget buildPageIndicator() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(
-        _pageContents.length,
-            (index) => buildIndicator(index),
-      ),
-    );
-  }
-
-  Widget buildIndicator(int index) {
-    return Container(
-      width: 6.0,
-      height: 6.0,
-      margin: const EdgeInsets.symmetric(horizontal: 4.0),
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: _currentPage == index
-            ? const Color(0x7e000000)
-            : const Color(0x33000000),
-      ),
-    );
+          ),
+        ),
+      ],
+    ));
   }
 
   kakaoLogin() async {
     print("카카오 로그인 버튼 클릭");
+    print(await KakaoSdk.origin);
 
     bool isInstalled = await isKakaoTalkInstalled();
     OAuthToken? token;
@@ -194,21 +152,12 @@ class _LoginScreenState extends State<LoginScreen> {
         print(value.nickName);
 
         if (value.early == true) {
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => OnboardingScreen()),
-          );
-        } else {
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => MainScreen()),
-          );
-        }
+        } else {}
       },
     );
   }
 
   googleLogin() async {
-    print("구글 로그인 버튼 클릭");
-
     final GoogleSignInAccount? googleSignInAccount =
         await googleSignIn.signIn();
 
@@ -225,14 +174,7 @@ class _LoginScreenState extends State<LoginScreen> {
         print(value.nickName);
 
         if (value.early == true) {
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => OnboardingScreen()),
-          );
-        } else {
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => MainScreen()),
-          );
-        }
+        } else {}
       },
     );
   }
