@@ -16,7 +16,7 @@ class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
       appBar: AppBar(
         leading: IconButton(
           icon: SvgPicture.asset(
-            "assets/image/ic_arrow_left.svg",
+            "assets/image/ic_close.svg",
             height: 24,
             width: 24,
           ),

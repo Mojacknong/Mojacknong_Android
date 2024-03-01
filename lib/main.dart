@@ -1,5 +1,4 @@
 import 'package:farmus_android/res/app_url/app_url.dart';
-import 'package:farmus_android/view/login/login_screen.dart';
 import 'package:farmus_android/view/on_boarding/on_boarding_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +27,7 @@ Future<void> main() async {
   runApp(
     MaterialApp(
       title: "팜어스",
-      home: const LoginScreen(),
+      home: const OnBoardingScreen(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Pretendard'),
     ),
