@@ -1,9 +1,9 @@
-import 'package:farmus_android/res/app_url/app_url.dart';
-import 'package:farmus_android/view/on_boarding/on_boarding_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
+import 'package:mojacknong_android/res/app_url/app_url.dart';
+import 'package:mojacknong_android/view/on_boarding/on_boarding_screen.dart';
 
 import 'firebase_options.dart';
 
