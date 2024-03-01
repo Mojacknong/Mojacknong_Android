@@ -1,5 +1,6 @@
 import 'package:farmus_android/res/app_url/app_url.dart';
 import 'package:farmus_android/view/login/login_screen.dart';
+import 'package:farmus_android/view/on_boarding/on_boarding_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -12,7 +13,6 @@ Future<void> main() async {
   await dotenv.load(fileName: 'lib/.env');
   await AppUrl.initialize();
 
-  // Firebase 앱이 이미 초기화되었는지 확인하고, 초기화되지 않았을 경우에만 초기화합니다.
   if (Firebase.apps.isEmpty) {
     await Firebase.initializeApp(
       name: "팜어스",
