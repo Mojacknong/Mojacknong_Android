@@ -1,4 +1,4 @@
-name: farmus_android
+name: mojacknong_android
 description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -30,23 +30,37 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  webview_flutter: ^4.4.2
+  table_calendar: ^3.0.9
+  syncfusion_flutter_datepicker: ^19.2.62
   intl: ^0.18.1
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  google_sign_in: ^6.2.1
-  kakao_flutter_sdk_user: ^1.6.1
-  firebase_core: ^2.25.4
-  firebase_auth_web: ^5.9.5
+  shared_preferences: ^2.2.2
+  dio: ^5.3.3
+  google_sign_in: ^6.1.5
+  flutter_screenutil: ^5.9.0
+  flutter_staggered_grid_view: ^0.7.0
+  get: ^4.6.6
+  image_picker: ^1.0.4
+  kakao_flutter_sdk: ^1.6.1
+  firebase_core: ^2.18.0
+  firebase_auth: ^4.11.1
   http: ^1.1.0
+  http_interceptor: ^2.0.0-beta.7
   flutter_secure_storage: ^9.0.0
   flutter_svg: ^2.0.8
+  flutter_native_splash: ^2.3.5
+  percent_indicator: ^4.2.3
   bouncing_widget: ^2.0.0
-  flutter_dotenv: ^5.1.0
+  http_parser: ^4.0.2
+  flutter_bloc: ^8.0.1
+  bloc: ^8.0.3
 
   flutter_localizations:
     sdk: flutter
-  change_app_package_name: ^1.1.0
+  flutter_dotenv: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -57,7 +71,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^3.0.1
+  flutter_lints: ^2.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
