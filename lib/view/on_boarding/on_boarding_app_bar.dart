@@ -1,5 +1,5 @@
 
-import 'package:farmus/common/base_app_bar.dart';
+import 'package:farmus/common/primary_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -12,7 +12,7 @@ class OnBoardingAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseAppBar(
+    return PrimaryAppBar(
       leading: IconButton(
           onPressed: () {},
           icon: SvgPicture.asset("assets/image/ic_close.svg")),

@@ -1,14 +1,18 @@
+import 'package:farmus/common/base/base_app_bar.dart';
 import 'package:farmus/common/farmus_theme_color.dart';
 import 'package:farmus/common/farmus_theme_text_style.dart';
 import 'package:flutter/material.dart';
 
-class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
+class PrimaryAppBar extends StatelessWidget
+    implements PreferredSizeWidget, BaseAppBar {
+  @override
   final Widget? leading;
+  @override
   final String? title;
+  @override
   final List<Widget>? actions;
 
-  const BaseAppBar(
-      {super.key, this.leading, this.title, this.actions = const []});
+  const PrimaryAppBar({super.key, this.leading, this.title, this.actions});
 
   @override
   Widget build(BuildContext context) {
