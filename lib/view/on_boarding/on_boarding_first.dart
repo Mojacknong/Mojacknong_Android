@@ -1,17 +1,21 @@
+import 'package:farmus/view_model/on_boarding/on_boarding_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../common/farmus_theme_color.dart';
 import '../../common/farmus_theme_text_style.dart';
 
-class OnBoardingFirst extends StatelessWidget {
+class OnBoardingFirst extends ConsumerWidget {
   const OnBoardingFirst({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final hasSpecialCharacters = ref.watch(onBoardingProvider.notifier).hasSpecialCharacters;
+
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,7 +76,26 @@ class OnBoardingFirst extends StatelessWidget {
                     color: FarmusThemeColor.grey4,
                   ),
                 ),
+                errorText: hasSpecialCharacters ? "특수문자는 입력할 수 없어요" : null,
+                errorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  borderSide: const BorderSide(
+                    color: FarmusThemeColor.grey4,
+                  ),
+                ),
+                errorStyle: const TextStyle(
+                  color: FarmusThemeColor.red,
+                ),
+                focusedErrorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  borderSide: const BorderSide(
+                    color: FarmusThemeColor.grey4,
+                  ),
+                ),
               ),
+              onChanged: (value) {
+                ref.read(onBoardingProvider.notifier).updateNickname(value);
+              },
             ),
           ),
         ],
