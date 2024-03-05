@@ -14,7 +14,7 @@ class ProfileNotifier extends StateNotifier<Profile> {
   bool get hasSpecialCharacters => _hasSpecialCharacters;
 
   void updateNickname(String nickname) {
-    if (nickname.contains(RegExp(r'[!@#<>?":.,_`~;/[\]\\|=+)(*&^%$]'))) {
+    if (nickname.contains(RegExp(r'[!@#<>?":.,_ `~;/[\]\\|=+)(*&^%$]'))) {
       _hasSpecialCharacters = true;
     } else {
       _hasSpecialCharacters = false;
