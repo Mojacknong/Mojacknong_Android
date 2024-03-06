@@ -1,19 +1,37 @@
-import 'package:farmus/view_model/on_boarding/on_boarding_provider.dart';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../common/farmus_theme_color.dart';
 import '../../common/farmus_theme_text_style.dart';
+import '../../view_model/on_boarding/on_boarding_provider.dart';
 
-class OnBoardingFirst extends ConsumerWidget {
-  const OnBoardingFirst({
-    super.key,
-  });
+class OnBoardingFirst extends ConsumerStatefulWidget {
+  const OnBoardingFirst({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _OnBoardingFirstState();
+}
 
+class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
+  XFile? file;
+
+  Future<void> _pickImage() async {
+    ImagePicker().pickImage(source: ImageSource.gallery).then((value) {
+      if (value != null) {
+        setState(() {
+          file = value;
+        });
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final hasSpecialCharacters = ref.watch(onBoardingProvider);
 
     return SingleChildScrollView(
@@ -36,13 +54,27 @@ class OnBoardingFirst extends ConsumerWidget {
                 color: FarmusThemeColor.grey5,
                 shape: OvalBorder(),
               ),
-              child: Stack(
-                children: [
-                  Center(
-                      child:
-                      SvgPicture.asset("assets/image/ic_camera.svg"))
-                ],
-              ),
+              child: (file == null)
+                  ? Stack(
+                      children: [
+                        Center(
+                          child: GestureDetector(
+                            onTap: _pickImage,
+                            child:
+                                SvgPicture.asset("assets/image/ic_camera.svg"),
+                          ),
+                        )
+                      ],
+                    )
+                  : GestureDetector(
+                      onTap: _pickImage,
+                      child: ClipOval(
+                        child: Image.file(
+                          File(file!.path),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
             ),
           ),
           const SizedBox(height: 8),
@@ -76,7 +108,9 @@ class OnBoardingFirst extends ConsumerWidget {
                     color: FarmusThemeColor.grey4,
                   ),
                 ),
-                errorText: hasSpecialCharacters.hasSpecialCharacters ? "특수문자는 입력할 수 없어요" : null,
+                errorText: hasSpecialCharacters.hasSpecialCharacters
+                    ? "특수문자는 입력할 수 없어요"
+                    : null,
                 errorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                   borderSide: const BorderSide(
