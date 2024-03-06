@@ -7,19 +7,46 @@ class ProfileNotifier extends StateNotifier<Profile> {
           nickname: '',
           profileImage: '',
           hasSpecialCharacters: false,
+          isProfileComplete: false,
         ));
 
   bool _hasSpecialCharacters = false;
 
   bool get hasSpecialCharacters => _hasSpecialCharacters;
 
+  bool _isProfileComplete = false;
+
+  bool get isProfileComplete => _isProfileComplete;
+
   void updateNickname(String nickname) {
+    if (nickname.isNotEmpty && state.profileImage.isNotEmpty) {
+      _isProfileComplete = true;
+    } else {
+      _isProfileComplete = false;
+    }
+
     if (nickname.contains(RegExp(r'[!@#<>?":.,_ `~;/[\]\\|=+)(*&^%$]'))) {
       _hasSpecialCharacters = true;
     } else {
       _hasSpecialCharacters = false;
     }
+    state = state.copyWith(
+      nickname: nickname,
+      hasSpecialCharacters: hasSpecialCharacters,
+      isProfileComplete: isProfileComplete,
+    );
+  }
 
-    state = state.copyWith(hasSpecialCharacters: hasSpecialCharacters);
+  void updateProfileImage(String profileImage) {
+    if (profileImage.isNotEmpty && state.nickname.isNotEmpty) {
+      _isProfileComplete == true;
+    } else {
+      _isProfileComplete == false;
+    }
+
+    state = state.copyWith(
+      profileImage: profileImage,
+      isProfileComplete: isProfileComplete,
+    );
   }
 }

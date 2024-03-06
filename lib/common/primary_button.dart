@@ -9,11 +9,14 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
   final String text;
   @override
   final VoidCallback? onPressed;
+  @override
+  final bool enabled;
 
   const PrimaryButton({
     Key? key,
     required this.text,
     this.onPressed,
+    required this.enabled,
   }) : super(key: key);
 
   @override
@@ -28,10 +31,10 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
           child: TextButton(
             onPressed: onPressed,
             style: ButtonStyle(
-              backgroundColor:
-                  MaterialStateProperty.all(FarmusThemeColor.primary),
-              foregroundColor:
-                  MaterialStateProperty.all(FarmusThemeColor.white),
+              backgroundColor: MaterialStateProperty.all(
+                  enabled ? FarmusThemeColor.primary : FarmusThemeColor.grey4),
+              foregroundColor: MaterialStateProperty.all(
+                  enabled ? FarmusThemeColor.white : FarmusThemeColor.grey3),
               side: MaterialStateProperty.resolveWith(
                 (states) {
                   return const BorderSide(
@@ -39,7 +42,7 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
                     width: 1.0,
                   );
                 },
-              ), // 테두리 두께 설정
+              ),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),

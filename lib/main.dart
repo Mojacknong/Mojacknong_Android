@@ -1,3 +1,4 @@
+
 import 'package:farmus/common/farmus_theme_color.dart';
 import 'package:farmus/res/app_url/app_url.dart';
 import 'package:farmus/view/on_boarding/on_boarding_screen.dart';
@@ -26,19 +27,20 @@ Future<void> main() async {
     javaScriptAppKey: dotenv.env['JAVA_SCRIPT_APP_KEY']!,
   );
 
-  runApp(
-    ProviderScope(
-      child: MaterialApp(
-        title: "팜어스",
-        home: const OnBoardingScreen(),
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          fontFamily: 'Pretendard',
-          scaffoldBackgroundColor: FarmusThemeColor.white,
+  runApp(ProviderScope(
+    child: MaterialApp(
+      title: "팜어스",
+      home: const OnBoardingScreen(),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        fontFamily: 'Pretendard',
+        scaffoldBackgroundColor: FarmusThemeColor.white,
+        textSelectionTheme: const TextSelectionThemeData(
+          cursorColor: FarmusThemeColor.primary,
         ),
       ),
     ),
-  );
+  ));
 }
 
 class MyApp extends StatelessWidget {
