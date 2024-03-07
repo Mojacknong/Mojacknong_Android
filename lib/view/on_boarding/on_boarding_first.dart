@@ -8,6 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import '../../common/farmus_theme_color.dart';
 import '../../common/farmus_theme_text_style.dart';
 import '../../view_model/on_boarding/on_boarding_provider.dart';
+import 'component/on_boarding_nickname.dart';
 
 class OnBoardingFirst extends ConsumerStatefulWidget {
   const OnBoardingFirst({Key? key}) : super(key: key);
@@ -33,8 +34,6 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
 
   @override
   Widget build(BuildContext context) {
-    final provider = ref.watch(onBoardingProvider.notifier);
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -61,25 +60,25 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
                     ),
                     child: (file == null)
                         ? Stack(
-                      children: [
-                        Center(
-                          child: GestureDetector(
-                            onTap: _pickImage,
-                            child: SvgPicture.asset(
-                                "assets/image/ic_camera.svg"),
-                          ),
-                        )
-                      ],
-                    )
+                            children: [
+                              Center(
+                                child: GestureDetector(
+                                  onTap: _pickImage,
+                                  child: SvgPicture.asset(
+                                      "assets/image/ic_camera.svg"),
+                                ),
+                              )
+                            ],
+                          )
                         : GestureDetector(
-                      onTap: _pickImage,
-                      child: ClipOval(
-                        child: Image.file(
-                          File(file!.path),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
+                            onTap: _pickImage,
+                            child: ClipOval(
+                              child: Image.file(
+                                File(file!.path),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
                   ),
                 ),
                 const SizedBox(height: 8),
@@ -91,53 +90,9 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
                     style: FarmusThemeTextStyle.darkMedium13,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: TextFormField(
-                    maxLength: 10,
-                    decoration: InputDecoration(
-                      hintText: "파머",
-                      hintStyle: const TextStyle(
-                        color: FarmusThemeColor.grey3,
-                        fontFamily: "Pretendard",
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                        borderSide: const BorderSide(
-                          color: FarmusThemeColor.grey4,
-                        ),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                        borderSide: const BorderSide(
-                          color: FarmusThemeColor.grey4,
-                        ),
-                      ),
-                      errorText: provider.hasSpecialCharacters
-                          ? "특수문자는 입력할 수 없어요"
-                          : null,
-                      errorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                        borderSide: const BorderSide(
-                          color: FarmusThemeColor.grey4,
-                        ),
-                      ),
-                      errorStyle: const TextStyle(
-                        color: FarmusThemeColor.red,
-                      ),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                        borderSide: const BorderSide(
-                          color: FarmusThemeColor.grey4,
-                        ),
-                      ),
-                    ),
-                    onChanged: (value) {
-                      ref.read(onBoardingProvider.notifier).updateProfileImage(value);
-                      print(provider.isProfileComplete);
-                      provider.updateNickname(value);
-                    },
-                  ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: OnBoardingNickname(),
                 ),
               ],
             ),

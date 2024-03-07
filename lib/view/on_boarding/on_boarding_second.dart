@@ -9,7 +9,6 @@ class OnBoardingSecond extends ConsumerState {
 
   @override
   Widget build(BuildContext context) {
-    final hasSpecialCharacters = ref.watch(onBoardingProvider);
 
     return SingleChildScrollView(
       child: Column(
@@ -55,9 +54,6 @@ class OnBoardingSecond extends ConsumerState {
                     color: FarmusThemeColor.grey4,
                   ),
                 ),
-                errorText: hasSpecialCharacters.hasSpecialCharacters
-                    ? "특수문자는 입력할 수 없어요"
-                    : null,
                 errorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                   borderSide: const BorderSide(

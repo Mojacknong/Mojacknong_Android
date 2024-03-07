@@ -1,14 +1,11 @@
 class Profile {
   final String? nickname;
   final String? profileImage;
-
-  final bool hasSpecialCharacters;
   final bool isProfileComplete;
 
   Profile({
     this.nickname,
     this.profileImage,
-    required this.hasSpecialCharacters,
     required this.isProfileComplete,
   });
 
@@ -20,7 +17,6 @@ class Profile {
   }) {
     return Profile(
       nickname: nickname ?? this.nickname,
-      hasSpecialCharacters: hasSpecialCharacters ?? this.hasSpecialCharacters,
       profileImage: profileImage ?? this.profileImage,
       isProfileComplete: isProfileComplete ?? this.isProfileComplete,
     );

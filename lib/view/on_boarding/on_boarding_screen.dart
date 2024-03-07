@@ -12,8 +12,6 @@ class OnBoardingScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final provider = ref.watch(onBoardingProvider.notifier);
-
     return Scaffold(
       appBar: const OnBoardingAppBar(),
       resizeToAvoidBottomInset: true,
@@ -23,15 +21,17 @@ class OnBoardingScreen extends ConsumerWidget {
             thickness: 1,
             color: FarmusThemeColor.grey4,
           ),
-          const Expanded(
-            child: OnBoardingFirst(),
+          Expanded(
+            child: Consumer(builder: (context, ref, _) {
+              return const OnBoardingFirst();
+            }),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: OnBoardingNextButton(
               text: "다음",
               onPressed: () {},
-              enabled: provider.isProfileComplete,
+              enabled: ref.watch(onBoardingProvider.notifier).isProfileComplete,
             ),
           ),
         ],
