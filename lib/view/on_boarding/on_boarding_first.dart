@@ -8,7 +8,6 @@ import 'package:image_picker/image_picker.dart';
 import '../../common/farmus_theme_color.dart';
 import '../../common/farmus_theme_text_style.dart';
 import '../../view_model/on_boarding/on_boarding_provider.dart';
-import 'component/on_boarding_next_button.dart';
 
 class OnBoardingFirst extends ConsumerStatefulWidget {
   const OnBoardingFirst({Key? key}) : super(key: key);
@@ -134,25 +133,13 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
                       ),
                     ),
                     onChanged: (value) {
+                      ref.read(onBoardingProvider.notifier).updateProfileImage(value);
+                      print(provider.isProfileComplete);
                       provider.updateNickname(value);
                     },
                   ),
                 ),
               ],
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: ProviderScope(
-            child: Consumer(
-              builder: (context, ref, child) {
-                return OnBoardingNextButton(
-                  text: "다음",
-                  onPressed: () {},
-                  enabled: provider.isProfileComplete,
-                );
-              },
             ),
           ),
         ),

@@ -1,15 +1,15 @@
 class Profile {
-  final String nickname;
-  final String profileImage;
+  final String? nickname;
+  final String? profileImage;
 
   final bool hasSpecialCharacters;
   final bool isProfileComplete;
 
   Profile({
-    required this.nickname,
-    required this.profileImage,
+    this.nickname,
+    this.profileImage,
     required this.hasSpecialCharacters,
-    required this.isProfileComplete
+    required this.isProfileComplete,
   });
 
   Profile copyWith({
@@ -22,7 +22,7 @@ class Profile {
       nickname: nickname ?? this.nickname,
       hasSpecialCharacters: hasSpecialCharacters ?? this.hasSpecialCharacters,
       profileImage: profileImage ?? this.profileImage,
-      isProfileComplete: isProfileComplete ??  this.isProfileComplete,
+      isProfileComplete: isProfileComplete ?? this.isProfileComplete,
     );
   }
 }

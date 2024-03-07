@@ -3,12 +3,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ProfileNotifier extends StateNotifier<Profile> {
   ProfileNotifier()
-      : super(Profile(
-          nickname: '',
-          profileImage: '',
-          hasSpecialCharacters: false,
-          isProfileComplete: false,
-        ));
+      : super(
+          Profile(
+            nickname: null,
+            profileImage: null,
+            hasSpecialCharacters: false,
+            isProfileComplete: false,
+          ),
+        );
 
   bool _hasSpecialCharacters = false;
 
@@ -19,7 +21,7 @@ class ProfileNotifier extends StateNotifier<Profile> {
   bool get isProfileComplete => _isProfileComplete;
 
   void updateNickname(String nickname) {
-    if (nickname.isNotEmpty && state.profileImage.isNotEmpty) {
+    if (nickname.isNotEmpty && state.profileImage!.isNotEmpty) {
       _isProfileComplete = true;
     } else {
       _isProfileComplete = false;
@@ -38,10 +40,10 @@ class ProfileNotifier extends StateNotifier<Profile> {
   }
 
   void updateProfileImage(String profileImage) {
-    if (profileImage.isNotEmpty && state.nickname.isNotEmpty) {
-      _isProfileComplete == true;
+    if (profileImage.isNotEmpty && state.nickname!.isNotEmpty) {
+      _isProfileComplete = true;
     } else {
-      _isProfileComplete == false;
+      _isProfileComplete = false;
     }
 
     state = state.copyWith(

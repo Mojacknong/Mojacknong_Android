@@ -20,7 +20,6 @@ class OnBoardingNextButton extends ConsumerWidget implements BaseButton {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    print(enabled);
     return PrimaryButton(
       text: text,
       onPressed: enabled ? onPressed : null,

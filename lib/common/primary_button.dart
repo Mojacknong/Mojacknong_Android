@@ -21,22 +21,28 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
 
   @override
   Widget build(BuildContext context) {
-    return Bouncing(
-      onPress: () {},
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: SizedBox(
-          width: double.infinity,
-          height: 48,
+    Widget buttonChild = Text(
+      text,
+      style: TextStyle(
+        color: enabled ? FarmusThemeColor.white : FarmusThemeColor.grey3,
+      ),
+    );
+
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: SizedBox(
+        width: double.infinity,
+        height: 48,
+        child: enabled
+            ? Bouncing(
+          onPress: onPressed,
           child: TextButton(
             onPressed: onPressed,
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(
-                  enabled ? FarmusThemeColor.primary : FarmusThemeColor.grey4),
-              foregroundColor: MaterialStateProperty.all(
-                  enabled ? FarmusThemeColor.white : FarmusThemeColor.grey3),
+                  FarmusThemeColor.primary),
               side: MaterialStateProperty.resolveWith(
-                (states) {
+                    (states) {
                   return const BorderSide(
                     color: Colors.transparent,
                     width: 1.0,
@@ -49,8 +55,29 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
                 ),
               ),
             ),
-            child: Text(text),
+            child: buttonChild,
           ),
+        )
+            : TextButton(
+          onPressed: null,
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(
+                FarmusThemeColor.grey4),
+            side: MaterialStateProperty.resolveWith(
+                  (states) {
+                return const BorderSide(
+                  color: Colors.transparent,
+                  width: 1.0,
+                );
+              },
+            ),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+            ),
+          ),
+          child: buttonChild,
         ),
       ),
     );
