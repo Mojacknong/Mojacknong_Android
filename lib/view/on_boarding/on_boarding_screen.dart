@@ -12,6 +12,9 @@ class OnBoardingScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final provider = ref.watch(onBoardingProvider);
+    final special = ref.watch(onBoardingSpecialCharactersProvider);
+
     return Scaffold(
       appBar: const OnBoardingAppBar(),
       resizeToAvoidBottomInset: true,
@@ -31,7 +34,8 @@ class OnBoardingScreen extends ConsumerWidget {
             child: OnBoardingNextButton(
               text: "다음",
               onPressed: () {},
-              enabled: ref.watch(onBoardingProvider.notifier).isProfileComplete,
+              // 프로필 이미지, 닉네임을 설정하고 특수문자가 없을 때 활성화
+              enabled: provider.isProfileComplete && !special,
             ),
           ),
         ],

@@ -12,7 +12,6 @@ class Profile {
   Profile copyWith({
     String? nickname,
     String? profileImage,
-    bool? hasSpecialCharacters,
     bool? isProfileComplete,
   }) {
     return Profile(
