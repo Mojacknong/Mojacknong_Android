@@ -1,43 +1,38 @@
+import 'package:farmus/common/base/base_app_bar.dart';
+import 'package:farmus/common/farmus_theme_color.dart';
+import 'package:farmus/common/farmus_theme_text_style.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
-
-class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
+class PrimaryAppBar extends StatelessWidget
+    implements PreferredSizeWidget, BaseAppBar {
+  @override
   final Widget? leading;
+  @override
   final String? title;
+  @override
   final List<Widget>? actions;
 
   const PrimaryAppBar({super.key, this.leading, this.title, this.actions});
 
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: SvgPicture.asset(
-            "assets/image/ic_arrow_left.svg",
-            height: 24,
-            width: 24,
-          ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        title: title != null
-            ? Text(
-                title!,
-                style: const TextStyle(),
-              )
-            : null,
-        centerTitle: true,
-        actions: actions,
-        elevation: 0,
-      ),
+    return AppBar(
+      leading: leading,
+      title: title != null
+          ? Text(
+              title!,
+              style: FarmusThemeTextStyle.darkSemiBold16,
+            )
+          : null,
+      actions: actions,
+      centerTitle: true,
+      backgroundColor: FarmusThemeColor.white,
+      elevation: 0.0,
+      bottomOpacity: 0.0,
+      scrolledUnderElevation: 0,
     );
   }
 
   @override
-  get preferredSize => throw UnimplementedError();
-
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

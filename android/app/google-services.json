@@ -7,17 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:173867017246:android:c9783614eb41898d96ba0f",
+        "mobilesdk_app_id": "1:173867017246:android:f0b09e90a535eeef96ba0f",
         "android_client_info": {
-          "package_name": "com.farmus"
+          "package_name": "com.farmer.farmus"
         }
       },
       "oauth_client": [
         {
-          "client_id": "173867017246-sm2du6v8a1pth75tbhdkhnoe0iqub9me.apps.googleusercontent.com",
+          "client_id": "173867017246-gmeqtf22rchb2ivkmdf1uul081cr3glf.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.farmus",
+            "package_name": "com.farmer.farmus",
             "certificate_hash": "0b944d1b1cdbd3064b73d7ebee5372b0d8183b33"
           }
         },
@@ -39,10 +39,10 @@
               "client_type": 3
             },
             {
-              "client_id": "173867017246-argke175998frc50cmps14a10baeijdg.apps.googleusercontent.com",
+              "client_id": "173867017246-8k30mn7la18pp9vkcek408qsubuhvria.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.farmus"
+                "bundle_id": "com.farmer.farmus"
               }
             }
           ]

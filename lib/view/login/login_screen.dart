@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:farmus_android/model/farmus_user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -8,6 +7,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 
 import '../../common/bouncing.dart';
+import '../../model/farmus_user.dart';
 import '../../repository/login_repository.dart';
 import '../../res/app_url/app_url.dart';
 import 'app_interceptor.dart';
@@ -75,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 kakaoLogin();
               },
               child: SvgPicture.asset(
-                "assets/image/kakao_login.svg",
+                "assets/image/login_kakao.svg",
               ),
             ),
           ),
@@ -92,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 googleLogin();
               },
               child: SvgPicture.asset(
-                "assets/image/google_login.svg",
+                "assets/image/login_google.svg",
               ),
             ),
           ),
