@@ -24,7 +24,7 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
     Widget buttonChild = Text(
       text,
       style: TextStyle(
-        color: enabled ? FarmusThemeColor.white : FarmusThemeColor.grey3,
+        color: enabled ? FarmusThemeColor.white : FarmusThemeColor.gray3,
       ),
     );
 
@@ -62,7 +62,7 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
           onPressed: null,
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(
-                FarmusThemeColor.grey4),
+                FarmusThemeColor.gray4),
             side: MaterialStateProperty.resolveWith(
                   (states) {
                 return const BorderSide(

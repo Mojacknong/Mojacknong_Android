@@ -23,7 +23,7 @@ class OnBoardingScreen extends ConsumerWidget {
         children: [
           const Divider(
             thickness: 1,
-            color: FarmusThemeColor.grey4,
+            color: FarmusThemeColor.gray4,
           ),
           Expanded(
             child: Consumer(builder: (context, ref, _) {

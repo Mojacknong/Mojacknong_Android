@@ -9,6 +9,7 @@ import '../../common/farmus_theme_color.dart';
 import '../../common/farmus_theme_text_style.dart';
 import '../../view_model/on_boarding/on_boarding_provider.dart';
 import 'component/on_boarding_nickname.dart';
+import 'component/on_boarding_title.dart';
 
 class OnBoardingFirst extends ConsumerStatefulWidget {
   const OnBoardingFirst({Key? key}) : super(key: key);
@@ -28,7 +29,9 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
         setState(() {
           file = value;
           // provider의 프로필 설정 로직 실행
-          ref.read(onBoardingProfileProvider.notifier).updateProfileImage(value.path);
+          ref
+              .read(onBoardingProfileProvider.notifier)
+              .updateProfileImage(value.path);
         });
       }
     });
@@ -46,9 +49,9 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
               children: [
                 const Padding(
                   padding: EdgeInsets.all(16.0),
-                  child: Text(
-                    "반가워요!\n프로필을 설정해볼까요?",
-                    style: FarmusThemeTextStyle.darkSemiBold20,
+                  child: OnBoardingTitle(
+                    mainText: "반가워요!\n프로필을 설정해볼까요?",
+                    subText: "",
                   ),
                 ),
                 const SizedBox(height: 30),
@@ -57,7 +60,7 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
                     width: 110,
                     height: 110,
                     decoration: const ShapeDecoration(
-                      color: FarmusThemeColor.grey5,
+                      color: FarmusThemeColor.gray5,
                       shape: OvalBorder(),
                     ),
                     // 이미지 선택을 하지 않으면 카메라 아이콘 설정
@@ -73,7 +76,7 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
                               )
                             ],
                           )
-                    // 이미지 선택하면 해당 이미지로 설정
+                        // 이미지 선택하면 해당 이미지로 설정
                         : GestureDetector(
                             onTap: _pickImage,
                             child: ClipOval(

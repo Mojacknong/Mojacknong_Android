@@ -1,77 +1,31 @@
+import 'package:farmus/view/on_boarding/component/on_boarding_title.dart';
 import 'package:flutter/material.dart';
-
-import '../../common/farmus_theme_color.dart';
-import '../../common/farmus_theme_text_style.dart';
 
 class OnBoardingSecond extends StatelessWidget {
   const OnBoardingSecond({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Text(
-              "반가워요!\n프로필을 설정해볼까요?",
-              style: FarmusThemeTextStyle.darkSemiBold20,
+    return const Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Expanded(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: OnBoardingTitle(
+                    mainText: "홈파밍을 하는 이유가 무엇인가요?",
+                    subText: "이유에 맞는 응원 메시지를 전해드릴게요. (복수 선택)",
+                  ),
+                ),
+              ],
             ),
           ),
-          const SizedBox(height: 30),
-          const SizedBox(height: 8),
-          const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Text(
-              "닉네임",
-              textAlign: TextAlign.start,
-              style: FarmusThemeTextStyle.darkMedium13,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: TextFormField(
-              maxLength: 10,
-              decoration: InputDecoration(
-                hintText: "파머",
-                hintStyle: const TextStyle(
-                  color: FarmusThemeColor.grey3,
-                  fontFamily: "Pretendard",
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
-                  borderSide: const BorderSide(
-                    color: FarmusThemeColor.grey4,
-                  ),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
-                  borderSide: const BorderSide(
-                    color: FarmusThemeColor.grey4,
-                  ),
-                ),
-                errorBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
-                  borderSide: const BorderSide(
-                    color: FarmusThemeColor.grey4,
-                  ),
-                ),
-                errorStyle: const TextStyle(
-                  color: FarmusThemeColor.red,
-                ),
-                focusedErrorBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
-                  borderSide: const BorderSide(
-                    color: FarmusThemeColor.grey4,
-                  ),
-                ),
-              ),
-              onChanged: (value) {},
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

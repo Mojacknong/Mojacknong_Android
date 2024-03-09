@@ -17,19 +17,19 @@ class OnBoardingNickname extends ConsumerWidget {
       decoration: InputDecoration(
         hintText: "파머",
         hintStyle: const TextStyle(
-          color: FarmusThemeColor.grey3,
+          color: FarmusThemeColor.gray3,
           fontFamily: "Pretendard",
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: const BorderSide(
-            color: FarmusThemeColor.grey4,
+            color: FarmusThemeColor.gray4,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: const BorderSide(
-            color: FarmusThemeColor.grey4,
+            color: FarmusThemeColor.gray4,
           ),
         ),
         // hasSpecialCharacters가 true를 반환하면 에러 메시지 호출
@@ -37,7 +37,7 @@ class OnBoardingNickname extends ConsumerWidget {
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: const BorderSide(
-            color: FarmusThemeColor.grey4,
+            color: FarmusThemeColor.gray4,
           ),
         ),
         errorStyle: const TextStyle(
@@ -46,7 +46,7 @@ class OnBoardingNickname extends ConsumerWidget {
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: const BorderSide(
-            color: FarmusThemeColor.grey4,
+            color: FarmusThemeColor.gray4,
           ),
         ),
       ),
