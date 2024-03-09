@@ -26,19 +26,22 @@ class OnBoardingScreen extends ConsumerWidget {
             color: FarmusThemeColor.gray4,
           ),
           Expanded(
-            child: Consumer(builder: (context, ref, _) {
-              final currentPageIndex = ref.watch(onBoardingMoveProvider);
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Consumer(builder: (context, ref, _) {
+                final currentPageIndex = ref.watch(onBoardingMoveProvider);
 
-              // 현재 페이지 인덱스에 따라 적절한 화면 표시
-              switch (currentPageIndex) {
-                case "first":
-                  return const OnBoardingFirst();
-                case "second":
-                  return const OnBoardingSecond();
-                default:
-                  return Container(); // 예외 처리
-              }
-            }),
+                // 현재 페이지 인덱스에 따라 적절한 화면 표시
+                switch (currentPageIndex) {
+                  case "first":
+                    return const OnBoardingFirst();
+                  case "second":
+                    return const OnBoardingSecond();
+                  default:
+                    return Container();
+                }
+              }),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
