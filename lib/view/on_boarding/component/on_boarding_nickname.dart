@@ -52,7 +52,7 @@ class OnBoardingNickname extends ConsumerWidget {
       ),
       onChanged: (value) {
         // nickname 값이 바뀔 때마다 provider 함수 실행
-        ref.read(onBoardingProvider.notifier).updateNickname(value);
+        ref.read(onBoardingProfileProvider.notifier).updateNickname(value);
         ref
             .read(onBoardingSpecialCharactersProvider.notifier)
             .checkForSpecialCharacters(value);

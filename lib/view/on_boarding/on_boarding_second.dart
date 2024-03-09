@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../common/farmus_theme_color.dart';
 import '../../common/farmus_theme_text_style.dart';
-import '../../view_model/on_boarding/on_boarding_provider.dart';
 
-class OnBoardingSecond extends ConsumerState {
+class OnBoardingSecond extends StatelessWidget {
+  const OnBoardingSecond({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -22,7 +20,6 @@ class OnBoardingSecond extends ConsumerState {
             ),
           ),
           const SizedBox(height: 30),
-
           const SizedBox(height: 8),
           const Padding(
             padding: EdgeInsets.all(16.0),
@@ -70,9 +67,7 @@ class OnBoardingSecond extends ConsumerState {
                   ),
                 ),
               ),
-              onChanged: (value) {
-                ref.read(onBoardingProvider.notifier).updateNickname(value);
-              },
+              onChanged: (value) {},
             ),
           ),
         ],
@@ -80,4 +75,3 @@ class OnBoardingSecond extends ConsumerState {
     );
   }
 }
-

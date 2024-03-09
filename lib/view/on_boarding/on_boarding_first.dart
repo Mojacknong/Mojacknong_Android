@@ -28,7 +28,7 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
         setState(() {
           file = value;
           // provider의 프로필 설정 로직 실행
-          ref.read(onBoardingProvider.notifier).updateProfileImage(value.path);
+          ref.read(onBoardingProfileProvider.notifier).updateProfileImage(value.path);
         });
       }
     });

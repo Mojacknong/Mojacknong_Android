@@ -1,10 +1,11 @@
 import 'package:farmus/model/profile.dart';
+import 'package:farmus/view_model/on_boarding/move_notifier.dart';
 import 'package:farmus/view_model/on_boarding/profile_notifier.dart';
 import 'package:farmus/view_model/on_boarding/special_character_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // 온보딩 프로필 설정 로직
-final onBoardingProvider =
+final onBoardingProfileProvider =
     StateNotifierProvider<ProfileNotifier, Profile>((ref) {
   return ProfileNotifier();
 });
@@ -12,4 +13,9 @@ final onBoardingProvider =
 // 특수문자 로직
 final onBoardingSpecialCharactersProvider = StateNotifierProvider<SpecialCharacterNotifier, bool>((ref) {
   return SpecialCharacterNotifier();
+});
+
+// 특수문자 로직
+final onBoardingMoveProvider = StateNotifierProvider<MoveNotifier, String>((ref) {
+  return MoveNotifier();
 });
