@@ -1,20 +1,20 @@
-class Profile {
+class OnBoardingProfileModel {
   final String? nickname;
   final String? profileImage;
   final bool isProfileComplete;
 
-  Profile({
+  OnBoardingProfileModel({
     this.nickname,
     this.profileImage,
     required this.isProfileComplete,
   });
 
-  Profile copyWith({
+  OnBoardingProfileModel copyWith({
     String? nickname,
     String? profileImage,
     bool? isProfileComplete,
   }) {
-    return Profile(
+    return OnBoardingProfileModel(
       nickname: nickname ?? this.nickname,
       profileImage: profileImage ?? this.profileImage,
       isProfileComplete: isProfileComplete ?? this.isProfileComplete,

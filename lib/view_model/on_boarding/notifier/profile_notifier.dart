@@ -1,10 +1,10 @@
-import 'package:farmus/model/profile.dart';
+import 'package:farmus/model/on_boarding/on_boarding_profile_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ProfileNotifier extends StateNotifier<Profile> {
+class ProfileNotifier extends StateNotifier<OnBoardingProfileModel> {
   ProfileNotifier()
       : super(
-          Profile(
+          OnBoardingProfileModel(
             nickname: null,
             profileImage: null,
             isProfileComplete: false,

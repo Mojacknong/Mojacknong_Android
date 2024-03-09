@@ -13,8 +13,9 @@ class OnBoardingScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final provider = ref.watch(onBoardingProfileProvider);
-    final special = ref.watch(onBoardingSpecialCharactersProvider);
+    final profile = ref.watch(onBoardingProfileProvider);
+    final isSpecial = ref.watch(onBoardingSpecialCharactersProvider);
+    final currentPageIndex = ref.watch(onBoardingMoveProvider);
 
     return Scaffold(
       appBar: const OnBoardingAppBar(),
@@ -29,8 +30,6 @@ class OnBoardingScreen extends ConsumerWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Consumer(builder: (context, ref, _) {
-                final currentPageIndex = ref.watch(onBoardingMoveProvider);
-
                 // 현재 페이지 인덱스에 따라 적절한 화면 표시
                 switch (currentPageIndex) {
                   case "first":
@@ -52,7 +51,7 @@ class OnBoardingScreen extends ConsumerWidget {
                 ref.read(onBoardingMoveProvider.notifier).moveToNextPage();
               },
               // 프로필 이미지, 닉네임을 설정하고 특수문자가 없을 때 활성화
-              enabled: provider.isProfileComplete && !special,
+              enabled: profile.isProfileComplete && !isSpecial,
             ),
           ),
         ],
