@@ -11,6 +11,7 @@ class OnBoardingSecond extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final motivation = ref.watch(onBoardingMotivationProvider);
+    final selectBox = ref.read(onBoardingMotivationProvider.notifier);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -32,11 +33,36 @@ class OnBoardingSecond extends ConsumerWidget {
                   title: "알뜰살뜰",
                   content: "물가가 올라서 채솟값을 절약하고 싶어요",
                   selectBox: () {
-                    ref.read(onBoardingMotivationProvider.notifier).selectBox();
+                    selectBox.selectFirstBox();
                   },
                   backgroundColor:
-                      motivation.isSelect ? FarmusThemeColor.green3 : null,
-                  borderColor: motivation.isSelect
+                      motivation.isFirstSelect ? FarmusThemeColor.green3 : null,
+                  borderColor: motivation.isFirstSelect
+                      ? FarmusThemeColor.white
+                      : FarmusThemeColor.gray4,
+                ),
+                SelectBox(
+                  title: "건강과 웰빙",
+                  content: "직접 키워서 먹으면 안심이 될 것 같아요",
+                  selectBox: () {
+                    selectBox.selectSecondBox();
+                  },
+                  backgroundColor: motivation.isSecondSelect
+                      ? FarmusThemeColor.green3
+                      : null,
+                  borderColor: motivation.isSecondSelect
+                      ? FarmusThemeColor.white
+                      : FarmusThemeColor.gray4,
+                ),
+                SelectBox(
+                  title: "심리적 안정",
+                  content: "채소를 기르며 마음의 안정을 찾고 싶어요",
+                  selectBox: () {
+                    selectBox.selectThirdBox();
+                  },
+                  backgroundColor:
+                      motivation.isThirdSelect ? FarmusThemeColor.green3 : null,
+                  borderColor: motivation.isThirdSelect
                       ? FarmusThemeColor.white
                       : FarmusThemeColor.gray4,
                 ),

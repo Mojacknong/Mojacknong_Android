@@ -21,7 +21,7 @@ class OnBoardingTitle extends StatelessWidget {
           mainText,
           style: FarmusThemeTextStyle.darkSemiBold20,
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 4),
         Text(
           subText,
           style: FarmusThemeTextStyle.gray2Medium14,

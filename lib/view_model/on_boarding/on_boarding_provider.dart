@@ -25,6 +25,6 @@ final onBoardingMoveProvider =
 });
 
 final onBoardingMotivationProvider =
-    StateNotifierProvider<MotivationNotifier, OnBoardingSelectBoxModel>((ref) {
+    StateNotifierProvider<MotivationNotifier, OnBoardingMotivationModel>((ref) {
   return MotivationNotifier();
 });

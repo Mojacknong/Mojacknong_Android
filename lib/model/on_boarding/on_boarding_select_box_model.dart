@@ -1,19 +1,27 @@
-class OnBoardingSelectBoxModel {
+class OnBoardingMotivationModel {
   final String title;
-  final bool isSelect;
+  final bool isFirstSelect;
+  final bool isSecondSelect;
+  final bool isThirdSelect;
 
-  OnBoardingSelectBoxModel({
+  OnBoardingMotivationModel({
     required this.title,
-    required this.isSelect,
+    required this.isFirstSelect,
+    required this.isSecondSelect,
+    required this.isThirdSelect,
   });
 
-  OnBoardingSelectBoxModel copyWith({
+  OnBoardingMotivationModel copyWith({
     String? title,
-    bool? isSelect,
+    bool? isFirstSelect,
+    bool? isSecondSelect,
+    bool? isThirdSelect,
   }) {
-    return OnBoardingSelectBoxModel(
+    return OnBoardingMotivationModel(
       title: title ?? this.title,
-      isSelect: isSelect ?? this.isSelect,
+      isFirstSelect: isFirstSelect ?? this.isFirstSelect,
+      isSecondSelect: isSecondSelect ?? this.isSecondSelect,
+      isThirdSelect: isThirdSelect ?? this.isThirdSelect,
     );
   }
 }
