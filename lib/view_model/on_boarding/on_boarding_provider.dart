@@ -24,6 +24,7 @@ final onBoardingMoveProvider =
   return MoveNotifier();
 });
 
+// 온보딩 동기 설정 로직
 final onBoardingMotivationProvider =
     StateNotifierProvider<MotivationNotifier, OnBoardingMotivationModel>((ref) {
   return MotivationNotifier();
