@@ -3,7 +3,7 @@ import 'package:farmus/common/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class OnBoardingNextButton extends ConsumerWidget implements BaseButton {
+class OnBoardingBeforeButton extends ConsumerWidget implements BaseButton {
   @override
   final String text;
   @override
@@ -17,7 +17,7 @@ class OnBoardingNextButton extends ConsumerWidget implements BaseButton {
   @override
   final Color borderColor;
 
-  const OnBoardingNextButton({
+  const OnBoardingBeforeButton({
     Key? key,
     required this.text,
     required this.onPressed,

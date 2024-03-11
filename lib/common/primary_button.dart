@@ -1,5 +1,4 @@
 import 'package:farmus/common/base/base_button.dart';
-import 'package:farmus/common/farmus_theme_color.dart';
 import 'package:flutter/material.dart';
 
 import 'bouncing.dart';
@@ -11,12 +10,21 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
   final VoidCallback? onPressed;
   @override
   final bool enabled;
+  @override
+  final Color textColor;
+  @override
+  final Color backgroundColor;
+  @override
+  final Color borderColor;
 
   const PrimaryButton({
     Key? key,
     required this.text,
     this.onPressed,
     required this.enabled,
+    required this.textColor,
+    required this.backgroundColor,
+    required this.borderColor,
   }) : super(key: key);
 
   @override
@@ -24,7 +32,7 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
     Widget buttonChild = Text(
       text,
       style: TextStyle(
-        color: enabled ? FarmusThemeColor.white : FarmusThemeColor.gray3,
+        color: textColor,
       ),
     );
 
@@ -39,12 +47,12 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
           child: TextButton(
             onPressed: onPressed,
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(
-                  FarmusThemeColor.primary),
+              backgroundColor:
+              MaterialStateProperty.all(backgroundColor),
               side: MaterialStateProperty.resolveWith(
                     (states) {
-                  return const BorderSide(
-                    color: Colors.transparent,
+                  return BorderSide(
+                    color: borderColor,
                     width: 1.0,
                   );
                 },
@@ -61,12 +69,12 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
             : TextButton(
           onPressed: null,
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(
-                FarmusThemeColor.gray4),
+            backgroundColor:
+            MaterialStateProperty.all(backgroundColor),
             side: MaterialStateProperty.resolveWith(
                   (states) {
-                return const BorderSide(
-                  color: Colors.transparent,
+                return BorderSide(
+                  color: borderColor,
                   width: 1.0,
                 );
               },
