@@ -3,9 +3,7 @@ import 'package:farmus/view/on_boarding/component/on_boarding_before_button.dart
 import 'package:farmus/view/on_boarding/component/on_boarding_next_button.dart';
 import 'package:farmus/view/on_boarding/on_boarding_first.dart';
 import 'package:farmus/view_model/on_boarding/on_boarding_provider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'on_boarding_app_bar.dart';
@@ -19,9 +17,27 @@ class OnBoardingScreen extends ConsumerWidget {
     final profile = ref.watch(onBoardingProfileProvider);
     final isSpecial = ref.watch(onBoardingSpecialCharactersProvider);
     final currentPageIndex = ref.watch(onBoardingMoveProvider);
+    final movePage = ref.read(onBoardingMoveProvider.notifier);
+
+    String currentIndex;
+    switch (currentPageIndex) {
+      case "first":
+        currentIndex = "1";
+        break;
+      case "second":
+        currentIndex = "2";
+        break;
+      case "third":
+        currentIndex = "3";
+        break;
+      default:
+        currentIndex = "0";
+    }
 
     return Scaffold(
-      appBar: const OnBoardingAppBar(),
+      appBar: OnBoardingAppBar(
+        currentIndex: currentIndex,
+      ),
       resizeToAvoidBottomInset: true,
       body: Column(
         children: [
@@ -51,23 +67,37 @@ class OnBoardingScreen extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
-                  child: OnBoardingBeforeButton(
-                    text: "이전",
-                    onPressed: () {},
-                    enabled: true,
-                    textColor: FarmusThemeColor.gray1,
-                    backgroundColor: FarmusThemeColor.white,
-                    borderColor: FarmusThemeColor.gray3,
+                  child: Visibility(
+                    visible: currentPageIndex != "first",
+                    child: OnBoardingBeforeButton(
+                      text: "이전",
+                      onPressed: () {
+                        switch (currentPageIndex) {
+                          case "first":
+                            return;
+                          case "second":
+                            movePage.moveToFirstPage();
+                          case "third":
+                            movePage.moveToSecondPage();
+                        }
+                      },
+                      enabled: true,
+                      textColor: FarmusThemeColor.gray1,
+                      backgroundColor: FarmusThemeColor.white,
+                      borderColor: FarmusThemeColor.gray3,
+                    ),
                   ),
                 ),
                 Expanded(
                   child: OnBoardingNextButton(
                     text: "다음",
                     onPressed: () {
-                      // 프로필 설정이 완료되었는지 확인
-                      ref
-                          .read(onBoardingMoveProvider.notifier)
-                          .moveToNextPage();
+                      switch (currentPageIndex) {
+                        case "first":
+                          movePage.moveToSecondPage();
+                        case "second":
+                          movePage.moveToThirdPage();
+                      }
                     },
                     // 프로필 이미지, 닉네임을 설정하고 특수문자가 없을 때 활성화
                     enabled: profile.isProfileComplete && !isSpecial,
