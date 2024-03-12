@@ -2,6 +2,7 @@ import 'package:farmus/common/farmus_theme_color.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_before_button.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_next_button.dart';
 import 'package:farmus/view/on_boarding/on_boarding_first.dart';
+import 'package:farmus/view/on_boarding/on_boarding_fourth.dart';
 import 'package:farmus/view/on_boarding/on_boarding_third.dart';
 import 'package:farmus/view_model/on_boarding/on_boarding_provider.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,7 @@ class OnBoardingScreen extends ConsumerWidget {
     final currentPageIndex = ref.watch(onBoardingMoveProvider);
     final motivation = ref.watch(onBoardingMotivationProvider);
     final time = ref.watch(onBoardingTimeProvider);
+    final level = ref.watch(onBoardingLevelProvider);
     final movePage = ref.read(onBoardingMoveProvider.notifier);
 
     String nextButtonText = "다음";
@@ -42,6 +44,7 @@ class OnBoardingScreen extends ConsumerWidget {
         break;
       case "fourth":
         currentIndex = "4";
+        enabled = level.isLevelComplete;
         break;
       default:
         currentIndex = "0";
@@ -62,7 +65,6 @@ class OnBoardingScreen extends ConsumerWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Consumer(builder: (context, ref, _) {
-                // 현재 페이지 인덱스에 따라 화면 표시
                 switch (currentPageIndex) {
                   case "first":
                     return const OnBoardingFirst();
@@ -71,7 +73,7 @@ class OnBoardingScreen extends ConsumerWidget {
                   case "third":
                     return const OnBoardingThird();
                   case "fourth":
-                    return Container();
+                    return const OnBoardingFourth();
                   default:
                     return Container();
                 }
@@ -120,7 +122,6 @@ class OnBoardingScreen extends ConsumerWidget {
                           movePage.moveToFourthPage();
                       }
                     },
-                    // 프로필 이미지, 닉네임을 설정하고 특수문자가 없을 때 활성화
                     enabled: enabled,
                     textColor: enabled
                         ? FarmusThemeColor.white

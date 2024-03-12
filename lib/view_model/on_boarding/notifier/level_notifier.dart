@@ -1,14 +1,16 @@
-import 'package:farmus/model/on_boarding/on_boarding_time_model.dart';
+import 'package:farmus/model/on_boarding/on_boarding_level_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class TimeNotifier extends StateNotifier<OnBoardingTimeModel> {
-  TimeNotifier()
+class LevelNotifier extends StateNotifier<OnBoardingLevelModel> {
+  LevelNotifier()
       : super(
-          OnBoardingTimeModel(
-              isFirstSelect: false,
-              isSecondSelect: false,
-              isThirdSelect: false,
-              isTimeComplete: false),
+          OnBoardingLevelModel(
+            isFirstSelect: false,
+            isSecondSelect: false,
+            isThirdSelect: false,
+            isFourthSelect: false,
+            isLevelComplete: false,
+          ),
         );
 
   bool _isFirstSelect = false;
@@ -23,46 +25,65 @@ class TimeNotifier extends StateNotifier<OnBoardingTimeModel> {
 
   bool get isThirdSelect => _isThirdSelect;
 
-  bool _isTimeComplete = false;
+  bool _isFourthSelect = false;
 
-  bool get isTimeComplete => _isTimeComplete;
+  bool get isFourthSelect => _isFourthSelect;
 
-  // 1시간 이상
+  bool _isLevelComplete = false;
+
+  bool get isLevelComplete => _isLevelComplete;
+
+  // 입문
   void selectFirstBox() {
     if (!_isFirstSelect) {
       _isFirstSelect = true;
       _isSecondSelect = false;
       _isThirdSelect = false;
+      _isFourthSelect = false;
       update();
     }
   }
 
-  // 10분 - 30분
+  // 초보
   void selectSecondBox() {
     if (!_isSecondSelect) {
       _isFirstSelect = false;
       _isSecondSelect = true;
       _isThirdSelect = false;
+      _isFourthSelect = false;
       update();
     }
   }
 
-  // 10분 미만
+  // 중급
   void selectThirdBox() {
     if (!_isThirdSelect) {
       _isFirstSelect = false;
       _isSecondSelect = false;
       _isThirdSelect = true;
+      _isFourthSelect = false;
+      update();
+    }
+  }
+
+  // 고수
+  void selectFourthBox() {
+    if (!_isFourthSelect) {
+      _isFirstSelect = false;
+      _isSecondSelect = false;
+      _isThirdSelect = false;
+      _isFourthSelect = true;
       update();
     }
   }
 
   void update() {
-    _isTimeComplete = true;
+    _isLevelComplete = true;
     state = state.copyWith(
         isFirstSelect: isFirstSelect,
         isSecondSelect: isSecondSelect,
         isThirdSelect: isThirdSelect,
-        isTimeComplete: isTimeComplete);
+        isFourthSelect: isFourthSelect,
+        isLevelComplete: isLevelComplete);
   }
 }

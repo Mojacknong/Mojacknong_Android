@@ -1,6 +1,8 @@
+import 'package:farmus/model/on_boarding/on_boarding_level_model.dart';
 import 'package:farmus/model/on_boarding/on_boarding_profile_model.dart';
 import 'package:farmus/model/on_boarding/on_boarding_motivation_model.dart';
 import 'package:farmus/model/on_boarding/on_boarding_time_model.dart';
+import 'package:farmus/view_model/on_boarding/notifier/level_notifier.dart';
 import 'package:farmus/view_model/on_boarding/notifier/motivation_notifier.dart';
 import 'package:farmus/view_model/on_boarding/notifier/move_notifier.dart';
 import 'package:farmus/view_model/on_boarding/notifier/profile_notifier.dart';
@@ -36,4 +38,10 @@ final onBoardingMotivationProvider =
 final onBoardingTimeProvider =
     StateNotifierProvider<TimeNotifier, OnBoardingTimeModel>((ref) {
   return TimeNotifier();
+});
+
+// 온보딩 난이도 로직
+final onBoardingLevelProvider =
+StateNotifierProvider<LevelNotifier, OnBoardingLevelModel>((ref) {
+  return LevelNotifier();
 });
