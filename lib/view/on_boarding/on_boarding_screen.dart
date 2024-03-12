@@ -2,6 +2,7 @@ import 'package:farmus/common/farmus_theme_color.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_before_button.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_next_button.dart';
 import 'package:farmus/view/on_boarding/on_boarding_first.dart';
+import 'package:farmus/view/on_boarding/on_boarding_third.dart';
 import 'package:farmus/view_model/on_boarding/on_boarding_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -36,6 +37,9 @@ class OnBoardingScreen extends ConsumerWidget {
       case "third":
         currentIndex = "3";
         break;
+      case "third":
+        currentIndex = "3";
+        break;
       default:
         currentIndex = "0";
     }
@@ -61,6 +65,8 @@ class OnBoardingScreen extends ConsumerWidget {
                     return const OnBoardingFirst();
                   case "second":
                     return const OnBoardingSecond();
+                  case "third":
+                    return const OnBoardingThird();
                   default:
                     return Container();
                 }
@@ -103,6 +109,8 @@ class OnBoardingScreen extends ConsumerWidget {
                           movePage.moveToSecondPage();
                         case "second":
                           movePage.moveToThirdPage();
+                        case "third":
+                          movePage.moveToSecondPage();
                       }
                     },
                     // 프로필 이미지, 닉네임을 설정하고 특수문자가 없을 때 활성화
