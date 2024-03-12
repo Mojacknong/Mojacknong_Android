@@ -11,6 +11,9 @@ class OnBoardingThird extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final time = ref.watch(onBoardingTimeProvider);
+    final isFirstSelect = time.isFirstSelect;
+    final isSecondSelect = time.isSecondSelect;
+    final isThirdSelect = time.isThirdSelect;
     final selectBox = ref.read(onBoardingTimeProvider.notifier);
 
     return Column(
@@ -36,8 +39,8 @@ class OnBoardingThird extends ConsumerWidget {
                     selectBox.selectFirstBox();
                   },
                   backgroundColor:
-                      time.isFirstSelect ? FarmusThemeColor.green3 : null,
-                  borderColor: time.isFirstSelect
+                      isFirstSelect ? FarmusThemeColor.green3 : null,
+                  borderColor: isFirstSelect
                       ? FarmusThemeColor.white
                       : FarmusThemeColor.gray4,
                 ),
@@ -47,10 +50,9 @@ class OnBoardingThird extends ConsumerWidget {
                   selectBox: () {
                     selectBox.selectSecondBox();
                   },
-                  backgroundColor: time.isSecondSelect
-                      ? FarmusThemeColor.green3
-                      : null,
-                  borderColor: time.isSecondSelect
+                  backgroundColor:
+                      isSecondSelect ? FarmusThemeColor.green3 : null,
+                  borderColor: isSecondSelect
                       ? FarmusThemeColor.white
                       : FarmusThemeColor.gray4,
                 ),
@@ -61,8 +63,8 @@ class OnBoardingThird extends ConsumerWidget {
                     selectBox.selectThirdBox();
                   },
                   backgroundColor:
-                      time.isThirdSelect ? FarmusThemeColor.green3 : null,
-                  borderColor: time.isThirdSelect
+                      isThirdSelect ? FarmusThemeColor.green3 : null,
+                  borderColor: isThirdSelect
                       ? FarmusThemeColor.white
                       : FarmusThemeColor.gray4,
                 ),

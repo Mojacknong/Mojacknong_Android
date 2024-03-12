@@ -7,7 +7,8 @@ class TimeNotifier extends StateNotifier<OnBoardingTimeModel> {
           OnBoardingTimeModel(
               isFirstSelect: false,
               isSecondSelect: false,
-              isThirdSelect: false),
+              isThirdSelect: false,
+              isTimeComplete: false),
         );
 
   bool _isFirstSelect = false;
@@ -22,21 +23,44 @@ class TimeNotifier extends StateNotifier<OnBoardingTimeModel> {
 
   bool get isThirdSelect => _isThirdSelect;
 
-  // 알뜰살뜰
+  bool _isTimeComplete = false;
+
+  bool get isTimeComplete => _isTimeComplete;
+
+  // 1시간 이상
   void selectFirstBox() {
-    _isFirstSelect = !_isFirstSelect;
-    state = state.copyWith(isFirstSelect: isFirstSelect);
+    if (!_isFirstSelect) {
+      _isFirstSelect = true;
+      _isSecondSelect = false;
+      _isThirdSelect = false;
+      update();
+    }
   }
 
-  // 건강과 웰빙
   void selectSecondBox() {
-    _isSecondSelect = !_isSecondSelect;
-    state = state.copyWith(isSecondSelect: isSecondSelect);
+    if (!_isSecondSelect) {
+      _isFirstSelect = false;
+      _isSecondSelect = true;
+      _isThirdSelect = false;
+      update();
+    }
   }
 
-  // 심리적 안정
   void selectThirdBox() {
-    _isThirdSelect = !_isThirdSelect;
-    state = state.copyWith(isThirdSelect: isThirdSelect);
+    if (!_isThirdSelect) {
+      _isFirstSelect = false;
+      _isSecondSelect = false;
+      _isThirdSelect = true;
+      update();
+    }
+  }
+
+  void update() {
+    _isTimeComplete = true;
+    state = state.copyWith(
+        isFirstSelect: isFirstSelect,
+        isSecondSelect: isSecondSelect,
+        isThirdSelect: isThirdSelect,
+        isTimeComplete: _isTimeComplete);
   }
 }

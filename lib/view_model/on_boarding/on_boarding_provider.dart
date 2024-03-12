@@ -1,9 +1,11 @@
 import 'package:farmus/model/on_boarding/on_boarding_profile_model.dart';
 import 'package:farmus/model/on_boarding/on_boarding_motivation_model.dart';
+import 'package:farmus/model/on_boarding/on_boarding_time_model.dart';
 import 'package:farmus/view_model/on_boarding/notifier/motivation_notifier.dart';
 import 'package:farmus/view_model/on_boarding/notifier/move_notifier.dart';
 import 'package:farmus/view_model/on_boarding/notifier/profile_notifier.dart';
 import 'package:farmus/view_model/on_boarding/notifier/special_character_notifier.dart';
+import 'package:farmus/view_model/on_boarding/notifier/time_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // 온보딩 프로필 설정 로직
@@ -32,6 +34,6 @@ final onBoardingMotivationProvider =
 
 // 온보딩 채소 추천 로직
 final onBoardingTimeProvider =
-StateNotifierProvider<MotivationNotifier, OnBoardingMotivationModel>((ref) {
-  return MotivationNotifier();
+    StateNotifierProvider<TimeNotifier, OnBoardingTimeModel>((ref) {
+  return TimeNotifier();
 });

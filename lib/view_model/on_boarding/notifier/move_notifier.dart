@@ -15,4 +15,8 @@ class MoveNotifier extends StateNotifier<String> {
   void moveToThirdPage() {
     state = "third";
   }
+
+  void moveToFourthPage() {
+    state = "fourth";
+  }
 }

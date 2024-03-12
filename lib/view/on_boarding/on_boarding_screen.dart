@@ -18,6 +18,8 @@ class OnBoardingScreen extends ConsumerWidget {
     final profile = ref.watch(onBoardingProfileProvider);
     final isSpecial = ref.watch(onBoardingSpecialCharactersProvider);
     final currentPageIndex = ref.watch(onBoardingMoveProvider);
+    final motivation = ref.watch(onBoardingMotivationProvider);
+    final time = ref.watch(onBoardingTimeProvider);
     final movePage = ref.read(onBoardingMoveProvider.notifier);
 
     String nextButtonText = "다음";
@@ -32,13 +34,14 @@ class OnBoardingScreen extends ConsumerWidget {
       case "second":
         currentIndex = "2";
         enabled = true;
-        nextButtonText = ref.watch(onBoardingMotivationProvider).buttonText;
+        nextButtonText = motivation.buttonText;
         break;
       case "third":
         currentIndex = "3";
+        enabled = time.isTimeComplete;
         break;
-      case "third":
-        currentIndex = "3";
+      case "fourth":
+        currentIndex = "4";
         break;
       default:
         currentIndex = "0";
@@ -67,6 +70,8 @@ class OnBoardingScreen extends ConsumerWidget {
                     return const OnBoardingSecond();
                   case "third":
                     return const OnBoardingThird();
+                  case "fourth":
+                    return Container();
                   default:
                     return Container();
                 }
@@ -91,6 +96,8 @@ class OnBoardingScreen extends ConsumerWidget {
                             movePage.moveToFirstPage();
                           case "third":
                             movePage.moveToSecondPage();
+                          case "fourth":
+                            movePage.moveToThirdPage();
                         }
                       },
                       enabled: true,
@@ -110,7 +117,7 @@ class OnBoardingScreen extends ConsumerWidget {
                         case "second":
                           movePage.moveToThirdPage();
                         case "third":
-                          movePage.moveToSecondPage();
+                          movePage.moveToFourthPage();
                       }
                     },
                     // 프로필 이미지, 닉네임을 설정하고 특수문자가 없을 때 활성화
