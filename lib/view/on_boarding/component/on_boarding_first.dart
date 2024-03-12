@@ -5,11 +5,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../common/farmus_theme_color.dart';
-import '../../common/farmus_theme_text_style.dart';
-import '../../view_model/on_boarding/on_boarding_provider.dart';
-import 'component/on_boarding_nickname.dart';
-import 'component/on_boarding_title.dart';
+import '../../../common/farmus_theme_color.dart';
+import '../../../common/farmus_theme_text_style.dart';
+import '../../../view_model/on_boarding/on_boarding_provider.dart';
+import 'on_boarding_nickname.dart';
+import 'on_boarding_title.dart';
 
 class OnBoardingFirst extends ConsumerStatefulWidget {
   const OnBoardingFirst({Key? key}) : super(key: key);

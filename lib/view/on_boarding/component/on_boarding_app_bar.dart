@@ -2,7 +2,7 @@ import 'package:farmus/common/primary_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../common/farmus_theme_text_style.dart';
+import '../../../common/farmus_theme_text_style.dart';
 
 class OnBoardingAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String currentIndex;
@@ -13,7 +13,9 @@ class OnBoardingAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return PrimaryAppBar(
       leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: SvgPicture.asset("assets/image/ic_close.svg")),
       actions: [
         Padding(

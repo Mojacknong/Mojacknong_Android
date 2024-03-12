@@ -1,15 +1,16 @@
 import 'package:farmus/common/farmus_theme_color.dart';
+import 'package:farmus/view/login/login_screen.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_before_button.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_next_button.dart';
-import 'package:farmus/view/on_boarding/on_boarding_first.dart';
-import 'package:farmus/view/on_boarding/on_boarding_fourth.dart';
-import 'package:farmus/view/on_boarding/on_boarding_third.dart';
+import 'package:farmus/view/on_boarding/component/on_boarding_first.dart';
+import 'package:farmus/view/on_boarding/component/on_boarding_third.dart';
 import 'package:farmus/view_model/on_boarding/on_boarding_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'on_boarding_app_bar.dart';
-import 'on_boarding_second.dart';
+import 'component/on_boarding_app_bar.dart';
+import 'component/on_boarding_fourth.dart';
+import 'component/on_boarding_second.dart';
 
 class OnBoardingScreen extends ConsumerWidget {
   const OnBoardingScreen({Key? key}) : super(key: key);
@@ -120,6 +121,9 @@ class OnBoardingScreen extends ConsumerWidget {
                           movePage.moveToThirdPage();
                         case "third":
                           movePage.moveToFourthPage();
+                        case "fourth":
+                          Navigator.pop(context);
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen()),);
                       }
                     },
                     enabled: enabled,
