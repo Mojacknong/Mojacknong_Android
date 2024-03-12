@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MoveNotifier extends StateNotifier<String> {
-  MoveNotifier() : super("first");
+  MoveNotifier() : super("fourth");
 
   void moveToFirstPage() {
     state = "first";
