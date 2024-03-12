@@ -31,7 +31,7 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
           // provider의 프로필 설정 로직 실행
           ref
               .read(onBoardingProfileProvider.notifier)
-              .updateProfileImage(value.path);
+              .updateProfileImage(value);
         });
       }
     });
@@ -39,6 +39,7 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
 
   @override
   Widget build(BuildContext context) {
+    file = ref.read(onBoardingProfileProvider).profileImage;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

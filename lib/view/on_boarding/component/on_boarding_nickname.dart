@@ -9,10 +9,12 @@ class OnBoardingNickname extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final nickname = ref.watch(onBoardingProfileProvider).nickname;
     // 특수문자 체크 provider
     final hasSpecialCharacters = ref.watch(onBoardingSpecialCharactersProvider);
 
     return TextFormField(
+      initialValue : nickname,
       maxLength: 10,
       decoration: InputDecoration(
         hintText: "파머",

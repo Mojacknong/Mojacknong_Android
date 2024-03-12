@@ -1,6 +1,8 @@
+import 'package:image_picker/image_picker.dart';
+
 class OnBoardingProfileModel {
   final String? nickname;
-  final String? profileImage;
+  final XFile? profileImage;
   final bool isProfileComplete;
 
   OnBoardingProfileModel({
@@ -11,7 +13,7 @@ class OnBoardingProfileModel {
 
   OnBoardingProfileModel copyWith({
     String? nickname,
-    String? profileImage,
+    XFile? profileImage,
     bool? isProfileComplete,
   }) {
     return OnBoardingProfileModel(
