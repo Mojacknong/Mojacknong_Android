@@ -1,10 +1,11 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../common/bottom_sheet/action_sheet_primary.dart';
 import '../../../common/farmus_theme_color.dart';
 import '../../../common/farmus_theme_text_style.dart';
 import '../../../view_model/on_boarding/on_boarding_provider.dart';
@@ -22,8 +23,8 @@ class OnBoardingFirst extends ConsumerStatefulWidget {
 class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
   XFile? file;
 
-  // 이미지 설정 함수
-  Future<void> _pickImage() async {
+  // 갤러리 이미지 설정 함수
+  Future<void> _pickGalleryImage() async {
     ImagePicker().pickImage(source: ImageSource.gallery).then((value) {
       if (value != null) {
         setState(() {
@@ -35,6 +36,61 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
         });
       }
     });
+  }
+
+  Future<void> _pickCameraImage() async {
+    ImagePicker().pickImage(source: ImageSource.camera).then((value) {
+      if (value != null) {
+        setState(() {
+          file = value;
+          // provider의 프로필 설정 로직 실행
+          ref
+              .read(onBoardingProfileProvider.notifier)
+              .updateProfileImage(value);
+        });
+      }
+    });
+  }
+
+  void _showActionSheet(BuildContext context) {
+    showCupertinoModalPopup(
+      context: context,
+      builder: (BuildContext context) => ActionSheetPrimary(
+        title: "프로필 사진",
+        actions: <CupertinoActionSheetAction>[
+          CupertinoActionSheetAction(
+            onPressed: () {
+              _pickGalleryImage();
+              Navigator.pop(context);
+            },
+            child: const Text(
+              "앨범에서 사진 선택",
+              style: FarmusThemeTextStyle.dark2Medium15,
+            ),
+          ),
+          CupertinoActionSheetAction(
+            onPressed: () {
+              _pickCameraImage();
+              Navigator.pop(context);
+            },
+            child: const Text(
+              "사진 촬영",
+              style: FarmusThemeTextStyle.dark2Medium15,
+            ),
+          ),
+        ],
+        cancelButton: CupertinoActionSheetAction(
+          isDestructiveAction: true,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text(
+            "취소",
+            style: FarmusThemeTextStyle.darkMedium15,
+          ),
+        ),
+      ),
+    );
   }
 
   @override
@@ -70,7 +126,7 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
                             children: [
                               Center(
                                 child: GestureDetector(
-                                  onTap: _pickImage,
+                                  onTap: () => _showActionSheet(context),
                                   child: SvgPicture.asset(
                                       "assets/image/ic_camera.svg"),
                                 ),
@@ -79,7 +135,7 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
                           )
                         // 이미지 선택하면 해당 이미지로 설정
                         : GestureDetector(
-                            onTap: _pickImage,
+                            onTap: () => _showActionSheet(context),
                             child: ClipOval(
                               child: Image.file(
                                 File(file!.path),

@@ -9,9 +9,20 @@ class FarmusThemeTextStyle {
     fontSize: 13,
   );
 
+  static const TextStyle darkMedium15 = TextStyle(
+    color: FarmusThemeColor.dark,
+    fontSize: 15,
+  );
+
   static const TextStyle darkMedium17 = TextStyle(
     color: FarmusThemeColor.dark,
     fontSize: 17,
+  );
+
+  // dark2
+  static const TextStyle dark2Medium15 = TextStyle(
+    color: FarmusThemeColor.dark2,
+    fontSize: 15,
   );
 
   static const TextStyle darkSemiBold16 = TextStyle(
@@ -32,6 +43,11 @@ class FarmusThemeTextStyle {
   );
 
   // gray2
+  static const TextStyle gray2Medium12 = TextStyle(
+    color: FarmusThemeColor.gray2,
+    fontSize: 12,
+  );
+
   static const TextStyle gray2Medium14 = TextStyle(
     color: FarmusThemeColor.gray2,
     fontSize: 14,

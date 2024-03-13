@@ -27,9 +27,11 @@ class OnBoardingFinishScreen extends ConsumerWidget {
             ),
           ),
           Expanded(
-            child: Image.asset(
-              "assets/image/ic_on_board_finish.png",
-              fit: BoxFit.fill,
+            child: Center(
+              child: Image.asset(
+                "assets/image/img_on_board_finish.png",
+                fit: BoxFit.fill,
+              ),
             ),
           ),
           Padding(

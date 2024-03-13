@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 class FarmusThemeColor {
   static const Color dark = Color(0xFF2B2B2B);
+  static const Color dark2 = Color(0xFF1D1D1D);
 
   static const Color gray1 = Color(0xFF505050);
   static const Color gray2 = Color(0xFF7D7D7D);
