@@ -1,10 +1,11 @@
-import 'package:farmus/model/profile.dart';
+import 'package:farmus/model/on_boarding/on_boarding_profile_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 
-class ProfileNotifier extends StateNotifier<Profile> {
+class ProfileNotifier extends StateNotifier<OnBoardingProfileModel> {
   ProfileNotifier()
       : super(
-          Profile(
+          OnBoardingProfileModel(
             nickname: null,
             profileImage: null,
             isProfileComplete: false,
@@ -18,7 +19,7 @@ class ProfileNotifier extends StateNotifier<Profile> {
   void updateNickname(String nickname) {
     if (nickname.isNotEmpty &&
         state.profileImage != null &&
-        state.profileImage!.isNotEmpty) {
+        state.profileImage!.path.isNotEmpty) {
       _isProfileComplete = true;
     } else {
       _isProfileComplete = false;
@@ -30,8 +31,8 @@ class ProfileNotifier extends StateNotifier<Profile> {
     );
   }
 
-  void updateProfileImage(String profileImage) {
-    if (profileImage.isNotEmpty &&
+  void updateProfileImage(XFile profileImage) {
+    if (profileImage.path.isNotEmpty &&
         state.nickname != null &&
         state.nickname!.isNotEmpty) {
       _isProfileComplete = true;

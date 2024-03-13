@@ -9,27 +9,29 @@ class OnBoardingNickname extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final nickname = ref.watch(onBoardingProfileProvider).nickname;
     // 특수문자 체크 provider
     final hasSpecialCharacters = ref.watch(onBoardingSpecialCharactersProvider);
 
     return TextFormField(
+      initialValue : nickname,
       maxLength: 10,
       decoration: InputDecoration(
         hintText: "파머",
         hintStyle: const TextStyle(
-          color: FarmusThemeColor.grey3,
+          color: FarmusThemeColor.gray3,
           fontFamily: "Pretendard",
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: const BorderSide(
-            color: FarmusThemeColor.grey4,
+            color: FarmusThemeColor.gray4,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: const BorderSide(
-            color: FarmusThemeColor.grey4,
+            color: FarmusThemeColor.gray4,
           ),
         ),
         // hasSpecialCharacters가 true를 반환하면 에러 메시지 호출
@@ -37,7 +39,7 @@ class OnBoardingNickname extends ConsumerWidget {
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: const BorderSide(
-            color: FarmusThemeColor.grey4,
+            color: FarmusThemeColor.gray4,
           ),
         ),
         errorStyle: const TextStyle(
@@ -46,13 +48,13 @@ class OnBoardingNickname extends ConsumerWidget {
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: const BorderSide(
-            color: FarmusThemeColor.grey4,
+            color: FarmusThemeColor.gray4,
           ),
         ),
       ),
       onChanged: (value) {
         // nickname 값이 바뀔 때마다 provider 함수 실행
-        ref.read(onBoardingProvider.notifier).updateNickname(value);
+        ref.read(onBoardingProfileProvider.notifier).updateNickname(value);
         ref
             .read(onBoardingSpecialCharactersProvider.notifier)
             .checkForSpecialCharacters(value);

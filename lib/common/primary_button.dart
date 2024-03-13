@@ -1,5 +1,4 @@
 import 'package:farmus/common/base/base_button.dart';
-import 'package:farmus/common/farmus_theme_color.dart';
 import 'package:flutter/material.dart';
 
 import 'bouncing.dart';
@@ -11,12 +10,21 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
   final VoidCallback? onPressed;
   @override
   final bool enabled;
+  @override
+  final Color textColor;
+  @override
+  final Color backgroundColor;
+  @override
+  final Color borderColor;
 
   const PrimaryButton({
     Key? key,
     required this.text,
     this.onPressed,
     required this.enabled,
+    required this.textColor,
+    required this.backgroundColor,
+    required this.borderColor,
   }) : super(key: key);
 
   @override
@@ -24,7 +32,7 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
     Widget buttonChild = Text(
       text,
       style: TextStyle(
-        color: enabled ? FarmusThemeColor.white : FarmusThemeColor.grey3,
+        color: textColor,
       ),
     );
 
@@ -35,50 +43,48 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
         height: 48,
         child: enabled
             ? Bouncing(
-          onPress: onPressed,
-          child: TextButton(
-            onPressed: onPressed,
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(
-                  FarmusThemeColor.primary),
-              side: MaterialStateProperty.resolveWith(
-                    (states) {
-                  return const BorderSide(
-                    color: Colors.transparent,
-                    width: 1.0,
-                  );
-                },
-              ),
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0),
+                onPress: onPressed,
+                child: TextButton(
+                  onPressed: onPressed,
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(backgroundColor),
+                    side: MaterialStateProperty.resolveWith(
+                      (states) {
+                        return BorderSide(
+                          color: borderColor,
+                          width: 1.0,
+                        );
+                      },
+                    ),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                  ),
+                  child: buttonChild,
                 ),
-              ),
-            ),
-            child: buttonChild,
-          ),
-        )
+              )
             : TextButton(
-          onPressed: null,
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(
-                FarmusThemeColor.grey4),
-            side: MaterialStateProperty.resolveWith(
-                  (states) {
-                return const BorderSide(
-                  color: Colors.transparent,
-                  width: 1.0,
-                );
-              },
-            ),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.0),
+                onPressed: null,
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(backgroundColor),
+                  side: MaterialStateProperty.resolveWith(
+                    (states) {
+                      return BorderSide(
+                        color: borderColor,
+                        width: 1.0,
+                      );
+                    },
+                  ),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                ),
+                child: buttonChild,
               ),
-            ),
-          ),
-          child: buttonChild,
-        ),
       ),
     );
   }

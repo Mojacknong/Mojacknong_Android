@@ -1,4 +1,3 @@
-
 import 'package:farmus/common/farmus_theme_color.dart';
 import 'package:farmus/res/app_url/app_url.dart';
 import 'package:farmus/view/on_boarding/on_boarding_screen.dart';

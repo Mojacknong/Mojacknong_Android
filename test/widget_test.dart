@@ -5,7 +5,7 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:farmus/view/on_boarding/on_boarding_first.dart';
+import 'package:farmus/view/on_boarding/component/on_boarding_first.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 

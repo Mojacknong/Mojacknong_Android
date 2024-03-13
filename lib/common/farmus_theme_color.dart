@@ -2,12 +2,13 @@ import 'package:flutter/cupertino.dart';
 
 class FarmusThemeColor {
   static const Color dark = Color(0xFF2B2B2B);
+  static const Color dark2 = Color(0xFF1D1D1D);
 
-  static const Color grey1 = Color(0xFF505050);
-  static const Color grey2 = Color(0xFF7D7D7D);
-  static const Color grey3 = Color(0xFFC5C5C5);
-  static const Color grey4 = Color(0xFFECECEC);
-  static const Color grey5 = Color(0xFFF2F2F2);
+  static const Color gray1 = Color(0xFF505050);
+  static const Color gray2 = Color(0xFF7D7D7D);
+  static const Color gray3 = Color(0xFFC5C5C5);
+  static const Color gray4 = Color(0xFFECECEC);
+  static const Color gray5 = Color(0xFFF2F2F2);
 
   static const Color background = Color(0xFFF7F7F7);
   static const Color primary = Color(0xFF184B36);
@@ -15,6 +16,7 @@ class FarmusThemeColor {
   static const Color green = Color(0xFFBDF69A);
   static const Color green1 = Color(0xFF24AD5D);
   static const Color green2 = Color(0xFF2CC167);
+  static const Color green3 = Color(0xFF58DD82);
   static const Color greenLight = Color(0xFFEFFEEE);
   static const Color greenLight2 = Color(0xFFDAF3EB);
 

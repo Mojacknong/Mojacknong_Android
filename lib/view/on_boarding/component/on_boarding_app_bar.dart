@@ -2,24 +2,26 @@ import 'package:farmus/common/primary_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../common/farmus_theme_text_style.dart';
+import '../../../common/farmus_theme_text_style.dart';
 
 class OnBoardingAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const OnBoardingAppBar({
-    super.key,
-  });
+  final String currentIndex;
+
+  const OnBoardingAppBar({super.key, required this.currentIndex});
 
   @override
   Widget build(BuildContext context) {
     return PrimaryAppBar(
       leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: SvgPicture.asset("assets/image/ic_close.svg")),
-      actions: const [
+      actions: [
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Text(
-            "1/4",
+            "$currentIndex/4",
             style: FarmusThemeTextStyle.green1Medium14,
           ),
         )
