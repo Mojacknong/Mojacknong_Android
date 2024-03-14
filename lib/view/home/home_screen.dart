@@ -1,5 +1,6 @@
 import 'package:farmus/common/farmus_theme_color.dart';
 import 'package:farmus/common/farmus_theme_text_style.dart';
+import 'package:farmus/view/home/component/home_recommend_vegi.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -73,7 +74,29 @@ class HomeScreen extends ConsumerWidget {
                         "추천 채소",
                         style: FarmusThemeTextStyle.gray1Medium15,
                       ),
-                    )
+                    ),
+                    const HomeRecommendVegi(
+                      vegi: "상추",
+                      level: "초급",
+                      period: "1달",
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 16.0),
+                      child: Divider(
+                        height: 1,
+                        indent: 20,
+                        endIndent: 20,
+                        color: FarmusThemeColor.gray4,
+                      ),
+                    ),
+                    const HomeRecommendVegi(
+                      vegi: "대파",
+                      level: "초급",
+                      period: "1달",
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
                   ],
                 ),
               ),

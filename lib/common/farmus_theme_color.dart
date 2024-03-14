@@ -10,7 +10,7 @@ class FarmusThemeColor {
   static const Color gray4 = Color(0xFFECECEC);
   static const Color gray5 = Color(0xFFF2F2F2);
 
-  static const Color background = Color(0xFFF7F7F7);
+  static const Color background = Color(0xFFFAFAFA);
   static const Color primary = Color(0xFF184B36);
 
   static const Color green = Color(0xFFBDF69A);
@@ -28,6 +28,7 @@ class FarmusThemeColor {
   static const Color brown3 = Color(0xFFF6F1EB);
 
   static const Color red = Color(0xFFFF4040);
+  static const Color blue = Color(0xFF48B2FF);
 
   static const Color black = Color(0xFF000000);
   static const Color white = Color(0xFFFFFFFF);
