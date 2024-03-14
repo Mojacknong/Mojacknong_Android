@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:farmus/view/my_page/vege_history/vege_history_list.dart';
+import 'package:farmus/view/on_boarding/component/on_boarding_next_button.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_nickname.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -95,6 +97,13 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
   @override
   Widget build(BuildContext context) {
     file = ref.read(onBoardingProfileProvider).profileImage;
+    final profile = ref.watch(onBoardingProfileProvider);
+    final isSpecial = ref.watch(onBoardingSpecialCharactersProvider);
+
+    String nextButtonText = "수정완료";
+
+    bool enabled = profile.isProfileComplete && !isSpecial;
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -173,6 +182,23 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
                 ],
               ),
             ),
+          ),
+          OnBoardingNextButton(
+            text: nextButtonText,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const VegeHistoryList(),
+                ),
+              );
+            },
+            enabled: enabled,
+            textColor:
+                enabled ? FarmusThemeColor.white : FarmusThemeColor.gray3,
+            backgroundColor:
+                enabled ? FarmusThemeColor.primary : FarmusThemeColor.gray4,
+            borderColor: FarmusThemeColor.white,
           ),
         ],
       ),

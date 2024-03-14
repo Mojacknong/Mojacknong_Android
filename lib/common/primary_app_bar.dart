@@ -7,17 +7,20 @@ class PrimaryAppBar extends StatelessWidget
     implements PreferredSizeWidget, BaseAppBar {
   @override
   final Widget? leading;
+  final double? leadingWidth;
   @override
   final String? title;
   @override
   final List<Widget>? actions;
 
-  const PrimaryAppBar({super.key, this.leading, this.title, this.actions});
+  const PrimaryAppBar(
+      {super.key, this.leading, this.leadingWidth, this.title, this.actions});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       leading: leading,
+      leadingWidth: leadingWidth,
       title: title != null
           ? Text(
               title!,

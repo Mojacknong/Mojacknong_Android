@@ -9,17 +9,18 @@ class MyPageScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return const Scaffold(
-        appBar: MyPageAppBar(),
-        resizeToAvoidBottomInset: true,
-        body: Column(
-          children: [
-            Expanded(
-              child: Padding(
-                padding: EdgeInsets.only(top: 8),
-                child: MyPageInfo(),
-              ),
-            )
-          ],
-        ));
+      appBar: MyPageAppBar(),
+      resizeToAvoidBottomInset: true,
+      body: Column(
+        children: [
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(top: 8),
+              child: MyPageInfo(),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
