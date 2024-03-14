@@ -1,4 +1,4 @@
-import 'package:farmus/view/my_page/vege_history/component/vege_diary_feed.dart';
+import 'package:farmus/view/my_page/vege_history/vege_diary/vege_diary_feed.dart';
 import 'package:flutter/material.dart';
 
 class VegeDiaryList extends StatefulWidget {
