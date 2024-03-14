@@ -186,7 +186,7 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
           OnBoardingNextButton(
             text: nextButtonText,
             onPressed: () {
-              Navigator.push(
+              Navigator.pop(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const MyPageScreen(),
