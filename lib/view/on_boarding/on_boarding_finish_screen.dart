@@ -1,5 +1,5 @@
 import 'package:farmus/common/primary_app_bar.dart';
-import 'package:farmus/view/home/home_screen.dart';
+import 'package:farmus/view/main/main_screen.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -42,7 +42,7 @@ class OnBoardingFinishScreen extends ConsumerWidget {
               text: "시작하기",
               onPressed: () {
                 Navigator.pop(context);
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()),);
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const MainScreen()),);
               },
               enabled: true,
               textColor: FarmusThemeColor.white,

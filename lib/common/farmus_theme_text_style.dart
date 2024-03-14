@@ -32,6 +32,9 @@ class FarmusThemeTextStyle {
       color: FarmusThemeColor.dark, fontSize: 20, fontWeight: FontWeight.w600);
 
   // gray1
+  static const TextStyle gray1Bold11 = TextStyle(
+      color: FarmusThemeColor.gray1, fontSize: 11, fontWeight: FontWeight.w700);
+
   static const TextStyle gray1Medium13 = TextStyle(
     color: FarmusThemeColor.gray1,
     fontSize: 13,
