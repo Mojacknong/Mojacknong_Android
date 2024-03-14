@@ -8,7 +8,7 @@ import 'package:farmus/view_model/on_boarding/on_boarding_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'component/on_boarding_app_bar.dart';
+import '../../common/app_bar/on_boarding_app_bar.dart';
 import 'component/on_boarding_fourth.dart';
 import 'component/on_boarding_second.dart';
 

@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../../common/bottom_sheet/action_sheet_primary.dart';
+import '../../../common/bottom_sheet/primary_action_sheet.dart';
 import '../../../common/farmus_theme_color.dart';
 import '../../../common/farmus_theme_text_style.dart';
 import '../../../view_model/on_boarding/on_boarding_provider.dart';
@@ -55,7 +55,7 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
   void _showActionSheet(BuildContext context) {
     showCupertinoModalPopup(
       context: context,
-      builder: (BuildContext context) => ActionSheetPrimary(
+      builder: (BuildContext context) => PrimaryActionSheet(
         title: "프로필 사진",
         actions: <CupertinoActionSheetAction>[
           CupertinoActionSheetAction(

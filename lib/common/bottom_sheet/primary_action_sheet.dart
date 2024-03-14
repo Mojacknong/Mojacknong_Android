@@ -3,8 +3,8 @@ import 'package:flutter/cupertino.dart';
 
 import '../farmus_theme_text_style.dart';
 
-class ActionSheetPrimary extends StatelessWidget implements BaseActionSheet {
-  const ActionSheetPrimary({
+class PrimaryActionSheet extends StatelessWidget implements BaseActionSheet {
+  const PrimaryActionSheet({
     super.key,
     this.title,
     this.actions,

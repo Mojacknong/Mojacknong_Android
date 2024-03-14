@@ -1,6 +1,5 @@
 import 'package:farmus/common/farmus_theme_color.dart';
 import 'package:farmus/common/farmus_theme_text_style.dart';
-import 'package:farmus/common/primary_app_bar.dart';
 import 'package:farmus/view/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -31,7 +30,6 @@ class _MainScreenState extends ConsumerState<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const PrimaryAppBar(),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),

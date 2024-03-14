@@ -1,6 +1,7 @@
-import 'package:farmus/common/primary_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../common/app_bar/home_app_bar.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -8,9 +9,7 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return const Scaffold(
-      appBar: PrimaryAppBar(
-        leading: Text("내 텃밭"),
-      ),
+      appBar: HomeScreenAppBar(),
     );
   }
 }

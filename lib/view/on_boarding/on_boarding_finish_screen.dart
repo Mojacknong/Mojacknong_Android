@@ -1,4 +1,4 @@
-import 'package:farmus/common/primary_app_bar.dart';
+import 'package:farmus/common/app_bar/primary_app_bar.dart';
 import 'package:farmus/view/main/main_screen.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_title.dart';
 import 'package:flutter/material.dart';
