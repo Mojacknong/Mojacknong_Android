@@ -87,6 +87,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
         selectedItemColor: FarmusThemeColor.gray1,
         unselectedItemColor: FarmusThemeColor.gray3,
         selectedLabelStyle: FarmusThemeTextStyle.gray1Bold11,
+        unselectedLabelStyle: FarmusThemeTextStyle.gray3Bold11,
         onTap: _onItemTapped,
         type: BottomNavigationBarType.fixed,
         backgroundColor: FarmusThemeColor.white,
