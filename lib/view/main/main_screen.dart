@@ -31,30 +31,65 @@ class _MainScreenState extends ConsumerState<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PrimaryAppBar(),
+      appBar: const PrimaryAppBar(),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/image/ic_home.svg"), label: "홈"),
+            icon: SvgPicture.asset(
+              "assets/image/ic_home.svg",
+              colorFilter: ColorFilter.mode(
+                  _selectedIndex == 0
+                      ? FarmusThemeColor.gray1
+                      : FarmusThemeColor.gray4,
+                  BlendMode.srcIn),
+            ),
+            label: "홈",
+          ),
           BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/image/ic_farm_club.svg"),
-              label: "팜클럽"),
+            icon: SvgPicture.asset(
+              "assets/image/ic_farm_club.svg",
+              colorFilter: ColorFilter.mode(
+                  _selectedIndex == 1
+                      ? FarmusThemeColor.gray1
+                      : FarmusThemeColor.gray4,
+                  BlendMode.srcIn),
+            ),
+            label: "팜클럽",
+          ),
           BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/image/ic_search.svg"),
-              label: "탐색"),
+            icon: SvgPicture.asset(
+              "assets/image/ic_search.svg",
+              colorFilter: ColorFilter.mode(
+                  _selectedIndex == 2
+                      ? FarmusThemeColor.gray1
+                      : FarmusThemeColor.gray4,
+                  BlendMode.srcIn),
+            ),
+            label: "탐색",
+          ),
           BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/image/ic_union.svg"),
-              label: "마이페이지"),
+            icon: SvgPicture.asset(
+              "assets/image/ic_union.svg",
+              colorFilter: ColorFilter.mode(
+                  _selectedIndex == 3
+                      ? FarmusThemeColor.gray1
+                      : FarmusThemeColor.gray4,
+                  BlendMode.srcIn),
+            ),
+            label: "마이페이지",
+          ),
         ],
+        showUnselectedLabels: true,
         currentIndex: _selectedIndex,
-        iconSize: 3.0,
-        selectedIconTheme: const IconThemeData(color: FarmusThemeColor.primary),
         selectedItemColor: FarmusThemeColor.gray1,
+        unselectedItemColor: FarmusThemeColor.gray3,
         selectedLabelStyle: FarmusThemeTextStyle.gray1Bold11,
         onTap: _onItemTapped,
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: FarmusThemeColor.white,
       ),
     );
   }
