@@ -15,11 +15,12 @@ class HomeScreen extends ConsumerWidget {
     return Scaffold(
       appBar: const HomeScreenAppBar(),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Container(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
                 decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(
                     side: const BorderSide(
@@ -100,8 +101,28 @@ class HomeScreen extends ConsumerWidget {
                   ],
                 ),
               ),
-            ),
-          ],
+              const SizedBox(
+                height: 16,
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 16.0),
+                child: Text(
+                  "오늘 할 일",
+                  style: FarmusThemeTextStyle.gray1SemiBold17,
+                ),
+              ),
+              Container(
+                width: double.infinity,
+                height: 44,
+                decoration: ShapeDecoration(
+                  color: FarmusThemeColor.gray5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(28),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
