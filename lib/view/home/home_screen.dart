@@ -1,6 +1,7 @@
 import 'package:farmus/common/farmus_theme_color.dart';
 import 'package:farmus/common/farmus_theme_text_style.dart';
 import 'package:farmus/view/home/component/home_recommend_vegi.dart';
+import 'package:farmus/view_model/home/home_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -15,6 +16,8 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final toDo = ref.read(homeToDoProvider.notifier);
+
     return Scaffold(
       appBar: const HomeScreenAppBar(),
       body: SingleChildScrollView(
@@ -130,14 +133,18 @@ class HomeScreen extends ConsumerWidget {
                       children: [
                         HomeToDoButton(
                           text: "루틴",
-                          onPressed: () {},
+                          onPressed: () {
+                            toDo.selectRoutine();
+                          },
                           enabled: true,
                           textStyle: FarmusThemeTextStyle.dark2SemiBold15,
                           backgroundColor: FarmusThemeColor.white,
                         ),
                         HomeToDoButton(
                           text: "팜클럽 미션",
-                          onPressed: () {},
+                          onPressed: () {
+                            toDo.selectFarmclubMission();
+                          },
                           enabled: true,
                           textStyle: FarmusThemeTextStyle.dark2SemiBold15,
                           backgroundColor: FarmusThemeColor.white,
