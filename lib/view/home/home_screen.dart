@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../common/app_bar/home_app_bar.dart';
 import 'component/home_motivation.dart';
 import 'component/home_my_vegi.dart';
-import 'component/home_none_routone.dart';
+import 'component/home_none_content.dart';
 import 'component/home_sub_title.dart';
 import 'component/home_to_do.dart';
 
