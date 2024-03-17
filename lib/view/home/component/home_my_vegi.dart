@@ -1,3 +1,4 @@
+import 'package:farmus/view/home/home_vegi_add_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -52,7 +53,12 @@ class HomeMyVegi extends StatelessWidget {
                       style: FarmusThemeTextStyle.darkSemiBold20,
                     ),
                     const SizedBox(width: 1),
-                    SvgPicture.asset("assets/image/ic_left.svg"),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeVegiAddScreen()),);
+                      },
+                      child: SvgPicture.asset("assets/image/ic_right.svg"),
+                    ),
                   ],
                 ),
                 const Text('새로운 채소를 등록해 홈파밍을 시작해볼까요?',
