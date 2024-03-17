@@ -1,11 +1,14 @@
 import 'package:farmus/common/farmus_theme_color.dart';
 import 'package:farmus/common/farmus_theme_text_style.dart';
 import 'package:farmus/view/home/component/home_recommend_vegi.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../common/app_bar/home_app_bar.dart';
+import 'component/home_to_do_button.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -119,6 +122,29 @@ class HomeScreen extends ConsumerWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(28),
                   ),
+                ),
+                child: Stack(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        HomeToDoButton(
+                          text: "루틴",
+                          onPressed: () {},
+                          enabled: true,
+                          textStyle: FarmusThemeTextStyle.dark2SemiBold15,
+                          backgroundColor: FarmusThemeColor.white,
+                        ),
+                        HomeToDoButton(
+                          text: "팜클럽 미션",
+                          onPressed: () {},
+                          enabled: true,
+                          textStyle: FarmusThemeTextStyle.dark2SemiBold15,
+                          backgroundColor: FarmusThemeColor.white,
+                        ),
+                      ],
+                    )
+                  ],
                 ),
               )
             ],

@@ -25,12 +25,6 @@ class FarmusThemeTextStyle {
     fontWeight: FontWeight.w600,
   );
 
-  // dark2
-  static const TextStyle dark2Medium15 = TextStyle(
-    color: FarmusThemeColor.dark2,
-    fontSize: 15,
-  );
-
   static const TextStyle darkSemiBold16 = TextStyle(
     color: FarmusThemeColor.dark,
     fontSize: 16,
@@ -41,6 +35,18 @@ class FarmusThemeTextStyle {
     color: FarmusThemeColor.dark,
     fontSize: 17,
     fontWeight: FontWeight.w600,
+  );
+
+  // dark2
+  static const TextStyle dark2Medium15 = TextStyle(
+    color: FarmusThemeColor.dark2,
+    fontSize: 15,
+  );
+
+  static const TextStyle dark2SemiBold15 = TextStyle(
+    color: FarmusThemeColor.dark2,
+    fontSize: 15,
+    fontWeight: FontWeight.w600
   );
 
   // gray1
