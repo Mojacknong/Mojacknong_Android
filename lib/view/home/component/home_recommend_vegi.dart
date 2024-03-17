@@ -28,7 +28,7 @@ class HomeRecommendVegi extends ConsumerWidget {
             width: 60,
             height: 60,
             decoration: ShapeDecoration(
-              color: FarmusThemeColor.background,
+              color: FarmusThemeColor.background2,
               shape: RoundedRectangleBorder(
                 side: const BorderSide(
                   width: 0.60,

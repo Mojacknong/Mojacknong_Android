@@ -1,8 +1,9 @@
-import 'package:farmus/common/farmus_theme_text_style.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/app_bar/home_app_bar.dart';
 import 'component/home_my_vegi.dart';
+import 'component/home_none_routone.dart';
+import 'component/home_sub_title.dart';
 import 'component/home_to_do.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -22,14 +23,14 @@ class HomeScreen extends StatelessWidget {
               SizedBox(
                 height: 16,
               ),
+              HomeSubTitle(title: "오늘 할 일"),
+              HomeToDo(),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 16.0),
-                child: Text(
-                  "오늘 할 일",
-                  style: FarmusThemeTextStyle.gray1SemiBold17,
-                ),
+                child: HomeNoneContent(text: "아직 루틴을 등록하지 않았어요"),
               ),
-              HomeToDo()
+              HomeSubTitle(title: "성장 일기"),
+              HomeNoneContent(text: "아직 작성한 일기가 없어요"),
             ],
           ),
         ),
