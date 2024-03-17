@@ -16,6 +16,8 @@ class HomeVegiAddScreen extends ConsumerWidget {
           },
           icon: SvgPicture.asset("assets/image/ic_left.svg"),
         ),
+        title: "채소 등록",
+        centerTitle: false,
       ),
       body: Container(),
     );

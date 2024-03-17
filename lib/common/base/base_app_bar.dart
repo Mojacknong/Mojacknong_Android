@@ -5,4 +5,5 @@ abstract class BaseAppBar {
   double? get leadingWidth;
   String? get title;
   List<Widget>? get actions;
+  bool? get centerTitle;
 }
