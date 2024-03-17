@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../common/farmus_theme_color.dart';
-import '../../../common/farmus_theme_text_style.dart';
+import '../../../common/theme/farmus_theme_color.dart';
+import '../../../common/theme/farmus_theme_text_style.dart';
 import 'home_recommend_vegi.dart';
 
 class HomeMyVegi extends StatelessWidget {

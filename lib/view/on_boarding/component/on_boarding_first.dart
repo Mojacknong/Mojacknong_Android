@@ -6,8 +6,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../common/bottom_sheet/primary_action_sheet.dart';
-import '../../../common/farmus_theme_color.dart';
-import '../../../common/farmus_theme_text_style.dart';
+import '../../../common/theme/farmus_theme_color.dart';
+import '../../../common/theme/farmus_theme_text_style.dart';
 import '../../../view_model/on_boarding/on_boarding_provider.dart';
 import 'on_boarding_nickname.dart';
 import 'on_boarding_title.dart';

@@ -118,12 +118,6 @@ class FarmusThemeTextStyle {
     fontWeight: FontWeight.w600,
   );
 
-  // gray6
-  static const TextStyle gray6Medium15 = TextStyle(
-    color: FarmusThemeColor.gray6,
-    fontSize: 15,
-  );
-
   // green1
   static const TextStyle green1Medium14 = TextStyle(
     color: FarmusThemeColor.green1,

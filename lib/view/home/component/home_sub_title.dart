@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../../common/farmus_theme_text_style.dart';
+import '../../../common/theme/farmus_theme_text_style.dart';
 
 class HomeSubTitle extends StatelessWidget {
   final String title;

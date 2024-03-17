@@ -1,7 +1,7 @@
 import 'package:farmus/common/base/base_action_sheet.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../farmus_theme_text_style.dart';
+import '../theme/farmus_theme_text_style.dart';
 
 class PrimaryActionSheet extends StatelessWidget implements BaseActionSheet {
   const PrimaryActionSheet({

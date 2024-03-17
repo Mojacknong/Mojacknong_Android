@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../farmus_theme_text_style.dart';
+import '../theme/farmus_theme_text_style.dart';
 import 'primary_app_bar.dart';
 
 class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {

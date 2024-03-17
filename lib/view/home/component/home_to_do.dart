@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../common/farmus_theme_color.dart';
-import '../../../common/farmus_theme_text_style.dart';
+import '../../../common/theme/farmus_theme_color.dart';
+import '../../../common/theme/farmus_theme_text_style.dart';
 import '../../../view_model/home/home_provider.dart';
 import 'home_to_do_button.dart';
 

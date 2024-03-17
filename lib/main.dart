@@ -1,4 +1,4 @@
-import 'package:farmus/common/farmus_theme_color.dart';
+import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/res/app_url/app_url.dart';
 import 'package:farmus/view/main/main_screen.dart';
 import 'package:firebase_core/firebase_core.dart';

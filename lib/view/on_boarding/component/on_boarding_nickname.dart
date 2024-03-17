@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../common/farmus_theme_color.dart';
+import '../../../common/theme/farmus_theme_color.dart';
 import '../../../view_model/on_boarding/on_boarding_provider.dart';
 
 class OnBoardingNickname extends ConsumerWidget {

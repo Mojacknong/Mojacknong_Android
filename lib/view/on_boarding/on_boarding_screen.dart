@@ -1,4 +1,4 @@
-import 'package:farmus/common/farmus_theme_color.dart';
+import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_before_button.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_first.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_next_button.dart';

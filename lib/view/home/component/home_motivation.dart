@@ -1,4 +1,4 @@
-import 'package:farmus/common/farmus_theme_text_style.dart';
+import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:flutter/cupertino.dart';
 
 class HomeMotivation extends StatelessWidget {
@@ -14,7 +14,7 @@ class HomeMotivation extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: Stack(
-        alignment: Alignment.center,
+        alignment: Alignment.centerLeft,
         children: [
           Center(
             child: Image.asset(
@@ -24,8 +24,8 @@ class HomeMotivation extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(
-              left: 16.0,
-              right: 80.0,
+              left: 23.0,
+              right: 64.0,
             ),
             child: Text(motivation, style: FarmusThemeTextStyle.darkMedium15,),
           ),

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../../common/farmus_theme_color.dart';
-import '../../../common/farmus_theme_text_style.dart';
+import '../../../common/theme/farmus_theme_color.dart';
+import '../../../common/theme/farmus_theme_text_style.dart';
 
 class HomeNoneContent extends StatelessWidget {
   final String text;
@@ -23,7 +23,7 @@ class HomeNoneContent extends StatelessWidget {
       ),
       child: Text(
         text,
-        style: FarmusThemeTextStyle.gray6Medium15,
+        style: FarmusThemeTextStyle.darkMedium13,
       ),
     );
   }

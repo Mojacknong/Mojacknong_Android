@@ -3,8 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart' hide Size;
 
 import '../base/base_app_bar.dart';
-import '../farmus_theme_color.dart';
-import '../farmus_theme_text_style.dart';
+import '../theme/farmus_theme_color.dart';
+import '../theme/farmus_theme_text_style.dart';
 
 class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget, BaseAppBar {
   @override
