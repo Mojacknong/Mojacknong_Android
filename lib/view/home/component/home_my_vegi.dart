@@ -1,18 +1,20 @@
 import 'package:farmus/view/vegi_add/home_vegi_add_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
+import '../../../view_model/home/home_vegi_add_provider.dart';
 import 'home_vegi_info.dart';
 
-class HomeMyVegi extends StatelessWidget {
+class HomeMyVegi extends ConsumerWidget {
   const HomeMyVegi({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
@@ -45,6 +47,8 @@ class HomeMyVegi extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
+                    ref.read(homeVegiInfoAddProvider.notifier).reset();
+
                     Navigator.push(
                       context,
                       MaterialPageRoute(

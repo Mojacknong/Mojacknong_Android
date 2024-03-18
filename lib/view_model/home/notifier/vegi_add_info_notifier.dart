@@ -10,144 +10,85 @@ class VegiAddInfoNotifier extends StateNotifier<VegiAddInfoModel> {
             isFourthSelect: false,
             isFiveSelect: false,
             isSixSelect: false,
-            isVegiAddInfoComplete: false));
+            isVegiAddInfoComplete: false,
+            name: '',
+            date: ''));
 
-  bool _isFirstSelect = false;
+  void _selectBox(int boxIndex) {
+    final newState = state.copyWith(
+      isFirstSelect: false,
+      isSecondSelect: false,
+      isThirdSelect: false,
+      isFourthSelect: false,
+      isFiveSelect: false,
+      isSixSelect: false,
+      isVegiAddInfoComplete: false,
+    );
 
-  bool get isFirstSelect => _isFirstSelect;
-
-  bool _isSecondSelect = false;
-
-  bool get isSecondSelect => _isSecondSelect;
-
-  bool _isThirdSelect = false;
-
-  bool get isThirdSelect => _isThirdSelect;
-
-  bool _isFourthSelect = false;
-
-  bool get isFourthSelect => _isFourthSelect;
-
-  bool _isFiveSelect = false;
-
-  bool get isFiveSelect => _isFiveSelect;
-
-  bool _isSixSelect = false;
-
-  bool get isSixSelect => _isSixSelect;
-
-  bool _isVegiAddInfoComplete = false;
-
-  bool get isVegiAddInfoComplete => _isVegiAddInfoComplete;
-
-  void selectFirstBox() {
-    if (!_isFirstSelect) {
-      _isFirstSelect = true;
-    } else {
-      _isFirstSelect = false;
+    switch (boxIndex) {
+      case 1:
+        state = newState.copyWith(isFirstSelect: true);
+        break;
+      case 2:
+        state = newState.copyWith(isSecondSelect: true);
+        break;
+      case 3:
+        state = newState.copyWith(isThirdSelect: true);
+        break;
+      case 4:
+        state = newState.copyWith(isFourthSelect: true);
+        break;
+      case 5:
+        state = newState.copyWith(isFiveSelect: true);
+        break;
+      case 6:
+        state = newState.copyWith(isSixSelect: true);
+        break;
+      default:
+        break;
     }
-    _isSecondSelect = false;
-    _isThirdSelect = false;
-    _isFourthSelect = false;
-    _isFiveSelect = false;
-    _isSixSelect = false;
-    update();
+
+    _updateCompletionStatus();
   }
 
-  void selectSecondBox() {
-    if (!_isSecondSelect) {
-      _isSecondSelect = true;
-    } else {
-      _isSecondSelect = false;
-    }
-    _isFirstSelect = false;
-    _isThirdSelect = false;
-    _isFourthSelect = false;
-    _isFiveSelect = false;
-    _isSixSelect = false;
-    update();
-  }
+  void selectFirstBox() => _selectBox(1);
 
-  void selectThirdBox() {
-    if (!_isThirdSelect) {
-      _isThirdSelect = true;
-    } else {
-      _isThirdSelect = false;
-    }
-    _isFirstSelect = false;
-    _isSecondSelect = false;
-    _isFourthSelect = false;
-    _isFiveSelect = false;
-    _isSixSelect = false;
-    update();
-  }
+  void selectSecondBox() => _selectBox(2);
 
-  void selectFourthBox() {
-    if (!_isFourthSelect) {
-      _isFourthSelect = true;
-    } else {
-      _isFourthSelect = false;
-    }
-    _isFirstSelect = false;
-    _isSecondSelect = false;
-    _isThirdSelect = false;
-    _isFiveSelect = false;
-    _isSixSelect = false;
-    update();
-  }
+  void selectThirdBox() => _selectBox(3);
 
-  void selectFiveBox() {
-    if (!_isFiveSelect) {
-      _isFiveSelect = true;
-    } else {
-      _isFiveSelect = false;
-    }
-    _isFirstSelect = false;
-    _isSecondSelect = false;
-    _isThirdSelect = false;
-    _isFourthSelect = false;
-    _isSixSelect = false;
-    update();
-  }
+  void selectFourthBox() => _selectBox(4);
 
-  void selectSixBox() {
-    if (!_isSixSelect) {
-      _isSixSelect = true;
-    } else {
-      _isSixSelect = false;
-    }
-    _isFirstSelect = false;
-    _isSecondSelect = false;
-    _isThirdSelect = false;
-    _isFourthSelect = false;
-    _isFiveSelect = false;
-    update();
-  }
+  void selectFiveBox() => _selectBox(5);
 
-  void update() {
-    if (_isFirstSelect || _isSecondSelect || _isThirdSelect || _isFourthSelect || _isFiveSelect || _isSixSelect) {
-      _isVegiAddInfoComplete = true;
-    } else {
-      _isVegiAddInfoComplete = false;
-    }
+  void selectSixBox() => _selectBox(6);
+
+  void _updateCompletionStatus() {
     state = state.copyWith(
-        isFirstSelect: isFirstSelect,
-        isSecondSelect: isSecondSelect,
-        isThirdSelect: isThirdSelect,
-        isFourthSelect: isFourthSelect,
-        isFiveSelect: isFiveSelect,
-        isSixSelect: isSixSelect,
-        isVegiAddInfoComplete: isVegiAddInfoComplete);
+        isVegiAddInfoComplete: state.isFirstSelect ||
+            state.isSecondSelect ||
+            state.isThirdSelect ||
+            state.isFourthSelect ||
+            state.isFiveSelect ||
+            state.isSixSelect);
   }
 
   void reset() {
-    state = state.copyWith(
+    state = VegiAddInfoModel(
         isFirstSelect: false,
         isSecondSelect: false,
         isThirdSelect: false,
         isFourthSelect: false,
         isFiveSelect: false,
         isSixSelect: false,
-        isVegiAddInfoComplete: false);
+        isVegiAddInfoComplete: false,
+        name: '',
+        date: '');
+  }
+
+  void updateNickname(String name) {
+    state = state.copyWith(
+      name: name,
+    );
   }
 }
