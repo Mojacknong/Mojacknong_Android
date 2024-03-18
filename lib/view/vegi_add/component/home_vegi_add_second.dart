@@ -13,7 +13,7 @@ class HomeVegiAddSecond extends ConsumerWidget {
         children: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: HomeAddSubTitle(text: "등록할 채소를 선택해주세요"),
+            child: HomeAddSubTitle(text: "채소 별명을 입력해주세요"),
           ),
         ],
       ),
