@@ -12,7 +12,7 @@ class MyPageInfo extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            height: 120,
+            height: 100,
             padding: const EdgeInsets.all(16),
             child: Row(
               children: [
@@ -30,7 +30,7 @@ class MyPageInfo extends StatelessWidget {
                     child: ClipOval(child: _myImage()),
                   ),
                 ),
-                const SizedBox(width: 30),
+                const SizedBox(width: 15),
                 const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -56,6 +56,9 @@ class MyPageInfo extends StatelessWidget {
             ),
           ),
           const Divider(thickness: 1, color: Colors.grey),
+          const SizedBox(
+            height: 16,
+          ),
         ],
       ),
     );
@@ -65,46 +68,42 @@ class MyPageInfo extends StatelessWidget {
     try {
       return image!.isEmpty
           ? Image.asset(
-              "assets/image/img_farmer.png",
+              "assets/image/img_pepper.png",
               fit: BoxFit.fill,
             )
-          : ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: Image.network(
-                  image!,
-                  fit: BoxFit.cover,
-                  width: double.infinity,
-                  height: 248,
-                  loadingBuilder: (BuildContext context, Widget child,
-                      ImageChunkEvent? loadingProgress) {
-                    if (loadingProgress == null) {
-                      return child;
-                    } else if (loadingProgress.cumulativeBytesLoaded ==
-                        loadingProgress.expectedTotalBytes) {
-                      // 이미지가 완전히 로드된 경우
-                      return child;
-                    } else {
-                      // 이미지 로딩 중
-                      return Center(
-                        child: CircularProgressIndicator(
-                          valueColor: const AlwaysStoppedAnimation<Color>(
-                              FarmusThemeColor.brownButton),
-                          value: loadingProgress.expectedTotalBytes != null
-                              ? loadingProgress.cumulativeBytesLoaded /
-                                  (loadingProgress.expectedTotalBytes ?? 1)
-                              : null,
-                        ),
-                      );
-                    }
-                  },
-                ),
+          : ClipOval(
+              child: Image.network(
+                image!,
+                fit: BoxFit.cover,
+                width: 80,
+                height: 80,
+                loadingBuilder: (BuildContext context, Widget child,
+                    ImageChunkEvent? loadingProgress) {
+                  if (loadingProgress == null) {
+                    return child;
+                  } else if (loadingProgress.cumulativeBytesLoaded ==
+                      loadingProgress.expectedTotalBytes) {
+                    // 이미지가 완전히 로드된 경우
+                    return child;
+                  } else {
+                    // 이미지 로딩 중
+                    return Center(
+                      child: CircularProgressIndicator(
+                        valueColor: const AlwaysStoppedAnimation<Color>(
+                            FarmusThemeColor.brownButton),
+                        value: loadingProgress.expectedTotalBytes != null
+                            ? loadingProgress.cumulativeBytesLoaded /
+                                (loadingProgress.expectedTotalBytes ?? 1)
+                            : null,
+                      ),
+                    );
+                  }
+                },
               ),
             );
     } catch (e) {
       return Image.asset(
-        "assets/image/image_example_community2.png",
+        "assets/image/img_pepper.png",
         fit: BoxFit.fill,
       );
     }
