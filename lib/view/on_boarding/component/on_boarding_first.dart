@@ -9,7 +9,7 @@ import '../../../common/bottom_sheet/primary_action_sheet.dart';
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 import '../../../view_model/on_boarding/on_boarding_provider.dart';
-import 'on_boarding_nickname.dart';
+import 'on_boarding_nickname_text_input.dart';
 import 'on_boarding_title.dart';
 
 class OnBoardingFirst extends ConsumerStatefulWidget {
@@ -96,6 +96,8 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
   @override
   Widget build(BuildContext context) {
     file = ref.read(onBoardingProfileProvider).profileImage;
+    final nickname = ref.watch(onBoardingProfileProvider).nickname;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -154,9 +156,13 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
                     style: FarmusThemeTextStyle.darkMedium13,
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: OnBoardingNickname(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: OnBoardingNicknameTextInput(
+                    initialValue: nickname,
+                    maxLength: 10,
+                    hintText: '파머',
+                  ),
                 ),
               ],
             ),
