@@ -43,27 +43,27 @@ class HomeMyVegi extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Text(
-                      '채소 등록하기',
-                      style: FarmusThemeTextStyle.darkSemiBold20,
-                    ),
-                    const SizedBox(width: 1),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomeVegiAddScreen()),
-                        );
-                      },
-                      child: SvgPicture.asset("assets/image/ic_right.svg"),
-                    ),
-                  ],
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomeVegiAddScreen()),
+                    );
+                  },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Text(
+                        '채소 등록하기',
+                        style: FarmusThemeTextStyle.darkSemiBold20,
+                      ),
+                      const SizedBox(width: 1),
+                      SvgPicture.asset("assets/image/ic_right.svg"),
+                    ],
+                  ),
                 ),
                 const Text('새로운 채소를 등록해 홈파밍을 시작해볼까요?',
                     style: FarmusThemeTextStyle.darkMedium13),
