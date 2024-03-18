@@ -1,4 +1,5 @@
 import 'package:farmus/common/primary_text_form_field.dart';
+import 'package:farmus/view_model/home/home_vegi_add_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -15,9 +16,15 @@ class HomeVegiNameInput extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final name = ref.read(homeVegiInfoAddProvider).name;
+
     return PrimaryTextFormField(
-      maxLength: maxLength,
-      hintText: hintText,
-    );
+        initialValue: name,
+        maxLength: 8,
+        hintText: "상훈이",
+        onChanged: (value) {
+          ref.read(homeVegiInfoAddProvider.notifier).updateNickname(value);
+        },
+        nowLength: "${ref.watch(homeVegiInfoAddProvider).name.length}");
   }
 }

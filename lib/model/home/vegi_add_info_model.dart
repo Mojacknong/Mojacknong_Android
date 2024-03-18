@@ -6,6 +6,8 @@ class VegiAddInfoModel {
   final bool isFiveSelect;
   final bool isSixSelect;
   final bool isVegiAddInfoComplete;
+  final String name;
+  final String date;
 
   VegiAddInfoModel({
     required this.isFirstSelect,
@@ -15,6 +17,8 @@ class VegiAddInfoModel {
     required this.isFiveSelect,
     required this.isSixSelect,
     required this.isVegiAddInfoComplete,
+    required this.name,
+    required this.date
   });
 
   VegiAddInfoModel copyWith({
@@ -25,6 +29,8 @@ class VegiAddInfoModel {
     bool? isFiveSelect,
     bool? isSixSelect,
     bool? isVegiAddInfoComplete,
+    String? name,
+    String? date,
   }) {
     return VegiAddInfoModel(
       isFirstSelect: isFirstSelect ?? this.isFirstSelect,
@@ -34,6 +40,8 @@ class VegiAddInfoModel {
       isFiveSelect: isFiveSelect ?? this.isFiveSelect,
       isSixSelect: isSixSelect ?? this.isSixSelect,
       isVegiAddInfoComplete: isVegiAddInfoComplete ?? this.isVegiAddInfoComplete,
+      name: name ?? this.name,
+      date: date ?? this.date,
     );
   }
 }

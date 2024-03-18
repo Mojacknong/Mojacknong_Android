@@ -1,6 +1,6 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/res/app_url/app_url.dart';
-import 'package:farmus/view/on_boarding/on_boarding_screen.dart';
+import 'package:farmus/view/main/main_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -29,7 +29,7 @@ Future<void> main() async {
   runApp(ProviderScope(
     child: MaterialApp(
       title: "팜어스",
-      home: const OnBoardingScreen(),
+      home: const MainScreen(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Pretendard',
