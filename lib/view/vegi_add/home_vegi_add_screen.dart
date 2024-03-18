@@ -2,6 +2,7 @@ import 'package:farmus/common/app_bar/primary_app_bar.dart';
 import 'package:farmus/common/button/primary_button.dart';
 import 'package:farmus/view/vegi_add/component/home_vegi_add_second.dart';
 import 'package:farmus/view_model/home/home_vegi_add_provider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -48,22 +49,48 @@ class HomeVegiAddScreen extends ConsumerWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: PrimaryButton(
-              text: "다음",
-              onPressed: () {
-                switch (currentPageIndex) {
-                  case "first":
-                    movePage.moveToSecondPage();
-                }
-              },
-              enabled: isVegiAddInfoComplete,
-              textColor: isVegiAddInfoComplete
-                  ? FarmusThemeColor.white
-                  : FarmusThemeColor.gray3,
-              backgroundColor: isVegiAddInfoComplete
-                  ? FarmusThemeColor.primary
-                  : FarmusThemeColor.gray4,
-              borderColor: FarmusThemeColor.white,
+            child: Row(
+              children: [
+                Expanded(
+                  child: Visibility(
+                    visible: currentPageIndex != "first",
+                    child: PrimaryButton(
+                      text: "이전",
+                      onPressed: () {
+                        switch (currentPageIndex) {
+                          case "first":
+                            return;
+                          case "second":
+                            movePage.moveToFirstPage();
+                        }
+                      },
+                      enabled: true,
+                      textColor: FarmusThemeColor.gray1,
+                      backgroundColor: FarmusThemeColor.white,
+                      borderColor: FarmusThemeColor.gray3,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: PrimaryButton(
+                    text: currentPageIndex == "first" ? "다음" : "완료",
+                    onPressed: () {
+                      switch (currentPageIndex) {
+                        case "first":
+                          movePage.moveToSecondPage();
+                      }
+                    },
+                    enabled: isVegiAddInfoComplete,
+                    textColor: isVegiAddInfoComplete
+                        ? FarmusThemeColor.white
+                        : FarmusThemeColor.gray3,
+                    backgroundColor: isVegiAddInfoComplete
+                        ? FarmusThemeColor.primary
+                        : FarmusThemeColor.gray4,
+                    borderColor: FarmusThemeColor.white,
+                  ),
+                ),
+              ],
             ),
           ),
         ],

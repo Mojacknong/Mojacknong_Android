@@ -1,3 +1,4 @@
+import 'package:farmus/view/vegi_add/component/home_vegi_name_input.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -10,10 +11,16 @@ class HomeVegiAddSecond extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return const SingleChildScrollView(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: HomeAddSubTitle(text: "채소 별명을 입력해주세요"),
+          ),
+          HomeVegiNameInput(hintText: "상훈이",),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: HomeAddSubTitle(text: "키우기 시작한 날을 선택해주세요"),
           ),
         ],
       ),
