@@ -9,6 +9,12 @@ class FarmusThemeTextStyle {
     fontSize: 13,
   );
 
+  static const TextStyle darkReqular14 = TextStyle(
+    color: FarmusThemeColor.dark,
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+  );
+
   static const TextStyle darkMedium15 = TextStyle(
     color: FarmusThemeColor.dark,
     fontSize: 15,
