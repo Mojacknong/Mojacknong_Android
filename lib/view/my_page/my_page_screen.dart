@@ -16,7 +16,7 @@ class MyPageScreen extends ConsumerWidget {
           Expanded(
             child: Padding(
               padding: EdgeInsets.only(top: 8),
-              child: MyPageInfo(),
+              child: MyPageInfo(image: ""),
             ),
           ),
         ],

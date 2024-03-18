@@ -1,3 +1,4 @@
+import 'package:farmus/common/primary_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -7,14 +8,14 @@ class MyPageAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        centerTitle: false,
-        title: Row(
+      appBar: PrimaryAppBar(
+        leading: Row(
           children: [
-            SvgPicture.asset(
-              'assets/image/logo_farmus.svg',
+            Padding(
+              padding: const EdgeInsets.only(left: 16.0),
+              child: SvgPicture.asset(
+                'assets/image/logo_farmus.svg',
+              ),
             ),
           ],
         ),
@@ -26,6 +27,7 @@ class MyPageAppBar extends StatelessWidget implements PreferredSizeWidget {
             onPressed: () {},
           ),
         ],
+        leadingWidth: 150,
       ),
     );
   }

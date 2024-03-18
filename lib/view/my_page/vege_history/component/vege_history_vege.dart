@@ -1,5 +1,5 @@
 import 'package:farmus/common/farmus_theme_color.dart';
-import 'package:farmus/view/my_page/component/my_page_profile.dart';
+import 'package:farmus/view/my_page/vege_history/vege_history_list.dart';
 import 'package:flutter/material.dart';
 
 class MyPageProfileList extends StatefulWidget {
@@ -23,21 +23,15 @@ class MyPageProfileList extends StatefulWidget {
 }
 
 class _MyPageHistoryState extends State<MyPageProfileList> {
-  // void _navigateToNewPage(BuildContext context) {
-  //   // `MaterialPageRoute`를 사용하여 새 페이지로 이동
-  //   Navigator.of(context).push(MaterialPageRoute(
-  //     builder: (context) => MyPageProfileList(data: widget.name), // 여기서 필요한 데이터를 전달
-  //   ));
-  // }
+  void _navigateToNewPage() {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => const VegeHistoryList(), // 여기서 필요한 데이터를 전달
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const MyPageProfile()),
-        );
-      },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 16.0),
         child: Row(
@@ -45,26 +39,15 @@ class _MyPageHistoryState extends State<MyPageProfileList> {
           children: <Widget>[
             InkWell(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const MyPageProfile()),
-                );
+                _navigateToNewPage();
               },
               child: CircleAvatar(
                 radius: 40,
                 backgroundColor: Colors.transparent,
-                child: ClipOval(
-                  child: Image.network(
-                    widget.image ?? '',
-                    width: 80,
-                    height: 80,
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                child: ClipOval(child: _vegeImage()),
               ),
             ),
-            const SizedBox(width: 12.0), // 이미지와 텍스트 사이의 간격
+            const SizedBox(width: 12.0),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -124,5 +107,54 @@ class _MyPageHistoryState extends State<MyPageProfileList> {
         ),
       ),
     );
+  }
+
+  Widget _vegeImage() {
+    try {
+      return widget.image!.isEmpty
+          ? Image.asset(
+              "assets/image/img_greenonion.png",
+              fit: BoxFit.fill,
+            )
+          : CircleAvatar(
+              radius: 40,
+              backgroundColor: Colors.transparent,
+              child: ClipOval(
+                child: Image.network(
+                  widget.image!,
+                  fit: BoxFit.cover,
+                  width: 100,
+                  height: 100,
+                  loadingBuilder: (BuildContext context, Widget child,
+                      ImageChunkEvent? loadingProgress) {
+                    if (loadingProgress == null) {
+                      return child;
+                    } else if (loadingProgress.cumulativeBytesLoaded ==
+                        loadingProgress.expectedTotalBytes) {
+                      // 이미지가 완전히 로드된 경우
+                      return child;
+                    } else {
+                      // 이미지 로딩 중
+                      return Center(
+                        child: CircularProgressIndicator(
+                          valueColor: const AlwaysStoppedAnimation<Color>(
+                              FarmusThemeColor.brownButton),
+                          value: loadingProgress.expectedTotalBytes != null
+                              ? loadingProgress.cumulativeBytesLoaded /
+                                  (loadingProgress.expectedTotalBytes ?? 1)
+                              : null,
+                        ),
+                      );
+                    }
+                  },
+                ),
+              ),
+            );
+    } catch (e) {
+      return Image.asset(
+        "assets/image/img_sesame.png",
+        fit: BoxFit.fill,
+      );
+    }
   }
 }
