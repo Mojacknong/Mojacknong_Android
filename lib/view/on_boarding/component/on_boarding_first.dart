@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
@@ -97,6 +98,7 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
   Widget build(BuildContext context) {
     file = ref.read(onBoardingProfileProvider).profileImage;
     final nickname = ref.watch(onBoardingProfileProvider).nickname;
+    final hasSpecialCharacters = ref.watch(onBoardingSpecialCharactersProvider);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -162,6 +164,16 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
                     initialValue: nickname,
                     maxLength: 10,
                     hintText: '파머',
+                    errorText: hasSpecialCharacters ? "특수문자는 입력할 수 없어요" : null,
+                    errorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(16),
+                      borderSide: const BorderSide(
+                        color: FarmusThemeColor.gray4,
+                      ),
+                    ),
+                    errorStyle: const TextStyle(
+                      color: FarmusThemeColor.red,
+                    ),
                   ),
                 ),
               ],
