@@ -48,7 +48,7 @@ class HomeMyVegi extends ConsumerWidget {
                 GestureDetector(
                   onTap: () {
                     ref.read(homeVegiInfoAddProvider.notifier).reset();
-
+                    ref.read(homeVegiAddMoveProvider.notifier).reset();
                     Navigator.push(
                       context,
                       MaterialPageRoute(

@@ -10,4 +10,8 @@ class VegiAddMoveNotifier extends StateNotifier<String> {
   void moveToSecondPage() {
     state = "second";
   }
+
+  void reset() {
+    state = "first";
+  }
 }
