@@ -1,10 +1,10 @@
-import 'package:farmus/view/home/home_vegi_add_screen.dart';
+import 'package:farmus/view/vegi_add/home_vegi_add_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
-import 'home_recommend_vegi.dart';
+import 'home_vegi_info.dart';
 
 class HomeMyVegi extends StatelessWidget {
   const HomeMyVegi({
@@ -55,7 +55,11 @@ class HomeMyVegi extends StatelessWidget {
                     const SizedBox(width: 1),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeVegiAddScreen()),);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomeVegiAddScreen()),
+                        );
                       },
                       child: SvgPicture.asset("assets/image/ic_right.svg"),
                     ),
@@ -73,13 +77,14 @@ class HomeMyVegi extends StatelessWidget {
               style: FarmusThemeTextStyle.gray1Medium15,
             ),
           ),
-          const HomeRecommendVegi(
+          const HomeVegiInfo(
             vegi: "상추",
             level: "초급",
             period: "1달",
+            selected: false,
           ),
           const Padding(
-            padding: EdgeInsets.symmetric(vertical: 16.0),
+            padding: EdgeInsets.symmetric(vertical: 8.0),
             child: Divider(
               height: 1,
               indent: 20,
@@ -87,13 +92,11 @@ class HomeMyVegi extends StatelessWidget {
               color: FarmusThemeColor.gray4,
             ),
           ),
-          const HomeRecommendVegi(
+          const HomeVegiInfo(
             vegi: "대파",
             level: "초급",
             period: "1달",
-          ),
-          const SizedBox(
-            height: 16,
+            selected: false,
           ),
         ],
       ),
