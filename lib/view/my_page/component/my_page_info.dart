@@ -67,7 +67,7 @@ class MyPageInfo extends StatelessWidget {
     try {
       return image!.isEmpty
           ? Image.asset(
-              "assets/image/img_farmer.png",
+              "assets/image/img_pepper.png",
               fit: BoxFit.fill,
             )
           : ClipOval(
