@@ -21,7 +21,7 @@ class HomeVegiNameInput extends ConsumerWidget {
     return PrimaryTextFormField(
         initialValue: name,
         maxLength: 8,
-        hintText: "상훈이",
+        hintText: "쑥쑥이",
         onChanged: (value) {
           ref.read(homeVegiInfoAddProvider.notifier).updateNickname(value);
         },
