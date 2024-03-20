@@ -2,7 +2,6 @@ import 'package:farmus/common/app_bar/primary_app_bar.dart';
 import 'package:farmus/common/button/primary_button.dart';
 import 'package:farmus/view/vegi_add/component/home_vegi_add_second.dart';
 import 'package:farmus/view_model/home/home_vegi_add_provider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -15,11 +14,34 @@ class HomeVegiAddScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isVegiSelected = ref.watch(homeVegiInfoAddProvider);
+    final isVegiInfo = ref.watch(homeVegiInfoAddProvider);
     final currentPageIndex = ref.watch(homeVegiAddMoveProvider);
     final movePage = ref.read(homeVegiAddMoveProvider.notifier);
 
-    var isVegiAddInfoComplete = isVegiSelected.isVegiAddInfoComplete;
+    var isVegiSelectedComplete = isVegiInfo.isVegiSelectComplete;
+    var isVegiAddInfoComplete = isVegiInfo.isVegiAddInfoComplete;
+
+    Color getButtonTextColor(String currentPageIndex, bool isVegiSelectedComplete, bool isVegiAddInfoComplete) {
+      switch (currentPageIndex) {
+        case "first":
+          return isVegiSelectedComplete ? FarmusThemeColor.white : FarmusThemeColor.gray3;
+        case "second":
+          return isVegiAddInfoComplete ? FarmusThemeColor.white : FarmusThemeColor.gray3;
+        default:
+          return FarmusThemeColor.gray3;
+      }
+    }
+
+    Color getButtonBackgroundColor(String currentPageIndex, bool isVegiSelectedComplete, bool isVegiAddInfoComplete) {
+      switch (currentPageIndex) {
+        case "first":
+          return isVegiSelectedComplete ? FarmusThemeColor.primary : FarmusThemeColor.gray4;
+        case "second":
+          return isVegiAddInfoComplete ? FarmusThemeColor.primary : FarmusThemeColor.gray4;
+        default:
+          return FarmusThemeColor.gray4;
+      }
+    }
 
     return Scaffold(
       appBar: PrimaryAppBar(
@@ -80,13 +102,9 @@ class HomeVegiAddScreen extends ConsumerWidget {
                           movePage.moveToSecondPage();
                       }
                     },
-                    enabled: isVegiAddInfoComplete,
-                    textColor: isVegiAddInfoComplete
-                        ? FarmusThemeColor.white
-                        : FarmusThemeColor.gray3,
-                    backgroundColor: isVegiAddInfoComplete
-                        ? FarmusThemeColor.primary
-                        : FarmusThemeColor.gray4,
+                    enabled: currentPageIndex == "first" ? isVegiSelectedComplete : isVegiAddInfoComplete,
+                    textColor: getButtonTextColor(currentPageIndex, isVegiSelectedComplete, isVegiAddInfoComplete),
+                    backgroundColor: getButtonBackgroundColor(currentPageIndex, isVegiSelectedComplete, isVegiAddInfoComplete),
                     borderColor: FarmusThemeColor.white,
                   ),
                 ),
