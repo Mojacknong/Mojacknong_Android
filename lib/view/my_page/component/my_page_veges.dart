@@ -1,0 +1,72 @@
+import 'package:farmus/common/farmus_theme_color.dart';
+import 'package:flutter/material.dart';
+
+class MyVegeWidget extends StatelessWidget {
+  final String? image;
+  const MyVegeWidget({super.key, required this.image});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        height: 50,
+        padding: const EdgeInsets.all(16),
+        child: Row(
+          children: [
+            CircleAvatar(
+              radius: 40,
+              backgroundColor: Colors.transparent,
+              child: ClipOval(child: _myImage()),
+            ),
+            const SizedBox(width: 15),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _myImage() {
+    try {
+      return image!.isEmpty
+          ? Image.asset(
+              "assets/image/img_greenonion.png",
+              fit: BoxFit.fill,
+            )
+          : ClipOval(
+              child: Image.network(
+                image!,
+                fit: BoxFit.cover,
+                width: 80,
+                height: 80,
+                loadingBuilder: (BuildContext context, Widget child,
+                    ImageChunkEvent? loadingProgress) {
+                  if (loadingProgress == null) {
+                    return child;
+                  } else if (loadingProgress.cumulativeBytesLoaded ==
+                      loadingProgress.expectedTotalBytes) {
+                    // 이미지가 완전히 로드된 경우
+                    return child;
+                  } else {
+                    // 이미지 로딩 중
+                    return Center(
+                      child: CircularProgressIndicator(
+                        valueColor: const AlwaysStoppedAnimation<Color>(
+                            FarmusThemeColor.brownButton),
+                        value: loadingProgress.expectedTotalBytes != null
+                            ? loadingProgress.cumulativeBytesLoaded /
+                                (loadingProgress.expectedTotalBytes ?? 1)
+                            : null,
+                      ),
+                    );
+                  }
+                },
+              ),
+            );
+    } catch (e) {
+      return Image.asset(
+        "assets/image/img_pepper.png",
+        fit: BoxFit.fill,
+      );
+    }
+  }
+}

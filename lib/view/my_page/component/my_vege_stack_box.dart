@@ -9,11 +9,13 @@ class MyVegeStackBox extends ConsumerWidget {
   final Image? image;
   final String message;
   final String? imagePath = 'assets/image/ic_farmclub.png';
+  final Image? vegeImage;
 
   const MyVegeStackBox({
     Key? key,
     required this.historyType,
     this.image,
+    this.vegeImage,
     required this.message,
   }) : super(key: key);
 
@@ -63,8 +65,7 @@ class MyVegeStackBox extends ConsumerWidget {
                   ),
                 ],
               ),
-
-              const SizedBox(height: 26), // 이 부분을 조정하여 message의 위치를 조절할 수 있습니다.
+              const SizedBox(height: 26),
               Text.rich(
                 TextSpan(
                   children: [
@@ -87,6 +88,10 @@ class MyVegeStackBox extends ConsumerWidget {
                   ],
                 ),
               ),
+              const SizedBox(height: 26),
+              const Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+              )
             ],
           ),
         ),
