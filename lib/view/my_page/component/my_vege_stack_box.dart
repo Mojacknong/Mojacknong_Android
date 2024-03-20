@@ -89,6 +89,10 @@ class MyVegeStackBox extends ConsumerWidget {
                   ],
                 ),
               ),
+              const SizedBox(height: 26),
+              const Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+              )
             ],
           ),
         ),

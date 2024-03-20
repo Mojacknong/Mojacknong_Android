@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:farmus/common/farmus_theme_color.dart';
+import 'package:flutter/material.dart';
 
 class VegeImageWidget extends StatelessWidget {
   final String? vegeImage;
@@ -15,7 +15,7 @@ class VegeImageWidget extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 40,
-            backgroundColor: Colors.transparent,
+            backgroundColor: FarmusThemeColor.background,
             child: ClipOval(
               child: _buildImage(),
             ),
@@ -48,7 +48,7 @@ class VegeImageWidget extends StatelessWidget {
                   } else {
                     return Center(
                       child: CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation<Color>(
+                        valueColor: const AlwaysStoppedAnimation<Color>(
                             FarmusThemeColor.brownButton),
                         value: loadingProgress.expectedTotalBytes != null
                             ? loadingProgress.cumulativeBytesLoaded /
