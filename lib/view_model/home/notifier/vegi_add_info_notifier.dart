@@ -4,15 +4,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class VegiAddInfoNotifier extends StateNotifier<VegiAddInfoModel> {
   VegiAddInfoNotifier()
       : super(VegiAddInfoModel(
-            isFirstSelect: false,
-            isSecondSelect: false,
-            isThirdSelect: false,
-            isFourthSelect: false,
-            isFiveSelect: false,
-            isSixSelect: false,
-            isVegiAddInfoComplete: false,
-            name: '',
-            date: ''));
+          isFirstSelect: false,
+          isSecondSelect: false,
+          isThirdSelect: false,
+          isFourthSelect: false,
+          isFiveSelect: false,
+          isSixSelect: false,
+          isVegiSelectComplete: false,
+          name: '',
+          date: '',
+          isVegiAddInfoComplete: false,
+        ));
 
   void _selectBox(int boxIndex) {
     final newState = state.copyWith(
@@ -48,7 +50,7 @@ class VegiAddInfoNotifier extends StateNotifier<VegiAddInfoModel> {
         break;
     }
 
-    _updateCompletionStatus();
+    _updateSelectStatus();
   }
 
   void selectFirstBox() => _selectBox(1);
@@ -63,9 +65,9 @@ class VegiAddInfoNotifier extends StateNotifier<VegiAddInfoModel> {
 
   void selectSixBox() => _selectBox(6);
 
-  void _updateCompletionStatus() {
+  void _updateSelectStatus() {
     state = state.copyWith(
-        isVegiAddInfoComplete: state.isFirstSelect ||
+        isVegiSelectComplete: state.isFirstSelect ||
             state.isSecondSelect ||
             state.isThirdSelect ||
             state.isFourthSelect ||
@@ -81,9 +83,10 @@ class VegiAddInfoNotifier extends StateNotifier<VegiAddInfoModel> {
         isFourthSelect: false,
         isFiveSelect: false,
         isSixSelect: false,
-        isVegiAddInfoComplete: false,
+        isVegiSelectComplete: false,
         name: '',
-        date: '');
+        date: '',
+        isVegiAddInfoComplete: false);
   }
 
   void updateNickname(String name) {
