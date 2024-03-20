@@ -1,4 +1,4 @@
-import 'package:farmus/common/farmus_theme_text_style.dart';
+import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../../common/bouncing.dart';

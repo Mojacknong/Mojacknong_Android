@@ -1,8 +1,8 @@
-import 'package:farmus/common/primary_app_bar.dart';
+import 'package:farmus/common/app_bar/primary_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../common/farmus_theme_text_style.dart';
+import '../theme/farmus_theme_text_style.dart';
 
 class OnBoardingAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String currentIndex;

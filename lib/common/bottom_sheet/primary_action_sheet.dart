@@ -1,10 +1,10 @@
 import 'package:farmus/common/base/base_action_sheet.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../farmus_theme_text_style.dart';
+import '../theme/farmus_theme_text_style.dart';
 
-class ActionSheetPrimary extends StatelessWidget implements BaseActionSheet {
-  const ActionSheetPrimary({
+class PrimaryActionSheet extends StatelessWidget implements BaseActionSheet {
+  const PrimaryActionSheet({
     super.key,
     this.title,
     this.actions,
