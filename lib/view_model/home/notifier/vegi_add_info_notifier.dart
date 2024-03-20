@@ -85,13 +85,27 @@ class VegiAddInfoNotifier extends StateNotifier<VegiAddInfoModel> {
         isSixSelect: false,
         isVegiSelectComplete: false,
         name: '',
-        date: '',
+        date:'',
         isVegiAddInfoComplete: false);
   }
 
   void updateNickname(String name) {
     state = state.copyWith(
       name: name,
+    );
+    _updateVegiInfoStatus();
+  }
+
+  void updateDate(String date) {
+    state = state.copyWith(
+      date: date,
+    );
+    _updateVegiInfoStatus();
+  }
+
+  void _updateVegiInfoStatus() {
+    state = state.copyWith(
+      isVegiAddInfoComplete: state.name != '' && state.date != '',
     );
   }
 }

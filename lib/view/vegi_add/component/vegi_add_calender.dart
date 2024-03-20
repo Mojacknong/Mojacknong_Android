@@ -4,6 +4,7 @@ import 'package:table_calendar/table_calendar.dart';
 
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
+import '../../../view_model/home/home_vegi_add_provider.dart';
 
 class VegiAddCalender extends ConsumerStatefulWidget {
   const VegiAddCalender({super.key});
@@ -13,16 +14,14 @@ class VegiAddCalender extends ConsumerStatefulWidget {
 }
 
 class _VegiAddCalenderState extends ConsumerState<VegiAddCalender> {
-  DateTime _selectedDay = DateTime.utc(
-    DateTime.now().year,
-    DateTime.now().month,
-    DateTime.now().day,
-  );
+  DateTime? _selectedDay;
 
   DateTime _focusedDay = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
+    final notifier = ref.read(homeVegiInfoAddProvider.notifier);
+
     Future<void> selectDate(BuildContext context) async {
       DateTime? selectedDate = await showDatePicker(
           context: context,
@@ -38,6 +37,7 @@ class _VegiAddCalenderState extends ConsumerState<VegiAddCalender> {
           _selectedDay = selectedDate;
           _focusedDay = selectedDate;
         });
+        notifier.updateDate(selectedDate.toString());
       }
     }
 
@@ -56,13 +56,14 @@ class _VegiAddCalenderState extends ConsumerState<VegiAddCalender> {
             setState(() {
               _selectedDay = selectedDay;
               _focusedDay = focusedDay;
+              notifier.updateDate(selectedDay.toString());
             });
           }
         },
         onPageChanged: (focusedDay) {
           _focusedDay = focusedDay;
         },
-        onHeaderTapped: (DateTime) => selectDate(context),
+        onHeaderTapped: (dateTime) => selectDate(context),
         headerStyle: const HeaderStyle(
             formatButtonVisible: false,
             leftChevronVisible: false,
