@@ -4,6 +4,7 @@ import 'package:farmus/view/vegi_add/home_vegi_add_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
@@ -34,6 +35,14 @@ Future<void> main() async {
       title: "팜어스",
       home: const HomeVegiAddScreen(),
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en', 'US'),
+        Locale('ko', 'KR'),
+      ],
       theme: ThemeData(
         fontFamily: 'Pretendard',
         scaffoldBackgroundColor: FarmusThemeColor.white,

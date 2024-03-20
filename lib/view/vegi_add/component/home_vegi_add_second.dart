@@ -1,7 +1,7 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/vegi_add/component/home_vegi_name_input.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -16,10 +16,34 @@ class HomeVegiAddSecond extends ConsumerStatefulWidget {
 }
 
 class _HomeVegiAddSecondState extends ConsumerState<HomeVegiAddSecond> {
-  DateTime? _selectedDay;
+  DateTime _selectedDay = DateTime.utc(
+    DateTime.now().year,
+    DateTime.now().month,
+    DateTime.now().day,
+  );
+
+  DateTime _focusedDay = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
+    Future<void> selectDate(BuildContext context) async {
+      DateTime? selectedDate = await showDatePicker(
+          context: context,
+          initialDate: _selectedDay,
+          firstDate: DateTime.utc(2020, 10, 16),
+          lastDate: DateTime.now(),
+          locale: const Locale('ko', 'KR'),
+          initialDatePickerMode: DatePickerMode.year,
+          initialEntryMode: DatePickerEntryMode.calendarOnly);
+
+      if (selectedDate != null) {
+        setState(() {
+          _selectedDay = selectedDate;
+          _focusedDay = selectedDate;
+        });
+      }
+    }
+
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,7 +56,7 @@ class _HomeVegiAddSecondState extends ConsumerState<HomeVegiAddSecond> {
             padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             child: HomeVegiNameInput(),
           ),
-          SizedBox(
+          const SizedBox(
             height: 32.0,
           ),
           const Padding(
@@ -42,7 +66,7 @@ class _HomeVegiAddSecondState extends ConsumerState<HomeVegiAddSecond> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: TableCalendar(
-              focusedDay: DateTime.now(),
+              focusedDay: _focusedDay,
               firstDay: DateTime.utc(2020, 10, 16),
               lastDay: DateTime.now(),
               locale: 'ko_KR',
@@ -50,19 +74,31 @@ class _HomeVegiAddSecondState extends ConsumerState<HomeVegiAddSecond> {
                 return isSameDay(_selectedDay, day);
               },
               onDaySelected: (selectedDay, focusedDay) {
-                setState(() {
-                  _selectedDay = selectedDay;
-                });
+                if (!isSameDay(_selectedDay, selectedDay)) {
+                  setState(() {
+                    _selectedDay = selectedDay;
+                    _focusedDay = focusedDay;
+                  });
+                }
               },
+              onPageChanged: (focusedDay) {
+                _focusedDay = focusedDay;
+              },
+              onHeaderTapped: (DateTime) => selectDate(context),
               headerStyle: const HeaderStyle(
-                formatButtonVisible: false,
-                titleTextStyle: FarmusThemeTextStyle.gray1Medium13,
-
-              ),
+                  formatButtonVisible: false,
+                  leftChevronVisible: false,
+                  rightChevronVisible: false,
+                  titleCentered: true,
+                  titleTextStyle: FarmusThemeTextStyle.gray1Medium13,
+                  headerMargin: EdgeInsets.symmetric(vertical: 16.0),
+                  decoration: BoxDecoration(
+                    color: FarmusThemeColor.background,
+                  )),
               calendarStyle: const CalendarStyle(
                 weekendTextStyle: FarmusThemeTextStyle.darkReqular14,
                 defaultTextStyle: FarmusThemeTextStyle.darkReqular14,
-                selectedDecoration : BoxDecoration(
+                selectedDecoration: BoxDecoration(
                   color: FarmusThemeColor.primary,
                   shape: BoxShape.circle,
                 ),
