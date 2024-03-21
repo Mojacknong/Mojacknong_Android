@@ -7,6 +7,7 @@ class PrimaryActionSheet extends StatelessWidget implements BaseActionSheet {
   const PrimaryActionSheet({
     super.key,
     this.title,
+    this.message,
     this.actions,
     this.cancelButton
   });
@@ -17,7 +18,8 @@ class PrimaryActionSheet extends StatelessWidget implements BaseActionSheet {
   final List<Widget>? actions;
   @override
   final Widget? cancelButton;
-
+  @override
+  final String? message;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,12 @@ class PrimaryActionSheet extends StatelessWidget implements BaseActionSheet {
               title!,
               style: FarmusThemeTextStyle.gray2Medium12,
             )
+          : null,
+      message: title != null
+          ? Text(
+        message!,
+        style: FarmusThemeTextStyle.darkMedium16,
+      )
           : null,
       actions: actions,
       cancelButton: cancelButton,
