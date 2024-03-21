@@ -1,6 +1,7 @@
 import 'package:farmus/common/app_bar/primary_app_bar.dart';
 import 'package:farmus/common/button/primary_button.dart';
 import 'package:farmus/common/dialog/primary_dialog.dart';
+import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/vegi_add/component/home_vegi_add_second.dart';
 import 'package:farmus/view_model/home/home_vegi_add_provider.dart';
 import 'package:flutter/material.dart';
@@ -115,8 +116,33 @@ class HomeVegiAddScreen extends ConsumerWidget {
                           Navigator.pop(context);
                           showDialog(
                               context: context,
-                              builder: (BuildContext context) =>
-                                  const PrimaryDialog());
+                              builder: (BuildContext context) {
+                                Future.delayed(const Duration(seconds: 2), () {
+                                  Navigator.of(context).pop();
+                                });
+                                return PrimaryDialog(
+                                  title: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 20),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        SvgPicture.asset(
+                                            "assets/image/ic_check.svg"),
+                                        const SizedBox(
+                                          width: 8,
+                                        ),
+                                        const Text(
+                                          "새 채소가 등록되었어요",
+                                          style:
+                                              FarmusThemeTextStyle.darkMedium16,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              });
                       }
                     },
                     enabled: currentPageIndex == "first"

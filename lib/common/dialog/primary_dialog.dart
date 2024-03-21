@@ -1,24 +1,29 @@
-import 'package:flutter/cupertino.dart';
+import 'package:farmus/common/base/base_dialog.dart';
+import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:flutter/material.dart';
 
-class PrimaryDialog extends StatelessWidget {
-  const PrimaryDialog({super.key});
+class PrimaryDialog extends StatelessWidget implements BaseDialog {
+  const PrimaryDialog({super.key, this.title, this.content, this.actions});
+
+  @override
+  final Widget? title;
+  @override
+  final Widget? content;
+  @override
+  final List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('AlertDialog Title'),
-      content: const Text('AlertDialog description'),
-      actions: <Widget>[
-        TextButton(
-          onPressed: () => Navigator.pop(context, 'Cancel'),
-          child: const Text('Cancel'),
-        ),
-        TextButton(
-          onPressed: () => Navigator.pop(context, 'OK'),
-          child: const Text('OK'),
-        ),
-      ],
+      title: title,
+      content: content,
+      actions: actions,
+      backgroundColor: FarmusThemeColor.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(24)),
+
+      ),
+      insetPadding: const EdgeInsets.all(20),
     );
   }
 }
