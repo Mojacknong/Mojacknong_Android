@@ -22,6 +22,11 @@ class _VegiAddCalenderState extends ConsumerState<VegiAddCalender> {
   Widget build(BuildContext context) {
     final notifier = ref.read(homeVegiInfoAddProvider.notifier);
 
+    if (ref.read(homeVegiInfoAddProvider).date != '') {
+      _selectedDay = DateTime.parse(ref.read(homeVegiInfoAddProvider).date);
+      _focusedDay = _selectedDay!;
+    }
+
     Future<void> selectDate(BuildContext context) async {
       DateTime? selectedDate = await showDatePicker(
           context: context,

@@ -20,6 +20,11 @@ class FarmusThemeTextStyle {
     fontSize: 15,
   );
 
+  static const TextStyle darkMedium16 = TextStyle(
+    color: FarmusThemeColor.dark,
+    fontSize: 16,
+  );
+
   static const TextStyle darkMedium17 = TextStyle(
     color: FarmusThemeColor.dark,
     fontSize: 17,
