@@ -23,7 +23,6 @@ class PrimaryDialog extends StatelessWidget implements BaseDialog {
         borderRadius: BorderRadius.all(Radius.circular(24)),
 
       ),
-      insetPadding: const EdgeInsets.all(20),
     );
   }
 }
