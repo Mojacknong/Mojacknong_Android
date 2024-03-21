@@ -123,7 +123,7 @@ class HomeVegiAddScreen extends ConsumerWidget {
                                 return PrimaryDialog(
                                   title: Padding(
                                     padding: const EdgeInsets.symmetric(
-                                        vertical: 20),
+                                        vertical: 0),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
