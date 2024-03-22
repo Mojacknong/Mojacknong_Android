@@ -19,7 +19,7 @@ class HomeVegiInfo extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Color levelColor = FarmusThemeColor.white;
+    Color? levelColor;
 
     switch (level) {
       case "초급":
@@ -31,7 +31,7 @@ class HomeVegiInfo extends ConsumerWidget {
     }
 
     return Container(
-      color: selected ? FarmusThemeColor.background : FarmusThemeColor.white,
+      color: selected ? FarmusThemeColor.background : null,
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.start,
