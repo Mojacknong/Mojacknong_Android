@@ -30,6 +30,8 @@ class FarmusThemeColor {
 
   static const Color red = Color(0xFFFF4040);
   static const Color blue = Color(0xFF48B2FF);
+  static const Color yellow = Color(0xFFFFCC48);
+  static const Color orange = Color(0xFFFF5E48);
 
   static const Color black = Color(0xFF000000);
   static const Color white = Color(0xFFFFFFFF);

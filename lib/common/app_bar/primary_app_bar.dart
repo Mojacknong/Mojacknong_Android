@@ -6,7 +6,8 @@ import '../base/base_app_bar.dart';
 import '../theme/farmus_theme_color.dart';
 import '../theme/farmus_theme_text_style.dart';
 
-class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget, BaseAppBar {
+class PrimaryAppBar extends StatelessWidget
+    implements PreferredSizeWidget, BaseAppBar {
   @override
   final Widget? leading;
   @override
@@ -15,8 +16,16 @@ class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget, Base
   final String? title;
   @override
   final List<Widget>? actions;
+  @override
+  final bool? centerTitle;
 
-  const PrimaryAppBar({super.key, this.leading, this.title, this.actions, this.leadingWidth});
+  const PrimaryAppBar(
+      {super.key,
+      this.leading,
+      this.title,
+      this.actions,
+      this.leadingWidth,
+      this.centerTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +34,13 @@ class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget, Base
       leadingWidth: leadingWidth,
       title: title != null
           ? Text(
-        title!,
-        style: FarmusThemeTextStyle.darkSemiBold16,
-      )
+              title!,
+              style: FarmusThemeTextStyle.darkSemiBold16,
+            )
           : null,
       actions: actions,
-      centerTitle: true,
+      centerTitle: centerTitle,
+      titleSpacing: 0,
       backgroundColor: FarmusThemeColor.white,
       elevation: 0.0,
       bottomOpacity: 0.0,

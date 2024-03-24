@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 
-import '../../common/bouncing.dart';
+import '../../common/base/bouncing.dart';
 import '../../model/farmus_user.dart';
 import '../../repository/login_repository.dart';
 import '../../res/app_url/app_url.dart';

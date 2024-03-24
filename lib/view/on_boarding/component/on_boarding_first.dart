@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
@@ -9,7 +10,7 @@ import '../../../common/bottom_sheet/primary_action_sheet.dart';
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 import '../../../view_model/on_boarding/on_boarding_provider.dart';
-import 'on_boarding_nickname.dart';
+import 'on_boarding_nickname_text_input.dart';
 import 'on_boarding_title.dart';
 
 class OnBoardingFirst extends ConsumerStatefulWidget {
@@ -96,6 +97,9 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
   @override
   Widget build(BuildContext context) {
     file = ref.read(onBoardingProfileProvider).profileImage;
+    final nickname = ref.read(onBoardingProfileProvider).nickname;
+    final hasSpecialCharacters = ref.watch(onBoardingSpecialCharactersProvider);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -154,9 +158,23 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
                     style: FarmusThemeTextStyle.darkMedium13,
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: OnBoardingNickname(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: OnBoardingNicknameTextInput(
+                    initialValue: nickname,
+                    maxLength: 10,
+                    hintText: '파머',
+                    errorText: hasSpecialCharacters ? "특수문자는 입력할 수 없어요" : null,
+                    errorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(16),
+                      borderSide: const BorderSide(
+                        color: FarmusThemeColor.gray4,
+                      ),
+                    ),
+                    errorStyle: const TextStyle(
+                      color: FarmusThemeColor.red,
+                    ),
+                  ),
                 ),
               ],
             ),

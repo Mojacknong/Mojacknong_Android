@@ -1,17 +1,20 @@
+import 'package:farmus/view/vegi_add/home_vegi_add_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
-import 'home_recommend_vegi.dart';
+import '../../../view_model/home/home_vegi_add_provider.dart';
+import 'home_vegi_info.dart';
 
-class HomeMyVegi extends StatelessWidget {
+class HomeMyVegi extends ConsumerWidget {
   const HomeMyVegi({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
@@ -42,18 +45,29 @@ class HomeMyVegi extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Text(
-                      '채소 등록하기',
-                      style: FarmusThemeTextStyle.darkSemiBold20,
-                    ),
-                    const SizedBox(width: 1),
-                    SvgPicture.asset("assets/image/ic_left.svg"),
-                  ],
+                GestureDetector(
+                  onTap: () {
+                    ref.read(homeVegiInfoAddProvider.notifier).reset();
+                    ref.read(homeVegiAddMoveProvider.notifier).reset();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomeVegiAddScreen()),
+                    );
+                  },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Text(
+                        '채소 등록하기',
+                        style: FarmusThemeTextStyle.darkSemiBold20,
+                      ),
+                      const SizedBox(width: 1),
+                      SvgPicture.asset("assets/image/ic_right.svg"),
+                    ],
+                  ),
                 ),
                 const Text('새로운 채소를 등록해 홈파밍을 시작해볼까요?',
                     style: FarmusThemeTextStyle.darkMedium13),
@@ -67,13 +81,14 @@ class HomeMyVegi extends StatelessWidget {
               style: FarmusThemeTextStyle.gray1Medium15,
             ),
           ),
-          const HomeRecommendVegi(
+          const HomeVegiInfo(
             vegi: "상추",
             level: "초급",
             period: "1달",
+            selected: false,
           ),
           const Padding(
-            padding: EdgeInsets.symmetric(vertical: 16.0),
+            padding: EdgeInsets.symmetric(vertical: 8.0),
             child: Divider(
               height: 1,
               indent: 20,
@@ -81,13 +96,11 @@ class HomeMyVegi extends StatelessWidget {
               color: FarmusThemeColor.gray4,
             ),
           ),
-          const HomeRecommendVegi(
+          const HomeVegiInfo(
             vegi: "대파",
             level: "초급",
             period: "1달",
-          ),
-          const SizedBox(
-            height: 16,
+            selected: false,
           ),
         ],
       ),

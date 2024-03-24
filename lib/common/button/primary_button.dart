@@ -1,7 +1,7 @@
 import 'package:farmus/common/base/base_button.dart';
 import 'package:flutter/material.dart';
 
-import 'bouncing.dart';
+import '../base/bouncing.dart';
 
 class PrimaryButton extends StatelessWidget implements BaseButton {
   @override

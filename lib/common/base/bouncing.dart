@@ -6,7 +6,8 @@ class Bouncing extends StatefulWidget {
   final Widget child;
   final Function()? onPress;
 
-  const Bouncing({required this.child, Key? key, this.onPress}) : super(key: key);
+  const Bouncing({required this.child, Key? key, this.onPress})
+      : super(key: key);
 
   @override
   _BouncingState createState() => _BouncingState();
