@@ -9,4 +9,5 @@ abstract class BaseButton {
   Color get textColor;
   Color get backgroundColor;
   Color get borderColor;
+  double? get borderRadius;
 }

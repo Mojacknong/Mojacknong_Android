@@ -18,13 +18,39 @@ class HomeMyVegiList extends StatelessWidget {
             onPressed: () {},
             icon: SvgPicture.asset("assets/image/ic_vegi_add.svg"),
           ),
-          HomeMyVegiButton(
-              enabled: true,
-              backgroundColor: FarmusThemeColor.greenLight3,
-              text: "text",
-              onPressed: () {},
-              borderColor: FarmusThemeColor.green1,
-              textColor: FarmusThemeColor.green1)
+          const SizedBox(
+            width: 8,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right:6.0),
+            child: HomeMyVegiButton(
+                enabled: true,
+                backgroundColor: FarmusThemeColor.greenLight3,
+                text: "상훈이",
+                onPressed: () {},
+                borderColor: FarmusThemeColor.green1,
+                textColor: FarmusThemeColor.green1),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right:6.0),
+            child: HomeMyVegiButton(
+                enabled: true,
+                backgroundColor: FarmusThemeColor.greenLight3,
+                text: "방울이",
+                onPressed: () {},
+                borderColor: FarmusThemeColor.green1,
+                textColor: FarmusThemeColor.green1),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right:6.0),
+            child: HomeMyVegiButton(
+                enabled: true,
+                backgroundColor: FarmusThemeColor.greenLight3,
+                text: "깨르륵",
+                onPressed: () {},
+                borderColor: FarmusThemeColor.green1,
+                textColor: FarmusThemeColor.green1),
+          )
         ],
       ),
     );

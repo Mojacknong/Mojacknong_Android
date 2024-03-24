@@ -5,9 +5,9 @@ import '../base/bouncing.dart';
 
 class PrimaryButton extends StatelessWidget implements BaseButton {
   @override
-  final double width;
+  final double? width;
   @override
-  final double height;
+  final double? height;
   @override
   final String text;
   @override
@@ -20,17 +20,20 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
   final Color backgroundColor;
   @override
   final Color borderColor;
+  @override
+  final double? borderRadius;
 
   const PrimaryButton({
     Key? key,
-    required this.width,
-    required this.height,
+    this.width,
+    this.height,
     required this.text,
     this.onPressed,
     required this.enabled,
     required this.textColor,
     required this.backgroundColor,
     required this.borderColor,
+    this.borderRadius,
   }) : super(key: key);
 
   @override
@@ -43,37 +46,14 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
       textAlign: TextAlign.center,
     );
 
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: SizedBox(
-        width: width,
-        height: height,
-        child: enabled
-            ? Bouncing(
-                onPress: onPressed,
-                child: TextButton(
-                  onPressed: onPressed,
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(backgroundColor),
-                    side: MaterialStateProperty.resolveWith(
-                      (states) {
-                        return BorderSide(
-                          color: borderColor,
-                          width: 1.0,
-                        );
-                      },
-                    ),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                    ),
-                  ),
-                  child: buttonChild,
-                ),
-              )
-            : TextButton(
-                onPressed: null,
+    return SizedBox(
+      width: width,
+      height: height,
+      child: enabled
+          ? Bouncing(
+              onPress: onPressed,
+              child: TextButton(
+                onPressed: onPressed,
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(backgroundColor),
                   side: MaterialStateProperty.resolveWith(
@@ -86,13 +66,37 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
                   ),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
+                      borderRadius: borderRadius == null
+                          ? BorderRadius.circular(8.0)
+                          : BorderRadius.circular(borderRadius!),
                     ),
                   ),
                 ),
                 child: buttonChild,
               ),
-      ),
+            )
+          : TextButton(
+              onPressed: null,
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(backgroundColor),
+                side: MaterialStateProperty.resolveWith(
+                  (states) {
+                    return BorderSide(
+                      color: borderColor,
+                      width: 1.0,
+                    );
+                  },
+                ),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: borderRadius == null
+                        ? BorderRadius.circular(8.0)
+                        : BorderRadius.circular(borderRadius!),
+                  ),
+                ),
+              ),
+              child: buttonChild,
+            ),
     );
   }
 }

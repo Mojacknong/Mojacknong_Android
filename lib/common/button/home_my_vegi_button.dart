@@ -5,15 +5,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomeMyVegiButton extends ConsumerWidget implements BaseButton {
   const HomeMyVegiButton({
+    super.key,
     this.width,
     this.height,
-    super.key,
     required this.enabled,
     required this.backgroundColor,
     required this.text,
     required this.onPressed,
     required this.borderColor,
     required this.textColor,
+    this.borderRadius,
   });
 
   @override
@@ -41,14 +42,17 @@ class HomeMyVegiButton extends ConsumerWidget implements BaseButton {
   final Color textColor;
 
   @override
+  final double? borderRadius;
+
+  @override
   Widget build(BuildContext context, WidgetRef ref) {
     return PrimaryButton(
-      width: 90,
-        height: 31,
-        text: text,
-        enabled: enabled,
-        textColor: textColor,
-        backgroundColor: backgroundColor,
-        borderColor: borderColor);
+      text: text,
+      enabled: enabled,
+      textColor: textColor,
+      backgroundColor: backgroundColor,
+      borderColor: borderColor,
+      borderRadius: 16.0,
+    );
   }
 }

@@ -20,6 +20,8 @@ class OnBoardingButton extends ConsumerWidget implements BaseButton {
   final Color backgroundColor;
   @override
   final Color borderColor;
+  @override
+  final double? borderRadius;
 
   const OnBoardingButton({
     Key? key,
@@ -31,19 +33,23 @@ class OnBoardingButton extends ConsumerWidget implements BaseButton {
     required this.textColor,
     required this.backgroundColor,
     required this.borderColor,
+    this.borderRadius
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return PrimaryButton(
-      width: double.infinity,
-      height: 48,
-      text: text,
-      onPressed: enabled ? onPressed : null,
-      enabled: enabled,
-      textColor: textColor,
-      backgroundColor: backgroundColor,
-      borderColor: borderColor,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: PrimaryButton(
+        width: double.infinity,
+        height: 48,
+        text: text,
+        onPressed: enabled ? onPressed : null,
+        enabled: enabled,
+        textColor: textColor,
+        backgroundColor: backgroundColor,
+        borderColor: borderColor,
+      ),
     );
   }
 }
