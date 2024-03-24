@@ -89,6 +89,8 @@ class HomeVegiAddScreen extends ConsumerWidget {
                   child: Visibility(
                     visible: currentPageIndex != "first",
                     child: PrimaryButton(
+                      width: double.infinity,
+                      height: 48,
                       text: "이전",
                       onPressed: () {
                         switch (currentPageIndex) {
@@ -107,6 +109,8 @@ class HomeVegiAddScreen extends ConsumerWidget {
                 ),
                 Expanded(
                   child: PrimaryButton(
+                    width: double.infinity,
+                    height: 48,
                     text: currentPageIndex == "first" ? "다음" : "완료",
                     onPressed: () {
                       switch (currentPageIndex) {

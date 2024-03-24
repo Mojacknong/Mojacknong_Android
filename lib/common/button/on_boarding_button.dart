@@ -5,6 +5,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class OnBoardingButton extends ConsumerWidget implements BaseButton {
   @override
+  final double? width;
+  @override
+  final double? height;
+  @override
   final String text;
   @override
   final VoidCallback onPressed;
@@ -19,6 +23,8 @@ class OnBoardingButton extends ConsumerWidget implements BaseButton {
 
   const OnBoardingButton({
     Key? key,
+    this.width,
+    this.height,
     required this.text,
     required this.onPressed,
     required this.enabled,
@@ -30,6 +36,8 @@ class OnBoardingButton extends ConsumerWidget implements BaseButton {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return PrimaryButton(
+      width: double.infinity,
+      height: 48,
       text: text,
       onPressed: enabled ? onPressed : null,
       enabled: enabled,

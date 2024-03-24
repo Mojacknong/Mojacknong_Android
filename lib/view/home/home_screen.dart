@@ -1,4 +1,4 @@
-import 'package:farmus/view/home/component/home_none_vegi.dart';
+import 'package:farmus/view/home/component/home_my_vegi_list.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/app_bar/home_app_bar.dart';
@@ -13,7 +13,11 @@ class HomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(16.0),
-          child: HomeNoneVegi(),
+          child: Column(
+            children: [
+              HomeMyVegiList()
+            ],
+          ),
         ),
       ),
     );

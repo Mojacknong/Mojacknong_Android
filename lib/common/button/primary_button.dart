@@ -5,6 +5,10 @@ import '../base/bouncing.dart';
 
 class PrimaryButton extends StatelessWidget implements BaseButton {
   @override
+  final double width;
+  @override
+  final double height;
+  @override
   final String text;
   @override
   final VoidCallback? onPressed;
@@ -19,6 +23,8 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
 
   const PrimaryButton({
     Key? key,
+    required this.width,
+    required this.height,
     required this.text,
     this.onPressed,
     required this.enabled,
@@ -34,13 +40,14 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
       style: TextStyle(
         color: textColor,
       ),
+      textAlign: TextAlign.center,
     );
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: SizedBox(
-        width: double.infinity,
-        height: 48,
+        width: width,
+        height: height,
         child: enabled
             ? Bouncing(
                 onPress: onPressed,
