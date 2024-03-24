@@ -1,4 +1,4 @@
-import 'package:farmus/view/home/component/home_vegi_info.dart';
+import 'package:farmus/view/home/component/none/home_vegi_info.dart';
 import 'package:farmus/view_model/home/home_vegi_add_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

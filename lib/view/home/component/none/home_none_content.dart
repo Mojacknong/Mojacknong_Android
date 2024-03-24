@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../../common/theme/farmus_theme_color.dart';
-import '../../../common/theme/farmus_theme_text_style.dart';
+import '../../../../common/theme/farmus_theme_color.dart';
+import '../../../../common/theme/farmus_theme_text_style.dart';
 
 class HomeNoneContent extends StatelessWidget {
   final String text;

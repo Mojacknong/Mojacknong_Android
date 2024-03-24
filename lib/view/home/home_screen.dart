@@ -1,11 +1,14 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
+import 'package:farmus/view/home/component/home_motivation.dart';
 import 'package:farmus/view/home/component/home_my_vegi_list.dart';
+import 'package:farmus/view/home/component/home_sub_title.dart';
+import 'package:farmus/view/home/component/home_to_do.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../common/app_bar/home_app_bar.dart';
-import 'component/my_vegi_step.dart';
+import 'component/home_my_vegi.dart';
+import 'component/home_vegi_routine.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -26,116 +29,38 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(
                 height: 8,
               ),
-              Container(
-                width: double.infinity,
-                height: 140,
-                decoration: ShapeDecoration(
-                  color: FarmusThemeColor.background,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24),
+              HomeMyVegi(size: size),
+              const HomeMotivation(motivation: "텃밭에서 식탁까지 팜어스와 늘 함께해요!"),
+              const HomeSubTitle(title: "오늘 할 일"),
+              const HomeToDo(),
+              const Column(
+                children: [
+                  SizedBox(
+                    height: 12,
                   ),
-                ),
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        width: size.width * 0.35,
-                        decoration: ShapeDecoration(
-                          color: FarmusThemeColor.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18),
-                            side: const BorderSide(
-                              width: 1,
-                              color: FarmusThemeColor.gray4,
-                            ),
-                          ),
-                        ),
+                  Row(
+                    children: [
+                      Text(
+                        "1개",
+                        style: FarmusThemeTextStyle.redSemiBold13,
                       ),
-                    ),
-                    const SizedBox(
-                      width: 16,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Row(
-                          children: [
-                            SvgPicture.asset(
-                                "assets/image/ic_farm_club_mark.svg"),
-                            const SizedBox(
-                              width: 8,
-                            ),
-                            const Text(
-                              "상훈이",
-                              style: FarmusThemeTextStyle.darkSemiBold22,
-                            ),
-                          ],
-                        ),
-                        const Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  "스텝3",
-                                  style: FarmusThemeTextStyle.green1SemiBold13,
-                                ),
-                                SizedBox(
-                                  width: 8,
-                                ),
-                                Text(
-                                  "+28일 ",
-                                  style: FarmusThemeTextStyle.gray1Medium13,
-                                ),
-                                Text(
-                                  "23.06.27 -",
-                                  style: FarmusThemeTextStyle.gray1Medium13,
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              children: [
-                                MyVegiStep(
-                                  color: FarmusThemeColor.green1,
-                                ),
-                                SizedBox(
-                                  width: 1,
-                                ),
-                                MyVegiStep(
-                                  color: FarmusThemeColor.green1,
-                                ),
-                                SizedBox(
-                                  width: 1,
-                                ),
-                                MyVegiStep(
-                                  color: FarmusThemeColor.green1,
-                                ),
-                                SizedBox(
-                                  width: 1,
-                                ),
-                                MyVegiStep(
-                                  color: FarmusThemeColor.gray3,
-                                ),
-                                SizedBox(
-                                  width: 1,
-                                ),
-                                MyVegiStep(
-                                  color: FarmusThemeColor.gray3,
-                                ),
-                              ],
-                            )
-                          ],
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              ),
+                      Text(
+                        "의 루틴이 남았어요",
+                        style: FarmusThemeTextStyle.gray1Medium13,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  HomeVegiRoutine(routine: '물 갈아 주기', day: '4일 1회',),
+                  Divider(
+                    height: 1,
+                    color: FarmusThemeColor.gray5,
+                  ),
+                  HomeVegiRoutine(routine: '물 주기', day: '3일 1회',),
+                ],
+              )
             ],
           ),
         ),
