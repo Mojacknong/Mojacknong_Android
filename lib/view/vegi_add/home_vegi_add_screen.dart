@@ -88,75 +88,81 @@ class HomeVegiAddScreen extends ConsumerWidget {
                 Expanded(
                   child: Visibility(
                     visible: currentPageIndex != "first",
-                    child: PrimaryButton(
-                      width: double.infinity,
-                      height: 48,
-                      text: "이전",
-                      onPressed: () {
-                        switch (currentPageIndex) {
-                          case "first":
-                            return;
-                          case "second":
-                            movePage.moveToFirstPage();
-                        }
-                      },
-                      enabled: true,
-                      textColor: FarmusThemeColor.gray1,
-                      backgroundColor: FarmusThemeColor.white,
-                      borderColor: FarmusThemeColor.gray3,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: PrimaryButton(
+                        width: double.infinity,
+                        height: 48,
+                        text: "이전",
+                        onPressed: () {
+                          switch (currentPageIndex) {
+                            case "first":
+                              return;
+                            case "second":
+                              movePage.moveToFirstPage();
+                          }
+                        },
+                        enabled: true,
+                        textColor: FarmusThemeColor.gray1,
+                        backgroundColor: FarmusThemeColor.white,
+                        borderColor: FarmusThemeColor.gray3,
+                      ),
                     ),
                   ),
                 ),
                 Expanded(
-                  child: PrimaryButton(
-                    width: double.infinity,
-                    height: 48,
-                    text: currentPageIndex == "first" ? "다음" : "완료",
-                    onPressed: () {
-                      switch (currentPageIndex) {
-                        case "first":
-                          movePage.moveToSecondPage();
-                        case "second":
-                          Navigator.pop(context);
-                          showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                Future.delayed(const Duration(seconds: 2), () {
-                                  Navigator.of(context).pop();
-                                });
-                                return PrimaryDialog(
-                                  title: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        SvgPicture.asset(
-                                            "assets/image/ic_check.svg"),
-                                        const SizedBox(
-                                          width: 8,
-                                        ),
-                                        const Text(
-                                          "새 채소가 등록되었어요",
-                                          style:
-                                              FarmusThemeTextStyle.darkMedium16,
-                                        )
-                                      ],
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: PrimaryButton(
+                      width: double.infinity,
+                      height: 48,
+                      text: currentPageIndex == "first" ? "다음" : "완료",
+                      onPressed: () {
+                        switch (currentPageIndex) {
+                          case "first":
+                            movePage.moveToSecondPage();
+                          case "second":
+                            Navigator.pop(context);
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  Future.delayed(const Duration(seconds: 2), () {
+                                    Navigator.of(context).pop();
+                                  });
+                                  return PrimaryDialog(
+                                    title: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 0),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          SvgPicture.asset(
+                                              "assets/image/ic_check.svg"),
+                                          const SizedBox(
+                                            width: 8,
+                                          ),
+                                          const Text(
+                                            "새 채소가 등록되었어요",
+                                            style:
+                                                FarmusThemeTextStyle.darkMedium16,
+                                          )
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                );
-                              });
-                      }
-                    },
-                    enabled: currentPageIndex == "first"
-                        ? isVegiSelectedComplete
-                        : isVegiAddInfoComplete,
-                    textColor: getButtonTextColor(currentPageIndex,
-                        isVegiSelectedComplete, isVegiAddInfoComplete),
-                    backgroundColor: getButtonBackgroundColor(currentPageIndex,
-                        isVegiSelectedComplete, isVegiAddInfoComplete),
-                    borderColor: FarmusThemeColor.white,
+                                  );
+                                });
+                        }
+                      },
+                      enabled: currentPageIndex == "first"
+                          ? isVegiSelectedComplete
+                          : isVegiAddInfoComplete,
+                      textColor: getButtonTextColor(currentPageIndex,
+                          isVegiSelectedComplete, isVegiAddInfoComplete),
+                      backgroundColor: getButtonBackgroundColor(currentPageIndex,
+                          isVegiSelectedComplete, isVegiAddInfoComplete),
+                      borderColor: FarmusThemeColor.white,
+                    ),
                   ),
                 ),
               ],
