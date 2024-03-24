@@ -1,44 +1,45 @@
-import 'package:flutter/cupertino.dart';
+
+import 'package:farmus/view/home/component/vegi_routine.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 
 class HomeVegiRoutine extends ConsumerWidget {
-  const HomeVegiRoutine({super.key, required this.routine, required this.day});
-
-  final String routine;
-  final String day;
+  const HomeVegiRoutine({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6.0),
-      child: Row(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: SvgPicture.asset("assets/image/ic_check_box.svg"),
-          ),
-          Text(
-            routine,
-            style: FarmusThemeTextStyle.darkSemiBold17,
-          ),
-          const SizedBox(
-            width: 12,
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 5),
-            decoration: ShapeDecoration(
-              color: FarmusThemeColor.greenLight3,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(4)),
+    return const Column(
+      children: [
+        SizedBox(
+          height: 12,
+        ),
+        Row(
+          children: [
+            Text(
+              "1개",
+              style: FarmusThemeTextStyle.redSemiBold13,
             ),
-            child: Text(day, style: FarmusThemeTextStyle.green1SemiBold11),
-          ),
-        ],
-      ),
+            Text(
+              "의 루틴이 남았어요",
+              style: FarmusThemeTextStyle.gray1Medium13,
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 8,
+        ),
+        VegiRoutine(routine: '물 갈아 주기', day: '4일 1회',),
+        Divider(
+          height: 1,
+          color: FarmusThemeColor.gray5,
+        ),
+        VegiRoutine(routine: '물 주기', day: '3일 1회',),
+      ],
     );
   }
 }
