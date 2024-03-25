@@ -3,10 +3,12 @@ import 'package:farmus/common/button/add_button.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/model/home/my_vegi_model.dart';
 import 'package:farmus/view/my_vegi/component/my_vegi_list_info.dart';
+import 'package:farmus/view/vegi_add/home_vegi_add_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../common/theme/farmus_theme_color.dart';
+import '../../view_model/home/home_vegi_add_provider.dart';
 
 class MyVegiScreen extends ConsumerWidget {
   const MyVegiScreen({super.key});
@@ -89,7 +91,14 @@ class MyVegiScreen extends ConsumerWidget {
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: AddButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    ref.read(homeVegiInfoAddProvider.notifier).reset();
+                    ref.read(homeVegiAddMoveProvider.notifier).reset();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const HomeVegiAddScreen(),),
+                    );
+                  },
                 ),
               ),
             ],

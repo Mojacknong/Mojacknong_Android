@@ -49,7 +49,7 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
       height: height,
       child: enabled
           ? Bouncing(
-              onPress: onPressed,
+              onPress: () {},
               child: TextButton(
                 onPressed: onPressed,
                 style: ButtonStyle(

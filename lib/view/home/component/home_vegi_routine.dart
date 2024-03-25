@@ -78,7 +78,7 @@ class HomeVegiRoutine extends ConsumerWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "스텝3",
+                                  "Step 3",
                                   style: FarmusThemeTextStyle.gray2SemiBold13,
                                 ),
                                 SizedBox(

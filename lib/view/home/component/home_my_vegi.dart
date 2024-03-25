@@ -76,7 +76,7 @@ class HomeMyVegi extends ConsumerWidget {
                     Row(
                       children: [
                         Text(
-                          "스텝3",
+                          "Step 3",
                           style: FarmusThemeTextStyle.green1SemiBold13,
                         ),
                         SizedBox(
