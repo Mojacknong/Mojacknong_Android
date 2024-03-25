@@ -1,15 +1,21 @@
 import 'package:farmus/common/farmus_theme_color.dart';
 import 'package:flutter/material.dart';
+import 'package:expandable_text/expandable_text.dart';
 
-class VegeDiaryContent extends StatelessWidget {
-  // final String title;
+class VegeDiaryContent extends StatefulWidget {
   final String content;
 
   const VegeDiaryContent({
-    super.key,
-    // required this.title,
+    Key? key,
     required this.content,
-  });
+  }) : super(key: key);
+
+  @override
+  _VegeDiaryContentState createState() => _VegeDiaryContentState();
+}
+
+class _VegeDiaryContentState extends State<VegeDiaryContent> {
+  bool _isExpanded = false;
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +26,23 @@ class VegeDiaryContent extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(
-              height: 4,
-            ),
-            Text(
-              content,
-              style: const TextStyle(
-                fontSize: 14,
-                color: FarmusThemeColor.dark,
-                fontFamily: "Pretendard",
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  _isExpanded = !_isExpanded;
+                });
+              },
+              child: ExpandableText(
+                widget.content,
+                expandText: '더 보기',
+                collapseText: '...닫기',
+                maxLines: 2,
+                style: const TextStyle(
+                  fontSize: 14,
+                  color: FarmusThemeColor.dark,
+                  fontFamily: "Pretendard",
+                ),
               ),
-              textAlign: TextAlign.left,
             ),
           ],
         ),

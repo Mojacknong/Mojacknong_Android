@@ -1,6 +1,10 @@
 import 'package:farmus/common/farmus_theme_color.dart';
 import 'package:farmus/res/app_url/app_url.dart';
+import 'package:farmus/view/my_page/component/my_page_veges.dart';
 import 'package:farmus/view/my_page/my_page_screen.dart';
+import 'package:farmus/view/my_page/vege_history/component/vege_history_tap.dart';
+import 'package:farmus/view/my_page/vege_history/vege_diary/vege_diary_screen.dart';
+import 'package:farmus/view/my_page/vege_history/vege_history_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';

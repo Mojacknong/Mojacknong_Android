@@ -16,7 +16,6 @@ class VegeDiaryFeed extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // 현재 시간을 가져오고 원하는 형식으로 포맷합니다.
     String postTime = DateFormat('MM/dd kk:mm').format(DateTime.now());
 
     return GestureDetector(
