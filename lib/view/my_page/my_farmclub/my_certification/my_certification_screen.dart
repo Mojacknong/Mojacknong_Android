@@ -1,10 +1,6 @@
 import 'package:farmus/view/my_page/my_farmclub/component/farmclub_profile.dart';
 import 'package:farmus/view/my_page/my_farmclub/my_certification/my_certification_app_bar.dart';
 import 'package:farmus/view/my_page/my_farmclub/my_certification/my_certification_feed.dart';
-import 'package:farmus/view/my_page/vege_history/component/vege_diary_feed.dart';
-import 'package:farmus/view/my_page/vege_history/component/vege_history_app_bar.dart';
-import 'package:farmus/view/my_page/vege_history/component/vege_history_tap.dart';
-import 'package:farmus/view/my_page/vege_history/component/vege_profile.dart';
 import 'package:flutter/material.dart';
 
 class MyCertificationScreen extends StatefulWidget {

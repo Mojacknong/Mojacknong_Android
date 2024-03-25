@@ -1,4 +1,3 @@
-import 'package:farmus/view/my_page/vege_history/component/vege_diary_feed.dart';
 import 'package:farmus/view/my_page/vege_history/component/vege_history_app_bar.dart';
 import 'package:farmus/view/my_page/vege_history/component/vege_history_tap.dart';
 import 'package:farmus/view/my_page/vege_history/component/vege_profile.dart';
@@ -27,13 +26,12 @@ class VegeDiaryScreen extends StatefulWidget {
 class _VegeDiaryScreenState extends State<VegeDiaryScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const VegeHistoryAppBar(),
+    return const Scaffold(
+      appBar: VegeHistoryAppBar(),
       body: Column(
         children: <Widget>[
           VegeProfile(),
-          const Expanded(child: VegeTabBar()),
-          // ... (다른 VegeDiaryFeed 위젯 추가)
+          Expanded(child: VegeTabBar()),
         ],
       ),
     );

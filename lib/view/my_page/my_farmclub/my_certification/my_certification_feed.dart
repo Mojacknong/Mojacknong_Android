@@ -1,7 +1,4 @@
 import 'package:farmus/view/my_page/my_farmclub/my_certification/step_title.dart';
-import 'package:farmus/view/my_page/vege_history/component/vege_diary_content.dart';
-import 'package:farmus/view/my_page/vege_history/component/vege_diary_pic.dart';
-import 'package:farmus/view/my_page/vege_history/component/vege_diary_time.dart';
 import 'package:farmus/view/my_page/vege_result/vege_result_content.dart';
 import 'package:farmus/view/my_page/vege_result/vege_result_pic.dart';
 import 'package:farmus/view/my_page/vege_result/vege_result_time.dart';

@@ -1,6 +1,6 @@
 import 'package:farmus/common/farmus_theme_color.dart';
-import 'package:farmus/view/my_page/vege_history/component/vege_diary_feed.dart';
-import 'package:farmus/view/my_page/vege_result/vege_result_feed.dart';
+import 'package:farmus/view/my_page/vege_history/vege_diary/vege_diary_list.dart';
+import 'package:farmus/view/my_page/vege_result/vege_result_list.dart';
 import 'package:flutter/material.dart';
 
 class VegeTabBar extends StatefulWidget {
@@ -65,20 +65,8 @@ class _VegeTabBarState extends State<VegeTabBar> {
           Expanded(
             child: TabBarView(
               children: [
-                SingleChildScrollView(
-                  child: Center(
-                      child: VegeDiaryFeed(
-                          content:
-                              "우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙 ",
-                          image: "")),
-                ),
-                SingleChildScrollView(
-                  child: Center(
-                      child: VegeResultFeed(
-                          content:
-                              "우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙 ",
-                          image: "")),
-                ),
+                Center(child: VegeDiaryList()),
+                Center(child: VegeResultList()),
               ],
             ),
           ),

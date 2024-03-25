@@ -1,4 +1,3 @@
-import 'package:farmus/common/farmus_theme_color.dart';
 import 'package:farmus/view/my_page/vege_history/component/vege_profile.dart';
 import 'package:farmus/view_model/my_page/notifier/vege_profile_notifier.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +12,7 @@ class VegeHistoryList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
+    return const Scaffold(
       body: Column(
         children: [
           SizedBox(

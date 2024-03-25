@@ -23,7 +23,7 @@ class VegeProfile extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             CircleAvatar(
-              radius: 40,
+              radius: 35,
               backgroundColor: Colors.transparent,
               child: ClipOval(child: _vegeImage(vegeInfo.image)),
             ),
@@ -40,8 +40,7 @@ class VegeProfile extends ConsumerWidget {
                         TextSpan(
                           text: '${vegeInfo.veggieName} ',
                           style: const TextStyle(
-                            fontSize: 17,
-                          ),
+                              fontSize: 17, fontWeight: FontWeight.w500),
                         ),
                         const TextSpan(
                           text: '| ',
@@ -51,7 +50,7 @@ class VegeProfile extends ConsumerWidget {
                         TextSpan(
                           text: vegeInfo.veggieType,
                           style: const TextStyle(
-                            fontSize: 13.0,
+                            fontSize: 15.0,
                           ),
                         ),
                       ],

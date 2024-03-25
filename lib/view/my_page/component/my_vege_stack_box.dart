@@ -92,10 +92,12 @@ class MyVegeStackBox extends ConsumerWidget {
             ],
           ),
         ),
-        Positioned(
+        const Positioned(
           child: Padding(
-            padding: const EdgeInsets.only(top: 90.0),
-            child: VegeImageWidget(),
+            padding: EdgeInsets.only(top: 90.0),
+            child: Row(
+              children: [VegeImageWidget()],
+            ),
           ),
         ),
       ],

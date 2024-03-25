@@ -1,6 +1,4 @@
 import 'package:farmus/common/farmus_theme_color.dart';
-import 'package:farmus/view/my_page/component/my_history_box.dart';
-import 'package:farmus/view/my_page/component/my_page_veges.dart';
 import 'package:farmus/view/my_page/my_farmclub/component/farmclub_widget.dart';
 import 'package:farmus/view/my_page/my_farmclub/component/my_farmclub_box.dart';
 import 'package:farmus/view_model/my_page/notifier/vege_count_notifier.dart';

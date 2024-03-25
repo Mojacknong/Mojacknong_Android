@@ -25,7 +25,7 @@ class VegeDiaryFeed extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             VegeDiaryPicture(
-              image: image,
+              image: "assets/image/img_diary1.png",
             ),
             const SizedBox(
               height: 8,

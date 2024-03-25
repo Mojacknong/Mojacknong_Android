@@ -65,7 +65,7 @@ class VegeResultPicture extends StatelessWidget {
             );
     } catch (e) {
       return Image.asset(
-        "assets/image/image_example_community2.png",
+        "assets/image/img_diary1.png",
         fit: BoxFit.fill,
       );
     }

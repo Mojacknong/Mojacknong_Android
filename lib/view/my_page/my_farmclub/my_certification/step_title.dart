@@ -23,27 +23,30 @@ class StepTitle extends StatelessWidget {
             text: TextSpan(
               style: DefaultTextStyle.of(context).style,
               children: <TextSpan>[
-                TextSpan(
+                const TextSpan(
                   text: '스텝 ',
                   style: TextStyle(
-                    fontSize: 17,
-                  ),
+                      fontSize: 17,
+                      fontWeight: FontWeight.w600,
+                      color: FarmusThemeColor.gray2),
                 ),
                 TextSpan(
-                  text: '$step', // 외부에서 받아온 step 변수 사용
-                  style: TextStyle(
-                    fontSize: 17,
-                  ),
+                  text: step, // 외부에서 받아온 step 변수 사용
+                  style: const TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.w600,
+                      color: FarmusThemeColor.gray2),
                 ),
-                TextSpan(
+                const TextSpan(
                   text: '| ',
                   style: TextStyle(fontSize: 17, color: FarmusThemeColor.gray4),
                 ),
                 TextSpan(
                   text: title, // 기존의 title 변수 사용
-                  style: TextStyle(
-                    fontSize: 13.0,
-                  ),
+                  style: const TextStyle(
+                      fontSize: 17.0,
+                      color: FarmusThemeColor.dark,
+                      fontWeight: FontWeight.w600),
                 ),
               ],
             ),

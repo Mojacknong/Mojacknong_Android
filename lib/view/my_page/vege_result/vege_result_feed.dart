@@ -1,8 +1,5 @@
-import 'package:farmus/view/my_page/vege_history/component/vege_diary_content.dart';
 import 'package:farmus/view/my_page/vege_history/component/vege_diary_pic.dart';
-import 'package:farmus/view/my_page/vege_history/component/vege_diary_time.dart';
 import 'package:farmus/view/my_page/vege_result/vege_result_content.dart';
-import 'package:farmus/view/my_page/vege_result/vege_result_pic.dart';
 import 'package:farmus/view/my_page/vege_result/vege_result_time.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart'; // DateFormat을 사용하기 위해 추가
@@ -27,7 +24,7 @@ class VegeResultFeed extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            VegeResultPicture(
+            VegeDiaryPicture(
               image: image,
             ),
             const SizedBox(

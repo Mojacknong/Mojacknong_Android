@@ -1,9 +1,6 @@
 import 'package:farmus/common/farmus_theme_color.dart';
 import 'package:farmus/view/my_page/my_farmclub/component/farmclub_list.dart';
 import 'package:farmus/view/my_page/my_farmclub/my_certification/my_certification_screen.dart';
-import 'package:farmus/view/my_page/vege_history/component/vege_history_list.dart';
-import 'package:farmus/view/my_page/vege_history/vege_diary/vege_diary_screen.dart';
-import 'package:farmus/view_model/my_page/notifier/farmclub_profile_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -26,7 +23,7 @@ class FarmClubProfile extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             _farmClubImage(farmClubInfo.image),
-            const SizedBox(width: 12.0),
+            const SizedBox(width: 15.0),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,8 +36,7 @@ class FarmClubProfile extends ConsumerWidget {
                         TextSpan(
                           text: '${farmClubInfo.veggieName} ',
                           style: const TextStyle(
-                            fontSize: 17,
-                          ),
+                              fontSize: 17, fontWeight: FontWeight.w500),
                         ),
                         const TextSpan(
                           text: '| ',
@@ -50,7 +46,7 @@ class FarmClubProfile extends ConsumerWidget {
                         TextSpan(
                           text: farmClubInfo.veggieType,
                           style: const TextStyle(
-                            fontSize: 13.0,
+                            fontSize: 15.0,
                           ),
                         ),
                       ],

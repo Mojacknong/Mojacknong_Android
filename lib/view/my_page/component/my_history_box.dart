@@ -1,5 +1,4 @@
 import 'package:farmus/common/farmus_theme_color.dart';
-import 'package:farmus/view/my_page/vege_history/component/vege_history_list.dart';
 import 'package:farmus/view/my_page/vege_history/vege_history_screen.dart';
 import 'package:flutter/material.dart';
 
