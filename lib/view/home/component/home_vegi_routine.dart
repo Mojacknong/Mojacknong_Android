@@ -1,8 +1,6 @@
 import 'package:farmus/view/home/component/vegi_routine.dart';
 import 'package:farmus/view_model/home/home_provider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
