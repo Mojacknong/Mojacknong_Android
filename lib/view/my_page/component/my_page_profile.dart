@@ -1,6 +1,8 @@
 import 'dart:io';
 
-import 'package:farmus/view/my_page/vege_history/vege_history_list.dart';
+import 'package:farmus/view/my_page/my_page_screen.dart';
+import 'package:farmus/view/my_page/vege_history/component/vege_history_list.dart';
+import 'package:farmus/view/my_page/vege_history/vege_history_screen.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_next_button.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_nickname.dart';
 import 'package:flutter/cupertino.dart';
@@ -189,7 +191,7 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const VegeHistoryList(),
+                  builder: (context) => const MyPageScreen(),
                 ),
               );
             },

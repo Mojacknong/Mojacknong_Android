@@ -1,40 +1,40 @@
-import 'package:farmus/common/farmus_theme_color.dart';
 import 'package:flutter/material.dart';
+import 'package:farmus/common/farmus_theme_color.dart';
 
-class MyVegeWidget extends StatelessWidget {
-  final String? image;
-  const MyVegeWidget({super.key, required this.image});
+class VegeImageWidget extends StatelessWidget {
+  final String? vegeImage;
+
+  const VegeImageWidget({Key? key, this.vegeImage}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        height: 50,
-        padding: const EdgeInsets.all(16),
-        child: Row(
-          children: [
-            CircleAvatar(
-              radius: 40,
-              backgroundColor: Colors.transparent,
-              child: ClipOval(child: _myImage()),
+    return Container(
+      height: 90,
+      padding: const EdgeInsets.all(16),
+      child: Row(
+        children: [
+          CircleAvatar(
+            radius: 40,
+            backgroundColor: Colors.transparent,
+            child: ClipOval(
+              child: _buildImage(),
             ),
-            const SizedBox(width: 15),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 
-  Widget _myImage() {
+  Widget _buildImage() {
     try {
-      return image!.isEmpty
+      return vegeImage == null || vegeImage!.isEmpty
           ? Image.asset(
               "assets/image/img_greenonion.png",
               fit: BoxFit.fill,
             )
           : ClipOval(
               child: Image.network(
-                image!,
+                vegeImage!,
                 fit: BoxFit.cover,
                 width: 80,
                 height: 80,
@@ -44,13 +44,11 @@ class MyVegeWidget extends StatelessWidget {
                     return child;
                   } else if (loadingProgress.cumulativeBytesLoaded ==
                       loadingProgress.expectedTotalBytes) {
-                    // 이미지가 완전히 로드된 경우
                     return child;
                   } else {
-                    // 이미지 로딩 중
                     return Center(
                       child: CircularProgressIndicator(
-                        valueColor: const AlwaysStoppedAnimation<Color>(
+                        valueColor: AlwaysStoppedAnimation<Color>(
                             FarmusThemeColor.brownButton),
                         value: loadingProgress.expectedTotalBytes != null
                             ? loadingProgress.cumulativeBytesLoaded /
@@ -64,7 +62,7 @@ class MyVegeWidget extends StatelessWidget {
             );
     } catch (e) {
       return Image.asset(
-        "assets/image/img_pepper.png",
+        "assets/image/img_greenonion.png",
         fit: BoxFit.fill,
       );
     }

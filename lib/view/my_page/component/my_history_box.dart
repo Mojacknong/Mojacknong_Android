@@ -1,4 +1,6 @@
 import 'package:farmus/common/farmus_theme_color.dart';
+import 'package:farmus/view/my_page/vege_history/component/vege_history_list.dart';
+import 'package:farmus/view/my_page/vege_history/vege_history_screen.dart';
 import 'package:flutter/material.dart';
 
 class MyVegeBox extends StatefulWidget {
@@ -13,13 +15,21 @@ class _MyVegeBoxState extends State<MyVegeBox> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Container(
-        width: double.infinity,
-        height: 190,
-        decoration: ShapeDecoration(
-          color: FarmusThemeColor.background,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24),
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const VegeHistoryScreen()),
+          );
+        },
+        child: Container(
+          width: double.infinity,
+          height: 180,
+          decoration: ShapeDecoration(
+            color: FarmusThemeColor.background,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(24),
+            ),
           ),
         ),
       ),

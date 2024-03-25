@@ -1,5 +1,6 @@
 import 'package:farmus/common/farmus_theme_color.dart';
 import 'package:farmus/view/my_page/vege_history/component/vege_diary_feed.dart';
+import 'package:farmus/view/my_page/vege_result/vege_result_feed.dart';
 import 'package:flutter/material.dart';
 
 class VegeTabBar extends StatefulWidget {
@@ -21,14 +22,14 @@ class _VegeTabBarState extends State<VegeTabBar> {
             child: Align(
               alignment: Alignment.centerLeft,
               child: SizedBox(
-                width: 200,
+                width: 180,
                 child: Material(
                   color: Colors.white,
                   child: TabBar(
                     indicator: UnderlineTabIndicator(
                       borderSide:
                           BorderSide(width: 2.5, color: FarmusThemeColor.dark),
-                      insets: EdgeInsets.symmetric(horizontal: 15),
+                      // insets: EdgeInsets.symmetric(horizontal: 1),
                     ),
                     labelColor: FarmusThemeColor.dark,
                     unselectedLabelColor: FarmusThemeColor.gray3,
@@ -66,10 +67,17 @@ class _VegeTabBarState extends State<VegeTabBar> {
               children: [
                 SingleChildScrollView(
                   child: Center(
-                      child: VegeDiaryFeed(content: "우왕 너무 좋앙 ", image: "")),
+                      child: VegeDiaryFeed(
+                          content:
+                              "우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙 ",
+                          image: "")),
                 ),
                 SingleChildScrollView(
-                  child: Center(child: Text("Tab 2 Content")),
+                  child: Center(
+                      child: VegeResultFeed(
+                          content:
+                              "우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙우왕 너무 좋앙 ",
+                          image: "")),
                 ),
               ],
             ),

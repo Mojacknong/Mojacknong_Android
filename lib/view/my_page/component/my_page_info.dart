@@ -11,48 +11,47 @@ class MyPageInfo extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Container(
-            height: 100,
-            padding: const EdgeInsets.all(16),
-            child: Row(
-              children: [
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const MyPageProfile()),
-                    );
-                  },
-                  child: CircleAvatar(
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const MyPageProfile()),
+              );
+            },
+            child: Container(
+              height: 100,
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                children: [
+                  CircleAvatar(
                     radius: 40,
                     backgroundColor: Colors.transparent,
                     child: ClipOval(child: _myImage()),
                   ),
-                ),
-                const SizedBox(width: 15),
-                const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 16),
-                      child: Text(
-                        "파머",
-                        style: TextStyle(
-                            fontSize: 19,
-                            fontWeight: FontWeight.bold,
-                            color: FarmusThemeColor.dark),
+                  const SizedBox(width: 15),
+                  const Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(top: 16),
+                        child: Text(
+                          "파머",
+                          style: TextStyle(
+                              fontSize: 19,
+                              fontWeight: FontWeight.bold,
+                              color: FarmusThemeColor.dark),
+                        ),
                       ),
-                    ),
-                    Text(
-                      "팜어스와 함께한지 +100일",
-                      style: TextStyle(
-                          fontSize: 15, color: FarmusThemeColor.gray1),
-                    )
-                  ],
-                )
-              ],
+                      Text(
+                        "팜어스와 함께한지 +100일",
+                        style: TextStyle(
+                            fontSize: 15, color: FarmusThemeColor.gray1),
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
           const Divider(thickness: 1, color: Colors.grey),
@@ -68,7 +67,7 @@ class MyPageInfo extends StatelessWidget {
     try {
       return image!.isEmpty
           ? Image.asset(
-              "assets/image/img_pepper.png",
+              "assets/image/img_farmer.png",
               fit: BoxFit.fill,
             )
           : ClipOval(

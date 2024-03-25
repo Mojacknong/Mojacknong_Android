@@ -1,5 +1,6 @@
 import 'package:farmus/common/farmus_theme_color.dart';
 import 'package:farmus/view/my_page/component/my_history_box.dart';
+import 'package:farmus/view/my_page/component/my_page_veges.dart';
 import 'package:farmus/view_model/my_page/notifier/vege_count_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,7 +10,7 @@ class MyVegeStackBox extends ConsumerWidget {
   final Image? image;
   final String message;
   final String? imagePath = 'assets/image/ic_farmclub.png';
-  final Image? vegeImage;
+  final String? vegeImage;
 
   const MyVegeStackBox({
     Key? key,
@@ -65,7 +66,7 @@ class MyVegeStackBox extends ConsumerWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 26),
+              const SizedBox(height: 20),
               Text.rich(
                 TextSpan(
                   children: [
@@ -88,11 +89,13 @@ class MyVegeStackBox extends ConsumerWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 26),
-              const Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-              )
             ],
+          ),
+        ),
+        Positioned(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 90.0),
+            child: VegeImageWidget(),
           ),
         ),
       ],
