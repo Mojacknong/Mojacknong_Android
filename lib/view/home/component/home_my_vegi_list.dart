@@ -1,4 +1,3 @@
-import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/button/home_my_vegi_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -34,34 +33,28 @@ class HomeMyVegiList extends ConsumerWidget {
             width: 8,
           ),
           Padding(
-            padding: const EdgeInsets.only(right:6.0),
+            padding: const EdgeInsets.only(right: 6.0),
             child: HomeMyVegiButton(
-                enabled: true,
-                backgroundColor: FarmusThemeColor.greenLight3,
-                text: "상훈이",
-                onPressed: () {},
-                borderColor: FarmusThemeColor.green1,
-                textColor: FarmusThemeColor.green1),
+              enabled: true,
+              text: "상훈이",
+              onPressed: () {},
+            ),
           ),
           Padding(
-            padding: const EdgeInsets.only(right:6.0),
+            padding: const EdgeInsets.only(right: 6.0),
             child: HomeMyVegiButton(
-                enabled: true,
-                backgroundColor: FarmusThemeColor.greenLight3,
-                text: "방울이",
-                onPressed: () {},
-                borderColor: FarmusThemeColor.green1,
-                textColor: FarmusThemeColor.green1),
+              enabled: true,
+              text: "방울이",
+              onPressed: () {},
+            ),
           ),
           Padding(
-            padding: const EdgeInsets.only(right:6.0),
+            padding: const EdgeInsets.only(right: 6.0),
             child: HomeMyVegiButton(
-                enabled: true,
-                backgroundColor: FarmusThemeColor.greenLight3,
-                text: "깨르륵",
-                onPressed: () {},
-                borderColor: FarmusThemeColor.green1,
-                textColor: FarmusThemeColor.green1),
+              enabled: true,
+              text: "깨르륵",
+              onPressed: () {},
+            ),
           )
         ],
       ),
