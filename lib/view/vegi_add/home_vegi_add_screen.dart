@@ -1,4 +1,4 @@
-import 'package:farmus/common/app_bar/primary_app_bar.dart';
+import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
 import 'package:farmus/common/button/primary_button.dart';
 import 'package:farmus/common/dialog/primary_dialog.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
@@ -56,15 +56,8 @@ class HomeVegiAddScreen extends ConsumerWidget {
     }
 
     return Scaffold(
-      appBar: PrimaryAppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: SvgPicture.asset("assets/image/ic_left.svg"),
-        ),
+      appBar: const BackLeftTitleAppBar(
         title: "채소 등록",
-        centerTitle: false,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,7 +119,8 @@ class HomeVegiAddScreen extends ConsumerWidget {
                             showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
-                                  Future.delayed(const Duration(seconds: 2), () {
+                                  Future.delayed(const Duration(seconds: 2),
+                                      () {
                                     Navigator.of(context).pop();
                                   });
                                   return PrimaryDialog(
@@ -144,8 +138,8 @@ class HomeVegiAddScreen extends ConsumerWidget {
                                           ),
                                           const Text(
                                             "새 채소가 등록되었어요",
-                                            style:
-                                                FarmusThemeTextStyle.darkMedium16,
+                                            style: FarmusThemeTextStyle
+                                                .darkMedium16,
                                           )
                                         ],
                                       ),
@@ -159,8 +153,10 @@ class HomeVegiAddScreen extends ConsumerWidget {
                           : isVegiAddInfoComplete,
                       textColor: getButtonTextColor(currentPageIndex,
                           isVegiSelectedComplete, isVegiAddInfoComplete),
-                      backgroundColor: getButtonBackgroundColor(currentPageIndex,
-                          isVegiSelectedComplete, isVegiAddInfoComplete),
+                      backgroundColor: getButtonBackgroundColor(
+                          currentPageIndex,
+                          isVegiSelectedComplete,
+                          isVegiAddInfoComplete),
                       borderColor: FarmusThemeColor.white,
                     ),
                   ),

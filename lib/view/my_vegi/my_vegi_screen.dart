@@ -1,10 +1,10 @@
+import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
+import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/model/home/my_vegi_model.dart';
 import 'package:farmus/view/my_vegi/component/my_vegi_list_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 
-import '../../common/app_bar/primary_app_bar.dart';
 import '../../common/theme/farmus_theme_color.dart';
 
 class MyVegiScreen extends ConsumerWidget {
@@ -25,15 +25,17 @@ class MyVegiScreen extends ConsumerWidget {
     ];
 
     return Scaffold(
-      appBar: PrimaryAppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: SvgPicture.asset("assets/image/ic_left.svg"),
-        ),
-        title: "내 텃밭",
-        centerTitle: false,
+      appBar: const BackLeftTitleAppBar(
+        title: '내 텃밭',
+        actions: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: Text(
+              '삭제',
+              style: FarmusThemeTextStyle.darkMedium16,
+            ),
+          ),
+        ],
       ),
       body: ListView.builder(
         itemCount: myVegi.length,
@@ -44,9 +46,9 @@ class MyVegiScreen extends ConsumerWidget {
                 myVegi: myVegi[index],
               ),
               if (myVegi.length - 1 != index)
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: const Divider(
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Divider(
                     height: 1,
                     color: FarmusThemeColor.gray5,
                   ),
