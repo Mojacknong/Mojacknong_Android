@@ -22,30 +22,28 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
   final Color borderColor;
   @override
   final double? borderRadius;
+  @override
+  final double? fontSize;
+  @override
+  final Widget? buttonChild;
 
-  const PrimaryButton({
-    Key? key,
-    this.width,
-    this.height,
-    required this.text,
-    this.onPressed,
-    required this.enabled,
-    required this.textColor,
-    required this.backgroundColor,
-    required this.borderColor,
-    this.borderRadius,
-  }) : super(key: key);
+  const PrimaryButton(
+      {Key? key,
+      this.width,
+      this.height,
+      required this.text,
+      this.onPressed,
+      required this.enabled,
+      required this.textColor,
+      required this.backgroundColor,
+      required this.borderColor,
+      this.borderRadius,
+      this.fontSize,
+      this.buttonChild})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Widget buttonChild = Text(
-      text,
-      style: TextStyle(
-        color: textColor,
-      ),
-      textAlign: TextAlign.center,
-    );
-
     return SizedBox(
       width: width,
       height: height,
@@ -72,7 +70,15 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
                     ),
                   ),
                 ),
-                child: buttonChild,
+                child: buttonChild == null
+                    ? Text(
+                        text,
+                        style: TextStyle(
+                          color: textColor,
+                        ),
+                        textAlign: TextAlign.center,
+                      )
+                    : buttonChild!,
               ),
             )
           : TextButton(
@@ -95,7 +101,15 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
                   ),
                 ),
               ),
-              child: buttonChild,
+              child: buttonChild == null
+                  ? Text(
+                      text,
+                      style: TextStyle(
+                        color: textColor,
+                      ),
+                      textAlign: TextAlign.center,
+                    )
+                  : buttonChild!,
             ),
     );
   }

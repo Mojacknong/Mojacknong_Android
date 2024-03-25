@@ -1,11 +1,11 @@
 import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
+import 'package:farmus/common/button/add_button.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/model/home/my_vegi_model.dart';
 import 'package:farmus/view/my_vegi/component/my_vegi_list_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../common/button/primary_button.dart';
 import '../../common/theme/farmus_theme_color.dart';
 
 class MyVegiScreen extends ConsumerWidget {
@@ -80,16 +80,19 @@ class MyVegiScreen extends ConsumerWidget {
               },
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: PrimaryButton(
-              onPressed: () {},
-              text: '추가',
-              enabled: true,
-              textColor: FarmusThemeColor.white,
-              backgroundColor: FarmusThemeColor.primary,
-              borderColor: FarmusThemeColor.white,
-            ),
+          Column(
+            children: [
+              const Divider(
+                height: 1,
+                color: FarmusThemeColor.gray5,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: AddButton(
+                  onPressed: () {},
+                ),
+              ),
+            ],
           ),
         ],
       ),
