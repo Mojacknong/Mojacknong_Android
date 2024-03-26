@@ -1,9 +1,9 @@
 import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
 import 'package:farmus/common/button/add_button.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:farmus/model/home/my_vegi_model.dart';
 import 'package:farmus/view/my_vegi/component/my_vegi_list_info.dart';
 import 'package:farmus/view/vegi_add/home_vegi_add_screen.dart';
+import 'package:farmus/view_model/my_vegi/my_vegi_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -15,35 +15,7 @@ class MyVegiScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final List<MyVegiModel> myVegi = [
-      MyVegiModel(
-          vegiName: "상훈이", vegiType: "상추", nowDay: "8", startDay: "23.06.27"),
-      MyVegiModel(
-          vegiName: "방울이",
-          vegiType: "방울토마토",
-          nowDay: "8",
-          startDay: "24.03.23"),
-      MyVegiModel(
-          vegiName: "깨르륵", vegiType: "깻잎", nowDay: "5", startDay: "24.03.25"),
-      MyVegiModel(
-          vegiName: "상훈이", vegiType: "상추", nowDay: "8", startDay: "23.06.27"),
-      MyVegiModel(
-          vegiName: "방울이",
-          vegiType: "방울토마토",
-          nowDay: "8",
-          startDay: "24.03.23"),
-      MyVegiModel(
-          vegiName: "깨르륵", vegiType: "깻잎", nowDay: "5", startDay: "24.03.25"),
-      MyVegiModel(
-          vegiName: "상훈이", vegiType: "상추", nowDay: "8", startDay: "23.06.27"),
-      MyVegiModel(
-          vegiName: "방울이",
-          vegiType: "방울토마토",
-          nowDay: "8",
-          startDay: "24.03.23"),
-      MyVegiModel(
-          vegiName: "깨르륵", vegiType: "깻잎", nowDay: "5", startDay: "24.03.25"),
-    ];
+    final myVegiList = ref.watch(myVegiProvider);
 
     return Scaffold(
       appBar: BackLeftTitleAppBar(
@@ -62,14 +34,21 @@ class MyVegiScreen extends ConsumerWidget {
         children: [
           Expanded(
             child: ListView.builder(
-              itemCount: myVegi.length,
+              itemCount: myVegiList.length,
               itemBuilder: (context, index) {
                 return Column(
                   children: [
-                    MyVegiListInfo(
-                      myVegi: myVegi[index],
+                    GestureDetector(
+                      onLongPress: () {
+                        ref
+                            .read(myVegiProvider.notifier)
+                            .removeMyVegi(myVegiList[index]);
+                      },
+                      child: MyVegiListInfo(
+                        myVegi: myVegiList[index],
+                      ),
                     ),
-                    if (myVegi.length - 1 != index)
+                    if (myVegiList.length - 1 != index)
                       const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16.0),
                         child: Divider(
@@ -96,7 +75,9 @@ class MyVegiScreen extends ConsumerWidget {
                     ref.read(homeVegiAddMoveProvider.notifier).reset();
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const HomeVegiAddScreen(),),
+                      MaterialPageRoute(
+                        builder: (context) => const HomeVegiAddScreen(),
+                      ),
                     );
                   },
                 ),
