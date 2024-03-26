@@ -8,7 +8,7 @@ class MyVegiModel {
     required this.vegiName,
     required this.vegiType,
     required this.nowDay,
-    required this.startDay
+    required this.startDay,
   });
 
   MyVegiModel copyWith({

@@ -32,6 +32,7 @@ class MyVegiScreen extends ConsumerWidget {
               style: FarmusThemeTextStyle.darkMedium16,
             ),
           ),
+          const SizedBox(width: 8,)
         ],
       ),
       body: Column(
@@ -68,7 +69,7 @@ class MyVegiScreen extends ConsumerWidget {
                 padding: const EdgeInsets.all(16.0),
                 child: myVegiDeleteMode
                     ? DeleteButton(
-                        enabled: false, onPressed: () {}, count: "3")
+                        enabled: true, onPressed: () {}, count: "3")
                     : AddButton(
                         onPressed: () {
                           ref.read(homeVegiInfoAddProvider.notifier).reset();
