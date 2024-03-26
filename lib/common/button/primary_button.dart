@@ -9,7 +9,7 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
   @override
   final double? height;
   @override
-  final String text;
+  final String? text;
   @override
   final VoidCallback? onPressed;
   @override
@@ -31,7 +31,7 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
       {Key? key,
       this.width,
       this.height,
-      required this.text,
+      this.text,
       this.onPressed,
       required this.enabled,
       required this.textColor,
@@ -72,7 +72,7 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
                 ),
                 child: buttonChild == null
                     ? Text(
-                        text,
+                        text!,
                         style: TextStyle(
                           color: textColor,
                         ),
@@ -103,7 +103,7 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
               ),
               child: buttonChild == null
                   ? Text(
-                      text,
+                      text!,
                       style: TextStyle(
                         color: textColor,
                       ),

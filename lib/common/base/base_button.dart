@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 abstract class BaseButton {
   double? get width;
   double? get height;
-  String get text;
+  String? get text;
   void Function()? get onPressed;
   bool get enabled;
   Color get textColor;

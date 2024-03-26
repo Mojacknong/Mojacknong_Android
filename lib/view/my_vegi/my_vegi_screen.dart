@@ -1,5 +1,6 @@
 import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
 import 'package:farmus/common/button/add_button.dart';
+import 'package:farmus/common/button/delete_button.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/my_vegi/component/my_vegi_list_info.dart';
 import 'package:farmus/view/vegi_add/home_vegi_add_screen.dart';
@@ -16,15 +17,18 @@ class MyVegiScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final myVegiList = ref.watch(myVegiProvider);
+    final myVegiDeleteMode = ref.watch(myVegiDeleteProvider);
 
     return Scaffold(
       appBar: BackLeftTitleAppBar(
         title: '내 텃밭',
         actions: [
           TextButton(
-            onPressed: () {},
-            child: const Text(
-              '삭제',
+            onPressed: () {
+              ref.read(myVegiDeleteProvider.notifier).changeMyVegiScreenMode();
+            },
+            child: Text(
+              myVegiDeleteMode ? '취소' : '삭제',
               style: FarmusThemeTextStyle.darkMedium16,
             ),
           ),
@@ -38,15 +42,8 @@ class MyVegiScreen extends ConsumerWidget {
               itemBuilder: (context, index) {
                 return Column(
                   children: [
-                    GestureDetector(
-                      onLongPress: () {
-                        ref
-                            .read(myVegiProvider.notifier)
-                            .removeMyVegi(myVegiList[index]);
-                      },
-                      child: MyVegiListInfo(
-                        myVegi: myVegiList[index],
-                      ),
+                    MyVegiListInfo(
+                      myVegi: myVegiList[index],
                     ),
                     if (myVegiList.length - 1 != index)
                       const Padding(
@@ -69,18 +66,21 @@ class MyVegiScreen extends ConsumerWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: AddButton(
-                  onPressed: () {
-                    ref.read(homeVegiInfoAddProvider.notifier).reset();
-                    ref.read(homeVegiAddMoveProvider.notifier).reset();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const HomeVegiAddScreen(),
+                child: myVegiDeleteMode
+                    ? DeleteButton(
+                        enabled: false, onPressed: () {}, count: "3")
+                    : AddButton(
+                        onPressed: () {
+                          ref.read(homeVegiInfoAddProvider.notifier).reset();
+                          ref.read(homeVegiAddMoveProvider.notifier).reset();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const HomeVegiAddScreen(),
+                            ),
+                          );
+                        },
                       ),
-                    );
-                  },
-                ),
               ),
             ],
           ),
