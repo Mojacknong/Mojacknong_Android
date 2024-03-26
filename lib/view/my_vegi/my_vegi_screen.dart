@@ -18,6 +18,7 @@ class MyVegiScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final myVegiList = ref.watch(myVegiProvider);
     final myVegiDeleteMode = ref.watch(myVegiDeleteProvider);
+    final myVegiNotifier = ref.read(myVegiProvider.notifier);
 
     return Scaffold(
       appBar: BackLeftTitleAppBar(
@@ -32,7 +33,9 @@ class MyVegiScreen extends ConsumerWidget {
               style: FarmusThemeTextStyle.darkMedium16,
             ),
           ),
-          const SizedBox(width: 8,)
+          const SizedBox(
+            width: 8,
+          )
         ],
       ),
       body: Column(
@@ -69,7 +72,12 @@ class MyVegiScreen extends ConsumerWidget {
                 padding: const EdgeInsets.all(16.0),
                 child: myVegiDeleteMode
                     ? DeleteButton(
-                        enabled: true, onPressed: () {}, count: "3")
+                        enabled:
+                            myVegiNotifier.selectedVegi.isEmpty ? false : true,
+                        onPressed: () {
+                          myVegiNotifier.removeAllSelected();
+                        },
+                        count: "${myVegiNotifier.selectedVegi.length}")
                     : AddButton(
                         onPressed: () {
                           ref.read(homeVegiInfoAddProvider.notifier).reset();

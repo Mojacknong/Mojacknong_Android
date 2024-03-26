@@ -80,7 +80,6 @@ class MyVegiListInfo extends ConsumerWidget {
             ? IconButton(
           onPressed: () {
             myVegiNotifier.toggleSelect(myVegi);
-            print(myVegi.vegiName);
           },
           icon: SvgPicture.asset(
             myVegiNotifier.isVegiSelected(myVegi)
