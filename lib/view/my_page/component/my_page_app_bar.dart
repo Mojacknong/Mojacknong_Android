@@ -1,4 +1,4 @@
-import 'package:farmus/common/primary_app_bar.dart';
+import 'package:farmus/common/app_bar/primary_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

@@ -1,6 +1,6 @@
-import 'package:farmus/common/farmus_theme_color.dart';
-import 'package:farmus/view/on_boarding/component/select_box.dart';
+import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_title.dart';
+import 'package:farmus/view/on_boarding/component/select_box.dart';
 import 'package:farmus/view_model/on_boarding/on_boarding_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

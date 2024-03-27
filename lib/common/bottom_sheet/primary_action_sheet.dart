@@ -1,15 +1,11 @@
 import 'package:farmus/common/base/base_action_sheet.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../farmus_theme_text_style.dart';
+import '../theme/farmus_theme_text_style.dart';
 
-class ActionSheetPrimary extends StatelessWidget implements BaseActionSheet {
-  const ActionSheetPrimary({
-    super.key,
-    this.title,
-    this.actions,
-    this.cancelButton
-  });
+class PrimaryActionSheet extends StatelessWidget implements BaseActionSheet {
+  const PrimaryActionSheet(
+      {super.key, this.title, this.message, this.actions, this.cancelButton});
 
   @override
   final String? title;
@@ -17,7 +13,8 @@ class ActionSheetPrimary extends StatelessWidget implements BaseActionSheet {
   final List<Widget>? actions;
   @override
   final Widget? cancelButton;
-
+  @override
+  final String? message;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +25,13 @@ class ActionSheetPrimary extends StatelessWidget implements BaseActionSheet {
               style: FarmusThemeTextStyle.gray2Medium12,
             )
           : null,
-      actions: actions,
+      message: message != null
+          ? Text(
+              message!,
+              style: FarmusThemeTextStyle.darkMedium16,
+            )
+          : null,
+      actions: actions ?? [],
       cancelButton: cancelButton,
     );
   }

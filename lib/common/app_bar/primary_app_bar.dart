@@ -1,20 +1,31 @@
-import 'package:farmus/common/base/base_app_bar.dart';
-import 'package:farmus/common/farmus_theme_color.dart';
-import 'package:farmus/common/farmus_theme_text_style.dart';
-import 'package:flutter/material.dart';
+import 'dart:ui';
+
+import 'package:flutter/material.dart' hide Size;
+
+import '../base/base_app_bar.dart';
+import '../theme/farmus_theme_color.dart';
+import '../theme/farmus_theme_text_style.dart';
 
 class PrimaryAppBar extends StatelessWidget
     implements PreferredSizeWidget, BaseAppBar {
   @override
   final Widget? leading;
+  @override
   final double? leadingWidth;
   @override
   final String? title;
   @override
   final List<Widget>? actions;
+  @override
+  final bool? centerTitle;
 
   const PrimaryAppBar(
-      {super.key, this.leading, this.leadingWidth, this.title, this.actions});
+      {super.key,
+      this.leading,
+      this.title,
+      this.actions,
+      this.leadingWidth,
+      this.centerTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +39,8 @@ class PrimaryAppBar extends StatelessWidget
             )
           : null,
       actions: actions,
-      centerTitle: true,
+      centerTitle: centerTitle,
+      titleSpacing: 0,
       backgroundColor: FarmusThemeColor.white,
       elevation: 0.0,
       bottomOpacity: 0.0,

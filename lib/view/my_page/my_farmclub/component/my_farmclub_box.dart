@@ -1,4 +1,4 @@
-import 'package:farmus/common/farmus_theme_color.dart';
+import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/view/my_page/my_farmclub/my_farmclub_screen.dart';
 import 'package:flutter/material.dart';
 

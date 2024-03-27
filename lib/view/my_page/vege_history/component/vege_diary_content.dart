@@ -1,6 +1,6 @@
-import 'package:farmus/common/farmus_theme_color.dart';
-import 'package:flutter/material.dart';
 import 'package:expandable_text/expandable_text.dart';
+import 'package:farmus/common/theme/farmus_theme_color.dart';
+import 'package:flutter/material.dart';
 
 class VegeDiaryContent extends StatefulWidget {
   final String content;
