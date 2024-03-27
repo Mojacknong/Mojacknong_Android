@@ -5,7 +5,11 @@ import '../base/bouncing.dart';
 
 class PrimaryButton extends StatelessWidget implements BaseButton {
   @override
-  final String text;
+  final double? width;
+  @override
+  final double? height;
+  @override
+  final String? text;
   @override
   final VoidCallback? onPressed;
   @override
@@ -16,57 +20,38 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
   final Color backgroundColor;
   @override
   final Color borderColor;
+  @override
+  final double? borderRadius;
+  @override
+  final double? fontSize;
+  @override
+  final Widget? buttonChild;
 
-  const PrimaryButton({
-    Key? key,
-    required this.text,
-    this.onPressed,
-    required this.enabled,
-    required this.textColor,
-    required this.backgroundColor,
-    required this.borderColor,
-  }) : super(key: key);
+  const PrimaryButton(
+      {Key? key,
+      this.width,
+      this.height,
+      this.text,
+      this.onPressed,
+      required this.enabled,
+      required this.textColor,
+      required this.backgroundColor,
+      required this.borderColor,
+      this.borderRadius,
+      this.fontSize,
+      this.buttonChild})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Widget buttonChild = Text(
-      text,
-      style: TextStyle(
-        color: textColor,
-      ),
-    );
-
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: SizedBox(
-        width: double.infinity,
-        height: 48,
-        child: enabled
-            ? Bouncing(
-                onPress: onPressed,
-                child: TextButton(
-                  onPressed: onPressed,
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(backgroundColor),
-                    side: MaterialStateProperty.resolveWith(
-                      (states) {
-                        return BorderSide(
-                          color: borderColor,
-                          width: 1.0,
-                        );
-                      },
-                    ),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                    ),
-                  ),
-                  child: buttonChild,
-                ),
-              )
-            : TextButton(
-                onPressed: null,
+    return SizedBox(
+      width: width,
+      height: height,
+      child: enabled
+          ? Bouncing(
+              onPress: () {},
+              child: TextButton(
+                onPressed: onPressed,
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(backgroundColor),
                   side: MaterialStateProperty.resolveWith(
@@ -79,13 +64,53 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
                   ),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
+                      borderRadius: borderRadius == null
+                          ? BorderRadius.circular(8.0)
+                          : BorderRadius.circular(borderRadius!),
                     ),
                   ),
                 ),
-                child: buttonChild,
+                child: buttonChild == null
+                    ? Text(
+                        text!,
+                        style: TextStyle(
+                          color: textColor,
+                        ),
+                        textAlign: TextAlign.center,
+                      )
+                    : buttonChild!,
               ),
-      ),
+            )
+          : TextButton(
+              onPressed: null,
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(backgroundColor),
+                side: MaterialStateProperty.resolveWith(
+                  (states) {
+                    return BorderSide(
+                      color: borderColor,
+                      width: 1.0,
+                    );
+                  },
+                ),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: borderRadius == null
+                        ? BorderRadius.circular(8.0)
+                        : BorderRadius.circular(borderRadius!),
+                  ),
+                ),
+              ),
+              child: buttonChild == null
+                  ? Text(
+                      text!,
+                      style: TextStyle(
+                        color: textColor,
+                      ),
+                      textAlign: TextAlign.center,
+                    )
+                  : buttonChild!,
+            ),
     );
   }
 }
