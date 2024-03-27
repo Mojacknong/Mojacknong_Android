@@ -1,4 +1,4 @@
-import 'package:farmus/view_model/my_page/notifier/vege_count_notifier.dart';
+import 'package:farmus/view_model/my_page/vege_count_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -7,7 +7,6 @@ class MyVegeCount extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Notifier로부터 채소의 수를 받아오기
     final vegeCount = ref.watch(vegeCountProvider);
 
     return Column(
