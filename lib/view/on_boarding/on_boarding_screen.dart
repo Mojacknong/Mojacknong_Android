@@ -1,14 +1,13 @@
+import 'package:farmus/common/button/on_boarding_button.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
-import 'package:farmus/view/on_boarding/component/on_boarding_before_button.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_first.dart';
-import 'package:farmus/view/on_boarding/component/on_boarding_next_button.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_third.dart';
 import 'package:farmus/view/on_boarding/on_boarding_finish_screen.dart';
 import 'package:farmus/view_model/on_boarding/on_boarding_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'component/on_boarding_app_bar.dart';
+import '../../common/app_bar/on_boarding_app_bar.dart';
 import 'component/on_boarding_fourth.dart';
 import 'component/on_boarding_second.dart';
 
@@ -89,7 +88,7 @@ class OnBoardingScreen extends ConsumerWidget {
                 Expanded(
                   child: Visibility(
                     visible: currentPageIndex != "first",
-                    child: OnBoardingBeforeButton(
+                    child: OnBoardingButton(
                       text: "이전",
                       onPressed: () {
                         switch (currentPageIndex) {
@@ -111,7 +110,7 @@ class OnBoardingScreen extends ConsumerWidget {
                   ),
                 ),
                 Expanded(
-                  child: OnBoardingNextButton(
+                  child: OnBoardingButton(
                     text: nextButtonText,
                     onPressed: () {
                       switch (currentPageIndex) {

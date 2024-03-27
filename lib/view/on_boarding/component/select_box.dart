@@ -1,7 +1,7 @@
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../../../common/bouncing.dart';
+import '../../../common/base/bouncing.dart';
 
 class SelectBox extends StatelessWidget {
   final String title;

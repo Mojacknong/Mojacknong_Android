@@ -22,7 +22,7 @@ final onBoardingSpecialCharactersProvider =
   return SpecialCharacterNotifier();
 });
 
-// 특수문자 로직
+// 이동
 final onBoardingMoveProvider =
     StateNotifierProvider<MoveNotifier, String>((ref) {
   return MoveNotifier();

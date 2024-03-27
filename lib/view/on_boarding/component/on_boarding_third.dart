@@ -34,7 +34,7 @@ class OnBoardingThird extends ConsumerWidget {
                 const SizedBox(height: 16),
                 SelectBox(
                   title: "많은 시간을 쓸 수 있어요",
-                  content: "하루 1시간 이상",
+                  content: "하루 30분 이상",
                   selectBox: () {
                     selectBox.selectFirstBox();
                   },
