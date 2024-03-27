@@ -24,13 +24,11 @@ class OnBoardingFirst extends ConsumerStatefulWidget {
 class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
   XFile? file;
 
-  // 갤러리 이미지 설정 함수
   Future<void> _pickGalleryImage() async {
     ImagePicker().pickImage(source: ImageSource.gallery).then((value) {
       if (value != null) {
         setState(() {
           file = value;
-          // provider의 프로필 설정 로직 실행
           ref
               .read(onBoardingProfileProvider.notifier)
               .updateProfileImage(value);
@@ -44,7 +42,6 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
       if (value != null) {
         setState(() {
           file = value;
-          // provider의 프로필 설정 로직 실행
           ref
               .read(onBoardingProfileProvider.notifier)
               .updateProfileImage(value);
@@ -124,7 +121,6 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
                       color: FarmusThemeColor.gray5,
                       shape: OvalBorder(),
                     ),
-                    // 이미지 선택을 하지 않으면 카메라 아이콘 설정
                     child: (file == null)
                         ? Stack(
                             children: [
@@ -137,7 +133,6 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
                               )
                             ],
                           )
-                        // 이미지 선택하면 해당 이미지로 설정
                         : GestureDetector(
                             onTap: () => _showActionSheet(context),
                             child: ClipOval(
