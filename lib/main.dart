@@ -1,6 +1,6 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/res/app_url/app_url.dart';
-import 'package:farmus/view/vegi_delete/vegi_delete_screen.dart';
+import 'package:farmus/view/my_vegi/my_vegi_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +33,7 @@ Future<void> main() async {
   runApp(ProviderScope(
     child: MaterialApp(
       title: "팜어스",
-      home: const VegiDeleteScreen(),
+      home: const MyVegiScreen(),
       debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
