@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../../common/base/bouncing.dart';
-import '../../../common/theme/farmus_theme_color.dart';
+import 'base/bouncing.dart';
+import 'theme/farmus_theme_color.dart';
 
 class SelectBox extends StatelessWidget {
   final Function() selectBox;
