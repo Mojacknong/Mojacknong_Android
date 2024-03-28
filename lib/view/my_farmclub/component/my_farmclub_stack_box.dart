@@ -1,17 +1,19 @@
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:farmus/view/my_page/component/my_history_box.dart';
-import 'package:farmus/view/my_page/component/my_vege_image_widget.dart';
-import 'package:farmus/view_model/my_page/vege_count_provider.dart';
+import 'package:farmus/view/my_farmclub/component/farmclub_widget.dart';
+import 'package:farmus/view/my_farmclub/component/my_farmclub_box.dart';
+import 'package:farmus/view_model/my_page/farmclub_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 
-class MyVegeStackBox extends ConsumerWidget {
+class MyFarmClubStackBox extends ConsumerWidget {
   final String historyType;
   final Image? image;
   final String message;
+  final String? imagePath = "assets/image/ic_farm_club_mark.svg";
   final String? vegeImage;
 
-  const MyVegeStackBox({
+  const MyFarmClubStackBox({
     Key? key,
     required this.historyType,
     this.image,
@@ -21,11 +23,11 @@ class MyVegeStackBox extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final vegeCount = ref.watch(vegeCountProvider);
+    final farmClubCount = ref.watch(farmClubCountProvider);
 
     return Stack(
       children: [
-        const MyVegeBox(),
+        const MyFarmClubBox(),
         Padding(
           padding: const EdgeInsets.only(left: 32, top: 20),
           child: Column(
@@ -34,6 +36,13 @@ class MyVegeStackBox extends ConsumerWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  if (image != null) ...[
+                    SvgPicture.asset(
+                      imagePath!,
+                      height: 22,
+                    ),
+                    const SizedBox(width: 8),
+                  ],
                   Text.rich(
                     TextSpan(
                       children: [
@@ -41,7 +50,7 @@ class MyVegeStackBox extends ConsumerWidget {
                             text: historyType,
                             style: FarmusThemeTextStyle.darkSemiBold17),
                         TextSpan(
-                            text: ' ${vegeCount.toString()}',
+                            text: ' ${farmClubCount.toString()}',
                             style: FarmusThemeTextStyle.gray2SemiBold17),
                       ],
                     ),
@@ -53,7 +62,7 @@ class MyVegeStackBox extends ConsumerWidget {
                 TextSpan(
                   children: [
                     TextSpan(
-                        text: ' ${vegeCount.toString()} ',
+                        text: ' ${farmClubCount.toString()} ',
                         style: FarmusThemeTextStyle.green1SemiBold13),
                     TextSpan(
                         text: message,
@@ -66,9 +75,9 @@ class MyVegeStackBox extends ConsumerWidget {
         ),
         const Positioned(
           child: Padding(
-            padding: EdgeInsets.only(top: 90.0, left: 24),
+            padding: EdgeInsets.only(top: 105.0, left: 24),
             child: Row(
-              children: [MyVegeImageWidget(), MyVegeImageWidget()],
+              children: [FarmClubWidget(), FarmClubWidget(), FarmClubWidget()],
             ),
           ),
         ),

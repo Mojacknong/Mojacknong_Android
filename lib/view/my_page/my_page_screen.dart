@@ -10,21 +10,22 @@ class MyPageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: MyPageAppBar(),
-      resizeToAvoidBottomInset: true,
-      body: Column(
-        children: <Widget>[
-          SizedBox(
-            height: 140,
-            child: Padding(
-              padding: EdgeInsets.only(top: 8),
-              child: MyPageInfo(image: ""),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 140,
+              child: Padding(
+                padding: EdgeInsets.only(top: 8),
+                child: MyPageInfo(image: ""),
+              ),
             ),
-          ),
-          SizedBox(
-            height: 500,
-            child: MyHistory(),
-          )
-        ],
+            SizedBox(
+              height: 500,
+              child: MyHistory(),
+            )
+          ],
+        ),
       ),
     );
   }

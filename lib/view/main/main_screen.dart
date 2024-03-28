@@ -1,25 +1,37 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/home/home_screen.dart';
+import 'package:farmus/view/my_page/my_page_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
 class MainScreen extends ConsumerStatefulWidget {
-  const MainScreen({super.key});
+  final int selectedIndex;
+
+  const MainScreen({Key? key, required this.selectedIndex}) : super(key: key);
 
   @override
-  ConsumerState createState() => _MainScreenState();
+  ConsumerState createState() => _MainScreenState(selectedIndex);
 }
 
 class _MainScreenState extends ConsumerState<MainScreen> {
-  int _selectedIndex = 0;
+  int _selectedIndex;
+
+  _MainScreenState(this._selectedIndex);
+
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     Text("팜클럽"),
     Text("탐색"),
-    Text("마이페이지"),
+    MyPageScreen(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedIndex = widget.selectedIndex;
+  }
 
   void _onItemTapped(int index) {
     setState(() {

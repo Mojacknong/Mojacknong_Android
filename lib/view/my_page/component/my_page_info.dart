@@ -1,11 +1,10 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:farmus/view/my_page/my_page_profile_screen.dart';
+import 'package:farmus/view/my_page/my_profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class MyPageInfo extends StatelessWidget {
   final String? image;
-
   const MyPageInfo({super.key, required this.image});
 
   @override
@@ -18,26 +17,41 @@ class MyPageInfo extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const MyPageProfileScreen()),
+                    builder: (context) => const MyProfileScreen()),
               );
             },
-            child: Container(
+            child: SizedBox(
               height: 100,
-              padding: const EdgeInsets.all(16),
               child: Row(
                 children: [
-                  CircleAvatar(
-                    radius: 40,
-                    backgroundColor: Colors.transparent,
-                    child: ClipOval(child: _myImage()),
+                  Container(
+                    height: 100,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0,
+                      vertical: 16.0,
+                    ),
+                    child: Container(
+                      width: 68,
+                      height: 68,
+                      decoration: ShapeDecoration(
+                        color: FarmusThemeColor.gray5,
+                        shape: RoundedRectangleBorder(
+                          side: const BorderSide(
+                            width: 0.60,
+                            color: FarmusThemeColor.gray4,
+                          ),
+                          borderRadius: BorderRadius.circular(60),
+                        ),
+                      ),
+                    ),
                   ),
-                  const SizedBox(width: 15),
+                  const SizedBox(width: 8),
                   const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(top: 10),
+                        padding: EdgeInsets.only(top: 20),
                         child: Text(
                           "파머",
                           style: FarmusThemeTextStyle.darkSemiBold19,
@@ -60,48 +74,5 @@ class MyPageInfo extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  Widget _myImage() {
-    try {
-      return image!.isEmpty
-          ? Image.asset(
-              "assets/image/img_farmer.png",
-              fit: BoxFit.cover,
-            )
-          : ClipOval(
-              child: Image.network(
-                image!,
-                fit: BoxFit.cover,
-                width: 80,
-                height: 80,
-                loadingBuilder: (BuildContext context, Widget child,
-                    ImageChunkEvent? loadingProgress) {
-                  if (loadingProgress == null) {
-                    return child;
-                  } else if (loadingProgress.cumulativeBytesLoaded ==
-                      loadingProgress.expectedTotalBytes) {
-                    return child;
-                  } else {
-                    return Center(
-                      child: CircularProgressIndicator(
-                        valueColor: const AlwaysStoppedAnimation<Color>(
-                            FarmusThemeColor.brownButton),
-                        value: loadingProgress.expectedTotalBytes != null
-                            ? loadingProgress.cumulativeBytesLoaded /
-                                (loadingProgress.expectedTotalBytes ?? 1)
-                            : null,
-                      ),
-                    );
-                  }
-                },
-              ),
-            );
-    } catch (e) {
-      return Image.asset(
-        "assets/image/img_pepper.png",
-        fit: BoxFit.cover,
-      );
-    }
   }
 }

@@ -42,7 +42,10 @@ class OnBoardingFinishScreen extends ConsumerWidget {
                 Navigator.pop(context);
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const MainScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => const MainScreen(
+                            selectedIndex: 0,
+                          )),
                 );
               },
               enabled: true,
