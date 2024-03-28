@@ -4,6 +4,7 @@ import 'package:farmus/view_model/home/home_vegi_add_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../common/button/on_boarding_button.dart';
 import '../../common/theme/farmus_theme_color.dart';
 
 class VegiDeleteScreen extends ConsumerWidget {
@@ -27,7 +28,8 @@ class VegiDeleteScreen extends ConsumerWidget {
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
+              padding: const EdgeInsets.symmetric(
+                  vertical: 16.0, horizontal: 24.0),
               child: Consumer(builder: (context, ref, _) {
                 switch (currentPageIndex) {
                   case 'first':
@@ -38,6 +40,39 @@ class VegiDeleteScreen extends ConsumerWidget {
                     return Container();
                 }
               }),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Visibility(
+                    visible: currentPageIndex != "first",
+                    child: OnBoardingButton(
+                      text: "이전",
+                      onPressed: () {},
+                      enabled: true,
+                      textColor: FarmusThemeColor.gray1,
+                      backgroundColor: FarmusThemeColor.white,
+                      borderColor: FarmusThemeColor.gray3,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: OnBoardingButton(
+                    text: "다음",
+                    onPressed: () {
+
+                    },
+                    enabled: true,
+                    textColor: FarmusThemeColor.white,
+                    backgroundColor: FarmusThemeColor.gray4,
+                    borderColor: FarmusThemeColor.white,
+                  ),
+                ),
+              ],
             ),
           ),
         ],
