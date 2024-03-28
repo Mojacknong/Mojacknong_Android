@@ -1,5 +1,5 @@
-import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/view/on_boarding/component/main_sub_title.dart';
+import 'package:farmus/view/on_boarding/component/on_board_select_box.dart';
 import 'package:farmus/view/on_boarding/component/select_box.dart';
 import 'package:farmus/view_model/on_boarding/on_boarding_provider.dart';
 import 'package:flutter/material.dart';
@@ -30,41 +30,34 @@ class OnBoardingSecond extends ConsumerWidget {
                 ),
                 const SizedBox(height: 16),
                 SelectBox(
-                  title: "알뜰살뜰",
-                  content: "물가가 올라서 채솟값을 절약하고 싶어요",
                   selectBox: () {
                     selectBox.selectFirstBox();
                   },
-                  backgroundColor:
-                      motivation.isFirstSelect ? FarmusThemeColor.green3 : null,
-                  borderColor: motivation.isFirstSelect
-                      ? FarmusThemeColor.white
-                      : FarmusThemeColor.gray4,
+                  enabled: motivation.isFirstSelect,
+                  selectBoxContent: const OnBoardSelectBox(
+                    title: "알뜰살뜰",
+                    content: "물가가 올라서 채솟값을 절약하고 싶어요",
+                  ),
                 ),
                 SelectBox(
-                  title: "건강과 웰빙",
-                  content: "직접 키워서 먹으면 안심이 될 것 같아요",
                   selectBox: () {
                     selectBox.selectSecondBox();
                   },
-                  backgroundColor: motivation.isSecondSelect
-                      ? FarmusThemeColor.green3
-                      : null,
-                  borderColor: motivation.isSecondSelect
-                      ? FarmusThemeColor.white
-                      : FarmusThemeColor.gray4,
+                  enabled: motivation.isSecondSelect,
+                  selectBoxContent: const OnBoardSelectBox(
+                    title: "건강과 웰빙",
+                    content: "직접 키워서 먹으면 안심이 될 것 같아요",
+                  ),
                 ),
                 SelectBox(
-                  title: "심리적 안정",
-                  content: "채소를 기르며 마음의 안정을 찾고 싶어요",
                   selectBox: () {
                     selectBox.selectThirdBox();
                   },
-                  backgroundColor:
-                      motivation.isThirdSelect ? FarmusThemeColor.green3 : null,
-                  borderColor: motivation.isThirdSelect
-                      ? FarmusThemeColor.white
-                      : FarmusThemeColor.gray4,
+                  enabled: motivation.isThirdSelect,
+                  selectBoxContent: const OnBoardSelectBox(
+                    title: "심리적 안정",
+                    content: "채소를 기르며 마음의 안정을 찾고 싶어요",
+                  ),
                 ),
               ],
             ),
