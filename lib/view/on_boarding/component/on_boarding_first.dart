@@ -11,6 +11,7 @@ import '../../../common/theme/farmus_theme_text_style.dart';
 import '../../../view_model/on_boarding/on_boarding_provider.dart';
 import 'main_sub_title.dart';
 import 'on_boarding_nickname_text_input.dart';
+import 'main_sub_title.dart';
 
 class OnBoardingFirst extends ConsumerStatefulWidget {
   const OnBoardingFirst({Key? key}) : super(key: key);
@@ -53,16 +54,17 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
                 const Padding(
                   padding: EdgeInsets.all(16.0),
                   child: MainSubTitle(
+                  child: MainSubTitle(
                     mainText: "반가워요!\n프로필을 설정해볼까요?",
                     subText: "",
                   ),
                 ),
-                const SizedBox(height: 30),
+                SizedBox(height: 30),
                 Center(
                   child: Container(
                     width: 110,
                     height: 110,
-                    decoration: const ShapeDecoration(
+                    decoration: ShapeDecoration(
                       color: FarmusThemeColor.gray5,
                       shape: OvalBorder(),
                     ),
@@ -89,8 +91,8 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
                           ),
                   ),
                 ),
-                const SizedBox(height: 8),
-                const Padding(
+                SizedBox(height: 8),
+                Padding(
                   padding: EdgeInsets.all(16.0),
                   child: Text(
                     "닉네임",
@@ -99,7 +101,7 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  padding: EdgeInsets.symmetric(horizontal: 16),
                   child: OnBoardingNicknameTextInput(
                     initialValue: nickname,
                     errorText: hasSpecialCharacters ? "특수문자는 입력할 수 없어요" : null,
