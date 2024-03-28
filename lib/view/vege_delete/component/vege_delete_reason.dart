@@ -27,7 +27,9 @@ class VegeDeleteReason extends ConsumerWidget {
             Expanded(
               child: SelectBox(
                 selectBox: () {
-                  ref.read(vegeDeleteReasonProvider.notifier).selectedBox('success');
+                  ref
+                      .read(vegeDeleteReasonProvider.notifier)
+                      .selectedBox('success');
                 },
                 enabled: boxIndex == 'success',
                 selectBoxContent: Container(
@@ -51,7 +53,9 @@ class VegeDeleteReason extends ConsumerWidget {
             Expanded(
               child: SelectBox(
                 selectBox: () {
-                  ref.read(vegeDeleteReasonProvider.notifier).selectedBox('fail');
+                  ref
+                      .read(vegeDeleteReasonProvider.notifier)
+                      .selectedBox('fail');
                 },
                 enabled: boxIndex == 'fail',
                 selectBoxContent: Container(
