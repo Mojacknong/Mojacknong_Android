@@ -1,5 +1,5 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
-import 'package:farmus/view/on_boarding/component/on_boarding_title.dart';
+import 'package:farmus/view/on_boarding/component/main_sub_title.dart';
 import 'package:farmus/view/on_boarding/component/select_box.dart';
 import 'package:farmus/view_model/on_boarding/on_boarding_provider.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +23,7 @@ class OnBoardingSecond extends ConsumerWidget {
               children: [
                 const Padding(
                   padding: EdgeInsets.all(16.0),
-                  child: OnBoardingTitle(
+                  child: MainSubTitle(
                     mainText: "홈파밍을 하는 이유가 무엇인가요?",
                     subText: "이유에 맞는 응원 메시지를 전해드릴게요. (복수 선택)",
                   ),

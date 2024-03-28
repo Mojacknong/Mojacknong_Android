@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 
 import '../../../common/theme/farmus_theme_text_style.dart';
 
-class OnBoardingTitle extends StatelessWidget {
+class MainSubTitle extends StatelessWidget {
   final String mainText;
   final String subText;
 
-  const OnBoardingTitle({
+  const MainSubTitle({
     Key? key,
     required this.mainText,
     required this.subText,

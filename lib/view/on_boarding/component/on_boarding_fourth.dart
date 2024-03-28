@@ -1,5 +1,5 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
-import 'package:farmus/view/on_boarding/component/on_boarding_title.dart';
+import 'package:farmus/view/on_boarding/component/main_sub_title.dart';
 import 'package:farmus/view/on_boarding/component/select_box.dart';
 import 'package:farmus/view_model/on_boarding/on_boarding_provider.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +27,7 @@ class OnBoardingFourth extends ConsumerWidget {
               children: [
                 const Padding(
                   padding: EdgeInsets.all(16.0),
-                  child: OnBoardingTitle(
+                  child: MainSubTitle(
                     mainText: "홈파밍 경험이 있으신가요?",
                     subText: "경험을 고려해 채소를 추천해드릴 예정이에요.",
                   ),
