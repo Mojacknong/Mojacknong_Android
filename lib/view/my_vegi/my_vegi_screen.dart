@@ -4,6 +4,7 @@ import 'package:farmus/common/button/delete_button.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/my_vegi/component/my_vegi_list_info.dart';
 import 'package:farmus/view/vegi_add/home_vegi_add_screen.dart';
+import 'package:farmus/view/vegi_delete/vegi_delete_screen.dart';
 import 'package:farmus/view_model/my_vegi/my_vegi_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -45,8 +46,13 @@ class _MyVegiScreenState extends ConsumerState<MyVegiScreen> {
             ),
             CupertinoActionSheetAction(
               onPressed: () {
-                myVegiNotifier.removeAllSelected();
                 Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const VegiDeleteScreen()),
+                );
+                // myVegiNotifier.removeAllSelected();
+
               },
               child: const Text(
                 "확인",
