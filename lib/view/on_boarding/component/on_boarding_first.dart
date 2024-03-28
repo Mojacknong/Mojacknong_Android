@@ -11,7 +11,7 @@ import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 import '../../../view_model/on_boarding/on_boarding_provider.dart';
 import 'on_boarding_nickname_text_input.dart';
-import 'on_boarding_title.dart';
+import 'main_sub_title.dart';
 
 class OnBoardingFirst extends ConsumerStatefulWidget {
   const OnBoardingFirst({Key? key}) : super(key: key);
@@ -107,7 +107,7 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
               children: [
                 const Padding(
                   padding: EdgeInsets.all(16.0),
-                  child: OnBoardingTitle(
+                  child: MainSubTitle(
                     mainText: "반가워요!\n프로필을 설정해볼까요?",
                     subText: "",
                   ),
