@@ -1,5 +1,3 @@
-import 'package:expandable_text/expandable_text.dart';
-import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:flutter/material.dart';
 
 class VegeResultContent extends StatefulWidget {
@@ -32,17 +30,6 @@ class _VegeResultContentState extends State<VegeResultContent> {
                   _isExpanded = !_isExpanded;
                 });
               },
-              child: ExpandableText(
-                widget.content,
-                expandText: '더 보기',
-                collapseText: '...닫기',
-                maxLines: 2,
-                style: const TextStyle(
-                  fontSize: 14,
-                  color: FarmusThemeColor.dark,
-                  fontFamily: "Pretendard",
-                ),
-              ),
             ),
           ],
         ),

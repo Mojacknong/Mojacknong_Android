@@ -7,7 +7,7 @@ import 'package:farmus/view_model/on_boarding/on_boarding_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../common/app_bar/on_boarding_app_bar.dart';
+import '../../common/app_bar/page_index_app_bar.dart';
 import 'component/on_boarding_fourth.dart';
 import 'component/on_boarding_second.dart';
 
@@ -51,8 +51,9 @@ class OnBoardingScreen extends ConsumerWidget {
     }
 
     return Scaffold(
-      appBar: OnBoardingAppBar(
+      appBar: PageIndexAppBar(
         currentIndex: currentIndex,
+        maxIndex: "4",
       ),
       resizeToAvoidBottomInset: true,
       body: Column(

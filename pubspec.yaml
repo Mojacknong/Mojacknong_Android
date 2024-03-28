@@ -44,11 +44,10 @@ dependencies:
   riverpod_annotation: ^2.3.4
   image_picker: ^1.0.7
   table_calendar: ^3.0.9
-  expandable_text: ^2.3.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  intl: 0.18.1
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

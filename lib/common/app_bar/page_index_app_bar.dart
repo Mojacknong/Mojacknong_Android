@@ -4,10 +4,12 @@ import 'package:flutter_svg/svg.dart';
 
 import '../theme/farmus_theme_text_style.dart';
 
-class OnBoardingAppBar extends StatelessWidget implements PreferredSizeWidget {
+class PageIndexAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String currentIndex;
+  final String maxIndex;
 
-  const OnBoardingAppBar({super.key, required this.currentIndex});
+  const PageIndexAppBar(
+      {super.key, required this.currentIndex, required this.maxIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class OnBoardingAppBar extends StatelessWidget implements PreferredSizeWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Text(
-            "$currentIndex/4",
+            "$currentIndex/$maxIndex",
             style: FarmusThemeTextStyle.green1Medium14,
           ),
         )

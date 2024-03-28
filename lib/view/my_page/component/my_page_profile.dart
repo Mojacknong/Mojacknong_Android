@@ -1,8 +1,8 @@
 import 'dart:io';
 
+import 'package:farmus/common/button/on_boarding_button.dart';
 import 'package:farmus/view/my_page/my_page_screen.dart';
-import 'package:farmus/view/on_boarding/component/on_boarding_next_button.dart';
-import 'package:farmus/view/on_boarding/component/on_boarding_nickname.dart';
+import 'package:farmus/view/on_boarding/component/on_boarding_nickname_text_input.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -177,13 +177,13 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
                   ),
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16),
-                    child: OnBoardingNickname(),
+                    child: OnBoardingNicknameTextInput(),
                   ),
                 ],
               ),
             ),
           ),
-          OnBoardingNextButton(
+          OnBoardingButton(
             text: nextButtonText,
             onPressed: () {
               Navigator.pop(
