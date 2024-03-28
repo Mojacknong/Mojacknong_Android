@@ -1,5 +1,5 @@
-import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/view/on_boarding/component/main_sub_title.dart';
+import 'package:farmus/view/on_boarding/component/on_board_select_box.dart';
 import 'package:farmus/view/on_boarding/component/select_box.dart';
 import 'package:farmus/view_model/on_boarding/on_boarding_provider.dart';
 import 'package:flutter/material.dart';
@@ -33,43 +33,34 @@ class OnBoardingThird extends ConsumerWidget {
                   ),
                 ),
                 SizedBox(height: 16),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                  child: SelectBox(
-                    selectBox: () {
-                      selectBox.selectFirstBox();
-                    },
-                    enabled: isFirstSelect,
-                    selectBoxContent: OnBoardSelectBox(
-                      title: "많은 시간을 쓸 수 있어요",
-                      content: "하루 30분 이상",
-                    ),
+                SelectBox(
+                  selectBox: () {
+                    selectBox.selectFirstBox();
+                  },
+                  enabled: isFirstSelect,
+                  selectBoxContent: OnBoardSelectBox(
+                    title: "많은 시간을 쓸 수 있어요",
+                    content: "하루 30분 이상",
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                  child: SelectBox(
-                    selectBox: () {
-                      selectBox.selectSecondBox();
-                    },
-                    enabled: isSecondSelect,
-                    selectBoxContent: OnBoardSelectBox(
-                      title: "아침 저녁으로 할 수 있어요",
-                      content: "하루 10~30분",
-                    ),
+                SelectBox(
+                  selectBox: () {
+                    selectBox.selectSecondBox();
+                  },
+                  enabled: isSecondSelect,
+                  selectBoxContent: OnBoardSelectBox(
+                    title: "아침 저녁으로 할 수 있어요",
+                    content: "하루 10~30분",
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                  child: SelectBox(
-                    selectBox: () {
-                      selectBox.selectThirdBox();
-                    },
-                    enabled: isThirdSelect,
-                    selectBoxContent: OnBoardSelectBox(
-                      title: "바빠서 할 시간이 별로 없어요",
-                      content: "하루 10분 미만",
-                    ),
+                SelectBox(
+                  selectBox: () {
+                    selectBox.selectThirdBox();
+                  },
+                  enabled: isThirdSelect,
+                  selectBoxContent: OnBoardSelectBox(
+                    title: "바빠서 할 시간이 별로 없어요",
+                    content: "하루 10분 미만",
                   ),
                 ),
               ],

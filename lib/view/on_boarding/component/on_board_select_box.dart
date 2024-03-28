@@ -14,22 +14,19 @@ class OnBoardSelectBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            title,
-            style: FarmusThemeTextStyle.darkMedium17,
-          ),
-          const SizedBox(height: 8),
-          Text(
-            content,
-            style: FarmusThemeTextStyle.gray1Medium13,
-          ),
-        ],
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          title,
+          style: FarmusThemeTextStyle.darkMedium17,
+        ),
+        const SizedBox(height: 8),
+        Text(
+          content,
+          style: FarmusThemeTextStyle.gray1Medium13,
+        ),
+      ],
     );
   }
 }
