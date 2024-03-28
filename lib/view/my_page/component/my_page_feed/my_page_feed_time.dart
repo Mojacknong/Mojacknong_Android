@@ -1,9 +1,9 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:flutter/material.dart';
 
-class VegeResultTime extends StatelessWidget {
+class MyPageFeedTime extends StatelessWidget {
   final String postTime;
-  const VegeResultTime({
+  const MyPageFeedTime({
     super.key,
     required this.postTime,
   });

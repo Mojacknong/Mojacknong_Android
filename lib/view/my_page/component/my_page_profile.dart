@@ -1,8 +1,8 @@
 import 'dart:io';
 
+import 'package:farmus/common/button/on_boarding_button.dart';
 import 'package:farmus/view/my_page/my_page_screen.dart';
-import 'package:farmus/view/on_boarding/component/on_boarding_next_button.dart';
-import 'package:farmus/view/on_boarding/component/on_boarding_nickname.dart';
+import 'package:farmus/view/on_boarding/component/on_boarding_nickname_text_input.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -97,12 +97,10 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
   @override
   Widget build(BuildContext context) {
     file = ref.read(onBoardingProfileProvider).profileImage;
-    final profile = ref.watch(onBoardingProfileProvider);
-    final isSpecial = ref.watch(onBoardingSpecialCharactersProvider);
+    final nickname = ref.read(onBoardingProfileProvider).nickname;
+    final hasSpecialCharacters = ref.watch(onBoardingSpecialCharactersProvider);
 
     String nextButtonText = "수정완료";
-
-    bool enabled = profile.isProfileComplete && !isSpecial;
 
     return Scaffold(
       appBar: AppBar(
@@ -175,15 +173,30 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
                       style: FarmusThemeTextStyle.darkMedium13,
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16),
-                    child: OnBoardingNickname(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: OnBoardingNicknameTextInput(
+                      initialValue: nickname,
+                      maxLength: 10,
+                      hintText: '파머',
+                      errorText:
+                          hasSpecialCharacters ? "특수문자는 입력할 수 없어요" : null,
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16),
+                        borderSide: const BorderSide(
+                          color: FarmusThemeColor.gray4,
+                        ),
+                      ),
+                      errorStyle: const TextStyle(
+                        color: FarmusThemeColor.red,
+                      ),
+                    ),
                   ),
                 ],
               ),
             ),
           ),
-          OnBoardingNextButton(
+          OnBoardingButton(
             text: nextButtonText,
             onPressed: () {
               Navigator.pop(
@@ -193,12 +206,10 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
                 ),
               );
             },
-            enabled: enabled,
-            textColor:
-                enabled ? FarmusThemeColor.white : FarmusThemeColor.gray3,
-            backgroundColor:
-                enabled ? FarmusThemeColor.primary : FarmusThemeColor.gray4,
-            borderColor: FarmusThemeColor.white,
+            enabled: true,
+            textColor: FarmusThemeColor.gray1,
+            backgroundColor: FarmusThemeColor.white,
+            borderColor: FarmusThemeColor.gray3,
           ),
         ],
       ),

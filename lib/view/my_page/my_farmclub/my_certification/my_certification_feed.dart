@@ -1,7 +1,7 @@
+import 'package:farmus/view/my_page/component/my_page_feed/my_page_feed_content.dart';
+import 'package:farmus/view/my_page/component/my_page_feed/my_page_feed_picture.dart';
+import 'package:farmus/view/my_page/component/my_page_feed/my_page_feed_time.dart';
 import 'package:farmus/view/my_page/my_farmclub/my_certification/step_title.dart';
-import 'package:farmus/view/my_page/vege_result/vege_result_content.dart';
-import 'package:farmus/view/my_page/vege_result/vege_result_pic.dart';
-import 'package:farmus/view/my_page/vege_result/vege_result_time.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart'; // DateFormat을 사용하기 위해 추가
 
@@ -33,16 +33,16 @@ class MyCertificationFeed extends StatelessWidget {
               title: title,
               step: step,
             ),
-            VegeResultPicture(
+            MyPageFeedPicture(
               image: image,
             ),
             const SizedBox(
               height: 8,
             ),
-            VegeResultContent(
+            MyPageFeedContent(
               content: content,
             ),
-            VegeResultTime(postTime: postTime),
+            MyPageFeedTime(postTime: postTime),
           ],
         ),
       ),

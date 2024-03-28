@@ -1,4 +1,4 @@
-import 'package:farmus/view/my_page/vege_result/vege_result_feed.dart';
+import 'package:farmus/view/my_page/vege_history/vege_result/vege_result_feed.dart';
 import 'package:flutter/material.dart';
 
 class VegeResultList extends StatefulWidget {

@@ -2,19 +2,19 @@ import 'package:expandable_text/expandable_text.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:flutter/material.dart';
 
-class VegeDiaryContent extends StatefulWidget {
+class MyPageFeedContent extends StatefulWidget {
   final String content;
 
-  const VegeDiaryContent({
+  const MyPageFeedContent({
     Key? key,
     required this.content,
   }) : super(key: key);
 
   @override
-  _VegeDiaryContentState createState() => _VegeDiaryContentState();
+  _MyPageFeedContentState createState() => _MyPageFeedContentState();
 }
 
-class _VegeDiaryContentState extends State<VegeDiaryContent> {
+class _MyPageFeedContentState extends State<MyPageFeedContent> {
   bool _isExpanded = false;
 
   @override

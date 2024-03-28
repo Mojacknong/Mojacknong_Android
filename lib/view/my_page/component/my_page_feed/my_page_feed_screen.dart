@@ -1,14 +1,14 @@
-import 'package:farmus/view/my_page/vege_history/component/vege_diary_content.dart';
-import 'package:farmus/view/my_page/vege_history/component/vege_diary_pic.dart';
-import 'package:farmus/view/my_page/vege_history/component/vege_diary_time.dart';
+import 'package:farmus/view/my_page/component/my_page_feed/my_page_feed_content.dart';
+import 'package:farmus/view/my_page/component/my_page_feed/my_page_feed_picture.dart';
+import 'package:farmus/view/my_page/component/my_page_feed/my_page_feed_time.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart'; // DateFormat을 사용하기 위해 추가
+import 'package:intl/intl.dart';
 
-class VegeDiaryFeed extends StatelessWidget {
+class MyPageFeed extends StatelessWidget {
   final String content;
   final String image;
 
-  const VegeDiaryFeed({
+  const MyPageFeed({
     Key? key,
     required this.content,
     required this.image,
@@ -24,16 +24,16 @@ class VegeDiaryFeed extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            VegeDiaryPicture(
-              image: "assets/image/img_diary1.png",
+            const MyPageFeedPicture(
+              image: "",
             ),
             const SizedBox(
               height: 8,
             ),
-            VegeDiaryContent(
+            MyPageFeedContent(
               content: content,
             ),
-            VegeDiaryTime(postTime: postTime),
+            MyPageFeedTime(postTime: postTime),
           ],
         ),
       ),

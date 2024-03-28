@@ -1,4 +1,4 @@
-import 'package:farmus/view/my_page/vege_history/vege_diary/vege_diary_feed.dart';
+import 'package:farmus/view/my_page/component/my_page_feed/my_page_feed_screen.dart';
 import 'package:flutter/material.dart';
 
 class VegeDiaryList extends StatefulWidget {
@@ -17,11 +17,11 @@ class _VegeDiaryListState extends State<VegeDiaryList> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            VegeDiaryFeed(
-              content: "아 설레" * 20,
+            MyPageFeed(
+              content: "아 설레ㅋㅋ" * 20,
               image: "",
             ),
-            VegeDiaryFeed(
+            MyPageFeed(
               content: "건강하게 자라 " * 20,
               image: "",
             ),

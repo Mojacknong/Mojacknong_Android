@@ -1,10 +1,10 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:flutter/material.dart';
 
-class VegeResultPicture extends StatelessWidget {
+class MyPageFeedPicture extends StatelessWidget {
   final String? image;
 
-  const VegeResultPicture({super.key, required this.image});
+  const MyPageFeedPicture({super.key, required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class VegeResultPicture extends StatelessWidget {
     try {
       return image!.isEmpty
           ? Image.asset(
-              "assets/image/img_vegeresult1.png",
+              "assets/image/img_diary1.png",
               fit: BoxFit.fill,
             )
           : ClipRRect(
