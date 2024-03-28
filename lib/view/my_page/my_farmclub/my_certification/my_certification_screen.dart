@@ -1,5 +1,5 @@
+import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
 import 'package:farmus/view/my_page/my_farmclub/component/farmclub_profile.dart';
-import 'package:farmus/view/my_page/my_farmclub/my_certification/my_certification_app_bar.dart';
 import 'package:farmus/view/my_page/my_farmclub/my_certification/my_certification_feed.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +27,9 @@ class _MyCertificationScreenState extends State<MyCertificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MyCertificationAppBar(),
+      appBar: const BackLeftTitleAppBar(
+        title: "나의 인증",
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [

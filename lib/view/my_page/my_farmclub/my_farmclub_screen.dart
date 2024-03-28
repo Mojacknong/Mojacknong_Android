@@ -1,5 +1,5 @@
+import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
 import 'package:farmus/view/my_page/my_farmclub/component/farmclub_list.dart';
-import 'package:farmus/view/my_page/my_farmclub/component/my_farmclub_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class FarmClubScreen extends StatelessWidget {
@@ -8,7 +8,9 @@ class FarmClubScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      appBar: FarmClubAppBar(),
+      appBar: BackLeftTitleAppBar(
+        title: "팜클럽 히스토리",
+      ),
       body: Column(
         children: [
           Expanded(

@@ -1,4 +1,4 @@
-import 'package:farmus/view/my_page/vege_history/component/vege_history_app_bar.dart';
+import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
 import 'package:farmus/view/my_page/vege_history/component/vege_history_tap.dart';
 import 'package:farmus/view/my_page/vege_history/component/vege_profile.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +27,9 @@ class _VegeDiaryScreenState extends State<VegeDiaryScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      appBar: VegeHistoryAppBar(),
+      appBar: BackLeftTitleAppBar(
+        title: "채소 히스토리",
+      ),
       body: Column(
         children: <Widget>[
           VegeProfile(),
