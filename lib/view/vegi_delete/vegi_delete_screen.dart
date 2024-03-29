@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../common/button/on_boarding_button.dart';
 import '../../common/theme/farmus_theme_color.dart';
+import '../../view_model/vegi_delete/vegi_delete_provider.dart';
 
 class VegiDeleteScreen extends ConsumerWidget {
   const VegiDeleteScreen({super.key});
@@ -13,6 +14,7 @@ class VegiDeleteScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.read(homeVegiAddMoveProvider.notifier).moveToFirstPage();
+    final boxIndex = ref.watch(vegiDeleteProvider);
     final currentPageIndex = ref.read(homeVegiAddMoveProvider);
 
     return Scaffold(
@@ -28,8 +30,8 @@ class VegiDeleteScreen extends ConsumerWidget {
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                  vertical: 16.0, horizontal: 24.0),
+              padding:
+                  const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
               child: Consumer(builder: (context, ref, _) {
                 switch (currentPageIndex) {
                   case 'first':
@@ -63,12 +65,14 @@ class VegiDeleteScreen extends ConsumerWidget {
                 Expanded(
                   child: OnBoardingButton(
                     text: "다음",
-                    onPressed: () {
-
-                    },
-                    enabled: true,
-                    textColor: FarmusThemeColor.white,
-                    backgroundColor: FarmusThemeColor.gray4,
+                    onPressed: () {},
+                    enabled: boxIndex != '',
+                    textColor: boxIndex != ''
+                        ? FarmusThemeColor.white
+                        : FarmusThemeColor.gray3,
+                    backgroundColor: boxIndex != ''
+                        ? FarmusThemeColor.primary
+                        : FarmusThemeColor.gray4,
                     borderColor: FarmusThemeColor.white,
                   ),
                 ),
