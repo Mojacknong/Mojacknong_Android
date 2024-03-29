@@ -6,4 +6,8 @@ class VegiDeleteNotifier extends StateNotifier<String> {
   void selectedBox(String index) {
     state = index;
   }
+
+  void reset() {
+    state = '';
+  }
 }

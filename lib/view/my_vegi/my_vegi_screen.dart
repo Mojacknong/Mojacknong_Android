@@ -6,6 +6,7 @@ import 'package:farmus/view/my_vegi/component/my_vegi_list_info.dart';
 import 'package:farmus/view/vegi_add/home_vegi_add_screen.dart';
 import 'package:farmus/view/vegi_delete/vegi_delete_screen.dart';
 import 'package:farmus/view_model/my_vegi/my_vegi_provider.dart';
+import 'package:farmus/view_model/vegi_delete/vegi_delete_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -47,6 +48,8 @@ class _MyVegiScreenState extends ConsumerState<MyVegiScreen> {
             CupertinoActionSheetAction(
               onPressed: () {
                 Navigator.pop(context);
+                ref.read(homeVegiAddMoveProvider.notifier).moveToFirstPage();
+                ref.read(vegiDeleteProvider.notifier).reset();
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const VegiDeleteScreen()),
