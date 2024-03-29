@@ -1,5 +1,6 @@
 import 'package:farmus/common/app_bar/page_index_app_bar.dart';
 import 'package:farmus/view/vegi_delete/commponent/vegi_delete_reason.dart';
+import 'package:farmus/view/vegi_delete/commponent/vegi_delete_success.dart';
 import 'package:farmus/view_model/home/home_vegi_add_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,13 +14,40 @@ class VegiDeleteScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.read(homeVegiAddMoveProvider.notifier).moveToFirstPage();
     final boxIndex = ref.watch(vegiDeleteProvider);
-    final currentPageIndex = ref.read(homeVegiAddMoveProvider);
+    final currentPageIndex = ref.watch(homeVegiAddMoveProvider);
+    final movePage = ref.read(homeVegiAddMoveProvider.notifier);
+
+    String nextButtonText = "다음";
+    String currentIndex;
+    bool enabled = false;
+    Widget? screenChild;
+    Function()? onPressed;
+
+    switch (currentPageIndex) {
+      case "first":
+        currentIndex = "1";
+        enabled = boxIndex != '';
+        screenChild = const VegiDeleteReason();
+        onPressed = () {
+          movePage.moveToSecondPage();
+        };
+        break;
+      case "second":
+        currentIndex = "2";
+        enabled = false;
+        screenChild = const VegiDeleteSuccess();
+        onPressed = () {
+
+        };
+        break;
+      default:
+        currentIndex = "0";
+    }
 
     return Scaffold(
-      appBar: const PageIndexAppBar(
-        currentIndex: '1',
+      appBar: PageIndexAppBar(
+        currentIndex: currentIndex,
         maxIndex: '2',
       ),
       body: Column(
@@ -30,19 +58,9 @@ class VegiDeleteScreen extends ConsumerWidget {
           ),
           Expanded(
             child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
-              child: Consumer(builder: (context, ref, _) {
-                switch (currentPageIndex) {
-                  case 'first':
-                    return const VegiDeleteReason();
-                  case 'second':
-                    return const VegiDeleteReason();
-                  default:
-                    return Container();
-                }
-              }),
-            ),
+                padding: const EdgeInsets.symmetric(
+                    vertical: 16.0, horizontal: 24.0),
+                child: screenChild),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -54,7 +72,9 @@ class VegiDeleteScreen extends ConsumerWidget {
                     visible: currentPageIndex != "first",
                     child: OnBoardingButton(
                       text: "이전",
-                      onPressed: () {},
+                      onPressed: () {
+                        movePage.moveToFirstPage();
+                      },
                       enabled: true,
                       textColor: FarmusThemeColor.gray1,
                       backgroundColor: FarmusThemeColor.white,
@@ -64,13 +84,13 @@ class VegiDeleteScreen extends ConsumerWidget {
                 ),
                 Expanded(
                   child: OnBoardingButton(
-                    text: "다음",
-                    onPressed: () {},
-                    enabled: boxIndex != '',
-                    textColor: boxIndex != ''
+                    text: nextButtonText,
+                    onPressed: onPressed!,
+                    enabled: enabled,
+                    textColor: enabled
                         ? FarmusThemeColor.white
                         : FarmusThemeColor.gray3,
-                    backgroundColor: boxIndex != ''
+                    backgroundColor: enabled
                         ? FarmusThemeColor.primary
                         : FarmusThemeColor.gray4,
                     borderColor: FarmusThemeColor.white,
