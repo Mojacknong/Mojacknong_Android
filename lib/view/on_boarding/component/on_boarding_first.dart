@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:farmus/common/bottom_sheet/farmus_image_picker.dart';
+import 'package:farmus/common/farmus_image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -10,8 +10,8 @@ import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 import '../../../view_model/on_boarding/on_boarding_provider.dart';
 import 'main_sub_title.dart';
-import 'on_boarding_nickname_text_input.dart';
 import 'main_sub_title.dart';
+import 'on_boarding_nickname_text_input.dart';
 
 class OnBoardingFirst extends ConsumerStatefulWidget {
   const OnBoardingFirst({Key? key}) : super(key: key);
@@ -25,6 +25,8 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
   XFile? file;
 
   void _showActionSheet(BuildContext context) {
+    FarmusImagePicker.showActionSheet(context, (value) {
+  void showActionSheet(BuildContext context) {
     FarmusImagePicker.showActionSheet(context, (value) {
       if (value != null) {
         setState(() {
@@ -73,7 +75,7 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
                             children: [
                               Center(
                                 child: GestureDetector(
-                                  onTap: () => _showActionSheet(context),
+                                  onTap: () => showActionSheet(context),
                                   child: SvgPicture.asset(
                                       "assets/image/ic_camera.svg"),
                                 ),
@@ -81,7 +83,7 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
                             ],
                           )
                         : GestureDetector(
-                            onTap: () => _showActionSheet(context),
+                            onTap: () => showActionSheet(context),
                             child: ClipOval(
                               child: Image.file(
                                 File(file!.path),
