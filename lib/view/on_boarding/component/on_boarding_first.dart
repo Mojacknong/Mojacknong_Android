@@ -1,17 +1,16 @@
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
+import 'package:farmus/common/farmus_image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../../common/bottom_sheet/primary_action_sheet.dart';
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 import '../../../view_model/on_boarding/on_boarding_provider.dart';
-import 'on_boarding_nickname_text_input.dart';
 import 'main_sub_title.dart';
+import 'on_boarding_nickname_text_input.dart';
 
 class OnBoardingFirst extends ConsumerStatefulWidget {
   const OnBoardingFirst({Key? key}) : super(key: key);
@@ -24,71 +23,17 @@ class OnBoardingFirst extends ConsumerStatefulWidget {
 class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
   XFile? file;
 
-  Future<void> _pickGalleryImage() async {
-    ImagePicker().pickImage(source: ImageSource.gallery).then((value) {
-      if (value != null) {
-        setState(() {
-          file = value;
-          ref
-              .read(onBoardingProfileProvider.notifier)
-              .updateProfileImage(value);
-        });
-      }
-    });
-  }
-
-  Future<void> _pickCameraImage() async {
-    ImagePicker().pickImage(source: ImageSource.camera).then((value) {
-      if (value != null) {
-        setState(() {
-          file = value;
-          ref
-              .read(onBoardingProfileProvider.notifier)
-              .updateProfileImage(value);
-        });
-      }
-    });
-  }
-
   void _showActionSheet(BuildContext context) {
-    showCupertinoModalPopup(
-      context: context,
-      builder: (BuildContext context) => PrimaryActionSheet(
-        title: "프로필 사진",
-        actions: <CupertinoActionSheetAction>[
-          CupertinoActionSheetAction(
-            onPressed: () {
-              _pickGalleryImage();
-              Navigator.pop(context);
-            },
-            child: const Text(
-              "앨범에서 사진 선택",
-              style: FarmusThemeTextStyle.dark2Medium15,
-            ),
-          ),
-          CupertinoActionSheetAction(
-            onPressed: () {
-              _pickCameraImage();
-              Navigator.pop(context);
-            },
-            child: const Text(
-              "사진 촬영",
-              style: FarmusThemeTextStyle.dark2Medium15,
-            ),
-          ),
-        ],
-        cancelButton: CupertinoActionSheetAction(
-          isDestructiveAction: true,
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text(
-            "취소",
-            style: FarmusThemeTextStyle.darkMedium15,
-          ),
-        ),
-      ),
-    );
+    FarmusImagePicker.showActionSheet(context, (value) {
+      if (value != null) {
+        setState(() {
+          file = value;
+          ref
+              .read(onBoardingProfileProvider.notifier)
+              .updateProfileImage(value);
+        });
+      }
+    });
   }
 
   @override
