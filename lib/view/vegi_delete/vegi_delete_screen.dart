@@ -28,7 +28,9 @@ class VegiDeleteScreen extends ConsumerWidget {
       case "first":
         currentIndex = "1";
         enabled = boxIndex != '';
-        screenChild = const VegiDeleteReason();
+        screenChild = const SingleChildScrollView(
+          child: VegiDeleteReason(),
+        );
         onPressed = () {
           movePage.moveToSecondPage();
         };
@@ -36,10 +38,10 @@ class VegiDeleteScreen extends ConsumerWidget {
       case "second":
         currentIndex = "2";
         enabled = false;
-        screenChild = const VegiDeleteSuccess();
-        onPressed = () {
-
-        };
+        screenChild = const SingleChildScrollView(
+          child: VegiDeleteSuccess(),
+        );
+        onPressed = () {};
         break;
       default:
         currentIndex = "0";
