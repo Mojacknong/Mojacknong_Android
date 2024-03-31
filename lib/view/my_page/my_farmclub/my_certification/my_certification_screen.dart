@@ -1,6 +1,6 @@
 import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
-import 'package:farmus/view/my_page/my_farmclub/component/farmclub_profile.dart';
 import 'package:farmus/view/my_page/my_farmclub/my_certification/my_certification_feed.dart';
+import 'package:farmus/view/my_page/my_farmclub/my_certification/my_certification_profile.dart';
 import 'package:flutter/material.dart';
 
 class MyCertificationScreen extends StatefulWidget {
@@ -33,7 +33,7 @@ class _MyCertificationScreenState extends State<MyCertificationScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const FarmClubProfile(),
+            const MyCertificationProfile(),
             MyCertificationFeed(
               content: "진짜 맛있음 " * 20,
               title: "상추 심고 사진 찍기",

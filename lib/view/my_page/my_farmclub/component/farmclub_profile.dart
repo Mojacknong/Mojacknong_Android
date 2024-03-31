@@ -14,7 +14,7 @@ class FarmClubProfile extends ConsumerWidget {
 
     return InkWell(
       onTap: () {
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
+        Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => const MyCertificationScreen(),
         ));
       },

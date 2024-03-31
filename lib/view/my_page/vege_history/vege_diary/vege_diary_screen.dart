@@ -1,6 +1,6 @@
 import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
 import 'package:farmus/view/my_page/vege_history/component/vege_history_tap.dart';
-import 'package:farmus/view/my_page/vege_history/component/vege_profile.dart';
+import 'package:farmus/view/my_page/vege_history/vege_diary/vege_diary_profile.dart';
 import 'package:flutter/material.dart';
 
 class VegeDiaryScreen extends StatefulWidget {
@@ -32,7 +32,7 @@ class _VegeDiaryScreenState extends State<VegeDiaryScreen> {
       ),
       body: Column(
         children: <Widget>[
-          VegeProfile(),
+          VegeDiaryProfile(),
           Expanded(child: VegeTabBar()),
         ],
       ),
