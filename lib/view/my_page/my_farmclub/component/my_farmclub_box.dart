@@ -18,7 +18,7 @@ class _MyFarmClubBoxState extends State<MyFarmClubBox> {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const FarmClubScreen()),
+            MaterialPageRoute(builder: (context) => const MyFarmClubScreen()),
           );
         },
         child: Container(

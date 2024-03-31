@@ -33,9 +33,7 @@ class MyCertificationFeed extends StatelessWidget {
               title: title,
               step: step,
             ),
-            MyPageFeedPicture(
-              image: image,
-            ),
+            const MyPageFeedPicture(),
             const SizedBox(
               height: 8,
             ),

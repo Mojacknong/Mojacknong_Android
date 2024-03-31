@@ -3,7 +3,7 @@ import 'package:farmus/view/my_page/my_farmclub/my_certification/my_certificatio
 import 'package:farmus/view/my_page/my_farmclub/my_certification/my_certification_profile.dart';
 import 'package:flutter/material.dart';
 
-class MyCertificationScreen extends StatefulWidget {
+class MyCertificationScreen extends StatelessWidget {
   final String? veggieName;
   final String? veggieType;
   final String? periodStart;
@@ -19,11 +19,6 @@ class MyCertificationScreen extends StatefulWidget {
     this.image,
   }) : super(key: key);
 
-  @override
-  State<MyCertificationScreen> createState() => _MyCertificationScreenState();
-}
-
-class _MyCertificationScreenState extends State<MyCertificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

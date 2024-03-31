@@ -1,5 +1,5 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
-import 'package:farmus/view/my_page/vege_history/vege_history_screen.dart';
+import 'package:farmus/view/my_page/vege_history_screen.dart';
 import 'package:flutter/material.dart';
 
 class MyVegeBox extends StatefulWidget {

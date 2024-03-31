@@ -1,6 +1,6 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:farmus/view/my_page/component/my_page_profile_screen.dart';
+import 'package:farmus/view/my_page/my_page_profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class MyPageInfo extends StatelessWidget {
@@ -16,7 +16,8 @@ class MyPageInfo extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const MyPageProfile()),
+                MaterialPageRoute(
+                    builder: (context) => const MyPageProfileScreen()),
               );
             },
             child: Container(

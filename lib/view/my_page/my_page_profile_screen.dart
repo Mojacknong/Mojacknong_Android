@@ -10,19 +10,20 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../../common/bottom_sheet/primary_action_sheet.dart';
-import '../../../common/theme/farmus_theme_color.dart';
-import '../../../common/theme/farmus_theme_text_style.dart';
-import '../../../view_model/on_boarding/on_boarding_provider.dart';
+import '../../common/bottom_sheet/primary_action_sheet.dart';
+import '../../common/theme/farmus_theme_color.dart';
+import '../../common/theme/farmus_theme_text_style.dart';
+import '../../view_model/on_boarding/on_boarding_provider.dart';
 
-class MyPageProfile extends ConsumerStatefulWidget {
-  const MyPageProfile({Key? key}) : super(key: key);
+class MyPageProfileScreen extends ConsumerStatefulWidget {
+  const MyPageProfileScreen({Key? key}) : super(key: key);
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _MyPageProfileState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _MyPageProfileScreenState();
 }
 
-class _MyPageProfileState extends ConsumerState<MyPageProfile> {
+class _MyPageProfileScreenState extends ConsumerState<MyPageProfileScreen> {
   XFile? file;
 
   Future<void> _pickGalleryImage() async {

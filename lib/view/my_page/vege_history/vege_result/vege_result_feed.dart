@@ -24,9 +24,7 @@ class VegeResultFeed extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            MyPageFeedPicture(
-              image: image,
-            ),
+            const MyPageFeedPicture(),
             const SizedBox(
               height: 8,
             ),

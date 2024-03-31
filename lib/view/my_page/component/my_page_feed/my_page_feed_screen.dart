@@ -24,9 +24,7 @@ class MyPageFeed extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const MyPageFeedPicture(
-              image: "",
-            ),
+            const MyPageFeedPicture(),
             const SizedBox(
               height: 8,
             ),
