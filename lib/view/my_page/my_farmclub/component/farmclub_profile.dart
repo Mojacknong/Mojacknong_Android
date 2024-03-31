@@ -1,6 +1,6 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:farmus/view/my_page/my_farmclub/component/farmclub_list.dart';
+import 'package:farmus/view/my_page/my_farmclub/component/farmclub_history_list_screen.dart';
 import 'package:farmus/view/my_page/my_farmclub/my_certification/my_certification_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -19,58 +19,69 @@ class FarmClubProfile extends ConsumerWidget {
         ));
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 16.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            _farmClubImage(farmClubInfo.image),
-            const SizedBox(width: 15.0),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  const SizedBox(height: 6.0),
-                  RichText(
-                    text: TextSpan(
-                      style: DefaultTextStyle.of(context).style,
-                      children: <TextSpan>[
-                        TextSpan(
-                            text: '${farmClubInfo.veggieName} ',
-                            style: FarmusThemeTextStyle.darkSemiBold17),
-                        const TextSpan(
-                          text: '| ',
-                          style: TextStyle(
-                              fontSize: 17, color: FarmusThemeColor.gray4),
+        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
+        child: Column(
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                _farmClubImage(farmClubInfo.image),
+                const SizedBox(width: 15.0),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      const SizedBox(height: 6.0),
+                      RichText(
+                        text: TextSpan(
+                          style: DefaultTextStyle.of(context).style,
+                          children: <TextSpan>[
+                            TextSpan(
+                                text: '${farmClubInfo.veggieName} ',
+                                style: FarmusThemeTextStyle.darkSemiBold17),
+                            const TextSpan(
+                              text: '| ',
+                              style: TextStyle(
+                                  fontSize: 17, color: FarmusThemeColor.gray4),
+                            ),
+                            TextSpan(
+                                text: farmClubInfo.veggieType,
+                                style: FarmusThemeTextStyle.darkMedium15),
+                          ],
                         ),
-                        TextSpan(
-                            text: farmClubInfo.veggieType,
-                            style: FarmusThemeTextStyle.darkMedium15),
-                      ],
-                    ),
+                      ),
+                      const SizedBox(height: 6.0),
+                      RichText(
+                        text: TextSpan(
+                          style: DefaultTextStyle.of(context).style,
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: '활동 기간 ${farmClubInfo.periodStart} ',
+                              style: FarmusThemeTextStyle.gray2Medium15,
+                            ),
+                            const TextSpan(
+                              text: '- ',
+                              style: FarmusThemeTextStyle.gray2Medium15,
+                            ),
+                            TextSpan(
+                              text: farmClubInfo.periodEnd,
+                              style: FarmusThemeTextStyle.gray2Medium15,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 6.0),
-                  RichText(
-                    text: TextSpan(
-                      style: DefaultTextStyle.of(context).style,
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: '활동 기간 ${farmClubInfo.periodStart} ',
-                          style: FarmusThemeTextStyle.gray2Medium15,
-                        ),
-                        const TextSpan(
-                          text: '- ',
-                          style: FarmusThemeTextStyle.gray2Medium15,
-                        ),
-                        TextSpan(
-                          text: farmClubInfo.periodEnd,
-                          style: FarmusThemeTextStyle.gray2Medium15,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
+            const SizedBox(
+              height: 16.0,
+            ),
+            const Divider(
+              height: 1,
+              color: FarmusThemeColor.gray5,
+            )
           ],
         ),
       ),

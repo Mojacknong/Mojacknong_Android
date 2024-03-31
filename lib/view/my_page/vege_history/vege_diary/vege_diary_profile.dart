@@ -17,7 +17,7 @@ class VegeDiaryProfile extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           CircleAvatar(
-            radius: 35,
+            radius: 30,
             backgroundColor: FarmusThemeColor.white,
             child: ClipOval(child: _vegeImage(vegeInfo.image)),
           ),
@@ -47,7 +47,7 @@ class VegeDiaryProfile extends ConsumerWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 12.0),
+                const SizedBox(height: 5.0),
                 RichText(
                   text: TextSpan(
                     style: DefaultTextStyle.of(context).style,

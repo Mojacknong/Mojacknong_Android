@@ -1,6 +1,6 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:farmus/view/my_page/component/my_page_profile.dart';
+import 'package:farmus/view/my_page/component/my_page_profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class MyPageInfo extends StatelessWidget {

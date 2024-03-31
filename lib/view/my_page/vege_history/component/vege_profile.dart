@@ -20,63 +20,74 @@ class VegeProfile extends ConsumerWidget {
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 16.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            CircleAvatar(
-              radius: 35,
-              backgroundColor: Colors.transparent,
-              child: ClipOval(child: _vegeImage(vegeInfo.image)),
-            ),
-            const SizedBox(width: 12.0),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  const SizedBox(height: 6.0),
-                  RichText(
-                    text: TextSpan(
-                      style: DefaultTextStyle.of(context).style,
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: '${vegeInfo.veggieName} ',
-                          style: FarmusThemeTextStyle.darkSemiBold17,
+        child: Column(
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                CircleAvatar(
+                  radius: 30,
+                  backgroundColor: Colors.transparent,
+                  child: ClipOval(child: _vegeImage(vegeInfo.image)),
+                ),
+                const SizedBox(width: 12.0),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      const SizedBox(height: 6.0),
+                      RichText(
+                        text: TextSpan(
+                          style: DefaultTextStyle.of(context).style,
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: '${vegeInfo.veggieName} ',
+                              style: FarmusThemeTextStyle.darkSemiBold17,
+                            ),
+                            const TextSpan(
+                              text: '| ',
+                              style: TextStyle(
+                                  fontSize: 17, color: FarmusThemeColor.gray4),
+                            ),
+                            TextSpan(
+                              text: vegeInfo.veggieType,
+                              style: FarmusThemeTextStyle.darkMedium15,
+                            ),
+                          ],
                         ),
-                        const TextSpan(
-                          text: '| ',
-                          style: TextStyle(
-                              fontSize: 17, color: FarmusThemeColor.gray4),
+                      ),
+                      const SizedBox(height: 5.0),
+                      RichText(
+                        text: TextSpan(
+                          style: DefaultTextStyle.of(context).style,
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: '${vegeInfo.periodStart} ',
+                              style: FarmusThemeTextStyle.gray2Medium15,
+                            ),
+                            const TextSpan(
+                              text: '- ',
+                              style: FarmusThemeTextStyle.gray2Medium15,
+                            ),
+                            TextSpan(
+                              text: vegeInfo.periodEnd,
+                              style: FarmusThemeTextStyle.gray2Medium15,
+                            ),
+                          ],
                         ),
-                        TextSpan(
-                          text: vegeInfo.veggieType,
-                          style: FarmusThemeTextStyle.darkMedium15,
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 12.0),
-                  RichText(
-                    text: TextSpan(
-                      style: DefaultTextStyle.of(context).style,
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: '${vegeInfo.periodStart} ',
-                          style: FarmusThemeTextStyle.gray2Medium15,
-                        ),
-                        const TextSpan(
-                          text: '- ',
-                          style: FarmusThemeTextStyle.gray2Medium15,
-                        ),
-                        TextSpan(
-                          text: vegeInfo.periodEnd,
-                          style: FarmusThemeTextStyle.gray2Medium15,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
+            const SizedBox(
+              height: 16.0,
+            ),
+            const Divider(
+              height: 1,
+              color: FarmusThemeColor.gray5,
+            )
           ],
         ),
       ),

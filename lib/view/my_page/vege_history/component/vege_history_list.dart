@@ -14,12 +14,7 @@ class VegeHistoryList extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return const Scaffold(
       body: Column(
-        children: [
-          SizedBox(
-            height: 100,
-            child: VegeProfile(),
-          ),
-        ],
+        children: [VegeProfile(), VegeProfile()],
       ),
     );
   }

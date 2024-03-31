@@ -30,7 +30,6 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
       if (value != null) {
         setState(() {
           file = value;
-          // provider의 프로필 설정 로직 실행
           ref
               .read(onBoardingProfileProvider.notifier)
               .updateProfileImage(value);
@@ -44,7 +43,6 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
       if (value != null) {
         setState(() {
           file = value;
-          // provider의 프로필 설정 로직 실행
           ref
               .read(onBoardingProfileProvider.notifier)
               .updateProfileImage(value);
