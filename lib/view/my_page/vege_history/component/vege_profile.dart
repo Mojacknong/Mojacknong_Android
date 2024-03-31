@@ -14,7 +14,7 @@ class VegeProfile extends ConsumerWidget {
 
     return InkWell(
       onTap: () {
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
+        Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => const VegeDiaryScreen(),
         ));
       },
@@ -101,10 +101,8 @@ class VegeProfile extends ConsumerWidget {
                   return child;
                 } else if (loadingProgress.cumulativeBytesLoaded ==
                     loadingProgress.expectedTotalBytes) {
-                  // 이미지가 완전히 로드된 경우
                   return child;
                 } else {
-                  // 이미지 로딩 중
                   return Center(
                     child: CircularProgressIndicator(
                       valueColor: const AlwaysStoppedAnimation<Color>(
