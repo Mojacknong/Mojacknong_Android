@@ -1,4 +1,4 @@
-import 'package:farmus/common/theme/farmus_theme_color.dart';
+import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/my_page/component/my_history_box.dart';
 import 'package:farmus/view/my_page/component/my_page_veges.dart';
 import 'package:farmus/view_model/my_page/vege_count_provider.dart';
@@ -46,21 +46,11 @@ class MyVegeStackBox extends ConsumerWidget {
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: historyType,
-                          style: const TextStyle(
-                            color: FarmusThemeColor.dark,
-                            fontSize: 17,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
+                            text: historyType,
+                            style: FarmusThemeTextStyle.darkSemiBold17),
                         TextSpan(
-                          text: ' ${vegeCount.toString()}',
-                          style: const TextStyle(
-                            color: FarmusThemeColor.gray2,
-                            fontSize: 17,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
+                            text: ' ${vegeCount.toString()}',
+                            style: FarmusThemeTextStyle.gray2SemiBold17),
                       ],
                     ),
                   ),
@@ -71,21 +61,11 @@ class MyVegeStackBox extends ConsumerWidget {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: ' ${vegeCount.toString()} ',
-                      style: const TextStyle(
-                        color: FarmusThemeColor.green1,
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+                        text: ' ${vegeCount.toString()} ',
+                        style: FarmusThemeTextStyle.green1SemiBold13),
                     TextSpan(
-                      text: message,
-                      style: const TextStyle(
-                        color: FarmusThemeColor.gray1,
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+                        text: message,
+                        style: FarmusThemeTextStyle.gray1SemiBold13),
                   ],
                 ),
               ),

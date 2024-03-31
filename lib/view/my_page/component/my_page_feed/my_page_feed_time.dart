@@ -1,4 +1,4 @@
-import 'package:farmus/common/theme/farmus_theme_color.dart';
+import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:flutter/material.dart';
 
 class MyPageFeedTime extends StatelessWidget {
@@ -17,11 +17,7 @@ class MyPageFeedTime extends StatelessWidget {
         children: [
           Text(
             postTime,
-            style: const TextStyle(
-              color: FarmusThemeColor.gray2,
-              fontSize: 13,
-              fontFamily: "Pretendard",
-            ),
+            style: FarmusThemeTextStyle.gray2Medium13,
           ),
         ],
       ),

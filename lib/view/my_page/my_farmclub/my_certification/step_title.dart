@@ -1,4 +1,4 @@
-import 'package:farmus/common/theme/farmus_theme_color.dart';
+import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:flutter/material.dart';
 
 class StepTitle extends StatelessWidget {
@@ -25,28 +25,18 @@ class StepTitle extends StatelessWidget {
               children: <TextSpan>[
                 const TextSpan(
                   text: 'Step',
-                  style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w600,
-                      color: FarmusThemeColor.gray2),
+                  style: FarmusThemeTextStyle.gray2SemiBold17,
                 ),
                 TextSpan(
                   text: step,
-                  style: const TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w600,
-                      color: FarmusThemeColor.gray2),
+                  style: FarmusThemeTextStyle.gray2SemiBold17,
                 ),
                 const TextSpan(
-                  text: ' | ',
-                  style: TextStyle(fontSize: 17, color: FarmusThemeColor.gray4),
+                  text: '  ',
                 ),
                 TextSpan(
                   text: title,
-                  style: const TextStyle(
-                      fontSize: 17.0,
-                      color: FarmusThemeColor.dark,
-                      fontWeight: FontWeight.w600),
+                  style: FarmusThemeTextStyle.darkSemiBold17,
                 ),
               ],
             ),

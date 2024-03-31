@@ -27,7 +27,7 @@ class FarmClubWidget extends StatelessWidget {
       return vegeImage == null || vegeImage!.isEmpty
           ? Image.asset(
               "assets/image/img_farmclub_lettuce.png",
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
             )
           : ClipOval(
               child: Image.network(
@@ -60,7 +60,7 @@ class FarmClubWidget extends StatelessWidget {
     } catch (e) {
       return Image.asset(
         "assets/image/img_greenonion.png",
-        fit: BoxFit.fill,
+        fit: BoxFit.cover,
       );
     }
   }

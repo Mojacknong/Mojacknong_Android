@@ -1,3 +1,4 @@
+import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/my_page/component/my_vege_stack_box.dart';
 import 'package:farmus/view/my_page/my_farmclub/component/my_farmclub_stack_box.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class MyHistory extends StatelessWidget {
             children: [
               Text(
                 "내 히스토리",
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
+                style: FarmusThemeTextStyle.darkSemiBold17,
               ),
             ],
           ),

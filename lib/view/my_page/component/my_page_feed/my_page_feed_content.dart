@@ -1,5 +1,5 @@
 import 'package:expandable_text/expandable_text.dart';
-import 'package:farmus/common/theme/farmus_theme_color.dart';
+import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:flutter/material.dart';
 
 class MyPageFeedContent extends StatefulWidget {
@@ -37,11 +37,7 @@ class _MyPageFeedContentState extends State<MyPageFeedContent> {
                 expandText: '더 보기',
                 collapseText: '...닫기',
                 maxLines: 2,
-                style: const TextStyle(
-                  fontSize: 14,
-                  color: FarmusThemeColor.dark,
-                  fontFamily: "Pretendard",
-                ),
+                style: FarmusThemeTextStyle.darkReqular14,
               ),
             ),
           ],

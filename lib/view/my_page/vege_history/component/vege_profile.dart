@@ -1,4 +1,5 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
+import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/my_page/vege_history/component/vege_history_list.dart';
 import 'package:farmus/view/my_page/vege_history/vege_diary/vege_diary_screen.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class VegeProfile extends ConsumerWidget {
 
     return InkWell(
       onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) => const VegeDiaryScreen(),
         ));
       },
@@ -39,8 +40,7 @@ class VegeProfile extends ConsumerWidget {
                       children: <TextSpan>[
                         TextSpan(
                           text: '${vegeInfo.veggieName} ',
-                          style: const TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.w500),
+                          style: FarmusThemeTextStyle.darkSemiBold17,
                         ),
                         const TextSpan(
                           text: '| ',
@@ -49,9 +49,7 @@ class VegeProfile extends ConsumerWidget {
                         ),
                         TextSpan(
                           text: vegeInfo.veggieType,
-                          style: const TextStyle(
-                            fontSize: 15.0,
-                          ),
+                          style: FarmusThemeTextStyle.darkMedium15,
                         ),
                       ],
                     ),
@@ -63,18 +61,15 @@ class VegeProfile extends ConsumerWidget {
                       children: <TextSpan>[
                         TextSpan(
                           text: '${vegeInfo.periodStart} ',
-                          style: const TextStyle(
-                              fontSize: 15, color: FarmusThemeColor.gray2),
+                          style: FarmusThemeTextStyle.gray2Medium15,
                         ),
                         const TextSpan(
                           text: '- ',
-                          style: TextStyle(
-                              fontSize: 17, color: FarmusThemeColor.gray2),
+                          style: FarmusThemeTextStyle.gray2Medium15,
                         ),
                         TextSpan(
                           text: vegeInfo.periodEnd,
-                          style: const TextStyle(
-                              fontSize: 15, color: FarmusThemeColor.gray2),
+                          style: FarmusThemeTextStyle.gray2Medium15,
                         ),
                       ],
                     ),

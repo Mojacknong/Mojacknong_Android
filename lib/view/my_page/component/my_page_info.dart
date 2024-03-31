@@ -1,4 +1,5 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
+import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/my_page/component/my_page_profile.dart';
 import 'package:flutter/material.dart';
 
@@ -34,19 +35,15 @@ class MyPageInfo extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(top: 16),
+                        padding: EdgeInsets.only(top: 10),
                         child: Text(
                           "파머",
-                          style: TextStyle(
-                              fontSize: 19,
-                              fontWeight: FontWeight.bold,
-                              color: FarmusThemeColor.dark),
+                          style: FarmusThemeTextStyle.darkSemiBold19,
                         ),
                       ),
                       Text(
                         "팜어스와 함께한지 +100일",
-                        style: TextStyle(
-                            fontSize: 15, color: FarmusThemeColor.gray1),
+                        style: FarmusThemeTextStyle.gray1Medium15,
                       )
                     ],
                   )
@@ -68,7 +65,7 @@ class MyPageInfo extends StatelessWidget {
       return image!.isEmpty
           ? Image.asset(
               "assets/image/img_farmer.png",
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
             )
           : ClipOval(
               child: Image.network(
@@ -82,10 +79,8 @@ class MyPageInfo extends StatelessWidget {
                     return child;
                   } else if (loadingProgress.cumulativeBytesLoaded ==
                       loadingProgress.expectedTotalBytes) {
-                    // 이미지가 완전히 로드된 경우
                     return child;
                   } else {
-                    // 이미지 로딩 중
                     return Center(
                       child: CircularProgressIndicator(
                         valueColor: const AlwaysStoppedAnimation<Color>(
@@ -103,7 +98,7 @@ class MyPageInfo extends StatelessWidget {
     } catch (e) {
       return Image.asset(
         "assets/image/img_pepper.png",
-        fit: BoxFit.fill,
+        fit: BoxFit.cover,
       );
     }
   }

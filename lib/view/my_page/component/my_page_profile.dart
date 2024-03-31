@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
 import 'package:farmus/common/button/on_boarding_button.dart';
 import 'package:farmus/view/my_page/my_page_screen.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_nickname_text_input.dart';
@@ -24,7 +25,6 @@ class MyPageProfile extends ConsumerStatefulWidget {
 class _MyPageProfileState extends ConsumerState<MyPageProfile> {
   XFile? file;
 
-  // 갤러리 이미지 설정 함수
   Future<void> _pickGalleryImage() async {
     ImagePicker().pickImage(source: ImageSource.gallery).then((value) {
       if (value != null) {
@@ -103,24 +103,8 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
     String nextButtonText = "수정완료";
 
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: SvgPicture.asset(
-            'assets/image/ic_arrow_left.svg',
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        title: const Text(
-          "프로필",
-          style: TextStyle(fontSize: 16, color: FarmusThemeColor.dark),
-        ),
-        centerTitle: false,
-        backgroundColor: FarmusThemeColor.white,
-        elevation: 0.0,
-        bottomOpacity: 0.0,
-        scrolledUnderElevation: 0,
+      appBar: const BackLeftTitleAppBar(
+        title: "프로필",
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -139,7 +123,6 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
                         color: FarmusThemeColor.gray5,
                         shape: OvalBorder(),
                       ),
-                      // 이미지 선택을 하지 않으면 카메라 아이콘 설정
                       child: (file == null)
                           ? Stack(
                               children: [
@@ -152,7 +135,6 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
                                 )
                               ],
                             )
-                          // 이미지 선택하면 해당 이미지로 설정
                           : GestureDetector(
                               onTap: () => _showActionSheet(context),
                               child: ClipOval(

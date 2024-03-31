@@ -1,4 +1,5 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
+import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/my_page/my_farmclub/component/farmclub_list.dart';
 import 'package:farmus/view/my_page/my_farmclub/my_certification/my_certification_screen.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class FarmClubProfile extends ConsumerWidget {
 
     return InkWell(
       onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) => const MyCertificationScreen(),
         ));
       },
@@ -34,21 +35,16 @@ class FarmClubProfile extends ConsumerWidget {
                       style: DefaultTextStyle.of(context).style,
                       children: <TextSpan>[
                         TextSpan(
-                          text: '${farmClubInfo.veggieName} ',
-                          style: const TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.w500),
-                        ),
+                            text: '${farmClubInfo.veggieName} ',
+                            style: FarmusThemeTextStyle.darkSemiBold17),
                         const TextSpan(
                           text: '| ',
                           style: TextStyle(
                               fontSize: 17, color: FarmusThemeColor.gray4),
                         ),
                         TextSpan(
-                          text: farmClubInfo.veggieType,
-                          style: const TextStyle(
-                            fontSize: 15.0,
-                          ),
-                        ),
+                            text: farmClubInfo.veggieType,
+                            style: FarmusThemeTextStyle.darkMedium15),
                       ],
                     ),
                   ),
@@ -59,18 +55,15 @@ class FarmClubProfile extends ConsumerWidget {
                       children: <TextSpan>[
                         TextSpan(
                           text: '활동 기간 ${farmClubInfo.periodStart} ',
-                          style: const TextStyle(
-                              fontSize: 15, color: FarmusThemeColor.gray2),
+                          style: FarmusThemeTextStyle.gray2Medium15,
                         ),
                         const TextSpan(
                           text: '- ',
-                          style: TextStyle(
-                              fontSize: 17, color: FarmusThemeColor.gray2),
+                          style: FarmusThemeTextStyle.gray2Medium15,
                         ),
                         TextSpan(
                           text: farmClubInfo.periodEnd,
-                          style: const TextStyle(
-                              fontSize: 15, color: FarmusThemeColor.gray2),
+                          style: FarmusThemeTextStyle.gray2Medium15,
                         ),
                       ],
                     ),
@@ -89,7 +82,7 @@ class FarmClubProfile extends ConsumerWidget {
       return imageUrl.isEmpty
           ? Image.asset(
               "assets/image/img_farmclub_lettuce.png",
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
             )
           : Image.network(
               imageUrl,
@@ -102,10 +95,8 @@ class FarmClubProfile extends ConsumerWidget {
                   return child;
                 } else if (loadingProgress.cumulativeBytesLoaded ==
                     loadingProgress.expectedTotalBytes) {
-                  // 이미지가 완전히 로드된 경우
                   return child;
                 } else {
-                  // 이미지 로딩 중
                   return Center(
                     child: CircularProgressIndicator(
                       valueColor: const AlwaysStoppedAnimation<Color>(
@@ -122,7 +113,7 @@ class FarmClubProfile extends ConsumerWidget {
     } catch (e) {
       return Image.asset(
         "assets/image/img_sesame.png",
-        fit: BoxFit.fill,
+        fit: BoxFit.cover,
       );
     }
   }
