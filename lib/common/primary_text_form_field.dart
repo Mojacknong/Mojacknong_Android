@@ -43,9 +43,7 @@ class PrimaryTextFormField extends StatelessWidget implements BaseTextInput {
     return TextFormField(
       initialValue: initialValue,
       maxLength: maxLength,
-      minLines: minLines,
-      maxLines: maxLines,
-      expands: (minLines == null && maxLines == null) ? true : false,
+      maxLines: 1,
       decoration: InputDecoration(
           hintText: hintText,
           hintStyle: const TextStyle(
