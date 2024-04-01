@@ -102,18 +102,7 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: OnBoardingNicknameTextInput(
                     initialValue: nickname,
-                    maxLength: 10,
-                    hintText: '파머',
                     errorText: hasSpecialCharacters ? "특수문자는 입력할 수 없어요" : null,
-                    errorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: const BorderSide(
-                        color: FarmusThemeColor.gray4,
-                      ),
-                    ),
-                    errorStyle: const TextStyle(
-                      color: FarmusThemeColor.red,
-                    ),
                   ),
                 ),
               ],
