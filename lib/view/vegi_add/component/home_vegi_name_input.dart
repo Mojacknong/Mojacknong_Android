@@ -18,6 +18,7 @@ class HomeVegiNameInput extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final name = ref.read(homeVegiInfoAddProvider).name;
 
+    var nowLength = ref.watch(homeVegiInfoAddProvider).name.length;
     return PrimaryTextFormField(
         initialValue: name,
         maxLength: 8,
@@ -25,6 +26,7 @@ class HomeVegiNameInput extends ConsumerWidget {
         onChanged: (value) {
           ref.read(homeVegiInfoAddProvider.notifier).updateNickname(value);
         },
-        nowLength: "${ref.watch(homeVegiInfoAddProvider).name.length}");
+      suffix: Text("$nowLength /8"),
+    );
   }
 }
