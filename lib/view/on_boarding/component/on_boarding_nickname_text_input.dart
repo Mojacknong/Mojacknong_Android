@@ -21,6 +21,8 @@ class OnBoardingNicknameTextInput extends ConsumerWidget {
     return PrimaryTextFormField(
         initialValue: initialValue,
         maxLength: 10,
+        maxLines: 1,
+        minLines: 1,
         hintText: '파머',
         errorText: errorText,
         errorBorder: OutlineInputBorder(

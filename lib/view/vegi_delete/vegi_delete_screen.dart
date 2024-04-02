@@ -32,12 +32,14 @@ class VegiDeleteScreen extends ConsumerWidget {
           child: VegiDeleteReason(),
         );
         onPressed = () {
+          ref.read(vegiDeleteSuccessProvider.notifier).reset();
           movePage.moveToSecondPage();
         };
         break;
       case "second":
         currentIndex = "2";
-        enabled = false;
+        enabled = true;
+        nextButtonText = '나중에 등록하기';
         screenChild = const SingleChildScrollView(
           child: VegiDeleteSuccess(),
         );
