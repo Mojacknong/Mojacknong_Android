@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/view/on_boarding/component/main_sub_title.dart';
+import 'package:farmus/view/vegi_delete/commponent/content_input_text_form.dart';
 import 'package:farmus/view_model/vegi_delete/vegi_delete_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,22 +21,28 @@ class VegiDeleteSuccess extends ConsumerStatefulWidget {
 
 class _VegiDeleteSuccessState extends ConsumerState<VegiDeleteSuccess> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     var successImage = ref.watch(vegiDeleteSuccessProvider).successImage;
-
     void showActionSheet(BuildContext context) {
       FarmusImagePicker.showActionSheet(context, (value) {
         if (value != null) {
           setState(() {
             successImage = value;
-            ref.read(vegiDeleteSuccessProvider.notifier).updateSuccessImage(successImage);
+            ref
+                .read(vegiDeleteSuccessProvider.notifier)
+                .updateSuccessImage(successImage);
           });
         }
       });
     }
 
     return Column(
-      children: [
+      children: <Widget>[
         const MainSubTitle(
           mainText: '축하해요!\n홈파밍 결과를 기록해주세요.',
           subText: '나중에 마이페이지에서 등록 가능해요',
@@ -80,7 +87,9 @@ class _VegiDeleteSuccessState extends ConsumerState<VegiDeleteSuccess> {
                       onTap: () {
                         (successImage == null)
                             ? showActionSheet(context)
-                            : ref.read(vegiDeleteSuccessProvider.notifier).deleteSuccessImage();
+                            : ref
+                                .read(vegiDeleteSuccessProvider.notifier)
+                                .deleteSuccessImage();
                       },
                       child: (successImage == null)
                           ? SvgPicture.asset('assets/image/ic_camera.svg',
@@ -96,6 +105,10 @@ class _VegiDeleteSuccessState extends ConsumerState<VegiDeleteSuccess> {
             ),
           ],
         ),
+        const SizedBox(
+          height: 16,
+        ),
+        const ContentInputTextForm()
       ],
     );
   }

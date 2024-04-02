@@ -7,6 +7,8 @@ class PrimaryTextFormField extends StatelessWidget implements BaseTextInput {
   const PrimaryTextFormField(
       {super.key,
       this.maxLength,
+      this.maxLines,
+      this.minLines,
       this.hintText,
       this.initialValue,
       this.errorText,
@@ -19,6 +21,10 @@ class PrimaryTextFormField extends StatelessWidget implements BaseTextInput {
   final String? hintText;
   @override
   final int? maxLength;
+  @override
+  final int? minLines;
+  @override
+  final int? maxLines;
   @override
   final String? initialValue;
   @override
@@ -37,7 +43,9 @@ class PrimaryTextFormField extends StatelessWidget implements BaseTextInput {
     return TextFormField(
       initialValue: initialValue,
       maxLength: maxLength,
-      maxLines: 1,
+      minLines: minLines,
+      maxLines: maxLines,
+      expands: (minLines == null && maxLines == null) ? true : false,
       decoration: InputDecoration(
           hintText: hintText,
           hintStyle: const TextStyle(
