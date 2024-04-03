@@ -15,7 +15,8 @@ class MyPageInfo extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const MyPageProfile()),
+                MaterialPageRoute(
+                    builder: (context) => const MyPageProfileScreen()),
               );
             },
             child: Container(
@@ -54,7 +55,7 @@ class MyPageInfo extends StatelessWidget {
               ),
             ),
           ),
-          const Divider(thickness: 1, color: Colors.grey),
+          const Divider(thickness: 1, color: FarmusThemeColor.gray4),
           const SizedBox(
             height: 16,
           ),
@@ -82,10 +83,8 @@ class MyPageInfo extends StatelessWidget {
                     return child;
                   } else if (loadingProgress.cumulativeBytesLoaded ==
                       loadingProgress.expectedTotalBytes) {
-                    // 이미지가 완전히 로드된 경우
                     return child;
                   } else {
-                    // 이미지 로딩 중
                     return Center(
                       child: CircularProgressIndicator(
                         valueColor: const AlwaysStoppedAnimation<Color>(

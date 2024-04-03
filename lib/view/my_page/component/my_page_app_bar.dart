@@ -1,4 +1,5 @@
 import 'package:farmus/common/app_bar/primary_app_bar.dart';
+import 'package:farmus/view/my_page/my_page_setting/my_page_setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -24,7 +25,11 @@ class MyPageAppBar extends StatelessWidget implements PreferredSizeWidget {
             icon: SvgPicture.asset(
               'assets/image/ic_settings.svg',
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const MyPageSettingScreen(),
+              ));
+            },
           ),
         ],
         leadingWidth: 150,

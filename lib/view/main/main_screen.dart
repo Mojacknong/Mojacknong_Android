@@ -1,6 +1,7 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/home/home_screen.dart';
+import 'package:farmus/view/my_page/my_page_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -18,7 +19,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
     HomeScreen(),
     Text("팜클럽"),
     Text("탐색"),
-    Text("마이페이지"),
+    MyPageScreen(),
   ];
 
   void _onItemTapped(int index) {

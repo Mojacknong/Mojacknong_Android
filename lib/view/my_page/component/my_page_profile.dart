@@ -1,36 +1,35 @@
 import 'dart:io';
 
+import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
+import 'package:farmus/common/bottom_sheet/primary_action_sheet.dart';
+import 'package:farmus/common/button/on_boarding_button.dart';
+import 'package:farmus/common/theme/farmus_theme_color.dart';
+import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/my_page/my_page_screen.dart';
-import 'package:farmus/view/on_boarding/component/on_boarding_next_button.dart';
-import 'package:farmus/view/on_boarding/component/on_boarding_nickname.dart';
+import 'package:farmus/view/on_boarding/component/on_boarding_nickname_text_input.dart';
+import 'package:farmus/view_model/on_boarding/on_boarding_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../../common/bottom_sheet/primary_action_sheet.dart';
-import '../../../common/theme/farmus_theme_color.dart';
-import '../../../common/theme/farmus_theme_text_style.dart';
-import '../../../view_model/on_boarding/on_boarding_provider.dart';
-
-class MyPageProfile extends ConsumerStatefulWidget {
-  const MyPageProfile({Key? key}) : super(key: key);
+class MyPageProfileScreen extends ConsumerStatefulWidget {
+  const MyPageProfileScreen({Key? key}) : super(key: key);
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _MyPageProfileState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _MyPageProfileScreenState();
 }
 
-class _MyPageProfileState extends ConsumerState<MyPageProfile> {
+class _MyPageProfileScreenState extends ConsumerState<MyPageProfileScreen> {
   XFile? file;
 
-  // 갤러리 이미지 설정 함수
   Future<void> _pickGalleryImage() async {
     ImagePicker().pickImage(source: ImageSource.gallery).then((value) {
       if (value != null) {
         setState(() {
           file = value;
-          // provider의 프로필 설정 로직 실행
           ref
               .read(onBoardingProfileProvider.notifier)
               .updateProfileImage(value);
@@ -44,7 +43,6 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
       if (value != null) {
         setState(() {
           file = value;
-          // provider의 프로필 설정 로직 실행
           ref
               .read(onBoardingProfileProvider.notifier)
               .updateProfileImage(value);
@@ -71,58 +69,32 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
           ),
           CupertinoActionSheetAction(
             onPressed: () {
-              _pickCameraImage();
+              // _pickCameraImage();
               Navigator.pop(context);
             },
             child: const Text(
-              "사진 촬영",
-              style: FarmusThemeTextStyle.dark2Medium15,
+              "현재 사진 삭제",
+              style: FarmusThemeTextStyle.redMedium15,
             ),
           ),
         ],
-        cancelButton: CupertinoActionSheetAction(
-          isDestructiveAction: true,
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text(
-            "취소",
-            style: FarmusThemeTextStyle.darkMedium15,
-          ),
-        ),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    file = ref.read(onBoardingProfileProvider).profileImage;
     final profile = ref.watch(onBoardingProfileProvider);
     final isSpecial = ref.watch(onBoardingSpecialCharactersProvider);
+    final nickname = ref.read(onBoardingProfileProvider).nickname;
+    final hasSpecialCharacters = ref.watch(onBoardingSpecialCharactersProvider);
 
     String nextButtonText = "수정완료";
-
-    bool enabled = profile.isProfileComplete && !isSpecial;
-
+    bool enabled = false;
+    enabled = profile.isProfileComplete && !isSpecial;
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: SvgPicture.asset(
-            'assets/image/ic_arrow_left.svg',
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        title: const Text(
-          "프로필",
-          style: TextStyle(fontSize: 16, color: FarmusThemeColor.dark),
-        ),
-        centerTitle: false,
-        backgroundColor: FarmusThemeColor.white,
-        elevation: 0.0,
-        bottomOpacity: 0.0,
-        scrolledUnderElevation: 0,
+      appBar: const BackLeftTitleAppBar(
+        title: "프로필",
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -141,7 +113,6 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
                         color: FarmusThemeColor.gray5,
                         shape: OvalBorder(),
                       ),
-                      // 이미지 선택을 하지 않으면 카메라 아이콘 설정
                       child: (file == null)
                           ? Stack(
                               children: [
@@ -154,7 +125,6 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
                                 )
                               ],
                             )
-                          // 이미지 선택하면 해당 이미지로 설정
                           : GestureDetector(
                               onTap: () => _showActionSheet(context),
                               child: ClipOval(
@@ -175,15 +145,30 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
                       style: FarmusThemeTextStyle.darkMedium13,
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16),
-                    child: OnBoardingNickname(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: OnBoardingNicknameTextInput(
+                      initialValue: nickname,
+                      maxLength: 10,
+                      hintText: '파머',
+                      errorText:
+                          hasSpecialCharacters ? "특수문자는 입력할 수 없어요" : null,
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16),
+                        borderSide: const BorderSide(
+                          color: FarmusThemeColor.gray4,
+                        ),
+                      ),
+                      errorStyle: const TextStyle(
+                        color: FarmusThemeColor.red,
+                      ),
+                    ),
                   ),
                 ],
               ),
             ),
           ),
-          OnBoardingNextButton(
+          OnBoardingButton(
             text: nextButtonText,
             onPressed: () {
               Navigator.pop(
