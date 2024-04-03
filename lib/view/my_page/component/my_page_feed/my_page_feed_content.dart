@@ -35,7 +35,7 @@ class _MyPageFeedContentState extends State<MyPageFeedContent> {
               child: ExpandableText(
                 widget.content,
                 expandText: '더 보기',
-                collapseText: '...닫기',
+                collapseText: ' 간단히 보기',
                 maxLines: 2,
                 style: FarmusThemeTextStyle.darkReqular14,
               ),
