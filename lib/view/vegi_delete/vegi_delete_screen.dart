@@ -17,8 +17,8 @@ class VegiDeleteScreen extends ConsumerWidget {
     final boxIndex = ref.watch(vegiDeleteProvider);
     final currentPageIndex = ref.watch(homeVegiAddMoveProvider);
     final movePage = ref.read(homeVegiAddMoveProvider.notifier);
-
-    String nextButtonText = "다음";
+    final successButtonText = ref.watch(vegiDeleteSuccessProvider);
+    String nextButtonText = '다음';
     String currentIndex;
     bool enabled = false;
     Widget? screenChild;
@@ -39,7 +39,11 @@ class VegiDeleteScreen extends ConsumerWidget {
       case "second":
         currentIndex = "2";
         enabled = true;
-        nextButtonText = '나중에 등록하기';
+        if (successButtonText.isComplete != true) {
+          nextButtonText = '나중에 등록하기';
+        } else {
+          nextButtonText = '다음';
+        }
         screenChild = const SingleChildScrollView(
           child: VegiDeleteSuccess(),
         );
