@@ -34,7 +34,7 @@ Future<void> main() async {
   runApp(ProviderScope(
     child: MaterialApp(
       title: "팜어스",
-      home: const VegiDeleteScreen(),
+      home: const OnBoardingScreen(),
       debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,

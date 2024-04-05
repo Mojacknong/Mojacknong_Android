@@ -49,101 +49,107 @@ class OnBoardingScreen extends ConsumerWidget {
         currentIndex = "0";
     }
 
-    return Scaffold(
-      appBar: PageIndexAppBar(
-        currentIndex: currentIndex,
-        maxIndex: "4",
-      ),
-      resizeToAvoidBottomInset: true,
-      body: Column(
-        children: [
-          const Divider(
-            thickness: 1,
-            color: FarmusThemeColor.gray4,
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Consumer(builder: (context, ref, _) {
-                switch (currentPageIndex) {
-                  case "first":
-                    return const OnBoardingFirst();
-                  case "second":
-                    return const OnBoardingSecond();
-                  case "third":
-                    return const OnBoardingThird();
-                  case "fourth":
-                    return const OnBoardingFourth();
-                  default:
-                    return Container();
-                }
-              }),
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: Scaffold(
+        appBar: PageIndexAppBar(
+          currentIndex: currentIndex,
+          maxIndex: "4",
+        ),
+        resizeToAvoidBottomInset: true,
+        body: Column(
+          children: [
+            const Divider(
+              thickness: 1,
+              color: FarmusThemeColor.gray4,
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Visibility(
-                    visible: currentPageIndex != "first",
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Consumer(builder: (context, ref, _) {
+                  switch (currentPageIndex) {
+                    case "first":
+                      return const OnBoardingFirst();
+                    case "second":
+                      return const OnBoardingSecond();
+                    case "third":
+                      return const OnBoardingThird();
+                    case "fourth":
+                      return const OnBoardingFourth();
+                    default:
+                      return Container();
+                  }
+                }),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Visibility(
+                      visible: currentPageIndex != "first",
+                      child: OnBoardingButton(
+                        text: "이전",
+                        onPressed: () {
+                          switch (currentPageIndex) {
+                            case "first":
+                              return;
+                            case "second":
+                              movePage.moveToFirstPage();
+                            case "third":
+                              movePage.moveToSecondPage();
+                            case "fourth":
+                              movePage.moveToThirdPage();
+                          }
+                        },
+                        enabled: true,
+                        textColor: FarmusThemeColor.gray1,
+                        backgroundColor: FarmusThemeColor.white,
+                        borderColor: FarmusThemeColor.gray3,
+                      ),
+                    ),
+                  ),
+                  Expanded(
                     child: OnBoardingButton(
-                      text: "이전",
+                      text: nextButtonText,
                       onPressed: () {
                         switch (currentPageIndex) {
                           case "first":
-                            return;
-                          case "second":
-                            movePage.moveToFirstPage();
-                          case "third":
                             movePage.moveToSecondPage();
-                          case "fourth":
+                          case "second":
                             movePage.moveToThirdPage();
+                          case "third":
+                            movePage.moveToFourthPage();
+                          case "fourth":
+                            Navigator.pop(context);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const OnBoardingFinishScreen()),
+                            );
                         }
                       },
-                      enabled: true,
-                      textColor: FarmusThemeColor.gray1,
-                      backgroundColor: FarmusThemeColor.white,
-                      borderColor: FarmusThemeColor.gray3,
+                      enabled: enabled,
+                      textColor: enabled
+                          ? FarmusThemeColor.white
+                          : FarmusThemeColor.gray3,
+                      backgroundColor: enabled
+                          ? FarmusThemeColor.primary
+                          : FarmusThemeColor.gray4,
+                      borderColor: FarmusThemeColor.white,
                     ),
                   ),
-                ),
-                Expanded(
-                  child: OnBoardingButton(
-                    text: nextButtonText,
-                    onPressed: () {
-                      switch (currentPageIndex) {
-                        case "first":
-                          movePage.moveToSecondPage();
-                        case "second":
-                          movePage.moveToThirdPage();
-                        case "third":
-                          movePage.moveToFourthPage();
-                        case "fourth":
-                          Navigator.pop(context);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const OnBoardingFinishScreen()),
-                          );
-                      }
-                    },
-                    enabled: enabled,
-                    textColor: enabled
-                        ? FarmusThemeColor.white
-                        : FarmusThemeColor.gray3,
-                    backgroundColor: enabled
-                        ? FarmusThemeColor.primary
-                        : FarmusThemeColor.gray4,
-                    borderColor: FarmusThemeColor.white,
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

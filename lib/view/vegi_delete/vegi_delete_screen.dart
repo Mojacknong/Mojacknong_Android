@@ -53,61 +53,67 @@ class VegiDeleteScreen extends ConsumerWidget {
         currentIndex = "0";
     }
 
-    return Scaffold(
-      appBar: PageIndexAppBar(
-        currentIndex: currentIndex,
-        maxIndex: '2',
-      ),
-      body: Column(
-        children: [
-          const Divider(
-            thickness: 1,
-            color: FarmusThemeColor.gray4,
-          ),
-          Expanded(
-            child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    vertical: 16.0, horizontal: 24.0),
-                child: screenChild),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Visibility(
-                    visible: currentPageIndex != "first",
-                    child: OnBoardingButton(
-                      text: "이전",
-                      onPressed: () {
-                        movePage.moveToFirstPage();
-                      },
-                      enabled: true,
-                      textColor: FarmusThemeColor.gray1,
-                      backgroundColor: FarmusThemeColor.white,
-                      borderColor: FarmusThemeColor.gray3,
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: Scaffold(
+        appBar: PageIndexAppBar(
+          currentIndex: currentIndex,
+          maxIndex: '2',
+        ),
+        body: Column(
+          children: [
+            const Divider(
+              thickness: 1,
+              color: FarmusThemeColor.gray4,
+            ),
+            Expanded(
+              child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 16.0, horizontal: 24.0),
+                  child: screenChild),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Visibility(
+                      visible: currentPageIndex != "first",
+                      child: OnBoardingButton(
+                        text: "이전",
+                        onPressed: () {
+                          movePage.moveToFirstPage();
+                        },
+                        enabled: true,
+                        textColor: FarmusThemeColor.gray1,
+                        backgroundColor: FarmusThemeColor.white,
+                        borderColor: FarmusThemeColor.gray3,
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: OnBoardingButton(
-                    text: nextButtonText,
-                    onPressed: onPressed!,
-                    enabled: enabled,
-                    textColor: enabled
-                        ? FarmusThemeColor.white
-                        : FarmusThemeColor.gray3,
-                    backgroundColor: enabled
-                        ? FarmusThemeColor.primary
-                        : FarmusThemeColor.gray4,
-                    borderColor: FarmusThemeColor.white,
+                  Expanded(
+                    child: OnBoardingButton(
+                      text: nextButtonText,
+                      onPressed: onPressed!,
+                      enabled: enabled,
+                      textColor: enabled
+                          ? FarmusThemeColor.white
+                          : FarmusThemeColor.gray3,
+                      backgroundColor: enabled
+                          ? FarmusThemeColor.primary
+                          : FarmusThemeColor.gray4,
+                      borderColor: FarmusThemeColor.white,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
