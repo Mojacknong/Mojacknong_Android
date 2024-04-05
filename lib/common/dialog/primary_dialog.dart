@@ -21,7 +21,6 @@ class PrimaryDialog extends StatelessWidget implements BaseDialog {
       backgroundColor: FarmusThemeColor.white,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(24)),
-
       ),
     );
   }
