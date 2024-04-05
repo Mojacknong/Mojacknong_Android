@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../common/button/on_boarding_button.dart';
+import '../../common/dialog/check_dialog.dart';
 import '../../common/theme/farmus_theme_color.dart';
 import '../../view_model/vegi_delete/vegi_delete_provider.dart';
 
@@ -47,7 +48,21 @@ class VegiDeleteScreen extends ConsumerWidget {
         screenChild = const SingleChildScrollView(
           child: VegiDeleteSuccess(),
         );
-        onPressed = () {};
+        onPressed = () {
+          Navigator.pop(context);
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              Future.delayed(const Duration(seconds: 2),
+                      () {
+                    Navigator.of(context).pop();
+                  });
+              return const CheckDialog(
+                text: "홈파밍을 종료했어요",
+              );
+            },
+          );
+        };
         break;
       default:
         currentIndex = "0";
