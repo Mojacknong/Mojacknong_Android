@@ -8,17 +8,38 @@ class VegiDeleteSuccessNotifier extends StateNotifier<VegiDeleteSuccessModel> {
       : super(VegiDeleteSuccessModel(
             content: null, successImage: null, isComplete: false));
 
+  bool _isVegiDeleteComplete = false;
+
+  bool get isVegiDeleteComplete => _isVegiDeleteComplete;
+
   void updateSuccessImage(XFile? successImage) {
+    if (state.content != null && state.content!.isNotEmpty) {
+      _isVegiDeleteComplete = true;
+    } else {
+      _isVegiDeleteComplete = false;
+    }
+
+    print("$isVegiDeleteComplete");
     state = state.copyWith(
       content: state.content,
       successImage: successImage,
+      isComplete: isVegiDeleteComplete,
     );
   }
 
   void updateContent(String content) {
+    if (content.isNotEmpty &&
+        state.successImage != null &&
+        state.successImage!.path.isNotEmpty) {
+      _isVegiDeleteComplete = true;
+    } else {
+      _isVegiDeleteComplete = false;
+    }
+
     state = state.copyWith(
       content: content,
       successImage: state.successImage,
+      isComplete: isVegiDeleteComplete,
     );
   }
 
@@ -26,6 +47,7 @@ class VegiDeleteSuccessNotifier extends StateNotifier<VegiDeleteSuccessModel> {
     state = state.copyWith(
       content: state.content,
       successImage: null,
+      isComplete: false,
     );
   }
 
