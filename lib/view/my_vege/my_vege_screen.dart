@@ -107,6 +107,16 @@ class _MyVegeScreenState extends ConsumerState<MyVegeScreen> {
               },
             ),
           ),
+          Visibility(
+            visible: myVegeDeleteMode,
+            child: const Text(
+              "채소는 한 번에 하나씩 삭제할 수 있어요",
+              style: FarmusThemeTextStyle.redMedium13,
+            ),
+          ),
+          const SizedBox(
+            height: 16,
+          ),
           Column(
             children: [
               const Divider(
@@ -122,7 +132,7 @@ class _MyVegeScreenState extends ConsumerState<MyVegeScreen> {
                         onPressed: () {
                           showActionSheet(context);
                         },
-                        count: "${myVegeNotifier.selectedVege.length}")
+                      )
                     : AddButton(
                         onPressed: () {
                           ref.read(homeVegeInfoAddProvider.notifier).reset();

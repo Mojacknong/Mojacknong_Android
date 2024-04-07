@@ -1,6 +1,7 @@
 import 'package:farmus/common/app_bar/page_index_app_bar.dart';
 import 'package:farmus/view/vege_delete/component/vege_delete_fail.dart';
 import 'package:farmus/view_model/home/home_vege_add_provider.dart';
+import 'package:farmus/view_model/my_vege/my_vege_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -64,6 +65,7 @@ class VegeDeleteScreen extends ConsumerWidget {
             break;
         }
         onPressed = () {
+          ref.read(myVegeProvider.notifier).removeAllSelected();
           Navigator.pop(context);
           showDialog(
             context: context,
