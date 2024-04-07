@@ -1,4 +1,5 @@
 import 'package:farmus/common/app_bar/page_index_app_bar.dart';
+import 'package:farmus/view/vege_delete/component/vege_delete_fail.dart';
 import 'package:farmus/view_model/home/home_vege_add_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,8 +8,8 @@ import '../../common/button/on_boarding_button.dart';
 import '../../common/dialog/check_dialog.dart';
 import '../../common/theme/farmus_theme_color.dart';
 import '../../view_model/vege_delete/vege_delete_provider.dart';
-import 'commponent/vege_delete_reason.dart';
-import 'commponent/vege_delete_success.dart';
+import 'component/vege_delete_reason.dart';
+import 'component/vege_delete_success.dart';
 
 class VegeDeleteScreen extends ConsumerWidget {
   const VegeDeleteScreen({super.key});
@@ -39,15 +40,27 @@ class VegeDeleteScreen extends ConsumerWidget {
         break;
       case "second":
         currentIndex = "2";
-        enabled = true;
-        if (successButtonText.isComplete != true) {
-          nextButtonText = '나중에 등록하기';
-        } else {
-          nextButtonText = '다음';
+        switch (boxIndex) {
+          case 'success':
+            enabled = true;
+            if (successButtonText.isComplete != true) {
+              nextButtonText = '나중에 등록하기';
+            } else {
+              nextButtonText = '다음';
+            }
+            screenChild = const SingleChildScrollView(
+              child: VegeDeleteSuccess(),
+            );
+            break;
+          case "fail":
+          case 'noting':
+            enabled = false;
+            nextButtonText = '다음';
+            screenChild = const SingleChildScrollView(
+              child: VegeDeleteFail(),
+            );
+            break;
         }
-        screenChild = const SingleChildScrollView(
-          child: VegeDeleteSuccess(),
-        );
         onPressed = () {
           Navigator.pop(context);
           showDialog(

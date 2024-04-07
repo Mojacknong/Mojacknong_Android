@@ -1,6 +1,6 @@
+import 'package:farmus/common/select_box.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/on_boarding/component/main_sub_title.dart';
-import 'package:farmus/common/select_box.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -12,7 +12,7 @@ class VegeDeleteReason extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final boxIndex = ref.watch(vegeDeleteReasonProvider);
+    final boxIndex = ref.watch(vegeDeleteProvider);
 
     return Column(
       children: [
@@ -27,7 +27,7 @@ class VegeDeleteReason extends ConsumerWidget {
             Expanded(
               child: SelectBox(
                 selectBox: () {
-                  ref.read(vegeDeleteReasonProvider.notifier).selectedBox('success');
+                  ref.read(vegeDeleteProvider.notifier).selectedBox('success');
                 },
                 enabled: boxIndex == 'success',
                 selectBoxContent: Container(
@@ -51,7 +51,7 @@ class VegeDeleteReason extends ConsumerWidget {
             Expanded(
               child: SelectBox(
                 selectBox: () {
-                  ref.read(vegeDeleteReasonProvider.notifier).selectedBox('fail');
+                  ref.read(vegeDeleteProvider.notifier).selectedBox('fail');
                 },
                 enabled: boxIndex == 'fail',
                 selectBoxContent: Container(
@@ -76,7 +76,7 @@ class VegeDeleteReason extends ConsumerWidget {
         ),
         SelectBox(
           selectBox: () {
-            ref.read(vegeDeleteReasonProvider.notifier).selectedBox('noting');
+            ref.read(vegeDeleteProvider.notifier).selectedBox('noting');
           },
           enabled: boxIndex == 'noting',
           selectBoxContent: Container(
