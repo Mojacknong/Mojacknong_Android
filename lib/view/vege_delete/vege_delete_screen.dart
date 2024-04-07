@@ -16,10 +16,11 @@ class VegeDeleteScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final boxIndex = ref.watch(vegeDeleteProvider);
+    final boxIndex = ref.watch(vegeDeleteReasonProvider);
     final currentPageIndex = ref.watch(homeVegeAddMoveProvider);
     final movePage = ref.read(homeVegeAddMoveProvider.notifier);
     final successButtonText = ref.watch(vegeDeleteSuccessProvider);
+    final failProvider = ref.watch(vegeDeleteFailProvider);
     String nextButtonText = '다음';
     String currentIndex;
     bool enabled = false;
@@ -35,6 +36,7 @@ class VegeDeleteScreen extends ConsumerWidget {
         );
         onPressed = () {
           ref.read(vegeDeleteSuccessProvider.notifier).reset();
+          ref.read(vegeDeleteFailProvider.notifier).selectedBox('');
           movePage.moveToSecondPage();
         };
         break;
@@ -54,7 +56,7 @@ class VegeDeleteScreen extends ConsumerWidget {
             break;
           case "fail":
           case 'noting':
-            enabled = false;
+            enabled = failProvider != '';
             nextButtonText = '다음';
             screenChild = const SingleChildScrollView(
               child: VegeDeleteFail(),
