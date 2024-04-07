@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class VegeDeleteReasonNotifier extends StateNotifier<String> {
-  VegeDeleteReasonNotifier() : super('');
+class VegeDeleteFailNotifier extends StateNotifier<String> {
+  VegeDeleteFailNotifier() : super('');
 
   void selectedBox(String index) {
     state = index;

@@ -48,7 +48,7 @@ class _MyVegeScreenState extends ConsumerState<MyVegeScreen> {
               onPressed: () {
                 Navigator.pop(context);
                 ref.read(homeVegeAddMoveProvider.notifier).moveToFirstPage();
-                ref.read(vegeDeleteProvider.notifier).reset();
+                ref.read(vegeDeleteReasonProvider.notifier).reset();
                 Navigator.push(
                   context,
                   MaterialPageRoute(
