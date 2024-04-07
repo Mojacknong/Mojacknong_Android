@@ -12,7 +12,7 @@ class VegeDeleteReason extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final boxIndex = ref.watch(vegeDeleteProvider);
+    final boxIndex = ref.watch(vegeDeleteReasonProvider);
 
     return Column(
       children: [
@@ -27,7 +27,7 @@ class VegeDeleteReason extends ConsumerWidget {
             Expanded(
               child: SelectBox(
                 selectBox: () {
-                  ref.read(vegeDeleteProvider.notifier).selectedBox('success');
+                  ref.read(vegeDeleteReasonProvider.notifier).selectedBox('success');
                 },
                 enabled: boxIndex == 'success',
                 selectBoxContent: Container(
@@ -51,7 +51,7 @@ class VegeDeleteReason extends ConsumerWidget {
             Expanded(
               child: SelectBox(
                 selectBox: () {
-                  ref.read(vegeDeleteProvider.notifier).selectedBox('fail');
+                  ref.read(vegeDeleteReasonProvider.notifier).selectedBox('fail');
                 },
                 enabled: boxIndex == 'fail',
                 selectBoxContent: Container(
@@ -76,7 +76,7 @@ class VegeDeleteReason extends ConsumerWidget {
         ),
         SelectBox(
           selectBox: () {
-            ref.read(vegeDeleteProvider.notifier).selectedBox('noting');
+            ref.read(vegeDeleteReasonProvider.notifier).selectedBox('noting');
           },
           enabled: boxIndex == 'noting',
           selectBoxContent: Container(
