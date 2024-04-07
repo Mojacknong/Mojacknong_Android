@@ -116,7 +116,7 @@ class HomeVegeAddScreen extends ConsumerWidget {
                         onPressed: () {
                           switch (currentPageIndex) {
                             case "first":
-                              movePage.moveToSecondPage();
+                              movePage.moveToSuccessPage();
                             case "second":
                               Navigator.pop(context);
                               showDialog(
