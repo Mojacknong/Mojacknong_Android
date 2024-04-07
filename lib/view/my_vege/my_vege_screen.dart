@@ -2,32 +2,32 @@ import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
 import 'package:farmus/common/button/add_button.dart';
 import 'package:farmus/common/button/delete_button.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:farmus/view/my_vegi/component/my_vegi_list_info.dart';
-import 'package:farmus/view/vegi_add/home_vegi_add_screen.dart';
-import 'package:farmus/view/vegi_delete/vegi_delete_screen.dart';
-import 'package:farmus/view_model/my_vegi/my_vegi_provider.dart';
-import 'package:farmus/view_model/vegi_delete/vegi_delete_provider.dart';
+import 'package:farmus/view_model/my_vege/my_vege_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../common/bottom_sheet/primary_action_sheet.dart';
 import '../../common/theme/farmus_theme_color.dart';
-import '../../view_model/home/home_vegi_add_provider.dart';
+import '../../view_model/home/home_vege_add_provider.dart';
+import '../../view_model/vege_delete/vege_delete_provider.dart';
+import '../vege_add/home_vege_add_screen.dart';
+import '../vege_delete/vege_delete_screen.dart';
+import 'component/my_vege_list_info.dart';
 
-class MyVegiScreen extends ConsumerStatefulWidget {
-  const MyVegiScreen({super.key});
+class MyVegeScreen extends ConsumerStatefulWidget {
+  const MyVegeScreen({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _MyVegiScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _MyVegeScreenState();
 }
 
-class _MyVegiScreenState extends ConsumerState<MyVegiScreen> {
+class _MyVegeScreenState extends ConsumerState<MyVegeScreen> {
   @override
   Widget build(BuildContext context) {
-    final myVegiList = ref.watch(myVegiProvider);
-    final myVegiDeleteMode = ref.watch(myVegiDeleteProvider);
-    final myVegiNotifier = ref.read(myVegiProvider.notifier);
+    final myVegeList = ref.watch(myVegeProvider);
+    final myVegeDeleteMode = ref.watch(myVegeDeleteProvider);
+    final myVegeNotifier = ref.read(myVegeProvider.notifier);
 
     void showActionSheet(BuildContext context) {
       showCupertinoModalPopup(
@@ -47,14 +47,13 @@ class _MyVegiScreenState extends ConsumerState<MyVegiScreen> {
             CupertinoActionSheetAction(
               onPressed: () {
                 Navigator.pop(context);
-                ref.read(homeVegiAddMoveProvider.notifier).moveToFirstPage();
-                ref.read(vegiDeleteProvider.notifier).reset();
+                ref.read(homeVegeAddMoveProvider.notifier).moveToFirstPage();
+                ref.read(vegeDeleteProvider.notifier).reset();
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const VegiDeleteScreen()),
+                      builder: (context) => const VegeDeleteScreen()),
                 );
-                // myVegiNotifier.removeAllSelected();
               },
               child: const Text(
                 "확인",
@@ -72,10 +71,10 @@ class _MyVegiScreenState extends ConsumerState<MyVegiScreen> {
         actions: [
           TextButton(
             onPressed: () {
-              ref.read(myVegiDeleteProvider.notifier).changeMyVegiScreenMode();
+              ref.read(myVegeDeleteProvider.notifier).changeMyVegeScreenMode();
             },
             child: Text(
-              myVegiDeleteMode ? '취소' : '삭제',
+              myVegeDeleteMode ? '취소' : '삭제',
               style: FarmusThemeTextStyle.darkMedium16,
             ),
           ),
@@ -88,14 +87,14 @@ class _MyVegiScreenState extends ConsumerState<MyVegiScreen> {
         children: [
           Expanded(
             child: ListView.builder(
-              itemCount: myVegiList.length,
+              itemCount: myVegeList.length,
               itemBuilder: (context, index) {
                 return Column(
                   children: [
-                    MyVegiListInfo(
-                      myVegi: myVegiList[index],
+                    MyVegeListInfo(
+                      myVege: myVegeList[index],
                     ),
-                    if (myVegiList.length - 1 != index)
+                    if (myVegeList.length - 1 != index)
                       const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16.0),
                         child: Divider(
@@ -116,22 +115,22 @@ class _MyVegiScreenState extends ConsumerState<MyVegiScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: myVegiDeleteMode
+                child: myVegeDeleteMode
                     ? DeleteButton(
                         enabled:
-                            myVegiNotifier.selectedVegi.isEmpty ? false : true,
+                            myVegeNotifier.selectedVege.isEmpty ? false : true,
                         onPressed: () {
                           showActionSheet(context);
                         },
-                        count: "${myVegiNotifier.selectedVegi.length}")
+                        count: "${myVegeNotifier.selectedVege.length}")
                     : AddButton(
                         onPressed: () {
-                          ref.read(homeVegiInfoAddProvider.notifier).reset();
-                          ref.read(homeVegiAddMoveProvider.notifier).reset();
+                          ref.read(homeVegeInfoAddProvider.notifier).reset();
+                          ref.read(homeVegeAddMoveProvider.notifier).reset();
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const HomeVegiAddScreen(),
+                              builder: (context) => const HomeVegeAddScreen(),
                             ),
                           );
                         },

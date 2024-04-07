@@ -1,18 +1,18 @@
-import 'package:farmus/view_model/vegi_delete/vegi_delete_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../common/primary_text_form_field.dart';
 import '../../../common/theme/farmus_theme_color.dart';
+import '../../../view_model/vege_delete/vege_delete_provider.dart';
 
 class ContentInputTextForm extends ConsumerWidget {
   const ContentInputTextForm({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var nowLength = ref.watch(vegiDeleteSuccessProvider).content == null
+    var nowLength = ref.watch(vegeDeleteSuccessProvider).content == null
         ? 0
-        : ref.watch(vegiDeleteSuccessProvider).content?.length;
+        : ref.watch(vegeDeleteSuccessProvider).content?.length;
 
     return PrimaryTextFormField(
         maxLength: 50,
@@ -29,7 +29,7 @@ class ContentInputTextForm extends ConsumerWidget {
           color: FarmusThemeColor.red,
         ),
         onChanged: (value) {
-          ref.read(vegiDeleteSuccessProvider.notifier).updateContent(value);
+          ref.read(vegeDeleteSuccessProvider.notifier).updateContent(value);
         },
         suffix: Column(
           children: [

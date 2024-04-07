@@ -1,37 +1,35 @@
 import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
 import 'package:farmus/common/button/primary_button.dart';
-import 'package:farmus/common/dialog/primary_dialog.dart';
-import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:farmus/view/vegi_add/component/home_vegi_add_second.dart';
-import 'package:farmus/view_model/home/home_vegi_add_provider.dart';
+import 'package:farmus/common/dialog/check_dialog.dart';
+import 'package:farmus/view_model/home/home_vege_add_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../common/theme/farmus_theme_color.dart';
-import 'component/home_vegi_add_first.dart';
+import 'component/home_vege_add_first.dart';
+import 'component/home_vege_add_second.dart';
 
-class HomeVegiAddScreen extends ConsumerWidget {
-  const HomeVegiAddScreen({super.key});
+class HomeVegeAddScreen extends ConsumerWidget {
+  const HomeVegeAddScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isVegiInfo = ref.watch(homeVegiInfoAddProvider);
-    final currentPageIndex = ref.watch(homeVegiAddMoveProvider);
-    final movePage = ref.read(homeVegiAddMoveProvider.notifier);
+    final isVegeInfo = ref.watch(homeVegeInfoAddProvider);
+    final currentPageIndex = ref.watch(homeVegeAddMoveProvider);
+    final movePage = ref.read(homeVegeAddMoveProvider.notifier);
 
-    var isVegiSelectedComplete = isVegiInfo.isVegiSelectComplete;
-    var isVegiAddInfoComplete = isVegiInfo.isVegiAddInfoComplete;
+    var isVegeSelectedComplete = isVegeInfo.isVegeSelectComplete;
+    var isVegeAddInfoComplete = isVegeInfo.isVegeAddInfoComplete;
 
     Color getButtonTextColor(String currentPageIndex,
-        bool isVegiSelectedComplete, bool isVegiAddInfoComplete) {
+        bool isVegeSelectedComplete, bool isVegeAddInfoComplete) {
       switch (currentPageIndex) {
         case "first":
-          return isVegiSelectedComplete
+          return isVegeSelectedComplete
               ? FarmusThemeColor.white
               : FarmusThemeColor.gray3;
         case "second":
-          return isVegiAddInfoComplete
+          return isVegeAddInfoComplete
               ? FarmusThemeColor.white
               : FarmusThemeColor.gray3;
         default:
@@ -40,14 +38,14 @@ class HomeVegiAddScreen extends ConsumerWidget {
     }
 
     Color getButtonBackgroundColor(String currentPageIndex,
-        bool isVegiSelectedComplete, bool isVegiAddInfoComplete) {
+        bool isVegeSelectedComplete, bool isVegeAddInfoComplete) {
       switch (currentPageIndex) {
         case "first":
-          return isVegiSelectedComplete
+          return isVegeSelectedComplete
               ? FarmusThemeColor.primary
               : FarmusThemeColor.gray4;
         case "second":
-          return isVegiAddInfoComplete
+          return isVegeAddInfoComplete
               ? FarmusThemeColor.primary
               : FarmusThemeColor.gray4;
         default:
@@ -71,9 +69,9 @@ class HomeVegiAddScreen extends ConsumerWidget {
               child: Consumer(builder: (context, ref, _) {
                 switch (currentPageIndex) {
                   case "first":
-                    return const HomeVegiAddFirst();
+                    return const HomeVegeAddFirst();
                   case "second":
-                    return const HomeVegiAddSecond();
+                    return const HomeVegeAddSecond();
                   default:
                     return Container();
                 }
@@ -122,46 +120,28 @@ class HomeVegiAddScreen extends ConsumerWidget {
                             case "second":
                               Navigator.pop(context);
                               showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    Future.delayed(const Duration(seconds: 2),
-                                        () {
-                                      Navigator.of(context).pop();
-                                    });
-                                    return PrimaryDialog(
-                                      title: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 0),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            SvgPicture.asset(
-                                                "assets/image/ic_check.svg"),
-                                            const SizedBox(
-                                              width: 8,
-                                            ),
-                                            const Text(
-                                              "새 채소가 등록되었어요",
-                                              style: FarmusThemeTextStyle
-                                                  .darkMedium16,
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    );
+                                context: context,
+                                builder: (BuildContext context) {
+                                  Future.delayed(const Duration(seconds: 2),
+                                      () {
+                                    Navigator.of(context).pop();
                                   });
+                                  return const CheckDialog(
+                                    text: "새 채소가 등록되었어요",
+                                  );
+                                },
+                              );
                           }
                         },
                         enabled: currentPageIndex == "first"
-                            ? isVegiSelectedComplete
-                            : isVegiAddInfoComplete,
+                            ? isVegeSelectedComplete
+                            : isVegeAddInfoComplete,
                         textColor: getButtonTextColor(currentPageIndex,
-                            isVegiSelectedComplete, isVegiAddInfoComplete),
+                            isVegeSelectedComplete, isVegeAddInfoComplete),
                         backgroundColor: getButtonBackgroundColor(
                             currentPageIndex,
-                            isVegiSelectedComplete,
-                            isVegiAddInfoComplete),
+                            isVegeSelectedComplete,
+                            isVegeAddInfoComplete),
                         borderColor: FarmusThemeColor.white,
                       ),
                     ),

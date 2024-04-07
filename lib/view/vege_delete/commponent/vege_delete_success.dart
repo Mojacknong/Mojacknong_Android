@@ -2,24 +2,24 @@ import 'dart:io';
 
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/view/on_boarding/component/main_sub_title.dart';
-import 'package:farmus/view/vegi_delete/commponent/content_input_text_form.dart';
-import 'package:farmus/view_model/vegi_delete/vegi_delete_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../common/farmus_image_picker.dart';
+import '../../../view_model/vege_delete/vege_delete_provider.dart';
+import 'content_input_text_form.dart';
 
-class VegiDeleteSuccess extends ConsumerStatefulWidget {
-  const VegiDeleteSuccess({Key? key}) : super(key: key);
+class VegeDeleteSuccess extends ConsumerStatefulWidget {
+  const VegeDeleteSuccess({Key? key}) : super(key: key);
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _VegiDeleteSuccessState();
+      _VegeDeleteSuccessState();
 }
 
-class _VegiDeleteSuccessState extends ConsumerState<VegiDeleteSuccess> {
+class _VegeDeleteSuccessState extends ConsumerState<VegeDeleteSuccess> {
   @override
   void initState() {
     super.initState();
@@ -27,14 +27,14 @@ class _VegiDeleteSuccessState extends ConsumerState<VegiDeleteSuccess> {
 
   @override
   Widget build(BuildContext context) {
-    var successImage = ref.watch(vegiDeleteSuccessProvider).successImage;
+    var successImage = ref.watch(vegeDeleteSuccessProvider).successImage;
     void showActionSheet(BuildContext context) {
       FarmusImagePicker.showActionSheet(context, (value) {
         if (value != null) {
           setState(() {
             successImage = value;
             ref
-                .read(vegiDeleteSuccessProvider.notifier)
+                .read(vegeDeleteSuccessProvider.notifier)
                 .updateSuccessImage(successImage);
           });
         }
@@ -88,7 +88,7 @@ class _VegiDeleteSuccessState extends ConsumerState<VegiDeleteSuccess> {
                         (successImage == null)
                             ? showActionSheet(context)
                             : ref
-                                .read(vegiDeleteSuccessProvider.notifier)
+                                .read(vegeDeleteSuccessProvider.notifier)
                                 .deleteSuccessImage();
                       },
                       child: (successImage == null)

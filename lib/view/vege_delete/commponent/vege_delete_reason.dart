@@ -1,17 +1,18 @@
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/on_boarding/component/main_sub_title.dart';
 import 'package:farmus/common/select_box.dart';
-import 'package:farmus/view_model/vegi_delete/vegi_delete_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class VegiDeleteReason extends ConsumerWidget {
-  const VegiDeleteReason({super.key});
+import '../../../view_model/vege_delete/vege_delete_provider.dart';
+
+class VegeDeleteReason extends ConsumerWidget {
+  const VegeDeleteReason({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final boxIndex = ref.watch(vegiDeleteProvider);
+    final boxIndex = ref.watch(vegeDeleteProvider);
 
     return Column(
       children: [
@@ -26,7 +27,7 @@ class VegiDeleteReason extends ConsumerWidget {
             Expanded(
               child: SelectBox(
                 selectBox: () {
-                  ref.read(vegiDeleteProvider.notifier).selectedBox('success');
+                  ref.read(vegeDeleteProvider.notifier).selectedBox('success');
                 },
                 enabled: boxIndex == 'success',
                 selectBoxContent: Container(
@@ -34,7 +35,7 @@ class VegiDeleteReason extends ConsumerWidget {
                       const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
                   child: Column(
                     children: [
-                      Image.asset("assets/image/img_vegi_color.png"),
+                      Image.asset("assets/image/img_vege_color.png"),
                       const Text(
                         '재배에 성공했어요',
                         style: FarmusThemeTextStyle.darkMedium15,
@@ -50,7 +51,7 @@ class VegiDeleteReason extends ConsumerWidget {
             Expanded(
               child: SelectBox(
                 selectBox: () {
-                  ref.read(vegiDeleteProvider.notifier).selectedBox('fail');
+                  ref.read(vegeDeleteProvider.notifier).selectedBox('fail');
                 },
                 enabled: boxIndex == 'fail',
                 selectBoxContent: Container(
@@ -58,7 +59,7 @@ class VegiDeleteReason extends ConsumerWidget {
                       const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
                   child: Column(
                     children: [
-                      Image.asset("assets/image/img_vegi_gray.png"),
+                      Image.asset("assets/image/img_vege_gray.png"),
                       const Text(
                         '재배에 실패했어요',
                         style: FarmusThemeTextStyle.darkMedium15,
@@ -75,7 +76,7 @@ class VegiDeleteReason extends ConsumerWidget {
         ),
         SelectBox(
           selectBox: () {
-            ref.read(vegiDeleteProvider.notifier).selectedBox('noting');
+            ref.read(vegeDeleteProvider.notifier).selectedBox('noting');
           },
           enabled: boxIndex == 'noting',
           selectBoxContent: Container(
