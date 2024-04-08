@@ -1,4 +1,5 @@
 import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
+import 'package:farmus/view/vege_diary/component/vege_diary_info.dart';
 import 'package:flutter/material.dart';
 
 class VegeDiaryScreen extends StatelessWidget {
@@ -9,6 +10,14 @@ class VegeDiaryScreen extends StatelessWidget {
     return const Scaffold(
       appBar: BackLeftTitleAppBar(
         title: "성장일기",
+      ),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            VegeDiaryInfo()
+          ],
+        ),
       ),
     );
   }
