@@ -1,32 +1,36 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:farmus/view/my_page/my_certification_screen.dart';
-import 'package:farmus/view/my_page/my_farmclub/component/farmclub_history_list_screen.dart';
+import 'package:farmus/view/my_page/vege_history/component/vege_history_list.dart';
+import 'package:farmus/view/my_page/vege_history/vege_diary/vege_diary_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class FarmClubProfile extends ConsumerWidget {
-  const FarmClubProfile({Key? key}) : super(key: key);
+class VegeProfile extends ConsumerWidget {
+  const VegeProfile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final farmClubInfo = ref.watch(farmClubProvider).farmClubInfo;
+    final vegeInfo = ref.watch(vegeInfoProvider).vegeInfo;
 
     return InkWell(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => const MyCertificationScreen(),
+          builder: (context) => const VegeDiaryScreen(),
         ));
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 16.0),
         child: Column(
           children: [
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                _farmClubImage(farmClubInfo.image),
-                const SizedBox(width: 15.0),
+                CircleAvatar(
+                  radius: 30,
+                  backgroundColor: Colors.transparent,
+                  child: ClipOval(child: _vegeImage(vegeInfo.image)),
+                ),
+                const SizedBox(width: 12.0),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,7 +40,7 @@ class FarmClubProfile extends ConsumerWidget {
                         text: TextSpan(
                           children: <InlineSpan>[
                             TextSpan(
-                              text: '${farmClubInfo.veggieName} ',
+                              text: '${vegeInfo.veggieName} ',
                               style: FarmusThemeTextStyle.darkSemiBold17,
                             ),
                             WidgetSpan(
@@ -49,19 +53,19 @@ class FarmClubProfile extends ConsumerWidget {
                               ),
                             ),
                             TextSpan(
-                              text: farmClubInfo.veggieType,
+                              text: vegeInfo.veggieType,
                               style: FarmusThemeTextStyle.darkMedium15,
                             ),
                           ],
                         ),
                       ),
-                      const SizedBox(height: 6.0),
+                      const SizedBox(height: 5.0),
                       RichText(
                         text: TextSpan(
                           style: DefaultTextStyle.of(context).style,
                           children: <TextSpan>[
                             TextSpan(
-                              text: '활동 기간 ${farmClubInfo.periodStart} ',
+                              text: '${vegeInfo.periodStart} ',
                               style: FarmusThemeTextStyle.gray2Medium15,
                             ),
                             const TextSpan(
@@ -69,7 +73,7 @@ class FarmClubProfile extends ConsumerWidget {
                               style: FarmusThemeTextStyle.gray2Medium15,
                             ),
                             TextSpan(
-                              text: farmClubInfo.periodEnd,
+                              text: vegeInfo.periodEnd,
                               style: FarmusThemeTextStyle.gray2Medium15,
                             ),
                           ],
@@ -93,12 +97,12 @@ class FarmClubProfile extends ConsumerWidget {
     );
   }
 
-  Widget _farmClubImage(String imageUrl) {
+  Widget _vegeImage(String imageUrl) {
     try {
       return imageUrl.isEmpty
           ? Image.asset(
-              "assets/image/img_farmclub_lettuce.png",
-              fit: BoxFit.cover,
+              "assets/image/img_greenonion.png",
+              fit: BoxFit.fill,
             )
           : Image.network(
               imageUrl,
@@ -129,7 +133,7 @@ class FarmClubProfile extends ConsumerWidget {
     } catch (e) {
       return Image.asset(
         "assets/image/img_sesame.png",
-        fit: BoxFit.cover,
+        fit: BoxFit.fill,
       );
     }
   }
