@@ -1,3 +1,4 @@
+import 'package:farmus/view/vege_diary/component/farmus_picture_64.dart';
 import 'package:farmus/view/vege_diary/vege_diary_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -20,26 +21,13 @@ class HomeVegeDiary extends ConsumerWidget {
           MaterialPageRoute(builder: (context) => const VegeDiaryScreen()),
         );
       },
-      child: Row(
+      child: const Row(
         children: [
-          Container(
-            width: 64,
-            height: 64,
-            decoration: ShapeDecoration(
-              color: FarmusThemeColor.background,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-            ),
-            child: SvgPicture.asset(
-              "assets/image/ic_farm_club_mark.svg",
-              fit: BoxFit.cover,
-            ),
-          ),
-          const SizedBox(
+          FarmusPicture64(),
+          SizedBox(
             width: 16,
           ),
-          const Expanded(
+          Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
