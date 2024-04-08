@@ -60,6 +60,12 @@ class FarmusThemeTextStyle {
     fontWeight: FontWeight.w600,
   );
 
+  static const TextStyle darkSemiBold21 = TextStyle(
+    color: FarmusThemeColor.dark,
+    fontSize: 21,
+    fontWeight: FontWeight.w600,
+  );
+
   static const TextStyle darkSemiBold22 = TextStyle(
     color: FarmusThemeColor.dark,
     fontSize: 22,
