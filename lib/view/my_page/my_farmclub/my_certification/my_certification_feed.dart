@@ -3,7 +3,7 @@ import 'package:farmus/view/my_page/vege_result/vege_result_content.dart';
 import 'package:farmus/view/my_page/vege_result/vege_result_pic.dart';
 import 'package:farmus/view/my_page/vege_result/vege_result_time.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart'; // DateFormat을 사용하기 위해 추가
+import 'package:intl/intl.dart';
 
 class MyCertificationFeed extends StatelessWidget {
   final String title;

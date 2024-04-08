@@ -10,14 +10,11 @@ class DeleteButton extends ConsumerWidget {
     super.key,
     required this.enabled,
     required this.onPressed,
-    required this.count,
   });
 
   final bool enabled;
 
   final void Function()? onPressed;
-
-  final String count;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -35,8 +32,10 @@ class DeleteButton extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              enabled ? "채소 삭제 $count" : "채소 삭제",
-              style: enabled ? FarmusThemeTextStyle.redSemiBold15 : FarmusThemeTextStyle.gray3SemiBold15,
+              "채소 삭제",
+              style: enabled
+                  ? FarmusThemeTextStyle.redSemiBold15
+                  : FarmusThemeTextStyle.gray3SemiBold15,
             ),
           ],
         ),

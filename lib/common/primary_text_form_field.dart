@@ -7,18 +7,24 @@ class PrimaryTextFormField extends StatelessWidget implements BaseTextInput {
   const PrimaryTextFormField(
       {super.key,
       this.maxLength,
+      this.maxLines,
+      this.minLines,
       this.hintText,
       this.initialValue,
       this.errorText,
       this.errorBorder,
       this.errorStyle,
       this.onChanged,
-      this.nowLength});
+      this.suffix});
 
   @override
   final String? hintText;
   @override
   final int? maxLength;
+  @override
+  final int? minLines;
+  @override
+  final int? maxLines;
   @override
   final String? initialValue;
   @override
@@ -30,13 +36,16 @@ class PrimaryTextFormField extends StatelessWidget implements BaseTextInput {
   @override
   final ValueChanged<String>? onChanged;
 
-  final String? nowLength;
+  final Widget? suffix;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       initialValue: initialValue,
       maxLength: maxLength,
+      minLines: minLines,
+      maxLines: maxLines,
+      expands: (minLines == null && maxLines == null) ? true : false,
       decoration: InputDecoration(
           hintText: hintText,
           hintStyle: const TextStyle(
@@ -64,7 +73,10 @@ class PrimaryTextFormField extends StatelessWidget implements BaseTextInput {
           errorBorder: errorBorder,
           errorStyle: errorStyle,
           counterText: "",
-          suffix: Text("$nowLength /$maxLength"),
+          suffix: Stack(
+            alignment: Alignment.bottomRight,
+            children: [suffix!],
+          ),
           suffixStyle: FarmusThemeTextStyle.gray2Medium13),
       onChanged: onChanged,
     );
