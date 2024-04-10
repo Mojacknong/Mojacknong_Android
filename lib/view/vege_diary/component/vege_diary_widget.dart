@@ -53,6 +53,9 @@ class VegeDiaryWidget extends ConsumerWidget {
             ),
           ],
         ),
+        const SizedBox(
+          height: 12.0,
+        ),
         Text(
           'data' * 20,
           style: FarmusThemeTextStyle.darkMedium15,
