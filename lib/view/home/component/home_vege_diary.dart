@@ -2,9 +2,7 @@ import 'package:farmus/view/vege_diary/component/farmus_picture_64.dart';
 import 'package:farmus/view/vege_diary/vege_diary_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 
-import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 
 class HomeVegeDiary extends ConsumerWidget {
