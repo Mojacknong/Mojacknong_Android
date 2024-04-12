@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:farmus/common/button/on_boarding_button.dart';
+import 'package:farmus/common/button/primary_color_button.dart';
 import 'package:farmus/view/my_page/my_page_screen.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_nickname_text_input.dart';
 import 'package:flutter/cupertino.dart';
@@ -179,7 +179,7 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
               ),
             ),
           ),
-          OnBoardingButton(
+          PrimaryColorButton(
             text: nextButtonText,
             onPressed: () {
               Navigator.pop(
@@ -190,11 +190,6 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
               );
             },
             enabled: enabled,
-            textColor:
-                enabled ? FarmusThemeColor.white : FarmusThemeColor.gray3,
-            backgroundColor:
-                enabled ? FarmusThemeColor.primary : FarmusThemeColor.gray4,
-            borderColor: FarmusThemeColor.white,
           ),
         ],
       ),

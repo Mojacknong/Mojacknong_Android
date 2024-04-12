@@ -1,3 +1,5 @@
+import 'package:farmus/common/button/primary_color_button.dart';
+import 'package:farmus/common/button/white_color_button.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_first.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_third.dart';
@@ -93,7 +95,7 @@ class OnBoardingScreen extends ConsumerWidget {
                   Expanded(
                     child: Visibility(
                       visible: currentPageIndex != "first",
-                      child: OnBoardingButton(
+                      child: WhiteColorButton(
                         text: "이전",
                         onPressed: () {
                           switch (currentPageIndex) {
@@ -108,14 +110,11 @@ class OnBoardingScreen extends ConsumerWidget {
                           }
                         },
                         enabled: true,
-                        textColor: FarmusThemeColor.gray1,
-                        backgroundColor: FarmusThemeColor.white,
-                        borderColor: FarmusThemeColor.gray3,
                       ),
                     ),
                   ),
                   Expanded(
-                    child: OnBoardingButton(
+                    child: PrimaryColorButton(
                       text: nextButtonText,
                       onPressed: () {
                         switch (currentPageIndex) {
@@ -136,13 +135,6 @@ class OnBoardingScreen extends ConsumerWidget {
                         }
                       },
                       enabled: enabled,
-                      textColor: enabled
-                          ? FarmusThemeColor.white
-                          : FarmusThemeColor.gray3,
-                      backgroundColor: enabled
-                          ? FarmusThemeColor.primary
-                          : FarmusThemeColor.gray4,
-                      borderColor: FarmusThemeColor.white,
                     ),
                   ),
                 ],

@@ -18,6 +18,7 @@ class VegeDiaryWriteScreen extends ConsumerWidget {
         ),
         title: "일기 쓰기",
         centerTitle: false,
+        actions: const [],
       ),
       body: const Column(
         children: [],

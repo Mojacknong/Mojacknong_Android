@@ -21,6 +21,7 @@ class PrimaryColorButton extends ConsumerWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: PrimaryButton(
+        width: double.infinity,
         text: text,
         onPressed: enabled ? onPressed : null,
         enabled: enabled,
