@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 abstract class BaseButton {
@@ -14,4 +12,5 @@ abstract class BaseButton {
   double? get borderRadius;
   double? get fontSize;
   Widget? get buttonChild;
+  double? get fontPadding;
 }

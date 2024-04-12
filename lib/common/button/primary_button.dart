@@ -26,6 +26,8 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
   final double? fontSize;
   @override
   final Widget? buttonChild;
+  @override
+  final double? fontPadding;
 
   const PrimaryButton(
       {Key? key,
@@ -39,7 +41,8 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
       required this.borderColor,
       this.borderRadius,
       this.fontSize,
-      this.buttonChild})
+      this.buttonChild,
+      this.fontPadding})
       : super(key: key);
 
   @override
@@ -72,7 +75,8 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
                 ),
                 child: buttonChild == null
                     ? Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        padding:
+                            EdgeInsets.symmetric(vertical: fontPadding ?? 8.0),
                         child: Text(
                           text!,
                           style: TextStyle(
@@ -106,7 +110,8 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
               ),
               child: buttonChild == null
                   ? Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      padding:
+                          EdgeInsets.symmetric(vertical: fontPadding ?? 8.0),
                       child: Text(
                         text!,
                         style: TextStyle(

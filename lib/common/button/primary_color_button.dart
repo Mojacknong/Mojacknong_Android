@@ -5,7 +5,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../theme/farmus_theme_color.dart';
 
 class PrimaryColorButton extends ConsumerWidget {
-
   final String text;
   final VoidCallback onPressed;
   final bool enabled;
@@ -22,16 +21,12 @@ class PrimaryColorButton extends ConsumerWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: PrimaryButton(
-        width: double.infinity,
         text: text,
         onPressed: enabled ? onPressed : null,
         enabled: enabled,
-        textColor: enabled
-            ? FarmusThemeColor.white
-            : FarmusThemeColor.gray3,
-        backgroundColor: enabled
-            ? FarmusThemeColor.primary
-            : FarmusThemeColor.gray4,
+        textColor: enabled ? FarmusThemeColor.white : FarmusThemeColor.gray3,
+        backgroundColor:
+            enabled ? FarmusThemeColor.primary : FarmusThemeColor.gray4,
         borderColor: FarmusThemeColor.white,
         fontSize: 15,
       ),
