@@ -71,12 +71,15 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
                   ),
                 ),
                 child: buttonChild == null
-                    ? Text(
-                        text!,
-                        style: TextStyle(
-                          color: textColor,
+                    ? Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        child: Text(
+                          text!,
+                          style: TextStyle(
+                            color: textColor,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
                       )
                     : buttonChild!,
               ),
@@ -102,12 +105,15 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
                 ),
               ),
               child: buttonChild == null
-                  ? Text(
-                      text!,
-                      style: TextStyle(
-                        color: textColor,
+                  ? Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Text(
+                        text!,
+                        style: TextStyle(
+                          color: textColor,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     )
                   : buttonChild!,
             ),
