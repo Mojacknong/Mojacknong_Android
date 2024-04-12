@@ -75,7 +75,8 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
                 ),
                 child: buttonChild == null
                     ? Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        padding:
+                            EdgeInsets.symmetric(vertical: fontPadding ?? 8.0),
                         child: Text(
                           text!,
                           style: TextStyle(
@@ -109,7 +110,8 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
               ),
               child: buttonChild == null
                   ? Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      padding:
+                          EdgeInsets.symmetric(vertical: fontPadding ?? 8.0),
                       child: Text(
                         text!,
                         style: TextStyle(
