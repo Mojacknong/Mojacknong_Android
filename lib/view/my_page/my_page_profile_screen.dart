@@ -1,19 +1,15 @@
 import 'dart:io';
 
-import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
-import 'package:farmus/common/button/on_boarding_button.dart';
-import 'package:farmus/view/my_page/my_page_screen.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_nickname_text_input.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../common/bottom_sheet/primary_action_sheet.dart';
-import '../../common/theme/farmus_theme_color.dart';
-import '../../common/theme/farmus_theme_text_style.dart';
-import '../../view_model/on_boarding/on_boarding_provider.dart';
+import '../../../common/bottom_sheet/primary_action_sheet.dart';
+import '../../../common/theme/farmus_theme_color.dart';
+import '../../../common/theme/farmus_theme_text_style.dart';
+import '../../../view_model/on_boarding/on_boarding_provider.dart';
 
 class MyPageProfileScreen extends ConsumerStatefulWidget {
   const MyPageProfileScreen({Key? key}) : super(key: key);
@@ -99,101 +95,67 @@ class _MyPageProfileScreenState extends ConsumerState<MyPageProfileScreen> {
     final nickname = ref.read(onBoardingProfileProvider).nickname;
     final hasSpecialCharacters = ref.watch(onBoardingSpecialCharactersProvider);
 
-    String nextButtonText = "수정완료";
-
-    return Scaffold(
-      appBar: const BackLeftTitleAppBar(
-        title: "프로필",
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 30),
-                  Center(
-                    child: Container(
-                      width: 110,
-                      height: 110,
-                      decoration: const ShapeDecoration(
-                        color: FarmusThemeColor.gray5,
-                        shape: OvalBorder(),
-                      ),
-                      child: (file == null)
-                          ? Stack(
-                              children: [
-                                Center(
-                                  child: GestureDetector(
-                                    onTap: () => _showActionSheet(context),
-                                    child: SvgPicture.asset(
-                                        "assets/image/ic_camera.svg"),
-                                  ),
-                                )
-                              ],
-                            )
-                          : GestureDetector(
-                              onTap: () => _showActionSheet(context),
-                              child: ClipOval(
-                                child: Image.file(
-                                  File(file!.path),
-                                  fit: BoxFit.cover,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 30),
+                Center(
+                  child: Container(
+                    width: 110,
+                    height: 110,
+                    decoration: const ShapeDecoration(
+                      color: FarmusThemeColor.gray5,
+                      shape: OvalBorder(),
+                    ),
+                    child: (file == null)
+                        ? Stack(
+                            children: [
+                              Center(
+                                child: GestureDetector(
+                                  onTap: () => _showActionSheet(context),
+                                  child: SvgPicture.asset(
+                                      "assets/image/ic_camera.svg"),
                                 ),
+                              )
+                            ],
+                          )
+                        : GestureDetector(
+                            onTap: () => _showActionSheet(context),
+                            child: ClipOval(
+                              child: Image.file(
+                                File(file!.path),
+                                fit: BoxFit.cover,
                               ),
                             ),
-                    ),
+                          ),
                   ),
-                  const SizedBox(height: 8),
-                  const Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Text(
-                      "닉네임",
-                      textAlign: TextAlign.start,
-                      style: FarmusThemeTextStyle.darkMedium13,
-                    ),
+                ),
+                const SizedBox(height: 8),
+                const Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Text(
+                    "닉네임",
+                    textAlign: TextAlign.start,
+                    style: FarmusThemeTextStyle.darkMedium13,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: OnBoardingNicknameTextInput(
-                      initialValue: nickname,
-                      maxLength: 10,
-                      hintText: '파머',
-                      errorText:
-                          hasSpecialCharacters ? "특수문자는 입력할 수 없어요" : null,
-                      errorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                        borderSide: const BorderSide(
-                          color: FarmusThemeColor.gray4,
-                        ),
-                      ),
-                      errorStyle: const TextStyle(
-                        color: FarmusThemeColor.red,
-                      ),
-                    ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: OnBoardingNicknameTextInput(
+                    initialValue: nickname,
+                    errorText: hasSpecialCharacters ? "특수문자는 입력할 수 없어요" : null,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-          OnBoardingButton(
-            text: nextButtonText,
-            onPressed: () {
-              Navigator.pop(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const MyPageScreen(),
-                ),
-              );
-            },
-            enabled: true,
-            textColor: FarmusThemeColor.gray1,
-            backgroundColor: FarmusThemeColor.white,
-            borderColor: FarmusThemeColor.gray3,
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
