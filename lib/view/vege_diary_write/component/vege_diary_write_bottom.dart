@@ -10,25 +10,32 @@ class VegeDiaryWriteBottom extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return const Padding(
-      padding: EdgeInsets.all(16.0),
+      padding: EdgeInsets.symmetric(horizontal: 16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                '팜클럽 공개',
-                style: FarmusThemeTextStyle.gray1SemiBold17,
+              Padding(
+                padding: EdgeInsets.only(left: 16.0),
+                child: Text(
+                  '팜클럽 공개',
+                  style: FarmusThemeTextStyle.gray1SemiBold17,
+                ),
               ),
               VegeDiaryWriteSwitch(),
             ],
           ),
           Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: Text(
               '팜클럽 멤버들이 일기를 읽을 수 있어요',
               style: FarmusThemeTextStyle.gray2Medium13,
             ),
+          ),
+          SizedBox(
+            height: 32.0,
           )
         ],
       ),
