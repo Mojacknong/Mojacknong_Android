@@ -43,7 +43,9 @@ class VegeDiaryWriteScreen extends ConsumerWidget {
         ],
       ),
       body: const Column(
-        children: [],
+        children: [
+
+        ],
       ),
     );
   }

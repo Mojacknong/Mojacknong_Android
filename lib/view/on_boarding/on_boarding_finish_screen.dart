@@ -5,8 +5,6 @@ import 'package:farmus/view/on_boarding/component/main_sub_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../common/theme/farmus_theme_color.dart';
-
 class OnBoardingFinishScreen extends ConsumerWidget {
   const OnBoardingFinishScreen({super.key});
 
