@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../common/farmus_image_picker.dart';
+import '../../../common/bottom_sheet/farmus_image_picker.dart';
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../view_model/vege_delete/vege_delete_provider.dart';
 
@@ -42,13 +42,16 @@ class _VegeSuccessImageState extends ConsumerState<VegeSuccessImage> {
             borderRadius: BorderRadius.circular(12),
           ),
           child: (successImage == null)
-              ? ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Image.asset(
-                    'assets/image/img_vege_success.png',
-                    fit: BoxFit.contain,
+              ? Padding(
+                padding: const EdgeInsets.all(24.0),
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.asset(
+                      'assets/image/img_vege_success.png',
+                      fit: BoxFit.contain,
+                    ),
                   ),
-                )
+              )
               : ClipRRect(
                   borderRadius: BorderRadius.circular(12),
                   child: Image.file(
