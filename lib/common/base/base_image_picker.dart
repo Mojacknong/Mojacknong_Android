@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-abstract class BaseButton {
+abstract class BaseImagePicker {
   double? get width;
   double? get height;
   String? get text;
@@ -10,7 +10,5 @@ abstract class BaseButton {
   Color get backgroundColor;
   Color get borderColor;
   double? get borderRadius;
-  double? get fontSize;
-  Widget? get buttonChild;
-  double? get fontPadding;
+  Widget? get child;
 }

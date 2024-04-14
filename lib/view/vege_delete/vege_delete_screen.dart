@@ -1,11 +1,12 @@
 import 'package:farmus/common/app_bar/page_index_app_bar.dart';
+import 'package:farmus/common/button/white_color_button.dart';
 import 'package:farmus/view/vege_delete/component/vege_delete_fail.dart';
 import 'package:farmus/view_model/home/home_vege_add_provider.dart';
 import 'package:farmus/view_model/my_vege/my_vege_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../common/button/on_boarding_button.dart';
+import '../../common/button/primary_color_button.dart';
 import '../../common/dialog/check_dialog.dart';
 import '../../common/theme/farmus_theme_color.dart';
 import '../../view_model/vege_delete/vege_delete_provider.dart';
@@ -114,30 +115,20 @@ class VegeDeleteScreen extends ConsumerWidget {
                   Expanded(
                     child: Visibility(
                       visible: currentPageIndex != "first",
-                      child: OnBoardingButton(
+                      child: WhiteColorButton(
                         text: "이전",
                         onPressed: () {
                           movePage.moveToFirstPage();
                         },
                         enabled: true,
-                        textColor: FarmusThemeColor.gray1,
-                        backgroundColor: FarmusThemeColor.white,
-                        borderColor: FarmusThemeColor.gray3,
                       ),
                     ),
                   ),
                   Expanded(
-                    child: OnBoardingButton(
+                    child: PrimaryColorButton(
                       text: nextButtonText,
                       onPressed: onPressed!,
                       enabled: enabled,
-                      textColor: enabled
-                          ? FarmusThemeColor.white
-                          : FarmusThemeColor.gray3,
-                      backgroundColor: enabled
-                          ? FarmusThemeColor.primary
-                          : FarmusThemeColor.gray4,
-                      borderColor: FarmusThemeColor.white,
                     ),
                   ),
                 ],
