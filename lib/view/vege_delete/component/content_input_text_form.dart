@@ -6,7 +6,9 @@ import '../../../common/theme/farmus_theme_color.dart';
 import '../../../view_model/vege_delete/vege_delete_provider.dart';
 
 class ContentInputTextForm extends ConsumerWidget {
-  const ContentInputTextForm({super.key});
+  const ContentInputTextForm({super.key, required this.maxLength});
+
+  final int maxLength;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -15,7 +17,7 @@ class ContentInputTextForm extends ConsumerWidget {
         : ref.watch(vegeDeleteSuccessProvider).content?.length;
 
     return PrimaryTextFormField(
-        maxLength: 50,
+        maxLength: maxLength,
         minLines: 5,
         maxLines: 5,
         hintText: '내용을 입력해주세요',
@@ -33,7 +35,7 @@ class ContentInputTextForm extends ConsumerWidget {
         },
         suffix: Column(
           children: [
-            Text("$nowLength /50"),
+            Text("$nowLength /$maxLength"),
           ],
         ));
   }

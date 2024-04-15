@@ -35,7 +35,9 @@ class _VegeDeleteSuccessState extends ConsumerState<VegeDeleteSuccess> {
         SizedBox(
           height: 16,
         ),
-        ContentInputTextForm()
+        ContentInputTextForm(
+          maxLength: 50,
+        ),
       ],
     );
   }

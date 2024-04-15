@@ -35,7 +35,7 @@ class VegeDiaryWriteBottom extends ConsumerWidget {
             ),
           ),
           SizedBox(
-            height: 32.0,
+            height: 24.0,
           )
         ],
       ),
