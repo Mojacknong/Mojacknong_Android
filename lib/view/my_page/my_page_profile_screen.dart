@@ -92,6 +92,10 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
   Widget build(BuildContext context) {
     file = ref.read(onBoardingProfileProvider).profileImage;
     final nickname = ref.read(onBoardingProfileProvider).nickname;
+    final isSpecial = ref.watch(onBoardingSpecialCharactersProvider);
+
+    final profile = ref.watch(onBoardingProfileProvider);
+
     final hasSpecialCharacters = ref.watch(onBoardingSpecialCharactersProvider);
 
     return Column(
