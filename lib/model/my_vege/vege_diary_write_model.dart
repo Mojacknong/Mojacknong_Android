@@ -1,22 +1,22 @@
 import 'package:image_picker/image_picker.dart';
 
-class VegeDeleteSuccessModel {
+class VegeDiaryWriteModel {
   final String? content;
   final XFile? image;
   final bool? isComplete;
 
-  VegeDeleteSuccessModel({
+  VegeDiaryWriteModel({
     required this.content,
     required this.image,
     required this.isComplete,
   });
 
-  VegeDeleteSuccessModel copyWith({
+  VegeDiaryWriteModel copyWith({
     String? content,
     XFile? image,
     bool? isComplete,
   }) {
-    return VegeDeleteSuccessModel(
+    return VegeDiaryWriteModel(
       content: content,
       image: image,
       isComplete: isComplete,

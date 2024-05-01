@@ -3,10 +3,9 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../../model/my_vege/vege_delete_success_model.dart';
 
-
-class VegeDeleteSuccessNotifier extends StateNotifier<VegeImageContentModel> {
+class VegeDeleteSuccessNotifier extends StateNotifier<VegeDeleteSuccessModel> {
   VegeDeleteSuccessNotifier()
-      : super(VegeImageContentModel(
+      : super(VegeDeleteSuccessModel(
             content: null, image: null, isComplete: false));
 
   bool _isVegeDeleteComplete = false;

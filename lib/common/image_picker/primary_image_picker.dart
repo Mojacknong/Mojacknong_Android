@@ -19,8 +19,8 @@ class PrimaryImagePicker extends ConsumerStatefulWidget {
 
   final Widget? nullChild;
   final BoxDecoration? boxDecoration;
-  final Function? addImage;
-  final Function? deleteImage;
+  final void Function(XFile)? addImage;
+  final void Function()? deleteImage;
 
   @override
   ConsumerState createState() => _PrimaryImagePickerState();
