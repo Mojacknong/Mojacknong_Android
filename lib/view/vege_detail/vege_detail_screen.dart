@@ -1,8 +1,11 @@
 import 'package:farmus/common/app_bar/more_vertical_app_bar.dart';
+import 'package:farmus/common/farmus_picture.dart';
+import 'package:farmus/common/farmus_picture_64.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/view/vege_diary_write/vege_diary_write_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -11,7 +14,6 @@ import '../../common/theme/farmus_theme_text_style.dart';
 
 class VegeDetailScreen extends ConsumerWidget {
   const VegeDetailScreen({super.key});
-
 
   void showActionSheet(BuildContext context) {
     showCupertinoModalPopup(
@@ -25,7 +27,8 @@ class VegeDetailScreen extends ConsumerWidget {
                 context,
                 MaterialPageRoute(
                     builder: (context) => const VegeDiaryWriteScreen()),
-              );            },
+              );
+            },
             child: const Text(
               "수정하기",
               style: FarmusThemeTextStyle.dark2Medium15,
@@ -85,7 +88,104 @@ class VegeDetailScreen extends ConsumerWidget {
           ),
         ],
       ),
-      body: Container(),
+      body: Column(
+        children: [
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: FarmusPicture(
+              height: 270,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(
+              '일기' * 20,
+              style: FarmusThemeTextStyle.darkMedium15,
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: ShapeDecoration(
+              shape: RoundedRectangleBorder(
+                side: const BorderSide(
+                  width: 1,
+                  color: FarmusThemeColor.gray4,
+                ),
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+            child: const Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('채소 상태', style: FarmusThemeTextStyle.gray2Medium13),
+                SizedBox(width: 8),
+                Text('좋음', style: FarmusThemeTextStyle.gray6SemiBold13),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 32,
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 16.0, right: 4.0),
+                child: GestureDetector(
+                  onTap: () {},
+                  child: SvgPicture.asset('assets/image/ic_heart.svg'),
+                ),
+              ),
+              const Text(
+                '2',
+                style: FarmusThemeTextStyle.gray2Medium13,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 12.0, right: 4.0),
+                child: GestureDetector(
+                  onTap: () {},
+                  child: SvgPicture.asset('assets/image/ic_message_typing.svg'),
+                ),
+              ),
+              const Text(
+                '2',
+                style: FarmusThemeTextStyle.gray2Medium13,
+              ),
+            ],
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 16.0),
+            child: Divider(
+              height: 1,
+              color: FarmusThemeColor.gray4,
+            ),
+          ),
+          const Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
+                  children: [
+                    Text(
+                      '댓글',
+                      style: FarmusThemeTextStyle.gray1Medium15,
+                    ),
+                    SizedBox(
+                      width: 4,
+                    ),
+                    Text(
+                      '2',
+                      style: FarmusThemeTextStyle.gray1Medium15,
+                    ),
+                  ],
+                ),
+              )
+            ],
+          )
+        ],
+      ),
     );
   }
 }
