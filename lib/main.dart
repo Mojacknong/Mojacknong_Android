@@ -1,6 +1,7 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/res/app_url/app_url.dart';
-import 'package:farmus/view/home/home_screen.dart';
+import 'package:farmus/view/main/main_screen.dart';
+import 'package:farmus/view/vege_detail/vege_detail_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,7 @@ Future<void> main() async {
       },
       child: MaterialApp(
         title: "팜어스",
-        home: const HomeScreen(),
+        home: const VegeDetailScreen(),
         debugShowCheckedModeBanner: false,
         localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,

@@ -196,4 +196,7 @@ class FarmusThemeTextStyle {
 
   static const TextStyle redSemiBold15 = TextStyle(
       color: FarmusThemeColor.red, fontSize: 15, fontWeight: FontWeight.w600);
+
+  static const TextStyle redMedium15 =
+  TextStyle(color: FarmusThemeColor.red, fontSize: 15);
 }
