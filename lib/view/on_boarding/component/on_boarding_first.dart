@@ -10,7 +10,6 @@ import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 import '../../../view_model/on_boarding/on_boarding_provider.dart';
 import 'main_sub_title.dart';
-import 'main_sub_title.dart';
 import 'on_boarding_nickname_text_input.dart';
 
 class OnBoardingFirst extends ConsumerStatefulWidget {
@@ -25,8 +24,6 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
   XFile? file;
 
   void _showActionSheet(BuildContext context) {
-    FarmusImagePicker.showActionSheet(context, (value) {
-  void showActionSheet(BuildContext context) {
     FarmusImagePicker.showActionSheet(context, (value) {
       if (value != null) {
         setState(() {
@@ -56,17 +53,16 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
                 const Padding(
                   padding: EdgeInsets.all(16.0),
                   child: MainSubTitle(
-                  child: MainSubTitle(
                     mainText: "반가워요!\n프로필을 설정해볼까요?",
                     subText: "",
                   ),
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 Center(
                   child: Container(
                     width: 110,
                     height: 110,
-                    decoration: ShapeDecoration(
+                    decoration: const ShapeDecoration(
                       color: FarmusThemeColor.gray5,
                       shape: OvalBorder(),
                     ),
@@ -75,7 +71,7 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
                             children: [
                               Center(
                                 child: GestureDetector(
-                                  onTap: () => showActionSheet(context),
+                                  onTap: () => _showActionSheet(context),
                                   child: SvgPicture.asset(
                                       "assets/image/ic_camera.svg"),
                                 ),
@@ -83,7 +79,7 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
                             ],
                           )
                         : GestureDetector(
-                            onTap: () => showActionSheet(context),
+                            onTap: () => _showActionSheet(context),
                             child: ClipOval(
                               child: Image.file(
                                 File(file!.path),
@@ -93,8 +89,8 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
                           ),
                   ),
                 ),
-                SizedBox(height: 8),
-                Padding(
+                const SizedBox(height: 8),
+                const Padding(
                   padding: EdgeInsets.all(16.0),
                   child: Text(
                     "닉네임",
@@ -103,7 +99,7 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: OnBoardingNicknameTextInput(
                     initialValue: nickname,
                     errorText: hasSpecialCharacters ? "특수문자는 입력할 수 없어요" : null,
