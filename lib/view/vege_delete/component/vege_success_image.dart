@@ -18,7 +18,7 @@ class VegeSuccessImage extends ConsumerStatefulWidget {
 class _VegeSuccessImageState extends ConsumerState<VegeSuccessImage> {
   @override
   Widget build(BuildContext context) {
-    var successImage = ref.watch(vegeDeleteSuccessProvider).successImage;
+    var successImage = ref.watch(vegeDeleteSuccessProvider).image;
     void showActionSheet(BuildContext context) {
       FarmusImagePicker.showActionSheet(context, (value) {
         if (value != null) {

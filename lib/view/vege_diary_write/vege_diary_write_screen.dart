@@ -3,7 +3,7 @@ import 'package:farmus/common/button/primary_button.dart';
 import 'package:farmus/common/image_picker/primary_image_picker.dart';
 import 'package:farmus/view/vege_diary_write/component/vege_diary_write_bottom.dart';
 import 'package:farmus/view/vege_diary_write/component/vege_diary_write_state.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:farmus/view_model/vege_diary_write/vege_diary_write_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -17,6 +17,7 @@ class VegeDiaryWriteScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     bool enabled = false;
+    var successImage = ref.watch(vegeDiaryWriteProvider).image;
 
     return Scaffold(
       appBar: PrimaryAppBar(
@@ -47,34 +48,40 @@ class VegeDiaryWriteScreen extends ConsumerWidget {
           )
         ],
       ),
-      body: const Column(
+      body: Column(
         children: [
           Expanded(
             child: SingleChildScrollView(
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       horizontal: 48.0,
                       vertical: 8.0,
                     ),
-                    child: PrimaryImagePicker(),
+                    child: PrimaryImagePicker(
+                      addImage: ref.read(vegeDiaryWriteProvider.notifier)
+                      .updateImage,
+                      deleteImage: ref
+                          .read(vegeDiaryWriteProvider.notifier)
+                          .deleteImage,
+                    ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16.0),
                     child: ContentInputTextForm(
                       maxLength: 300,
                     ),
                   ),
-                  VegeDiaryWriteState(),
+                  const VegeDiaryWriteState(),
                 ],
               ),
             ),
           ),
-          Column(
+          const Column(
             children: [
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.0),
