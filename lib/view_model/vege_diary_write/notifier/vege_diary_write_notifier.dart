@@ -17,25 +17,42 @@ class VegeDiaryWriteNotifier extends StateNotifier<VegeDiaryWriteModel> {
   bool get isVegeComplete => _isVegeComplete;
 
   void updateImage(XFile? image) {
+    if (state.content != null &&
+        state.content!.isNotEmpty &&
+        image != null &&
+        image!.path.isNotEmpty &&
+        state.vegeState != null &&
+        state.content!.isNotEmpty) {
+      _isVegeComplete = true;
+    } else {
+      _isVegeComplete = false;
+    }
+
     state = state.copyWith(
       content: state.content,
       image: image,
       vegeState: state.vegeState,
       isComplete: isVegeComplete,
     );
-
-    checkVegeComplete();
   }
 
   void updateContent(String content) {
+    if (content.isNotEmpty &&
+        state.image != null &&
+        state.image!.path.isNotEmpty &&
+        state.vegeState != null &&
+        state.content!.isNotEmpty) {
+      _isVegeComplete = true;
+    } else {
+      _isVegeComplete = false;
+    }
+
     state = state.copyWith(
       content: content,
       image: state.image,
       vegeState: state.vegeState,
       isComplete: isVegeComplete,
     );
-
-    checkVegeComplete();
   }
 
   void deleteImage() {
@@ -45,11 +62,18 @@ class VegeDiaryWriteNotifier extends StateNotifier<VegeDiaryWriteModel> {
       vegeState: state.vegeState,
       isComplete: false,
     );
-
-    checkVegeComplete();
   }
 
   void updateVegeState(String vegeState) {
+    if (state.content != null &&
+        state.content!.isNotEmpty &&
+        state.image != null &&
+        state.image!.path.isNotEmpty &&
+        vegeState.isNotEmpty) {
+      _isVegeComplete = true;
+    } else {
+      _isVegeComplete = false;
+    }
 
     state = state.copyWith(
       content: state.content,
@@ -57,15 +81,15 @@ class VegeDiaryWriteNotifier extends StateNotifier<VegeDiaryWriteModel> {
       vegeState: vegeState,
       isComplete: isVegeComplete,
     );
-
-    print(vegeState);
-    checkVegeComplete();
   }
 
-  void checkVegeComplete() {
+  void checkVegeComplete(String? content, XFile? image, String? vegeState) {
     if (state.content != null &&
+        state.content!.isNotEmpty &&
         state.image != null &&
-        state.vegeState != null) {
+        state.image!.path.isNotEmpty &&
+        state.vegeState != null &&
+        state.content!.isNotEmpty) {
       _isVegeComplete = true;
     } else {
       _isVegeComplete = false;
