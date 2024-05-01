@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../common/primary_text_form_field.dart';
-import '../../../common/theme/farmus_theme_color.dart';
-import '../../../view_model/vege_delete/vege_delete_provider.dart';
+import 'primary_text_form_field.dart';
+import 'theme/farmus_theme_color.dart';
 
 class ContentInputTextForm extends ConsumerWidget {
   const ContentInputTextForm({super.key, required this.maxLength, required this.nowContent, required this.updateContent});

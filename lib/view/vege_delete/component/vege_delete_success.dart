@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'content_input_text_form.dart';
+import '../../../common/content_input_text_form.dart';
 
 class VegeDeleteSuccess extends ConsumerStatefulWidget {
   const VegeDeleteSuccess({Key? key}) : super(key: key);

@@ -1,55 +1,51 @@
 import 'dart:io';
 
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
+import 'package:farmus/view_model/vege_diary_write/vege_diary_write_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:image_picker/image_picker.dart';
 
 import '../bottom_sheet/farmus_image_picker.dart';
 import '../theme/farmus_theme_color.dart';
 
-class PrimaryImagePicker extends ConsumerStatefulWidget {
-  const PrimaryImagePicker(
-      {super.key,
-      this.nullChild,
-      this.boxDecoration,
-      this.addImage,
-      this.deleteImage});
+class DiaryImagePicker extends ConsumerStatefulWidget {
+  const DiaryImagePicker({
+    Key? key,
+    this.nullChild,
+    this.boxDecoration,
+  }) : super(key: key);
 
   final Widget? nullChild;
   final BoxDecoration? boxDecoration;
-  final void Function(XFile)? addImage;
-  final void Function()? deleteImage;
 
   @override
   ConsumerState createState() => _PrimaryImagePickerState();
 }
 
-class _PrimaryImagePickerState extends ConsumerState<PrimaryImagePicker> {
-  var successImage;
-
-  XFile? file;
-
-  void showActionSheet(BuildContext context) {
-    FarmusImagePicker.showActionSheet(
-      context,
-      (value) {
-        if (value != null) {
-          setState(() {
-            successImage = value;
-            widget.addImage;
-          });
-        }
-      },
-    );
-  }
-
+class _PrimaryImagePickerState extends ConsumerState<DiaryImagePicker> {
   @override
   Widget build(BuildContext context) {
     final nullChild = widget.nullChild;
     final boxDecoration = widget.boxDecoration;
-    final deleteImage = widget.deleteImage;
+
+    var successImage = ref.watch(vegeDiaryWriteProvider).image;
+
+    void showActionSheet(BuildContext context) {
+      FarmusImagePicker.showActionSheet(
+        context,
+        (value) {
+          if (value != null) {
+            setState(() {
+              successImage = value;
+              ref
+                  .read(vegeDiaryWriteProvider.notifier)
+                  .updateImage(successImage);
+            });
+          }
+        },
+      );
+    }
 
     return Stack(
       children: [
@@ -98,7 +94,9 @@ class _PrimaryImagePickerState extends ConsumerState<PrimaryImagePicker> {
                   onTap: () {
                     (successImage == null)
                         ? showActionSheet(context)
-                        : deleteImage;
+                        : ref
+                            .read(vegeDiaryWriteProvider.notifier)
+                            .deleteImage();
                   },
                   child: (successImage == null)
                       ? SvgPicture.asset('assets/image/ic_camera.svg',

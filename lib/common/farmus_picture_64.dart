@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../common/theme/farmus_theme_color.dart';
+import 'theme/farmus_theme_color.dart';
 
 class FarmusPicture64 extends ConsumerWidget {
   const FarmusPicture64({super.key});
