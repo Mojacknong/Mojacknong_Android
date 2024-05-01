@@ -12,7 +12,8 @@ import '../../common/theme/farmus_theme_color.dart';
 import '../vege_delete/component/content_input_text_form.dart';
 
 class VegeDiaryWriteScreen extends ConsumerWidget {
-  const VegeDiaryWriteScreen({super.key});
+  const VegeDiaryWriteScreen({Key? key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -60,20 +61,23 @@ class VegeDiaryWriteScreen extends ConsumerWidget {
                       vertical: 8.0,
                     ),
                     child: PrimaryImagePicker(
-                      addImage: ref.read(vegeDiaryWriteProvider.notifier)
-                      .updateImage,
-                      deleteImage: ref
+                      addImage: (xFile) => ref
                           .read(vegeDiaryWriteProvider.notifier)
-                          .deleteImage,
+                          .updateImage(successImage),
+                      deleteImage: () => ref
+                          .read(vegeDiaryWriteProvider.notifier)
+                          .deleteImage(),
                     ),
                   ),
                   const SizedBox(
                     height: 16,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: ContentInputTextForm(
                       maxLength: 300,
+                      nowContent: ref.watch(vegeDiaryWriteProvider).content,
+                      updateContent: (value) => ref.watch(vegeDiaryWriteProvider.notifier).updateContent(value),
                     ),
                   ),
                   const VegeDiaryWriteState(),

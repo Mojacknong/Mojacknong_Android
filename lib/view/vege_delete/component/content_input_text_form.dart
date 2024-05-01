@@ -6,15 +6,17 @@ import '../../../common/theme/farmus_theme_color.dart';
 import '../../../view_model/vege_delete/vege_delete_provider.dart';
 
 class ContentInputTextForm extends ConsumerWidget {
-  const ContentInputTextForm({super.key, required this.maxLength});
+  const ContentInputTextForm({super.key, required this.maxLength, required this.nowContent, required this.updateContent});
 
   final int maxLength;
+  final String? nowContent;
+  final void Function(String) updateContent;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var nowLength = ref.watch(vegeDeleteSuccessProvider).content == null
+    var nowLength = nowContent == null
         ? 0
-        : ref.watch(vegeDeleteSuccessProvider).content?.length;
+        : nowContent?.length;
 
     return PrimaryTextFormField(
         maxLength: maxLength,
@@ -31,7 +33,7 @@ class ContentInputTextForm extends ConsumerWidget {
           color: FarmusThemeColor.red,
         ),
         onChanged: (value) {
-          ref.read(vegeDeleteSuccessProvider.notifier).updateContent(value);
+          updateContent(value);
         },
         suffix: Column(
           children: [

@@ -1,10 +1,12 @@
-import 'package:farmus/model/my_vege/vege_delete_success_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
-class VegeDiaryWriteNotifier extends StateNotifier<VegeImageContentModel> {
-  VegeDiaryWriteNotifier() : super(VegeImageContentModel(
-      content: null, image: null, isComplete: false));
+import '../../../model/my_vege/vege_diary_write_model.dart';
+
+class VegeDiaryWriteNotifier extends StateNotifier<VegeDiaryWriteModel> {
+  VegeDiaryWriteNotifier()
+      : super(
+            VegeDiaryWriteModel(content: null, image: null, isComplete: false));
 
   bool _isVegeComplete = false;
 
@@ -16,6 +18,8 @@ class VegeDiaryWriteNotifier extends StateNotifier<VegeImageContentModel> {
     } else {
       _isVegeComplete = false;
     }
+
+    print(image);
 
     state = state.copyWith(
       content: state.content,
@@ -41,6 +45,8 @@ class VegeDiaryWriteNotifier extends StateNotifier<VegeImageContentModel> {
   }
 
   void deleteImage() {
+    print(state.image);
+
     state = state.copyWith(
       content: state.content,
       image: null,
