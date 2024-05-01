@@ -3,7 +3,7 @@ import 'package:image_picker/image_picker.dart';
 class VegeDiaryWriteModel {
   final String? content;
   final XFile? image;
-  final bool? isComplete;
+  final bool isComplete;
 
   VegeDiaryWriteModel({
     required this.content,
@@ -14,7 +14,7 @@ class VegeDiaryWriteModel {
   VegeDiaryWriteModel copyWith({
     String? content,
     XFile? image,
-    bool? isComplete,
+    required bool isComplete,
   }) {
     return VegeDiaryWriteModel(
       content: content,

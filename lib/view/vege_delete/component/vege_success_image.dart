@@ -19,6 +19,7 @@ class _VegeSuccessImageState extends ConsumerState<VegeSuccessImage> {
   @override
   Widget build(BuildContext context) {
     var successImage = ref.watch(vegeDeleteSuccessProvider).image;
+
     void showActionSheet(BuildContext context) {
       FarmusImagePicker.showActionSheet(context, (value) {
         if (value != null) {
@@ -43,15 +44,15 @@ class _VegeSuccessImageState extends ConsumerState<VegeSuccessImage> {
           ),
           child: (successImage == null)
               ? Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: ClipRRect(
+                  padding: const EdgeInsets.all(24.0),
+                  child: ClipRRect(
                     borderRadius: BorderRadius.circular(12),
                     child: Image.asset(
                       'assets/image/img_vege_success.png',
                       fit: BoxFit.contain,
                     ),
                   ),
-              )
+                )
               : ClipRRect(
                   borderRadius: BorderRadius.circular(12),
                   child: Image.file(

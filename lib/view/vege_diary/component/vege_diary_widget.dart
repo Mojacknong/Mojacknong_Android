@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
-import 'farmus_picture_64.dart';
+import '../../../common/farmus_picture_64.dart';
 
 class VegeDiaryWidget extends ConsumerWidget {
   const VegeDiaryWidget({super.key});
