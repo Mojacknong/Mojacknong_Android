@@ -22,10 +22,10 @@ class HomeMyVegeButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return PrimaryButton(
       text: text,
-      enabled: enabled,
-      textColor: FarmusThemeColor.green1,
-      backgroundColor: FarmusThemeColor.greenLight3,
-      borderColor: FarmusThemeColor.green1,
+      enabled: true,
+      textColor: enabled ? FarmusThemeColor.green1 : FarmusThemeColor.gray3,
+      backgroundColor: enabled ? FarmusThemeColor.greenLight3 : FarmusThemeColor.background,
+      borderColor: enabled ? FarmusThemeColor.green1 : FarmusThemeColor.background,
       borderRadius: 25.0,
       onPressed: onPressed,
       fontPadding: 0,

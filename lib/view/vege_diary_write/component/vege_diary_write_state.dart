@@ -1,3 +1,4 @@
+import 'package:farmus/view_model/vege_diary_write/vege_diary_write_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -10,6 +11,9 @@ class VegeDiaryWriteState extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    var notifier = ref.read(vegeDiaryWriteProvider.notifier);
+    var vegeState = ref.watch(vegeDiaryWriteProvider).vegeState;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -25,7 +29,7 @@ class VegeDiaryWriteState extends ConsumerWidget {
           child: Container(
             width: double.infinity,
             decoration: ShapeDecoration(
-              color: FarmusThemeColor.gray5,
+              color: FarmusThemeColor.background,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(28),
               ),
@@ -36,19 +40,25 @@ class VegeDiaryWriteState extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     HomeMyVegeButton(
-                      enabled: true,
+                      enabled: vegeState == 'bad',
                       text: "나쁨",
-                      onPressed: () {},
+                      onPressed: () {
+                        notifier.updateVegeState('bad');
+                      },
                     ),
                     HomeMyVegeButton(
-                      enabled: true,
+                      enabled: vegeState == 'normal',
                       text: "보통",
-                      onPressed: () {},
+                      onPressed: () {
+                        notifier.updateVegeState('normal');
+                      },
                     ),
                     HomeMyVegeButton(
-                      enabled: true,
+                      enabled: vegeState == 'good',
                       text: "좋음",
-                      onPressed: () {},
+                      onPressed: () {
+                        notifier.updateVegeState('good');
+                      },
                     ),
                   ],
                 )
