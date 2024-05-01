@@ -1,11 +1,9 @@
 import 'package:farmus/common/app_bar/primary_app_bar.dart';
-import 'package:farmus/common/button/on_boarding_button.dart';
+import 'package:farmus/common/button/primary_color_button.dart';
 import 'package:farmus/view/main/main_screen.dart';
 import 'package:farmus/view/on_boarding/component/main_sub_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../../common/theme/farmus_theme_color.dart';
 
 class OnBoardingFinishScreen extends ConsumerWidget {
   const OnBoardingFinishScreen({super.key});
@@ -38,7 +36,7 @@ class OnBoardingFinishScreen extends ConsumerWidget {
           Padding(
             padding:
                 const EdgeInsets.symmetric(horizontal: 16.0, vertical: 64.0),
-            child: OnBoardingButton(
+            child: PrimaryColorButton(
               text: "시작하기",
               onPressed: () {
                 Navigator.pop(context);
@@ -48,9 +46,6 @@ class OnBoardingFinishScreen extends ConsumerWidget {
                 );
               },
               enabled: true,
-              textColor: FarmusThemeColor.white,
-              backgroundColor: FarmusThemeColor.primary,
-              borderColor: FarmusThemeColor.white,
             ),
           ),
         ],
