@@ -1,6 +1,6 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/res/app_url/app_url.dart';
-import 'package:farmus/view/my_page/my_page_screen.dart';
+import 'package:farmus/view/main/main_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +33,9 @@ Future<void> main() async {
   runApp(ProviderScope(
     child: MaterialApp(
       title: "팜어스",
-      home: const MyPageScreen(),
+      home: const MainScreen(
+        selectedIndex: 0,
+      ),
       debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,

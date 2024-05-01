@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 class MyPageInfo extends StatelessWidget {
   final String? image;
+
   const MyPageInfo({super.key, required this.image});
 
   @override
