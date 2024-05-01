@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../common/theme/farmus_theme_color.dart';
 import '../../common/content_input_text_form.dart';
+import '../../common/theme/farmus_theme_color.dart';
 
 class VegeDiaryWriteScreen extends ConsumerWidget {
   const VegeDiaryWriteScreen({Key? key}) : super(key: key);
@@ -38,7 +38,9 @@ class VegeDiaryWriteScreen extends ConsumerWidget {
             borderColor: FarmusThemeColor.white,
             borderRadius: 20,
             fontSize: 13,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
             text: '완료',
             fontPadding: 0,
           ),

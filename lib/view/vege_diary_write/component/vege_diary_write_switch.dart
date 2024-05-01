@@ -1,5 +1,4 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -19,8 +18,9 @@ class _VegeDiaryWriteSwitchState extends ConsumerState<VegeDiaryWriteSwitch> {
       data: ThemeData(
         useMaterial3: true,
       ).copyWith(
-        colorScheme: Theme.of(context).colorScheme.copyWith(outline: FarmusThemeColor.gray3)
-      ),
+          colorScheme: Theme.of(context)
+              .colorScheme
+              .copyWith(outline: FarmusThemeColor.gray3)),
       child: Switch(
           value: switchValue,
           activeColor: FarmusThemeColor.white,

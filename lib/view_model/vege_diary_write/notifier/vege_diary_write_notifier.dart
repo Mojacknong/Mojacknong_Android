@@ -20,7 +20,7 @@ class VegeDiaryWriteNotifier extends StateNotifier<VegeDiaryWriteModel> {
     if (state.content != null &&
         state.content!.isNotEmpty &&
         image != null &&
-        image!.path.isNotEmpty &&
+        image.path.isNotEmpty &&
         state.vegeState != null &&
         state.content!.isNotEmpty) {
       _isVegeComplete = true;
