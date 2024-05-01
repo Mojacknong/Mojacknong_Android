@@ -1,29 +1,26 @@
+import 'package:farmus/model/my_vege/vege_delete_success_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../../model/my_vege/vege_delete_success_model.dart';
+class VegeDiaryWriteNotifier extends StateNotifier<VegeImageContentModel> {
+  VegeDiaryWriteNotifier() : super(VegeImageContentModel(
+      content: null, image: null, isComplete: false));
 
+  bool _isVegeComplete = false;
 
-class VegeDeleteSuccessNotifier extends StateNotifier<VegeImageContentModel> {
-  VegeDeleteSuccessNotifier()
-      : super(VegeImageContentModel(
-            content: null, image: null, isComplete: false));
+  bool get isVegeComplete => _isVegeComplete;
 
-  bool _isVegeDeleteComplete = false;
-
-  bool get isVegeDeleteComplete => _isVegeDeleteComplete;
-
-  void updateSuccessImage(XFile? successImage) {
+  void updateImage(XFile? image) {
     if (state.content != null && state.content!.isNotEmpty) {
-      _isVegeDeleteComplete = true;
+      _isVegeComplete = true;
     } else {
-      _isVegeDeleteComplete = false;
+      _isVegeComplete = false;
     }
 
     state = state.copyWith(
       content: state.content,
-      image: successImage,
-      isComplete: isVegeDeleteComplete,
+      image: image,
+      isComplete: isVegeComplete,
     );
   }
 
@@ -31,19 +28,19 @@ class VegeDeleteSuccessNotifier extends StateNotifier<VegeImageContentModel> {
     if (content.isNotEmpty &&
         state.image != null &&
         state.image!.path.isNotEmpty) {
-      _isVegeDeleteComplete = true;
+      _isVegeComplete = true;
     } else {
-      _isVegeDeleteComplete = false;
+      _isVegeComplete = false;
     }
 
     state = state.copyWith(
       content: content,
       image: state.image,
-      isComplete: isVegeDeleteComplete,
+      isComplete: isVegeComplete,
     );
   }
 
-  void deleteSuccessImage() {
+  void deleteImage() {
     state = state.copyWith(
       content: state.content,
       image: null,

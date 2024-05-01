@@ -1,24 +1,24 @@
 import 'package:image_picker/image_picker.dart';
 
-class VegeDeleteSuccessModel {
+class VegeImageContentModel {
   final String? content;
-  final XFile? successImage;
+  final XFile? image;
   final bool? isComplete;
 
-  VegeDeleteSuccessModel({
+  VegeImageContentModel({
     required this.content,
-    required this.successImage,
+    required this.image,
     required this.isComplete,
   });
 
-  VegeDeleteSuccessModel copyWith({
+  VegeImageContentModel copyWith({
     String? content,
-    XFile? successImage,
+    XFile? image,
     bool? isComplete,
   }) {
-    return VegeDeleteSuccessModel(
+    return VegeImageContentModel(
       content: content,
-      successImage: successImage,
+      image: image,
       isComplete: isComplete,
     );
   }

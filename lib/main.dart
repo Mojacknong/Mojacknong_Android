@@ -1,5 +1,7 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/res/app_url/app_url.dart';
+import 'package:farmus/view/home/home_screen.dart';
+import 'package:farmus/view/vege_diary/vege_diary_screen.dart';
 import 'package:farmus/view/vege_diary_write/vege_diary_write_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
@@ -31,24 +33,29 @@ Future<void> main() async {
   );
 
   runApp(ProviderScope(
-    child: MaterialApp(
-      title: "팜어스",
-      home: const VegeDiaryWriteScreen(),
-      debugShowCheckedModeBanner: false,
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        DefaultCupertinoLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('ko', 'KR'),
-      ],
-      theme: ThemeData(
-        fontFamily: 'Pretendard',
-        scaffoldBackgroundColor: FarmusThemeColor.white,
-        textSelectionTheme: const TextSelectionThemeData(
-          cursorColor: FarmusThemeColor.primary,
+    child: GestureDetector(
+      onTap: () {
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: MaterialApp(
+        title: "팜어스",
+        home: const VegeDiaryWriteScreen(),
+        debugShowCheckedModeBanner: false,
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          DefaultCupertinoLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('ko', 'KR'),
+        ],
+        theme: ThemeData(
+          fontFamily: 'Pretendard',
+          scaffoldBackgroundColor: FarmusThemeColor.white,
+          textSelectionTheme: const TextSelectionThemeData(
+            cursorColor: FarmusThemeColor.primary,
+          ),
         ),
       ),
     ),

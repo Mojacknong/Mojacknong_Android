@@ -10,7 +10,7 @@ final vegeDeleteReasonProvider =
 });
 
 final vegeDeleteSuccessProvider =
-    StateNotifierProvider<VegeDeleteSuccessNotifier, VegeDeleteSuccessModel>(
+    StateNotifierProvider<VegeDeleteSuccessNotifier, VegeImageContentModel>(
         (ref) {
   return VegeDeleteSuccessNotifier();
 });
