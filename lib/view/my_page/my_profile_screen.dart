@@ -33,7 +33,7 @@ class MyProfileScreen extends ConsumerWidget {
             const Expanded(
               child: Padding(
                 padding: EdgeInsets.all(8.0),
-                child: MyPageProfile(),
+                child: MyPageProfileScreen(),
               ),
             ),
             Padding(
