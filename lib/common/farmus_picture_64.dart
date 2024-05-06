@@ -4,14 +4,16 @@ import 'package:flutter_svg/svg.dart';
 
 import 'theme/farmus_theme_color.dart';
 
-class FarmusPicture64 extends ConsumerWidget {
-  const FarmusPicture64({super.key});
+class FarmusPictureFix extends ConsumerWidget {
+  const FarmusPictureFix({super.key, required this.size});
+
+  final double size;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      width: 64,
-      height: 64,
+      width: size,
+      height: size,
       decoration: ShapeDecoration(
         color: FarmusThemeColor.background,
         shape: RoundedRectangleBorder(

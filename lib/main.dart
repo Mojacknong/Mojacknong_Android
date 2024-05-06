@@ -38,7 +38,7 @@ Future<void> main() async {
       },
       child: MaterialApp(
         title: "팜어스",
-        home: const VegeDetailScreen(),
+        home: const MainScreen(),
         debugShowCheckedModeBanner: false,
         localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,

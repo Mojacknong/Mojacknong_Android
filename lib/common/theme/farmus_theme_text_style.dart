@@ -15,6 +15,11 @@ class FarmusThemeTextStyle {
     fontWeight: FontWeight.w400,
   );
 
+  static const TextStyle darkMedium14 = TextStyle(
+    color: FarmusThemeColor.dark,
+    fontSize: 14,
+  );
+
   static const TextStyle darkMedium15 = TextStyle(
     color: FarmusThemeColor.dark,
     fontSize: 15,

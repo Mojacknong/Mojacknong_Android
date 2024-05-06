@@ -21,7 +21,9 @@ class HomeVegeDiary extends ConsumerWidget {
       },
       child: const Row(
         children: [
-          FarmusPicture64(),
+          FarmusPictureFix(
+            size: 64,
+          ),
           SizedBox(
             width: 16,
           ),
