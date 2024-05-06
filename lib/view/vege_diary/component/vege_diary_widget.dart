@@ -1,4 +1,4 @@
-import 'package:farmus/view/vege_detail/vege_detail_screen.dart';
+import 'package:farmus/view/vege_detail/vege_diary_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -17,7 +17,7 @@ class VegeDiaryWidget extends ConsumerWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const VegeDetailScreen(),
+            builder: (context) => const VegeDiaryDetailScreen(),
           ),
         );
       },

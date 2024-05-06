@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../common/farmus_picture_64.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 
-class VegeDiaryComment extends ConsumerWidget {
-  const VegeDiaryComment({
+class VegeDiaryDetailComment extends ConsumerWidget {
+  const VegeDiaryDetailComment({
     super.key,
   });
 
@@ -37,7 +39,7 @@ class VegeDiaryComment extends ConsumerWidget {
                         GestureDetector(
                           child: SvgPicture.asset(
                               'assets/image/ic_more_vertical.svg'),
-                        )
+                        ),
                       ],
                     ),
                     const Text(
