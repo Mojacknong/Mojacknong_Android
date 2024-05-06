@@ -17,15 +17,14 @@ class VegeDiaryDetailComment extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Row(
-            children: [
-              const FarmusPictureFix(
-                size: 32.0,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        Row(
+          children: [
+            const FarmusPictureFix(
+              size: 32.0,
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 8.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -37,6 +36,9 @@ class VegeDiaryDetailComment extends ConsumerWidget {
                           style: FarmusThemeTextStyle.darkMedium15,
                         ),
                         GestureDetector(
+                          onTap: () {
+
+                          },
                           child: SvgPicture.asset(
                               'assets/image/ic_more_vertical.svg'),
                         ),
@@ -49,19 +51,16 @@ class VegeDiaryDetailComment extends ConsumerWidget {
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
         const SizedBox(
           height: 6.0,
         ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
-          child: Text(
-            '그건 당신이 최선을 다하지 않아서가 아닐까요? ^____^',
-            style: FarmusThemeTextStyle.darkMedium14,
-          ),
-        )
+        const Text(
+          '그건 당신이 최선을 다하지 않아서가 아닐까요? ^____^',
+          style: FarmusThemeTextStyle.darkMedium14,
+        ),
       ],
     );
   }

@@ -11,15 +11,13 @@ class VegeDiaryDetailContent extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
-          child: FarmusPicture(
-            height: 270,
-          ),
+        const FarmusPicture(
+          height: 270,
         ),
         Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.symmetric(vertical: 16.0),
           child: Text(
             '일기' * 20,
             style: FarmusThemeTextStyle.darkMedium15,
@@ -27,7 +25,6 @@ class VegeDiaryDetailContent extends ConsumerWidget {
         ),
         Container(
           padding: const EdgeInsets.all(16),
-          margin: const EdgeInsets.symmetric(horizontal: 16),
           decoration: ShapeDecoration(
             shape: RoundedRectangleBorder(
               side: const BorderSide(

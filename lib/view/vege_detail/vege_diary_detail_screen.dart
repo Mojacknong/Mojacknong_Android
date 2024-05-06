@@ -93,24 +93,24 @@ class VegeDiaryDetailScreen extends ConsumerWidget {
         children: [
           Expanded(
             child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  VegeDiaryDetailContent(),
-                  SizedBox(
-                    height: 32,
-                  ),
-                  VegeDiaryDetailIcon(),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 16.0),
-                    child: Divider(
-                      height: 1,
-                      color: FarmusThemeColor.gray4,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    VegeDiaryDetailContent(),
+                    SizedBox(
+                      height: 32,
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Row(
+                    VegeDiaryDetailIcon(),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 16.0),
+                      child: Divider(
+                        height: 1,
+                        color: FarmusThemeColor.gray4,
+                      ),
+                    ),
+                    Row(
                       children: [
                         Text(
                           '댓글',
@@ -125,21 +125,21 @@ class VegeDiaryDetailScreen extends ConsumerWidget {
                         ),
                       ],
                     ),
-                  ),
-                  SizedBox(
-                    height: 8.0,
-                  ),
-                  VegeDiaryDetailComment(),
-                  Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
-                    child: Divider(
-                      height: 1,
-                      color: FarmusThemeColor.gray4,
+                    SizedBox(
+                      height: 8.0,
                     ),
-                  ),
-                  VegeDiaryDetailComment(),
-                ],
+                    VegeDiaryDetailComment(),
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 12.0),
+                      child: Divider(
+                        height: 1,
+                        color: FarmusThemeColor.gray4,
+                      ),
+                    ),
+                    VegeDiaryDetailComment(),
+                  ],
+                ),
               ),
             ),
           ),

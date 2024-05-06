@@ -13,7 +13,7 @@ class VegeDiaryDetailIcon extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 16.0, right: 4.0),
+          padding: const EdgeInsets.only(right: 4.0),
           child: GestureDetector(
             onTap: () {},
             child: SvgPicture.asset('assets/image/ic_heart.svg'),
