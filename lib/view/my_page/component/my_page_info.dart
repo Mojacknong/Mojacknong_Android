@@ -1,5 +1,6 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
-import 'package:farmus/view/my_page/component/my_page_profile.dart';
+import 'package:farmus/common/theme/farmus_theme_text_style.dart';
+import 'package:farmus/view/my_page/my_profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class MyPageInfo extends StatelessWidget {
@@ -16,38 +17,50 @@ class MyPageInfo extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const MyPageProfile()),
+                MaterialPageRoute(
+                    builder: (context) => const MyProfileScreen()),
               );
             },
-            child: Container(
+            child: SizedBox(
               height: 100,
-              padding: const EdgeInsets.all(16),
               child: Row(
                 children: [
-                  CircleAvatar(
-                    radius: 40,
-                    backgroundColor: Colors.transparent,
-                    child: ClipOval(child: _myImage()),
+                  Container(
+                    height: 100,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0,
+                      vertical: 16.0,
+                    ),
+                    child: Container(
+                      width: 68,
+                      height: 68,
+                      decoration: ShapeDecoration(
+                        color: FarmusThemeColor.gray5,
+                        shape: RoundedRectangleBorder(
+                          side: const BorderSide(
+                            width: 0.60,
+                            color: FarmusThemeColor.gray4,
+                          ),
+                          borderRadius: BorderRadius.circular(60),
+                        ),
+                      ),
+                    ),
                   ),
-                  const SizedBox(width: 15),
+                  const SizedBox(width: 8),
                   const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(top: 16),
+                        padding: EdgeInsets.only(top: 20),
                         child: Text(
                           "파머",
-                          style: TextStyle(
-                              fontSize: 19,
-                              fontWeight: FontWeight.bold,
-                              color: FarmusThemeColor.dark),
+                          style: FarmusThemeTextStyle.darkSemiBold19,
                         ),
                       ),
                       Text(
                         "팜어스와 함께한지 +100일",
-                        style: TextStyle(
-                            fontSize: 15, color: FarmusThemeColor.gray1),
+                        style: FarmusThemeTextStyle.gray1Medium15,
                       )
                     ],
                   )
@@ -62,50 +75,5 @@ class MyPageInfo extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  Widget _myImage() {
-    try {
-      return image!.isEmpty
-          ? Image.asset(
-              "assets/image/img_farmer.png",
-              fit: BoxFit.fill,
-            )
-          : ClipOval(
-              child: Image.network(
-                image!,
-                fit: BoxFit.cover,
-                width: 80,
-                height: 80,
-                loadingBuilder: (BuildContext context, Widget child,
-                    ImageChunkEvent? loadingProgress) {
-                  if (loadingProgress == null) {
-                    return child;
-                  } else if (loadingProgress.cumulativeBytesLoaded ==
-                      loadingProgress.expectedTotalBytes) {
-                    // 이미지가 완전히 로드된 경우
-                    return child;
-                  } else {
-                    // 이미지 로딩 중
-                    return Center(
-                      child: CircularProgressIndicator(
-                        valueColor: const AlwaysStoppedAnimation<Color>(
-                            FarmusThemeColor.brownButton),
-                        value: loadingProgress.expectedTotalBytes != null
-                            ? loadingProgress.cumulativeBytesLoaded /
-                                (loadingProgress.expectedTotalBytes ?? 1)
-                            : null,
-                      ),
-                    );
-                  }
-                },
-              ),
-            );
-    } catch (e) {
-      return Image.asset(
-        "assets/image/img_pepper.png",
-        fit: BoxFit.fill,
-      );
-    }
   }
 }

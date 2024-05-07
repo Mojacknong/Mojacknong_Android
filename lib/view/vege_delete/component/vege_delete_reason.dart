@@ -1,6 +1,6 @@
+import 'package:farmus/common/select_box.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/on_boarding/component/main_sub_title.dart';
-import 'package:farmus/common/select_box.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -27,7 +27,9 @@ class VegeDeleteReason extends ConsumerWidget {
             Expanded(
               child: SelectBox(
                 selectBox: () {
-                  ref.read(vegeDeleteReasonProvider.notifier).selectedBox('success');
+                  ref
+                      .read(vegeDeleteReasonProvider.notifier)
+                      .selectedBox('success');
                 },
                 enabled: boxIndex == 'success',
                 selectBoxContent: Container(
@@ -51,7 +53,9 @@ class VegeDeleteReason extends ConsumerWidget {
             Expanded(
               child: SelectBox(
                 selectBox: () {
-                  ref.read(vegeDeleteReasonProvider.notifier).selectedBox('fail');
+                  ref
+                      .read(vegeDeleteReasonProvider.notifier)
+                      .selectedBox('fail');
                 },
                 enabled: boxIndex == 'fail',
                 selectBoxContent: Container(
