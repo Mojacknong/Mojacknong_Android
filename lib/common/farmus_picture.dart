@@ -1,28 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 
 import 'theme/farmus_theme_color.dart';
 
-class FarmusPictureFix extends ConsumerWidget {
-  const FarmusPictureFix({super.key, required this.size});
+class FarmusPicture extends ConsumerWidget {
+  const FarmusPicture({super.key, required this.height});
 
-  final double size;
+  final double height;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      width: size,
-      height: size,
+      width: double.infinity,
+      height: height,
       decoration: ShapeDecoration(
         color: FarmusThemeColor.background,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
-      ),
-      child: SvgPicture.asset(
-        "assets/image/ic_farm_club_mark.svg",
-        fit: BoxFit.cover,
       ),
     );
   }

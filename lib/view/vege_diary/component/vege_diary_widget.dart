@@ -1,11 +1,11 @@
-import 'package:farmus/view/vege_detail/vege_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../common/farmus_picture_64.dart';
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
-import '../../../common/farmus_picture_64.dart';
+import '../../vege_diary_detail/vege_diary_detail_screen.dart';
 
 class VegeDiaryWidget extends ConsumerWidget {
   const VegeDiaryWidget({super.key});
@@ -17,7 +17,7 @@ class VegeDiaryWidget extends ConsumerWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const VegeDetailScreen(),
+            builder: (context) => const VegeDiaryDetailScreen(),
           ),
         );
       },
@@ -25,7 +25,9 @@ class VegeDiaryWidget extends ConsumerWidget {
         children: [
           Row(
             children: [
-              const FarmusPicture64(),
+              const FarmusPictureFix(
+                size: 64.0,
+              ),
               const SizedBox(
                 width: 16.0,
               ),
