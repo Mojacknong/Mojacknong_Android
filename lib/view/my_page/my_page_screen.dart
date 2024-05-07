@@ -21,7 +21,6 @@ class MyPageScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 500,
               child: MyHistory(),
             )
           ],
