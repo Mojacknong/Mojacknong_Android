@@ -30,29 +30,33 @@ Future<void> main() async {
     javaScriptAppKey: dotenv.env['JAVA_SCRIPT_APP_KEY']!,
   );
 
-  runApp(ProviderScope(
-    child: GestureDetector(
-      onTap: () {
-        FocusManager.instance.primaryFocus?.unfocus();
-      },
-      child: MaterialApp(
-        title: "팜어스",
-        home: const MainScreen(),
-        debugShowCheckedModeBanner: false,
-        localizationsDelegates: const [
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          DefaultCupertinoLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: const [
-          Locale('ko', 'KR'),
-        ],
-        theme: ThemeData(
-          fontFamily: 'Pretendard',
-          scaffoldBackgroundColor: FarmusThemeColor.white,
-          textSelectionTheme: const TextSelectionThemeData(
-            cursorColor: FarmusThemeColor.primary,
+  runApp(
+    ProviderScope(
+      child: GestureDetector(
+        onTap: () {
+          FocusManager.instance.primaryFocus?.unfocus();
+        },
+        child: MaterialApp(
+          title: "팜어스",
+          home: const MainScreen(
+            selectedIndex: 0,
+          ),
+          debugShowCheckedModeBanner: false,
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            DefaultCupertinoLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('ko', 'KR'),
+          ],
+          theme: ThemeData(
+            fontFamily: 'Pretendard',
+            scaffoldBackgroundColor: FarmusThemeColor.white,
+            textSelectionTheme: const TextSelectionThemeData(
+              cursorColor: FarmusThemeColor.primary,
+            ),
           ),
         ),
       ),
