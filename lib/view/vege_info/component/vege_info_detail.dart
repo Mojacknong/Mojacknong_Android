@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 
 class VegeInfoDetail extends ConsumerWidget {
-  const VegeInfoDetail({super.key});
+  const VegeInfoDetail(
+      {super.key, required this.info, required this.bottomWidget});
+
+  final Map<String, String> info;
+  final Widget bottomWidget;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       padding: const EdgeInsets.only(
-          top: 32.0, left: 16.0, right: 16.0, bottom: 16.0),
+        top: 8.0,
+        left: 16.0,
+        right: 16.0,
+        bottom: 16.0,
+      ),
       decoration: ShapeDecoration(
         color: FarmusThemeColor.background,
         shape: RoundedRectangleBorder(
@@ -25,86 +32,56 @@ class VegeInfoDetail extends ConsumerWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 16.0),
-                    child: Text(
-                      '상훈이',
-                      style: FarmusThemeTextStyle.gray1SemiBold23,
-                    ),
-                  ),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      VerticalDivider(
-                        color: FarmusThemeColor.gray1,
-                        thickness: 2,
-                        indent: 20,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 24.0),
+                      child: Text(
+                        '상훈이',
+                        style: FarmusThemeTextStyle.gray1SemiBold23,
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                    ),
+                    IntrinsicHeight(
+                      child: Row(
                         children: [
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 2.0),
-                            child: Row(
-                              children: [
-                                Text(
-                                  '채소',
-                                  style: FarmusThemeTextStyle.gray2Medium15,
-                                ),
-                                SizedBox(
-                                  width: 8,
-                                ),
-                                Text(
-                                  '상추',
-                                  style: FarmusThemeTextStyle.gray1SemiBold15,
-                                ),
-                              ],
-                            ),
+                          const VerticalDivider(
+                            color: FarmusThemeColor.gray1,
+                            thickness: 4,
+                            width: 20,
                           ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 2.0),
-                            child: Row(
-                              children: [
-                                Text(
-                                  '날짜',
-                                  style: FarmusThemeTextStyle.gray2Medium15,
-                                ),
-                                SizedBox(
-                                  width: 8,
-                                ),
-                                Text(
-                                  '2023.11.23',
-                                  style: FarmusThemeTextStyle.gray1SemiBold15,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 2.0),
-                            child: Row(
-                              children: [
-                                Text(
-                                  '파머',
-                                  style: FarmusThemeTextStyle.gray2Medium15,
-                                ),
-                                SizedBox(
-                                  width: 8,
-                                ),
-                                Text(
-                                  '파머시치',
-                                  style: FarmusThemeTextStyle.gray1SemiBold15,
-                                ),
-                              ],
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: info.entries.map((entry) {
+                                return Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 4.0, vertical: 2.0),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        entry.key,
+                                        style:
+                                            FarmusThemeTextStyle.gray2Medium15,
+                                      ),
+                                      const SizedBox(width: 8),
+                                      Text(
+                                        entry.value,
+                                        style: FarmusThemeTextStyle
+                                            .gray1SemiBold15,
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }).toList(),
                             ),
                           ),
                         ],
                       ),
-                    ],
-                  ),
-                ],
+                    ),
+                  ],
+                ),
               ),
               Container(
                 width: 120,
@@ -118,14 +95,7 @@ class VegeInfoDetail extends ConsumerWidget {
               ),
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 16.0, right: 8.0),
-            child: SvgPicture.asset(
-              'assets/image/logo_farmus.svg',
-              colorFilter: const ColorFilter.mode(
-                  FarmusThemeColor.gray3, BlendMode.srcIn),
-            ),
-          )
+          bottomWidget,
         ],
       ),
     );
