@@ -1,6 +1,5 @@
 import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
-import 'package:farmus/common/button/add_button.dart';
-import 'package:farmus/common/button/delete_button.dart';
+import 'package:farmus/common/button/bottom_backgroud_divider_button.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view_model/my_vege/my_vege_provider.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../common/bottom_sheet/primary_action_sheet.dart';
+import '../../common/button/add_button.dart';
+import '../../common/button/delete_button.dart';
 import '../../common/theme/farmus_theme_color.dart';
 import '../../view_model/home/home_vege_add_provider.dart';
 import '../../view_model/vege_delete/vege_delete_provider.dart';
@@ -117,37 +118,31 @@ class _MyVegeScreenState extends ConsumerState<MyVegeScreen> {
           const SizedBox(
             height: 16,
           ),
-          Column(
-            children: [
-              const Divider(
-                height: 1,
-                color: FarmusThemeColor.gray5,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: myVegeDeleteMode
-                    ? DeleteButton(
-                        enabled:
-                            myVegeNotifier.selectedVege.isEmpty ? false : true,
-                        onPressed: () {
-                          showActionSheet(context);
-                        },
-                      )
-                    : AddButton(
-                        onPressed: () {
-                          ref.read(homeVegeInfoAddProvider.notifier).reset();
-                          ref.read(homeVegeAddMoveProvider.notifier).reset();
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const HomeVegeAddScreen(),
-                            ),
-                          );
-                        },
-                      ),
-              ),
-            ],
-          ),
+          BottomBackgroundDividerButton(
+            button: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: myVegeDeleteMode
+                  ? DeleteButton(
+                      enabled:
+                          myVegeNotifier.selectedVege.isEmpty ? false : true,
+                      onPressed: () {
+                        showActionSheet(context);
+                      },
+                    )
+                  : AddButton(
+                      onPressed: () {
+                        ref.read(homeVegeInfoAddProvider.notifier).reset();
+                        ref.read(homeVegeAddMoveProvider.notifier).reset();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HomeVegeAddScreen(),
+                          ),
+                        );
+                      },
+                    ),
+            ),
+          )
         ],
       ),
     );
