@@ -1,6 +1,6 @@
+import 'package:farmus/common/select_box.dart';
 import 'package:farmus/view/on_boarding/component/main_sub_title.dart';
 import 'package:farmus/view/on_boarding/component/on_board_select_box.dart';
-import 'package:farmus/common/select_box.dart';
 import 'package:farmus/view_model/on_boarding/on_boarding_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +35,8 @@ class OnBoardingFourth extends ConsumerWidget {
                 ),
                 const SizedBox(height: 16),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 8.0, horizontal: 16.0),
                   child: SelectBox(
                     selectBox: () {
                       selectBox.selectFirstBox();
@@ -48,7 +49,8 @@ class OnBoardingFourth extends ConsumerWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 8.0, horizontal: 16.0),
                   child: SelectBox(
                     selectBox: () {
                       selectBox.selectSecondBox();
@@ -61,7 +63,8 @@ class OnBoardingFourth extends ConsumerWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 8.0, horizontal: 16.0),
                   child: SelectBox(
                     selectBox: () {
                       selectBox.selectThirdBox();
@@ -74,7 +77,8 @@ class OnBoardingFourth extends ConsumerWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 8.0, horizontal: 16.0),
                   child: SelectBox(
                     selectBox: () {
                       selectBox.selectFourthBox();

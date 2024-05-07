@@ -1,4 +1,4 @@
-import 'package:farmus/view/my_page/vege_history/component/vege_info.dart';
+import 'package:farmus/view/vege_history/component/vege_info.dart';
 import 'package:flutter/material.dart';
 
 class VegeInfoNotifier extends ChangeNotifier {

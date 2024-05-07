@@ -1,10 +1,7 @@
 import 'dart:io';
 
-import 'package:farmus/common/button/primary_color_button.dart';
-import 'package:farmus/view/my_page/my_page_screen.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_nickname_text_input.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
@@ -24,13 +21,11 @@ class MyPageProfile extends ConsumerStatefulWidget {
 class _MyPageProfileState extends ConsumerState<MyPageProfile> {
   XFile? file;
 
-  // 갤러리 이미지 설정 함수
   Future<void> _pickGalleryImage() async {
     ImagePicker().pickImage(source: ImageSource.gallery).then((value) {
       if (value != null) {
         setState(() {
           file = value;
-          // provider의 프로필 설정 로직 실행
           ref
               .read(onBoardingProfileProvider.notifier)
               .updateProfileImage(value);
@@ -44,7 +39,6 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
       if (value != null) {
         setState(() {
           file = value;
-          // provider의 프로필 설정 로직 실행
           ref
               .read(onBoardingProfileProvider.notifier)
               .updateProfileImage(value);
@@ -97,106 +91,70 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
   @override
   Widget build(BuildContext context) {
     file = ref.read(onBoardingProfileProvider).profileImage;
-    final profile = ref.watch(onBoardingProfileProvider);
-    final isSpecial = ref.watch(onBoardingSpecialCharactersProvider);
+    final nickname = ref.read(onBoardingProfileProvider).nickname;
+    final hasSpecialCharacters = ref.watch(onBoardingSpecialCharactersProvider);
 
-    String nextButtonText = "수정완료";
-
-    bool enabled = profile.isProfileComplete && !isSpecial;
-
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: SvgPicture.asset(
-            'assets/image/ic_arrow_left.svg',
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        title: const Text(
-          "프로필",
-          style: TextStyle(fontSize: 16, color: FarmusThemeColor.dark),
-        ),
-        centerTitle: false,
-        backgroundColor: FarmusThemeColor.white,
-        elevation: 0.0,
-        bottomOpacity: 0.0,
-        scrolledUnderElevation: 0,
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 30),
-                  Center(
-                    child: Container(
-                      width: 110,
-                      height: 110,
-                      decoration: const ShapeDecoration(
-                        color: FarmusThemeColor.gray5,
-                        shape: OvalBorder(),
-                      ),
-                      // 이미지 선택을 하지 않으면 카메라 아이콘 설정
-                      child: (file == null)
-                          ? Stack(
-                              children: [
-                                Center(
-                                  child: GestureDetector(
-                                    onTap: () => _showActionSheet(context),
-                                    child: SvgPicture.asset(
-                                        "assets/image/ic_camera.svg"),
-                                  ),
-                                )
-                              ],
-                            )
-                          // 이미지 선택하면 해당 이미지로 설정
-                          : GestureDetector(
-                              onTap: () => _showActionSheet(context),
-                              child: ClipOval(
-                                child: Image.file(
-                                  File(file!.path),
-                                  fit: BoxFit.cover,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 30),
+                Center(
+                  child: Container(
+                    width: 110,
+                    height: 110,
+                    decoration: const ShapeDecoration(
+                      color: FarmusThemeColor.gray5,
+                      shape: OvalBorder(),
+                    ),
+                    child: (file == null)
+                        ? Stack(
+                            children: [
+                              Center(
+                                child: GestureDetector(
+                                  onTap: () => _showActionSheet(context),
+                                  child: SvgPicture.asset(
+                                      "assets/image/ic_camera.svg"),
                                 ),
+                              )
+                            ],
+                          )
+                        : GestureDetector(
+                            onTap: () => _showActionSheet(context),
+                            child: ClipOval(
+                              child: Image.file(
+                                File(file!.path),
+                                fit: BoxFit.cover,
                               ),
                             ),
-                    ),
+                          ),
                   ),
-                  const SizedBox(height: 8),
-                  const Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Text(
-                      "닉네임",
-                      textAlign: TextAlign.start,
-                      style: FarmusThemeTextStyle.darkMedium13,
-                    ),
+                ),
+                const SizedBox(height: 8),
+                const Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Text(
+                    "닉네임",
+                    textAlign: TextAlign.start,
+                    style: FarmusThemeTextStyle.darkMedium13,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16),
-                    child: OnBoardingNicknameTextInput(),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: OnBoardingNicknameTextInput(
+                    initialValue: nickname,
+                    errorText: hasSpecialCharacters ? "특수문자는 입력할 수 없어요" : null,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-          PrimaryColorButton(
-            text: nextButtonText,
-            onPressed: () {
-              Navigator.pop(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const MyPageScreen(),
-                ),
-              );
-            },
-            enabled: enabled,
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
