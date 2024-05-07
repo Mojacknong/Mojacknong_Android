@@ -1,4 +1,4 @@
-import 'package:farmus/view/my_page/my_farmclub/component/farmclub_widget.dart';
+import 'package:farmus/view/my_farmclub/component/farmclub_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -29,7 +29,7 @@ class FarmclubIntroInfo extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const FarmClubWidget(),
+          const FarmclubWidgetPic(),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
