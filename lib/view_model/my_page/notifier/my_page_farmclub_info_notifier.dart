@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class FarmClubInfo {
+class MyPageFarmclubInfo {
   String veggieName;
   String veggieType;
   String periodStart;
   String periodEnd;
   String image;
 
-  FarmClubInfo({
+  MyPageFarmclubInfo({
     required this.veggieName,
     required this.veggieType,
     required this.periodStart,
@@ -16,8 +16,8 @@ class FarmClubInfo {
   });
 }
 
-class FarmClubInfoNotifier extends ChangeNotifier {
-  FarmClubInfo _farmClubInfo = FarmClubInfo(
+class MyPageFarmclubInfoNotifier extends ChangeNotifier {
+  MyPageFarmclubInfo _myPageFarmclubInfo = MyPageFarmclubInfo(
     veggieName: "상추좋아",
     veggieType: "상추",
     periodStart: "2023.06.13",
@@ -25,10 +25,10 @@ class FarmClubInfoNotifier extends ChangeNotifier {
     image: "",
   );
 
-  FarmClubInfo get farmClubInfo => _farmClubInfo;
+  MyPageFarmclubInfo get myPageFarmclubInfo => _myPageFarmclubInfo;
 
-  void updateVegeInfo(FarmClubInfo newInfo) {
-    _farmClubInfo = newInfo;
+  void updateVegeInfo(MyPageFarmclubInfo newInfo) {
+    _myPageFarmclubInfo = newInfo;
     notifyListeners();
   }
 }

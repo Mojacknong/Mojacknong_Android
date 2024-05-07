@@ -1,7 +1,7 @@
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/my_farmclub/component/farmclub_widget.dart';
 import 'package:farmus/view/my_farmclub/component/my_farmclub_box.dart';
-import 'package:farmus/view_model/my_page/farmclub_provider.dart';
+import 'package:farmus/view_model/my_page/my_page_farmclub_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -23,7 +23,7 @@ class MyFarmClubStackBox extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final farmClubCount = ref.watch(farmClubCountProvider);
+    final farmClubCount = ref.watch(myPageFarmclubCountProvider);
 
     return Stack(
       children: [
@@ -77,7 +77,11 @@ class MyFarmClubStackBox extends ConsumerWidget {
           child: Padding(
             padding: EdgeInsets.only(top: 105.0, left: 24),
             child: Row(
-              children: [FarmClubWidget(), FarmClubWidget(), FarmClubWidget()],
+              children: [
+                FarmclubWidgetPic(),
+                FarmclubWidgetPic(),
+                FarmclubWidgetPic()
+              ],
             ),
           ),
         ),

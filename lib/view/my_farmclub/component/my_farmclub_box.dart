@@ -13,7 +13,7 @@ class MyFarmClubBox extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const MyFarmClubScreen()),
+            MaterialPageRoute(builder: (context) => const MyFarmclubScreen()),
           );
         },
         child: Container(

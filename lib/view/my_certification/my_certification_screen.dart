@@ -28,7 +28,7 @@ class MyCertificationScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const IgnorePointer(ignoring: true, child: FarmClubProfile()),
+            const IgnorePointer(ignoring: true, child: FarmclubProfile()),
             MyCertificationFeed(
               content: "진짜 맛있음 " * 20,
               title: "상추 심고 사진 찍기",

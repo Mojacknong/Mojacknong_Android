@@ -2,16 +2,16 @@ import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/my_certification/my_certification_screen.dart';
 import 'package:farmus/view/my_farmclub/component/farmclub_widget.dart';
-import 'package:farmus/view_model/my_page/farmclub_provider.dart';
+import 'package:farmus/view_model/my_page/my_page_farmclub_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class FarmClubProfile extends ConsumerWidget {
-  const FarmClubProfile({Key? key}) : super(key: key);
+class FarmclubProfile extends ConsumerWidget {
+  const FarmclubProfile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final farmClubInfo = ref.watch(farmClubProvider).farmClubInfo;
+    final farmClubInfo = ref.watch(myPageFarmclubProvider).myPageFarmclubInfo;
 
     return InkWell(
       onTap: () {
@@ -26,7 +26,7 @@ class FarmClubProfile extends ConsumerWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                const FarmClubWidget(),
+                const FarmclubWidgetPic(),
                 const SizedBox(width: 8.0),
                 Expanded(
                   child: Column(
