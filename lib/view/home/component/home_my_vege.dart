@@ -1,10 +1,10 @@
+import 'package:farmus/view/vege_info/vege_info_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
-import '../../my_vege/my_vege_screen.dart';
 import 'my_vege_step.dart';
 
 class HomeMyVege extends ConsumerWidget {
@@ -21,7 +21,7 @@ class HomeMyVege extends ConsumerWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const MyVegeScreen()),
+          MaterialPageRoute(builder: (context) => const VegeInfoScreen()),
         );
       },
       child: Container(

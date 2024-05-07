@@ -100,9 +100,21 @@ class FarmusThemeTextStyle {
     fontWeight: FontWeight.w600,
   );
 
+  static const TextStyle gray1SemiBold15 = TextStyle(
+    color: FarmusThemeColor.gray1,
+    fontSize: 15,
+    fontWeight: FontWeight.w600,
+  );
+
   static const TextStyle gray1SemiBold17 = TextStyle(
     color: FarmusThemeColor.gray1,
     fontSize: 17,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const TextStyle gray1SemiBold23 = TextStyle(
+    color: FarmusThemeColor.gray1,
+    fontSize: 23,
     fontWeight: FontWeight.w600,
   );
 
