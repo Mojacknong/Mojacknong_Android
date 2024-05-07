@@ -5,6 +5,7 @@ import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/my_vege/my_vege_screen.dart';
 import 'package:farmus/view/vege_add/component/vege_add_calender.dart';
 import 'package:farmus/view/vege_info/component/vege_info_detail.dart';
+import 'package:farmus/view_model/my_vege/my_vege_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -23,6 +24,8 @@ class VegeInfoScreen extends ConsumerWidget {
         actions: [
           IconButton(
             onPressed: () {
+              ref.invalidate(myVegeDeleteProvider);
+              ref.invalidate(myVegeProvider);
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const MyVegeScreen()),
