@@ -34,41 +34,55 @@ class VegeInfoScreen extends ConsumerWidget {
       ),
       body: Column(
         children: [
-          const Expanded(
+          Expanded(
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.0),
-                    child: VegeInfoDetail(),
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: VegeInfoDetail(
+                      info: const {
+                        '채소': '상추',
+                        '날짜': '2023.11.23',
+                        '파머': '파머시치',
+                      },
+                      bottomWidget: Padding(
+                        padding: const EdgeInsets.only(top: 16.0, right: 8.0),
+                        child: SvgPicture.asset(
+                          'assets/image/logo_farmus.svg',
+                          colorFilter: const ColorFilter.mode(
+                              FarmusThemeColor.gray3, BlendMode.srcIn),
+                        ),
+                      ),
+                    ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 32.0,
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.all(16.0),
                     child: Text(
                       '채소 별명',
                       style: FarmusThemeTextStyle.darkSemiBold15,
                     ),
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16.0),
                     child: HomeVegeNameInput(),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 32.0,
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
                       '키우기 시작한 날',
                       style: FarmusThemeTextStyle.darkSemiBold15,
                     ),
                   ),
-                  VegeAddCalender(),
-                  SizedBox(
+                  const VegeAddCalender(),
+                  const SizedBox(
                     height: 32.0,
                   ),
                 ],
