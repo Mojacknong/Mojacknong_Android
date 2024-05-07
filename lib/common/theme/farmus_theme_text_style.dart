@@ -113,7 +113,10 @@ class FarmusThemeTextStyle {
 
   // gray2
   static const TextStyle gray2Reqular11 = TextStyle(
-      color: FarmusThemeColor.gray2, fontSize: 12, fontWeight: FontWeight.w400);
+    color: FarmusThemeColor.gray2,
+    fontSize: 11,
+    fontWeight: FontWeight.w400
+  );
 
   static const TextStyle gray2Medium12 = TextStyle(
     color: FarmusThemeColor.gray2,
