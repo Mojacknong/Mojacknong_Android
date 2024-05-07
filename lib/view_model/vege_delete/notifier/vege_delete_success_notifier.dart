@@ -3,11 +3,10 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../../model/my_vege/vege_delete_success_model.dart';
 
-
 class VegeDeleteSuccessNotifier extends StateNotifier<VegeDeleteSuccessModel> {
   VegeDeleteSuccessNotifier()
       : super(VegeDeleteSuccessModel(
-            content: null, successImage: null, isComplete: false));
+            content: null, image: null, isComplete: false));
 
   bool _isVegeDeleteComplete = false;
 
@@ -22,15 +21,15 @@ class VegeDeleteSuccessNotifier extends StateNotifier<VegeDeleteSuccessModel> {
 
     state = state.copyWith(
       content: state.content,
-      successImage: successImage,
+      image: successImage,
       isComplete: isVegeDeleteComplete,
     );
   }
 
   void updateContent(String content) {
     if (content.isNotEmpty &&
-        state.successImage != null &&
-        state.successImage!.path.isNotEmpty) {
+        state.image != null &&
+        state.image!.path.isNotEmpty) {
       _isVegeDeleteComplete = true;
     } else {
       _isVegeDeleteComplete = false;
@@ -38,7 +37,7 @@ class VegeDeleteSuccessNotifier extends StateNotifier<VegeDeleteSuccessModel> {
 
     state = state.copyWith(
       content: content,
-      successImage: state.successImage,
+      image: state.image,
       isComplete: isVegeDeleteComplete,
     );
   }
@@ -46,7 +45,7 @@ class VegeDeleteSuccessNotifier extends StateNotifier<VegeDeleteSuccessModel> {
   void deleteSuccessImage() {
     state = state.copyWith(
       content: state.content,
-      successImage: null,
+      image: null,
       isComplete: false,
     );
   }
@@ -54,7 +53,7 @@ class VegeDeleteSuccessNotifier extends StateNotifier<VegeDeleteSuccessModel> {
   void reset() {
     state = state.copyWith(
       content: null,
-      successImage: null,
+      image: null,
       isComplete: false,
     );
   }

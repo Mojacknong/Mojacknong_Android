@@ -1,4 +1,4 @@
-import 'package:farmus/view/vege_diary/component/farmus_picture_64.dart';
+import 'package:farmus/common/farmus_picture_64.dart';
 import 'package:farmus/view/vege_diary/vege_diary_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

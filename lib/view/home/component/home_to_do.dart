@@ -38,11 +38,6 @@ class HomeToDo extends ConsumerWidget {
                   toDo.selectRoutine();
                 },
                 enabled: isRoutine,
-                textStyle: isRoutine
-                    ? FarmusThemeTextStyle.dark2SemiBold15
-                    : FarmusThemeTextStyle.gray3SemiBold15,
-                backgroundColor:
-                    isRoutine ? FarmusThemeColor.white : FarmusThemeColor.gray5,
               ),
               HomeToDoButton(
                 text: "팜클럽 미션",
@@ -50,12 +45,6 @@ class HomeToDo extends ConsumerWidget {
                   toDo.selectFarmclubMission();
                 },
                 enabled: isFarmclubMission,
-                textStyle: isFarmclubMission
-                    ? FarmusThemeTextStyle.dark2SemiBold15
-                    : FarmusThemeTextStyle.gray3SemiBold15,
-                backgroundColor: isFarmclubMission
-                    ? FarmusThemeColor.white
-                    : FarmusThemeColor.gray5,
               ),
             ],
           )
