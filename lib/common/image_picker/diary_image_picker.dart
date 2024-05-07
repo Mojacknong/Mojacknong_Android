@@ -1,57 +1,73 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
+import 'package:farmus/common/theme/farmus_theme_text_style.dart';
+import 'package:farmus/view_model/vege_diary_write/vege_diary_write_provider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../common/bottom_sheet/farmus_image_picker.dart';
-import '../../../common/theme/farmus_theme_color.dart';
-import '../../../view_model/vege_delete/vege_delete_provider.dart';
+import '../bottom_sheet/farmus_image_picker.dart';
+import '../theme/farmus_theme_color.dart';
 
-class VegeSuccessImage extends ConsumerStatefulWidget {
-  const VegeSuccessImage({super.key});
+class DiaryImagePicker extends ConsumerStatefulWidget {
+  const DiaryImagePicker({
+    Key? key,
+    this.nullChild,
+    this.boxDecoration,
+  }) : super(key: key);
+
+  final Widget? nullChild;
+  final BoxDecoration? boxDecoration;
 
   @override
-  ConsumerState createState() => _VegeSuccessImageState();
+  ConsumerState createState() => _PrimaryImagePickerState();
 }
 
-class _VegeSuccessImageState extends ConsumerState<VegeSuccessImage> {
+class _PrimaryImagePickerState extends ConsumerState<DiaryImagePicker> {
   @override
   Widget build(BuildContext context) {
-    var successImage = ref.watch(vegeDeleteSuccessProvider).image;
+    final nullChild = widget.nullChild;
+    final boxDecoration = widget.boxDecoration;
+
+    var successImage = ref.watch(vegeDiaryWriteProvider).image;
 
     void showActionSheet(BuildContext context) {
-      FarmusImagePicker.showActionSheet(context, (value) {
-        if (value != null) {
-          setState(() {
-            successImage = value;
-            ref
-                .read(vegeDeleteSuccessProvider.notifier)
-                .updateSuccessImage(successImage);
-          });
-        }
-      });
+      FarmusImagePicker.showActionSheet(
+        context,
+        (value) {
+          if (value != null) {
+            setState(() {
+              successImage = value;
+              ref
+                  .read(vegeDiaryWriteProvider.notifier)
+                  .updateImage(successImage);
+            });
+          }
+        },
+      );
     }
 
     return Stack(
       children: [
         Container(
           width: double.infinity,
-          height: 240,
-          decoration: BoxDecoration(
-            color: FarmusThemeColor.green5,
-            borderRadius: BorderRadius.circular(12),
-          ),
+          decoration: boxDecoration ??
+              BoxDecoration(
+                color: FarmusThemeColor.gray4,
+                borderRadius: BorderRadius.circular(12),
+              ),
           child: (successImage == null)
               ? Padding(
-                  padding: const EdgeInsets.all(24.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: Image.asset(
-                      'assets/image/img_vege_success.png',
-                      fit: BoxFit.contain,
-                    ),
-                  ),
+                  padding: const EdgeInsets.all(90.0),
+                  child: nullChild ??
+                      const Column(
+                        children: [
+                          Text(
+                            '사진',
+                            style: FarmusThemeTextStyle.gray2Reqular11,
+                          ),
+                        ],
+                      ),
                 )
               : ClipRRect(
                   borderRadius: BorderRadius.circular(12),
@@ -59,7 +75,6 @@ class _VegeSuccessImageState extends ConsumerState<VegeSuccessImage> {
                     File(successImage!.path),
                     fit: BoxFit.cover,
                     width: double.infinity,
-                    height: 240,
                   ),
                 ),
         ),
@@ -80,8 +95,8 @@ class _VegeSuccessImageState extends ConsumerState<VegeSuccessImage> {
                     (successImage == null)
                         ? showActionSheet(context)
                         : ref
-                            .read(vegeDeleteSuccessProvider.notifier)
-                            .deleteSuccessImage();
+                            .read(vegeDiaryWriteProvider.notifier)
+                            .deleteImage();
                   },
                   child: (successImage == null)
                       ? SvgPicture.asset('assets/image/ic_camera.svg',

@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../common/primary_text_form_field.dart';
-import '../../../common/theme/farmus_theme_color.dart';
-import '../../../view_model/vege_delete/vege_delete_provider.dart';
+import 'primary_text_form_field.dart';
+import 'theme/farmus_theme_color.dart';
 
 class ContentInputTextForm extends ConsumerWidget {
-  const ContentInputTextForm({super.key});
+  const ContentInputTextForm({super.key, required this.maxLength, required this.nowContent, required this.updateContent});
+
+  final int maxLength;
+  final String? nowContent;
+  final void Function(String) updateContent;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var nowLength = ref.watch(vegeDeleteSuccessProvider).content == null
+    var nowLength = nowContent == null
         ? 0
-        : ref.watch(vegeDeleteSuccessProvider).content?.length;
+        : nowContent?.length;
 
     return PrimaryTextFormField(
-        maxLength: 50,
+        maxLength: maxLength,
         minLines: 5,
         maxLines: 5,
         hintText: '내용을 입력해주세요',
@@ -29,11 +32,11 @@ class ContentInputTextForm extends ConsumerWidget {
           color: FarmusThemeColor.red,
         ),
         onChanged: (value) {
-          ref.read(vegeDeleteSuccessProvider.notifier).updateContent(value);
+          updateContent(value);
         },
         suffix: Column(
           children: [
-            Text("$nowLength /50"),
+            Text("$nowLength /$maxLength"),
           ],
         ));
   }

@@ -1,5 +1,6 @@
 import 'package:farmus/common/button/primary_button.dart';
 import 'package:farmus/view/vege_diary_write/vege_diary_write_screen.dart';
+import 'package:farmus/view_model/vege_diary_write/vege_diary_write_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -19,6 +20,7 @@ class DiaryButton extends ConsumerWidget {
       backgroundColor: FarmusThemeColor.primary,
       borderColor: FarmusThemeColor.white,
       onPressed: () {
+        ref.read(vegeDiaryWriteProvider.notifier).reset();
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => const VegeDiaryWriteScreen()),

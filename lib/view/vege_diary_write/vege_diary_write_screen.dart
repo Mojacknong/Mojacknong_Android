@@ -1,17 +1,22 @@
 import 'package:farmus/common/app_bar/primary_app_bar.dart';
 import 'package:farmus/common/button/primary_button.dart';
+import 'package:farmus/common/image_picker/diary_image_picker.dart';
+import 'package:farmus/view/vege_diary_write/component/vege_diary_write_bottom.dart';
+import 'package:farmus/view/vege_diary_write/component/vege_diary_write_state.dart';
+import 'package:farmus/view_model/vege_diary_write/vege_diary_write_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../common/content_input_text_form.dart';
 import '../../common/theme/farmus_theme_color.dart';
 
 class VegeDiaryWriteScreen extends ConsumerWidget {
-  const VegeDiaryWriteScreen({super.key});
+  const VegeDiaryWriteScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    bool enabled = false;
+    bool enabled = ref.watch(vegeDiaryWriteProvider).isComplete;
 
     return Scaffold(
       appBar: PrimaryAppBar(
@@ -33,7 +38,9 @@ class VegeDiaryWriteScreen extends ConsumerWidget {
             borderColor: FarmusThemeColor.white,
             borderRadius: 20,
             fontSize: 13,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
             text: '완료',
             fontPadding: 0,
           ),
@@ -42,9 +49,50 @@ class VegeDiaryWriteScreen extends ConsumerWidget {
           )
         ],
       ),
-      body: const Column(
+      body: Column(
         children: [
-
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 48.0,
+                      vertical: 8.0,
+                    ),
+                    child: DiaryImagePicker(),
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: ContentInputTextForm(
+                      maxLength: 300,
+                      nowContent: ref.watch(vegeDiaryWriteProvider).content,
+                      updateContent: (value) => ref
+                          .watch(vegeDiaryWriteProvider.notifier)
+                          .updateContent(value),
+                    ),
+                  ),
+                  const VegeDiaryWriteState(),
+                ],
+              ),
+            ),
+          ),
+          const Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                child: Divider(
+                  height: 1,
+                  thickness: 1,
+                  color: FarmusThemeColor.gray4,
+                ),
+              ),
+              VegeDiaryWriteBottom()
+            ],
+          ),
         ],
       ),
     );
