@@ -1,7 +1,5 @@
 import 'package:farmus/common/app_bar/more_vertical_app_bar.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
-import 'package:farmus/view/vege_detail/component/vege_diary_detail_content.dart';
-import 'package:farmus/view/vege_detail/component/vege_diary_detail_icon.dart';
 import 'package:farmus/view/vege_diary_write/vege_diary_write_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +9,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../common/bottom_sheet/primary_action_sheet.dart';
 import '../../common/theme/farmus_theme_text_style.dart';
 import 'component/vege_diary_detail_comment.dart';
+import 'component/vege_diary_detail_content.dart';
+import 'component/vege_diary_detail_icon.dart';
 
 class VegeDiaryDetailScreen extends ConsumerWidget {
   const VegeDiaryDetailScreen({super.key});

@@ -1,11 +1,11 @@
-import 'package:farmus/view/vege_detail/vege_diary_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../common/farmus_picture_64.dart';
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
-import '../../../common/farmus_picture_64.dart';
+import '../../vege_diary_detail/vege_diary_detail_screen.dart';
 
 class VegeDiaryWidget extends ConsumerWidget {
   const VegeDiaryWidget({super.key});
