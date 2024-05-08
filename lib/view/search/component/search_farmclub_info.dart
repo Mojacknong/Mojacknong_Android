@@ -1,132 +1,34 @@
-import 'package:farmus/view/my_farmclub/component/farmclub_widget.dart';
+import 'package:farmus/common/theme/farmus_theme_color.dart';
+import 'package:farmus/view/search/component/search_farmclub_info_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../../common/theme/farmus_theme_color.dart';
-import '../../../../../common/theme/farmus_theme_text_style.dart';
-
 class SearchFarmclubInfo extends ConsumerWidget {
-  const SearchFarmclubInfo(
-      {super.key,
-      required this.vege,
-      required this.level,
-      required this.period,
-      required this.nickname,
-      required this.num,
-      required this.total});
-
-  final String vege;
-  final String level;
-  final String period;
-  final String nickname;
-  final String num;
-  final String total;
+  const SearchFarmclubInfo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Color? levelColor;
-
-    switch (level) {
-      case "초급":
-        levelColor = FarmusThemeColor.blue;
-      case "중급":
-        levelColor = FarmusThemeColor.yellow;
-      case "고급":
-        levelColor = FarmusThemeColor.red;
-    }
-
-    return Container(
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const FarmclubWidgetPic(),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              IntrinsicHeight(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      vege,
-                      style: FarmusThemeTextStyle.darkSemiBold17,
-                    ),
-                    const VerticalDivider(
-                      width: 16,
-                      thickness: 1,
-                      color: FarmusThemeColor.gray4,
-                    ),
-                    Text(
-                      nickname,
-                      style: FarmusThemeTextStyle.gray1Medium15,
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 4,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  const Text(
-                    "+",
-                    style: FarmusThemeTextStyle.gray1Medium13,
-                  ),
-                  Text(
-                    period,
-                    style: FarmusThemeTextStyle.gray1Medium13,
-                  ),
-                  const Text(
-                    "일",
-                    style: FarmusThemeTextStyle.gray1Medium13,
-                  ),
-                  const SizedBox(
-                    width: 6,
-                  ),
-                  Text(
-                    num,
-                    style: FarmusThemeTextStyle.gray1Medium13,
-                  ),
-                  const Text(
-                    "/",
-                    style: FarmusThemeTextStyle.gray1Medium13,
-                  ),
-                  Text(
-                    total,
-                    style: FarmusThemeTextStyle.gray1Medium13,
-                  ),
-                  const Text(
-                    "명",
-                    style: FarmusThemeTextStyle.gray1Medium13,
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  Container(
-                    width: 8,
-                    height: 8,
-                    decoration: ShapeDecoration(
-                      color: levelColor,
-                      shape: const OvalBorder(),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 4,
-                  ),
-                  Text(
-                    level,
-                    style: FarmusThemeTextStyle.gray1Medium13,
-                  ),
-                ],
-              ),
-            ],
+    return const Column(
+      children: <Widget>[
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+          child: SearchFarmclubInfoWidget(
+            vege: "상추",
+            level: "중급",
+            period: "3",
+            nickname: "상추는 현실이 된다",
+            num: "3",
+            total: "8",
           ),
-        ],
-      ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          child: Divider(
+            height: 1,
+            color: FarmusThemeColor.gray5,
+          ),
+        ),
+      ],
     );
   }
 }

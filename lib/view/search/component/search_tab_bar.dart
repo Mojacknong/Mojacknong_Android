@@ -21,7 +21,7 @@ class _SearchTabBarState extends State<SearchTabBar> {
             child: Align(
               alignment: Alignment.centerLeft,
               child: SizedBox(
-                width: 150,
+                width: 120,
                 child: Material(
                   color: Colors.white,
                   child: TabBar(
