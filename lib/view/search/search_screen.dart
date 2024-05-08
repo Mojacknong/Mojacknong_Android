@@ -1,5 +1,7 @@
-import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:farmus/view/search/search_app_bar.dart';
+import 'package:farmus/view/search/component/search_app_bar.dart';
+import 'package:farmus/view/search/component/search_farmclub_info_widget.dart';
+import 'package:farmus/view/search/component/search_tab_bar.dart';
+import 'package:farmus/view/search/component/search_welcome_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -8,30 +10,28 @@ class SearchScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      appBar: const SearchAppBar(),
-      body: SingleChildScrollView(
-          child: Container(
-        width: 328,
-        height: 130,
-        padding: const EdgeInsets.all(16),
-        child: const Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              '파머 님을 위한\n추천 팜클럽',
-              style: FarmusThemeTextStyle.darkSemiBold20,
+    return const Scaffold(
+      appBar: SearchAppBar(),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SearchWelcomeText(),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SearchTabBar(),
+                  SearchFarmclubInfoWidget(),
+                  SearchFarmclubInfoWidget(),
+                  SearchFarmclubInfoWidget(),
+                  SearchFarmclubInfoWidget(),
+                  SearchFarmclubInfoWidget(),
+                ],
+              ),
             ),
-            SizedBox(height: 8),
-            Text(
-              '홈파밍 초보도 도전할 수 있는 채소예요.',
-              style: FarmusThemeTextStyle.gray2Medium15,
-            ),
-          ],
-        ),
-      )),
+          ),
+        ],
+      ),
     );
   }
 }
