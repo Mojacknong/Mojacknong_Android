@@ -39,15 +39,17 @@ class HomeVegeRoutine extends ConsumerWidget {
                 height: 8,
               ),
               VegeRoutine(
-                  routine: '물 갈아 주기',
-                  day: '4',
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const RoutineScreen()),
-                    );
-                  }),
+                routine: '물 갈아 주기',
+                day: '4',
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const RoutineScreen()),
+                  );
+                },
+                isChecked: false,
+              ),
               const Divider(
                 height: 1,
                 color: FarmusThemeColor.gray5,
@@ -62,6 +64,7 @@ class HomeVegeRoutine extends ConsumerWidget {
                         builder: (context) => const RoutineScreen()),
                   );
                 },
+                isChecked: true,
               ),
             ],
           )

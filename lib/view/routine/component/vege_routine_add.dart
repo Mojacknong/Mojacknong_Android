@@ -1,4 +1,5 @@
 import 'package:farmus/view/home/component/vege_routine.dart';
+import 'package:farmus/view_model/routine/routine_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,7 +7,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../common/bottom_sheet/show_farmus_bottom_sheet.dart';
 import '../../../common/button/routine_add_button.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
-import '../../../view_model/vege_routine/vege_routine_provider.dart';
 
 class VegeRoutineAdd extends ConsumerWidget {
   const VegeRoutineAdd({
@@ -46,10 +46,19 @@ class VegeRoutineAdd extends ConsumerWidget {
               Row(
                 children: [
                   Expanded(
-                      child: VegeRoutine(routine: entry.key, day: entry.value)),
+                      child: VegeRoutine(
+                    routine: entry.key,
+                    day: entry.value,
+                    isChecked: ref.watch(routineCheckProvider(entry.key)),
+                    onCheck: () {
+                      ref
+                          .read(routineCheckProvider(entry.key).notifier)
+                          .toggleRoutine();
+                    },
+                  )),
                   IconButton(
                     onPressed: () {
-                      ref.invalidate(vegeRoutineCreateProvider);
+                      ref.invalidate(routineEditProvider);
                       showRoutineEditBottomSheet(
                           context, entry.key, entry.value);
                     },
@@ -62,7 +71,7 @@ class VegeRoutineAdd extends ConsumerWidget {
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: RoutineAddButton(
               onPressed: () {
-                ref.invalidate(vegeRoutineCreateProvider);
+                ref.invalidate(routineCreateProvider);
                 showRoutineAddBottomSheet(context);
               },
             ),

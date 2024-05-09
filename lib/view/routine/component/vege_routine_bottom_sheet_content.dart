@@ -1,4 +1,4 @@
-import 'package:farmus/view_model/vege_routine/vege_routine_provider.dart';
+import 'package:farmus/view_model/routine/routine_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -20,9 +20,9 @@ class VegeRoutineBottomSheetContent extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var routineName = ref.watch(vegeRoutineEditProvider(routine)).routineName;
+    var routineName = ref.watch(routineEditProvider(routine)).routineName;
 
-    var isComplete = ref.watch(vegeRoutineCreateProvider).isComplete;
+    var isComplete = ref.watch(routineCreateProvider).isComplete;
 
     return Padding(
       padding:
@@ -58,10 +58,10 @@ class VegeRoutineBottomSheetContent extends ConsumerWidget {
                                 isCreate
                                     ? ref
                                         .read(
-                                            vegeRoutineCreateProvider.notifier)
+                                            routineCreateProvider.notifier)
                                         .updateName(value)
                                     : ref
-                                        .read(vegeRoutineEditProvider(routineName)
+                                        .read(routineEditProvider(routineName)
                                             .notifier)
                                         .updateName(value);
                               },
@@ -127,7 +127,7 @@ class VegeRoutineBottomSheetContent extends ConsumerWidget {
                           enabled: isCreate
                               ? isComplete
                               : ref
-                                  .watch(vegeRoutineEditProvider(routineName))
+                                  .watch(routineEditProvider(routineName))
                                   .isComplete,
                         ),
                       ),

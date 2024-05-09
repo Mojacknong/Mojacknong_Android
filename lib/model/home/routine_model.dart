@@ -1,20 +1,20 @@
-class VegeRoutineModel {
+class RoutineModel {
   final String? routineName;
   final String? cycle;
   final bool isComplete;
 
-  VegeRoutineModel({
+  RoutineModel({
     required this.routineName,
     this.cycle,
     required this.isComplete,
   });
 
-  VegeRoutineModel copyWith({
+  RoutineModel copyWith({
     String? routineName,
     String? cycle,
     bool? isComplete,
   }) {
-    return VegeRoutineModel(
+    return RoutineModel(
       routineName: routineName ?? this.routineName,
       cycle: cycle ?? this.cycle,
       isComplete: isComplete ?? this.isComplete,
