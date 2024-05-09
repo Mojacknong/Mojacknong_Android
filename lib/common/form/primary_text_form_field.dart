@@ -18,7 +18,8 @@ class PrimaryTextFormField extends StatelessWidget implements BaseTextInput {
       this.onChanged,
       this.suffix,
       this.keyboardType,
-      this.inputFormatters});
+      this.inputFormatters,
+      this.readOnly});
 
   @override
   final String? hintText;
@@ -42,6 +43,7 @@ class PrimaryTextFormField extends StatelessWidget implements BaseTextInput {
   final Widget? suffix;
   final TextInputType? keyboardType;
   final List<TextInputFormatter>? inputFormatters;
+  final bool? readOnly;
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +55,7 @@ class PrimaryTextFormField extends StatelessWidget implements BaseTextInput {
       expands: (minLines == null && maxLines == null) ? true : false,
       keyboardType: keyboardType ?? TextInputType.text,
       inputFormatters: inputFormatters ?? [],
+      readOnly: readOnly ?? false,
       decoration: InputDecoration(
           hintText: hintText,
           hintStyle: const TextStyle(

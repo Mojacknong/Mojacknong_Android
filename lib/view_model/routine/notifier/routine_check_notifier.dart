@@ -5,6 +5,5 @@ class RoutineCheckNotifier extends StateNotifier<bool> {
 
   void toggleRoutine() {
     state = !state;
-    print(state);
   }
 }

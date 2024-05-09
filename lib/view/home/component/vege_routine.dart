@@ -1,4 +1,3 @@
-import 'package:farmus/view_model/routine/routine_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
