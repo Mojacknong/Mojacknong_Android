@@ -28,7 +28,7 @@ class RoutineScreen extends ConsumerWidget {
             VegeRoutineAdd(
               vege: '토마토',
               vegeName: '토마토짱',
-              routineDayMap: {'물 갈아 주기': '4'},
+              routineDayMap: {'물 갈이': '4'},
             ),
           ],
         ),

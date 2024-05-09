@@ -1,9 +1,9 @@
-import 'package:farmus/model/home/vege_routine_model.dart';
+import 'package:farmus/model/home/routine_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class VegeRoutineEditNotifier extends StateNotifier<VegeRoutineModel> {
-  VegeRoutineEditNotifier({String? initName})
-      : super(VegeRoutineModel(
+class RoutineEditNotifier extends StateNotifier<RoutineModel> {
+  RoutineEditNotifier({String? initName})
+      : super(RoutineModel(
             routineName: initName ?? '',
             isComplete: initName!.isNotEmpty && initName != '' ? true : false));
 
