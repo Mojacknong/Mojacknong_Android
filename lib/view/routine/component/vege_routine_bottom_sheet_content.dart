@@ -20,16 +20,13 @@ class VegeRoutineBottomSheetContent extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var isComplete = ref
-        .watch(vegeRoutineCreateProvider)
-        .isComplete;
+    var routineName = ref.watch(vegeRoutineEditProvider(routine)).routineName;
+
+    var isComplete = ref.watch(vegeRoutineCreateProvider).isComplete;
 
     return Padding(
       padding:
-      EdgeInsets.only(bottom: MediaQuery
-          .of(context)
-          .viewInsets
-          .bottom),
+          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: SizedBox(
         height: 300,
         child: Column(
@@ -60,12 +57,13 @@ class VegeRoutineBottomSheetContent extends ConsumerWidget {
                               onChanged: (value) {
                                 isCreate
                                     ? ref
-                                    .read(
-                                    vegeRoutineCreateProvider.notifier)
-                                    .updateName(value) : ref
-                                    .read(vegeRoutineEditProvider(value)
-                                    .notifier)
-                                    .updateName(value);
+                                        .read(
+                                            vegeRoutineCreateProvider.notifier)
+                                        .updateName(value)
+                                    : ref
+                                        .read(vegeRoutineEditProvider(routineName)
+                                            .notifier)
+                                        .updateName(value);
                               },
                             ),
                           ),
@@ -76,7 +74,7 @@ class VegeRoutineBottomSheetContent extends ConsumerWidget {
                 ),
                 const Padding(
                   padding:
-                  EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                      EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                   child: Divider(
                     color: FarmusThemeColor.gray4,
                   ),
@@ -126,7 +124,11 @@ class VegeRoutineBottomSheetContent extends ConsumerWidget {
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          enabled: isCreate ? isComplete : ref.watch(vegeRoutineEditProvider(routine)).isComplete,
+                          enabled: isCreate
+                              ? isComplete
+                              : ref
+                                  .watch(vegeRoutineEditProvider(routineName))
+                                  .isComplete,
                         ),
                       ),
                     ],
