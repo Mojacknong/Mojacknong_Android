@@ -9,11 +9,8 @@ final vegeRoutineCreateProvider =
   return VegeRoutineCreateNotifier();
 });
 
-final vegeRoutineEditProvider = StateNotifierProvider.family<
-    VegeRoutineEditNotifier, VegeRoutineModel, String?>(
-  (ref, initialRoutineName) {
-    return VegeRoutineEditNotifier(
-      initName: initialRoutineName ?? '',
-    );
+final vegeRoutineEditProvider = StateNotifierProviderFamily<VegeRoutineEditNotifier, VegeRoutineModel, String?>(
+      (ref, initialRoutineName) {
+    return VegeRoutineEditNotifier(initName: initialRoutineName ?? '');
   },
 );
