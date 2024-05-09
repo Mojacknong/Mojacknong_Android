@@ -1,4 +1,4 @@
-import 'package:farmus/view/vege_diary_write/component/vege_diary_write_switch.dart';
+import 'package:farmus/common/primary_switch.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -24,7 +24,7 @@ class VegeDiaryWriteBottom extends ConsumerWidget {
                   style: FarmusThemeTextStyle.gray1SemiBold17,
                 ),
               ),
-              VegeDiaryWriteSwitch(),
+              PrimarySwitch(),
             ],
           ),
           Padding(

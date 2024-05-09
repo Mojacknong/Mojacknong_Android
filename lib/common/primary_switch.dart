@@ -2,14 +2,14 @@ import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class VegeDiaryWriteSwitch extends ConsumerStatefulWidget {
-  const VegeDiaryWriteSwitch({super.key});
+class PrimarySwitch extends ConsumerStatefulWidget {
+  const PrimarySwitch({super.key});
 
   @override
   ConsumerState createState() => _VegeDiaryWriteSwitchState();
 }
 
-class _VegeDiaryWriteSwitchState extends ConsumerState<VegeDiaryWriteSwitch> {
+class _VegeDiaryWriteSwitchState extends ConsumerState<PrimarySwitch> {
   bool switchValue = true;
 
   @override
