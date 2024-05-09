@@ -84,7 +84,7 @@ class VegeInfoScreen extends ConsumerWidget {
                       style: FarmusThemeTextStyle.darkSemiBold15,
                     ),
                   ),
-                  const VegeAddCalender(),
+                  const FarmusCalender(),
                   const SizedBox(
                     height: 32.0,
                   ),

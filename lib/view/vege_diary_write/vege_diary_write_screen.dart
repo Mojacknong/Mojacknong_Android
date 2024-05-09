@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../common/content_input_text_form.dart';
+import '../../common/form/content_input_text_form.dart';
 import '../../common/theme/farmus_theme_color.dart';
 
 class VegeDiaryWriteScreen extends ConsumerWidget {

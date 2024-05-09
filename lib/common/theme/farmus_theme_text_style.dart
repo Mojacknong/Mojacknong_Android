@@ -190,6 +190,12 @@ class FarmusThemeTextStyle {
     fontWeight: FontWeight.w600,
   );
 
+  static const TextStyle gray3SemiBold19 = TextStyle(
+    color: FarmusThemeColor.gray3,
+    fontSize: 19,
+    fontWeight: FontWeight.w600,
+  );
+
   static const TextStyle gray6SemiBold13 = TextStyle(
     color: FarmusThemeColor.gray6,
     fontSize: 13,

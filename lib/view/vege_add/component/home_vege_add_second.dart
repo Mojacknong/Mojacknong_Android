@@ -29,7 +29,7 @@ class HomeVegeAddSecond extends ConsumerWidget {
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: HomeAddSubTitle(text: "키우기 시작한 날을 선택해주세요"),
           ),
-          VegeAddCalender(),
+          FarmusCalender(),
         ],
       ),
     );
