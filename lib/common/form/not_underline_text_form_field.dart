@@ -7,11 +7,13 @@ class NotUnderlineTextFormField extends ConsumerWidget {
       {super.key,
       required this.initialValue,
       required this.maxLength,
-      required this.hintText});
+      required this.hintText,
+      required this.onChanged});
 
   final String initialValue;
   final int maxLength;
   final String hintText;
+  final ValueChanged<String>? onChanged;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -22,13 +24,15 @@ class NotUnderlineTextFormField extends ConsumerWidget {
       maxLength: maxLength,
       style: FarmusThemeTextStyle.darkSemiBold19,
       decoration: InputDecoration(
-          hintText: hintText,
-          hintStyle: FarmusThemeTextStyle.gray3SemiBold19,
-          border: InputBorder.none,
-          counterText: '',
-          isDense: true,
-          contentPadding:
-              const EdgeInsets.symmetric(vertical: 9.0, horizontal: 4.0)),
+        hintText: hintText,
+        hintStyle: FarmusThemeTextStyle.gray3SemiBold19,
+        border: InputBorder.none,
+        counterText: '',
+        isDense: true,
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 9.0, horizontal: 4.0),
+      ),
+      onChanged: onChanged,
     );
   }
 }

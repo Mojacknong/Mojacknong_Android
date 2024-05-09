@@ -9,7 +9,11 @@ void showRoutineAddBottomSheet(BuildContext context) {
     isScrollControlled: true,
     backgroundColor: FarmusThemeColor.white,
     builder: (BuildContext context) {
-      return const VegeRoutineBottomSheetContent();
+      return const VegeRoutineBottomSheetContent(
+        routine: '',
+        day: '',
+        isCreate: true,
+      );
     },
   );
 }
@@ -24,6 +28,7 @@ void showRoutineEditBottomSheet(
       return VegeRoutineBottomSheetContent(
         routine: routine,
         day: day,
+        isCreate: false,
       );
     },
   );
