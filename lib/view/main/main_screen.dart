@@ -1,5 +1,6 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
+import 'package:farmus/view/farmclub/farmclub_screen.dart';
 import 'package:farmus/view/home/home_screen.dart';
 import 'package:farmus/view/my_page/my_page_screen.dart';
 import 'package:farmus/view/search/search_screen.dart';
@@ -23,7 +24,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    Text("팜클럽"),
+    FarmclubScreen(),
     SearchScreen(),
     MyPageScreen(),
   ];

@@ -68,7 +68,7 @@ class MyPageInfo extends StatelessWidget {
               ),
             ),
           ),
-          const Divider(thickness: 1, color: Colors.grey),
+          const Divider(thickness: 1, color: FarmusThemeColor.gray4),
           const SizedBox(
             height: 16,
           ),
