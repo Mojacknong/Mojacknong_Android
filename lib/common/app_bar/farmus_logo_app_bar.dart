@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../theme/farmus_theme_text_style.dart';
 import 'primary_app_bar.dart';
 
 class FarmusLogoAppBar extends StatelessWidget implements PreferredSizeWidget {
