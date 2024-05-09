@@ -13,21 +13,25 @@ class RoutineScreen extends ConsumerWidget {
       appBar: BackLeftTitleAppBar(
         title: '루틴',
       ),
-      body: Column(
-        children: [
-          FarmusCalender(),
-          SizedBox(
-            height: 16.0,
-          ),
-          VegeRoutineAdd(
-            vege: '상추',
-            vegeName: '상훈이',
-          ),
-          VegeRoutineAdd(
-            vege: '토마토',
-            vegeName: '토마토짱',
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            FarmusCalender(),
+            SizedBox(
+              height: 16.0,
+            ),
+            VegeRoutineAdd(
+              vege: '상추',
+              vegeName: '상훈이',
+              routineDayMap: {'물 갈아 주기': '4', '물 주기': '3'},
+            ),
+            VegeRoutineAdd(
+              vege: '토마토',
+              vegeName: '토마토짱',
+              routineDayMap: {'물 갈아 주기': '4'},
+            ),
+          ],
+        ),
       ),
     );
   }
