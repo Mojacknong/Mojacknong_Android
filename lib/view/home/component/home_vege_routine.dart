@@ -40,7 +40,7 @@ class HomeVegeRoutine extends ConsumerWidget {
               ),
               VegeRoutine(
                   routine: '물 갈아 주기',
-                  day: '4일 1회',
+                  day: '4',
                   onTap: () {
                     Navigator.push(
                       context,
@@ -54,7 +54,7 @@ class HomeVegeRoutine extends ConsumerWidget {
               ),
               VegeRoutine(
                 routine: '물 주기',
-                day: '3일 1회',
+                day: '3',
                 onTap: () {
                   Navigator.push(
                     context,

@@ -1,8 +1,7 @@
-
 class VegeRoutineModel {
   final String? routineName;
   final String? cycle;
-  final bool? isComplete;
+  final bool isComplete;
 
   VegeRoutineModel({
     required this.routineName,
@@ -16,9 +15,9 @@ class VegeRoutineModel {
     bool? isComplete,
   }) {
     return VegeRoutineModel(
-      routineName: routineName,
-      cycle: cycle,
-      isComplete: isComplete,
+      routineName: routineName ?? this.routineName,
+      cycle: cycle ?? this.cycle,
+      isComplete: isComplete ?? this.isComplete,
     );
   }
 }
