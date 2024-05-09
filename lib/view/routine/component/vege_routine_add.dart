@@ -1,8 +1,10 @@
 import 'package:farmus/view/home/component/vege_routine.dart';
-import 'package:farmus/view/routine/component/vege_routine_add_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../common/bottom_sheet/show_farmus_bottom_sheet.dart';
+import '../../../common/button/routine_add_button.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 
 class VegeRoutineAdd extends ConsumerWidget {
@@ -40,9 +42,28 @@ class VegeRoutineAdd extends ConsumerWidget {
           ),
           if (routineDayMap.isNotEmpty)
             for (final entry in routineDayMap.entries)
-              VegeRoutine(routine: entry.key, day: entry.value),
+              Row(
+                children: [
+                  Expanded(
+                      child: VegeRoutine(routine: entry.key, day: entry.value)),
+                  IconButton(
+                    onPressed: () {
+                      showRoutineEditBottomSheet(
+                          context, entry.key, entry.value);
+                    },
+                    icon: SvgPicture.asset('assets/image/ic_more_vertical.svg'),
+                  )
+                ],
+              ),
           if (routineDayMap.isEmpty) Container(),
-          const VegeRoutineAddSheet(),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            child: RoutineAddButton(
+              onPressed: () {
+                showRoutineAddBottomSheet(context);
+              },
+            ),
+          ),
         ],
       ),
     );

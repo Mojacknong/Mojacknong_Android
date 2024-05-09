@@ -1,18 +1,22 @@
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class PrimaryTextField extends ConsumerWidget {
-  const PrimaryTextField(
-      {super.key, required this.maxLength, required this.hintText});
+class NotUnderlineTextFormField extends ConsumerWidget {
+  const NotUnderlineTextFormField(
+      {super.key,
+      required this.initialValue,
+      required this.maxLength,
+      required this.hintText});
 
+  final String initialValue;
   final int maxLength;
   final String hintText;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return TextField(
+    return TextFormField(
+      initialValue: initialValue != '' ? initialValue : null,
       minLines: 1,
       maxLines: 1,
       maxLength: maxLength,
