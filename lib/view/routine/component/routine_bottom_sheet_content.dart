@@ -6,12 +6,12 @@ import '../../../common/button/primary_color_button.dart';
 import '../../../common/button/white_color_button.dart';
 import '../../../common/form/digits_text_form_field.dart';
 import '../../../common/form/not_underline_text_form_field.dart';
-import '../../../common/primary_switch.dart';
+import '../../../common/switch/primary_switch.dart';
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 
-class VegeRoutineBottomSheetContent extends ConsumerWidget {
-  const VegeRoutineBottomSheetContent(
+class RoutineBottomSheetContent extends ConsumerWidget {
+  const RoutineBottomSheetContent(
       {super.key, this.routine, this.day, required this.isCreate});
 
   final String? routine;
@@ -21,8 +21,8 @@ class VegeRoutineBottomSheetContent extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var routineName = ref.watch(routineEditProvider(routine)).routineName;
-
     var isComplete = ref.watch(routineCreateProvider).isComplete;
+    var isSwitch = ref.watch(routineCycleSwitchProvider);
 
     return Padding(
       padding:
@@ -57,8 +57,7 @@ class VegeRoutineBottomSheetContent extends ConsumerWidget {
                               onChanged: (value) {
                                 isCreate
                                     ? ref
-                                        .read(
-                                            routineCreateProvider.notifier)
+                                        .read(routineCreateProvider.notifier)
                                         .updateName(value)
                                     : ref
                                         .read(routineEditProvider(routineName)
@@ -89,7 +88,8 @@ class VegeRoutineBottomSheetContent extends ConsumerWidget {
                             SizedBox(
                                 width: 50,
                                 child: DigitsTextFormField(
-                                  initialValue: '$day',
+                                  initialValue: isSwitch ? '$day' : '',
+                                  readOnly: !isSwitch,
                                 )),
                             const SizedBox(
                               width: 10,
@@ -101,7 +101,14 @@ class VegeRoutineBottomSheetContent extends ConsumerWidget {
                           ],
                         ),
                       ),
-                      const PrimarySwitch(),
+                      PrimarySwitch(
+                        switchValue: isSwitch,
+                        switchToggle: () {
+                          ref
+                              .read(routineCycleSwitchProvider.notifier)
+                              .toggle();
+                        },
+                      ),
                     ],
                   ),
                 ),

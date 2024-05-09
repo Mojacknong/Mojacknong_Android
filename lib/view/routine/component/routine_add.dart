@@ -8,8 +8,8 @@ import '../../../common/bottom_sheet/show_farmus_bottom_sheet.dart';
 import '../../../common/button/routine_add_button.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 
-class VegeRoutineAdd extends ConsumerWidget {
-  const VegeRoutineAdd({
+class RoutineAdd extends ConsumerWidget {
+  const RoutineAdd({
     super.key,
     required this.vege,
     required this.vegeName,

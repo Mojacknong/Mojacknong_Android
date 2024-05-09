@@ -1,4 +1,4 @@
-import 'package:farmus/view/routine/component/vege_routine_bottom_sheet_content.dart';
+import 'package:farmus/view/routine/component/routine_bottom_sheet_content.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/farmus_theme_color.dart';
@@ -9,7 +9,7 @@ void showRoutineAddBottomSheet(BuildContext context) {
     isScrollControlled: true,
     backgroundColor: FarmusThemeColor.white,
     builder: (BuildContext context) {
-      return const VegeRoutineBottomSheetContent(
+      return const RoutineBottomSheetContent(
         routine: '',
         day: '',
         isCreate: true,
@@ -25,7 +25,7 @@ void showRoutineEditBottomSheet(
     isScrollControlled: true,
     backgroundColor: FarmusThemeColor.white,
     builder: (BuildContext context) {
-      return VegeRoutineBottomSheetContent(
+      return RoutineBottomSheetContent(
         routine: routine,
         day: day,
         isCreate: false,
