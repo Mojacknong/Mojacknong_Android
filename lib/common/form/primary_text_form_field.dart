@@ -2,6 +2,7 @@ import 'package:farmus/common/base/base_text_input.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class PrimaryTextFormField extends StatelessWidget implements BaseTextInput {
   const PrimaryTextFormField(
@@ -15,7 +16,9 @@ class PrimaryTextFormField extends StatelessWidget implements BaseTextInput {
       this.errorBorder,
       this.errorStyle,
       this.onChanged,
-      this.suffix});
+      this.suffix,
+      this.keyboardType,
+      this.inputFormatters});
 
   @override
   final String? hintText;
@@ -37,6 +40,8 @@ class PrimaryTextFormField extends StatelessWidget implements BaseTextInput {
   final ValueChanged<String>? onChanged;
 
   final Widget? suffix;
+  final TextInputType? keyboardType;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +51,8 @@ class PrimaryTextFormField extends StatelessWidget implements BaseTextInput {
       minLines: minLines,
       maxLines: maxLines,
       expands: (minLines == null && maxLines == null) ? true : false,
+      keyboardType: keyboardType ?? TextInputType.text,
+      inputFormatters: inputFormatters ?? [],
       decoration: InputDecoration(
           hintText: hintText,
           hintStyle: const TextStyle(
@@ -72,7 +79,7 @@ class PrimaryTextFormField extends StatelessWidget implements BaseTextInput {
           errorText: errorText,
           errorBorder: errorBorder,
           errorStyle: errorStyle,
-          counterText: "",
+          counterText: '',
           suffix: Stack(
             alignment: Alignment.bottomRight,
             children: [suffix!],

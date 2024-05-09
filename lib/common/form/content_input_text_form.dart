@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../primary_text_form_field.dart';
+import 'primary_text_form_field.dart';
 import '../theme/farmus_theme_color.dart';
 
 class ContentInputTextForm extends ConsumerWidget {
