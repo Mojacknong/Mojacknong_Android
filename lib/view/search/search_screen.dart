@@ -1,3 +1,4 @@
+import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/search/component/search_app_bar.dart';
 import 'package:farmus/view/search/component/search_difficulty_box.dart';
@@ -12,9 +13,20 @@ class SearchScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const Scaffold(
-      appBar: SearchAppBar(),
-      body: Column(
+    return Scaffold(
+      appBar: const SearchAppBar(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: FarmusThemeColor.primary,
+        shape: const CircleBorder(),
+        elevation: 10,
+        highlightElevation: 30,
+        child: const Icon(
+          Icons.add,
+          color: FarmusThemeColor.white,
+        ),
+      ),
+      body: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SearchWelcomeText(),
