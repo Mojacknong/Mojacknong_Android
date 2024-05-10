@@ -1,4 +1,5 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
+import 'package:farmus/view_model/search/search_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -13,49 +14,47 @@ class SearchDifficultyBtn extends ConsumerStatefulWidget {
 }
 
 class _SearchDifficultyBtnState extends ConsumerState<SearchDifficultyBtn> {
-  bool _isPressed = false;
-
   @override
   Widget build(BuildContext context) {
     Color levelColor1 = FarmusThemeColor.gray5;
     Color levelColor2 = FarmusThemeColor.gray5;
     Widget image = Container();
+    final searchDifficultyState = ref.watch(searchDifficultyProvider);
+    final isPressed = searchDifficultyState[widget.level]!;
 
     switch (widget.level) {
       case "초급":
         levelColor1 =
-            _isPressed ? FarmusThemeColor.blue1 : FarmusThemeColor.gray5;
+            isPressed ? FarmusThemeColor.blue1 : FarmusThemeColor.gray5;
         levelColor2 =
-            _isPressed ? FarmusThemeColor.blue2 : FarmusThemeColor.gray5;
+            isPressed ? FarmusThemeColor.blue2 : FarmusThemeColor.gray5;
         image = SvgPicture.asset('assets/image/ic_xmark_blue.svg');
         break;
       case "중급":
         levelColor1 =
-            _isPressed ? FarmusThemeColor.orange1 : FarmusThemeColor.gray5;
+            isPressed ? FarmusThemeColor.orange1 : FarmusThemeColor.gray5;
         levelColor2 =
-            _isPressed ? FarmusThemeColor.orange2 : FarmusThemeColor.gray5;
+            isPressed ? FarmusThemeColor.orange2 : FarmusThemeColor.gray5;
         image = SvgPicture.asset('assets/image/ic_xmark_orange.svg');
         break;
       case "고급":
         levelColor1 =
-            _isPressed ? FarmusThemeColor.red1 : FarmusThemeColor.gray5;
+            isPressed ? FarmusThemeColor.red1 : FarmusThemeColor.gray5;
         levelColor2 =
-            _isPressed ? FarmusThemeColor.red2 : FarmusThemeColor.gray5;
+            isPressed ? FarmusThemeColor.red2 : FarmusThemeColor.gray5;
         image = SvgPicture.asset('assets/image/ic_xmark_red.svg');
         break;
     }
 
     return GestureDetector(
       onTap: () {
-        setState(() {
-          _isPressed = !_isPressed;
-        });
+        ref.read(searchDifficultyProvider.notifier).toggleLevel(widget.level);
       },
       child: Container(
         decoration: BoxDecoration(
-          color: _isPressed ? levelColor1 : FarmusThemeColor.gray5,
+          color: isPressed ? levelColor1 : FarmusThemeColor.gray5,
           border: Border.all(
-            color: _isPressed ? levelColor2 : FarmusThemeColor.gray5,
+            color: isPressed ? levelColor2 : FarmusThemeColor.gray5,
           ),
           borderRadius: BorderRadius.circular(8.0),
         ),
@@ -66,10 +65,10 @@ class _SearchDifficultyBtnState extends ConsumerState<SearchDifficultyBtn> {
             Text(
               widget.level,
               style: TextStyle(
-                color: _isPressed ? levelColor2 : FarmusThemeColor.gray3,
+                color: isPressed ? levelColor2 : FarmusThemeColor.gray3,
               ),
             ),
-            if (_isPressed)
+            if (isPressed)
               Padding(
                 padding: const EdgeInsets.only(left: 8.0),
                 child: image,
