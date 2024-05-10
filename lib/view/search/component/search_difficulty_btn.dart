@@ -52,7 +52,6 @@ class _SearchDifficultyBtnState extends ConsumerState<SearchDifficultyBtn> {
         });
       },
       child: Container(
-        height: 31,
         decoration: BoxDecoration(
           color: _isPressed ? levelColor1 : FarmusThemeColor.gray5,
           border: Border.all(
@@ -60,7 +59,7 @@ class _SearchDifficultyBtnState extends ConsumerState<SearchDifficultyBtn> {
           ),
           borderRadius: BorderRadius.circular(8.0),
         ),
-        padding: const EdgeInsets.symmetric(vertical: 3.0, horizontal: 13.0),
+        padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 13.0),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[

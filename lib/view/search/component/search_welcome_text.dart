@@ -7,8 +7,6 @@ class SearchWelcomeText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 328,
-      height: 130,
       padding: const EdgeInsets.all(16),
       child: const Column(
         mainAxisSize: MainAxisSize.min,

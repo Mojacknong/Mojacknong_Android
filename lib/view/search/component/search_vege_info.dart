@@ -29,11 +29,14 @@ class SearchVegeInfo extends ConsumerWidget {
               '시작': '+$day일',
               '인원': '$num/$total명',
             },
-            bottomWidget: const Text(
-              "상추를 치료해줄 사람어디 없나. 저만 매번 실패하나요..이번에는 꼭 성공해서 얼른 상추쌈 싸먹어요! 추를 치료해줄 사람어디 없나. 저만 매번 실패하나요..이번에는 꼭 성공해서 얼른 상추쌈 싸먹어요!",
-              style: FarmusThemeTextStyle.gray1Medium13,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
+            bottomWidget: Container(
+              padding: const EdgeInsets.only(top: 10),
+              child: const Text(
+                "상추를 치료해줄 사람어디 없나. 저만 매번 실패하나요..이번에는 꼭 성공해서 얼른 상추쌈 싸먹어요! 추를 치료해줄 사람어디 없나. 저만 매번 실패하나요..이번에는 꼭 성공해서 얼른 상추쌈 싸먹어요!",
+                style: FarmusThemeTextStyle.gray1Medium13,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ),
         ),

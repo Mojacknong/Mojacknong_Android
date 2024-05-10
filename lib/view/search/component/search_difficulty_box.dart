@@ -14,7 +14,7 @@ class SearchDifficultyBox extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
-            height: 63,
+            padding: const EdgeInsets.symmetric(vertical: 30),
             decoration: ShapeDecoration(
               shape: RoundedRectangleBorder(
                 side: const BorderSide(width: 1, color: FarmusThemeColor.gray4),
@@ -27,7 +27,6 @@ class SearchDifficultyBox extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(top: 16.0),
               child: SizedBox(
-                height: 31,
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,

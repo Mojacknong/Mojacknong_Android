@@ -29,10 +29,13 @@ class SearchFarmclubInfoWidget extends ConsumerWidget {
     switch (level) {
       case "초급":
         levelColor = FarmusThemeColor.blue;
+        break;
       case "중급":
         levelColor = FarmusThemeColor.yellow;
+        break;
       case "고급":
         levelColor = FarmusThemeColor.red;
+        break;
     }
 
     return Container(
@@ -71,35 +74,15 @@ class SearchFarmclubInfoWidget extends ConsumerWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Text(
-                    "+",
-                    style: FarmusThemeTextStyle.gray1Medium13,
-                  ),
                   Text(
-                    period,
-                    style: FarmusThemeTextStyle.gray1Medium13,
-                  ),
-                  const Text(
-                    "일",
+                    '+$period일',
                     style: FarmusThemeTextStyle.gray1Medium13,
                   ),
                   const SizedBox(
                     width: 6,
                   ),
                   Text(
-                    num,
-                    style: FarmusThemeTextStyle.gray1Medium13,
-                  ),
-                  const Text(
-                    "/",
-                    style: FarmusThemeTextStyle.gray1Medium13,
-                  ),
-                  Text(
-                    total,
-                    style: FarmusThemeTextStyle.gray1Medium13,
-                  ),
-                  const Text(
-                    "명",
+                    '$num/$total명',
                     style: FarmusThemeTextStyle.gray1Medium13,
                   ),
                 ],

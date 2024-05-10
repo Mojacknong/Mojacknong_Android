@@ -27,7 +27,7 @@ class SearchScreen extends ConsumerWidget {
                     height: 16,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 16.0),
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
