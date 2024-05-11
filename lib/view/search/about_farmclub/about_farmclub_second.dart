@@ -10,11 +10,11 @@ class AboutFarmclubSecond extends StatelessWidget {
     return AboutFarmclubWidget(
       dialogs: [
         Dialog(
-          insetPadding: const EdgeInsets.fromLTRB(38, 0, 38, 6),
+          insetPadding: const EdgeInsets.fromLTRB(22, 0, 22, 6),
           child: Image.asset('assets/image/img_about_farmclub_second1.png'),
         ),
         Dialog(
-          insetPadding: const EdgeInsets.fromLTRB(38, 8, 38, 90),
+          insetPadding: const EdgeInsets.fromLTRB(22, 8, 22, 60),
           child: Image.asset('assets/image/img_about_farmclub_second2.png'),
         ),
       ],
