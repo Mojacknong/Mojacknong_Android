@@ -1,12 +1,13 @@
+import 'package:farmus/common/app_bar/farmus_logo_app_bar.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:farmus/view/search/component/search_app_bar.dart';
 import 'package:farmus/view/search/component/search_difficulty_box.dart';
 import 'package:farmus/view/search/component/search_farmclub_info.dart';
 import 'package:farmus/view/search/component/search_tab_bar.dart';
 import 'package:farmus/view/search/component/search_welcome_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 
 class SearchScreen extends ConsumerWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -14,7 +15,26 @@ class SearchScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: const SearchAppBar(),
+      appBar: FarmusLogoAppBar(
+        actions: <Widget>[
+          IconButton(
+            icon: SvgPicture.asset(
+              'assets/image/ic_alert_circle.svg',
+              colorFilter: const ColorFilter.mode(
+                  FarmusThemeColor.black, BlendMode.srcIn),
+              width: 20,
+              height: 20,
+            ),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: SvgPicture.asset(
+              'assets/image/ic_search_glass.svg',
+            ),
+            onPressed: () {},
+          ),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         backgroundColor: FarmusThemeColor.primary,
