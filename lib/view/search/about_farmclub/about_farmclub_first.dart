@@ -16,7 +16,7 @@ class AboutFarmclubFirst extends StatelessWidget {
           height: 50,
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 32.0),
+          padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 50),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [

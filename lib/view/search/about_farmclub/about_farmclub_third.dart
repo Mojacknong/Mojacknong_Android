@@ -10,6 +10,7 @@ class AboutFarmclubThird extends StatelessWidget {
     return AboutFarmclubWidget(
       dialogs: [
         Dialog(
+          insetPadding: const EdgeInsets.fromLTRB(22, 0, 22, 20),
           child: Image.asset('assets/image/img_about_farmclub_third.png'),
         ),
       ],

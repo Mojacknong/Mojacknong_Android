@@ -109,7 +109,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   Future<dynamic> _showDialog(BuildContext context) {
     return showDialog(
       context: context,
-      barrierColor: Colors.black.withOpacity(0.6),
+      barrierColor: Colors.black.withOpacity(0.7),
       builder: (BuildContext context) {
         return SizedBox(
           width: MediaQuery.of(context).size.width,
@@ -122,7 +122,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                   Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 100),
+                        padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 80),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
@@ -163,7 +163,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(32.0),
                         child: buildPageIndicator(currentPage),
                       ),
                     ],
