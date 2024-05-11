@@ -10,7 +10,7 @@ class AboutFarmclubFirst extends StatelessWidget {
     return AboutFarmclubWidget(
       dialogs: [
         Dialog(
-          insetPadding: const EdgeInsets.fromLTRB(22, 0, 22, 16),
+          insetPadding: const EdgeInsets.fromLTRB(22, 16, 22, 0),
           child: Image.asset('assets/image/img_about_farmclub_first.png'),
         ),
         const SizedBox(
