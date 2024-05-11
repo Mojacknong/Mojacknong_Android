@@ -3,6 +3,7 @@ import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/farmclub/farmclub_screen.dart';
 import 'package:farmus/view/home/home_screen.dart';
 import 'package:farmus/view/my_page/my_page_screen.dart';
+import 'package:farmus/view/search/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -24,7 +25,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     FarmclubScreen(),
-    Text("탐색"),
+    SearchScreen(),
     MyPageScreen(),
   ];
 
