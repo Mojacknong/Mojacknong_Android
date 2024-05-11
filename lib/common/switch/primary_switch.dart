@@ -2,18 +2,22 @@ import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class VegeDiaryWriteSwitch extends ConsumerStatefulWidget {
-  const VegeDiaryWriteSwitch({super.key});
+class PrimarySwitch extends ConsumerStatefulWidget {
+  final bool switchValue;
+  final void Function() switchToggle;
+
+  const PrimarySwitch(
+      {super.key, required this.switchValue, required this.switchToggle});
 
   @override
-  ConsumerState createState() => _VegeDiaryWriteSwitchState();
+  ConsumerState createState() => _PrimarySwitchState();
 }
 
-class _VegeDiaryWriteSwitchState extends ConsumerState<VegeDiaryWriteSwitch> {
-  bool switchValue = true;
-
+class _PrimarySwitchState extends ConsumerState<PrimarySwitch> {
   @override
   Widget build(BuildContext context) {
+    bool? initSwitch = widget.switchValue;
+
     return Theme(
       data: ThemeData(
         useMaterial3: true,
@@ -22,14 +26,15 @@ class _VegeDiaryWriteSwitchState extends ConsumerState<VegeDiaryWriteSwitch> {
               .colorScheme
               .copyWith(outline: FarmusThemeColor.gray3)),
       child: Switch(
-          value: switchValue,
+          value: initSwitch,
           activeColor: FarmusThemeColor.white,
           activeTrackColor: FarmusThemeColor.primary,
           inactiveThumbColor: FarmusThemeColor.white,
           inactiveTrackColor: FarmusThemeColor.gray3,
           onChanged: (bool? value) {
             setState(() {
-              switchValue = value ?? false;
+              widget.switchToggle();
+              initSwitch = value;
             });
           }),
     );

@@ -1,4 +1,4 @@
-import 'package:farmus/view/vege_add/component/vege_add_calender.dart';
+import 'package:farmus/common/farmus_calender.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -29,7 +29,7 @@ class HomeVegeAddSecond extends ConsumerWidget {
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: HomeAddSubTitle(text: "키우기 시작한 날을 선택해주세요"),
           ),
-          VegeAddCalender(),
+          FarmusCalender(),
         ],
       ),
     );

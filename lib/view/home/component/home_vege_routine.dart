@@ -1,4 +1,5 @@
 import 'package:farmus/view/home/component/vege_routine.dart';
+import 'package:farmus/view/routine/routine_screen.dart';
 import 'package:farmus/view_model/home/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,12 +18,12 @@ class HomeVegeRoutine extends ConsumerWidget {
     String toDo = ref.watch(homeToDoProvider);
 
     return toDo == "routine"
-        ? const Column(
-            children: [
-              SizedBox(
+        ? Column(
+            children: <Widget>[
+              const SizedBox(
                 height: 12,
               ),
-              Row(
+              const Row(
                 children: [
                   Text(
                     "1개",
@@ -34,20 +35,36 @@ class HomeVegeRoutine extends ConsumerWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 8,
               ),
               VegeRoutine(
                 routine: '물 갈아 주기',
-                day: '4일 1회',
+                day: '4',
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const RoutineScreen()),
+                  );
+                },
+                isChecked: false,
               ),
-              Divider(
+              const Divider(
                 height: 1,
                 color: FarmusThemeColor.gray5,
               ),
               VegeRoutine(
                 routine: '물 주기',
-                day: '3일 1회',
+                day: '3',
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const RoutineScreen()),
+                  );
+                },
+                isChecked: true,
               ),
             ],
           )

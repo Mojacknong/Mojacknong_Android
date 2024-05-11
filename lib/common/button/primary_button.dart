@@ -81,6 +81,7 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
                           text!,
                           style: TextStyle(
                             color: textColor,
+                            fontSize: fontSize,
                           ),
                           textAlign: TextAlign.center,
                         ),
