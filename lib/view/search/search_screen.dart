@@ -1,6 +1,7 @@
 import 'package:farmus/common/app_bar/farmus_logo_app_bar.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
+import 'package:farmus/view/search/about_farmclub/search_dialogs.dart';
 import 'package:farmus/view/search/component/search_difficulty_box.dart';
 import 'package:farmus/view/search/component/search_farmclub_info.dart';
 import 'package:farmus/view/search/component/search_tab_bar.dart';
@@ -25,7 +26,9 @@ class SearchScreen extends ConsumerWidget {
               width: 20,
               height: 20,
             ),
-            onPressed: () {},
+            onPressed: () {
+              _showdialog(context);
+            },
           ),
           IconButton(
             icon: SvgPicture.asset(
@@ -88,6 +91,39 @@ class SearchScreen extends ConsumerWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Future<dynamic> _showdialog(BuildContext context) {
+    return showDialog(
+      context: context,
+      barrierColor: Colors.black.withOpacity(0.5),
+      builder: (BuildContext context) {
+        return SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 100),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.close),
+                      color: Colors.white,
+                      iconSize: 24.0,
+                      padding: EdgeInsets.zero,
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              const SearchDialogs(),
+            ],
+          ),
+        );
+      },
     );
   }
 }
