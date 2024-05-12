@@ -25,7 +25,7 @@ class MyVegeStackBox extends ConsumerWidget {
 
     return Stack(
       children: [
-        const MyVegeBox(),
+        const MyHistoryBox(),
         Padding(
           padding: const EdgeInsets.only(left: 32, top: 20),
           child: Column(
@@ -66,9 +66,18 @@ class MyVegeStackBox extends ConsumerWidget {
         ),
         const Positioned(
           child: Padding(
-            padding: EdgeInsets.only(top: 90.0, left: 24),
-            child: Row(
-              children: [MyVegeImageWidget(), MyVegeImageWidget()],
+            padding: EdgeInsets.only(top: 90.0, left: 24, right: 24),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  MyVegeImageWidget(),
+                  MyVegeImageWidget(),
+                  MyVegeImageWidget(),
+                  MyVegeImageWidget(),
+                  MyVegeImageWidget()
+                ],
+              ),
             ),
           ),
         ),

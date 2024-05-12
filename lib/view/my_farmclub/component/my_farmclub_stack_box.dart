@@ -75,13 +75,19 @@ class MyFarmClubStackBox extends ConsumerWidget {
         ),
         const Positioned(
           child: Padding(
-            padding: EdgeInsets.only(top: 105.0, left: 24),
-            child: Row(
-              children: [
-                FarmclubWidgetPic(),
-                FarmclubWidgetPic(),
-                FarmclubWidgetPic()
-              ],
+            padding: EdgeInsets.only(top: 105.0, left: 24, right: 24),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  FarmclubWidgetPic(),
+                  FarmclubWidgetPic(),
+                  FarmclubWidgetPic(),
+                  FarmclubWidgetPic(),
+                  FarmclubWidgetPic(),
+                  FarmclubWidgetPic()
+                ],
+              ),
             ),
           ),
         ),
