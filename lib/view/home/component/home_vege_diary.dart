@@ -20,16 +20,15 @@ class HomeVegeDiary extends ConsumerWidget {
           MaterialPageRoute(builder: (context) => const VegeDiaryScreen()),
         );
       },
-      child: Row(
+      child: const Row(
         children: [
           FarmusPictureFix(
             size: 64,
-            child: Container(),
           ),
           SizedBox(
             width: 16,
           ),
-          const Expanded(
+          Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

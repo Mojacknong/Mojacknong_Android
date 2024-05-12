@@ -36,13 +36,10 @@ class PrimaryTabBar extends StatelessWidget implements BaseTabBar {
           SizedBox(
             width: double.infinity,
             height: 300,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: TabBarView(
-                children: [
-                  for (var child in tabView) child,
-                ],
-              ),
+            child: TabBarView(
+              children: [
+                for (var child in tabView) child,
+              ],
             ),
           ),
         ],

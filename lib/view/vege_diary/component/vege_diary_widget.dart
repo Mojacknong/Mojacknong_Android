@@ -25,9 +25,8 @@ class VegeDiaryWidget extends ConsumerWidget {
         children: [
           Row(
             children: [
-               FarmusPictureFix(
+              const FarmusPictureFix(
                 size: 64.0,
-                 child: Container(),
               ),
               const SizedBox(
                 width: 16.0,

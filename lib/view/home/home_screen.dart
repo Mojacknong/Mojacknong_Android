@@ -2,7 +2,7 @@ import 'package:farmus/view/home/component/home_motivation.dart';
 import 'package:farmus/view/home/component/home_my_vege_list.dart';
 import 'package:farmus/view/home/component/home_sub_title.dart';
 import 'package:farmus/view/home/component/home_to_do.dart';
-import 'package:farmus/view/home/component/home_vege_routine.dart';
+import 'package:farmus/view/home/component/home_vege_to_do.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/app_bar/home_app_bar.dart';
@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
               const HomeMotivation(motivation: "텃밭에서 식탁까지 팜어스와 늘 함께해요!"),
               const HomeSubTitle(title: "오늘 할 일"),
               const HomeToDo(),
-              const HomeVegeRoutine(),
+              const HomeVegeTodo(),
               const SizedBox(
                 height: 24,
               ),

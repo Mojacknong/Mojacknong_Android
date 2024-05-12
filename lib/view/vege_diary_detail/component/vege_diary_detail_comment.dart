@@ -19,9 +19,8 @@ class VegeDiaryDetailComment extends ConsumerWidget {
       children: [
         Row(
           children: [
-            FarmusPictureFix(
+            const FarmusPictureFix(
               size: 32.0,
-              child: Container(),
             ),
             Expanded(
               child: Padding(
