@@ -1,6 +1,7 @@
 import 'package:farmus/common/app_bar/farmus_logo_app_bar.dart';
+import 'package:farmus/common/tab_bar/farmclub_tab_bar.dart';
+import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/view/farmclub/component/farmclub_profile.dart';
-import 'package:farmus/view/farmclub/component/farmclub_tab_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -23,18 +24,22 @@ class FarmclubScreen extends ConsumerWidget {
           )
         ],
       ),
-      body: const SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.all(16.0),
-              child: FarmclubProfile(),
-            ),
-            SizedBox(height: 16.0,),
-            FarmclubTabBar(),
-          ],
-        ),
+      body: const Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.all(16.0),
+            child: FarmclubProfile(),
+          ),
+          SizedBox(
+            height: 16.0,
+          ),
+          FarmclubTabBar(),
+          Divider(
+            thickness: 6.0,
+            color: FarmusThemeColor.gray7,
+          )
+        ],
       ),
     );
   }

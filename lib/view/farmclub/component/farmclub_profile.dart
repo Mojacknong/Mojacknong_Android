@@ -42,7 +42,7 @@ class FarmclubProfile extends ConsumerWidget {
                   width: 48,
                   height: 48,
                   decoration: const BoxDecoration(
-                    color: FarmusThemeColor.gray5,
+                    color: FarmusThemeColor.gray7,
                     shape: BoxShape.circle,
                   ),
                 )
