@@ -10,7 +10,7 @@ class MyFarmClubStackBox extends ConsumerWidget {
   final String historyType;
   final Image? image;
   final String message;
-  final String? imagePath = "assets/image/ic_farm_club_mark.svg";
+  final String? imagePath = "assets/image/ic_farmclub_mark.svg";
   final String? vegeImage;
 
   const MyFarmClubStackBox({

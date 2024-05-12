@@ -25,7 +25,7 @@ class VegeRoutine extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6.0),
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: Row(
         children: [
           GestureDetector(

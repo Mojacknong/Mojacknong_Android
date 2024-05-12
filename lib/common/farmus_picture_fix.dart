@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 
 import 'theme/farmus_theme_color.dart';
 
 class FarmusPictureFix extends ConsumerWidget {
-  const FarmusPictureFix({super.key, required this.size});
+  const FarmusPictureFix({super.key, required this.size, this.asset});
 
   final double size;
+  final String? asset;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -15,14 +15,16 @@ class FarmusPictureFix extends ConsumerWidget {
       width: size,
       height: size,
       decoration: ShapeDecoration(
+        image: asset != null
+            ? DecorationImage(
+                image: AssetImage(asset!),
+                fit: BoxFit.cover,
+              )
+            : null,
         color: FarmusThemeColor.background,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(16.0),
         ),
-      ),
-      child: SvgPicture.asset(
-        "assets/image/ic_farm_club_mark.svg",
-        fit: BoxFit.cover,
       ),
     );
   }
