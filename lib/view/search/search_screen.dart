@@ -1,10 +1,10 @@
 import 'package:farmus/common/app_bar/farmus_logo_app_bar.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:farmus/view/search/about_farmclub/about_farmclub_first.dart';
-import 'package:farmus/view/search/about_farmclub/about_farmclub_fourth.dart';
-import 'package:farmus/view/search/about_farmclub/about_farmclub_second.dart';
-import 'package:farmus/view/search/about_farmclub/about_farmclub_third.dart';
+import 'package:farmus/view/search/component/about_farmclub/about_farmclub_first.dart';
+import 'package:farmus/view/search/component/about_farmclub/about_farmclub_fourth.dart';
+import 'package:farmus/view/search/component/about_farmclub/about_farmclub_second.dart';
+import 'package:farmus/view/search/component/about_farmclub/about_farmclub_third.dart';
 import 'package:farmus/view/search/component/search_difficulty_box.dart';
 import 'package:farmus/view/search/component/search_farmclub_info.dart';
 import 'package:farmus/view/search/component/search_tab_bar.dart';

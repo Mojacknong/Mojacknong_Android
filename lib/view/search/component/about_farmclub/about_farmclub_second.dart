@@ -1,5 +1,5 @@
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:farmus/view/search/about_farmclub/about_farmclub_widget.dart';
+import 'package:farmus/view/search/component/about_farmclub/about_farmclub_widget.dart';
 import 'package:flutter/material.dart';
 
 class AboutFarmclubSecond extends StatelessWidget {
