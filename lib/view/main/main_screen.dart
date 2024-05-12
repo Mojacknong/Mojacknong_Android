@@ -62,7 +62,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              "assets/image/ic_farm_club.svg",
+              "assets/image/ic_farmclub.svg",
               colorFilter: ColorFilter.mode(
                   _selectedIndex == 1
                       ? FarmusThemeColor.gray1

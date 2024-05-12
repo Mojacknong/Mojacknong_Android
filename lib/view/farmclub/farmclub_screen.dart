@@ -1,6 +1,10 @@
 import 'package:farmus/common/app_bar/farmus_logo_app_bar.dart';
+import 'package:farmus/common/theme/farmus_theme_color.dart';
+import 'package:farmus/common/theme/farmus_theme_text_style.dart';
+import 'package:farmus/view/farmclub/component/farmclub_profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -27,7 +31,7 @@ class FarmclubScreen extends ConsumerWidget {
           padding: EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [],
+            children: [FarmclubProfile()],
           ),
         ),
       ),

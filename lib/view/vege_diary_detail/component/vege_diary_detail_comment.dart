@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../common/farmus_picture_64.dart';
+import '../../../common/farmus_picture_fix.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 
 class VegeDiaryDetailComment extends ConsumerWidget {
@@ -19,8 +19,9 @@ class VegeDiaryDetailComment extends ConsumerWidget {
       children: [
         Row(
           children: [
-            const FarmusPictureFix(
+            FarmusPictureFix(
               size: 32.0,
+              child: Container(),
             ),
             Expanded(
               child: Padding(
@@ -36,9 +37,7 @@ class VegeDiaryDetailComment extends ConsumerWidget {
                           style: FarmusThemeTextStyle.darkMedium15,
                         ),
                         GestureDetector(
-                          onTap: () {
-
-                          },
+                          onTap: () {},
                           child: SvgPicture.asset(
                               'assets/image/ic_more_vertical.svg'),
                         ),

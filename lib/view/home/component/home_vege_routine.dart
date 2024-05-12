@@ -188,7 +188,7 @@ class HomeVegeRoutine extends ConsumerWidget {
                                   ),
                                 ),
                                 child: SvgPicture.asset(
-                                  "assets/image/ic_farm_club_mark.svg",
+                                  "assets/image/ic_farmclub_mark.svg",
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -205,7 +205,7 @@ class HomeVegeRoutine extends ConsumerWidget {
                                   ),
                                 ),
                                 child: SvgPicture.asset(
-                                  "assets/image/ic_farm_club_mark.svg",
+                                  "assets/image/ic_farmclub_mark.svg",
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -222,7 +222,7 @@ class HomeVegeRoutine extends ConsumerWidget {
                                   ),
                                 ),
                                 child: SvgPicture.asset(
-                                  "assets/image/ic_farm_club_mark.svg",
+                                  "assets/image/ic_farmclub_mark.svg",
                                   fit: BoxFit.cover,
                                 ),
                               ),

@@ -5,9 +5,10 @@ import 'package:flutter_svg/svg.dart';
 import 'theme/farmus_theme_color.dart';
 
 class FarmusPictureFix extends ConsumerWidget {
-  const FarmusPictureFix({super.key, required this.size});
+  const FarmusPictureFix({super.key, required this.size, this.child});
 
   final double size;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,10 +21,7 @@ class FarmusPictureFix extends ConsumerWidget {
           borderRadius: BorderRadius.circular(12),
         ),
       ),
-      child: SvgPicture.asset(
-        "assets/image/ic_farm_club_mark.svg",
-        fit: BoxFit.cover,
-      ),
+      child: child,
     );
   }
 }

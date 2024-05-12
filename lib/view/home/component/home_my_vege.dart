@@ -60,7 +60,7 @@ class HomeMyVege extends ConsumerWidget {
               children: [
                 Row(
                   children: [
-                    SvgPicture.asset("assets/image/ic_farm_club_mark.svg"),
+                    SvgPicture.asset("assets/image/ic_farmclub_mark.svg"),
                     const SizedBox(
                       width: 8,
                     ),
