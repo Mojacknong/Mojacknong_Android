@@ -76,7 +76,6 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               child: Column(
                 children: [
                   SearchTabBar(),
-                  SizedBox(height: 16),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16.0),
                     child: Row(

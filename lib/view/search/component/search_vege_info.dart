@@ -20,9 +20,9 @@ class SearchVegeInfo extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
       onTap: () {},
-      child: Container(
+      child: SizedBox(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.only(bottom: 16.0),
           child: VegeInfoDetail(
             info: {
               '채소': '상추',
