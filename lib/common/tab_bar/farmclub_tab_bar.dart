@@ -1,8 +1,12 @@
 import 'package:farmus/common/tab_bar/primary_tab_bar.dart';
+import 'package:farmus/common/theme/farmus_theme_color.dart';
+import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/farmclub/component/farmclub_step.dart';
+import 'package:farmus/view/farmclub/component/farmclub_step_tip.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class FarmclubTabBar extends StatelessWidget {
   const FarmclubTabBar({
@@ -11,26 +15,40 @@ class FarmclubTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const PrimaryTabBar(
+    return PrimaryTabBar(
       tab: ['현재', '이전', '다음'],
       tabView: [
-        SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.all(16.0),
-                child: FarmclubStep(
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const FarmclubStep(
                   stepImages: [
                     'assets/image/img_home_motivation.png',
                     'assets/image/img_home_motivation.png'
                   ],
                 ),
-              ),
-              Text('data')
-            ],
+                const SizedBox(
+                  height: 16.0,
+                ),
+                Container(
+                  padding: const EdgeInsets.all(16.0),
+                  decoration: ShapeDecoration(
+                    color: FarmusThemeColor.white,
+                    shape: RoundedRectangleBorder(
+                      side: const BorderSide(
+                          width: 1, color: FarmusThemeColor.gray4),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  child: const FarmclubStepTip(),
+                ),
+              ],
+            ),
           ),
         ),
-        SingleChildScrollView(
+        const SingleChildScrollView(
           child: Column(
             children: [
               Padding(
@@ -57,9 +75,7 @@ class FarmclubTabBar extends StatelessWidget {
             ],
           ),
         ),
-        FarmclubStep(
-          stepImages: [],
-        )
+        Container(),
       ],
     );
   }

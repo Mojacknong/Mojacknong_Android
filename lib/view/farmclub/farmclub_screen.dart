@@ -24,22 +24,24 @@ class FarmclubScreen extends ConsumerWidget {
           )
         ],
       ),
-      body: const Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.all(16.0),
-            child: FarmclubProfile(),
-          ),
-          SizedBox(
-            height: 16.0,
-          ),
-          FarmclubTabBar(),
-          Divider(
-            thickness: 6.0,
-            color: FarmusThemeColor.gray7,
-          )
-        ],
+      body: const SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.all(16.0),
+              child: FarmclubProfile(),
+            ),
+            SizedBox(
+              height: 16.0,
+            ),
+            FarmclubTabBar(),
+            Divider(
+              thickness: 6.0,
+              color: FarmusThemeColor.gray7,
+            )
+          ],
+        ),
       ),
     );
   }
