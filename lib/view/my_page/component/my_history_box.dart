@@ -2,8 +2,8 @@ import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/view/vege_history/vege_history_list_screen.dart';
 import 'package:flutter/material.dart';
 
-class MyVegeBox extends StatelessWidget {
-  const MyVegeBox({super.key});
+class MyHistoryBox extends StatelessWidget {
+  const MyHistoryBox({super.key});
 
   @override
   Widget build(BuildContext context) {
