@@ -12,17 +12,20 @@ class AboutFarmclubFourth extends StatelessWidget {
         Dialog(
           insetPadding: const EdgeInsets.symmetric(horizontal: 45),
           backgroundColor: Colors.transparent,
-          child: Image.asset('assets/image/img_about_farmclub_fourth1.png'),
+          child:
+              Image.asset('assets/image/img_about_farmclub_fourth_step1.png'),
         ),
         Dialog(
           insetPadding:
               const EdgeInsets.symmetric(horizontal: 45, vertical: 18),
           backgroundColor: Colors.transparent,
-          child: Image.asset('assets/image/img_about_farmclub_fourth2.png'),
+          child:
+              Image.asset('assets/image/img_about_farmclub_fourth_step2.png'),
         ),
         Dialog(
           insetPadding: const EdgeInsets.fromLTRB(45, 0, 45, 20),
-          child: Image.asset('assets/image/img_about_farmclub_fourth3.png'),
+          child:
+              Image.asset('assets/image/img_about_farmclub_fourth_step6.png'),
         ),
       ],
       messageSpans: const [
