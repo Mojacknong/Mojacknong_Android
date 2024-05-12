@@ -224,11 +224,11 @@ class FarmusThemeTextStyle {
   );
 
   // white
-  static const TextStyle whiteMedium17 = TextStyle(
-      color: FarmusThemeColor.white, fontSize: 17, fontWeight: FontWeight.w500);
-
   static const TextStyle whiteSemiBold15 = TextStyle(
       color: FarmusThemeColor.white, fontSize: 15, fontWeight: FontWeight.w600);
+
+  static const TextStyle whiteMedium17 = TextStyle(
+      color: FarmusThemeColor.white, fontSize: 17, fontWeight: FontWeight.w500);
 
   // red
   static const TextStyle redMedium13 =
