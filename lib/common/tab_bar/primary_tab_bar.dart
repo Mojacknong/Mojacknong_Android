@@ -35,7 +35,7 @@ class PrimaryTabBar extends StatelessWidget implements BaseTabBar {
           ),
           SizedBox(
             width: double.infinity,
-            height: 400,
+            height: 368,
             child: TabBarView(
               children: [
                 for (var child in tabView) child,

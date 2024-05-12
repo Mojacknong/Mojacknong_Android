@@ -88,29 +88,51 @@ class VegeDiaryDetailScreen extends ConsumerWidget {
           ),
         ],
       ),
-      body: const Column(
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    VegeDiaryDetailContent(),
-                    SizedBox(
+                  children: <Widget>[
+                    const VegeDiaryDetailContent(),
+                    Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: ShapeDecoration(
+                        shape: RoundedRectangleBorder(
+                          side: const BorderSide(
+                            width: 1,
+                            color: FarmusThemeColor.gray4,
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text('채소 상태',
+                              style: FarmusThemeTextStyle.gray2Medium13),
+                          SizedBox(width: 8),
+                          Text('좋음',
+                              style: FarmusThemeTextStyle.gray6SemiBold13),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
                       height: 32,
                     ),
-                    VegeDiaryDetailIcon(),
-                    Padding(
+                    const VegeDiaryDetailIcon(),
+                    const Padding(
                       padding: EdgeInsets.symmetric(vertical: 16.0),
                       child: Divider(
                         height: 1,
                         color: FarmusThemeColor.gray4,
                       ),
                     ),
-                    Row(
+                    const Row(
                       children: [
                         Text(
                           '댓글',
@@ -125,19 +147,18 @@ class VegeDiaryDetailScreen extends ConsumerWidget {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8.0,
                     ),
-                    VegeDiaryDetailComment(),
-                    Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 12.0),
+                    const VegeDiaryDetailComment(),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 12.0),
                       child: Divider(
                         height: 1,
                         color: FarmusThemeColor.gray4,
                       ),
                     ),
-                    VegeDiaryDetailComment(),
+                    const VegeDiaryDetailComment(),
                   ],
                 ),
               ),

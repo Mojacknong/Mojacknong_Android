@@ -1,12 +1,10 @@
 import 'package:farmus/common/tab_bar/primary_tab_bar.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
-import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/farmclub/component/farmclub_step.dart';
 import 'package:farmus/view/farmclub/component/farmclub_step_tip.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class FarmclubTabBar extends StatelessWidget {
   const FarmclubTabBar({
@@ -16,7 +14,7 @@ class FarmclubTabBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PrimaryTabBar(
-      tab: ['현재', '이전', '다음'],
+      tab: const ['현재', '이전', '다음'],
       tabView: [
         Padding(
           padding: const EdgeInsets.all(16.0),

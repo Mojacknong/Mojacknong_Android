@@ -23,26 +23,6 @@ class VegeDiaryDetailContent extends ConsumerWidget {
             style: FarmusThemeTextStyle.darkMedium15,
           ),
         ),
-        Container(
-          padding: const EdgeInsets.all(16),
-          decoration: ShapeDecoration(
-            shape: RoundedRectangleBorder(
-              side: const BorderSide(
-                width: 1,
-                color: FarmusThemeColor.gray4,
-              ),
-              borderRadius: BorderRadius.circular(8),
-            ),
-          ),
-          child: const Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text('채소 상태', style: FarmusThemeTextStyle.gray2Medium13),
-              SizedBox(width: 8),
-              Text('좋음', style: FarmusThemeTextStyle.gray6SemiBold13),
-            ],
-          ),
-        ),
       ],
     );
   }
