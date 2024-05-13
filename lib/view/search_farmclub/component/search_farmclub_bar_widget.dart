@@ -48,7 +48,8 @@ class SearchFarmclubBarWidget extends StatelessWidget {
                         onTap: () {
                           onClearSearch();
                         },
-                        child: SvgPicture.asset("assets/image/ic_close.svg"),
+                        child: SvgPicture.asset(
+                            "assets/image/ic_textfield_delete.svg"),
                       ),
                     ]
                   : null,
