@@ -75,6 +75,7 @@ class FarmclubTabBar extends StatelessWidget {
         ),
         Container(),
       ],
+      tabViewHeights: 368,
     );
   }
 }

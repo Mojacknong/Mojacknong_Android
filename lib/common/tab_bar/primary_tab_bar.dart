@@ -5,15 +5,23 @@ import 'package:flutter/material.dart';
 import '../../../common/theme/farmus_theme_color.dart';
 
 class PrimaryTabBar extends StatelessWidget implements BaseTabBar {
-  const PrimaryTabBar(
-      {super.key, required this.tab, required this.tabView});
+  const PrimaryTabBar({
+    Key? key,
+    required this.tab,
+    required this.tabView,
+    this.tabViewHeights,
+    this.labelStyle,
+    this.unselectedLabelStyle,
+  }) : super(key: key);
 
   @override
   final List<String> tab;
-
   @override
   final List<Widget> tabView;
-
+  @override
+  final double? tabViewHeights;
+  final TextStyle? labelStyle;
+  final TextStyle? unselectedLabelStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -27,24 +35,32 @@ class PrimaryTabBar extends StatelessWidget implements BaseTabBar {
             indicator: const UnderlineTabIndicator(
               borderSide: BorderSide(width: 2, color: FarmusThemeColor.dark),
             ),
-            labelStyle: FarmusThemeTextStyle.darkSemiBold17,
-            unselectedLabelStyle: FarmusThemeTextStyle.gray3SemiBold17,
+            labelStyle: labelStyle ?? FarmusThemeTextStyle.darkSemiBold17,
+            unselectedLabelStyle:
+                unselectedLabelStyle ?? FarmusThemeTextStyle.gray3SemiBold17,
             isScrollable: true,
             tabAlignment: TabAlignment.start,
             tabs: tab.map((tabs) => Tab(text: tabs)).toList(),
           ),
-          SizedBox(
-            width: double.infinity,
-            height: 368,
-            child: TabBarView(
-              children: [
-                for (var child in tabView) child,
-              ],
+          if (tabViewHeights != null)
+            SizedBox(
+              height: tabViewHeights,
+              child: TabBarView(
+                children: tabView,
+              ),
+            )
+          else
+            Expanded(
+              child: TabBarView(
+                children: tabView.map((widget) {
+                  return SingleChildScrollView(
+                    child: widget,
+                  );
+                }).toList(),
+              ),
             ),
-          ),
         ],
       ),
     );
   }
-
 }
