@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CancelNotifier extends StateNotifier<String> {
-  CancelNotifier() : super('');
+class DeletelNotifier extends StateNotifier<String> {
+  DeletelNotifier() : super('');
 
   void updateSearchText(String text) {
     state = text;

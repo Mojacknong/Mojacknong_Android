@@ -1,6 +1,7 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class SearchFarmclubBarWidget extends StatelessWidget {
   final String searchText;
@@ -22,7 +23,7 @@ class SearchFarmclubBarWidget extends StatelessWidget {
         children: [
           Expanded(
             child: SearchBar(
-              constraints: const BoxConstraints(minHeight: 45),
+              constraints: const BoxConstraints(minHeight: 42),
               leading: const Icon(
                 Icons.search,
                 color: FarmusThemeColor.gray2,
@@ -41,13 +42,28 @@ class SearchFarmclubBarWidget extends StatelessWidget {
                   TextPosition(offset: searchText.length),
                 ),
               onChanged: onChanged,
+              trailing: searchText.isNotEmpty
+                  ? [
+                      GestureDetector(
+                        onTap: () {
+                          onClearSearch();
+                        },
+                        child: SvgPicture.asset("assets/image/ic_close.svg"),
+                      ),
+                    ]
+                  : null,
             ),
           ),
-          TextButton(
-            onPressed: onClearSearch,
-            child: const Text(
-              '취소',
-              style: FarmusThemeTextStyle.gray1SemiBold15,
+          Padding(
+            padding: const EdgeInsets.only(left: 16.0),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: const Text(
+                '취소',
+                style: FarmusThemeTextStyle.gray1SemiBold15,
+              ),
             ),
           ),
         ],
