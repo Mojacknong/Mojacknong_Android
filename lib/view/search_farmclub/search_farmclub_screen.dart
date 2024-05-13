@@ -1,6 +1,6 @@
 import 'package:farmus/view/search_farmclub/component/search_farmclub_backgroud.dart';
 import 'package:farmus/view/search_farmclub/component/search_farmclub_bar_widget.dart';
-import 'package:farmus/view_model/search/search_provider.dart';
+import 'package:farmus/view_model/search_farmclub/search_farmclub_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -9,8 +9,9 @@ class SearchFarmclubScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final searchTextNotifier = ref.watch(searchTextBarProvider.notifier);
-    final searchText = ref.watch(searchTextBarProvider);
+    final searchTextNotifier =
+        ref.watch(searchFarmclubTextbarProvider.notifier);
+    final searchText = ref.watch(searchFarmclubTextbarProvider);
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -29,7 +30,7 @@ class SearchFarmclubScreen extends ConsumerWidget {
                     searchText: searchText,
                     onChanged: (value) {
                       ref
-                          .read(searchTextBarProvider.notifier)
+                          .read(searchFarmclubTextbarProvider.notifier)
                           .updateSearchText(value);
                     },
                     onClearSearch: () {
