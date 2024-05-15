@@ -1,9 +1,11 @@
 import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
+import 'package:farmus/common/bottom_sheet/show_farmus_bottom_sheet.dart';
 import 'package:farmus/common/button/bottom_backgroud_divider_button.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/farmclub_signup/component/farmclub_%20preparations.dart';
 import 'package:farmus/view/farmclub_signup/component/farmclub_more_info_widget.dart';
+import 'package:farmus/view/farmclub_signup/component/farmclub_only_container.dart';
 import 'package:farmus/view/farmclub_signup/component/farmclub_signup_button.dart';
 import 'package:farmus/view/vege_info/component/vege_info_detail.dart';
 import 'package:flutter/material.dart';
@@ -84,13 +86,20 @@ class FarmclubSignupScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    child: FarmclubOnlyContainer(),
+                  )
                 ],
               ),
             ),
           ),
           BottomBackgroundDividerButton(
             button: FarmclubSignupButton(
-              onPressed: () {},
+              onPressed: () {
+                showFarmclubSignupBottomSheet(
+                    context, "팜클럽 가입", "팜클럽에서 키울 채소를 선택하세요");
+              },
             ),
           ),
         ],
