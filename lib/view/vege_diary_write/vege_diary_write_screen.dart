@@ -1,3 +1,4 @@
+import 'package:farmus/common/app_bar/delete_app_bar.dart';
 import 'package:farmus/common/app_bar/primary_app_bar.dart';
 import 'package:farmus/common/button/primary_button.dart';
 import 'package:farmus/common/image_picker/diary_image_picker.dart';
@@ -19,15 +20,8 @@ class VegeDiaryWriteScreen extends ConsumerWidget {
     bool enabled = ref.watch(vegeDiaryWriteProvider).isComplete;
 
     return Scaffold(
-      appBar: PrimaryAppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: SvgPicture.asset("assets/image/ic_close.svg"),
-        ),
+      appBar: DeleteAppBar(
         title: "일기 쓰기",
-        centerTitle: false,
         actions: [
           PrimaryButton(
             enabled: enabled,
