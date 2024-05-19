@@ -1,7 +1,9 @@
 import 'package:farmus/common/dialog/check_dialog.dart';
 import 'package:farmus/view/farmclub_signup/component/farmclub_signup_bottom_sheet_content.dart';
 import 'package:farmus/view/routine/component/routine_bottom_sheet_content.dart';
+import 'package:farmus/view_model/farmclub_signup/farmclub_signup_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../theme/farmus_theme_color.dart';
 
@@ -48,6 +50,42 @@ void showFarmclubSignupBottomSheet(
     context: context,
     isScrollControlled: true,
     backgroundColor: FarmusThemeColor.white,
+    builder: (BuildContext context) {
+      return FarmclubSignupBottomSheetContent(
+        title: title,
+        subTitle: subTitle,
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              Future.delayed(const Duration(seconds: 2), () {
+                Navigator.of(context).pop();
+              });
+              return const CheckDialog(
+                text: "팜클럽에 가입했어요",
+              );
+            },
+          );
+        },
+      );
+    },
+  );
+}
+
+void showFarmclubSignupBottomSheet2(
+  BuildContext context,
+  WidgetRef ref,
+  String title,
+) {
+  final vegeList = ref.watch(farmclubSignupVegeSelectNotifierProvider);
+  final subTitle = vegeList.isEmpty
+      ? "내 텃받에 등록된 채소로만 가입할 수 있어요\n새 채소를등록해보세요!"
+      : "내 채소에 등록된 채소로 팜클럽에 가입할 수 있어요";
+
+  showModalBottomSheet<void>(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: Colors.white,
     builder: (BuildContext context) {
       return FarmclubSignupBottomSheetContent(
         title: title,

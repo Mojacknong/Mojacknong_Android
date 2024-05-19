@@ -9,8 +9,9 @@ import 'package:farmus/view/farmclub_signup/component/farmclub_only_container.da
 import 'package:farmus/view/farmclub_signup/component/farmclub_signup_button.dart';
 import 'package:farmus/view/vege_info/component/vege_info_detail.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class FarmclubSignupScreen extends StatelessWidget {
+class FarmclubSignupScreen extends ConsumerWidget {
   const FarmclubSignupScreen({
     Key? key,
     required this.day,
@@ -23,7 +24,7 @@ class FarmclubSignupScreen extends StatelessWidget {
   final String num;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: const BackLeftTitleAppBar(
         title: "더보기",
@@ -97,8 +98,7 @@ class FarmclubSignupScreen extends StatelessWidget {
           BottomBackgroundDividerButton(
             button: FarmclubSignupButton(
               onPressed: () {
-                showFarmclubSignupBottomSheet(
-                    context, "팜클럽 가입", "팜클럽에서 키울 채소를 선택하세요");
+                showFarmclubSignupBottomSheet2(context, ref, "팜클럽 가입");
               },
             ),
           ),
