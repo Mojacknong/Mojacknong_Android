@@ -1,14 +1,11 @@
 import 'package:farmus/common/app_bar/delete_app_bar.dart';
-import 'package:farmus/common/app_bar/primary_app_bar.dart';
-import 'package:farmus/common/button/primary_button.dart';
 import 'package:farmus/common/button/primary_color_button.dart';
-import 'package:farmus/common/image_picker/diary_image_picker.dart';
+import 'package:farmus/common/image_picker/write_image_picker.dart';
 import 'package:farmus/view/vege_diary_write/component/vege_diary_write_bottom.dart';
 import 'package:farmus/view/vege_diary_write/component/vege_diary_write_state.dart';
 import 'package:farmus/view_model/vege_diary_write/vege_diary_write_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../common/form/content_input_text_form.dart';
 import '../../common/theme/farmus_theme_color.dart';
@@ -45,12 +42,18 @@ class VegeDiaryWriteScreen extends ConsumerWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.symmetric(
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
                       horizontal: 48.0,
                       vertical: 8.0,
                     ),
-                    child: DiaryImagePicker(),
+                    child: WriteImagePicker(
+                      imageProvider: ref.watch(vegeDiaryWriteProvider).image,
+                      updateImage: (value) =>
+                          ref.read(vegeDiaryWriteProvider.notifier).updateImage(value),
+                      deleteImage: (value) =>
+                          ref.read(vegeDiaryWriteProvider.notifier).deleteImage(),
+                    ),
                   ),
                   const SizedBox(
                     height: 16,

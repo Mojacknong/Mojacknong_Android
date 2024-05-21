@@ -1,10 +1,12 @@
 import 'package:farmus/common/app_bar/delete_app_bar.dart';
 import 'package:farmus/common/button/primary_color_button.dart';
-import 'package:farmus/common/theme/farmus_theme_color.dart';
-import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/mission_write/component/mission_step_info.dart';
+import 'package:farmus/view_model/mission_write/mission_write_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../common/form/content_input_text_form.dart';
+import '../../common/image_picker/write_image_picker.dart';
 
 class MissionWriteScreen extends ConsumerWidget {
   const MissionWriteScreen({super.key, required this.stepNum});
@@ -35,7 +37,30 @@ class MissionWriteScreen extends ConsumerWidget {
               child: MissionStepInfo(
                 stepNum: stepNum,
               ),
-            )
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 48.0,
+                vertical: 16.0,
+              ),
+              child: WriteImagePicker(
+                imageProvider: ref.watch(missionWriteProvider).image,
+                updateImage: (value) =>
+                    ref.read(missionWriteProvider.notifier).updateImage(value),
+                deleteImage: (value) =>
+                  ref.read(missionWriteProvider.notifier).deleteImage(),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: ContentInputTextForm(
+                maxLength: 300,
+                nowContent: ref.watch(missionWriteProvider).content,
+                updateContent: (value) => ref
+                    .watch(missionWriteProvider.notifier)
+                    .updateContent(value),
+              ),
+            ),
           ],
         ),
       ),
