@@ -53,7 +53,9 @@ class FarmclubStep extends ConsumerWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (builder) => MissionWriteScreen(),
+                        builder: (builder) => const MissionWriteScreen(
+                          stepNum: 3,
+                        ),
                       ),
                     );
                   },
