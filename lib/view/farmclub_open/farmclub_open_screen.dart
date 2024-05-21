@@ -1,4 +1,8 @@
 import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
+import 'package:farmus/common/button/bottom_backgroud_divider_button.dart';
+import 'package:farmus/common/button/primary_button.dart';
+import 'package:farmus/common/dialog/check_dialog.dart';
+import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/farmclub_open/component/farmclub_intro_input.dart';
 import 'package:farmus/view/farmclub_open/component/farmclub_my_vege_list.dart';
@@ -16,44 +20,78 @@ class FarmclubOpenScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isFarmclubInfo = ref.read(farmclubOpenInfoAddProvider);
-    final isFarmclubOpenInfoComplete =
-        isFarmclubInfo.isFarmclubOpenInfoComplete;
-
-    return const Scaffold(
-      appBar: BackLeftTitleAppBar(
+    return Scaffold(
+      appBar: const BackLeftTitleAppBar(
         title: "팜클럽 개설",
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              FarmclubOpenText(),
-              FarmclubMyVegeList(),
-              FarmclubOpenTitles(text: "팜클럽 이름"),
-              FarmclubNameInput(),
-              Row(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  FarmclubOpenTitles(
-                    text: '인원수',
+                  FarmclubOpenText(),
+                  FarmclubMyVegeList(),
+                  FarmclubOpenTitles(text: "팜클럽 이름"),
+                  FarmclubNameInput(),
+                  Row(
+                    children: [
+                      FarmclubOpenTitles(
+                        text: '인원수',
+                      ),
+                      FarmclubOpenTitles(
+                        text: '최소 3명 최대 20명',
+                        style: FarmusThemeTextStyle.gray2Medium13,
+                      ),
+                    ],
                   ),
-                  SizedBox(width: 8),
-                  FarmclubOpenTitles(
-                    text: '최소 3명 최대 20명',
-                    style: FarmusThemeTextStyle.gray2Medium13,
-                  ),
+                  FarmclubNumInput(),
+                  FarmclubOpenTitles(text: "팜클럽 한 줄 소개"),
+                  FarmclubIntroInput(),
+                  FarmclubOpenTitles(text: "모집 마감일"),
+                  FarmclubOpenCalendar(),
                 ],
               ),
-              FarmclubNumInput(),
-              FarmclubOpenTitles(text: "팜클럽 한 줄 소개"),
-              FarmclubIntroInput(),
-              FarmclubOpenTitles(text: "모집 마감일"),
-              FarmclubOpenCalendar(),
-            ],
+            ),
           ),
-        ),
+          const SizedBox(height: 16),
+          BottomBackgroundDividerButton(
+            button: Consumer(
+              builder: (context, ref, child) {
+                final farmclubInfo = ref.watch(farmclubOpenInfoAddProvider);
+                final isFarmclubOpenInfoComplete =
+                    farmclubInfo.isFarmclubOpenInfoComplete;
+                bool enabled = isFarmclubOpenInfoComplete;
+
+                return PrimaryButton(
+                  enabled: enabled,
+                  textColor: FarmusThemeColor.white,
+                  borderColor: FarmusThemeColor.white,
+                  backgroundColor: enabled
+                      ? FarmusThemeColor.primary
+                      : FarmusThemeColor.gray4,
+                  width: double.infinity,
+                  text: "개설하기",
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        Future.delayed(const Duration(seconds: 2), () {
+                          Navigator.of(context).pop();
+                        });
+                        return const CheckDialog(
+                          text: "팜클럽을 개설했어요",
+                        );
+                      },
+                    );
+                  },
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
