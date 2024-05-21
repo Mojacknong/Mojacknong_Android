@@ -15,22 +15,27 @@ class TipScreen extends ConsumerWidget {
       appBar: const DeleteAppBar(
         title: '도움말',
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-            child: Text(
-              '대파 키우기',
-              style: FarmusThemeTextStyle.darkSemiBold21,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+              child: Text(
+                '대파 키우기',
+                style: FarmusThemeTextStyle.darkSemiBold21,
+              ),
             ),
-          ),
-          const TipExpandCard(),
-          const SizedBox(
-            height: 16,
-          ),
-          Expanded(
-            child: ListView.builder(
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              child: TipExpandCard(),
+            ),
+            const SizedBox(
+              height: 32.0,
+            ),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
               itemCount: 5,
               itemBuilder: (context, index) {
                 return Padding(
@@ -38,13 +43,13 @@ class TipScreen extends ConsumerWidget {
                   child: TipStepText(
                     stepIndex: index + 1,
                     stepTitle: '대파를 심어요',
-                    detailStep: {1: '1번', 2:'2번', 3:'3번'},
+                    detailStep: const {1: '1번', 2: '2번', 3: '3번'},
                   ),
                 );
               },
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
