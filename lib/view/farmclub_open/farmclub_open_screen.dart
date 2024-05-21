@@ -65,28 +65,32 @@ class FarmclubOpenScreen extends ConsumerWidget {
                     farmclubInfo.isFarmclubOpenInfoComplete;
                 bool enabled = isFarmclubOpenInfoComplete;
 
-                return PrimaryButton(
-                  enabled: enabled,
-                  textColor: FarmusThemeColor.white,
-                  borderColor: FarmusThemeColor.white,
-                  backgroundColor: enabled
-                      ? FarmusThemeColor.primary
-                      : FarmusThemeColor.gray4,
-                  width: double.infinity,
-                  text: "개설하기",
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        Future.delayed(const Duration(seconds: 2), () {
-                          Navigator.of(context).pop();
-                        });
-                        return const CheckDialog(
-                          text: "팜클럽을 개설했어요",
-                        );
-                      },
-                    );
-                  },
+                return Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 12, 16, 36),
+                  child: PrimaryButton(
+                    enabled: enabled,
+                    textColor: FarmusThemeColor.white,
+                    borderColor: FarmusThemeColor.white,
+                    backgroundColor: enabled
+                        ? FarmusThemeColor.primary
+                        : FarmusThemeColor.gray4,
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(vertical: 6),
+                    text: "개설하기",
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          Future.delayed(const Duration(seconds: 2), () {
+                            Navigator.of(context).pop();
+                          });
+                          return const CheckDialog(
+                            text: "팜클럽을 개설했어요",
+                          );
+                        },
+                      );
+                    },
+                  ),
                 );
               },
             ),
