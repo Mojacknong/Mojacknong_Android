@@ -50,7 +50,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const SearchFarmclubSceen()),
+                    builder: (context) => const SearchFarmclubScreen()),
               );
             },
           ),
@@ -67,45 +67,41 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           color: FarmusThemeColor.white,
         ),
       ),
-      body: const Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SearchWelcomeText(),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
+      body: const SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SearchWelcomeText(),
+            SearchTabBar(),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SearchTabBar(),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          "전체보기",
-                          style: FarmusThemeTextStyle.darkSemiBold17,
-                        ),
-                      ],
-                    ),
+                  Text(
+                    "전체보기",
+                    style: FarmusThemeTextStyle.darkSemiBold17,
                   ),
-                  SizedBox(height: 16),
-                  SearchDifficultyBox(),
-                  SizedBox(height: 16),
-                  SearchFarmclubInfo(),
-                  SearchFarmclubInfo(),
-                  SearchFarmclubInfo(),
-                  SearchFarmclubInfo(),
-                  SearchFarmclubInfo(),
                 ],
               ),
             ),
-          ),
-        ],
+            SizedBox(height: 16),
+            SearchDifficultyBox(),
+            SizedBox(height: 16),
+            SearchFarmclubInfo(),
+            SearchFarmclubInfo(),
+            SearchFarmclubInfo(),
+            SearchFarmclubInfo(),
+            SearchFarmclubInfo(),
+          ],
+        ),
       ),
     );
   }
 
   Future<dynamic> _showDialog(BuildContext context) {
+    ref.read(aboutSearchPageProvider.notifier).updatePage(0);
+
     return showDialog(
       context: context,
       barrierColor: Colors.black.withOpacity(0.7),
