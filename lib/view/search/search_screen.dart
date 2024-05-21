@@ -1,6 +1,7 @@
 import 'package:farmus/common/app_bar/farmus_logo_app_bar.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
+import 'package:farmus/view/farmclub_open/farmclub_open_screen.dart';
 import 'package:farmus/view/search/component/about_farmclub/about_farmclub_first.dart';
 import 'package:farmus/view/search/component/about_farmclub/about_farmclub_fourth.dart';
 import 'package:farmus/view/search/component/about_farmclub/about_farmclub_second.dart';
@@ -57,7 +58,12 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const FarmclubOpenScreen()),
+          );
+        },
         backgroundColor: FarmusThemeColor.primary,
         shape: const CircleBorder(),
         elevation: 10,
