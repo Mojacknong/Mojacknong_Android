@@ -20,7 +20,7 @@ class FarmclubNameInput extends ConsumerWidget {
 
     var nowLength = ref.watch(farmclubOpenInfoAddProvider).name.length;
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 12, 0, 32),
+      padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
       child: PrimaryTextFormField(
         initialValue: name,
         maxLength: 8,

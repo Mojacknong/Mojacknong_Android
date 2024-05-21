@@ -46,45 +46,48 @@ class _FarmclubOpenCalendarState extends ConsumerState<FarmclubOpenCalendar> {
       }
     }
 
-    return TableCalendar(
-      focusedDay: _focusedDay,
-      firstDay: DateTime.utc(2020, 10, 16),
-      lastDay: _lastDay,
-      locale: 'ko_KR',
-      selectedDayPredicate: (day) {
-        return isSameDay(_selectedDay, day);
-      },
-      onDaySelected: (selectedDay, focusedDay) {
-        if (!isSameDay(_selectedDay, selectedDay)) {
-          setState(() {
-            _selectedDay = selectedDay;
-            _focusedDay = focusedDay;
-            notifier.updateDate(selectedDay.toString());
-          });
-        }
-      },
-      onPageChanged: (focusedDay) {
-        _focusedDay = focusedDay;
-      },
-      onHeaderTapped: (dateTime) => selectDate(context),
-      headerStyle: const HeaderStyle(
-          formatButtonVisible: false,
-          leftChevronVisible: false,
-          rightChevronVisible: false,
-          titleCentered: true,
-          titleTextStyle: FarmusThemeTextStyle.gray1Medium13,
-          headerMargin: EdgeInsets.symmetric(vertical: 16.0),
-          decoration: BoxDecoration(
-            color: FarmusThemeColor.background,
-          )),
-      calendarStyle: const CalendarStyle(
-        weekendTextStyle: FarmusThemeTextStyle.darkReqular14,
-        defaultTextStyle: FarmusThemeTextStyle.darkReqular14,
-        selectedDecoration: BoxDecoration(
-          color: FarmusThemeColor.primary,
-          shape: BoxShape.circle,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: TableCalendar(
+        focusedDay: _focusedDay,
+        firstDay: DateTime.utc(2020, 10, 16),
+        lastDay: _lastDay,
+        locale: 'ko_KR',
+        selectedDayPredicate: (day) {
+          return isSameDay(_selectedDay, day);
+        },
+        onDaySelected: (selectedDay, focusedDay) {
+          if (!isSameDay(_selectedDay, selectedDay)) {
+            setState(() {
+              _selectedDay = selectedDay;
+              _focusedDay = focusedDay;
+              notifier.updateDate(selectedDay.toString());
+            });
+          }
+        },
+        onPageChanged: (focusedDay) {
+          _focusedDay = focusedDay;
+        },
+        onHeaderTapped: (dateTime) => selectDate(context),
+        headerStyle: const HeaderStyle(
+            formatButtonVisible: false,
+            leftChevronVisible: false,
+            rightChevronVisible: false,
+            titleCentered: true,
+            titleTextStyle: FarmusThemeTextStyle.gray1Medium13,
+            headerMargin: EdgeInsets.symmetric(vertical: 16.0),
+            decoration: BoxDecoration(
+              color: FarmusThemeColor.background,
+            )),
+        calendarStyle: const CalendarStyle(
+          weekendTextStyle: FarmusThemeTextStyle.darkReqular14,
+          defaultTextStyle: FarmusThemeTextStyle.darkReqular14,
+          selectedDecoration: BoxDecoration(
+            color: FarmusThemeColor.primary,
+            shape: BoxShape.circle,
+          ),
+          isTodayHighlighted: false,
         ),
-        isTodayHighlighted: false,
       ),
     );
   }

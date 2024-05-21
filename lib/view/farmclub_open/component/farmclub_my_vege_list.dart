@@ -13,7 +13,7 @@ class FarmclubMyVegeList extends ConsumerWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 34.0),
+        padding: const EdgeInsets.only(left: 16, right: 16, bottom: 34.0),
         child: Row(
           children: [
             Padding(
