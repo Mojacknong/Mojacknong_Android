@@ -8,13 +8,19 @@ class PrimaryColorButton extends ConsumerWidget {
   final String text;
   final VoidCallback onPressed;
   final bool enabled;
+  final double? fontSize;
+  final double? borderRadius;
+  final double? fontPadding;
 
-  const PrimaryColorButton({
-    Key? key,
-    required this.text,
-    required this.onPressed,
-    required this.enabled,
-  }) : super(key: key);
+  const PrimaryColorButton(
+      {Key? key,
+      required this.text,
+      required this.onPressed,
+      required this.enabled,
+      this.fontSize,
+      this.borderRadius,
+      this.fontPadding})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -28,7 +34,9 @@ class PrimaryColorButton extends ConsumerWidget {
         backgroundColor:
             enabled ? FarmusThemeColor.primary : FarmusThemeColor.gray4,
         borderColor: FarmusThemeColor.white,
-        fontSize: 15,
+        borderRadius: borderRadius,
+        fontSize: fontSize ?? 15,
+        fontPadding: fontPadding,
       ),
     );
   }

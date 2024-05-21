@@ -1,6 +1,7 @@
 import 'package:farmus/common/app_bar/delete_app_bar.dart';
 import 'package:farmus/common/app_bar/primary_app_bar.dart';
 import 'package:farmus/common/button/primary_button.dart';
+import 'package:farmus/common/button/primary_color_button.dart';
 import 'package:farmus/common/image_picker/diary_image_picker.dart';
 import 'package:farmus/view/vege_diary_write/component/vege_diary_write_bottom.dart';
 import 'package:farmus/view/vege_diary_write/component/vege_diary_write_state.dart';
@@ -23,13 +24,8 @@ class VegeDiaryWriteScreen extends ConsumerWidget {
       appBar: DeleteAppBar(
         title: "일기 쓰기",
         actions: [
-          PrimaryButton(
+          PrimaryColorButton(
             enabled: enabled,
-            textColor:
-                enabled ? FarmusThemeColor.white : FarmusThemeColor.white,
-            backgroundColor:
-                enabled ? FarmusThemeColor.primary : FarmusThemeColor.gray3,
-            borderColor: FarmusThemeColor.white,
             borderRadius: 20,
             fontSize: 13,
             onPressed: () {
