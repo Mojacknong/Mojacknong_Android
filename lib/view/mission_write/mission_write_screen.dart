@@ -15,14 +15,18 @@ class MissionWriteScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    bool enabled = ref.watch(missionWriteProvider).isComplete;
+
     return Scaffold(
       appBar: DeleteAppBar(
         title: '인증하기',
         actions: [
           PrimaryColorButton(
             text: '완료',
-            onPressed: () {},
-            enabled: false,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            enabled: enabled,
             borderRadius: 20,
             fontSize: 13,
             fontPadding: 0,
@@ -48,7 +52,7 @@ class MissionWriteScreen extends ConsumerWidget {
                 updateImage: (value) =>
                     ref.read(missionWriteProvider.notifier).updateImage(value),
                 deleteImage: (value) =>
-                  ref.read(missionWriteProvider.notifier).deleteImage(),
+                    ref.read(missionWriteProvider.notifier).deleteImage(),
               ),
             ),
             Padding(
