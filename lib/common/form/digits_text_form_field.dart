@@ -4,10 +4,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DigitsTextFormField extends ConsumerWidget {
-  const DigitsTextFormField({super.key, required this.initialValue, this.readOnly});
+  const DigitsTextFormField(
+      {super.key, required this.initialValue, this.readOnly, this.onChanged});
 
   final String initialValue;
   final bool? readOnly;
+  final ValueChanged<String>? onChanged;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -16,6 +18,7 @@ class DigitsTextFormField extends ConsumerWidget {
       maxLength: 1,
       maxLines: 1,
       minLines: 1,
+      onChanged: onChanged,
       readOnly: readOnly ?? false,
       suffix: const Text(''),
       keyboardType: TextInputType.number,
