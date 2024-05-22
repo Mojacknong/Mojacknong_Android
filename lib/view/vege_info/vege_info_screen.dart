@@ -1,5 +1,6 @@
 import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
 import 'package:farmus/common/button/primary_button.dart';
+import 'package:farmus/common/button/primary_color_button.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/my_vege/my_vege_screen.dart';
@@ -93,16 +94,15 @@ class VegeInfoScreen extends ConsumerWidget {
             ),
           ),
           BottomBackgroundDividerButton(
-            button: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: PrimaryButton(
-                onPressed: () {},
-                text: '수정',
-                width: double.infinity,
-                enabled: true,
-                textColor: FarmusThemeColor.white,
-                backgroundColor: FarmusThemeColor.primary,
-                borderColor: FarmusThemeColor.white,
+            button: SizedBox(
+              width: double.infinity,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: PrimaryColorButton(
+                  onPressed: () {},
+                  text: '수정',
+                  enabled: true,
+                ),
               ),
             ),
           )
