@@ -6,12 +6,12 @@ class FarmclubPreparations extends StatelessWidget {
   const FarmclubPreparations({
     Key? key,
     required this.supplies,
-    required this.howToChoose,
     required this.characteristics,
+    this.howToChoose, // Make howToChoose optional
   }) : super(key: key);
 
   final String supplies;
-  final String howToChoose;
+  final String? howToChoose; // Make howToChoose nullable
   final String characteristics;
 
   @override
@@ -29,7 +29,7 @@ class FarmclubPreparations extends StatelessWidget {
         children: [
           const SizedBox(height: 16),
           _buildText("준비물", supplies),
-          _buildText("고르는 법", howToChoose),
+          if (howToChoose != null) _buildText("고르는 법", howToChoose!),
           _buildText("특징", characteristics),
         ],
       ),
