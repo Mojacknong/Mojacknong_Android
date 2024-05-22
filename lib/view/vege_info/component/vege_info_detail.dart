@@ -5,27 +5,42 @@ import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 
 class VegeInfoDetail extends ConsumerWidget {
-  const VegeInfoDetail(
-      {super.key, required this.info, required this.bottomWidget});
+  const VegeInfoDetail({
+    super.key,
+    required this.info,
+    required this.bottomWidget,
+    this.showPadding = true,
+    this.showBoxDecoration = true,
+    this.showVegeContainer = true,
+    this.titleWidget,
+  });
 
   final Map<String, String> info;
   final Widget bottomWidget;
+  final bool showPadding;
+  final bool showBoxDecoration;
+  final bool showVegeContainer;
+  final Widget? titleWidget;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      padding: const EdgeInsets.only(
-        top: 8.0,
-        left: 16.0,
-        right: 16.0,
-        bottom: 16.0,
-      ),
-      decoration: ShapeDecoration(
-        color: FarmusThemeColor.background,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
-        ),
-      ),
+      padding: showPadding
+          ? const EdgeInsets.only(
+              top: 8.0,
+              left: 16.0,
+              right: 16.0,
+              bottom: 16.0,
+            )
+          : null,
+      decoration: showBoxDecoration
+          ? ShapeDecoration(
+              color: FarmusThemeColor.background,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(24),
+              ),
+            )
+          : null,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
@@ -36,13 +51,19 @@ class VegeInfoDetail extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 24.0),
-                      child: Text(
-                        '상훈이',
-                        style: FarmusThemeTextStyle.gray1SemiBold23,
+                    if (titleWidget != null)
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 24.0),
+                        child: titleWidget!,
+                      )
+                    else
+                      const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 24.0),
+                        child: Text(
+                          '상훈이',
+                          style: FarmusThemeTextStyle.gray1SemiBold23,
+                        ),
                       ),
-                    ),
                     IntrinsicHeight(
                       child: Row(
                         children: [
@@ -83,16 +104,17 @@ class VegeInfoDetail extends ConsumerWidget {
                   ],
                 ),
               ),
-              Container(
-                width: 120,
-                height: 120,
-                decoration: ShapeDecoration(
-                  color: FarmusThemeColor.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18),
+              if (showVegeContainer)
+                Container(
+                  width: 120,
+                  height: 120,
+                  decoration: ShapeDecoration(
+                    color: FarmusThemeColor.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18),
+                    ),
                   ),
                 ),
-              ),
             ],
           ),
           bottomWidget,
