@@ -21,8 +21,7 @@ class VegeDiaryWriteNotifier extends StateNotifier<VegeDiaryWriteModel> {
         state.content!.isNotEmpty &&
         image != null &&
         image.path.isNotEmpty &&
-        state.vegeState != null &&
-        state.content!.isNotEmpty) {
+        state.vegeState != null) {
       _isVegeComplete = true;
     } else {
       _isVegeComplete = false;
@@ -36,7 +35,10 @@ class VegeDiaryWriteNotifier extends StateNotifier<VegeDiaryWriteModel> {
     );
   }
 
-  void updateContent(String content) {
+  void updateContent(String? content) {
+    if (content == null) {
+      return;
+    }
     if (content.isNotEmpty &&
         state.image != null &&
         state.image!.path.isNotEmpty &&
@@ -88,8 +90,7 @@ class VegeDiaryWriteNotifier extends StateNotifier<VegeDiaryWriteModel> {
         state.content!.isNotEmpty &&
         state.image != null &&
         state.image!.path.isNotEmpty &&
-        state.vegeState != null &&
-        state.content!.isNotEmpty) {
+        state.vegeState != null) {
       _isVegeComplete = true;
     } else {
       _isVegeComplete = false;

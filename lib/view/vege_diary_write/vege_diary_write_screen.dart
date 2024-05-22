@@ -7,6 +7,7 @@ import 'package:farmus/view_model/vege_diary_write/vege_diary_write_provider.dar
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../common/dialog/check_dialog.dart';
 import '../../common/form/content_input_text_form.dart';
 import '../../common/theme/farmus_theme_color.dart';
 
@@ -27,6 +28,17 @@ class VegeDiaryWriteScreen extends ConsumerWidget {
             fontSize: 13,
             onPressed: () {
               Navigator.pop(context);
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  Future.delayed(const Duration(seconds: 2), () {
+                    Navigator.of(context).pop();
+                  });
+                  return const CheckDialog(
+                    text: "일기가 업로드 되었어요",
+                  );
+                },
+              );
             },
             text: '완료',
             fontPadding: 0,
@@ -49,10 +61,12 @@ class VegeDiaryWriteScreen extends ConsumerWidget {
                     ),
                     child: WriteImagePicker(
                       imageProvider: ref.watch(vegeDiaryWriteProvider).image,
-                      updateImage: (value) =>
-                          ref.read(vegeDiaryWriteProvider.notifier).updateImage(value),
-                      deleteImage: (value) =>
-                          ref.read(vegeDiaryWriteProvider.notifier).deleteImage(),
+                      updateImage: (value) => ref
+                          .read(vegeDiaryWriteProvider.notifier)
+                          .updateImage(value),
+                      deleteImage: (value) => ref
+                          .read(vegeDiaryWriteProvider.notifier)
+                          .deleteImage(),
                     ),
                   ),
                   const SizedBox(
@@ -65,7 +79,7 @@ class VegeDiaryWriteScreen extends ConsumerWidget {
                       nowContent: ref.watch(vegeDiaryWriteProvider).content,
                       updateContent: (value) => ref
                           .watch(vegeDiaryWriteProvider.notifier)
-                          .updateContent(value),
+                          .updateContent(value!),
                     ),
                   ),
                   const VegeDiaryWriteState(),

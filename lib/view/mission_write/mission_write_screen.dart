@@ -5,6 +5,7 @@ import 'package:farmus/view_model/mission_write/mission_write_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../common/dialog/check_dialog.dart';
 import '../../common/form/content_input_text_form.dart';
 import '../../common/image_picker/write_image_picker.dart';
 
@@ -25,6 +26,17 @@ class MissionWriteScreen extends ConsumerWidget {
             text: '완료',
             onPressed: () {
               Navigator.pop(context);
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  Future.delayed(const Duration(seconds: 2), () {
+                    Navigator.of(context).pop();
+                  });
+                  return CheckDialog(
+                    text: "Step $stepNum 미션을 인증했어요",
+                  );
+                },
+              );
             },
             enabled: enabled,
             borderRadius: 20,
