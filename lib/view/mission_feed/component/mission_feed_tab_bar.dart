@@ -1,5 +1,5 @@
 import 'package:farmus/view/mission_feed/component/mission_feed_basic_profile.dart';
-import 'package:farmus/view/mission_feed/component/mission_feed_my_profile.dart';
+import 'package:farmus/view/mission_feed/component/mission_feed_select_profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -24,7 +24,7 @@ class MissionFeedTabBar extends ConsumerWidget {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      MissionFeedMyProfile(),
+                      MissionFeedSelectProfile(),
                       MissionFeedBasicProfile(
                         nickname: '감자',
                       ),

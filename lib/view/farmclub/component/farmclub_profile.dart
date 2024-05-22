@@ -1,4 +1,4 @@
-import 'package:farmus/view/farmclub/component/farmclub_my_profile.dart';
+import 'package:farmus/view/farmclub/component/farmclub_select_profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -17,7 +17,7 @@ class FarmclubProfile extends ConsumerWidget {
         Stack(
           alignment: Alignment.bottomRight,
           children: [
-            const FarmclubMyProfile(),
+            const FarmclubSelectProfile(),
             SvgPicture.asset('assets/image/ic_farmclub_mark.svg'),
           ],
         ),
