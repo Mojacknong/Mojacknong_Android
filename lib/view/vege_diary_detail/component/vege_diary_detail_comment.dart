@@ -1,4 +1,4 @@
-import 'package:farmus/view/farmclub/component/diary_profile.dart';
+import 'package:farmus/view/farmclub/component/feed_profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -16,7 +16,7 @@ class VegeDiaryDetailComment extends ConsumerWidget {
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        DiaryProfile(isDetail: true),
+        FeedProfile(isDetail: true),
         SizedBox(
           height: 6.0,
         ),
