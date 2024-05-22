@@ -1,6 +1,6 @@
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
+import 'package:farmus/view/farmclub_sign_up/farmclub_sign_up_screen.dart';
 import 'package:farmus/view/vege_info/component/vege_info_detail.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -19,7 +19,17 @@ class SearchVegeInfo extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => const FarmclubSignUpScreen(
+                    day: "1",
+                    num: "5",
+                    total: "8",
+                  )),
+        );
+      },
       child: SizedBox(
         child: Padding(
           padding: const EdgeInsets.only(bottom: 16.0),

@@ -1,5 +1,5 @@
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:farmus/view/my_farmclub/component/farmclub_widget.dart';
+import 'package:farmus/view/my_farmclub/component/farmclub_widget_pic.dart';
 import 'package:farmus/view/my_farmclub/component/my_farmclub_box.dart';
 import 'package:farmus/view_model/my_page/my_page_farmclub_provider.dart';
 import 'package:flutter/material.dart';

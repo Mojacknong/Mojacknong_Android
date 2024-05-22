@@ -1,4 +1,4 @@
-import 'package:farmus/view/my_farmclub/component/farmclub_widget.dart';
+import 'package:farmus/view/my_farmclub/component/farmclub_widget_pic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
