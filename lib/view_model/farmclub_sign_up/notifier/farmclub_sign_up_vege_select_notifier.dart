@@ -1,19 +1,19 @@
-import 'package:farmus/model/farmclub_signup/farmclub_signup_vege_model.dart';
+import 'package:farmus/model/farmclub_sign_up/farmclub_sign_up_vege_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class FarmclubSignupVegeSelectNotifier
-    extends StateNotifier<List<FarmclubSignupVegeModel>> {
-  FarmclubSignupVegeSelectNotifier()
+class FarmclubSignUpVegeSelectNotifier
+    extends StateNotifier<List<FarmclubSignUpVegeModel>> {
+  FarmclubSignUpVegeSelectNotifier()
       : super([
-          FarmclubSignupVegeModel(
+          FarmclubSignUpVegeModel(
             vegeName: "상훈이",
             isChecked: false,
           ),
-          FarmclubSignupVegeModel(
+          FarmclubSignUpVegeModel(
             vegeName: "방울토마토",
             isChecked: false,
           ),
-          FarmclubSignupVegeModel(
+          FarmclubSignUpVegeModel(
             vegeName: "깨르륵",
             isChecked: false,
           ),

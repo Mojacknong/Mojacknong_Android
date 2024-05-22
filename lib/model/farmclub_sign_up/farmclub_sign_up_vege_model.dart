@@ -1,17 +1,17 @@
-class FarmclubSignupVegeModel {
+class FarmclubSignUpVegeModel {
   final String vegeName;
   final bool isChecked;
 
-  FarmclubSignupVegeModel({
+  FarmclubSignUpVegeModel({
     required this.vegeName,
     this.isChecked = false,
   });
 
-  FarmclubSignupVegeModel copyWith({
+  FarmclubSignUpVegeModel copyWith({
     String? vegeName,
     bool? isChecked,
   }) {
-    return FarmclubSignupVegeModel(
+    return FarmclubSignUpVegeModel(
       vegeName: vegeName ?? this.vegeName,
       isChecked: isChecked ?? this.isChecked,
     );

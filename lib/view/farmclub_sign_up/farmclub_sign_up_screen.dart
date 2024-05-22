@@ -3,16 +3,16 @@ import 'package:farmus/common/bottom_sheet/show_farmus_bottom_sheet.dart';
 import 'package:farmus/common/button/bottom_backgroud_divider_button.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:farmus/view/farmclub_signup/component/farmclub_%20preparations.dart';
-import 'package:farmus/view/farmclub_signup/component/farmclub_more_info_widget.dart';
-import 'package:farmus/view/farmclub_signup/component/farmclub_only_container.dart';
-import 'package:farmus/view/farmclub_signup/component/farmclub_signup_button.dart';
+import 'package:farmus/view/farmclub_sign_up/component/farmclub_%20preparations.dart';
+import 'package:farmus/view/farmclub_sign_up/component/farmclub_more_info_widget.dart';
+import 'package:farmus/view/farmclub_sign_up/component/farmclub_only_container.dart';
+import 'package:farmus/view/farmclub_sign_up/component/farmclub_sign_up_button.dart';
 import 'package:farmus/view/vege_info/component/vege_info_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class FarmclubSignupScreen extends ConsumerWidget {
-  const FarmclubSignupScreen({
+class FarmclubSignUpScreen extends ConsumerWidget {
+  const FarmclubSignUpScreen({
     Key? key,
     required this.day,
     required this.total,
@@ -79,10 +79,11 @@ class FarmclubSignupScreen extends ConsumerWidget {
                         ),
                         SizedBox(height: 12),
                         FarmclubPreparations(
-                          explanation1: "흙대파, 상토, 재사용 흙, 재배 용기",
-                          explanation2:
+                          supplies: "흙대파, 상토, 재사용 흙, 재배 용기",
+                          howToChoose:
                               '뿌리가 튼튼하게 달려있어요\n너무 가는 것은 순이 여러 번 나오지 못해요\n너무 굵은 것은 맛이 덜해요',
-                          explanation3: '심고 일주일만 기다리면 먹을 수 있어요\n장마철에 키우기 어려워요',
+                          characteristics:
+                              '심고 일주일만 기다리면 먹을 수 있어요\n장마철에 키우기 어려워요',
                         ),
                       ],
                     ),
@@ -96,9 +97,9 @@ class FarmclubSignupScreen extends ConsumerWidget {
             ),
           ),
           BottomBackgroundDividerButton(
-            button: FarmclubSignupButton(
+            button: FarmclubSignUpButton(
               onPressed: () {
-                showFarmclubSignupBottomSheet2(context, ref, "팜클럽 가입");
+                showFarmclubSignupBottomSheet(context, ref, "팜클럽 가입");
               },
             ),
           ),

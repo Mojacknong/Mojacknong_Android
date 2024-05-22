@@ -2,17 +2,17 @@ import 'package:farmus/common/button/bottom_backgroud_divider_button.dart';
 import 'package:farmus/common/button/primary_button.dart';
 import 'package:farmus/common/button/primary_color_button.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
-import 'package:farmus/view/farmclub_signup/component/farmclub_signup_vege_toggle_widget.dart';
+import 'package:farmus/view/farmclub_sign_up/component/farmclub_sign_up_vege_toggle_widget.dart';
 import 'package:farmus/view/vege_add/home_vege_add_screen.dart';
-import 'package:farmus/view_model/farmclub_signup/farmclub_signup_provider.dart';
+import 'package:farmus/view_model/farmclub_sign_up/farmclub_sign_up_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../common/theme/farmus_theme_text_style.dart';
 
-class FarmclubSignupBottomSheetContent extends ConsumerWidget {
-  const FarmclubSignupBottomSheetContent({
+class FarmclubSignUpBottomSheetContent extends ConsumerWidget {
+  const FarmclubSignUpBottomSheetContent({
     Key? key,
     required this.title,
     required this.subTitle,
@@ -25,7 +25,7 @@ class FarmclubSignupBottomSheetContent extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final vegeList = ref.watch(farmclubSignupVegeSelectNotifierProvider);
+    final vegeList = ref.watch(farmclubSignUpVegeSelectNotifierProvider);
     final isChecked = vegeList.any((vege) => vege.isChecked);
 
     return Padding(
@@ -64,7 +64,7 @@ class FarmclubSignupBottomSheetContent extends ConsumerWidget {
                     ),
                   ),
                   ...vegeList
-                      .map((model) => FarmclubSignupVegeToggleWidget(
+                      .map((model) => FarmclubSignUpVegeToggleWidget(
                             vegeName: model.vegeName,
                           ))
                       .toList(),

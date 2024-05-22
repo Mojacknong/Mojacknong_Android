@@ -1,5 +1,5 @@
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:farmus/view/farmclub_signup/farmclub_signup_screen.dart';
+import 'package:farmus/view/farmclub_sign_up/farmclub_sign_up_screen.dart';
 import 'package:farmus/view/vege_info/component/vege_info_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -23,7 +23,7 @@ class SearchVegeInfo extends ConsumerWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => const FarmclubSignupScreen(
+              builder: (context) => const FarmclubSignUpScreen(
                     day: "1",
                     num: "5",
                     total: "8",

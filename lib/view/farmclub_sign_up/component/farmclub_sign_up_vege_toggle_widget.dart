@@ -1,19 +1,19 @@
 import 'package:farmus/common/button/check_box_button.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:farmus/view_model/farmclub_signup/farmclub_signup_provider.dart';
+import 'package:farmus/view_model/farmclub_sign_up/farmclub_sign_up_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class FarmclubSignupVegeToggleWidget extends ConsumerWidget {
-  const FarmclubSignupVegeToggleWidget({Key? key, required this.vegeName})
+class FarmclubSignUpVegeToggleWidget extends ConsumerWidget {
+  const FarmclubSignUpVegeToggleWidget({Key? key, required this.vegeName})
       : super(key: key);
 
   final String vegeName;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isChecked = ref.watch(farmclubSignupVegeSelectNotifierProvider.select(
+    final isChecked = ref.watch(farmclubSignUpVegeSelectNotifierProvider.select(
         (value) =>
             value.any((vege) => vege.vegeName == vegeName && vege.isChecked)));
 
@@ -38,7 +38,7 @@ class FarmclubSignupVegeToggleWidget extends ConsumerWidget {
                 isChecked: isChecked,
                 onPressed: () {
                   ref
-                      .read(farmclubSignupVegeSelectNotifierProvider.notifier)
+                      .read(farmclubSignUpVegeSelectNotifierProvider.notifier)
                       .toggleVege(vegeName);
                 },
               ),

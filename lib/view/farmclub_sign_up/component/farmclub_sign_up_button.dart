@@ -4,8 +4,8 @@ import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class FarmclubSignupButton extends ConsumerWidget {
-  const FarmclubSignupButton({
+class FarmclubSignUpButton extends ConsumerWidget {
+  const FarmclubSignUpButton({
     super.key,
     required this.onPressed,
   });

@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 class FarmclubPreparations extends StatelessWidget {
   const FarmclubPreparations({
     Key? key,
-    required this.explanation1,
-    required this.explanation2,
-    required this.explanation3,
+    required this.supplies,
+    required this.howToChoose,
+    required this.characteristics,
   }) : super(key: key);
 
-  final String explanation1;
-  final String explanation2;
-  final String explanation3;
+  final String supplies;
+  final String howToChoose;
+  final String characteristics;
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +28,9 @@ class FarmclubPreparations extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const SizedBox(height: 16),
-          _buildText("준비물", explanation1),
-          _buildText("고르는 법", explanation2),
-          _buildText("특징", explanation3),
+          _buildText("준비물", supplies),
+          _buildText("고르는 법", howToChoose),
+          _buildText("특징", characteristics),
         ],
       ),
     );
