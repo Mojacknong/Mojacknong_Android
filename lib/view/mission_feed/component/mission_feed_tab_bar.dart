@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../common/tab_bar/primary_tab_bar.dart';
-import '../../farmclub/component/farmclub_open_diary.dart';
+import '../../farmclub/component/farmclub_feed.dart';
 import '../../mission_write/component/mission_step_info.dart';
 
 class MissionFeedTabBar extends ConsumerWidget {
@@ -47,10 +47,15 @@ class MissionFeedTabBar extends ConsumerWidget {
                   ),
                 ),
               ),
-              FarmclubFeed(),
-              FarmclubFeed(),
-              FarmclubFeed(),
-              FarmclubFeed(),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                child: Column(children: [
+                  FarmclubFeed(),
+                  FarmclubFeed(),
+                  FarmclubFeed(),
+                  FarmclubFeed(),
+                ],),
+              )
             ],
           ),
         ),
