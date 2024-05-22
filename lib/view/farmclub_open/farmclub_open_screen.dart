@@ -1,8 +1,7 @@
 import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
 import 'package:farmus/common/button/bottom_backgroud_divider_button.dart';
-import 'package:farmus/common/button/primary_button.dart';
+import 'package:farmus/common/button/primary_color_button.dart';
 import 'package:farmus/common/dialog/check_dialog.dart';
-import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/farmclub_open/component/farmclub_intro_input.dart';
 import 'package:farmus/view/farmclub_open/component/farmclub_my_vege_list.dart';
@@ -66,30 +65,26 @@ class FarmclubOpenScreen extends ConsumerWidget {
                 bool enabled = isFarmclubOpenInfoComplete;
 
                 return Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 12, 16, 36),
-                  child: PrimaryButton(
-                    enabled: enabled,
-                    textColor: FarmusThemeColor.white,
-                    borderColor: FarmusThemeColor.white,
-                    backgroundColor: enabled
-                        ? FarmusThemeColor.primary
-                        : FarmusThemeColor.gray4,
+                  padding: const EdgeInsets.fromLTRB(8, 4, 8, 32),
+                  child: SizedBox(
                     width: double.infinity,
-                    padding: const EdgeInsets.symmetric(vertical: 6),
-                    text: "개설하기",
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          Future.delayed(const Duration(seconds: 2), () {
-                            Navigator.of(context).pop();
-                          });
-                          return const CheckDialog(
-                            text: "팜클럽을 개설했어요",
-                          );
-                        },
-                      );
-                    },
+                    child: PrimaryColorButton(
+                      enabled: enabled,
+                      text: "개설하기",
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            Future.delayed(const Duration(seconds: 2), () {
+                              Navigator.of(context).pop();
+                            });
+                            return const CheckDialog(
+                              text: "팜클럽을 개설했어요",
+                            );
+                          },
+                        );
+                      },
+                    ),
                   ),
                 );
               },

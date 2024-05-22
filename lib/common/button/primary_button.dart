@@ -28,24 +28,22 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
   final Widget? buttonChild;
   @override
   final double? fontPadding;
-  final EdgeInsetsGeometry? padding;
 
-  const PrimaryButton({
-    Key? key,
-    this.width,
-    this.height,
-    this.text,
-    this.onPressed,
-    required this.enabled,
-    required this.textColor,
-    required this.backgroundColor,
-    required this.borderColor,
-    this.borderRadius,
-    this.fontSize,
-    this.buttonChild,
-    this.fontPadding,
-    this.padding,
-  }) : super(key: key);
+  const PrimaryButton(
+      {Key? key,
+      this.width,
+      this.height,
+      this.text,
+      this.onPressed,
+      required this.enabled,
+      required this.textColor,
+      required this.backgroundColor,
+      required this.borderColor,
+      this.borderRadius,
+      this.fontSize,
+      this.buttonChild,
+      this.fontPadding})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -74,8 +72,6 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
                           : BorderRadius.circular(borderRadius!),
                     ),
                   ),
-                  padding: MaterialStateProperty.all(
-                      padding ?? const EdgeInsets.all(0)),
                 ),
                 child: buttonChild == null
                     ? Padding(
@@ -112,8 +108,6 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
                         : BorderRadius.circular(borderRadius!),
                   ),
                 ),
-                padding: MaterialStateProperty.all(
-                    padding ?? const EdgeInsets.all(0)),
               ),
               child: buttonChild == null
                   ? Padding(
