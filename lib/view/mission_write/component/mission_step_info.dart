@@ -43,7 +43,7 @@ class MissionStepInfo extends ConsumerWidget {
               ),
             ],
           ),
-          const MissionWriteRouteButton()
+           MissionWriteRouteButton(isButton: isButton)
         ],
       ),
     );
