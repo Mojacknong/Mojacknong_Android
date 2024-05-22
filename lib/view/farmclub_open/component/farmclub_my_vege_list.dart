@@ -1,7 +1,6 @@
+import 'package:farmus/view/farmclub_open/component/farmclub_pick_vege_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../../../common/button/home_my_vege_button.dart';
 
 class FarmclubMyVegeList extends ConsumerWidget {
   const FarmclubMyVegeList({
@@ -16,35 +15,20 @@ class FarmclubMyVegeList extends ConsumerWidget {
         padding: const EdgeInsets.only(left: 16, right: 16, bottom: 34.0),
         child: Row(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(right: 6.0),
-              child: HomeMyVegeButton(
-                height: 31,
-                fontSize: 13,
-                enabled: true,
-                text: "상훈이",
-                onPressed: () {},
-              ),
+            FarmclubPickVegeButton(
+              enabled: true,
+              text: "상훈이",
+              onPressed: () {},
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 6.0),
-              child: HomeMyVegeButton(
-                height: 31,
-                fontSize: 13,
-                enabled: true,
-                text: "방울이",
-                onPressed: () {},
-              ),
+            FarmclubPickVegeButton(
+              enabled: true,
+              text: "방울이",
+              onPressed: () {},
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 6.0),
-              child: HomeMyVegeButton(
-                height: 31,
-                fontSize: 13,
-                enabled: true,
-                text: "깨르륵",
-                onPressed: () {},
-              ),
+            FarmclubPickVegeButton(
+              enabled: true,
+              text: "깨르륵",
+              onPressed: () {},
             )
           ],
         ),
