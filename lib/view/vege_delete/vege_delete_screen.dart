@@ -127,6 +127,7 @@ class VegeDeleteScreen extends ConsumerWidget {
                   Expanded(
                     child: PrimaryColorButton(
                       text: nextButtonText,
+                      fontSize: 15,
                       onPressed: onPressed!,
                       enabled: enabled,
                     ),

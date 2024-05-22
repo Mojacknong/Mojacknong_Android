@@ -1,5 +1,5 @@
 import 'package:farmus/common/farmus_picture_fix.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:farmus/view/mission_write/mission_write_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -48,19 +48,31 @@ class FarmclubStep extends ConsumerWidget {
                     ],
                   ),
                 ),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 20.0, vertical: 12.0),
-                  decoration: ShapeDecoration(
-                    color: FarmusThemeColor.gray6,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (builder) => const MissionWriteScreen(
+                          stepNum: 3,
+                        ),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20.0, vertical: 12.0),
+                    decoration: ShapeDecoration(
+                      color: FarmusThemeColor.gray6,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
                     ),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      '인증하기',
-                      style: FarmusThemeTextStyle.whiteSemiBold15,
+                    child: const Center(
+                      child: Text(
+                        '인증하기',
+                        style: FarmusThemeTextStyle.whiteSemiBold15,
+                      ),
                     ),
                   ),
                 ),

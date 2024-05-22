@@ -1,35 +1,41 @@
 import 'dart:io';
 
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:farmus/view_model/vege_diary_write/vege_diary_write_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../bottom_sheet/farmus_image_picker.dart';
 import '../theme/farmus_theme_color.dart';
 
-class DiaryImagePicker extends ConsumerStatefulWidget {
-  const DiaryImagePicker({
+class WriteImagePicker extends ConsumerStatefulWidget {
+  const WriteImagePicker({
     Key? key,
     this.nullChild,
     this.boxDecoration,
+    this.imageProvider,
+    required this.updateImage,
+    required this.deleteImage,
   }) : super(key: key);
 
   final Widget? nullChild;
   final BoxDecoration? boxDecoration;
+  final XFile? imageProvider;
+  final Function(XFile?) updateImage;
+  final Function(XFile?) deleteImage;
 
   @override
   ConsumerState createState() => _PrimaryImagePickerState();
 }
 
-class _PrimaryImagePickerState extends ConsumerState<DiaryImagePicker> {
+class _PrimaryImagePickerState extends ConsumerState<WriteImagePicker> {
   @override
   Widget build(BuildContext context) {
     final nullChild = widget.nullChild;
     final boxDecoration = widget.boxDecoration;
 
-    var successImage = ref.watch(vegeDiaryWriteProvider).image;
+    var successImage = widget.imageProvider;
 
     void showActionSheet(BuildContext context) {
       FarmusImagePicker.showActionSheet(
@@ -38,9 +44,7 @@ class _PrimaryImagePickerState extends ConsumerState<DiaryImagePicker> {
           if (value != null) {
             setState(() {
               successImage = value;
-              ref
-                  .read(vegeDiaryWriteProvider.notifier)
-                  .updateImage(successImage);
+              widget.updateImage(successImage);
             });
           }
         },
@@ -94,9 +98,7 @@ class _PrimaryImagePickerState extends ConsumerState<DiaryImagePicker> {
                   onTap: () {
                     (successImage == null)
                         ? showActionSheet(context)
-                        : ref
-                            .read(vegeDiaryWriteProvider.notifier)
-                            .deleteImage();
+                        : widget.deleteImage(successImage);
                   },
                   child: (successImage == null)
                       ? SvgPicture.asset('assets/image/ic_camera.svg',

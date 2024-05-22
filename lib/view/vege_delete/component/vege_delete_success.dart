@@ -40,7 +40,7 @@ class _VegeDeleteSuccessState extends ConsumerState<VegeDeleteSuccess> {
         ContentInputTextForm(
           maxLength: 50,
           nowContent: ref.watch(vegeDeleteSuccessProvider).content,
-          updateContent: (value) => ref.watch(vegeDeleteSuccessProvider.notifier).updateContent(value),
+          updateContent: (value) => ref.watch(vegeDeleteSuccessProvider.notifier).updateContent(value!),
         ),
       ],
     );
