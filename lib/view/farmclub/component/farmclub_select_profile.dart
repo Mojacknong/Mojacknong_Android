@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../common/theme/farmus_theme_color.dart';
 
-class FarmclubMyProfile extends ConsumerWidget {
-  const FarmclubMyProfile({super.key});
+class FarmclubSelectProfile extends ConsumerWidget {
+  const FarmclubSelectProfile({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
