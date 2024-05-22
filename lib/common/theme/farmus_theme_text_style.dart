@@ -90,6 +90,11 @@ class FarmusThemeTextStyle {
   );
 
   // gray1
+  static const TextStyle gray1Medium11 = TextStyle(
+    color: FarmusThemeColor.gray1,
+    fontSize: 11,
+  );
+
   static const TextStyle gray1Bold11 = TextStyle(
     color: FarmusThemeColor.gray1,
     fontSize: 11,
