@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'primary_text_form_field.dart';
 import '../theme/farmus_theme_color.dart';
+import 'primary_text_form_field.dart';
 
 class ContentInputTextForm extends ConsumerWidget {
-  const ContentInputTextForm({super.key, required this.maxLength, required this.nowContent, required this.updateContent});
+  const ContentInputTextForm(
+      {super.key,
+        required this.maxLength,
+        required this.nowContent,
+        this.updateContent});
 
   final int maxLength;
   final String? nowContent;
-  final void Function(String) updateContent;
+  final Function(String?)? updateContent;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var nowLength = nowContent == null
-        ? 0
-        : nowContent?.length;
+    var nowLength = nowContent == null ? 0 : nowContent?.length;
 
     return PrimaryTextFormField(
         maxLength: maxLength,
@@ -31,9 +33,7 @@ class ContentInputTextForm extends ConsumerWidget {
         errorStyle: const TextStyle(
           color: FarmusThemeColor.red,
         ),
-        onChanged: (value) {
-          updateContent(value);
-        },
+        onChanged: (value) => updateContent?.call(value),
         suffix: Column(
           children: [
             Text("$nowLength /$maxLength"),
