@@ -52,6 +52,7 @@ class MissionWriteScreen extends ConsumerWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: MissionStepInfo(
                 stepNum: stepNum,
+                isButton: false,
               ),
             ),
             Padding(
