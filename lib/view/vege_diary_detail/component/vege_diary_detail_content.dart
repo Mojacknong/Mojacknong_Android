@@ -18,7 +18,7 @@ class VegeDiaryDetailContent extends ConsumerWidget {
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 16.0),
           child: Text(
-            '일기' * 20,
+            '피드' * 20,
             style: FarmusThemeTextStyle.darkMedium15,
           ),
         ),
