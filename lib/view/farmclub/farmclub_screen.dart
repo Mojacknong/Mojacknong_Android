@@ -62,11 +62,11 @@ class FarmclubScreen extends ConsumerWidget {
                       ),
                     ],
                   ),
-                  FarmclubOpenDiary(),
+                  FarmclubFeed(),
                   SizedBox(
                     height: 16.0,
                   ),
-                  FarmclubOpenDiary(),
+                  FarmclubFeed(),
                 ],
               ),
             ),
