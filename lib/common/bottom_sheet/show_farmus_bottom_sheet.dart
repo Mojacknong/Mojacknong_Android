@@ -63,14 +63,17 @@ void showFarmclubSignupBottomSheet(
           showDialog(
             context: context,
             builder: (BuildContext context) {
-              Future.delayed(const Duration(seconds: 2), () {
-                Navigator.of(context).pop();
-              });
               return const CheckDialog(
                 text: "팜클럽에 가입했어요",
               );
             },
-          );
+          ).then((value) {
+            if (value != null && value == 'close') {
+              Future.delayed(const Duration(seconds: 2), () {
+                Navigator.of(context).pop();
+              });
+            }
+          });
         },
       );
     },
