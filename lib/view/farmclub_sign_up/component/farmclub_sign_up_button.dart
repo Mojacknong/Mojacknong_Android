@@ -12,7 +12,7 @@ class FarmclubSignUpButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 12, 16, 38.0),
+      padding: const EdgeInsets.fromLTRB(8, 4, 8, 32.0),
       child: SizedBox(
         width: double.infinity,
         child: PrimaryColorButton(

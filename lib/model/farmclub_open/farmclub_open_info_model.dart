@@ -1,4 +1,5 @@
 class FarmclubOpenInfoModel {
+  final bool isButtonPressed;
   final String name;
   final String num;
   final String intro;
@@ -6,14 +7,16 @@ class FarmclubOpenInfoModel {
   final bool isFarmclubOpenInfoComplete;
 
   FarmclubOpenInfoModel({
-    required this.name,
-    required this.num,
-    required this.intro,
-    required this.date,
-    required this.isFarmclubOpenInfoComplete,
+    this.isButtonPressed = false,
+    this.name = '',
+    this.num = '',
+    this.intro = '',
+    this.date = '',
+    this.isFarmclubOpenInfoComplete = false,
   });
 
   FarmclubOpenInfoModel copyWith({
+    bool? isButtonPressed,
     String? name,
     String? num,
     String? intro,
@@ -21,6 +24,7 @@ class FarmclubOpenInfoModel {
     bool? isFarmclubOpenInfoComplete,
   }) {
     return FarmclubOpenInfoModel(
+      isButtonPressed: isButtonPressed ?? this.isButtonPressed,
       name: name ?? this.name,
       num: num ?? this.num,
       intro: intro ?? this.intro,

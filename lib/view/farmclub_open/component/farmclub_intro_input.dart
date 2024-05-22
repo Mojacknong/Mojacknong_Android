@@ -22,7 +22,7 @@ class FarmclubIntroInput extends ConsumerWidget {
         nowContent: intro,
         updateContent: (value) => ref
             .watch(farmclubOpenInfoAddProvider.notifier)
-            .updateFarmclubIntro(value),
+            .updateFarmclubIntro(value!),
       ),
     );
   }

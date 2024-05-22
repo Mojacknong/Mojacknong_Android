@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class FarmclubOpenInfoNotifier extends StateNotifier<FarmclubOpenInfoModel> {
   FarmclubOpenInfoNotifier()
       : super(FarmclubOpenInfoModel(
+          isButtonPressed: false,
           name: '',
           num: '',
           intro: '',
@@ -13,11 +14,18 @@ class FarmclubOpenInfoNotifier extends StateNotifier<FarmclubOpenInfoModel> {
 
   void reset() {
     state = FarmclubOpenInfoModel(
-        name: '',
-        num: '',
-        intro: '',
-        date: '',
-        isFarmclubOpenInfoComplete: false);
+      isButtonPressed: false,
+      name: '',
+      num: '',
+      intro: '',
+      date: '',
+      isFarmclubOpenInfoComplete: false,
+    );
+  }
+
+  void updateButtonPressed(bool isButtonPressed) {
+    state = state.copyWith(isButtonPressed: isButtonPressed);
+    _updateFarmclubOpenInfoStatus();
   }
 
   void updateFarmclubName(String name) {
@@ -50,7 +58,8 @@ class FarmclubOpenInfoNotifier extends StateNotifier<FarmclubOpenInfoModel> {
 
   void _updateFarmclubOpenInfoStatus() {
     state = state.copyWith(
-      isFarmclubOpenInfoComplete: state.name != '' &&
+      isFarmclubOpenInfoComplete: state.isButtonPressed &&
+          state.name != '' &&
           state.num != '' &&
           state.intro != '' &&
           state.date != '',
