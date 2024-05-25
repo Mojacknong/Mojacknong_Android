@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../common/bottom_sheet/show_farmus_bottom_sheet.dart';
+
 class FarmclubScreen extends ConsumerWidget {
   const FarmclubScreen({super.key});
 
@@ -20,9 +22,14 @@ class FarmclubScreen extends ConsumerWidget {
             padding: const EdgeInsets.all(8.0),
             child: SvgPicture.asset('assets/image/ic_more_vertical.svg'),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: SvgPicture.asset('assets/image/ic_exit.svg'),
+          GestureDetector(
+            onTap: () {
+              showFarmclubExitBottomSheet(context);
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SvgPicture.asset('assets/image/ic_exit.svg'),
+            ),
           )
         ],
       ),

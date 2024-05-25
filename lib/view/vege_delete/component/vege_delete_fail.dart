@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../common/button/select_box_basic_content.dart';
 import '../../../common/select_box.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 
@@ -29,13 +30,8 @@ class VegeDeleteFail extends ConsumerWidget {
             selectProvider.selectedBox('farmclub');
           },
           enabled: boxIndex == 'farmclub',
-          selectBoxContent: Container(
-            margin: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
-            alignment: Alignment.center,
-            child: const Text(
-              '팜클럽에서 도움을 받아볼래요',
-              style: FarmusThemeTextStyle.darkMedium15,
-            ),
+          selectBoxContent: const SelectBoxBasicContent(
+            text: '팜클럽에서 도움을 받아볼래요',
           ),
         ),
         const SizedBox(
@@ -46,13 +42,8 @@ class VegeDeleteFail extends ConsumerWidget {
             selectProvider.selectedBox('fin');
           },
           enabled: boxIndex == 'fin',
-          selectBoxContent: Container(
-            margin: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
-            alignment: Alignment.center,
-            child: const Text(
-              '괜찮아요, 이대로 종료할게요',
-              style: FarmusThemeTextStyle.darkMedium15,
-            ),
+          selectBoxContent: const SelectBoxBasicContent(
+            text: '괜찮아요, 이대로 종료할게요',
           ),
         ),
         const SizedBox(
