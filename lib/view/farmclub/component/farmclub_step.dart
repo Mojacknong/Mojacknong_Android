@@ -1,5 +1,6 @@
 import 'package:farmus/common/farmus_picture_fix.dart';
-import 'package:farmus/view/mission_write/mission_write_screen.dart';
+import 'package:farmus/view/mission_feed/mission_feed_screen.dart';
+import 'package:farmus/view/mission_write/component/mission_write_route_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -25,11 +26,11 @@ class FarmclubStep extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(16.0),
+          const Padding(
+            padding: EdgeInsets.all(16.0),
             child: Row(
               children: [
-                const Expanded(
+                Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,34 +49,7 @@ class FarmclubStep extends ConsumerWidget {
                     ],
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (builder) => const MissionWriteScreen(
-                          stepNum: 3,
-                        ),
-                      ),
-                    );
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20.0, vertical: 12.0),
-                    decoration: ShapeDecoration(
-                      color: FarmusThemeColor.gray6,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        '인증하기',
-                        style: FarmusThemeTextStyle.whiteSemiBold15,
-                      ),
-                    ),
-                  ),
-                ),
+                MissionWriteRouteButton(isButton: true,)
               ],
             ),
           ),
@@ -128,11 +102,18 @@ class FarmclubStep extends ConsumerWidget {
                 Row(
                   children: [
                     for (var image in stepImages)
-                      Padding(
-                        padding: const EdgeInsets.only(right: 8.0),
-                        child: FarmusPictureFix(
-                          size: 82,
-                          asset: image,
+                      GestureDetector(
+                        onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (builder) =>
+                                    const MissionFeedScreen())),
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: FarmusPictureFix(
+                            size: 82,
+                            asset: image,
+                          ),
                         ),
                       )
                   ],

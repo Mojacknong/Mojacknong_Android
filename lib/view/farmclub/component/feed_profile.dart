@@ -5,8 +5,8 @@ import 'package:flutter_svg/svg.dart';
 import '../../../common/farmus_picture_fix.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 
-class DiaryProfile extends ConsumerWidget {
-  const DiaryProfile({super.key, required this.isDetail});
+class FeedProfile extends ConsumerWidget {
+  const FeedProfile({super.key, required this.isDetail});
 
   final bool isDetail;
 

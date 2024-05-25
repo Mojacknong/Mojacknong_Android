@@ -1,10 +1,10 @@
+import 'package:farmus/view/farmclub/component/farmclub_select_profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 
 class FarmclubProfile extends ConsumerWidget {
@@ -17,37 +17,7 @@ class FarmclubProfile extends ConsumerWidget {
         Stack(
           alignment: Alignment.bottomRight,
           children: [
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                Container(
-                  width: 64,
-                  height: 64,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                  ),
-                  child: Image.asset(
-                    'assets/image/image_farmclub_profile_background.png',
-                  ),
-                ),
-                Container(
-                  width: 56,
-                  height: 56,
-                  decoration: const BoxDecoration(
-                    color: FarmusThemeColor.white,
-                    shape: BoxShape.circle,
-                  ),
-                ),
-                Container(
-                  width: 48,
-                  height: 48,
-                  decoration: const BoxDecoration(
-                    color: FarmusThemeColor.gray7,
-                    shape: BoxShape.circle,
-                  ),
-                )
-              ],
-            ),
+            const FarmclubSelectProfile(),
             SvgPicture.asset('assets/image/ic_farmclub_mark.svg'),
           ],
         ),
