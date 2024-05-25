@@ -88,14 +88,18 @@ class FarmclubExitBottomSheetContent extends ConsumerWidget {
                               Expanded(
                                 child: WhiteColorButton(
                                   text: '취소',
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
                                   enabled: true,
                                 ),
                               ),
                               Expanded(
                                 child: PrimaryColorButton(
                                   text: '나가기',
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
                                   enabled: true,
                                 ),
                               ),

@@ -18,10 +18,6 @@ class FarmclubScreen extends ConsumerWidget {
     return Scaffold(
       appBar: FarmusLogoAppBar(
         actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: SvgPicture.asset('assets/image/ic_more_vertical.svg'),
-          ),
           GestureDetector(
             onTap: () {
               showFarmclubExitBottomSheet(context);
@@ -33,26 +29,31 @@ class FarmclubScreen extends ConsumerWidget {
           )
         ],
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: EdgeInsets.all(16.0),
-              child: FarmclubProfile(),
+            GestureDetector(
+              onLongPress: () {
+                showFarmclubChangeBottomSheet(context);
+              },
+              child: const Padding(
+                padding: EdgeInsets.all(16.0),
+                child: FarmclubProfile(),
+              ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 16.0,
             ),
-            FarmclubTabBar(),
-            Divider(
+            const FarmclubTabBar(),
+            const Divider(
               thickness: 6.0,
               color: FarmusThemeColor.gray7,
             ),
-            SizedBox(
+            const SizedBox(
               height: 16.0,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.all(16.0),
               child: Column(
                 children: [
