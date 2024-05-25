@@ -1,6 +1,7 @@
 import 'package:farmus/common/tab_bar/primary_tab_bar.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/view/farmclub/component/farmclub_step.dart';
+import 'package:farmus/view/farmclub/component/farmclub_step_empty.dart';
 import 'package:farmus/view/farmclub/component/farmclub_step_tip.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -73,7 +74,7 @@ class FarmclubTabBar extends StatelessWidget {
             ],
           ),
         ),
-        Container(),
+        const FarmclubStepEmpty(isLast: true),
       ],
       tabViewHeights: 368,
     );

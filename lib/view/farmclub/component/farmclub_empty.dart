@@ -1,7 +1,8 @@
 import 'package:farmus/common/button/primary_color_button.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:farmus/view/main/main_screen.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -81,7 +82,19 @@ class FarmclubEmpty extends ConsumerWidget {
                   SizedBox(
                     width: double.infinity,
                     child: PrimaryColorButton(
-                        text: '팜클럽 탐색하기', onPressed: () {}, enabled: true),
+                      text: '팜클럽 탐색하기',
+                      onPressed: () {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (builder) =>
+                                const MainScreen(selectedIndex: 2),
+                          ),
+                        );
+                      },
+                      enabled: true,
+                    ),
                   ),
                 ],
               ),
