@@ -27,15 +27,15 @@ Dio authDio = Dio(
   ),
 );
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class SignInScreen extends StatefulWidget {
+  const SignInScreen({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _LoginScreenState createState() => _LoginScreenState();
+  _SignInScreenState createState() => _SignInScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignInScreenState extends State<SignInScreen> {
   late FarmusUser user;
   final PageController _pageController = PageController();
   final List<String> _pageContents = ['Page 1', 'Page 2', 'Page 3', 'Page 4'];
@@ -143,18 +143,18 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   fetchKaKaoData(token) {
-    LoginRepository.kakaoLoginApi(token).then(
-      (value) {
-        setState(() {
-          user = value;
-        });
-        print(value.early);
-        print(value.nickName);
-
-        if (value.early == true) {
-        } else {}
-      },
-    );
+    // SignInRepository.kakaoLoginApi(token).then(
+    //   (value) {
+    //     setState(() {
+    //       user = value;
+    //     });
+    //     print(value.early);
+    //     print(value.nickName);
+    //
+    //     if (value.early == true) {
+    //     } else {}
+    //   },
+    // );
   }
 
   googleLogin() async {
@@ -165,25 +165,14 @@ class _LoginScreenState extends State<LoginScreen> {
         await googleSignInAccount!.authentication;
 
     print("구글 액세스 토큰 ${googleSignInAuthentication.accessToken}");
-    LoginRepository.googleLoginApi(googleSignInAuthentication.accessToken).then(
+    SignInRepository.googleSignInApi(googleSignInAuthentication.accessToken).then(
       (value) {
         setState(() {
-          user = value;
+          user = value!;
         });
-        print("초기 로그인 ${value.early}");
-        print(value.nickName);
+        print("초기 로그인 ${value}");
 
-        if (value.early == true) {
-        } else {}
       },
     );
-  }
-
-  reissue() {
-    LoginRepository.reissueApi().then((value) {});
-  }
-
-  logout() {
-    LoginRepository.logoutApi().then((value) {});
   }
 }
