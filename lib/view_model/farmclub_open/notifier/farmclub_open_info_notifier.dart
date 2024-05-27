@@ -58,11 +58,10 @@ class FarmclubOpenInfoNotifier extends StateNotifier<FarmclubOpenInfoModel> {
 
   void _updateFarmclubOpenInfoStatus() {
     state = state.copyWith(
-      isFarmclubOpenInfoComplete: state.name != '' &&
-          state.num != '' &&
-          state.intro != '' &&
-          state.date != '',
-      // && state.isButtonPressed
-    );
+        isFarmclubOpenInfoComplete:
+            state.name != '' && state.num != '' && state.intro != ''
+        // state.date != '',
+        // && state.isButtonPressed
+        );
   }
 }

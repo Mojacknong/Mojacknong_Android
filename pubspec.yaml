@@ -47,6 +47,7 @@ dependencies:
   expandable_text: ^2.3.0
   dots_indicator: ^3.0.0
 dev_dependencies:
+  flutter_native_splash: ^2.4.0
   flutter_test:
     sdk: flutter
 

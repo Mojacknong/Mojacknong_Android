@@ -1,6 +1,6 @@
 import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
-import 'package:farmus/view/routine/component/routine_add.dart';
 import 'package:farmus/common/farmus_calender.dart';
+import 'package:farmus/view/routine/component/routine_add.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -9,23 +9,23 @@ class RoutineScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const Scaffold(
-      appBar: BackLeftTitleAppBar(
+    return Scaffold(
+      appBar: const BackLeftTitleAppBar(
         title: '루틴',
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             FarmusCalender(),
-            SizedBox(
+            const SizedBox(
               height: 16.0,
             ),
-            RoutineAdd(
+            const RoutineAdd(
               vege: '상추',
               vegeName: '상훈이',
               routineDayMap: {'물 갈아 주기': '4', '물 주기': '3'},
             ),
-            RoutineAdd(
+            const RoutineAdd(
               vege: '토마토',
               vegeName: '토마토짱',
               routineDayMap: {'물 갈이': '4'},

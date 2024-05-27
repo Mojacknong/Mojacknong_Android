@@ -2,18 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+import '../view_model/home/home_vege_add_provider.dart';
 import 'theme/farmus_theme_color.dart';
 import 'theme/farmus_theme_text_style.dart';
-import '../view_model/home/home_vege_add_provider.dart';
 
 class FarmusCalender extends ConsumerStatefulWidget {
-  const FarmusCalender({super.key});
-
+  final DateTime? lastDay;
+  FarmusCalender({super.key, DateTime? lastDay})
+      : lastDay = lastDay ?? DateTime.now();
   @override
-  ConsumerState createState() => _VegeAddCalenderState();
+  ConsumerState createState() => _FarmusCalenderState();
 }
 
-class _VegeAddCalenderState extends ConsumerState<FarmusCalender> {
+class _FarmusCalenderState extends ConsumerState<FarmusCalender> {
   DateTime? _selectedDay;
 
   DateTime _focusedDay = DateTime.now();
@@ -32,7 +33,7 @@ class _VegeAddCalenderState extends ConsumerState<FarmusCalender> {
           context: context,
           initialDate: _selectedDay,
           firstDate: DateTime.utc(2020, 10, 16),
-          lastDate: DateTime.now(),
+          lastDate: widget.lastDay ?? DateTime.now(),
           locale: const Locale('ko', 'KR'),
           initialDatePickerMode: DatePickerMode.year,
           initialEntryMode: DatePickerEntryMode.calendarOnly);
@@ -51,7 +52,7 @@ class _VegeAddCalenderState extends ConsumerState<FarmusCalender> {
       child: TableCalendar(
         focusedDay: _focusedDay,
         firstDay: DateTime.utc(2020, 10, 16),
-        lastDay: DateTime.now(),
+        lastDay: widget.lastDay ?? DateTime.now(),
         locale: 'ko_KR',
         selectedDayPredicate: (day) {
           return isSameDay(_selectedDay, day);
