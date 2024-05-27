@@ -13,7 +13,7 @@ class FarmclubIntroInput extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final intro = ref.read(farmclubOpenInfoAddProvider).intro;
+    final intro = ref.watch(farmclubOpenInfoAddProvider).intro;
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
