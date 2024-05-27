@@ -1,11 +1,7 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
-import 'package:farmus/view/login/component/login_fifth.dart';
-import 'package:farmus/view/login/component/login_first.dart';
-import 'package:farmus/view/login/component/login_fourth.dart';
-import 'package:farmus/view/login/component/login_second.dart';
-import 'package:farmus/view/login/component/login_third.dart';
+import 'package:farmus/view/login/component/login_img_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -141,15 +137,33 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget getPageContent(int index) {
     switch (index) {
       case 0:
-        return const LoginFirst();
+        return const LoginImgWidget(
+          text: "나에게 맞는 팜클럽을 가입해요",
+          imgPath: "assets/image/img_login_first.png",
+        );
       case 1:
-        return const LoginSecond();
+        return const LoginImgWidget(
+          horizontalPadding: 58,
+          text: "주기별 미션을 인증하고",
+          imgPath: "assets/image/img_login_second.png",
+        );
       case 2:
-        return const LoginThird();
+        return const LoginImgWidget(
+          horizontalPadding: 58,
+          text: "주기별 미션을 인증하고",
+          imgPath: "assets/image/img_login_third.png",
+        );
       case 3:
-        return const LoginFourth();
+        return const LoginImgWidget(
+          horizontalPadding: 58,
+          text: "주기별 미션을 인증하고",
+          imgPath: "assets/image/img_login_fourth.png",
+        );
       case 4:
-        return const LoginFifth();
+        return const LoginImgWidget(
+          text: "수확의 기쁨을 함께 나누어요",
+          imgPath: "assets/image/img_login_fifth.png",
+        );
       default:
         return Container();
     }
