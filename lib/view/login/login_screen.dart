@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:farmus/view/on_boarding/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -143,18 +144,20 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   fetchKaKaoData(token) {
-    // SignInRepository.kakaoLoginApi(token).then(
-    //   (value) {
-    //     setState(() {
-    //       user = value;
-    //     });
-    //     print(value.early);
-    //     print(value.nickName);
-    //
-    //     if (value.early == true) {
-    //     } else {}
-    //   },
-    // );
+    SignInRepository.kakaoSignInApi(token).then(
+      (value) {
+        setState(() {
+          user = value!;
+        });
+        print(user.early);
+        if (user.early == true) {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (builder) => const OnBoardingScreen()));
+        }
+      },
+    );
   }
 
   googleLogin() async {
@@ -164,14 +167,18 @@ class _SignInScreenState extends State<SignInScreen> {
     final GoogleSignInAuthentication googleSignInAuthentication =
         await googleSignInAccount!.authentication;
 
-    print("구글 액세스 토큰 ${googleSignInAuthentication.accessToken}");
-    SignInRepository.googleSignInApi(googleSignInAuthentication.accessToken).then(
+    SignInRepository.googleSignInApi(googleSignInAuthentication.accessToken)
+        .then(
       (value) {
         setState(() {
           user = value!;
         });
-        print("초기 로그인 ${value}");
-
+        if (user.early == true) {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (builder) => const OnBoardingScreen()));
+        }
       },
     );
   }

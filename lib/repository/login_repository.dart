@@ -1,5 +1,3 @@
-
-
 import '../data/network/login_api_service.dart';
 import '../model/farmus_user.dart';
 
@@ -9,5 +7,8 @@ class SignInRepository {
     return response;
   }
 
-  static kakaoLoginApi(token) {}
+  static Future<FarmusUser?> kakaoSignInApi(token) async {
+    FarmusUser? response = await LoginApiServices().getKakaoLogin(token);
+    return response;
+  }
 }
