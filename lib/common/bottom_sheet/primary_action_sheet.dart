@@ -5,7 +5,12 @@ import '../theme/farmus_theme_text_style.dart';
 
 class PrimaryActionSheet extends StatelessWidget implements BaseActionSheet {
   const PrimaryActionSheet(
-      {super.key, this.title, this.message, this.actions, this.cancelButton});
+      {super.key,
+      this.title,
+      this.message,
+      this.actions,
+      this.cancelButton,
+      this.messagePadding});
 
   @override
   final String? title;
@@ -15,6 +20,7 @@ class PrimaryActionSheet extends StatelessWidget implements BaseActionSheet {
   final Widget? cancelButton;
   @override
   final String? message;
+  final EdgeInsetsGeometry? messagePadding;
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +32,12 @@ class PrimaryActionSheet extends StatelessWidget implements BaseActionSheet {
             )
           : null,
       message: message != null
-          ? Text(
-              message!,
-              style: FarmusThemeTextStyle.darkMedium16,
+          ? Padding(
+              padding: messagePadding ?? EdgeInsets.zero,
+              child: Text(
+                message!,
+                style: FarmusThemeTextStyle.darkMedium16,
+              ),
             )
           : null,
       actions: actions ?? [],
