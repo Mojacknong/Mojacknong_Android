@@ -1,30 +1,29 @@
+import 'package:farmus/common/theme/farmus_theme_color.dart';
+import 'package:farmus/common/theme/farmus_theme_text_style.dart';
+import 'package:farmus/view_model/farmclub_open/farmclub_open_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-import '../view_model/home/home_vege_add_provider.dart';
-import 'theme/farmus_theme_color.dart';
-import 'theme/farmus_theme_text_style.dart';
+class FarmclubOpenCalendar extends ConsumerStatefulWidget {
+  const FarmclubOpenCalendar({super.key});
 
-class FarmusCalender extends ConsumerStatefulWidget {
-  final DateTime? lastDay;
-  FarmusCalender({super.key, DateTime? lastDay})
-      : lastDay = lastDay ?? DateTime.now();
   @override
-  ConsumerState createState() => _FarmusCalenderState();
+  ConsumerState createState() => _FarmclubOpenCalendarState();
 }
 
-class _FarmusCalenderState extends ConsumerState<FarmusCalender> {
+class _FarmclubOpenCalendarState extends ConsumerState<FarmclubOpenCalendar> {
   DateTime? _selectedDay;
 
   DateTime _focusedDay = DateTime.now();
+  final DateTime _lastDay = DateTime.now().add(const Duration(days: 18262));
 
   @override
   Widget build(BuildContext context) {
-    final notifier = ref.read(homeVegeInfoAddProvider.notifier);
+    final notifier = ref.read(farmclubOpenInfoAddProvider.notifier);
 
-    if (ref.read(homeVegeInfoAddProvider).date != '') {
-      _selectedDay = DateTime.parse(ref.read(homeVegeInfoAddProvider).date);
+    if (ref.read(farmclubOpenInfoAddProvider).date != '') {
+      _selectedDay = DateTime.parse(ref.read(farmclubOpenInfoAddProvider).date);
       _focusedDay = _selectedDay!;
     }
 
@@ -33,7 +32,7 @@ class _FarmusCalenderState extends ConsumerState<FarmusCalender> {
           context: context,
           initialDate: _selectedDay,
           firstDate: DateTime.utc(2020, 10, 16),
-          lastDate: widget.lastDay ?? DateTime.now(),
+          lastDate: _lastDay,
           locale: const Locale('ko', 'KR'),
           initialDatePickerMode: DatePickerMode.year,
           initialEntryMode: DatePickerEntryMode.calendarOnly);
@@ -52,7 +51,7 @@ class _FarmusCalenderState extends ConsumerState<FarmusCalender> {
       child: TableCalendar(
         focusedDay: _focusedDay,
         firstDay: DateTime.utc(2020, 10, 16),
-        lastDay: widget.lastDay ?? DateTime.now(),
+        lastDay: _lastDay,
         locale: 'ko_KR',
         selectedDayPredicate: (day) {
           return isSameDay(_selectedDay, day);
