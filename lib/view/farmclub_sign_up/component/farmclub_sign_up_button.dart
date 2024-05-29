@@ -8,7 +8,6 @@ class FarmclubSignUpButton extends ConsumerWidget {
     super.key,
     required this.onPressed,
   });
-
   final void Function()? onPressed;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
