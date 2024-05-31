@@ -1,5 +1,3 @@
-import 'package:dio/dio.dart';
-import 'package:farmus/view/on_boarding/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -10,23 +8,15 @@ import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 import '../../common/base/bouncing.dart';
 import '../../model/farmus_user.dart';
 import '../../repository/login_repository.dart';
-import '../../res/app_url/app_url.dart';
-import 'app_interceptor.dart';
+import '../on_boarding/on_boarding_screen.dart';
 
 final GoogleSignIn googleSignIn = GoogleSignIn();
 const storage = FlutterSecureStorage();
-
-Dio authDio = Dio(
-  BaseOptions(
-    baseUrl: 'https://${AppUrl.appUrl}',
-  ),
-);
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _SignInScreenState createState() => _SignInScreenState();
 }
 
@@ -37,63 +27,62 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    authDio.interceptors.add(AppInterceptor(authDio));
-
     return Scaffold(
-        body: Stack(
-      children: [
-        PageView.builder(
-          controller: _pageController,
-          itemCount: _pageContents.length,
-          onPageChanged: (int page) {
-            setState(() {});
-          },
-          itemBuilder: (context, index) {
-            if (index == 0) {
-            } else if (index == 1) {
-            } else if (index == 2) {
-            } else if (index == 3) {
-            } else {
-              return Container();
-            }
-            return null;
-          },
-        ),
-        Positioned(
-          left: 0,
-          right: 0,
-          bottom: 120,
-          child: Bouncing(
-            onPress: () {},
-            child: GestureDetector(
-              onTap: () {
-                kakaoLogin();
-              },
-              child: SvgPicture.asset(
-                "assets/image/login_kakao.svg",
+      body: Stack(
+        children: [
+          PageView.builder(
+            controller: _pageController,
+            itemCount: _pageContents.length,
+            onPageChanged: (int page) {
+              setState(() {});
+            },
+            itemBuilder: (context, index) {
+              if (index == 0) {
+              } else if (index == 1) {
+              } else if (index == 2) {
+              } else if (index == 3) {
+              } else {
+                return Container();
+              }
+              return null;
+            },
+          ),
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 120,
+            child: Bouncing(
+              onPress: () {},
+              child: GestureDetector(
+                onTap: () {
+                  kakaoLogin();
+                },
+                child: SvgPicture.asset(
+                  "assets/image/login_kakao.svg",
+                ),
               ),
             ),
           ),
-        ),
-        const SizedBox(height: 10),
-        Positioned(
-          left: 0,
-          right: 0,
-          bottom: 50,
-          child: Bouncing(
-            onPress: () {},
-            child: GestureDetector(
-              onTap: () {
-                googleLogin();
-              },
-              child: SvgPicture.asset(
-                "assets/image/login_google.svg",
+          const SizedBox(height: 10),
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 50,
+            child: Bouncing(
+              onPress: () {},
+              child: GestureDetector(
+                onTap: () {
+                  googleLogin();
+                },
+                child: SvgPicture.asset(
+                  "assets/image/login_google.svg",
+                ),
               ),
             ),
           ),
-        ),
-      ],
-    ));
+        ],
+      ),
+    );
   }
 
   kakaoLogin() async {
@@ -111,12 +100,10 @@ class _SignInScreenState extends State<SignInScreen> {
       } catch (error) {
         print('카카오톡으로 로그인 실패1 $error');
 
-        // 사용자가 카카오톡 설치 후 디바이스 권한 요청 화면에서 로그인을 취소한 경우,
-        // 의도적인 로그인 취소로 보고 카카오계정으로 로그인 시도 없이 로그인 취소로 처리 (예: 뒤로 가기)
         if (error is PlatformException && error.code == 'CANCELED') {
           return;
         }
-        // 카카오톡에 연결된 카카오계정이 없는 경우, 카카오계정으로 로그인
+
         try {
           token = await UserApi.instance.loginWithKakaoAccount();
           print('카카오계정으로 로그인 성공2');
@@ -137,21 +124,27 @@ class _SignInScreenState extends State<SignInScreen> {
     }
   }
 
-  fetchKaKaoData(token) {
+  fetchKaKaoData(String token) {
     SignInRepository.kakaoSignInApi(token).then(
       (value) {
-        setState(() {
-          user = value!;
-        });
-        print(user.early);
-        if (user.early == true) {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (builder) => const OnBoardingScreen()));
+        if (value != null) {
+          setState(() {
+            user = value;
+          });
+          print(user.early);
+          if (user.early == true) {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (builder) => const OnBoardingScreen()));
+          }
+        } else {
+          print('User data is null');
         }
       },
-    );
+    ).catchError((error) {
+      print('Error fetching Kakao data: $error');
+    });
   }
 
   googleLogin() async {
@@ -164,14 +157,18 @@ class _SignInScreenState extends State<SignInScreen> {
     SignInRepository.googleSignInApi(googleSignInAuthentication.accessToken)
         .then(
       (value) {
-        setState(() {
-          user = value!;
-        });
-        if (user.early == true) {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (builder) => const OnBoardingScreen()));
+        if (value != null) {
+          setState(() {
+            user = value;
+          });
+          if (user.early == true) {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (builder) => const OnBoardingScreen()));
+          }
+        } else {
+          print('User data is null');
         }
       },
     );

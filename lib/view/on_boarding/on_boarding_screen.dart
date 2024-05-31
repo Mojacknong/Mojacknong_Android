@@ -1,6 +1,8 @@
 import 'package:farmus/common/button/primary_color_button.dart';
 import 'package:farmus/common/button/white_color_button.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
+import 'package:farmus/data/network/on_boarding_service.dart';
+import 'package:farmus/repository/on_boarding_repository.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_first.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_third.dart';
 import 'package:farmus/view/on_boarding/on_boarding_finish_screen.dart';
@@ -24,6 +26,8 @@ class OnBoardingScreen extends ConsumerWidget {
     final time = ref.watch(onBoardingTimeProvider);
     final level = ref.watch(onBoardingLevelProvider);
     final movePage = ref.read(onBoardingMoveProvider.notifier);
+
+    OnBoardingRepository.postUserProfile();
 
     String nextButtonText = "다음";
     String currentIndex;
