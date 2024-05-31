@@ -35,7 +35,7 @@ dependencies:
   google_sign_in: ^6.1.5
   kakao_flutter_sdk: ^1.6.1
   firebase_core: ^2.18.0
-  firebase_auth: ^4.17.6
+  firebase_auth: ^4.20.0
   flutter_secure_storage: ^9.0.0
   flutter_svg: ^2.0.8
   bouncing_widget: ^2.0.0

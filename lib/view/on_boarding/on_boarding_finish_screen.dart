@@ -36,19 +36,22 @@ class OnBoardingFinishScreen extends ConsumerWidget {
           Padding(
             padding:
                 const EdgeInsets.symmetric(horizontal: 16.0, vertical: 64.0),
-            child: PrimaryColorButton(
-              text: "시작하기",
-              onPressed: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const MainScreen(
-                            selectedIndex: 0,
-                          )),
-                );
-              },
-              enabled: true,
+            child: SizedBox(
+              width: double.infinity,
+              child: PrimaryColorButton(
+                text: "시작하기",
+                onPressed: () {
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const MainScreen(
+                              selectedIndex: 0,
+                            )),
+                  );
+                },
+                enabled: true,
+              ),
             ),
           ),
         ],
