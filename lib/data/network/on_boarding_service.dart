@@ -1,10 +1,11 @@
 import 'dart:io';
 
 import 'package:farmus/data/network/base_api_services.dart';
+import 'package:farmus/model/on_boarding/on_boarding_profile_model.dart';
 import 'package:http/http.dart' as http;
 
 class OnBoardingService {
-  Future<http.Response> postUserProfile() async {
+  Future<http.Response> postUserProfile(OnBoardingProfileModel profile) async {
     String? accessToken = await storage.read(key: "accessToken");
     final url = '/api/user/profile';
 
@@ -14,7 +15,6 @@ class OnBoardingService {
     }
 
     ApiClient apiClient = ApiClient();
-
 
     return await apiClient.post(url, headers: headers);
   }

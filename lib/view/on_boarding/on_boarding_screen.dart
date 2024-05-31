@@ -27,8 +27,6 @@ class OnBoardingScreen extends ConsumerWidget {
     final level = ref.watch(onBoardingLevelProvider);
     final movePage = ref.read(onBoardingMoveProvider.notifier);
 
-    OnBoardingRepository.postUserProfile();
-
     String nextButtonText = "다음";
     String currentIndex;
     bool enabled = false;
@@ -101,6 +99,7 @@ class OnBoardingScreen extends ConsumerWidget {
                       visible: currentPageIndex != "first",
                       child: WhiteColorButton(
                         text: "이전",
+                        fontPadding: 12.0,
                         onPressed: () {
                           switch (currentPageIndex) {
                             case "first":
@@ -120,6 +119,7 @@ class OnBoardingScreen extends ConsumerWidget {
                   Expanded(
                     child: PrimaryColorButton(
                       text: nextButtonText,
+                      fontPadding: 12.0,
                       onPressed: () {
                         switch (currentPageIndex) {
                           case "first":
@@ -129,6 +129,8 @@ class OnBoardingScreen extends ConsumerWidget {
                           case "third":
                             movePage.moveToFourthPage();
                           case "fourth":
+                            OnBoardingRepository.postUserProfile(profile);
+
                             Navigator.pop(context);
                             Navigator.push(
                               context,
