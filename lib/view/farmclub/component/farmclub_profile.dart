@@ -27,7 +27,7 @@ class FarmclubProfile extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '상추는 현실이 되다',
+                '상추는현실이되다',
                 style: FarmusThemeTextStyle.darkSemiBold20,
               ),
               Text(
