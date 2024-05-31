@@ -16,15 +16,9 @@ import 'app_interceptor.dart';
 final GoogleSignIn googleSignIn = GoogleSignIn();
 const storage = FlutterSecureStorage();
 
-Dio dio = Dio(
-  BaseOptions(
-    baseUrl: AppUrl.loginUrl,
-  ),
-);
-
 Dio authDio = Dio(
   BaseOptions(
-    baseUrl: AppUrl.loginUrl,
+    baseUrl: 'https://${AppUrl.appUrl}',
   ),
 );
 
