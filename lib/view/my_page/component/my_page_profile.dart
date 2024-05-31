@@ -27,7 +27,7 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
         setState(() {
           file = value;
           ref
-              .read(onBoardingProfileProvider.notifier)
+              .read(onBoardingProfileSetProvider.notifier)
               .updateProfileImage(value);
         });
       }
@@ -40,7 +40,7 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
         setState(() {
           file = value;
           ref
-              .read(onBoardingProfileProvider.notifier)
+              .read(onBoardingProfileSetProvider.notifier)
               .updateProfileImage(value);
         });
       }
@@ -90,8 +90,8 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
 
   @override
   Widget build(BuildContext context) {
-    file = ref.read(onBoardingProfileProvider).profileImage;
-    final nickname = ref.read(onBoardingProfileProvider).nickname;
+    file = ref.read(onBoardingProfileSetProvider).profileImage;
+    final nickname = ref.read(onBoardingProfileSetProvider).nickname;
     final hasSpecialCharacters = ref.watch(onBoardingSpecialCharactersProvider);
 
     return Column(

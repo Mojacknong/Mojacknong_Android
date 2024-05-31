@@ -29,7 +29,7 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
         setState(() {
           file = value;
           ref
-              .read(onBoardingProfileProvider.notifier)
+              .read(onBoardingProfileSetProvider.notifier)
               .updateProfileImage(value);
         });
       }
@@ -38,8 +38,8 @@ class _OnBoardingFirstState extends ConsumerState<OnBoardingFirst> {
 
   @override
   Widget build(BuildContext context) {
-    file = ref.read(onBoardingProfileProvider).profileImage;
-    final nickname = ref.read(onBoardingProfileProvider).nickname;
+    file = ref.read(onBoardingProfileSetProvider).profileImage;
+    final nickname = ref.read(onBoardingProfileSetProvider).nickname;
     final hasSpecialCharacters = ref.watch(onBoardingSpecialCharactersProvider);
 
     return Column(

@@ -1,11 +1,11 @@
 import 'package:farmus/common/button/primary_color_button.dart';
 import 'package:farmus/common/button/white_color_button.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
-import 'package:farmus/data/network/on_boarding_service.dart';
-import 'package:farmus/repository/on_boarding_repository.dart';
+import 'package:farmus/model/on_boarding/on_boarding_user_profile_model.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_first.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_third.dart';
 import 'package:farmus/view/on_boarding/on_boarding_finish_screen.dart';
+import 'package:farmus/view_model/on_boarding/notifier/on_boarding_user_profile.dart';
 import 'package:farmus/view_model/on_boarding/on_boarding_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -19,13 +19,16 @@ class OnBoardingScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final profile = ref.watch(onBoardingProfileProvider);
+    final profile = ref.watch(onBoardingProfileSetProvider);
     final isSpecial = ref.watch(onBoardingSpecialCharactersProvider);
     final currentPageIndex = ref.watch(onBoardingMoveProvider);
     final motivation = ref.watch(onBoardingMotivationProvider);
     final time = ref.watch(onBoardingTimeProvider);
     final level = ref.watch(onBoardingLevelProvider);
     final movePage = ref.read(onBoardingMoveProvider.notifier);
+
+    final AsyncValue<OnBoardingUserProfileModel> profileModel =
+        ref.watch(onBoardingUserProfileModelProvider);
 
     String nextButtonText = "다음";
     String currentIndex;
@@ -123,20 +126,25 @@ class OnBoardingScreen extends ConsumerWidget {
                       onPressed: () {
                         switch (currentPageIndex) {
                           case "first":
+                            ref
+                                .read(onBoardingUserProfileModelNotifierProvider
+                                    .notifier)
+                                .postUserProfile(OnBoardingUserProfileModel(
+                                    file: profile.profileImage!.path,
+                                    nickName: profile.nickname!));
                             movePage.moveToSecondPage();
                           case "second":
                             movePage.moveToThirdPage();
                           case "third":
                             movePage.moveToFourthPage();
                           case "fourth":
-                            OnBoardingRepository.postUserProfile(profile);
-
                             Navigator.pop(context);
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      const OnBoardingFinishScreen()),
+                                builder: (context) =>
+                                    const OnBoardingFinishScreen(),
+                              ),
                             );
                         }
                       },

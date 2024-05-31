@@ -14,9 +14,9 @@ class OnBoardingNicknameTextInput extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var nowLength = ref.watch(onBoardingProfileProvider).nickname == null
+    var nowLength = ref.watch(onBoardingProfileSetProvider).nickname == null
         ? 0
-        : ref.watch(onBoardingProfileProvider).nickname?.length;
+        : ref.watch(onBoardingProfileSetProvider).nickname?.length;
 
     return PrimaryTextFormField(
         initialValue: initialValue,
@@ -35,7 +35,7 @@ class OnBoardingNicknameTextInput extends ConsumerWidget {
           color: FarmusThemeColor.red,
         ),
         onChanged: (value) {
-          ref.read(onBoardingProfileProvider.notifier).updateNickname(value);
+          ref.read(onBoardingProfileSetProvider.notifier).updateNickname(value);
           ref
               .read(onBoardingSpecialCharactersProvider.notifier)
               .checkForSpecialCharacters(value);
