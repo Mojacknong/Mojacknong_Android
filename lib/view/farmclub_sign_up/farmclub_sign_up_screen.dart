@@ -1,5 +1,4 @@
 import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
-import 'package:farmus/common/bottom_sheet/show_farmus_bottom_sheet.dart';
 import 'package:farmus/common/button/bottom_backgroud_divider_button.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
@@ -80,8 +79,7 @@ class FarmclubSignUpScreen extends ConsumerWidget {
                         SizedBox(height: 12),
                         FarmclubPreparations(
                           supplies: "흙대파, 상토, 재사용 흙, 재배 용기",
-                          howToChoose:
-                              '뿌리가 튼튼하게 달려있어요\n너무 가는 것은 순이 여러 번 나오지 못해요\n너무 굵은 것은 맛이 덜해요',
+                          howToChoose: null,
                           characteristics:
                               '심고 일주일만 기다리면 먹을 수 있어요\n장마철에 키우기 어려워요',
                         ),
@@ -98,9 +96,7 @@ class FarmclubSignUpScreen extends ConsumerWidget {
           ),
           BottomBackgroundDividerButton(
             button: FarmclubSignUpButton(
-              onPressed: () {
-                showFarmclubSignupBottomSheet(context, ref, "팜클럽 가입");
-              },
+              onPressed: () {},
             ),
           ),
         ],

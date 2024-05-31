@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
+import 'package:farmus/view/login/component/login_img_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -38,67 +41,132 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   late FarmusUser user;
   final PageController _pageController = PageController();
-  final List<String> _pageContents = ['Page 1', 'Page 2', 'Page 3', 'Page 4'];
+  final List<String> _pageContents = [
+    'Page 1',
+    'Page 2',
+    'Page 3',
+    'Page 4',
+    'Page 5'
+  ];
+
+  int _currentPage = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _startTimer();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  void _startTimer() {
+    Timer.periodic(const Duration(seconds: 2), (Timer timer) {
+      if (_currentPage < _pageContents.length - 1) {
+        _currentPage++;
+      } else {
+        _currentPage = 0;
+        _pageController.jumpToPage(0);
+      }
+      _pageController.animateToPage(
+        _currentPage,
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeInOut,
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     authDio.interceptors.add(AppInterceptor(authDio));
 
     return Scaffold(
-        body: Stack(
-      children: [
-        PageView.builder(
-          controller: _pageController,
-          itemCount: _pageContents.length,
-          onPageChanged: (int page) {
-            setState(() {});
-          },
-          itemBuilder: (context, index) {
-            if (index == 0) {
-            } else if (index == 1) {
-            } else if (index == 2) {
-            } else if (index == 3) {
-            } else {
-              return Container();
-            }
-            return null;
-          },
-        ),
-        Positioned(
-          left: 0,
-          right: 0,
-          bottom: 120,
-          child: Bouncing(
-            onPress: () {},
-            child: GestureDetector(
-              onTap: () {
-                kakaoLogin();
-              },
-              child: SvgPicture.asset(
-                "assets/image/login_kakao.svg",
+      body: Stack(
+        children: [
+          PageView.builder(
+            controller: _pageController,
+            itemCount: _pageContents.length,
+            onPageChanged: (int page) {
+              setState(() {});
+            },
+            itemBuilder: (context, index) {
+              return getPageContent(index);
+            },
+          ),
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 120,
+            child: Bouncing(
+              onPress: () {},
+              child: GestureDetector(
+                onTap: () {
+                  kakaoLogin();
+                },
+                child: SvgPicture.asset(
+                  "assets/image/login_kakao.svg",
+                ),
               ),
             ),
           ),
-        ),
-        const SizedBox(height: 10),
-        Positioned(
-          left: 0,
-          right: 0,
-          bottom: 50,
-          child: Bouncing(
-            onPress: () {},
-            child: GestureDetector(
-              onTap: () {
-                googleLogin();
-              },
-              child: SvgPicture.asset(
-                "assets/image/login_google.svg",
+          const SizedBox(height: 10),
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 50,
+            child: Bouncing(
+              onPress: () {},
+              child: GestureDetector(
+                onTap: () {
+                  googleLogin();
+                },
+                child: SvgPicture.asset(
+                  "assets/image/login_google.svg",
+                ),
               ),
             ),
           ),
-        ),
-      ],
-    ));
+        ],
+      ),
+    );
+  }
+
+  Widget getPageContent(int index) {
+    switch (index) {
+      case 0:
+        return const LoginImgWidget(
+          text: "나에게 맞는 팜클럽을 가입해요",
+          imgPath: "assets/image/img_login_first.png",
+        );
+      case 1:
+        return const LoginImgWidget(
+          horizontalPadding: 58,
+          text: "주기별 미션을 인증하고",
+          imgPath: "assets/image/img_login_second.png",
+        );
+      case 2:
+        return const LoginImgWidget(
+          horizontalPadding: 58,
+          text: "주기별 미션을 인증하고",
+          imgPath: "assets/image/img_login_third.png",
+        );
+      case 3:
+        return const LoginImgWidget(
+          horizontalPadding: 58,
+          text: "주기별 미션을 인증하고",
+          imgPath: "assets/image/img_login_fourth.png",
+        );
+      case 4:
+        return const LoginImgWidget(
+          text: "수확의 기쁨을 함께 나누어요",
+          imgPath: "assets/image/img_login_fifth.png",
+        );
+      default:
+        return Container();
+    }
   }
 
   kakaoLogin() async {

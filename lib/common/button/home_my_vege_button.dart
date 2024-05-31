@@ -24,8 +24,10 @@ class HomeMyVegeButton extends ConsumerWidget {
       text: text,
       enabled: true,
       textColor: enabled ? FarmusThemeColor.green1 : FarmusThemeColor.gray3,
-      backgroundColor: enabled ? FarmusThemeColor.greenLight3 : FarmusThemeColor.background,
-      borderColor: enabled ? FarmusThemeColor.green1 : FarmusThemeColor.background,
+      backgroundColor:
+          enabled ? FarmusThemeColor.greenLight3 : FarmusThemeColor.background,
+      borderColor:
+          enabled ? FarmusThemeColor.green1 : FarmusThemeColor.background,
       borderRadius: 25.0,
       onPressed: onPressed,
       fontPadding: 0,
