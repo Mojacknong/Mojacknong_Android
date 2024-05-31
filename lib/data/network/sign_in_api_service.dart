@@ -11,7 +11,7 @@ import '../../res/app_url/app_url.dart';
 final GoogleSignIn googleSignIn = GoogleSignIn();
 const storage = FlutterSecureStorage();
 
-class LoginApiServices {
+class SignInApiServices {
   Future<FarmusUser?> getGoogleLogin(token) async {
     try {
       FarmusUser farmusUser = FarmusUser(refreshToken: '', accessToken: '');
@@ -23,7 +23,10 @@ class LoginApiServices {
 
       var response = await http.post(
         url,
-        headers: {HttpHeaders.authorizationHeader: 'Bearer $token'},
+        headers: {
+          'Content-type': 'application/json',
+          HttpHeaders.authorizationHeader: 'Bearer $token'
+        },
       );
 
       if (response.statusCode == 200) {

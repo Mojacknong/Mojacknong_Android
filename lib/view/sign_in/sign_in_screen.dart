@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -7,7 +9,8 @@ import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 
 import '../../common/base/bouncing.dart';
 import '../../model/farmus_user.dart';
-import '../../repository/login_repository.dart';
+import '../../repository/sign_in_repository.dart';
+import 'component/sign_in_img_widget.dart';
 import '../on_boarding/on_boarding_screen.dart';
 
 final GoogleSignIn googleSignIn = GoogleSignIn();
@@ -23,7 +26,42 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   late FarmusUser user;
   final PageController _pageController = PageController();
-  final List<String> _pageContents = ['Page 1', 'Page 2', 'Page 3', 'Page 4'];
+  final List<String> _pageContents = [
+    'Page 1',
+    'Page 2',
+    'Page 3',
+    'Page 4',
+    'Page 5'
+  ];
+  int _currentPage = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _startTimer();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  void _startTimer() {
+    Timer.periodic(const Duration(seconds: 2), (Timer timer) {
+      if (_currentPage < _pageContents.length - 1) {
+        _currentPage++;
+      } else {
+        _currentPage = 0;
+        _pageController.jumpToPage(0);
+      }
+      _pageController.animateToPage(
+        _currentPage,
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeInOut,
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,14 +75,7 @@ class _SignInScreenState extends State<SignInScreen> {
               setState(() {});
             },
             itemBuilder: (context, index) {
-              if (index == 0) {
-              } else if (index == 1) {
-              } else if (index == 2) {
-              } else if (index == 3) {
-              } else {
-                return Container();
-              }
-              return null;
+              return getPageContent(index);
             },
           ),
           Positioned(
@@ -85,41 +116,67 @@ class _SignInScreenState extends State<SignInScreen> {
     );
   }
 
-  kakaoLogin() async {
-    print("카카오 로그인 버튼 클릭");
-    print(await KakaoSdk.origin);
+  Widget getPageContent(int index) {
+    switch (index) {
+      case 0:
+        return const SignInImgWidget(
+          text: "나에게 맞는 팜클럽을 가입해요",
+          imgPath: "assets/image/img_login_first.png",
+        );
+      case 1:
+        return const SignInImgWidget(
+          horizontalPadding: 58,
+          text: "주기별 미션을 인증하고",
+          imgPath: "assets/image/img_login_second.png",
+        );
+      case 2:
+        return const SignInImgWidget(
+          horizontalPadding: 58,
+          text: "주기별 미션을 인증하고",
+          imgPath: "assets/image/img_login_third.png",
+        );
+      case 3:
+        return const SignInImgWidget(
+          horizontalPadding: 58,
+          text: "주기별 미션을 인증하고",
+          imgPath: "assets/image/img_login_fourth.png",
+        );
+      case 4:
+        return const SignInImgWidget(
+          text: "수확의 기쁨을 함께 나누어요",
+          imgPath: "assets/image/img_login_fifth.png",
+        );
+      default:
+        return Container();
+    }
+  }
 
+  kakaoLogin() async {
     bool isInstalled = await isKakaoTalkInstalled();
     OAuthToken? token;
 
     if (isInstalled) {
       try {
         token = await UserApi.instance.loginWithKakaoTalk();
-        print('카카오톡으로 로그인 성공1');
         fetchKaKaoData(token.accessToken);
       } catch (error) {
-        print('카카오톡으로 로그인 실패1 $error');
-
         if (error is PlatformException && error.code == 'CANCELED') {
           return;
         }
 
         try {
           token = await UserApi.instance.loginWithKakaoAccount();
-          print('카카오계정으로 로그인 성공2');
           fetchKaKaoData(token.accessToken);
         } catch (error) {
-          print('카카오계정으로 로그인 실패2 $error');
+          return;
         }
       }
     } else {
       try {
         token = await UserApi.instance.loginWithKakaoAccount();
-        print('카카오계정으로 로그인 성공3');
-        print(token.accessToken);
         fetchKaKaoData(token.accessToken);
       } catch (error) {
-        print('카카오계정으로 로그인 실패3 $error');
+        return;
       }
     }
   }
@@ -131,20 +188,17 @@ class _SignInScreenState extends State<SignInScreen> {
           setState(() {
             user = value;
           });
-          print(user.early);
           if (user.early == true) {
             Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (builder) => const OnBoardingScreen()));
+              context,
+              MaterialPageRoute(
+                builder: (builder) => const OnBoardingScreen(),
+              ),
+            );
           }
-        } else {
-          print('User data is null');
         }
       },
-    ).catchError((error) {
-      print('Error fetching Kakao data: $error');
-    });
+    ).catchError((error) {});
   }
 
   googleLogin() async {
@@ -163,12 +217,12 @@ class _SignInScreenState extends State<SignInScreen> {
           });
           if (user.early == true) {
             Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (builder) => const OnBoardingScreen()));
+              context,
+              MaterialPageRoute(
+                builder: (builder) => const OnBoardingScreen(),
+              ),
+            );
           }
-        } else {
-          print('User data is null');
         }
       },
     );

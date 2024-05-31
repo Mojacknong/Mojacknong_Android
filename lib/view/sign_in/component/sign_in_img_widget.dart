@@ -1,8 +1,8 @@
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:flutter/material.dart';
 
-class LoginImgWidget extends StatelessWidget {
-  const LoginImgWidget({
+class SignInImgWidget extends StatelessWidget {
+  const SignInImgWidget({
     Key? key,
     required this.imgPath,
     required this.text,
