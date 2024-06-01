@@ -1,15 +1,16 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:image_picker/image_picker.dart';
+class OnBoardingUserProfileModel {
+  final String? file;
+  final String nickName;
 
-part 'on_boarding_user_profile_model.freezed.dart';
-part 'on_boarding_user_profile_model.g.dart';
+  OnBoardingUserProfileModel({
+    required this.file,
+    required this.nickName,
+  });
 
-@freezed
-class OnBoardingUserProfileModel with _$OnBoardingUserProfileModel {
-  factory OnBoardingUserProfileModel({
-    required String? file,
-    required String nickName,
-  }) = _OnBoardingUserProfileModel;
-
-  factory OnBoardingUserProfileModel.fromJson(Map<String, dynamic> json) => _$OnBoardingUserProfileModelFromJson(json);
+  factory OnBoardingUserProfileModel.fromJson(Map<String, dynamic> json) {
+    return OnBoardingUserProfileModel(
+      file: json['file'] ?? '',
+      nickName: json['nickName'] ?? '',
+    );
+  }
 }

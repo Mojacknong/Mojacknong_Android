@@ -9,4 +9,10 @@ class OnBoardingRepository {
         await OnBoardingService().postUserProfile(profile);
     return response;
   }
+
+  static Future<http.Response> postMotivation(List<String> motivation) async {
+    http.Response? response =
+        await OnBoardingService().postMotivation(motivation);
+    return response;
+  }
 }

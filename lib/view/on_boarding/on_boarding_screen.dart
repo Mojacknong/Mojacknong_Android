@@ -5,6 +5,7 @@ import 'package:farmus/model/on_boarding/on_boarding_user_profile_model.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_first.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_third.dart';
 import 'package:farmus/view/on_boarding/on_boarding_finish_screen.dart';
+import 'package:farmus/view_model/on_boarding/notifier/on_boarding_motivation_notifier.dart';
 import 'package:farmus/view_model/on_boarding/notifier/on_boarding_user_profile.dart';
 import 'package:farmus/view_model/on_boarding/on_boarding_provider.dart';
 import 'package:flutter/material.dart';
@@ -134,7 +135,14 @@ class OnBoardingScreen extends ConsumerWidget {
                                     nickName: profile.nickname!));
                             movePage.moveToSecondPage();
                           case "second":
-                            movePage.moveToThirdPage();
+                            ref
+                                .read(onBoardingMotivationNotifierProvider
+                                    .notifier)
+                                .postMotivation([
+                              '',
+                              '',
+                            ]);
+                             movePage.moveToThirdPage();
                           case "third":
                             movePage.moveToFourthPage();
                           case "fourth":

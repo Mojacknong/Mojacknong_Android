@@ -20,17 +20,48 @@ class OnBoardingService {
     }
 
     if (profile.file != null) {
-      final bytes = File(profile.file!).readAsBytesSync();
+      List<int> bytes = File(profile.file!).readAsBytesSync();
       base64Image = base64Encode(bytes);
     }
 
+    final body = jsonEncode({
+      'file': profile.file,
+      'nickName': profile.nickName,
+    });
+
     ApiClient apiClient = ApiClient();
 
-    return await apiClient.post(url,
-        headers: headers,
-        body: jsonEncode({
-          'file': base64Image,
-          'nickName': profile.nickName,
-        }));
+    return await apiClient.post(
+      url,
+      headers: headers,
+      body: body,
+    );
+  }
+
+  Future<http.Response> postMotivation(List<String> motivation) async {
+    String? accessToken = await storage.read(key: "accessToken");
+    const url = '/api/user/on-boarding/motivation';
+
+    Map<String, String> headers = {
+      HttpHeaders.contentTypeHeader: 'application/json',
+    };
+    if (accessToken != null) {
+      headers[HttpHeaders.authorizationHeader] = 'Bearer $accessToken';
+    }
+
+    final body = jsonEncode(motivation);
+    ApiClient apiClient = ApiClient();
+
+    final response = await apiClient.post(
+      url,
+      headers: headers,
+      body: body,
+    );
+
+    if (response.statusCode == 200) {
+      return response;
+    } else {
+      throw Exception('Failed to post motivation');
+    }
   }
 }

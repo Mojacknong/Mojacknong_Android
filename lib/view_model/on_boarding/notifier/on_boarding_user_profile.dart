@@ -7,7 +7,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'on_boarding_user_profile.g.dart';
 
 @riverpod
-class OnBoardingUserProfileModelNotifier extends _$OnBoardingUserProfileModelNotifier {
+class OnBoardingUserProfileModelNotifier
+    extends _$OnBoardingUserProfileModelNotifier {
   @override
   Future<OnBoardingUserProfileModel> build() async {
     return OnBoardingUserProfileModel(file: null, nickName: 'nickName');
@@ -15,9 +16,8 @@ class OnBoardingUserProfileModelNotifier extends _$OnBoardingUserProfileModelNot
 
   Future<void> postUserProfile(OnBoardingUserProfileModel profile) async {
     final response = await OnBoardingRepository.postUserProfile(profile);
-
-    OnBoardingUserProfileModel onBoardingProfile = (jsonDecode(response.body));
-
+    final jsonMap = jsonDecode(response.body);
+    final onBoardingProfile = OnBoardingUserProfileModel.fromJson(jsonMap);
     state = AsyncData(onBoardingProfile);
   }
 }
