@@ -6,7 +6,7 @@ class OnBoardingRepository {
   static Future<http.Response> postUserProfile(
       OnBoardingUserProfileModel profile) async {
     http.Response? response =
-        await OnBoardingService().postUserProfile(profile);
+        await OnBoardingService().postUserProfile(profile.file.path, profile.nickName);
     return response;
   }
 

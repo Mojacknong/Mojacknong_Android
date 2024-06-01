@@ -1,5 +1,7 @@
+import 'dart:io';
+
 class OnBoardingUserProfileModel {
-  final String? file;
+  final File file;
   final String nickName;
 
   OnBoardingUserProfileModel({

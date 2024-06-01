@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:farmus/common/button/primary_color_button.dart';
 import 'package:farmus/common/button/white_color_button.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
@@ -131,7 +133,7 @@ class OnBoardingScreen extends ConsumerWidget {
                                 .read(onBoardingUserProfileModelNotifierProvider
                                     .notifier)
                                 .postUserProfile(OnBoardingUserProfileModel(
-                                    file: profile.profileImage!.path,
+                                    file: File(profile.profileImage!.path),
                                     nickName: profile.nickname!));
                             movePage.moveToSecondPage();
                           case "second":

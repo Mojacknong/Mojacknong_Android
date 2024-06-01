@@ -52,4 +52,5 @@ class MotivationNotifier extends StateNotifier<OnBoardingMotivationModel> {
       state = state.copyWith(buttonText: "건너뛰기");
     }
   }
+
 }

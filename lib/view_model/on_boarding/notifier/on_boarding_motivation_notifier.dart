@@ -14,8 +14,6 @@ class OnBoardingMotivationNotifier extends _$OnBoardingMotivationNotifier {
 
   Future<void> postMotivation(List<String> motivation) async {
     final response = await OnBoardingRepository.postMotivation(motivation);
-    final jsonMap = jsonDecode(response.body) as Map<String, dynamic>;
-    final jsonList = List<String>.from(jsonMap['motivation']);
-    state = AsyncData(jsonList);
+    print(response.body);
   }
 }

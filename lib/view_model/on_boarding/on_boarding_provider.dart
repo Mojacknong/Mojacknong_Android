@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:farmus/model/on_boarding/on_boarding_level_model.dart';
 import 'package:farmus/model/on_boarding/on_boarding_motivation_model.dart';
@@ -55,5 +56,5 @@ final onBoardingLevelProvider =
 @riverpod
 Future<OnBoardingUserProfileModel> onBoardingUserProfileModel(
     OnBoardingUserProfileModelRef ref) async {
-  return OnBoardingUserProfileModel(file: null, nickName: 'nickName');
+  return OnBoardingUserProfileModel(file: File(''), nickName: 'nickName');
 }
