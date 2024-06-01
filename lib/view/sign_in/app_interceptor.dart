@@ -43,7 +43,7 @@ class AppInterceptor extends InterceptorsWrapper {
       print("토큰 $newToken");
 
       Response response = await dio.get(
-        "${AppUrl.loginUrl}/api/user/reissue-token",
+        "${AppUrl.appUrl}/api/user/reissue-token",
         options: Options(
           headers: {'Authorization': 'Bearer $token'},
         ),
