@@ -30,12 +30,11 @@ class OnBoardingScreen extends ConsumerWidget {
     final level = ref.watch(onBoardingLevelProvider);
     final movePage = ref.read(onBoardingMoveProvider.notifier);
 
-    final AsyncValue<OnBoardingUserProfileModel> profileModel =
-        ref.watch(onBoardingUserProfileModelProvider);
-
     String nextButtonText = "다음";
     String currentIndex;
     bool enabled = false;
+
+    List<String> motivationList = [];
 
     switch (currentPageIndex) {
       case "first":
@@ -137,14 +136,20 @@ class OnBoardingScreen extends ConsumerWidget {
                                     nickName: profile.nickname!));
                             movePage.moveToSecondPage();
                           case "second":
+                            if (motivation.isFirstSelect) {
+                              motivationList.add('알뜰살뜰');
+                            }
+                            if (motivation.isSecondSelect) {
+                              motivationList.add('건강과 웰빙');
+                            }
+                            if (motivation.isThirdSelect) {
+                              motivationList.add('심리적 안정');
+                            }
                             ref
                                 .read(onBoardingMotivationNotifierProvider
                                     .notifier)
-                                .postMotivation([
-                              '',
-                              '',
-                            ]);
-                             movePage.moveToThirdPage();
+                                .postMotivation(motivationList);
+                            movePage.moveToThirdPage();
                           case "third":
                             movePage.moveToFourthPage();
                           case "fourth":
