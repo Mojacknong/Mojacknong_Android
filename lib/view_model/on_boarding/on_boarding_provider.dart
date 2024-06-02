@@ -4,14 +4,12 @@ import 'dart:io';
 import 'package:farmus/model/on_boarding/on_boarding_level_model.dart';
 import 'package:farmus/model/on_boarding/on_boarding_motivation_model.dart';
 import 'package:farmus/model/on_boarding/on_boarding_profile_model.dart';
-import 'package:farmus/model/on_boarding/on_boarding_time_model.dart';
 import 'package:farmus/model/on_boarding/on_boarding_user_profile_model.dart';
 import 'package:farmus/view_model/on_boarding/notifier/level_notifier.dart';
 import 'package:farmus/view_model/on_boarding/notifier/motivation_notifier.dart';
 import 'package:farmus/view_model/on_boarding/notifier/move_notifier.dart';
 import 'package:farmus/view_model/on_boarding/notifier/profile_notifier.dart';
 import 'package:farmus/view_model/on_boarding/notifier/special_character_notifier.dart';
-import 'package:farmus/view_model/on_boarding/notifier/time_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -39,12 +37,6 @@ final onBoardingMoveProvider =
 final onBoardingMotivationProvider =
     StateNotifierProvider<MotivationNotifier, OnBoardingMotivationModel>((ref) {
   return MotivationNotifier();
-});
-
-// 온보딩 채소 추천 로직
-final onBoardingTimeProvider =
-    StateNotifierProvider<TimeNotifier, OnBoardingTimeModel>((ref) {
-  return TimeNotifier();
 });
 
 // 온보딩 난이도 로직

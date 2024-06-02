@@ -15,4 +15,10 @@ class OnBoardingRepository {
         await OnBoardingService().postMotivation(motivation);
     return response;
   }
+
+  static Future<http.Response> postLevel(int time, String skill) async {
+    http.Response? response =
+        await OnBoardingService().postLevel(time, skill);
+    return response;
+  }
 }

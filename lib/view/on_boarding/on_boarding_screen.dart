@@ -8,6 +8,7 @@ import 'package:farmus/view/on_boarding/component/on_boarding_first.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_third.dart';
 import 'package:farmus/view/on_boarding/on_boarding_finish_screen.dart';
 import 'package:farmus/view_model/on_boarding/notifier/on_boarding_motivation_notifier.dart';
+import 'package:farmus/view_model/on_boarding/notifier/on_boarding_time_notifier.dart';
 import 'package:farmus/view_model/on_boarding/notifier/on_boarding_user_profile.dart';
 import 'package:farmus/view_model/on_boarding/on_boarding_provider.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class OnBoardingScreen extends ConsumerWidget {
     final isSpecial = ref.watch(onBoardingSpecialCharactersProvider);
     final currentPageIndex = ref.watch(onBoardingMoveProvider);
     final motivation = ref.watch(onBoardingMotivationProvider);
-    final time = ref.watch(onBoardingTimeProvider);
+    final time = ref.watch(onBoardingTimeNotifierProvider.notifier);
     final level = ref.watch(onBoardingLevelProvider);
     final movePage = ref.read(onBoardingMoveProvider.notifier);
 
@@ -48,7 +49,8 @@ class OnBoardingScreen extends ConsumerWidget {
         break;
       case "third":
         currentIndex = "3";
-        enabled = time.isTimeComplete;
+        enabled =
+            ref.watch(onBoardingTimeNotifierProvider).value!.isTimeComplete;
         break;
       case "fourth":
         currentIndex = "4";
@@ -131,9 +133,11 @@ class OnBoardingScreen extends ConsumerWidget {
                             ref
                                 .read(onBoardingUserProfileModelNotifierProvider
                                     .notifier)
-                                .postUserProfile(OnBoardingUserProfileModel(
-                                    file: File(profile.profileImage!.path),
-                                    nickName: profile.nickname!));
+                                .postUserProfile(
+                                  OnBoardingUserProfileModel(
+                                      file: File(profile.profileImage!.path),
+                                      nickName: profile.nickname!),
+                                );
                             movePage.moveToSecondPage();
                           case "second":
                             if (motivation.isFirstSelect) {
@@ -151,6 +155,9 @@ class OnBoardingScreen extends ConsumerWidget {
                                 .postMotivation(motivationList);
                             movePage.moveToThirdPage();
                           case "third":
+                            ref
+                                .read(onBoardingTimeNotifierProvider.notifier)
+                                .postLevel(-1, 'skill');
                             movePage.moveToFourthPage();
                           case "fourth":
                             Navigator.pop(context);

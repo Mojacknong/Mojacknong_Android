@@ -12,16 +12,16 @@ class OnBoardingTimeModel {
   });
 
   OnBoardingTimeModel copyWith({
-    bool? isFirstSelect,
-    bool? isSecondSelect,
-    bool? isThirdSelect,
-    bool? isTimeComplete,
+    required bool isFirstSelect,
+    required bool isSecondSelect,
+    required bool isThirdSelect,
+    required bool isTimeComplete,
   }) {
     return OnBoardingTimeModel(
-      isFirstSelect: isFirstSelect ?? this.isFirstSelect,
-      isSecondSelect: isSecondSelect ?? this.isSecondSelect,
-      isThirdSelect: isThirdSelect ?? this.isThirdSelect,
-      isTimeComplete: isTimeComplete ?? this.isTimeComplete,
+      isFirstSelect: isFirstSelect,
+      isSecondSelect: isSecondSelect,
+      isThirdSelect: isThirdSelect,
+      isTimeComplete: isTimeComplete,
     );
   }
 }

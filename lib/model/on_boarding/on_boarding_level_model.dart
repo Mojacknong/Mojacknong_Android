@@ -4,14 +4,15 @@ class OnBoardingLevelModel {
   final bool isThirdSelect;
   final bool isFourthSelect;
   final bool isLevelComplete;
+  final int time;
 
-  OnBoardingLevelModel({
-    required this.isFirstSelect,
-    required this.isSecondSelect,
-    required this.isThirdSelect,
-    required this.isFourthSelect,
-    required this.isLevelComplete,
-  });
+  OnBoardingLevelModel(
+      {required this.isFirstSelect,
+      required this.isSecondSelect,
+      required this.isThirdSelect,
+      required this.isFourthSelect,
+      required this.isLevelComplete,
+      required this.time});
 
   OnBoardingLevelModel copyWith({
     bool? isFirstSelect,
@@ -19,6 +20,7 @@ class OnBoardingLevelModel {
     bool? isThirdSelect,
     bool? isFourthSelect,
     bool? isLevelComplete,
+    int? time,
   }) {
     return OnBoardingLevelModel(
       isFirstSelect: isFirstSelect ?? this.isFirstSelect,
@@ -26,6 +28,7 @@ class OnBoardingLevelModel {
       isThirdSelect: isThirdSelect ?? this.isThirdSelect,
       isFourthSelect: isFourthSelect ?? this.isFourthSelect,
       isLevelComplete: isLevelComplete ?? this.isLevelComplete,
+      time: time ?? this.time,
     );
   }
 }

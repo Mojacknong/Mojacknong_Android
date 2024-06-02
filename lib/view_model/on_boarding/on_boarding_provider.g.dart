@@ -7,7 +7,7 @@ part of 'on_boarding_provider.dart';
 // **************************************************************************
 
 String _$onBoardingUserProfileModelHash() =>
-    r'56137b461469a27753df1c57ba8933f664c5ea5a';
+    r'86ac06efc3de4318a63f8df0ae3e7715e51909aa';
 
 /// See also [onBoardingUserProfileModel].
 @ProviderFor(onBoardingUserProfileModel)

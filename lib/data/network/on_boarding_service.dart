@@ -7,7 +7,6 @@ import 'package:http/http.dart' as http;
 class OnBoardingService {
   Future<http.Response> postUserProfile(
       File file, Map<String, dynamic> requestDto) async {
-    String? accessToken = await storage.read(key: "accessToken");
     const url = '/api/user/profile';
 
     ApiClient apiClient = ApiClient();
@@ -20,7 +19,6 @@ class OnBoardingService {
       file,
     );
 
-
     if (response.statusCode == 200) {
       return response;
     } else {
@@ -29,15 +27,11 @@ class OnBoardingService {
   }
 
   Future<http.Response> postMotivation(List<String> motivation) async {
-    String? accessToken = await storage.read(key: "accessToken");
     const url = '/api/user/on-boarding/motivation';
 
     Map<String, String> headers = {
       HttpHeaders.contentTypeHeader: 'application/json',
     };
-    if (accessToken != null) {
-      headers[HttpHeaders.authorizationHeader] = 'Bearer $accessToken';
-    }
 
     final body = jsonEncode({'motivation': motivation});
     ApiClient apiClient = ApiClient();
@@ -52,6 +46,29 @@ class OnBoardingService {
       return response;
     } else {
       throw Exception('Failed to post motivation');
+    }
+  }
+
+  Future<http.Response> postLevel(int time, String skill) async {
+    const url = '/api/user/on-boarding/level';
+
+    Map<String, String> headers = {
+      HttpHeaders.contentTypeHeader: 'application/json',
+    };
+
+    final body = jsonEncode({'time': time, 'skill': skill});
+    ApiClient apiClient = ApiClient();
+
+    final response = await apiClient.post(
+      url,
+      headers: headers,
+      body: body,
+    );
+
+    if (response.statusCode == 200) {
+      return response;
+    } else {
+      throw Exception('Failed to post level');
     }
   }
 }

@@ -10,6 +10,7 @@ class LevelNotifier extends StateNotifier<OnBoardingLevelModel> {
             isThirdSelect: false,
             isFourthSelect: false,
             isLevelComplete: false,
+            time: 0,
           ),
         );
 
