@@ -14,7 +14,7 @@ class OnBoardingSecond extends ConsumerWidget {
     final motivation = ref.watch(onBoardingMotivationNotifierProvider);
     final selectBox = ref.read(onBoardingMotivationNotifierProvider.notifier);
 
-    if (motivation != null) {
+    if (motivation.value != null) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

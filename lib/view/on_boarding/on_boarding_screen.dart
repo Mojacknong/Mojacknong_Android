@@ -44,7 +44,7 @@ class OnBoardingScreen extends ConsumerWidget {
       case "second":
         currentIndex = "2";
         enabled = true;
-        nextButtonText = motivation.value!.buttonText;
+        nextButtonText = '다음';
         break;
       case "third":
         currentIndex = "3";

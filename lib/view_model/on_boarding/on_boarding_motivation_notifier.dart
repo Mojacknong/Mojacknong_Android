@@ -54,6 +54,6 @@ class OnBoardingMotivationNotifier extends _$OnBoardingMotivationNotifier {
 
   Future<void> postMotivation(List<String> motivation) async {
     final response = await UserRepository.postMotivation(motivation);
-    print(response.body);
+    print(response);
   }
 }

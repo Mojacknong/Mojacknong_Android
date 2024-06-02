@@ -16,6 +16,6 @@ class OnBoardingUserProfileModelNotifier
 
   Future<void> postUserProfile(OnBoardingUserProfileModel profile) async {
     final response = await UserRepository.postUserProfile(profile);
-    print(response.body);
+    print(response);
   }
 }

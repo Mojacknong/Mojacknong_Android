@@ -147,6 +147,6 @@ class OnBoardingLevelNotifier extends _$OnBoardingLevelNotifier {
     }
 
     final response = await UserRepository.postLevel(time, skill);
-    print(response.body);
+    print(response);
   }
 }
