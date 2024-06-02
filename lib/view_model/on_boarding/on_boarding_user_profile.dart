@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:farmus/model/on_boarding/on_boarding_user_profile_model.dart';
-import 'package:farmus/repository/on_boarding_repository.dart';
+import 'package:farmus/repository/user_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'on_boarding_user_profile.g.dart';
@@ -15,7 +15,7 @@ class OnBoardingUserProfileModelNotifier
   }
 
   Future<void> postUserProfile(OnBoardingUserProfileModel profile) async {
-    final response = await OnBoardingRepository.postUserProfile(profile);
+    final response = await UserRepository.postUserProfile(profile);
     print(response.body);
   }
 }

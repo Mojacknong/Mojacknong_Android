@@ -1,9 +1,10 @@
 import 'package:farmus/common/select_box.dart';
 import 'package:farmus/view/on_boarding/component/main_sub_title.dart';
 import 'package:farmus/view/on_boarding/component/on_board_select_box.dart';
-import 'package:farmus/view_model/on_boarding/notifier/on_boarding_level_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../view_model/on_boarding/on_boarding_level_notifier.dart';
 
 class OnBoardingThird extends ConsumerWidget {
   const OnBoardingThird({super.key});

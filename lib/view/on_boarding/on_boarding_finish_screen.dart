@@ -2,6 +2,7 @@ import 'package:farmus/common/app_bar/primary_app_bar.dart';
 import 'package:farmus/common/button/primary_color_button.dart';
 import 'package:farmus/view/main/main_screen.dart';
 import 'package:farmus/view/on_boarding/component/main_sub_title.dart';
+import 'package:farmus/view_model/on_boarding/on_boarding_finish_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -10,9 +11,10 @@ class OnBoardingFinishScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.read(onBoardingFinishNotifierProvider.notifier).userInfo();
     return Scaffold(
-      appBar: const PrimaryAppBar(
-        leading: null,
+      appBar: PrimaryAppBar(
+        leading: Container(),
         title: null,
       ),
       body: Column(
@@ -40,14 +42,16 @@ class OnBoardingFinishScreen extends ConsumerWidget {
               width: double.infinity,
               child: PrimaryColorButton(
                 text: "시작하기",
+                fontPadding: 16.0,
                 onPressed: () {
                   Navigator.pop(context);
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const MainScreen(
-                              selectedIndex: 0,
-                            )),
+                      builder: (context) => const MainScreen(
+                        selectedIndex: 0,
+                      ),
+                    ),
                   );
                 },
                 enabled: true,

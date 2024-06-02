@@ -73,4 +73,17 @@ class ApiClient {
     var response = await request.send();
     return await http.Response.fromStream(response);
   }
+
+  Future<http.Response> patch(String endpoint,
+      {Map<String, String>? headers}) async {
+    String? accessToken = await storage.read(key: "accessToken");
+    headers ??= {};
+
+    if (accessToken != null) {
+      headers["Authorization"] = "Bearer $accessToken";
+    }
+
+    final url = Uri.parse('$baseUrl$endpoint');
+    return await client.patch(url, headers: headers);
+  }
 }

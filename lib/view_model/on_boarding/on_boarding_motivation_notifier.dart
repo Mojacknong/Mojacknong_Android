@@ -1,5 +1,5 @@
 import 'package:farmus/model/on_boarding/on_boarding_motivation_model.dart';
-import 'package:farmus/repository/on_boarding_repository.dart';
+import 'package:farmus/repository/user_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'on_boarding_motivation_notifier.g.dart';
@@ -53,7 +53,7 @@ class OnBoardingMotivationNotifier extends _$OnBoardingMotivationNotifier {
   }
 
   Future<void> postMotivation(List<String> motivation) async {
-    final response = await OnBoardingRepository.postMotivation(motivation);
+    final response = await UserRepository.postMotivation(motivation);
     print(response.body);
   }
 }

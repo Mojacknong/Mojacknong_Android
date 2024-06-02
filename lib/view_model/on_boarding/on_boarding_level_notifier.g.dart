@@ -7,7 +7,7 @@ part of 'on_boarding_level_notifier.dart';
 // **************************************************************************
 
 String _$onBoardingLevelNotifierHash() =>
-    r'b917a0ae8dc611929b30d9d47cf21fed43857875';
+    r'1033daf40c6518b59071244c7a3952c6449b5f4f';
 
 /// See also [OnBoardingLevelNotifier].
 @ProviderFor(OnBoardingLevelNotifier)

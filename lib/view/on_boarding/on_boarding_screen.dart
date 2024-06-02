@@ -7,14 +7,14 @@ import 'package:farmus/model/on_boarding/on_boarding_user_profile_model.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_first.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_third.dart';
 import 'package:farmus/view/on_boarding/on_boarding_finish_screen.dart';
-import 'package:farmus/view_model/on_boarding/notifier/on_boarding_level_notifier.dart';
-import 'package:farmus/view_model/on_boarding/notifier/on_boarding_motivation_notifier.dart';
-import 'package:farmus/view_model/on_boarding/notifier/on_boarding_user_profile.dart';
+import 'package:farmus/view_model/on_boarding//on_boarding_motivation_notifier.dart';
+import 'package:farmus/view_model/on_boarding/on_boarding_user_profile.dart';
 import 'package:farmus/view_model/on_boarding/on_boarding_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../common/app_bar/page_index_app_bar.dart';
+import '../../view_model/on_boarding/on_boarding_level_notifier.dart';
 import 'component/on_boarding_fourth.dart';
 import 'component/on_boarding_second.dart';
 
@@ -56,6 +56,7 @@ class OnBoardingScreen extends ConsumerWidget {
       case "fourth":
         currentIndex = "4";
         enabled = level.value!.isLevelComplete;
+        nextButtonText = '완료';
         break;
       default:
         currentIndex = "0";

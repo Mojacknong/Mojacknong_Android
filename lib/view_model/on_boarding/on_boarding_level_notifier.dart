@@ -1,7 +1,7 @@
-import 'package:farmus/repository/on_boarding_repository.dart';
+import 'package:farmus/repository/user_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../model/on_boarding/on_boarding_level_model.dart';
+import '../../model/on_boarding/on_boarding_level_model.dart';
 
 part 'on_boarding_level_notifier.g.dart';
 
@@ -146,7 +146,7 @@ class OnBoardingLevelNotifier extends _$OnBoardingLevelNotifier {
       skill = '홈파밍 고수';
     }
 
-    final response = await OnBoardingRepository.postLevel(time, skill);
+    final response = await UserRepository.postLevel(time, skill);
     print(response.body);
   }
 }

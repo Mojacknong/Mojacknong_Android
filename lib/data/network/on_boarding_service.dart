@@ -5,8 +5,7 @@ import 'package:farmus/data/network/base_api_services.dart';
 import 'package:http/http.dart' as http;
 
 class OnBoardingService {
-  Future<http.Response> postUserProfile(
-      File file, String nickname) async {
+  Future<http.Response> postUserProfile(File file, String nickname) async {
     const url = '/api/user/profile';
 
     ApiClient apiClient = ApiClient();
@@ -67,6 +66,37 @@ class OnBoardingService {
       return response;
     } else {
       throw Exception('Failed to post level');
+    }
+  }
+
+  Future<http.Response> onBoardingComplete() async {
+    const url = '/api/user/on-boarding/complete';
+
+    Map<String, String> headers = {
+      HttpHeaders.contentTypeHeader: 'application/json',
+    };
+    ApiClient apiClient = ApiClient();
+
+    final response = await apiClient.patch(url, headers: headers);
+
+    if (response.statusCode == 200) {
+      return response;
+    } else {
+      throw Exception('Failed to OnBoarding Complete');
+    }
+  }
+
+  Future<http.Response> userInfo() async {
+    const url = '/api/user';
+
+    ApiClient apiClient = ApiClient();
+
+    final response = await apiClient.get(url);
+
+    if (response.statusCode == 200) {
+      return response;
+    } else {
+      throw Exception('Failed to User Info');
     }
   }
 }
