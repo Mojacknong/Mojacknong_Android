@@ -1,10 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:farmus/model/on_boarding/on_boarding_level_model.dart';
 import 'package:farmus/model/on_boarding/on_boarding_profile_model.dart';
 import 'package:farmus/model/on_boarding/on_boarding_user_profile_model.dart';
-import 'package:farmus/view_model/on_boarding/notifier/level_notifier.dart';
 import 'package:farmus/view_model/on_boarding/notifier/move_notifier.dart';
 import 'package:farmus/view_model/on_boarding/notifier/profile_notifier.dart';
 import 'package:farmus/view_model/on_boarding/notifier/special_character_notifier.dart';
@@ -15,13 +13,14 @@ part 'on_boarding_provider.g.dart';
 
 // 온보딩 프로필 설정 로직
 final onBoardingProfileSetProvider =
-    StateNotifierProvider<ProfileNotifier, OnBoardingProfileModel>((ref) {
+    StateNotifierProvider.autoDispose<ProfileNotifier, OnBoardingProfileModel>(
+        (ref) {
   return ProfileNotifier();
 });
 
 // 특수문자 로직
 final onBoardingSpecialCharactersProvider =
-    StateNotifierProvider<SpecialCharacterNotifier, bool>((ref) {
+    StateNotifierProvider.autoDispose<SpecialCharacterNotifier, bool>((ref) {
   return SpecialCharacterNotifier();
 });
 
@@ -29,12 +28,6 @@ final onBoardingSpecialCharactersProvider =
 final onBoardingMoveProvider =
     StateNotifierProvider.autoDispose<MoveNotifier, String>((ref) {
   return MoveNotifier();
-});
-
-// 온보딩 난이도 로직
-final onBoardingLevelProvider =
-    StateNotifierProvider<LevelNotifier, OnBoardingLevelModel>((ref) {
-  return LevelNotifier();
 });
 
 @riverpod

@@ -1,7 +1,7 @@
 import 'package:farmus/common/select_box.dart';
 import 'package:farmus/view/on_boarding/component/main_sub_title.dart';
 import 'package:farmus/view/on_boarding/component/on_board_select_box.dart';
-import 'package:farmus/view_model/on_boarding/notifier/on_boarding_time_notifier.dart';
+import 'package:farmus/view_model/on_boarding/notifier/on_boarding_level_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -10,8 +10,10 @@ class OnBoardingThird extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final timeNotifier = ref.watch(onBoardingTimeNotifierProvider);
+    final timeNotifier = ref.watch(onBoardingLevelNotifierProvider);
     final time = timeNotifier.value;
+    final selectBox = ref.read(onBoardingLevelNotifierProvider.notifier);
+
     if (time != null) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -34,11 +36,9 @@ class OnBoardingThird extends ConsumerWidget {
                         vertical: 8.0, horizontal: 16.0),
                     child: SelectBox(
                       selectBox: () {
-                        ref
-                            .read(onBoardingTimeNotifierProvider.notifier)
-                            .selectFirstBox();
+                        selectBox.selectManyTimeBox();
                       },
-                      enabled: time.isFirstSelect,
+                      enabled: time.isManyTimeSelect,
                       selectBoxContent: const OnBoardSelectBox(
                         title: "많은 시간을 쓸 수 있어요",
                         content: "하루 30분 이상",
@@ -50,11 +50,9 @@ class OnBoardingThird extends ConsumerWidget {
                         vertical: 8.0, horizontal: 16.0),
                     child: SelectBox(
                       selectBox: () {
-                        ref
-                            .read(onBoardingTimeNotifierProvider.notifier)
-                            .selectSecondBox();
+                        selectBox.selectMediumTimeBox();
                       },
-                      enabled: time.isSecondSelect,
+                      enabled: time.isMediumTimeSelect,
                       selectBoxContent: const OnBoardSelectBox(
                         title: "아침 저녁으로 할 수 있어요",
                         content: "하루 10~30분",
@@ -66,11 +64,9 @@ class OnBoardingThird extends ConsumerWidget {
                         vertical: 8.0, horizontal: 16.0),
                     child: SelectBox(
                       selectBox: () {
-                        ref
-                            .read(onBoardingTimeNotifierProvider.notifier)
-                            .selectThirdBox();
+                        selectBox.selectSmallTimeBox();
                       },
-                      enabled: time.isThirdSelect,
+                      enabled: time.isSmallTimeSelect,
                       selectBoxContent: const OnBoardSelectBox(
                         title: "바빠서 할 시간이 별로 없어요",
                         content: "하루 10분 미만",

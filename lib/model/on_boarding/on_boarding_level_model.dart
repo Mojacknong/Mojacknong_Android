@@ -1,34 +1,46 @@
 class OnBoardingLevelModel {
-  final bool isFirstSelect;
-  final bool isSecondSelect;
-  final bool isThirdSelect;
-  final bool isFourthSelect;
+  final bool isManyTimeSelect;
+  final bool isMediumTimeSelect;
+  final bool isSmallTimeSelect;
+  final bool isTimeComplete;
+  final bool isFirstLevelSelect;
+  final bool isLowLevelSelect;
+  final bool isMediumLevelSelect;
+  final bool isHighLevelSelect;
   final bool isLevelComplete;
-  final int time;
 
   OnBoardingLevelModel(
-      {required this.isFirstSelect,
-      required this.isSecondSelect,
-      required this.isThirdSelect,
-      required this.isFourthSelect,
-      required this.isLevelComplete,
-      required this.time});
+      {required this.isManyTimeSelect,
+      required this.isMediumTimeSelect,
+      required this.isSmallTimeSelect,
+      required this.isTimeComplete,
+      required this.isFirstLevelSelect,
+      required this.isLowLevelSelect,
+      required this.isMediumLevelSelect,
+      required this.isHighLevelSelect,
+      required this.isLevelComplete});
 
   OnBoardingLevelModel copyWith({
-    bool? isFirstSelect,
-    bool? isSecondSelect,
-    bool? isThirdSelect,
-    bool? isFourthSelect,
-    bool? isLevelComplete,
-    int? time,
+    required bool isManyTimeSelect,
+    required bool isMediumTimeSelect,
+    required bool isSmallTimeSelect,
+    required bool isTimeComplete,
+    required bool isFirstLevelSelect,
+    required bool isLowLevelSelect,
+    required bool isMediumSelect,
+    required bool isHighLevelSelect,
+    required bool isLevelComplete,
   }) {
     return OnBoardingLevelModel(
-      isFirstSelect: isFirstSelect ?? this.isFirstSelect,
-      isSecondSelect: isSecondSelect ?? this.isSecondSelect,
-      isThirdSelect: isThirdSelect ?? this.isThirdSelect,
-      isFourthSelect: isFourthSelect ?? this.isFourthSelect,
-      isLevelComplete: isLevelComplete ?? this.isLevelComplete,
-      time: time ?? this.time,
+      isManyTimeSelect: isManyTimeSelect,
+      isMediumTimeSelect: isMediumTimeSelect,
+      isSmallTimeSelect: isSmallTimeSelect,
+      isTimeComplete: isTimeComplete,
+      isFirstLevelSelect: isFirstLevelSelect,
+      isLowLevelSelect: isLowLevelSelect,
+      isMediumLevelSelect: isLowLevelSelect,
+      isHighLevelSelect: isHighLevelSelect,
+      isLevelComplete: isLevelComplete,
     );
   }
 }
