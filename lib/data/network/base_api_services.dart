@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -41,7 +40,7 @@ class ApiClient {
   }
 
   Future<http.Response> postMultipart(
-      String endpoint, Map<String, String> fields, File file) async {
+      String endpoint, String nickname, File file) async {
     String? accessToken = await storage.read(key: "accessToken");
     final url = Uri.parse('$baseUrl$endpoint');
 
@@ -51,19 +50,15 @@ class ApiClient {
       request.headers[HttpHeaders.authorizationHeader] = 'Bearer $accessToken';
     }
 
-    fields.forEach((key, value) {
-      request.fields[key] = value;
-    });
-
     final mimeTypeData = lookupMimeType(file.path)?.split('/') ??
         ['application', 'octet-stream'];
     if (mimeTypeData[0] == 'application' && mimeTypeData[1] == 'octet-stream') {
       return http.Response('Unsupported file type', 400);
     }
 
-    // request.headers['Content-Type'] = 'application/json';
-    //
-    // request.fields['requestDto'] = jsonEncode(fields);
+    request.headers['Content-Type'] = 'application/json';
+
+    request.fields['nickname'] = nickname;
 
     request.files.add(
       http.MultipartFile(

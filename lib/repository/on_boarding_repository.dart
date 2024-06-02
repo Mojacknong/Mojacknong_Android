@@ -6,7 +6,7 @@ class OnBoardingRepository {
   static Future<http.Response> postUserProfile(
       OnBoardingUserProfileModel profile) async {
     http.Response? response = await OnBoardingService()
-        .postUserProfile(profile.file, {'nickname': profile.nickName});
+        .postUserProfile(profile.file, profile.nickName);
     return response;
   }
 
@@ -17,8 +17,7 @@ class OnBoardingRepository {
   }
 
   static Future<http.Response> postLevel(int time, String skill) async {
-    http.Response? response =
-        await OnBoardingService().postLevel(time, skill);
+    http.Response? response = await OnBoardingService().postLevel(time, skill);
     return response;
   }
 }

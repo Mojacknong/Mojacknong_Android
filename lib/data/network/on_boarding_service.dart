@@ -6,16 +6,14 @@ import 'package:http/http.dart' as http;
 
 class OnBoardingService {
   Future<http.Response> postUserProfile(
-      File file, Map<String, dynamic> requestDto) async {
+      File file, String nickname) async {
     const url = '/api/user/profile';
 
     ApiClient apiClient = ApiClient();
 
     final response = await apiClient.postMultipart(
       url,
-      {
-        'requestDto': jsonEncode(requestDto),
-      },
+      nickname,
       file,
     );
 

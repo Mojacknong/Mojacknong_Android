@@ -27,7 +27,6 @@ class OnBoardingScreen extends ConsumerWidget {
     final isSpecial = ref.watch(onBoardingSpecialCharactersProvider);
     final currentPageIndex = ref.watch(onBoardingMoveProvider);
     final motivation = ref.watch(onBoardingMotivationProvider);
-    final time = ref.watch(onBoardingTimeNotifierProvider.notifier);
     final level = ref.watch(onBoardingLevelProvider);
     final movePage = ref.read(onBoardingMoveProvider.notifier);
 
@@ -50,7 +49,9 @@ class OnBoardingScreen extends ConsumerWidget {
       case "third":
         currentIndex = "3";
         enabled =
-            ref.watch(onBoardingTimeNotifierProvider).value!.isTimeComplete;
+            ref.watch(onBoardingTimeNotifierProvider).value?.isTimeComplete ??
+                false;
+        false;
         break;
       case "fourth":
         currentIndex = "4";
