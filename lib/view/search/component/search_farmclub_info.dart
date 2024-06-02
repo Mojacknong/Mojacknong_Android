@@ -1,48 +1,80 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
+import 'package:farmus/model/search/search_farmclub_info_model.dart';
 import 'package:farmus/view/farmclub_sign_up/farmclub_sign_up_screen.dart';
-import 'package:farmus/view/search/component/search_farmclub_info_widget.dart';
+import 'package:farmus/view_model/search_farmclub/search_farmclub_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'search_farmclub_info_widget.dart';
 
 class SearchFarmclubInfo extends ConsumerWidget {
   const SearchFarmclubInfo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Column(
-      children: <Widget>[
-        GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const FarmclubSignUpScreen(
-                        day: "1",
-                        num: "5",
-                        total: "8",
-                      )),
-            );
-          },
-          child: const Padding(
-            padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
-            child: SearchFarmclubInfoWidget(
-              vege: "상추",
-              level: "중급",
-              period: "3",
-              nickname: "상추는 현실이 된다",
-              num: "3",
-              total: "8",
-            ),
-          ),
-        ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
-          child: Divider(
-            height: 1,
-            color: FarmusThemeColor.gray5,
-          ),
-        ),
-      ],
+    final AsyncValue<List<SearchFarmclubInfoModel>?> farmclubs =
+        ref.watch(searchFarmclubProvider);
+
+    return farmclubs.when(
+      data: (data) {
+        if (data != null && data.isNotEmpty) {
+          return ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: data.length,
+            itemBuilder: (context, index) {
+              final farmclub = data[index];
+              return Column(
+                children: <Widget>[
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const FarmclubSignUpScreen(
+                                  day: "1",
+                                  num: "5",
+                                  total: "8",
+                                )),
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 16.0, horizontal: 8.0),
+                      child: SearchFarmclubInfoWidget(
+                        name: farmclub.name,
+                        veggieName: farmclub.veggieName,
+                        veggieImage: farmclub.veggieImage,
+                        difficulty: farmclub.difficulty,
+                        startedAt: farmclub.startedAt,
+                        maxUser: farmclub.maxUser,
+                        curUser: farmclub.curUser,
+                      ),
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    child: Divider(
+                      height: 1,
+                      color: FarmusThemeColor.gray5,
+                    ),
+                  ),
+                ],
+              );
+            },
+          );
+        } else {
+          return const Center(child: Text('No farmclubs found'));
+        }
+      },
+      loading: () => const Center(
+          child: CircularProgressIndicator(
+        color: FarmusThemeColor.dark,
+      )),
+      error: (error, stack) {
+        print('Error occurred: $error');
+        return const Center(child: Text('Failed to load data..'));
+      },
     );
   }
 }
