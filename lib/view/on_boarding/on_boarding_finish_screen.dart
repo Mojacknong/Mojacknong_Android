@@ -13,6 +13,7 @@ class OnBoardingFinishScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final nickName =
         ref.watch(onBoardingFinishNotifierProvider.notifier).fetchNickName();
+    ref.read(onBoardingFinishNotifierProvider.notifier).onBoardingComplete();
     return FutureBuilder<String>(
       future: nickName,
       builder: (context, snapshot) {

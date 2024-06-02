@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:farmus/repository/user_repository.dart';
+import 'package:farmus/view/main/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -196,6 +197,14 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
             );
           }
+          if (user.early == false){
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (builder) => const MainScreen(selectedIndex: 0),
+              ),
+            );
+          }
         }
       },
     ).catchError((error) {});
@@ -219,6 +228,14 @@ class _SignInScreenState extends State<SignInScreen> {
               context,
               MaterialPageRoute(
                 builder: (builder) => const OnBoardingScreen(),
+              ),
+            );
+          }
+          if (user.early == false){
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (builder) => const MainScreen(selectedIndex: 0),
               ),
             );
           }
