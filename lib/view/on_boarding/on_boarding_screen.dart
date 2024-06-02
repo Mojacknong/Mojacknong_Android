@@ -26,7 +26,7 @@ class OnBoardingScreen extends ConsumerWidget {
     final profile = ref.watch(onBoardingProfileSetProvider);
     final isSpecial = ref.watch(onBoardingSpecialCharactersProvider);
     final currentPageIndex = ref.watch(onBoardingMoveProvider);
-    final motivation = ref.watch(onBoardingMotivationProvider);
+    final motivation = ref.watch(onBoardingMotivationNotifierProvider);
     final level = ref.watch(onBoardingLevelProvider);
     final movePage = ref.read(onBoardingMoveProvider.notifier);
 
@@ -44,7 +44,7 @@ class OnBoardingScreen extends ConsumerWidget {
       case "second":
         currentIndex = "2";
         enabled = true;
-        nextButtonText = motivation.buttonText;
+        nextButtonText = motivation.value!.buttonText;
         break;
       case "third":
         currentIndex = "3";
@@ -141,13 +141,13 @@ class OnBoardingScreen extends ConsumerWidget {
                                 );
                             movePage.moveToSecondPage();
                           case "second":
-                            if (motivation.isFirstSelect) {
+                            if (motivation.value!.isFirstSelect) {
                               motivationList.add('알뜰살뜰');
                             }
-                            if (motivation.isSecondSelect) {
+                            if (motivation.value!.isSecondSelect) {
                               motivationList.add('건강과 웰빙');
                             }
-                            if (motivation.isThirdSelect) {
+                            if (motivation.value!.isThirdSelect) {
                               motivationList.add('심리적 안정');
                             }
                             ref

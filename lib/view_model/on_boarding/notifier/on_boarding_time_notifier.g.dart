@@ -7,7 +7,7 @@ part of 'on_boarding_time_notifier.dart';
 // **************************************************************************
 
 String _$onBoardingTimeNotifierHash() =>
-    r'b3f8f261989634d876a4d2c2c90b560d2c089d0c';
+    r'0c912f3822b401d5e3fb39ee0458f6408e1b9586';
 
 /// See also [OnBoardingTimeNotifier].
 @ProviderFor(OnBoardingTimeNotifier)
