@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:farmus/repository/user_repository.dart';
+import 'package:farmus/view/main/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -9,9 +11,8 @@ import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 
 import '../../common/base/bouncing.dart';
 import '../../model/farmus_user.dart';
-import '../../repository/sign_in_repository.dart';
-import 'component/sign_in_img_widget.dart';
 import '../on_boarding/on_boarding_screen.dart';
+import 'component/sign_in_img_widget.dart';
 
 final GoogleSignIn googleSignIn = GoogleSignIn();
 const storage = FlutterSecureStorage();
@@ -182,7 +183,7 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   fetchKaKaoData(String token) {
-    SignInRepository.kakaoSignInApi(token).then(
+    UserRepository.kakaoSignInApi(token).then(
       (value) {
         if (value != null) {
           setState(() {
@@ -193,6 +194,14 @@ class _SignInScreenState extends State<SignInScreen> {
               context,
               MaterialPageRoute(
                 builder: (builder) => const OnBoardingScreen(),
+              ),
+            );
+          }
+          if (user.early == false){
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (builder) => const MainScreen(selectedIndex: 0),
               ),
             );
           }
@@ -208,8 +217,7 @@ class _SignInScreenState extends State<SignInScreen> {
     final GoogleSignInAuthentication googleSignInAuthentication =
         await googleSignInAccount!.authentication;
 
-    SignInRepository.googleSignInApi(googleSignInAuthentication.accessToken)
-        .then(
+    UserRepository.googleSignInApi(googleSignInAuthentication.accessToken).then(
       (value) {
         if (value != null) {
           setState(() {
@@ -220,6 +228,14 @@ class _SignInScreenState extends State<SignInScreen> {
               context,
               MaterialPageRoute(
                 builder: (builder) => const OnBoardingScreen(),
+              ),
+            );
+          }
+          if (user.early == false){
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (builder) => const MainScreen(selectedIndex: 0),
               ),
             );
           }

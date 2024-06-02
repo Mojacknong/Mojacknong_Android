@@ -1,8 +1,8 @@
 class OnBoardingMotivationModel {
-  final String buttonText;
-  final bool isFirstSelect;
-  final bool isSecondSelect;
-  final bool isThirdSelect;
+  String buttonText;
+  bool isFirstSelect;
+  bool isSecondSelect;
+  bool isThirdSelect;
 
   OnBoardingMotivationModel({
     required this.buttonText,

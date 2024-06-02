@@ -32,10 +32,12 @@ class SignInApiServices {
       if (response.statusCode == 200) {
         var jsonResponse =
             convert.jsonDecode(response.body) as Map<String, dynamic>;
+        farmusUser.accessToken = jsonResponse['data']['accessToken'];
+        farmusUser.refreshToken = jsonResponse['data']['refreshToken'];
+        farmusUser.early = jsonResponse['data']['early'];
         await storage.write(key: "accessToken", value: farmusUser.accessToken);
         await storage.write(
             key: "refreshToken", value: farmusUser.refreshToken);
-        farmusUser.early = jsonResponse['data']['early'];
         return farmusUser;
       }
     } catch (error) {

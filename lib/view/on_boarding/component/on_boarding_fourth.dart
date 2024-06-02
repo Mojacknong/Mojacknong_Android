@@ -1,22 +1,23 @@
 import 'package:farmus/common/select_box.dart';
 import 'package:farmus/view/on_boarding/component/main_sub_title.dart';
 import 'package:farmus/view/on_boarding/component/on_board_select_box.dart';
-import 'package:farmus/view_model/on_boarding/on_boarding_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../view_model/on_boarding/on_boarding_level_notifier.dart';
 
 class OnBoardingFourth extends ConsumerWidget {
   const OnBoardingFourth({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final level = ref.watch(onBoardingLevelProvider);
-    final isFirstSelect = level.isFirstSelect;
-    final isSecondSelect = level.isSecondSelect;
-    final isThirdSelect = level.isThirdSelect;
-    final isFourthSelect = level.isFourthSelect;
-    final selectBox = ref.read(onBoardingLevelProvider.notifier);
+    final level = ref.watch(onBoardingLevelNotifierProvider);
+    final isFirstSelect = level.value!.isFirstLevelSelect;
+    final isSecondSelect = level.value!.isLowLevelSelect;
+    final isThirdSelect = level.value!.isMediumLevelSelect;
+    final isFourthSelect = level.value!.isHighLevelSelect;
+    final selectBox = ref.read(onBoardingLevelNotifierProvider.notifier);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -39,7 +40,7 @@ class OnBoardingFourth extends ConsumerWidget {
                       vertical: 8.0, horizontal: 16.0),
                   child: SelectBox(
                     selectBox: () {
-                      selectBox.selectFirstBox();
+                      selectBox.selectFirstLevelBox();
                     },
                     enabled: isFirstSelect,
                     selectBoxContent: const OnBoardSelectBox(
@@ -53,7 +54,7 @@ class OnBoardingFourth extends ConsumerWidget {
                       vertical: 8.0, horizontal: 16.0),
                   child: SelectBox(
                     selectBox: () {
-                      selectBox.selectSecondBox();
+                      selectBox.selectLowLevelBox();
                     },
                     enabled: isSecondSelect,
                     selectBoxContent: const OnBoardSelectBox(
@@ -67,7 +68,7 @@ class OnBoardingFourth extends ConsumerWidget {
                       vertical: 8.0, horizontal: 16.0),
                   child: SelectBox(
                     selectBox: () {
-                      selectBox.selectThirdBox();
+                      selectBox.selectMediumLevelBox();
                     },
                     enabled: isThirdSelect,
                     selectBoxContent: const OnBoardSelectBox(
@@ -81,7 +82,7 @@ class OnBoardingFourth extends ConsumerWidget {
                       vertical: 8.0, horizontal: 16.0),
                   child: SelectBox(
                     selectBox: () {
-                      selectBox.selectFourthBox();
+                      selectBox.selectHighLevelBox();
                     },
                     enabled: isFourthSelect,
                     selectBoxContent: const OnBoardSelectBox(

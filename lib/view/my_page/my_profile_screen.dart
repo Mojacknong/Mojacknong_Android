@@ -11,7 +11,7 @@ class MyProfileScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final profile = ref.watch(onBoardingProfileProvider);
+    final profile = ref.watch(onBoardingProfileSetProvider);
     final isSpecial = ref.watch(onBoardingSpecialCharactersProvider);
 
     String nextButtonText = "수정완료";
