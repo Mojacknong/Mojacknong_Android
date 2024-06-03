@@ -15,7 +15,6 @@ class SearchVegeInfo extends ConsumerWidget {
   final String day;
   final String total;
   final String num;
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
@@ -23,11 +22,12 @@ class SearchVegeInfo extends ConsumerWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => const FarmclubSignUpScreen(
-                    day: "1",
-                    num: "5",
-                    total: "8",
-                  )),
+            builder: (context) => const FarmclubSignUpScreen(
+              num: "3",
+              total: "8",
+              day: "2024-06-03",
+            ),
+          ),
         );
       },
       child: SizedBox(

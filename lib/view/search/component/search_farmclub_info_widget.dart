@@ -35,7 +35,7 @@ class SearchFarmclubInfoWidget extends ConsumerWidget {
         levelColor = FarmusThemeColor.blue;
         difficultyKorean = "초급";
         break;
-      case "MEDIUM":
+      case "NORMAL":
         levelColor = FarmusThemeColor.yellow;
         difficultyKorean = "중급";
 

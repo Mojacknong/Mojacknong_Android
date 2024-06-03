@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class SearchDifficultyNotifier extends StateNotifier<Map<String, bool>> {
   SearchDifficultyNotifier()
       : super({
-          '초급': false,
-          '중급': false,
-          '고급': false,
+          'EASY': false,
+          'NORMAL': false,
+          'HARD': false,
         });
 
   void toggleLevel(String level) {
@@ -16,5 +16,16 @@ class SearchDifficultyNotifier extends StateNotifier<Map<String, bool>> {
         else
           entry.key: entry.value,
     };
+  }
+
+  List<String> getFilteredDifficulties() {
+    final selectedDifficulties =
+        state.entries.where((entry) => entry.value).map((e) => e.key).toList();
+
+    if (selectedDifficulties.isEmpty) {
+      return state.keys.toList();
+    }
+
+    return selectedDifficulties;
   }
 }

@@ -19,36 +19,48 @@ class _SearchDifficultyBtnState extends ConsumerState<SearchDifficultyBtn> {
     Color levelColor1 = FarmusThemeColor.gray5;
     Color levelColor2 = FarmusThemeColor.gray5;
     Widget image = Container();
-    final searchDifficultyState = ref.watch(searchDifficultyProvider);
+    final searchDifficultyState = ref.watch(searchDifficultyBtnProvider);
     final isPressed = searchDifficultyState[widget.level]!;
+    String difficultyKorean = '';
 
     switch (widget.level) {
-      case "초급":
+      case "EASY":
         levelColor1 =
             isPressed ? FarmusThemeColor.blue1 : FarmusThemeColor.gray5;
         levelColor2 =
             isPressed ? FarmusThemeColor.blue2 : FarmusThemeColor.gray5;
         image = SvgPicture.asset('assets/image/ic_xmark_blue.svg');
+        difficultyKorean = "초급";
         break;
-      case "중급":
+      case "NORMAL":
         levelColor1 =
             isPressed ? FarmusThemeColor.orange1 : FarmusThemeColor.gray5;
         levelColor2 =
             isPressed ? FarmusThemeColor.orange2 : FarmusThemeColor.gray5;
         image = SvgPicture.asset('assets/image/ic_xmark_orange.svg');
+        difficultyKorean = "중급";
         break;
-      case "고급":
+      case "HARD":
         levelColor1 =
             isPressed ? FarmusThemeColor.red1 : FarmusThemeColor.gray5;
         levelColor2 =
             isPressed ? FarmusThemeColor.red2 : FarmusThemeColor.gray5;
         image = SvgPicture.asset('assets/image/ic_xmark_red.svg');
+        difficultyKorean = "고급";
         break;
     }
 
     return GestureDetector(
       onTap: () {
-        ref.read(searchDifficultyProvider.notifier).toggleLevel(widget.level);
+        ref
+            .read(searchDifficultyBtnProvider.notifier)
+            .toggleLevel(widget.level);
+        final filteredDifficulties = ref
+            .read(searchDifficultyBtnProvider.notifier)
+            .getFilteredDifficulties();
+        print(filteredDifficulties);
+
+        // ref.read(searchFarmclubDiffProvider(filteredDifficulties));
       },
       child: Container(
         decoration: BoxDecoration(
@@ -63,7 +75,7 @@ class _SearchDifficultyBtnState extends ConsumerState<SearchDifficultyBtn> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text(
-              widget.level,
+              difficultyKorean,
               style: TextStyle(
                 color: isPressed ? levelColor2 : FarmusThemeColor.gray3,
               ),

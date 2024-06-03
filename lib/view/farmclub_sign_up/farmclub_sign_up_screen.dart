@@ -45,7 +45,7 @@ class FarmclubSignUpScreen extends ConsumerWidget {
                           farmclubName: "상추는현실이되다"),
                       info: {
                         '채소': '상추',
-                        '시작': '+$day일 (2024.02.12)',
+                        '시작': day,
                         '인원': '$num/$total명',
                       },
                       bottomWidget: Container(
