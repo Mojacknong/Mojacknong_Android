@@ -1,3 +1,5 @@
+import 'dart:convert' as convert;
+
 import 'package:farmus/model/my_vege/my_vege_model.dart';
 import 'package:farmus/repository/my_veggie_garden_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -8,10 +10,16 @@ part 'my_veggie_list_notifier.g.dart';
 class MyVeggieListNotifier extends _$MyVeggieListNotifier {
   @override
   List<MyVegeModel> build() {
-    return [MyVegeModel(vegeName: '', vegeType: '', nowDay: '', startDay: ''),];
+    return [
+      MyVegeModel(vegeName: '', vegeType: '', nowDay: '', startDay: ''),
+    ];
   }
-  Future<void> myVeggieList() async {
+
+  Future<List<dynamic>> myVeggieList() async {
     final response = await MyVeggieGardenRepository.myVeggieList();
-    print(response);
+    var jsonResponse = convert.jsonDecode(response) as Map<String, dynamic>;
+    print(jsonResponse['data']);
+
+    return jsonResponse['data'] ?? [];
   }
 }
