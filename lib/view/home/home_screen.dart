@@ -3,13 +3,13 @@ import 'package:farmus/view/home/component/home_my_vege_list.dart';
 import 'package:farmus/view/home/component/home_sub_title.dart';
 import 'package:farmus/view/home/component/home_to_do.dart';
 import 'package:farmus/view/home/component/home_vege_to_do.dart';
-import 'package:farmus/view_model/home/recommend_veggie_info_notifier.dart';
+import 'package:farmus/view_model/veggie_info/recommend_veggie_info_notifier.dart';
 import 'package:farmus/view_model/my_vege/notifier/my_veggie_list_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../common/app_bar/home_app_bar.dart';
-import '../../model/home/recommend_veggie_model.dart';
+import '../../model/veggie_info/recommend_veggie_model.dart';
 import '../../view_model/home/home_provider.dart';
 import 'component/home_my_vege.dart';
 import 'component/home_vege_diary.dart';

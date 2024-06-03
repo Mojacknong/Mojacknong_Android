@@ -1,4 +1,4 @@
-import 'package:farmus/model/home/recommend_veggie_model.dart';
+import 'package:farmus/model/veggie_info/recommend_veggie_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';

@@ -7,7 +7,7 @@ part of 'recommend_veggie_info_notifier.dart';
 // **************************************************************************
 
 String _$recommendVeggieModelHash() =>
-    r'723a8452c2a2ad2abe42421a681c1edd6fb67d21';
+    r'aca2b0ac78ce0ac1d18cf5d713ff40d71a6335b9';
 
 /// See also [recommendVeggieModel].
 @ProviderFor(recommendVeggieModel)

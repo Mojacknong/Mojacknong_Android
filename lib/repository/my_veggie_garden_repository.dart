@@ -5,9 +5,4 @@ class MyVeggieGardenRepository {
     String? response = await MyVeggieService().myVeggieList();
     return response;
   }
-
-  static Future<String> recommendVeggieInfo() async {
-    String? response = await MyVeggieService().recommendVeggieInfo();
-    return response;
-  }
 }
