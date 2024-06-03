@@ -6,23 +6,23 @@ part of 'recommend_veggie_info_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$recommendVeggieInfoNotifierHash() =>
-    r'efb82c0c0729c5fb0e076eb2629bb7dbfbd8a054';
+String _$recommendVeggieModelHash() =>
+    r'723a8452c2a2ad2abe42421a681c1edd6fb67d21';
 
-/// See also [RecommendVeggieInfoNotifier].
-@ProviderFor(RecommendVeggieInfoNotifier)
-final recommendVeggieInfoNotifierProvider = AutoDisposeAsyncNotifierProvider<
-    RecommendVeggieInfoNotifier, RecommendVeggieModel>.internal(
-  RecommendVeggieInfoNotifier.new,
-  name: r'recommendVeggieInfoNotifierProvider',
+/// See also [recommendVeggieModel].
+@ProviderFor(recommendVeggieModel)
+final recommendVeggieModelProvider =
+    AutoDisposeFutureProvider<List<RecommendVeggieModel>>.internal(
+  recommendVeggieModel,
+  name: r'recommendVeggieModelProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$recommendVeggieInfoNotifierHash,
+      : _$recommendVeggieModelHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$RecommendVeggieInfoNotifier
-    = AutoDisposeAsyncNotifier<RecommendVeggieModel>;
+typedef RecommendVeggieModelRef
+    = AutoDisposeFutureProviderRef<List<RecommendVeggieModel>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
