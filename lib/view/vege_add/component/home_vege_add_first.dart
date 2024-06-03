@@ -29,6 +29,7 @@ class HomeVegeAddFirst extends ConsumerWidget {
               selectVege.selectFirstBox();
             },
             child: HomeVegeInfo(
+              image: '',
               vege: "상추",
               level: "초급",
               period: "1달",
@@ -40,6 +41,7 @@ class HomeVegeAddFirst extends ConsumerWidget {
               selectVege.selectSecondBox();
             },
             child: HomeVegeInfo(
+              image: '',
               vege: "대파",
               level: "초급",
               period: "1달",
@@ -51,6 +53,7 @@ class HomeVegeAddFirst extends ConsumerWidget {
               selectVege.selectThirdBox();
             },
             child: HomeVegeInfo(
+              image: '',
               vege: "바질",
               level: "중급",
               period: "1달",
@@ -62,6 +65,7 @@ class HomeVegeAddFirst extends ConsumerWidget {
               selectVege.selectFourthBox();
             },
             child: HomeVegeInfo(
+              image: '',
               vege: "깻잎",
               level: "중급",
               period: "1달",
@@ -73,6 +77,7 @@ class HomeVegeAddFirst extends ConsumerWidget {
               selectVege.selectFiveBox();
             },
             child: HomeVegeInfo(
+              image: '',
               vege: "고추",
               level: "고급",
               period: "1달",
@@ -84,6 +89,7 @@ class HomeVegeAddFirst extends ConsumerWidget {
               selectVege.selectSixBox();
             },
             child: HomeVegeInfo(
+              image: '',
               vege: "방울토마토",
               level: "고급",
               period: "1달",

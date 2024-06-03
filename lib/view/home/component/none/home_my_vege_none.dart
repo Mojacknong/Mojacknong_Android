@@ -89,9 +89,10 @@ class HomeMyVegeNone extends ConsumerWidget {
             return Column(
               children: [
                 HomeVegeInfo(
-                  vege: vege.name!,
-                  level: vege.difficulty!,
-                  period: vege.period!,
+                  image: vege.image,
+                  vege: vege.name,
+                  level: vege.difficulty,
+                  period: vege.period,
                   selected: false,
                 ),
                 const Padding(
