@@ -1,21 +1,15 @@
-class RecommendVeggieModel {
-  final String? image;
-  final String? name;
-  final String? difficulty;
-  final String? period;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  RecommendVeggieModel({this.image, this.name, this.difficulty, this.period});
+part 'recommend_veggie_model.freezed.dart';part 'recommend_veggie_model.g.dart';
 
-  RecommendVeggieModel copyWith({
-    String? image,
-    String? name,
-    String? difficulty,
-    String? period,
-  }) {
-    return RecommendVeggieModel(
-        image: image ?? this.image,
-        name: name ?? this.name,
-        difficulty: difficulty ?? this.difficulty,
-        period: period ?? this.period);
-  }
+@freezed
+class RecommendVeggieModel with _$RecommendVeggieModel {
+  factory RecommendVeggieModel(
+      {required String image,
+      required String name,
+      required String difficulty,
+      required String period}) = _RecommendVeggieModel;
+
+  factory RecommendVeggieModel.fromJson(Map<String, dynamic> json) =>
+      _$RecommendVeggieModelFromJson(json);
 }

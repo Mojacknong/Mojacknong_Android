@@ -18,7 +18,6 @@ class MyVeggieListNotifier extends _$MyVeggieListNotifier {
   Future<List<dynamic>> myVeggieList() async {
     final response = await MyVeggieGardenRepository.myVeggieList();
     var jsonResponse = convert.jsonDecode(response) as Map<String, dynamic>;
-    print(jsonResponse['data']);
 
     return jsonResponse['data'] ?? [];
   }
