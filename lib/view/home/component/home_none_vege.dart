@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'home_motivation.dart';
-import 'none/home_my_vege_none.dart';
-import 'none/home_none_content.dart';
 import 'home_sub_title.dart';
 import 'home_to_do.dart';
+import 'none/home_my_vege_none.dart';
+import 'none/home_none_content.dart';
 
 class HomeNoneVege extends ConsumerWidget {
   const HomeNoneVege({super.key});
@@ -15,7 +15,9 @@ class HomeNoneVege extends ConsumerWidget {
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        HomeMyVegeNone(),
+        HomeMyVegeNone(
+          recommendVeggieInfo: [],
+        ),
         HomeMotivation(
           motivation: '텃밭에서 식탁까지 팜어스와 늘 함께해요!',
         ),
