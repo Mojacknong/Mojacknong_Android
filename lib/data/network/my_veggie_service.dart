@@ -13,7 +13,20 @@ class MyVeggieService {
     if (response.statusCode == 200) {
       return utf8.decode(response.bodyBytes);
     } else {
-      throw Exception('Failed to User Info');
+      throw Exception('Failed to My Veggie List');
+    }
+  }
+
+  Future<String> recommendVeggieInfo() async {
+    const url = '/api/veggie-info/recommend';
+    ApiClient apiClient = ApiClient();
+
+    final response = await apiClient.get(url);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('Failed to Recommend Veggie Info');
     }
   }
 }

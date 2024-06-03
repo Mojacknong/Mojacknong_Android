@@ -3,7 +3,8 @@ import 'package:farmus/view/home/component/home_my_vege_list.dart';
 import 'package:farmus/view/home/component/home_sub_title.dart';
 import 'package:farmus/view/home/component/home_to_do.dart';
 import 'package:farmus/view/home/component/home_vege_to_do.dart';
-import 'package:farmus/view/home/component/none/home_my_vege_none.dart'; // Ensure this import is present
+import 'package:farmus/view/home/component/none/home_my_vege_none.dart';
+import 'package:farmus/view_model/home/recommend_veggie_info_notifier.dart';
 import 'package:farmus/view_model/my_vege/notifier/my_veggie_list_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -20,29 +21,33 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final Size size = MediaQuery.of(context).size;
-    final responseFuture =
-        ref.watch(myVeggieListNotifierProvider.notifier).myVeggieList();
+    final veggieList =
+    ref.watch(myVeggieListNotifierProvider.notifier).myVeggieList();
+    final recommendVeggieInfo =
+    ref.watch(recommendVeggieInfoNotifierProvider.notifier).recommendVeggieInfo();
     String toDo = ref.watch(homeToDoProvider);
 
     return Scaffold(
       appBar: const HomeScreenAppBar(),
       body: FutureBuilder<List<dynamic>>(
-        future: responseFuture,
+        future: Future.wait([veggieList, recommendVeggieInfo]),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (snapshot.hasData) {
-            final data = snapshot.data!;
+            final veggieListData = snapshot.data![0] as List<dynamic>;
+            final recommendVeggieInfoData = snapshot.data![1] as List<Map<String, String>>;
+
             return SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    if (data.isEmpty) const HomeMyVegeNone(),
-                    if (data.isNotEmpty) ...[
+                    if (veggieListData.isEmpty) HomeMyVegeNone(recommendVeggieInfo: recommendVeggieInfoData),
+                    if (veggieListData.isNotEmpty) ...[
                       const HomeMyVegeList(),
                       const SizedBox(height: 8),
                       HomeMyVege(size: size),
@@ -56,19 +61,19 @@ class HomeScreen extends ConsumerWidget {
                     const SizedBox(
                       height: 8.0,
                     ),
-                    if (data.isNotEmpty)
+                    if (veggieListData.isNotEmpty)
                       const HomeVegeTodo()
                     else
                       toDo == "routine"
                           ? const HomeNoneContainer(
-                              text: '아직 루틴을 등록하지 않았어요',
-                            )
+                        text: '아직 루틴을 등록하지 않았어요',
+                      )
                           : const HomeNoneContainer(
-                              text: '아직 팜클럽에 가입하지 않았어요',
-                            ),
+                        text: '아직 팜클럽에 가입하지 않았어요',
+                      ),
                     const SizedBox(height: 24),
                     const HomeSubTitle(title: "성장 일기"),
-                    if (data.isNotEmpty)
+                    if (veggieListData.isNotEmpty)
                       const HomeVegeDiary()
                     else
                       const HomeNoneContainer(text: '아직 작성한 일기가 없어요'),
