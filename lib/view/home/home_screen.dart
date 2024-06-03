@@ -9,8 +9,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../common/app_bar/home_app_bar.dart';
+import '../../view_model/home/home_provider.dart';
 import 'component/home_my_vege.dart';
 import 'component/home_vege_diary.dart';
+import 'component/none/home_none_container.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -20,6 +22,7 @@ class HomeScreen extends ConsumerWidget {
     final Size size = MediaQuery.of(context).size;
     final responseFuture =
         ref.watch(myVeggieListNotifierProvider.notifier).myVeggieList();
+    String toDo = ref.watch(homeToDoProvider);
 
     return Scaffold(
       appBar: const HomeScreenAppBar(),
@@ -50,16 +53,33 @@ class HomeScreen extends ConsumerWidget {
                     const SizedBox(height: 8),
                     const HomeSubTitle(title: "오늘 할 일"),
                     const HomeToDo(),
-                    const HomeVegeTodo(),
+                    const SizedBox(
+                      height: 8.0,
+                    ),
+                    if (data.isNotEmpty)
+                      const HomeVegeTodo()
+                    else
+                      toDo == "routine"
+                          ? const HomeNoneContainer(
+                              text: '아직 루틴을 등록하지 않았어요',
+                            )
+                          : const HomeNoneContainer(
+                              text: '아직 팜클럽에 가입하지 않았어요',
+                            ),
                     const SizedBox(height: 24),
                     const HomeSubTitle(title: "성장 일기"),
-                    const HomeVegeDiary(),
+                    if (data.isNotEmpty)
+                      const HomeVegeDiary()
+                    else
+                      const HomeNoneContainer(text: '아직 작성한 일기가 없어요'),
                   ],
                 ),
               ),
             );
           } else {
-            return const Center(child: Text('No data available'));
+            return const Center(
+              child: Text('데이터가 없습니다.'),
+            );
           }
         },
       ),
