@@ -48,10 +48,8 @@ class SearchFarmclubInfo extends ConsumerWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const FarmclubSignUpScreen(
-                              num: "3",
-                              total: "8",
-                              day: "2024-06-03",
+                            builder: (context) => FarmclubSignUpScreen(
+                              id: farmclub.id,
                             ),
                           ),
                         );

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:farmus/data/network/base_api_services.dart';
+import 'package:farmus/model/search/search_farmclub_detail_model.dart';
 import 'package:farmus/model/search/search_farmclub_info_model.dart';
 
 class SearchFarmclubService {
@@ -48,6 +49,23 @@ class SearchFarmclubService {
           .toList();
     } else {
       throw Exception('Failed to load farmclubs');
+    }
+  }
+
+  Future<SearchFarmclubDetailModel> farmclubDetail(int farmClubId) async {
+    final String farmClubIdString = farmClubId.toString();
+    final url = '/api/farm-club/$farmClubIdString';
+    ApiClient apiClient = ApiClient();
+
+    final response = await apiClient.get(url);
+
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> jsonResponse =
+          jsonDecode(utf8.decode(response.bodyBytes));
+      print(SearchFarmclubDetailModel.fromJson(jsonResponse['data']));
+      return SearchFarmclubDetailModel.fromJson(jsonResponse['data']);
+    } else {
+      throw Exception('Failed to load farm club detail');
     }
   }
 }

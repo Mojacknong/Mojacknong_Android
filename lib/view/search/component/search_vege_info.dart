@@ -23,6 +23,7 @@ class SearchVegeInfo extends ConsumerWidget {
           context,
           MaterialPageRoute(
             builder: (context) => const FarmclubSignUpScreen(
+              id: 0,
               num: "3",
               total: "8",
               day: "2024-06-03",
