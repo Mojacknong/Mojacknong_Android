@@ -2,6 +2,7 @@ import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
 import 'package:farmus/common/button/primary_button.dart';
 import 'package:farmus/common/dialog/check_dialog.dart';
 import 'package:farmus/view_model/home/home_vege_add_provider.dart';
+import 'package:farmus/view_model/home/notifier/my_veggie_add_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -119,6 +120,7 @@ class HomeVegeAddScreen extends ConsumerWidget {
                               movePage.moveToSecondPage();
                             case "second":
                               Navigator.pop(context);
+                              ref.read(myVeggieAddNotifierProvider.notifier).myVeggieAdd();
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) {

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'base_api_services.dart';
 
@@ -14,6 +15,31 @@ class MyVeggieService {
       return utf8.decode(response.bodyBytes);
     } else {
       throw Exception('Failed to My Veggie List');
+    }
+  }
+
+  Future<String> myVeggieAdd(String nickname, String birth, String veggieInfoId,
+      String veggieName, String veggieImage) async {
+    const url = '/api/my-veggie';
+    ApiClient apiClient = ApiClient();
+    Map<String, String> headers = {
+      HttpHeaders.contentTypeHeader: 'application/json',
+    };
+
+    final body = jsonEncode({
+      'nickname': nickname,
+      'birth': birth,
+      'veggieInfoId': veggieInfoId,
+      'veggieName': veggieName,
+      'veggieImage': veggieImage
+    });
+
+    final response = await apiClient.post(url, headers: headers, body: body);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('Failed to add my veggie');
     }
   }
 }

@@ -6,7 +6,6 @@ part 'veggie_info_model.g.dart';
 @freezed
 class VeggieInfoModel with _$VeggieInfoModel {
   factory VeggieInfoModel({
-    @JsonKey(name: '_id')
     required String id,
     required String name,
     required String difficulty,
