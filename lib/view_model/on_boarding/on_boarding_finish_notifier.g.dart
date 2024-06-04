@@ -7,12 +7,12 @@ part of 'on_boarding_finish_notifier.dart';
 // **************************************************************************
 
 String _$onBoardingFinishNotifierHash() =>
-    r'7a374282d3d7a6763665e78166eec61f6977bc2d';
+    r'2fcbaf2ae6a962cc2f09d8ad16bda0428cd7da94';
 
 /// See also [OnBoardingFinishNotifier].
 @ProviderFor(OnBoardingFinishNotifier)
 final onBoardingFinishNotifierProvider =
-    AutoDisposeAsyncNotifierProvider<OnBoardingFinishNotifier, void>.internal(
+    AutoDisposeAsyncNotifierProvider<OnBoardingFinishNotifier, String>.internal(
   OnBoardingFinishNotifier.new,
   name: r'onBoardingFinishNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -22,6 +22,6 @@ final onBoardingFinishNotifierProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$OnBoardingFinishNotifier = AutoDisposeAsyncNotifier<void>;
+typedef _$OnBoardingFinishNotifier = AutoDisposeAsyncNotifier<String>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -1,6 +1,7 @@
+import 'package:farmus/model/home/recommend_veggie_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../common/theme/farmus_theme_color.dart';
 import '../../../../common/theme/farmus_theme_text_style.dart';
@@ -9,8 +10,11 @@ import '../../../vege_add/home_vege_add_screen.dart';
 import 'home_vege_info.dart';
 
 class HomeMyVegeNone extends ConsumerWidget {
+  final List<RecommendVeggieModel> recommendVeggieInfo;
+
   const HomeMyVegeNone({
     super.key,
+    required this.recommendVeggieInfo,
   });
 
   @override
@@ -81,27 +85,28 @@ class HomeMyVegeNone extends ConsumerWidget {
               style: FarmusThemeTextStyle.gray1Medium15,
             ),
           ),
-          const HomeVegeInfo(
-            vege: "상추",
-            level: "초급",
-            period: "1달",
-            selected: false,
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 8.0),
-            child: Divider(
-              height: 1,
-              indent: 20,
-              endIndent: 20,
-              color: FarmusThemeColor.gray4,
-            ),
-          ),
-          const HomeVegeInfo(
-            vege: "대파",
-            level: "초급",
-            period: "1달",
-            selected: false,
-          ),
+          ...recommendVeggieInfo.map((vege) {
+            return Column(
+              children: [
+                HomeVegeInfo(
+                  image: vege.image,
+                  vege: vege.name,
+                  level: vege.difficulty,
+                  period: vege.period,
+                  selected: false,
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8.0),
+                  child: Divider(
+                    height: 1,
+                    indent: 20,
+                    endIndent: 20,
+                    color: FarmusThemeColor.gray4,
+                  ),
+                ),
+              ],
+            );
+          }).toList(),
         ],
       ),
     );

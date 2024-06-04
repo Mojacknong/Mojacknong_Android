@@ -7,11 +7,13 @@ import '../../../../common/theme/farmus_theme_text_style.dart';
 class HomeVegeInfo extends ConsumerWidget {
   const HomeVegeInfo(
       {super.key,
+      required this.image,
       required this.vege,
       required this.level,
       required this.period,
       required this.selected});
 
+  final String image;
   final String vege;
   final String level;
   final String period;
@@ -55,6 +57,7 @@ class HomeVegeInfo extends ConsumerWidget {
                   borderRadius: BorderRadius.circular(44),
                 ),
               ),
+              child: Image.network(image),
             ),
           ),
           Column(

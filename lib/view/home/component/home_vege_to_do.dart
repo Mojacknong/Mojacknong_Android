@@ -73,7 +73,9 @@ class HomeVegeTodo extends ConsumerWidget {
               SizedBox(
                 height: 16,
               ),
-              FarmclubStep(stepImages: [],)
+              FarmclubStep(
+                stepImages: [],
+              )
             ],
           );
   }
