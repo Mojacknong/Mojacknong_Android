@@ -1,19 +1,16 @@
-class FarmclubHelpInfoModel {
-  final String material;
-  final List<String> selectHow;
-  final List<String> features;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  FarmclubHelpInfoModel({
-    required this.material,
-    required this.selectHow,
-    required this.features,
-  });
+part 'farmclub_help_info_model.freezed.dart';
+part 'farmclub_help_info_model.g.dart';
 
-  factory FarmclubHelpInfoModel.fromJson(Map<String, dynamic> json) {
-    return FarmclubHelpInfoModel(
-      material: json['material'],
-      selectHow: List<String>.from(json['selectHow']),
-      features: List<String>.from(json['features']),
-    );
-  }
+@freezed
+class FarmclubHelpInfoModel with _$FarmclubHelpInfoModel {
+  const factory FarmclubHelpInfoModel({
+    required String material,
+    required List<String> selectHow,
+    required List<String> features,
+  }) = _FarmclubHelpInfoModel;
+
+  factory FarmclubHelpInfoModel.fromJson(Map<String, dynamic> json) =>
+      _$FarmclubHelpInfoModelFromJson(json);
 }

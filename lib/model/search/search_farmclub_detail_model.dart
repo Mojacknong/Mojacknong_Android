@@ -1,39 +1,23 @@
 import 'package:farmus/model/search/farmclub_help_info_model.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class SearchFarmclubDetailModel {
-  final int farmClubId;
-  final String farmClubName;
-  final String veggieName;
-  final String veggieImage;
-  final String farmClubDescription;
-  final String startedAt;
-  final int maxMemberCount;
-  final int currentMemberCount;
-  final FarmclubHelpInfoModel help;
+part 'search_farmclub_detail_model.freezed.dart';
+part 'search_farmclub_detail_model.g.dart';
 
-  SearchFarmclubDetailModel({
-    required this.farmClubId,
-    required this.farmClubName,
-    required this.veggieName,
-    required this.veggieImage,
-    required this.farmClubDescription,
-    required this.startedAt,
-    required this.maxMemberCount,
-    required this.currentMemberCount,
-    required this.help,
-  });
+@freezed
+class SearchFarmclubDetailModel with _$SearchFarmclubDetailModel {
+  factory SearchFarmclubDetailModel({
+    required int farmClubId,
+    required String farmClubName,
+    required String veggieName,
+    required String veggieImage,
+    required String farmClubDescription,
+    required String startedAt,
+    required int maxMemberCount,
+    required int currentMemberCount,
+    required FarmclubHelpInfoModel help,
+  }) = _SearchFarmclubDetailModel;
 
-  factory SearchFarmclubDetailModel.fromJson(Map<String, dynamic> json) {
-    return SearchFarmclubDetailModel(
-      farmClubId: json['farmClubId'],
-      farmClubName: json['farmClubName'],
-      veggieName: json['veggieName'],
-      veggieImage: json['veggieImage'],
-      farmClubDescription: json['farmClubDescription'],
-      startedAt: json['startedAt'],
-      maxMemberCount: json['maxMemberCount'],
-      currentMemberCount: json['currentMemberCount'],
-      help: FarmclubHelpInfoModel.fromJson(json['help']),
-    );
-  }
+  factory SearchFarmclubDetailModel.fromJson(Map<String, dynamic> json) =>
+      _$SearchFarmclubDetailModelFromJson(json);
 }

@@ -1,34 +1,21 @@
-class SearchFarmclubInfoModel {
-  final int id;
-  final String name;
-  final String veggieName;
-  final String veggieImage;
-  final String difficulty;
-  final String startedAt;
-  final int maxUser;
-  final int curUser;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  SearchFarmclubInfoModel({
-    required this.id,
-    required this.name,
-    required this.veggieName,
-    required this.veggieImage,
-    required this.difficulty,
-    required this.startedAt,
-    required this.maxUser,
-    required this.curUser,
-  });
+part 'search_farmclub_info_model.freezed.dart';
+part 'search_farmclub_info_model.g.dart';
 
-  factory SearchFarmclubInfoModel.fromJson(Map<String, dynamic> json) {
-    return SearchFarmclubInfoModel(
-      id: json['id'],
-      name: json['name'],
-      veggieName: json['veggieName'],
-      veggieImage: json['veggieImage'],
-      difficulty: json['difficulty'],
-      startedAt: json['startedAt'],
-      maxUser: json['maxUser'],
-      curUser: json['curUser'],
-    );
-  }
+@freezed
+class SearchFarmclubInfoModel with _$SearchFarmclubInfoModel {
+  const factory SearchFarmclubInfoModel({
+    required int id,
+    required String name,
+    required String veggieName,
+    required String veggieImage,
+    required String difficulty,
+    required String startedAt,
+    required int maxUser,
+    required int curUser,
+  }) = _SearchFarmclubInfoModel;
+
+  factory SearchFarmclubInfoModel.fromJson(Map<String, dynamic> json) =>
+      _$SearchFarmclubInfoModelFromJson(json);
 }
