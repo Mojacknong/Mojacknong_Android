@@ -8,8 +8,6 @@ class SearchFarmclubPic extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('이미지파일: $imageUrl');
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Container(

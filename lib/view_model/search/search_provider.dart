@@ -36,8 +36,8 @@ Future<RecommendedFarmclubsModel> recommendedFarmclubsModel(
     RecommendedFarmclubsModelRef ref) async {
   final repository = SearchFarmclubRepository();
   final recommendedFarmclubs = await repository.getRecommendedFarmclubs();
+
   return RecommendedFarmclubsModel(
-    recFirst: recommendedFarmclubs.recFirst,
-    recSecond: recommendedFarmclubs.recSecond,
-  );
+      recFirst: recommendedFarmclubs.recFirst,
+      recSecond: recommendedFarmclubs.recSecond);
 }

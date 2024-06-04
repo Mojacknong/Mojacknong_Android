@@ -94,7 +94,6 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
             SizedBox(height: 16),
             SearchDifficultyBox(),
             SizedBox(height: 16),
-            // FarmclubList()
             SearchFarmclubInfo()
           ],
         ),

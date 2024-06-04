@@ -63,8 +63,7 @@ class SearchFarmclubService {
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonResponse =
           jsonDecode(utf8.decode(response.bodyBytes));
-      print(
-          "이게뭐야 : ${SearchFarmclubDetailModel.fromJson(jsonResponse['data'])}");
+
       return SearchFarmclubDetailModel.fromJson(jsonResponse['data']);
     } else {
       throw Exception('Failed to load farm club detail');

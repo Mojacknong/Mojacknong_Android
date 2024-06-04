@@ -58,9 +58,6 @@ class _SearchDifficultyBtnState extends ConsumerState<SearchDifficultyBtn> {
         final filteredDifficulties = ref
             .read(searchDifficultyBtnProvider.notifier)
             .getFilteredDifficulties();
-        print(filteredDifficulties);
-
-        // ref.read(searchFarmclubDiffProvider(filteredDifficulties));
       },
       child: Container(
         decoration: BoxDecoration(
