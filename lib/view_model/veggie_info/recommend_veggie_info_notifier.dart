@@ -13,11 +13,12 @@ Future<List<RecommendVeggieModel>> recommendVeggieModel(
   final json = jsonDecode(response) as Map<String, dynamic>;
 
   final dataList = json['data'] as List<dynamic>;
+  print(dataList);
 
   final List<RecommendVeggieModel> models = dataList
       .map(
           (data) => RecommendVeggieModel.fromJson(data as Map<String, dynamic>))
       .toList();
-
+  print(models);
   return models;
 }

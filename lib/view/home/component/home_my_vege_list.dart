@@ -19,7 +19,6 @@ class HomeMyVegeList extends ConsumerWidget {
         children: [
           IconButton(
             onPressed: () {
-              ref.read(homeVegeInfoAddProvider.notifier).reset();
               ref.read(homeVegeAddMoveProvider.notifier).reset();
               Navigator.push(
                 context,

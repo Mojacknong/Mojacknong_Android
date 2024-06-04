@@ -51,7 +51,6 @@ class HomeMyVegeNone extends ConsumerWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    ref.read(homeVegeInfoAddProvider.notifier).reset();
                     ref.read(homeVegeAddMoveProvider.notifier).reset();
                     Navigator.push(
                       context,
