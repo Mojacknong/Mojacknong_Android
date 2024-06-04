@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:farmus/data/network/base_api_services.dart';
+import 'package:farmus/model/search/recommended_farmclubs_model.dart';
 import 'package:farmus/model/search/search_farmclub_detail_model.dart';
 import 'package:farmus/model/search/search_farmclub_info_model.dart';
 
@@ -62,10 +63,31 @@ class SearchFarmclubService {
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonResponse =
           jsonDecode(utf8.decode(response.bodyBytes));
-      print(SearchFarmclubDetailModel.fromJson(jsonResponse['data']));
+      print(
+          "이게뭐야 : ${SearchFarmclubDetailModel.fromJson(jsonResponse['data'])}");
       return SearchFarmclubDetailModel.fromJson(jsonResponse['data']);
     } else {
       throw Exception('Failed to load farm club detail');
+    }
+  }
+
+  Future<RecommendedFarmclubsModel> getRecommendedFarmclubs() async {
+    ApiClient apiClient = ApiClient();
+    const url = '/api/farm-club/recommend';
+    final response = await apiClient.get(url);
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> responseData =
+          jsonDecode(utf8.decode(response.bodyBytes));
+      final Map<String, dynamic> data = responseData['data'];
+      final recFirstData = data['recFirst'];
+      final recSecondData = data['recSecond'];
+      final recFirst = SearchFarmclubDetailModel.fromJson(recFirstData);
+      final recSecond = SearchFarmclubDetailModel.fromJson(recSecondData);
+      return RecommendedFarmclubsModel(
+          recFirst: recFirst, recSecond: recSecond);
+    } else {
+      throw Exception(
+          'Failed to load recommended farm clubs: ${response.statusCode}');
     }
   }
 }

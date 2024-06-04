@@ -13,6 +13,9 @@ class VegeInfoDetail extends ConsumerWidget {
     this.showBoxDecoration = true,
     this.showVegeContainer = true,
     this.titleWidget,
+    this.farmClubName,
+    this.imageUrl,
+    this.bottomWidgetAlignment = Alignment.topRight,
   });
 
   final Map<String, String> info;
@@ -21,6 +24,9 @@ class VegeInfoDetail extends ConsumerWidget {
   final bool showBoxDecoration;
   final bool showVegeContainer;
   final Widget? titleWidget;
+  final String? farmClubName;
+  final String? imageUrl;
+  final Alignment bottomWidgetAlignment;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -34,11 +40,9 @@ class VegeInfoDetail extends ConsumerWidget {
             )
           : null,
       decoration: showBoxDecoration
-          ? ShapeDecoration(
+          ? BoxDecoration(
               color: FarmusThemeColor.background,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(24),
-              ),
+              borderRadius: BorderRadius.circular(24),
             )
           : null,
       child: Column(
@@ -57,10 +61,10 @@ class VegeInfoDetail extends ConsumerWidget {
                         child: titleWidget!,
                       )
                     else
-                      const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 24.0),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 24.0),
                         child: Text(
-                          '상훈이',
+                          farmClubName ?? "팜클럽이름",
                           style: FarmusThemeTextStyle.gray1SemiBold23,
                         ),
                       ),
@@ -106,18 +110,24 @@ class VegeInfoDetail extends ConsumerWidget {
               ),
               if (showVegeContainer)
                 Container(
-                  width: 120,
-                  height: 120,
-                  decoration: ShapeDecoration(
-                    color: FarmusThemeColor.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18),
+                    width: 120,
+                    height: 120,
+                    decoration: ShapeDecoration(
+                      color: FarmusThemeColor.gray8,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18),
+                      ),
                     ),
-                  ),
-                ),
+                    child: Image.network(
+                      imageUrl ?? "",
+                      fit: BoxFit.fill,
+                    )),
             ],
           ),
-          bottomWidget,
+          Align(
+            alignment: bottomWidgetAlignment,
+            child: bottomWidget,
+          ),
         ],
       ),
     );
