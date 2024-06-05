@@ -3,7 +3,7 @@ import 'package:farmus/common/dialog/check_dialog.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/farmclub_sign_up/component/farmclub_sign_up_bottom_sheet_content.dart';
 import 'package:farmus/view/routine/component/routine_bottom_sheet_content.dart';
-import 'package:farmus/view_model/farmclub_sign_up/farmclub_sign_up_provider.dart';
+import 'package:farmus/view_model/farmclub_sign_up/farmclub_sign_up_vege_select_notifier.provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -53,7 +53,7 @@ void showFarmclubSignupBottomSheet(
   WidgetRef ref,
   String title,
 ) {
-  final vegeList = ref.watch(farmclubSignUpVegeSelectNotifierProvider);
+  final vegeList = ref.watch(farmclubSignUpVegeSelectProvider);
   final subTitle = vegeList.isEmpty
       ? "내 텃받에 등록된 채소로만 가입할 수 있어요\n새 채소를등록해보세요!"
       : "내 채소에 등록된 채소로 팜클럽에 가입할 수 있어요";

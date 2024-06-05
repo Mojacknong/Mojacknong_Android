@@ -7,7 +7,7 @@ part of 'search_provider.dart';
 // **************************************************************************
 
 String _$recommendedFarmclubsModelHash() =>
-    r'52f176a1e9d6c1868f3a3e272d5cb0b7626cbe4a';
+    r'a9696f578a54318082bf9fe51967de9634ef9643';
 
 /// See also [recommendedFarmclubsModel].
 @ProviderFor(recommendedFarmclubsModel)

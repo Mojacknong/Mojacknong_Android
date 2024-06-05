@@ -1,7 +1,7 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/model/search/search_farmclub_info_model.dart';
 import 'package:farmus/view/farmclub_sign_up/farmclub_sign_up_screen.dart';
-import 'package:farmus/view_model/search/search_provider.dart';
+import 'package:farmus/view_model/search/search_detail_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

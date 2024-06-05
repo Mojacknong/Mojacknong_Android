@@ -1,17 +1,15 @@
-import 'package:farmus/model/farmclub_sign_up/farmclub_sign_up_vege_model.dart';
+import 'dart:async';
+
 import 'package:farmus/model/search/search_farmclub_detail_model.dart';
 import 'package:farmus/repository/search_farmclub_repository.dart';
-import 'package:farmus/view_model/farmclub_sign_up/notifier/farmclub_sign_up_vege_select_notifier.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final farmclubSignUpVegeSelectNotifierProvider = StateNotifierProvider<
-    FarmclubSignUpVegeSelectNotifier, List<FarmclubSignUpVegeModel>>(
-  (ref) => FarmclubSignUpVegeSelectNotifier(),
-);
+part 'farmclub_sign_up_provider.g.dart';
 
-final farmclubDetailProvider =
-    FutureProvider.family<SearchFarmclubDetailModel, int>((ref, id) async {
+@riverpod
+Future<SearchFarmclubDetailModel> searchFarmclubDetailModel(
+    SearchFarmclubDetailModelRef ref, int id) async {
   final repository = SearchFarmclubRepository();
   final response = await repository.farmclubDetail(id);
   return response;
-});
+}
