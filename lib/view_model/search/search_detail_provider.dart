@@ -1,4 +1,3 @@
-//탐색탭이란
 import 'package:farmus/model/search/search_farmclub_info_model.dart';
 import 'package:farmus/repository/search_farmclub_repository.dart';
 import 'package:farmus/view_model/search/page_notifier.dart';
