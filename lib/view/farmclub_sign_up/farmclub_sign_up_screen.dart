@@ -23,7 +23,8 @@ class FarmclubSignUpScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final farmclubDetailAsyncValue = ref.watch(farmclubDetailProvider(id));
+    final farmclubDetailAsyncValue =
+        ref.watch(searchFarmclubDetailModelProvider(id));
     return farmclubDetailAsyncValue.when(
       data: (farmclubDetailModel) {
         return Scaffold(
