@@ -5,7 +5,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../common/theme/farmus_theme_color.dart';
 import '../../../../common/theme/farmus_theme_text_style.dart';
-import '../../../../view_model/home/home_vege_add_provider.dart';
 import '../../../vege_add/home_vege_add_screen.dart';
 import 'home_vege_info.dart';
 
@@ -51,7 +50,6 @@ class HomeMyVegeNone extends ConsumerWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    ref.read(homeVegeAddMoveProvider.notifier).reset();
                     Navigator.push(
                       context,
                       MaterialPageRoute(

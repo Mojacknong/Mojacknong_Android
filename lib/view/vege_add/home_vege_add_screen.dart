@@ -1,12 +1,14 @@
 import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
 import 'package:farmus/common/button/primary_button.dart';
 import 'package:farmus/common/dialog/check_dialog.dart';
+import 'package:farmus/view/main/main_screen.dart';
 import 'package:farmus/view_model/home/home_vege_add_provider.dart';
 import 'package:farmus/view_model/home/notifier/my_veggie_add_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../common/theme/farmus_theme_color.dart';
+import '../../view_model/my_vege/notifier/my_veggie_list_notifier.dart';
 import 'component/home_vege_add_first.dart';
 import 'component/home_vege_add_second.dart';
 
@@ -19,8 +21,10 @@ class HomeVegeAddScreen extends ConsumerWidget {
     final currentPageIndex = ref.watch(homeVegeAddMoveProvider);
     final movePage = ref.read(homeVegeAddMoveProvider.notifier);
 
-    var isVegeSelectedComplete = isVegeInfo.value?.isVegeSelectComplete ?? false;
-    var isVegeAddInfoComplete = isVegeInfo.value?.isVegeAddInfoComplete ?? false;
+    var isVegeSelectedComplete =
+        isVegeInfo.value?.isVegeSelectComplete ?? false;
+    var isVegeAddInfoComplete =
+        isVegeInfo.value?.isVegeAddInfoComplete ?? false;
 
     Color getButtonTextColor(String currentPageIndex,
         bool isVegeSelectedComplete, bool isVegeAddInfoComplete) {
@@ -118,23 +122,38 @@ class HomeVegeAddScreen extends ConsumerWidget {
                           switch (currentPageIndex) {
                             case "first":
                               movePage.moveToSecondPage();
+                              break;
                             case "second":
-                              Navigator.pop(context);
                               ref
                                   .read(myVeggieAddNotifierProvider.notifier)
-                                  .myVeggieAdd();
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  Future.delayed(const Duration(seconds: 2),
-                                          () {
-                                        Navigator.of(context).pop();
-                                      });
-                                  return const CheckDialog(
-                                    text: "새 채소가 등록되었어요",
-                                  );
-                                },
-                              );
+                                  .myVeggieAdd()
+                                  .then((_) {
+                                ref
+                                    .read(myVeggieListNotifierProvider.notifier)
+                                    .myVeggieList();
+                                Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return const MainScreen(selectedIndex: 0);
+                                    },
+                                  ),
+                                  (route) => false,
+                                );
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    Future.delayed(const Duration(seconds: 2),
+                                        () {
+                                      Navigator.pop(context);
+                                    });
+                                    return const CheckDialog(
+                                      text: "새 채소가 등록되었어요",
+                                    );
+                                  },
+                                );
+                              });
+                              break;
                           }
                         },
                         enabled: currentPageIndex == "first"
