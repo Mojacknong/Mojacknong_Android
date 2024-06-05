@@ -4,7 +4,7 @@ import 'package:farmus/common/button/primary_color_button.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/view/farmclub_sign_up/component/farmclub_sign_up_vege_toggle_widget.dart';
 import 'package:farmus/view/vege_add/home_vege_add_screen.dart';
-import 'package:farmus/view_model/farmclub_sign_up/farmclub_sign_up_vege_select_notifier.provider.dart';
+import 'package:farmus/view_model/farmclub_sign_up/farmclub_sign_up_vege_select_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';

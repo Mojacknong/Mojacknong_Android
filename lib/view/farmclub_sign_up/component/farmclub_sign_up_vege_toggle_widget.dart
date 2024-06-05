@@ -1,7 +1,7 @@
 import 'package:farmus/common/button/check_box_button.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:farmus/view_model/farmclub_sign_up/farmclub_sign_up_vege_select_notifier.provider.dart';
+import 'package:farmus/view_model/farmclub_sign_up/farmclub_sign_up_vege_select_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
