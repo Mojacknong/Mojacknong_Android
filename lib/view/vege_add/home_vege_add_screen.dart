@@ -15,12 +15,12 @@ class HomeVegeAddScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isVegeInfo = ref.watch(homeVegeInfoAddProvider);
+    final isVegeInfo = ref.watch(myVeggieAddNotifierProvider);
     final currentPageIndex = ref.watch(homeVegeAddMoveProvider);
     final movePage = ref.read(homeVegeAddMoveProvider.notifier);
 
-    var isVegeSelectedComplete = isVegeInfo.isVegeSelectComplete;
-    var isVegeAddInfoComplete = isVegeInfo.isVegeAddInfoComplete;
+    var isVegeSelectedComplete = isVegeInfo.value?.isVegeSelectComplete ?? false;
+    var isVegeAddInfoComplete = isVegeInfo.value?.isVegeAddInfoComplete ?? false;
 
     Color getButtonTextColor(String currentPageIndex,
         bool isVegeSelectedComplete, bool isVegeAddInfoComplete) {
@@ -120,14 +120,16 @@ class HomeVegeAddScreen extends ConsumerWidget {
                               movePage.moveToSecondPage();
                             case "second":
                               Navigator.pop(context);
-                              ref.read(myVeggieAddNotifierProvider.notifier).myVeggieAdd();
+                              ref
+                                  .read(myVeggieAddNotifierProvider.notifier)
+                                  .myVeggieAdd();
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
                                   Future.delayed(const Duration(seconds: 2),
-                                      () {
-                                    Navigator.of(context).pop();
-                                  });
+                                          () {
+                                        Navigator.of(context).pop();
+                                      });
                                   return const CheckDialog(
                                     text: "새 채소가 등록되었어요",
                                   );

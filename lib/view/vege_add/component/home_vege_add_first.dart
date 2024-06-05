@@ -1,23 +1,21 @@
-import 'package:farmus/model/home/vege_add_info_model.dart';
-import 'package:farmus/view_model/home/home_vege_add_provider.dart';
+import 'package:farmus/model/veggie_info/veggie_info_model.dart';
+import 'package:farmus/view_model/veggie_info/veggie_info_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../view_model/home/notifier/my_veggie_add_notifier.dart';
 import '../../home/component/home_add_sub_title.dart';
 import '../../home/component/none/home_vege_info.dart';
-import 'package:farmus/view_model/veggie_info/veggie_info_notifier.dart';
-import 'package:farmus/model/veggie_info/veggie_info_model.dart';
 
 class HomeVegeAddFirst extends ConsumerWidget {
-  const HomeVegeAddFirst({
-    Key? key,
-  }) : super(key: key);
+  const HomeVegeAddFirst({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isSelected = ref.watch(homeVegeInfoAddProvider);
-    final selectVege = ref.read(homeVegeInfoAddProvider.notifier);
-    final AsyncValue<List<VeggieInfoModel>> veggieInfo = ref.watch(veggieInfoModelProvider);
+    final isSelected = ref.watch(myVeggieAddNotifierProvider);
+    final selectVege = ref.read(myVeggieAddNotifierProvider.notifier);
+    final AsyncValue<List<VeggieInfoModel>> veggieInfo =
+    ref.watch(veggieInfoModelProvider);
 
     List<Widget> mappedWidgets = veggieInfo.when(
       data: (veggies) {
@@ -34,7 +32,7 @@ class HomeVegeAddFirst extends ConsumerWidget {
               vege: veggie.name,
               level: veggie.difficulty,
               period: veggie.period,
-              selected: isSelected.selectedIndex == index,
+              selected: isSelected.value?.selectedIndex == index,
             ),
           );
         }).toList();

@@ -1,28 +1,28 @@
 class VegeAddInfoModel {
-  final bool isFirstSelect;
-  final bool isSecondSelect;
-  final bool isThirdSelect;
-  final bool isFourthSelect;
-  final bool isFiveSelect;
-  final bool isSixSelect;
+  final bool? isFirstSelect;
+  final bool? isSecondSelect;
+  final bool? isThirdSelect;
+  final bool? isFourthSelect;
+  final bool? isFiveSelect;
+  final bool? isSixSelect;
   final bool isVegeSelectComplete;
   final String name;
   final String date;
   final bool isVegeAddInfoComplete;
-  final int selectedIndex;
+  final int? selectedIndex;
 
   VegeAddInfoModel(
-      {required this.isFirstSelect,
-      required this.isSecondSelect,
-      required this.isThirdSelect,
-      required this.isFourthSelect,
-      required this.isFiveSelect,
-      required this.isSixSelect,
+      {this.isFirstSelect,
+      this.isSecondSelect,
+      this.isThirdSelect,
+      this.isFourthSelect,
+      this.isFiveSelect,
+      this.isSixSelect,
       required this.isVegeSelectComplete,
       required this.name,
       required this.date,
       required this.isVegeAddInfoComplete,
-      required this.selectedIndex});
+      this.selectedIndex});
 
   VegeAddInfoModel copyWith({
     bool? isFirstSelect,

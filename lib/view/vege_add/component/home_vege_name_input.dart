@@ -1,5 +1,5 @@
 import 'package:farmus/common/form/primary_text_form_field.dart';
-import 'package:farmus/view_model/home/home_vege_add_provider.dart';
+import 'package:farmus/view_model/home/notifier/my_veggie_add_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -16,9 +16,9 @@ class HomeVegeNameInput extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final name = ref.read(homeVegeInfoAddProvider).name;
+    final name = ref.read(myVeggieAddNotifierProvider).value!.name;
 
-    var nowLength = ref.watch(homeVegeInfoAddProvider).name.length;
+    var nowLength = ref.watch(myVeggieAddNotifierProvider).value!.name.length;
     return PrimaryTextFormField(
       initialValue: name,
       maxLength: 8,
@@ -26,7 +26,7 @@ class HomeVegeNameInput extends ConsumerWidget {
       maxLines: 1,
       hintText: "쑥쑥이",
       onChanged: (value) {
-        ref.read(homeVegeInfoAddProvider.notifier).updateNickname(value);
+        ref.read(myVeggieAddNotifierProvider.notifier).updateNickname(value);
       },
       suffix: Text("$nowLength /8"),
     );

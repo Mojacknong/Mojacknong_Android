@@ -7,12 +7,12 @@ part of 'my_veggie_add_notifier.dart';
 // **************************************************************************
 
 String _$myVeggieAddNotifierHash() =>
-    r'2a014d8161357baa7272079a0d985947b9da204f';
+    r'16326f46bbf9407b7876ffa9383779474606bb12';
 
 /// See also [MyVeggieAddNotifier].
 @ProviderFor(MyVeggieAddNotifier)
 final myVeggieAddNotifierProvider = AutoDisposeAsyncNotifierProvider<
-    MyVeggieAddNotifier, MyVeggieAddModel>.internal(
+    MyVeggieAddNotifier, VegeAddInfoModel>.internal(
   MyVeggieAddNotifier.new,
   name: r'myVeggieAddNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -22,6 +22,6 @@ final myVeggieAddNotifierProvider = AutoDisposeAsyncNotifierProvider<
   allTransitiveDependencies: null,
 );
 
-typedef _$MyVeggieAddNotifier = AutoDisposeAsyncNotifier<MyVeggieAddModel>;
+typedef _$MyVeggieAddNotifier = AutoDisposeAsyncNotifier<VegeAddInfoModel>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

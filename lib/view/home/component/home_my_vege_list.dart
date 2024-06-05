@@ -7,9 +7,7 @@ import '../../../view_model/home/home_vege_add_provider.dart';
 import '../../vege_add/home_vege_add_screen.dart';
 
 class HomeMyVegeList extends ConsumerWidget {
-  const HomeMyVegeList({
-    super.key,
-  });
+  const HomeMyVegeList({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -23,14 +21,13 @@ class HomeMyVegeList extends ConsumerWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const HomeVegeAddScreen()),
+                  builder: (context) => const HomeVegeAddScreen(),
+                ),
               );
             },
             icon: SvgPicture.asset("assets/image/ic_vege_add.svg"),
           ),
-          const SizedBox(
-            width: 8,
-          ),
+          const SizedBox(width: 8),
           Padding(
             padding: const EdgeInsets.only(right: 6.0),
             child: HomeMyVegeButton(
@@ -54,7 +51,7 @@ class HomeMyVegeList extends ConsumerWidget {
               text: "깨르륵",
               onPressed: () {},
             ),
-          )
+          ),
         ],
       ),
     );
