@@ -32,8 +32,7 @@ class SearchFarmclubResult extends StatelessWidget {
                 );
               },
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: SearchFarmclubInfoWidget(
                   name: farmclub.name,
                   veggieName: farmclub.veggieName,
@@ -46,7 +45,7 @@ class SearchFarmclubResult extends StatelessWidget {
               ),
             ),
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              padding: EdgeInsets.symmetric(horizontal: 8.0),
               child: Divider(
                 height: 1,
                 color: FarmusThemeColor.gray5,
