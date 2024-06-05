@@ -6,10 +6,13 @@ class MyVeggieGardenRepository {
     return response;
   }
 
-  static Future<String> myVeggieAdd(String nickname, String birth,
-      String veggieInfoId, String veggieName, String veggieImage) async {
-    String response = await MyVeggieService()
-        .myVeggieAdd(nickname, birth, veggieInfoId, veggieName, veggieImage);
+  static Future<String> myVeggieAdd(
+    String nickname,
+    String birth,
+    String veggieInfoId,
+  ) async {
+    String response =
+        await MyVeggieService().myVeggieAdd(nickname, birth, veggieInfoId);
     return response;
   }
 }

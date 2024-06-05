@@ -18,8 +18,11 @@ class MyVeggieService {
     }
   }
 
-  Future<String> myVeggieAdd(String nickname, String birth, String veggieInfoId,
-      String veggieName, String veggieImage) async {
+  Future<String> myVeggieAdd(
+    String nickname,
+    String birth,
+    String veggieInfoId,
+  ) async {
     const url = '/api/my-veggie';
     ApiClient apiClient = ApiClient();
     Map<String, String> headers = {
@@ -30,8 +33,6 @@ class MyVeggieService {
       'nickname': nickname,
       'birth': birth,
       'veggieInfoId': veggieInfoId,
-      'veggieName': veggieName,
-      'veggieImage': veggieImage
     });
 
     final response = await apiClient.post(url, headers: headers, body: body);

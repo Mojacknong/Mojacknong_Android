@@ -1,10 +1,10 @@
 class VegeAddInfoModel {
-  final bool? isFirstSelect;
-  final bool? isSecondSelect;
-  final bool? isThirdSelect;
-  final bool? isFourthSelect;
-  final bool? isFiveSelect;
-  final bool? isSixSelect;
+  final bool isFirstSelect;
+  final bool isSecondSelect;
+  final bool isThirdSelect;
+  final bool isFourthSelect;
+  final bool isFiveSelect;
+  final bool isSixSelect;
   final bool isVegeSelectComplete;
   final String name;
   final String date;
@@ -12,12 +12,12 @@ class VegeAddInfoModel {
   final int? selectedIndex;
 
   VegeAddInfoModel(
-      {this.isFirstSelect,
-      this.isSecondSelect,
-      this.isThirdSelect,
-      this.isFourthSelect,
-      this.isFiveSelect,
-      this.isSixSelect,
+      {required this.isFirstSelect,
+      required this.isSecondSelect,
+      required this.isThirdSelect,
+      required this.isFourthSelect,
+      required this.isFiveSelect,
+      required this.isSixSelect,
       required this.isVegeSelectComplete,
       required this.name,
       required this.date,
