@@ -49,4 +49,10 @@ class SearchFarmclubRepository {
         await SearchFarmclubService().getMyVeggieInfo();
     return response;
   }
+
+  Future<List<SearchFarmclubInfoModel>?> fetchFarmclubs(String keyword) async {
+    SearchFarmclubService searchFarmclubService = SearchFarmclubService();
+
+    return await searchFarmclubService.fetchFarmclubs(keyword);
+  }
 }
