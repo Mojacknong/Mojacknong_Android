@@ -35,7 +35,7 @@ class SearchFarmclubService {
   Future<List<SearchFarmclubInfoModel>> fetchFarmclubs(String keyword) async {
     ApiClient apiClient = ApiClient();
 
-    const url = '/api/farm-club/search';
+    final url = '/api/farm-club/search?keyword=$keyword';
     final response = await apiClient.get(url);
 
     if (response.statusCode == 200) {
