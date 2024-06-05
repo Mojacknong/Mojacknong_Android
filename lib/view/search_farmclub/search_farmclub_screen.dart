@@ -24,17 +24,11 @@ class _SearchFarmclubScreenState extends ConsumerState<SearchFarmclubScreen> {
       body: SingleChildScrollView(
         child: Stack(
           children: [
-            const Center(
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 200.0),
-                child: SearchFarmclubBackground(),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                children: [
-                  SearchFarmclubBarWidget(
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: SearchFarmclubBarWidget(
                     searchText: searchText,
                     onChanged: (value) {
                       setState(() {
@@ -50,15 +44,15 @@ class _SearchFarmclubScreenState extends ConsumerState<SearchFarmclubScreen> {
                       ref.read(searchFarmclubsResultProvider(searchText));
                     },
                   ),
+                ),
+                if (searchText.isNotEmpty)
                   searchFarmclubsResult.when(
-                    data: (data) {
-                      final filteredData = data!
-                          .where((item) => item.name.contains(searchText))
-                          .toList();
-
-                      if (filteredData.isNotEmpty) {
-                        return SearchFarmclubResult(
-                          filteredData: filteredData,
+                    data: (searchFarmclubsResult) {
+                      if (searchFarmclubsResult!.isNotEmpty) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: SearchFarmclubResult(
+                              filteredData: searchFarmclubsResult),
                         );
                       } else {
                         return const Text('No results found');
@@ -69,8 +63,14 @@ class _SearchFarmclubScreenState extends ConsumerState<SearchFarmclubScreen> {
                       return Text('Error: $error');
                     },
                   ),
-                ],
-              ),
+                if (searchText.isEmpty)
+                  const Center(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(vertical: 200.0),
+                      child: SearchFarmclubBackground(),
+                    ),
+                  ),
+              ],
             ),
           ],
         ),
