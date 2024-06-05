@@ -7,12 +7,14 @@ class SearchFarmclubBarWidget extends StatelessWidget {
   final String searchText;
   final Function(String) onChanged;
   final Function() onClearSearch;
+  final Function(String) onSearchSubmitted;
 
   const SearchFarmclubBarWidget({
     Key? key,
     required this.searchText,
     required this.onChanged,
     required this.onClearSearch,
+    required this.onSearchSubmitted,
   }) : super(key: key);
 
   @override
@@ -42,6 +44,9 @@ class SearchFarmclubBarWidget extends StatelessWidget {
                   TextPosition(offset: searchText.length),
                 ),
               onChanged: onChanged,
+              onSubmitted: (value) {
+                onSearchSubmitted(value);
+              },
               trailing: searchText.isNotEmpty
                   ? [
                       GestureDetector(

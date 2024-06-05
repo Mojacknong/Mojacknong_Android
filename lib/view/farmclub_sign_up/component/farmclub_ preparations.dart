@@ -5,21 +5,19 @@ import 'package:flutter/material.dart';
 class FarmclubPreparations extends StatelessWidget {
   const FarmclubPreparations({
     Key? key,
-    required this.supplies,
-    required this.characteristics,
-    this.howToChoose, // Make howToChoose optional
+    required this.material,
+    required this.selectHow,
+    required this.features,
   }) : super(key: key);
 
-  final String supplies;
-  final String? howToChoose; // Make howToChoose nullable
-  final String characteristics;
+  final String material;
+  final List<String> selectHow;
+  final List<String> features;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 16.0,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
       decoration: BoxDecoration(
         color: FarmusThemeColor.background,
         borderRadius: BorderRadius.circular(12),
@@ -28,9 +26,33 @@ class FarmclubPreparations extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const SizedBox(height: 16),
-          _buildText("준비물", supplies),
-          if (howToChoose != null) _buildText("고르는 법", howToChoose!),
-          _buildText("특징", characteristics),
+          _buildText("준비물", material),
+          if (selectHow.isNotEmpty) ...[
+            const SizedBox(height: 8),
+            const Text(
+              "고르는 법",
+              style: FarmusThemeTextStyle.gray2Medium13,
+            ),
+            const SizedBox(height: 8),
+            for (final selectOne in selectHow) ...[
+              _buildText("", selectOne),
+              if (selectHow.last != selectOne) const SizedBox(height: 3),
+            ],
+          ],
+          const SizedBox(height: 20),
+          if (features.isNotEmpty) ...[
+            const SizedBox(height: 8),
+            const Text(
+              "특징",
+              style: FarmusThemeTextStyle.gray2Medium13,
+            ),
+            const SizedBox(height: 8),
+            for (final feature in features) ...[
+              _buildText("", feature),
+              if (features.last != feature) const SizedBox(height: 3),
+            ],
+          ],
+          const SizedBox(height: 20),
         ],
       ),
     );
@@ -40,16 +62,17 @@ class FarmclubPreparations extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          title,
-          style: FarmusThemeTextStyle.gray2Medium13,
-        ),
-        const SizedBox(height: 8),
+        if (title.isNotEmpty)
+          Text(
+            title,
+            style: FarmusThemeTextStyle.gray2Medium13,
+          ),
+        if (title.isNotEmpty) const SizedBox(height: 8),
         Text(
           explanation,
           style: FarmusThemeTextStyle.dark2Medium15,
         ),
-        const SizedBox(height: 20),
+        if (title.isNotEmpty) const SizedBox(height: 20),
       ],
     );
   }

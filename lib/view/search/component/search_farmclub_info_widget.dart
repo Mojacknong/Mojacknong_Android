@@ -1,4 +1,4 @@
-import 'package:farmus/view/my_farmclub/component/farmclub_widget_pic.dart';
+import 'package:farmus/view/search/component/search_farmclub_pic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -6,35 +6,44 @@ import '../../../../../common/theme/farmus_theme_color.dart';
 import '../../../../../common/theme/farmus_theme_text_style.dart';
 
 class SearchFarmclubInfoWidget extends ConsumerWidget {
-  const SearchFarmclubInfoWidget(
-      {super.key,
-      required this.vege,
-      required this.level,
-      required this.period,
-      required this.nickname,
-      required this.num,
-      required this.total});
+  const SearchFarmclubInfoWidget({
+    Key? key,
+    required this.name,
+    required this.veggieName,
+    required this.veggieImage,
+    required this.difficulty,
+    required this.startedAt,
+    required this.maxUser,
+    required this.curUser,
+  }) : super(key: key);
 
-  final String vege;
-  final String level;
-  final String period;
-  final String nickname;
-  final String num;
-  final String total;
+  final String name;
+  final String veggieName;
+  final String veggieImage;
+  final String difficulty;
+  final String startedAt;
+  final int maxUser;
+  final int curUser;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     Color? levelColor;
+    String difficultyKorean = "";
 
-    switch (level) {
-      case "초급":
+    switch (difficulty) {
+      case "EASY":
         levelColor = FarmusThemeColor.blue;
+        difficultyKorean = "초급";
         break;
-      case "중급":
+      case "NORMAL":
         levelColor = FarmusThemeColor.yellow;
+        difficultyKorean = "중급";
+
         break;
-      case "고급":
+      case "HARD":
         levelColor = FarmusThemeColor.red;
+        difficultyKorean = "고급";
+
         break;
     }
 
@@ -44,7 +53,7 @@ class SearchFarmclubInfoWidget extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const FarmclubWidgetPic(),
+          SearchFarmclubPic(imageUrl: veggieImage),
           const SizedBox(
             width: 8,
           ),
@@ -56,7 +65,7 @@ class SearchFarmclubInfoWidget extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      nickname,
+                      name,
                       style: FarmusThemeTextStyle.darkSemiBold17,
                     ),
                     const VerticalDivider(
@@ -65,7 +74,7 @@ class SearchFarmclubInfoWidget extends ConsumerWidget {
                       color: FarmusThemeColor.gray4,
                     ),
                     Text(
-                      vege,
+                      veggieName,
                       style: FarmusThemeTextStyle.gray1Medium15,
                     ),
                   ],
@@ -75,14 +84,14 @@ class SearchFarmclubInfoWidget extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    '+$period일',
+                    startedAt,
                     style: FarmusThemeTextStyle.gray1Medium13,
                   ),
                   const SizedBox(
                     width: 6,
                   ),
                   Text(
-                    '$num/$total명',
+                    '$curUser/$maxUser명',
                     style: FarmusThemeTextStyle.gray1Medium13,
                   ),
                 ],
@@ -101,7 +110,7 @@ class SearchFarmclubInfoWidget extends ConsumerWidget {
                     width: 4,
                   ),
                   Text(
-                    level,
+                    difficultyKorean,
                     style: FarmusThemeTextStyle.gray1Medium13,
                   ),
                 ],

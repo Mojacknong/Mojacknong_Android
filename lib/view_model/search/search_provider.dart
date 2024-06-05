@@ -1,12 +1,16 @@
-import 'package:farmus/view_model/search/notifier/page_notifier.dart';
-import 'package:farmus/view_model/search/notifier/search_difficulty_notifier.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:farmus/model/search/recommended_farmclubs_model.dart';
+import 'package:farmus/repository/search_farmclub_repository.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final searchDifficultyProvider =
-    StateNotifierProvider<SearchDifficultyNotifier, Map<String, bool>>(
-  (ref) => SearchDifficultyNotifier(),
-);
+part 'search_provider.g.dart';
 
-final aboutSearchPageProvider = StateNotifierProvider<PageNotifier, int>((ref) {
-  return PageNotifier();
-});
+@riverpod
+Future<RecommendedFarmclubsModel> recommendedFarmclubsModel(
+    RecommendedFarmclubsModelRef ref) async {
+  final repository = SearchFarmclubRepository();
+  final recommendedFarmclubs = await repository.getRecommendedFarmclubs();
+
+  return RecommendedFarmclubsModel(
+      recFirst: recommendedFarmclubs.recFirst,
+      recSecond: recommendedFarmclubs.recSecond);
+}
