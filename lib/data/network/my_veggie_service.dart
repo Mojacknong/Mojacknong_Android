@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'base_api_services.dart';
 
@@ -17,16 +18,29 @@ class MyVeggieService {
     }
   }
 
-  Future<String> recommendVeggieInfo() async {
-    const url = '/api/veggie-info/recommend';
+  Future<String> myVeggieAdd(
+    String nickname,
+    String birth,
+    String veggieInfoId,
+  ) async {
+    const url = '/api/my-veggie';
     ApiClient apiClient = ApiClient();
+    Map<String, String> headers = {
+      HttpHeaders.contentTypeHeader: 'application/json',
+    };
 
-    final response = await apiClient.get(url);
+    final body = jsonEncode({
+      'nickname': nickname,
+      'birth': birth,
+      'veggieInfoId': veggieInfoId,
+    });
+
+    final response = await apiClient.post(url, headers: headers, body: body);
 
     if (response.statusCode == 200) {
       return utf8.decode(response.bodyBytes);
     } else {
-      throw Exception('Failed to Recommend Veggie Info');
+      throw Exception('Failed to add my veggie');
     }
   }
 }

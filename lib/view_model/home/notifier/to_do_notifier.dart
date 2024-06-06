@@ -11,14 +11,12 @@ class ToDoNotifier extends StateNotifier<String> {
 
   bool get isFarmclubMissionSelect => _isFarmclubMissionSelect;
 
-  // 루틴 버튼 클릭
   void selectRoutine() {
     _isRoutineSelect = true;
     _isFarmclubMissionSelect = false;
     state = "routine";
   }
 
-  // 팜클럽 미션 버튼 클릭
   void selectFarmclubMission() {
     _isRoutineSelect = false;
     _isFarmclubMissionSelect = true;

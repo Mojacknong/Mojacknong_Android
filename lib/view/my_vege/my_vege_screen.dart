@@ -131,8 +131,6 @@ class _MyVegeScreenState extends ConsumerState<MyVegeScreen> {
                     )
                   : AddButton(
                       onPressed: () {
-                        ref.read(homeVegeInfoAddProvider.notifier).reset();
-                        ref.read(homeVegeAddMoveProvider.notifier).reset();
                         Navigator.push(
                           context,
                           MaterialPageRoute(
