@@ -78,9 +78,11 @@ class FarmclubSignUpBottomSheetContent extends ConsumerWidget {
                                     text:
                                         "내 텃밭에 등록된 채소로만 가입할 수 있어요\n새 채소를 등록해보세요!")),
                       ),
-                      FarmclubSignUpVegeToggleWidget(
-                        vegeName: myVeggieModel.nickname,
-                      ),
+                      myVeggieModel.nickname != ""
+                          ? FarmclubSignUpVegeToggleWidget(
+                              vegeName: myVeggieModel.nickname,
+                            )
+                          : Container()
                     ],
                   ),
                 ),
@@ -164,7 +166,6 @@ class FarmclubSignUpBottomSheetContent extends ConsumerWidget {
       },
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (error, stack) {
-        // Handle error here
         return Center(child: Text('Error: $error'));
       },
     );

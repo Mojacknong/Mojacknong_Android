@@ -125,8 +125,6 @@ class SearchFarmclubService {
       final Map<String, dynamic> jsonResponse =
           jsonDecode(utf8.decode(response.bodyBytes));
       return FarmclubSignupModel.fromJson(jsonResponse['data']);
-    } else if (response.statusCode == 500) {
-      return FarmclubSignupModel(nickname: "ㅇㅇㅇ", myVeggieId: 0);
     } else {
       throw Exception('Failed to Recommend Veggie Info');
     }
