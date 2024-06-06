@@ -133,7 +133,19 @@ class HomeScreen extends ConsumerWidget {
                             final diary = snapshot.data;
                             return HomeVegeDiary(diary: diary!);
                           } else {
-                            return const SizedBox();
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (builder) =>
+                                        const VegeDiaryWriteScreen(),
+                                  ),
+                                );
+                              },
+                              child:
+                                  const HomeNoneContent(text: '아직 작성한 일기가 없어요'),
+                            );
                           }
                         },
                       )

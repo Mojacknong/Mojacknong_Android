@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../common/theme/farmus_theme_color.dart';
+import '../../view_model/my_vege/notifier/my_veggie_list.dart';
 import 'component/home_vege_add_first.dart';
 import 'component/home_vege_add_second.dart';
 
@@ -127,6 +128,8 @@ class HomeVegeAddScreen extends ConsumerWidget {
                                   .read(myVeggieAddNotifierProvider.notifier)
                                   .myVeggieAdd()
                                   .then((_) {
+                                ref.invalidate(myVeggieListModelProvider);
+                                ref.read(myVeggieListModelProvider);
                                 Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
