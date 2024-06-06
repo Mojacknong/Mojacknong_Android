@@ -20,4 +20,9 @@ class MyVeggieGardenRepository {
     String? response = await MyVeggieService().myVeggieProfileList(myVeggieId);
     return response;
   }
+
+  static Future<String> myVeggieDiaryOne(String myVeggieId) async {
+    String? response = await MyVeggieService().myVeggieDiaryOne(myVeggieId);
+    return response;
+  }
 }

@@ -26,8 +26,10 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final Size size = MediaQuery.of(context).size;
     final selectedVeggieId = ref.watch(selectedVeggieIdProvider);
-    final AsyncValue<List<MyVeggieListModel>> veggieList = ref.watch(myVeggieListModelProvider);
-    final AsyncValue<List<RecommendVeggieModel>> recommend = ref.watch(recommendVeggieModelProvider);
+    final AsyncValue<List<MyVeggieListModel>> veggieList =
+        ref.watch(myVeggieListModelProvider);
+    final AsyncValue<List<RecommendVeggieModel>> recommend =
+        ref.watch(recommendVeggieModelProvider);
 
     String toDo = ref.watch(homeToDoProvider);
 
@@ -43,7 +45,8 @@ class HomeScreen extends ConsumerWidget {
                 children: [
                   if (veggieListData.isEmpty)
                     recommend.when(
-                      data: (value) => HomeMyVegeNone(recommendVeggieInfo: value),
+                      data: (value) =>
+                          HomeMyVegeNone(recommendVeggieInfo: value),
                       error: (error, stack) => const Text('추천 채소 불러오기 실패'),
                       loading: () => const CircularProgressIndicator(),
                     ),
@@ -52,9 +55,12 @@ class HomeScreen extends ConsumerWidget {
                     const SizedBox(height: 8),
                     if (selectedVeggieId != null)
                       FutureBuilder<MyVeggieProfile>(
-                        future: ref.read(myVeggieProfileProvider('$selectedVeggieId').future),
+                        future: ref.read(
+                            myVeggieProfileProvider(selectedVeggieId.toString())
+                                .future),
                         builder: (context, snapshot) {
-                          if (snapshot.connectionState == ConnectionState.waiting) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
                             return const CircularProgressIndicator();
                           } else if (snapshot.hasError) {
                             return Text('Error: ${snapshot.error}');
@@ -67,7 +73,24 @@ class HomeScreen extends ConsumerWidget {
                         },
                       )
                     else
-                      const Text('채소를 선택하세요.'),
+                      FutureBuilder<MyVeggieProfile>(
+                        future: ref.read(myVeggieProfileProvider(
+                                veggieList.value!.first.myVeggieId.toString())
+                            .future),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return const CircularProgressIndicator();
+                          } else if (snapshot.hasError) {
+                            return Text('Error: ${snapshot.error}');
+                          } else if (snapshot.hasData) {
+                            final profile = snapshot.data!;
+                            return HomeMyVege(size: size, profile: profile);
+                          } else {
+                            return const Text('채소를 선택하세요.');
+                          }
+                        },
+                      ),
                     const HomeMotivation(
                       motivation: "텃밭에서 식탁까지 팜어스와 늘 함께해요!",
                     ),
@@ -83,11 +106,11 @@ class HomeScreen extends ConsumerWidget {
                   else
                     toDo == "routine"
                         ? const HomeNoneContainer(
-                      text: '아직 루틴을 등록하지 않았어요',
-                    )
+                            text: '아직 루틴을 등록하지 않았어요',
+                          )
                         : const HomeNoneContainer(
-                      text: '아직 팜클럽에 가입하지 않았어요',
-                    ),
+                            text: '아직 팜클럽에 가입하지 않았어요',
+                          ),
                   const SizedBox(height: 24),
                   const HomeSubTitle(title: "성장 일기"),
                   if (veggieListData.isNotEmpty)
@@ -99,7 +122,8 @@ class HomeScreen extends ConsumerWidget {
             ),
           );
         },
-        error: (error, stack) => Center(child: Text('Error: ${error.toString()}')),
+        error: (error, stack) =>
+            Center(child: Text('Error: ${error.toString()}')),
         loading: () => const Center(child: CircularProgressIndicator()),
       ),
     );

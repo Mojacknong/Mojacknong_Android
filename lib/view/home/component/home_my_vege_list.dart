@@ -13,6 +13,7 @@ class HomeMyVegeList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final veggieListAsyncValue = ref.watch(myVeggieListModelProvider);
+    final selectedVeggieId = ref.watch(selectedVeggieIdProvider);
 
     return veggieListAsyncValue.when(
       data: (veggieList) {
@@ -36,14 +37,13 @@ class HomeMyVegeList extends ConsumerWidget {
               ),
               const SizedBox(width: 8),
               ...veggieList.map(
-                (veggie) => Padding(
+                    (veggie) => Padding(
                   padding: const EdgeInsets.only(right: 6.0),
                   child: HomeMyVegeButton(
-                    enabled: true,
+                    enabled: selectedVeggieId == null ? veggie.myVeggieId == veggieList.first.myVeggieId : veggie.myVeggieId.toString() == selectedVeggieId,
                     text: veggie.nickname,
                     onPressed: () {
-                      ref.read(selectedVeggieIdProvider.notifier).state =
-                          veggie.myVeggieId;
+                      ref.read(selectedVeggieIdProvider.notifier).state = veggie.myVeggieId.toString();
                     },
                     fontPadding: 0.0,
                   ),

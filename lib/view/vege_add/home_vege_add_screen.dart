@@ -4,12 +4,10 @@ import 'package:farmus/common/dialog/check_dialog.dart';
 import 'package:farmus/view/main/main_screen.dart';
 import 'package:farmus/view_model/home/home_vege_add_provider.dart';
 import 'package:farmus/view_model/home/notifier/my_veggie_add_notifier.dart';
-import 'package:farmus/view_model/my_vege/notifier/my_veggie_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../common/theme/farmus_theme_color.dart';
-import '../../view_model/my_vege/notifier/my_veggie_profile_notifier.dart';
 import 'component/home_vege_add_first.dart';
 import 'component/home_vege_add_second.dart';
 
