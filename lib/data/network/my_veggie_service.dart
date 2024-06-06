@@ -43,4 +43,18 @@ class MyVeggieService {
       throw Exception('Failed to add my veggie');
     }
   }
+
+  Future<String> myVeggieProfileList(String myVeggieId) async {
+    final url = '/api/my-veggie/$myVeggieId/profile';
+
+    ApiClient apiClient = ApiClient();
+
+    final response = await apiClient.get(url);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('Failed to My Veggie List');
+    }
+  }
 }

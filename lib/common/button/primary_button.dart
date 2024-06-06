@@ -58,8 +58,8 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
               child: TextButton(
                 onPressed: onPressed,
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(backgroundColor),
-                  side: MaterialStateProperty.resolveWith(
+                  backgroundColor: WidgetStateProperty.all(backgroundColor),
+                  side: WidgetStateProperty.resolveWith(
                     (states) {
                       return BorderSide(
                         color: borderColor,
@@ -67,14 +67,14 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
                       );
                     },
                   ),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                       borderRadius: borderRadius == null
                           ? BorderRadius.circular(8.0)
                           : BorderRadius.circular(borderRadius!),
                     ),
                   ),
-                  padding: MaterialStateProperty.all(
+                  padding: WidgetStateProperty.all(
                       padding ?? const EdgeInsets.all(0)),
                 ),
                 child: buttonChild == null

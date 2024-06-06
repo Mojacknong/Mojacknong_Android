@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'my_veggie_list_notifier.dart';
+part of 'my_veggie_list.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$myVeggieListNotifierHash() =>
-    r'4616a0701b1d75b4415c949d7c2b4ed55178d4ea';
+String _$myVeggieListModelHash() => r'fb5d74d72a3f1ad8a5854ce308afa39bd2369ad5';
 
-/// See also [MyVeggieListNotifier].
-@ProviderFor(MyVeggieListNotifier)
-final myVeggieListNotifierProvider = AutoDisposeNotifierProvider<
-    MyVeggieListNotifier, List<MyVegeModel>>.internal(
-  MyVeggieListNotifier.new,
-  name: r'myVeggieListNotifierProvider',
+/// See also [myVeggieListModel].
+@ProviderFor(myVeggieListModel)
+final myVeggieListModelProvider =
+    AutoDisposeFutureProvider<List<MyVeggieListModel>>.internal(
+  myVeggieListModel,
+  name: r'myVeggieListModelProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$myVeggieListNotifierHash,
+      : _$myVeggieListModelHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$MyVeggieListNotifier = AutoDisposeNotifier<List<MyVegeModel>>;
+typedef MyVeggieListModelRef
+    = AutoDisposeFutureProviderRef<List<MyVeggieListModel>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

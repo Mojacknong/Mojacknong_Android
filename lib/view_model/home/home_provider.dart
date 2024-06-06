@@ -4,3 +4,5 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 final homeToDoProvider = StateNotifierProvider<ToDoNotifier, String>((ref) {
   return ToDoNotifier();
 });
+
+final selectedVeggieIdProvider = StateProvider<int?>((ref) => null);
