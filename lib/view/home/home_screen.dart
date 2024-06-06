@@ -7,7 +7,6 @@ import 'package:farmus/view/home/component/home_sub_title.dart';
 import 'package:farmus/view/home/component/home_to_do.dart';
 import 'package:farmus/view/home/component/home_vege_to_do.dart';
 import 'package:farmus/view/home/component/none/home_none_content.dart';
-import 'package:farmus/view/vege_diary/vege_diary_screen.dart';
 import 'package:farmus/view/vege_diary_write/vege_diary_write_screen.dart';
 import 'package:farmus/view_model/home/notifier/veggie_diary_one_notifier.dart';
 import 'package:farmus/view_model/my_vege/notifier/my_veggie_list.dart';
@@ -131,7 +130,8 @@ class HomeScreen extends ConsumerWidget {
                           } else if (snapshot.hasError) {
                             return Text('Error: ${snapshot.error}');
                           } else if (snapshot.hasData) {
-                            return const HomeVegeDiary();
+                            final diary = snapshot.data;
+                            return HomeVegeDiary(diary: diary!);
                           } else {
                             return const SizedBox();
                           }
@@ -150,7 +150,9 @@ class HomeScreen extends ConsumerWidget {
                             return Text('Error: ${snapshot.error}');
                           } else if (snapshot.hasData) {
                             final diary = snapshot.data;
-                            return const HomeVegeDiary();
+                            return HomeVegeDiary(
+                              diary: diary!,
+                            );
                           } else {
                             return GestureDetector(
                               onTap: () {
