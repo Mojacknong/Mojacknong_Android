@@ -4,13 +4,13 @@ part 'veggie_diary_model.freezed.dart';
 part 'veggie_diary_model.g.dart';
 
 @freezed
-class VeggieDiaryModel with _$VeggieDiaryModel {
-  const factory VeggieDiaryModel({
+class VeggieDiaryOneModel with _$VeggieDiaryOneModel {
+  const factory VeggieDiaryOneModel({
     String? image,
     String? content,
     String? date,
   }) = _VeggieDiaryModel;
 
-  factory VeggieDiaryModel.fromJson(Map<String, dynamic> json) =>
-      _$VeggieDiaryModelFromJson(json);
+  factory VeggieDiaryOneModel.fromJson(Map<String, dynamic> json) =>
+      _$VeggieDiaryOneModelFromJson(json);
 }

@@ -6,7 +6,8 @@ part of 'veggie_diary_one_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$veggieDiaryModelHash() => r'c45659f4fbd1572e49f84ac9779a419cfeec8208';
+String _$veggieDiaryOneModelHash() =>
+    r'8158597ddbc8b1c00d3e5dd03b44a852e7aa0530';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,27 +30,28 @@ class _SystemHash {
   }
 }
 
-/// See also [veggieDiaryModel].
-@ProviderFor(veggieDiaryModel)
-const veggieDiaryModelProvider = VeggieDiaryModelFamily();
+/// See also [veggieDiaryOneModel].
+@ProviderFor(veggieDiaryOneModel)
+const veggieDiaryOneModelProvider = VeggieDiaryOneModelFamily();
 
-/// See also [veggieDiaryModel].
-class VeggieDiaryModelFamily extends Family<AsyncValue<VeggieDiaryModel>> {
-  /// See also [veggieDiaryModel].
-  const VeggieDiaryModelFamily();
+/// See also [veggieDiaryOneModel].
+class VeggieDiaryOneModelFamily
+    extends Family<AsyncValue<VeggieDiaryOneModel?>> {
+  /// See also [veggieDiaryOneModel].
+  const VeggieDiaryOneModelFamily();
 
-  /// See also [veggieDiaryModel].
-  VeggieDiaryModelProvider call(
+  /// See also [veggieDiaryOneModel].
+  VeggieDiaryOneModelProvider call(
     String myVeggieId,
   ) {
-    return VeggieDiaryModelProvider(
+    return VeggieDiaryOneModelProvider(
       myVeggieId,
     );
   }
 
   @override
-  VeggieDiaryModelProvider getProviderOverride(
-    covariant VeggieDiaryModelProvider provider,
+  VeggieDiaryOneModelProvider getProviderOverride(
+    covariant VeggieDiaryOneModelProvider provider,
   ) {
     return call(
       provider.myVeggieId,
@@ -68,33 +70,33 @@ class VeggieDiaryModelFamily extends Family<AsyncValue<VeggieDiaryModel>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'veggieDiaryModelProvider';
+  String? get name => r'veggieDiaryOneModelProvider';
 }
 
-/// See also [veggieDiaryModel].
-class VeggieDiaryModelProvider
-    extends AutoDisposeFutureProvider<VeggieDiaryModel> {
-  /// See also [veggieDiaryModel].
-  VeggieDiaryModelProvider(
+/// See also [veggieDiaryOneModel].
+class VeggieDiaryOneModelProvider
+    extends AutoDisposeFutureProvider<VeggieDiaryOneModel?> {
+  /// See also [veggieDiaryOneModel].
+  VeggieDiaryOneModelProvider(
     String myVeggieId,
   ) : this._internal(
-          (ref) => veggieDiaryModel(
-            ref as VeggieDiaryModelRef,
+          (ref) => veggieDiaryOneModel(
+            ref as VeggieDiaryOneModelRef,
             myVeggieId,
           ),
-          from: veggieDiaryModelProvider,
-          name: r'veggieDiaryModelProvider',
+          from: veggieDiaryOneModelProvider,
+          name: r'veggieDiaryOneModelProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$veggieDiaryModelHash,
-          dependencies: VeggieDiaryModelFamily._dependencies,
+                  : _$veggieDiaryOneModelHash,
+          dependencies: VeggieDiaryOneModelFamily._dependencies,
           allTransitiveDependencies:
-              VeggieDiaryModelFamily._allTransitiveDependencies,
+              VeggieDiaryOneModelFamily._allTransitiveDependencies,
           myVeggieId: myVeggieId,
         );
 
-  VeggieDiaryModelProvider._internal(
+  VeggieDiaryOneModelProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -108,12 +110,13 @@ class VeggieDiaryModelProvider
 
   @override
   Override overrideWith(
-    FutureOr<VeggieDiaryModel> Function(VeggieDiaryModelRef provider) create,
+    FutureOr<VeggieDiaryOneModel?> Function(VeggieDiaryOneModelRef provider)
+        create,
   ) {
     return ProviderOverride(
       origin: this,
-      override: VeggieDiaryModelProvider._internal(
-        (ref) => create(ref as VeggieDiaryModelRef),
+      override: VeggieDiaryOneModelProvider._internal(
+        (ref) => create(ref as VeggieDiaryOneModelRef),
         from: from,
         name: null,
         dependencies: null,
@@ -125,13 +128,14 @@ class VeggieDiaryModelProvider
   }
 
   @override
-  AutoDisposeFutureProviderElement<VeggieDiaryModel> createElement() {
-    return _VeggieDiaryModelProviderElement(this);
+  AutoDisposeFutureProviderElement<VeggieDiaryOneModel?> createElement() {
+    return _VeggieDiaryOneModelProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is VeggieDiaryModelProvider && other.myVeggieId == myVeggieId;
+    return other is VeggieDiaryOneModelProvider &&
+        other.myVeggieId == myVeggieId;
   }
 
   @override
@@ -143,18 +147,19 @@ class VeggieDiaryModelProvider
   }
 }
 
-mixin VeggieDiaryModelRef on AutoDisposeFutureProviderRef<VeggieDiaryModel> {
+mixin VeggieDiaryOneModelRef
+    on AutoDisposeFutureProviderRef<VeggieDiaryOneModel?> {
   /// The parameter `myVeggieId` of this provider.
   String get myVeggieId;
 }
 
-class _VeggieDiaryModelProviderElement
-    extends AutoDisposeFutureProviderElement<VeggieDiaryModel>
-    with VeggieDiaryModelRef {
-  _VeggieDiaryModelProviderElement(super.provider);
+class _VeggieDiaryOneModelProviderElement
+    extends AutoDisposeFutureProviderElement<VeggieDiaryOneModel?>
+    with VeggieDiaryOneModelRef {
+  _VeggieDiaryOneModelProviderElement(super.provider);
 
   @override
-  String get myVeggieId => (origin as VeggieDiaryModelProvider).myVeggieId;
+  String get myVeggieId => (origin as VeggieDiaryOneModelProvider).myVeggieId;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

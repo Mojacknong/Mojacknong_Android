@@ -14,35 +14,35 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-VeggieDiaryModel _$VeggieDiaryModelFromJson(Map<String, dynamic> json) {
+VeggieDiaryOneModel _$VeggieDiaryOneModelFromJson(Map<String, dynamic> json) {
   return _VeggieDiaryModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$VeggieDiaryModel {
+mixin _$VeggieDiaryOneModel {
   String? get image => throw _privateConstructorUsedError;
   String? get content => throw _privateConstructorUsedError;
   String? get date => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $VeggieDiaryModelCopyWith<VeggieDiaryModel> get copyWith =>
+  $VeggieDiaryOneModelCopyWith<VeggieDiaryOneModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $VeggieDiaryModelCopyWith<$Res> {
-  factory $VeggieDiaryModelCopyWith(
-          VeggieDiaryModel value, $Res Function(VeggieDiaryModel) then) =
-      _$VeggieDiaryModelCopyWithImpl<$Res, VeggieDiaryModel>;
+abstract class $VeggieDiaryOneModelCopyWith<$Res> {
+  factory $VeggieDiaryOneModelCopyWith(
+          VeggieDiaryOneModel value, $Res Function(VeggieDiaryOneModel) then) =
+      _$VeggieDiaryOneModelCopyWithImpl<$Res, VeggieDiaryOneModel>;
   @useResult
   $Res call({String? image, String? content, String? date});
 }
 
 /// @nodoc
-class _$VeggieDiaryModelCopyWithImpl<$Res, $Val extends VeggieDiaryModel>
-    implements $VeggieDiaryModelCopyWith<$Res> {
-  _$VeggieDiaryModelCopyWithImpl(this._value, this._then);
+class _$VeggieDiaryOneModelCopyWithImpl<$Res, $Val extends VeggieDiaryOneModel>
+    implements $VeggieDiaryOneModelCopyWith<$Res> {
+  _$VeggieDiaryOneModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -75,7 +75,7 @@ class _$VeggieDiaryModelCopyWithImpl<$Res, $Val extends VeggieDiaryModel>
 
 /// @nodoc
 abstract class _$$VeggieDiaryModelImplCopyWith<$Res>
-    implements $VeggieDiaryModelCopyWith<$Res> {
+    implements $VeggieDiaryOneModelCopyWith<$Res> {
   factory _$$VeggieDiaryModelImplCopyWith(_$VeggieDiaryModelImpl value,
           $Res Function(_$VeggieDiaryModelImpl) then) =
       __$$VeggieDiaryModelImplCopyWithImpl<$Res>;
@@ -86,7 +86,7 @@ abstract class _$$VeggieDiaryModelImplCopyWith<$Res>
 
 /// @nodoc
 class __$$VeggieDiaryModelImplCopyWithImpl<$Res>
-    extends _$VeggieDiaryModelCopyWithImpl<$Res, _$VeggieDiaryModelImpl>
+    extends _$VeggieDiaryOneModelCopyWithImpl<$Res, _$VeggieDiaryModelImpl>
     implements _$$VeggieDiaryModelImplCopyWith<$Res> {
   __$$VeggieDiaryModelImplCopyWithImpl(_$VeggieDiaryModelImpl _value,
       $Res Function(_$VeggieDiaryModelImpl) _then)
@@ -133,7 +133,7 @@ class _$VeggieDiaryModelImpl implements _VeggieDiaryModel {
 
   @override
   String toString() {
-    return 'VeggieDiaryModel(image: $image, content: $content, date: $date)';
+    return 'VeggieDiaryOneModel(image: $image, content: $content, date: $date)';
   }
 
   @override
@@ -165,7 +165,7 @@ class _$VeggieDiaryModelImpl implements _VeggieDiaryModel {
   }
 }
 
-abstract class _VeggieDiaryModel implements VeggieDiaryModel {
+abstract class _VeggieDiaryModel implements VeggieDiaryOneModel {
   const factory _VeggieDiaryModel(
       {final String? image,
       final String? content,

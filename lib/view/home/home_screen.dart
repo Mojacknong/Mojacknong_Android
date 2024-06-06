@@ -1,10 +1,15 @@
 import 'package:farmus/model/home/my_veggie_list_model.dart';
 import 'package:farmus/model/home/my_veggie_profile.dart';
+import 'package:farmus/model/home/veggie_diary_model.dart';
 import 'package:farmus/view/home/component/home_motivation.dart';
 import 'package:farmus/view/home/component/home_my_vege_list.dart';
 import 'package:farmus/view/home/component/home_sub_title.dart';
 import 'package:farmus/view/home/component/home_to_do.dart';
 import 'package:farmus/view/home/component/home_vege_to_do.dart';
+import 'package:farmus/view/home/component/none/home_none_content.dart';
+import 'package:farmus/view/vege_diary/vege_diary_screen.dart';
+import 'package:farmus/view/vege_diary_write/vege_diary_write_screen.dart';
+import 'package:farmus/view_model/home/notifier/veggie_diary_one_notifier.dart';
 import 'package:farmus/view_model/my_vege/notifier/my_veggie_list.dart';
 import 'package:farmus/view_model/my_vege/notifier/my_veggie_profile_notifier.dart';
 import 'package:farmus/view_model/veggie_info/recommend_veggie_info_notifier.dart';
@@ -68,7 +73,7 @@ class HomeScreen extends ConsumerWidget {
                             final profile = snapshot.data!;
                             return HomeMyVege(size: size, profile: profile);
                           } else {
-                            return const Text('채소를 선택하세요.');
+                            return const SizedBox();
                           }
                         },
                       )
@@ -114,9 +119,55 @@ class HomeScreen extends ConsumerWidget {
                   const SizedBox(height: 24),
                   const HomeSubTitle(title: "성장 일기"),
                   if (veggieListData.isNotEmpty)
-                    const HomeVegeDiary()
-                  else
-                    const HomeNoneContainer(text: '아직 작성한 일기가 없어요'),
+                    if (selectedVeggieId != null)
+                      FutureBuilder<VeggieDiaryOneModel?>(
+                        future: ref.read(veggieDiaryOneModelProvider(
+                                selectedVeggieId.toString())
+                            .future),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return const CircularProgressIndicator();
+                          } else if (snapshot.hasError) {
+                            return Text('Error: ${snapshot.error}');
+                          } else if (snapshot.hasData) {
+                            return const HomeVegeDiary();
+                          } else {
+                            return const SizedBox();
+                          }
+                        },
+                      )
+                    else
+                      FutureBuilder<VeggieDiaryOneModel?>(
+                        future: ref.read(veggieDiaryOneModelProvider(
+                                veggieList.value!.first.myVeggieId.toString())
+                            .future),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return const CircularProgressIndicator();
+                          } else if (snapshot.hasError) {
+                            return Text('Error: ${snapshot.error}');
+                          } else if (snapshot.hasData) {
+                            final diary = snapshot.data;
+                            return const HomeVegeDiary();
+                          } else {
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (builder) =>
+                                        const VegeDiaryWriteScreen(),
+                                  ),
+                                );
+                              },
+                              child:
+                                  const HomeNoneContent(text: '아직 작성한 일기가 없어요'),
+                            );
+                          }
+                        },
+                      ),
                 ],
               ),
             ),
