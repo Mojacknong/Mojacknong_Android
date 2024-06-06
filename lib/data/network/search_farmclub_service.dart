@@ -30,6 +30,25 @@ class SearchFarmclubService {
     }
   }
 
+  Future<List<SearchFarmclubInfoModel>> fetchFarmclubs(String keyword) async {
+    ApiClient apiClient = ApiClient();
+
+    final url = '/api/farm-club/search?keyword=$keyword';
+    final response = await apiClient.get(url);
+
+    if (response.statusCode == 200) {
+      final responseBody = utf8.decode(response.bodyBytes);
+
+      final Map<String, dynamic> jsonResponse = json.decode(responseBody);
+      final List<dynamic> data = jsonResponse['data'];
+      return data
+          .map((json) => SearchFarmclubInfoModel.fromJson(json))
+          .toList();
+    } else {
+      throw Exception('Failed to load farmclubs');
+    }
+  }
+
   Future<List<SearchFarmclubInfoModel>> fetchFarmclubsByDifficulty(
       List<String> difficulty) async {
     ApiClient apiClient = ApiClient();

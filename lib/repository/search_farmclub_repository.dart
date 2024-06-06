@@ -29,4 +29,10 @@ class SearchFarmclubRepository {
       filteredDifficulties,
     );
   }
+
+  Future<List<SearchFarmclubInfoModel>?> fetchFarmclubs(String keyword) async {
+    SearchFarmclubService searchFarmclubService = SearchFarmclubService();
+
+    return await searchFarmclubService.fetchFarmclubs(keyword);
+  }
 }
