@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:farmus/data/network/base_api_services.dart';
+import 'package:farmus/model/farmclub_sign_up/farmclub_sign_up_model.dart';
 import 'package:farmus/model/search/recommended_farmclubs_model.dart';
 import 'package:farmus/model/search/search_farmclub_detail_model.dart';
 import 'package:farmus/model/search/search_farmclub_info_model.dart';
@@ -108,6 +109,33 @@ class SearchFarmclubService {
       return utf8.decode(response.bodyBytes);
     } else {
       throw Exception('Failed to post vege');
+    }
+  }
+
+  Future<FarmclubSignupModel> getMyVeggie(String veggieInfoId) async {
+    final url = '/api/farm-club/my-veggie?veggieInfoId=$veggieInfoId';
+    ApiClient apiClient = ApiClient();
+    final response = await apiClient.get(url.toString());
+
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> jsonResponse =
+          jsonDecode(utf8.decode(response.bodyBytes));
+      print(jsonResponse);
+      return FarmclubSignupModel.fromJson(jsonResponse['data']);
+    } else {
+      throw Exception('Failed to Recommend Veggie Info');
+    }
+  }
+
+  Future<SearchFarmclubInfoModel> getMyVeggieInfo() async {
+    ApiClient apiClient = ApiClient();
+    const url = '/api/farm-club/search';
+    final response = await apiClient.get(url.toString());
+
+    if (response.statusCode == 200) {
+      return SearchFarmclubInfoModel.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('Failed to fetch my veggie data');
     }
   }
 }

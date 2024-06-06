@@ -25,6 +25,7 @@ class FarmclubSignUpScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final farmclubDetailAsyncValue =
         ref.watch(searchFarmclubDetailModelProvider(id));
+
     return farmclubDetailAsyncValue.when(
       data: (farmclubDetailModel) {
         return Scaffold(
@@ -94,13 +95,14 @@ class FarmclubSignUpScreen extends ConsumerWidget {
                       const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16.0),
                         child: FarmclubOnlyContainer(),
-                      )
+                      ),
                     ],
                   ),
                 ),
               ),
               BottomBackgroundDividerButton(
                 button: FarmclubSignUpButton(
+                  myVeggieInfoId: farmclubDetailModel.veggieInfoId,
                   onPressed: () {},
                 ),
               ),

@@ -1,4 +1,5 @@
 import 'package:farmus/data/network/search_farmclub_service.dart';
+import 'package:farmus/model/farmclub_sign_up/farmclub_sign_up_model.dart';
 import 'package:farmus/model/search/recommended_farmclubs_model.dart';
 import 'package:farmus/model/search/search_farmclub_detail_model.dart';
 import 'package:farmus/model/search/search_farmclub_info_model.dart';
@@ -30,9 +31,21 @@ class SearchFarmclubRepository {
     );
   }
 
-  static Future<String> postSignUpVeggie(int farmClubId, int myVeggieId) async {
+  Future<String> postSignUpVeggie(int farmClubId, int myVeggieId) async {
     String? response =
         await SearchFarmclubService().postSignUpVeggie(farmClubId, myVeggieId);
+    return response;
+  } //모델 만들기
+
+  static Future<FarmclubSignupModel> getMyVeggie(String veggieInfoId) async {
+    FarmclubSignupModel response =
+        await SearchFarmclubService().getMyVeggie(veggieInfoId);
+    return response;
+  }
+
+  Future<SearchFarmclubInfoModel> getMyVeggieInfo() async {
+    SearchFarmclubInfoModel response =
+        await SearchFarmclubService().getMyVeggieInfo();
     return response;
   }
 }

@@ -3,7 +3,6 @@ import 'package:farmus/common/dialog/check_dialog.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/farmclub_sign_up/component/farmclub_sign_up_bottom_sheet_content.dart';
 import 'package:farmus/view/routine/component/routine_bottom_sheet_content.dart';
-import 'package:farmus/view_model/farmclub_sign_up/farmclub_sign_up_vege_select_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -49,23 +48,21 @@ void showRoutineEditBottomSheet(
 }
 
 void showFarmclubSignupBottomSheet(
+  final String myVeggieInfoId,
   BuildContext context,
   WidgetRef ref,
   String title,
 ) {
-  final vegeList = ref.watch(farmclubSignUpVegeSelectProvider);
-  final subTitle = vegeList.isEmpty
-      ? "내 텃밭에 등록된 채소로만 가입할 수 있어요\n새 채소를 등록해보세요!"
-      : "내 텃밭에 등록된 채소로 팜클럽에 가입할 수 있어요";
-
   showModalBottomSheet<void>(
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.white,
     builder: (BuildContext context) {
+      print(myVeggieInfoId);
       return FarmclubSignUpBottomSheetContent(
+        infoId: myVeggieInfoId,
         title: title,
-        subTitle: subTitle,
+        subTitle: "",
         onPressed: () {
           showDialog(
             context: context,

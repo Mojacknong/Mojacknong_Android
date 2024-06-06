@@ -29,6 +29,7 @@ mixin _$SearchFarmclubDetailModel {
   String get startedAt => throw _privateConstructorUsedError;
   int get maxMemberCount => throw _privateConstructorUsedError;
   int get currentMemberCount => throw _privateConstructorUsedError;
+  String get veggieInfoId => throw _privateConstructorUsedError;
   FarmclubHelpInfoModel get help => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -52,6 +53,7 @@ abstract class $SearchFarmclubDetailModelCopyWith<$Res> {
       String startedAt,
       int maxMemberCount,
       int currentMemberCount,
+      String veggieInfoId,
       FarmclubHelpInfoModel help});
 
   $FarmclubHelpInfoModelCopyWith<$Res> get help;
@@ -79,6 +81,7 @@ class _$SearchFarmclubDetailModelCopyWithImpl<$Res,
     Object? startedAt = null,
     Object? maxMemberCount = null,
     Object? currentMemberCount = null,
+    Object? veggieInfoId = null,
     Object? help = null,
   }) {
     return _then(_value.copyWith(
@@ -114,6 +117,10 @@ class _$SearchFarmclubDetailModelCopyWithImpl<$Res,
           ? _value.currentMemberCount
           : currentMemberCount // ignore: cast_nullable_to_non_nullable
               as int,
+      veggieInfoId: null == veggieInfoId
+          ? _value.veggieInfoId
+          : veggieInfoId // ignore: cast_nullable_to_non_nullable
+              as String,
       help: null == help
           ? _value.help
           : help // ignore: cast_nullable_to_non_nullable
@@ -148,6 +155,7 @@ abstract class _$$SearchFarmclubDetailModelImplCopyWith<$Res>
       String startedAt,
       int maxMemberCount,
       int currentMemberCount,
+      String veggieInfoId,
       FarmclubHelpInfoModel help});
 
   @override
@@ -175,6 +183,7 @@ class __$$SearchFarmclubDetailModelImplCopyWithImpl<$Res>
     Object? startedAt = null,
     Object? maxMemberCount = null,
     Object? currentMemberCount = null,
+    Object? veggieInfoId = null,
     Object? help = null,
   }) {
     return _then(_$SearchFarmclubDetailModelImpl(
@@ -210,6 +219,10 @@ class __$$SearchFarmclubDetailModelImplCopyWithImpl<$Res>
           ? _value.currentMemberCount
           : currentMemberCount // ignore: cast_nullable_to_non_nullable
               as int,
+      veggieInfoId: null == veggieInfoId
+          ? _value.veggieInfoId
+          : veggieInfoId // ignore: cast_nullable_to_non_nullable
+              as String,
       help: null == help
           ? _value.help
           : help // ignore: cast_nullable_to_non_nullable
@@ -230,6 +243,7 @@ class _$SearchFarmclubDetailModelImpl implements _SearchFarmclubDetailModel {
       required this.startedAt,
       required this.maxMemberCount,
       required this.currentMemberCount,
+      required this.veggieInfoId,
       required this.help});
 
   factory _$SearchFarmclubDetailModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -252,11 +266,13 @@ class _$SearchFarmclubDetailModelImpl implements _SearchFarmclubDetailModel {
   @override
   final int currentMemberCount;
   @override
+  final String veggieInfoId;
+  @override
   final FarmclubHelpInfoModel help;
 
   @override
   String toString() {
-    return 'SearchFarmclubDetailModel(farmClubId: $farmClubId, farmClubName: $farmClubName, veggieName: $veggieName, veggieImage: $veggieImage, farmClubDescription: $farmClubDescription, startedAt: $startedAt, maxMemberCount: $maxMemberCount, currentMemberCount: $currentMemberCount, help: $help)';
+    return 'SearchFarmclubDetailModel(farmClubId: $farmClubId, farmClubName: $farmClubName, veggieName: $veggieName, veggieImage: $veggieImage, farmClubDescription: $farmClubDescription, startedAt: $startedAt, maxMemberCount: $maxMemberCount, currentMemberCount: $currentMemberCount, veggieInfoId: $veggieInfoId, help: $help)';
   }
 
   @override
@@ -280,6 +296,8 @@ class _$SearchFarmclubDetailModelImpl implements _SearchFarmclubDetailModel {
                 other.maxMemberCount == maxMemberCount) &&
             (identical(other.currentMemberCount, currentMemberCount) ||
                 other.currentMemberCount == currentMemberCount) &&
+            (identical(other.veggieInfoId, veggieInfoId) ||
+                other.veggieInfoId == veggieInfoId) &&
             (identical(other.help, help) || other.help == help));
   }
 
@@ -295,6 +313,7 @@ class _$SearchFarmclubDetailModelImpl implements _SearchFarmclubDetailModel {
       startedAt,
       maxMemberCount,
       currentMemberCount,
+      veggieInfoId,
       help);
 
   @JsonKey(ignore: true)
@@ -322,6 +341,7 @@ abstract class _SearchFarmclubDetailModel implements SearchFarmclubDetailModel {
           required final String startedAt,
           required final int maxMemberCount,
           required final int currentMemberCount,
+          required final String veggieInfoId,
           required final FarmclubHelpInfoModel help}) =
       _$SearchFarmclubDetailModelImpl;
 
@@ -344,6 +364,8 @@ abstract class _SearchFarmclubDetailModel implements SearchFarmclubDetailModel {
   int get maxMemberCount;
   @override
   int get currentMemberCount;
+  @override
+  String get veggieInfoId;
   @override
   FarmclubHelpInfoModel get help;
   @override

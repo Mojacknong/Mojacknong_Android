@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class FarmclubSignUpButton extends ConsumerWidget {
-  const FarmclubSignUpButton({
-    super.key,
-    required this.onPressed,
-  });
+  const FarmclubSignUpButton(
+      {super.key, required this.onPressed, required this.myVeggieInfoId});
   final void Function()? onPressed;
+  final String myVeggieInfoId;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
@@ -19,7 +18,8 @@ class FarmclubSignUpButton extends ConsumerWidget {
           enabled: true,
           text: "팜클럽 가입하기",
           onPressed: () {
-            showFarmclubSignupBottomSheet(context, ref, "팜클럽 가입");
+            showFarmclubSignupBottomSheet(
+                myVeggieInfoId, context, ref, "팜클럽 가입");
           },
         ),
       ),
