@@ -55,7 +55,10 @@ class _SearchFarmclubScreenState extends ConsumerState<SearchFarmclubScreen> {
                               filteredData: searchFarmclubsResult),
                         );
                       } else {
-                        return const Text('No results found');
+                        return const SearchFarmclubBackground(
+                          imageUrl: "assets/image/ic_alert_circle.svg",
+                          text: "검색 결과가 없습니다",
+                        );
                       }
                     },
                     loading: () => const CircularProgressIndicator(),
@@ -64,11 +67,9 @@ class _SearchFarmclubScreenState extends ConsumerState<SearchFarmclubScreen> {
                     },
                   ),
                 if (searchText.isEmpty)
-                  const Center(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: 200.0),
-                      child: SearchFarmclubBackground(),
-                    ),
+                  const SearchFarmclubBackground(
+                    imageUrl: "assets/image/ic_search_glass.svg",
+                    text: "원하는 팜클럽을 검색해보세요",
                   ),
               ],
             ),
