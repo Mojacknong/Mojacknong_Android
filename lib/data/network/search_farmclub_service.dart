@@ -92,7 +92,8 @@ class SearchFarmclubService {
     }
   }
 
-  Future<String> postSignUpVeggie(int farmClubId, int myVeggieId) async {
+  Future<FarmclubSignupModel> postSignUpVeggie(
+      int farmClubId, int myVeggieId) async {
     const url = '/api/farm-club/register';
 
     Map<String, String> headers = {
@@ -106,7 +107,10 @@ class SearchFarmclubService {
     final response = await apiClient.post(url, headers: headers, body: body);
 
     if (response.statusCode == 200) {
-      return utf8.decode(response.bodyBytes);
+      final String decodedBody = utf8.decode(response.bodyBytes);
+      final Map<String, dynamic> jsonResponse = jsonDecode(decodedBody);
+      print(decodedBody);
+      return FarmclubSignupModel.fromJson(jsonResponse['data']);
     } else {
       throw Exception('Failed to post vege');
     }
@@ -120,8 +124,9 @@ class SearchFarmclubService {
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonResponse =
           jsonDecode(utf8.decode(response.bodyBytes));
-      print(jsonResponse);
       return FarmclubSignupModel.fromJson(jsonResponse['data']);
+    } else if (response.statusCode == 500) {
+      return FarmclubSignupModel(nickname: "ㅇㅇㅇ", myVeggieId: 0);
     } else {
       throw Exception('Failed to Recommend Veggie Info');
     }

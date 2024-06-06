@@ -48,6 +48,7 @@ void showRoutineEditBottomSheet(
 }
 
 void showFarmclubSignupBottomSheet(
+  final int farmClubId,
   final String myVeggieInfoId,
   BuildContext context,
   WidgetRef ref,
@@ -61,6 +62,7 @@ void showFarmclubSignupBottomSheet(
       print(myVeggieInfoId);
       return FarmclubSignUpBottomSheetContent(
         infoId: myVeggieInfoId,
+        id: farmClubId,
         subTitle: "",
         title: title,
         onPressed: () {

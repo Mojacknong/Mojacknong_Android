@@ -102,6 +102,7 @@ class FarmclubSignUpScreen extends ConsumerWidget {
               ),
               BottomBackgroundDividerButton(
                 button: FarmclubSignUpButton(
+                  id: farmclubDetailModel.farmClubId,
                   myVeggieInfoId: farmclubDetailModel.veggieInfoId,
                   onPressed: () {},
                 ),

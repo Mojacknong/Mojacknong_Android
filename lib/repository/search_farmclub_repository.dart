@@ -31,8 +31,9 @@ class SearchFarmclubRepository {
     );
   }
 
-  Future<String> postSignUpVeggie(int farmClubId, int myVeggieId) async {
-    String? response =
+  static Future<FarmclubSignupModel> postSignUpVeggie(
+      int farmClubId, int myVeggieId) async {
+    FarmclubSignupModel response =
         await SearchFarmclubService().postSignUpVeggie(farmClubId, myVeggieId);
     return response;
   }
