@@ -27,7 +27,8 @@ class FarmclubSignUpBottomSheetContent extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final toggleNotifier = ref.read(toggleNotifierProvider.notifier);
+    final toggleNotifier = ref.watch(toggleNotifierProvider);
+
     final myVeggieAsyncValue = ref.watch(farmclubSignupModelProvider(infoId));
     return myVeggieAsyncValue.when(
       data: (myVeggieModel) {
@@ -73,7 +74,6 @@ class FarmclubSignUpBottomSheetContent extends ConsumerWidget {
                       ),
                       FarmclubSignUpVegeToggleWidget(
                         vegeName: myVeggieModel.nickname,
-                        isChecked: toggleNotifier.isChecked,
                       ),
                     ],
                   ),

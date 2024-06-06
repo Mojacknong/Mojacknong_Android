@@ -9,11 +9,9 @@ class FarmclubSignUpVegeToggleWidget extends ConsumerWidget {
   const FarmclubSignUpVegeToggleWidget({
     Key? key,
     required this.vegeName,
-    required this.isChecked,
   }) : super(key: key);
 
   final String vegeName;
-  final bool isChecked;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

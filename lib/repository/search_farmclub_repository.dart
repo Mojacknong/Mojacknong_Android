@@ -35,7 +35,7 @@ class SearchFarmclubRepository {
     String? response =
         await SearchFarmclubService().postSignUpVeggie(farmClubId, myVeggieId);
     return response;
-  } //모델 만들기
+  }
 
   static Future<FarmclubSignupModel> getMyVeggie(String veggieInfoId) async {
     FarmclubSignupModel response =

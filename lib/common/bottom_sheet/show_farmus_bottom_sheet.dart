@@ -61,8 +61,8 @@ void showFarmclubSignupBottomSheet(
       print(myVeggieInfoId);
       return FarmclubSignUpBottomSheetContent(
         infoId: myVeggieInfoId,
-        title: title,
         subTitle: "",
+        title: title,
         onPressed: () {
           showDialog(
             context: context,
