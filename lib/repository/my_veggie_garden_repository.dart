@@ -31,4 +31,9 @@ class MyVeggieGardenRepository {
     String? response = await MyVeggieService().myVeggieInfoList();
     return response;
   }
+
+  static Future<String> myVeggieDiaryAll(String myVeggieId) async {
+    String? response = await MyVeggieService().myVeggieDiaryAll(myVeggieId);
+    return response;
+  }
 }

@@ -85,4 +85,18 @@ class MyVeggieService {
       throw Exception('Failed to My Veggie List');
     }
   }
+
+  Future<String> myVeggieDiaryAll(String myVeggieId) async {
+    final url = '/api/my-veggie/diary/$myVeggieId/all';
+
+    ApiClient apiClient = ApiClient();
+
+    final response = await apiClient.get(url);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('Failed to My Veggie Diary');
+    }
+  }
 }

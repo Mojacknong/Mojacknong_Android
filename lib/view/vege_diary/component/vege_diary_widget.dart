@@ -1,23 +1,28 @@
+import 'package:farmus/model/my_vege/my_veggie_diary.dart';
+import 'package:farmus/view/vege_diary_detail/vege_diary_detail_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../common/farmus_picture_fix.dart';
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
-import '../../vege_diary_detail/vege_diary_detail_screen.dart';
 
-class VegeDiaryWidget extends ConsumerWidget {
-  const VegeDiaryWidget({super.key});
+class VegeDiaryWidget extends StatelessWidget {
+  final MyVeggieDiary diary;
+
+  const VegeDiaryWidget({
+    Key? key,
+    required this.diary,
+  }) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const VegeDiaryDetailScreen(),
+            builder: (context) => VegeDiaryDetailScreen(),
           ),
         );
       },
@@ -31,12 +36,12 @@ class VegeDiaryWidget extends ConsumerWidget {
               const SizedBox(
                 width: 16.0,
               ),
-              const Expanded(
+              Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '2023년 11월 25일',
+                      diary.date,
                       style: FarmusThemeTextStyle.darkMedium15,
                     ),
                     SizedBox(
@@ -52,7 +57,7 @@ class VegeDiaryWidget extends ConsumerWidget {
                           width: 8,
                         ),
                         Text(
-                          '좋음',
+                          diary.isOpen ? '열림' : '닫힘',
                           style: FarmusThemeTextStyle.gray1Medium15,
                         ),
                       ],
@@ -61,7 +66,9 @@ class VegeDiaryWidget extends ConsumerWidget {
                 ),
               ),
               SvgPicture.asset(
-                'assets/image/ic_diary_open_true.svg',
+                diary.isOpen
+                    ? 'assets/image/ic_diary_open_true.svg'
+                    : 'assets/image/ic_diary_open_false.svg',
               ),
             ],
           ),
@@ -69,7 +76,7 @@ class VegeDiaryWidget extends ConsumerWidget {
             height: 12.0,
           ),
           Text(
-            '일기' * 20,
+            diary.content,
             style: FarmusThemeTextStyle.darkMedium15,
           ),
           const Padding(

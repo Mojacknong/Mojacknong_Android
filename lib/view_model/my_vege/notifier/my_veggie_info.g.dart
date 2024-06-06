@@ -6,7 +6,7 @@ part of 'my_veggie_info.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$myVeggieInfoHash() => r'5acc453980e00ae5701636ea969c28f6a789e1be';
+String _$myVeggieInfoHash() => r'9ba89a68742ea2154f3de035a48f0e1c29e5be87';
 
 /// See also [myVeggieInfo].
 @ProviderFor(myVeggieInfo)
