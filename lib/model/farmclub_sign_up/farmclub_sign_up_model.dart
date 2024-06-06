@@ -1,16 +1,15 @@
-class FarmclubSignupModel {
-  final int myVeggieId;
-  final String nickname;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  FarmclubSignupModel({
-    required this.myVeggieId,
-    required this.nickname,
-  });
+part 'farmclub_sign_up_model.freezed.dart';
+part 'farmclub_sign_up_model.g.dart';
 
-  factory FarmclubSignupModel.fromJson(Map<String, dynamic> json) {
-    return FarmclubSignupModel(
-      myVeggieId: json['myVeggieId'],
-      nickname: json['nickname'],
-    );
-  }
+@freezed
+class FarmclubSignupModel with _$FarmclubSignupModel {
+  factory FarmclubSignupModel({
+    required int myVeggieId,
+    required String nickname,
+  }) = _FarmclubSignupModel;
+
+  factory FarmclubSignupModel.fromJson(Map<String, dynamic> json) =>
+      _$FarmclubSignupModelFromJson(json);
 }
