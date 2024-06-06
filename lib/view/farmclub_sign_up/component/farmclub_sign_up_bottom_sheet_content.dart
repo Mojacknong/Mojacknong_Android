@@ -3,6 +3,7 @@ import 'package:farmus/common/button/primary_button.dart';
 import 'package:farmus/common/button/primary_color_button.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
+import 'package:farmus/view/farmclub_sign_up/component/farmclub_bottom_sheet_subtitle.dart';
 import 'package:farmus/view/farmclub_sign_up/component/farmclub_sign_up_vege_toggle_widget.dart';
 import 'package:farmus/view/vege_add/home_vege_add_screen.dart';
 import 'package:farmus/view_model/farmclub_sign_up/farmclub_sign_veggie_provider.dart';
@@ -63,14 +64,13 @@ class FarmclubSignUpBottomSheetContent extends ConsumerWidget {
                           vertical: 8.0,
                         ),
                         child: Align(
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            myVeggieModel.nickname != ""
-                                ? "내 텃밭에 등록된 채소로만 가입할 수 있어요\n새 채소를 등록해보세요!"
-                                : "내 텃밭에 등록된 채소로 팜클럽에 가입할 수 있어요",
-                            style: FarmusThemeTextStyle.gray2Medium13,
-                          ),
-                        ),
+                            alignment: Alignment.topLeft,
+                            child: myVeggieModel.nickname != ""
+                                ? const FarmclubBottomSheetSubtitle(
+                                    text: "내 텃밭에 등록된 채소로 팜클럽에 가입할 수 있어요")
+                                : const FarmclubBottomSheetSubtitle(
+                                    text:
+                                        "내 텃밭에 등록된 채소로만 가입할 수 있어요\n새 채소를 등록해보세요!")),
                       ),
                       FarmclubSignUpVegeToggleWidget(
                         vegeName: myVeggieModel.nickname,
