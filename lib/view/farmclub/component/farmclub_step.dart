@@ -112,7 +112,7 @@ class FarmclubStep extends ConsumerWidget {
                           padding: const EdgeInsets.only(right: 8.0),
                           child: FarmusPictureFix(
                             size: 82,
-                            asset: image,
+                            image: image,
                           ),
                         ),
                       )

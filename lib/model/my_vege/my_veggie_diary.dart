@@ -10,6 +10,7 @@ class MyVeggieDiary with _$MyVeggieDiary {
     required String date,
     required String image,
     required String content,
+    required String state,
     required bool isOpen,
   }) = _MyVeggieDiary;
 

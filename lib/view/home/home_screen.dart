@@ -1,6 +1,6 @@
 import 'package:farmus/model/home/my_veggie_list_model.dart';
 import 'package:farmus/model/home/my_veggie_profile.dart';
-import 'package:farmus/model/home/veggie_diary_model.dart';
+import 'package:farmus/model/home/veggie_diary_one_model.dart';
 import 'package:farmus/view/home/component/home_motivation.dart';
 import 'package:farmus/view/home/component/home_my_vege_list.dart';
 import 'package:farmus/view/home/component/home_sub_title.dart';

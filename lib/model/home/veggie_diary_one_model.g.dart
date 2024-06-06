@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'veggie_diary_model.dart';
+part of 'veggie_diary_one_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

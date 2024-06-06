@@ -8,7 +8,6 @@ import '../../common/theme/farmus_theme_text_style.dart';
 import '../../model/home/my_veggie_list_model.dart';
 import '../../model/my_vege/my_veggie_diary.dart';
 import '../../view_model/home/home_provider.dart';
-import '../../view_model/home/notifier/veggie_diary_one_notifier.dart';
 import '../../view_model/my_vege/notifier/my_veggie_diary.dart';
 import '../../view_model/my_vege/notifier/my_veggie_list.dart';
 import 'component/vege_diary_info.dart';
@@ -19,17 +18,15 @@ class VegeDiaryScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var selectedVeggieId = ref.watch(selectedVeggieIdProvider);
-
     final AsyncValue<List<MyVeggieListModel>> veggieList =
-    ref.watch(myVeggieListModelProvider);
+        ref.watch(myVeggieListModelProvider);
 
     if (selectedVeggieId == null && veggieList.value?.isNotEmpty == true) {
       selectedVeggieId = veggieList.value!.first.myVeggieId.toString();
     }
 
-    // Get the list of veggie diaries
     final AsyncValue<List<MyVeggieDiary>> myVeggieDiaryList =
-    ref.watch(myVeggieDiaryProvider(selectedVeggieId.toString()));
+        ref.watch(myVeggieDiaryProvider(selectedVeggieId.toString()));
 
     return Scaffold(
       appBar: const BackLeftTitleAppBar(
@@ -45,7 +42,10 @@ class VegeDiaryScreen extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const VegeDiaryInfo(),
+                    VegeDiaryInfo(
+                      myVeggieDiaryList: myVeggieDiaryList.value ?? [],
+                      selectId: selectedVeggieId.toString(),
+                    ),
                     const Padding(
                       padding: EdgeInsets.symmetric(vertical: 24.0),
                       child: Text(
@@ -55,7 +55,6 @@ class VegeDiaryScreen extends ConsumerWidget {
                     ),
                     myVeggieDiaryList.when(
                       data: (diaries) {
-                        // Render the diaries
                         return Column(
                           children: diaries.map((diary) {
                             return VegeDiaryWidget(

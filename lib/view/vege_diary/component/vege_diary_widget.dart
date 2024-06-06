@@ -22,16 +22,18 @@ class VegeDiaryWidget extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => VegeDiaryDetailScreen(),
+            builder: (context) => const VegeDiaryDetailScreen(),
           ),
         );
       },
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              const FarmusPictureFix(
+              FarmusPictureFix(
                 size: 64.0,
+                image: diary.image,
               ),
               const SizedBox(
                 width: 16.0,
@@ -44,20 +46,20 @@ class VegeDiaryWidget extends StatelessWidget {
                       diary.date,
                       style: FarmusThemeTextStyle.darkMedium15,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 6,
                     ),
                     Row(
                       children: [
-                        Text(
+                        const Text(
                           '상태',
                           style: FarmusThemeTextStyle.gray2Medium15,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 8,
                         ),
                         Text(
-                          diary.isOpen ? '열림' : '닫힘',
+                          diary.state,
                           style: FarmusThemeTextStyle.gray1Medium15,
                         ),
                       ],

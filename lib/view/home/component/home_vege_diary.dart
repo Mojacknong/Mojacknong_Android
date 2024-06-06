@@ -1,5 +1,5 @@
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:farmus/model/home/veggie_diary_model.dart';
+import 'package:farmus/model/home/veggie_diary_one_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../vege_diary/vege_diary_screen.dart';

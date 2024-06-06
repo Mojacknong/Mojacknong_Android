@@ -23,6 +23,7 @@ mixin _$MyVeggieDiary {
   String get date => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
+  String get state => throw _privateConstructorUsedError;
   bool get isOpen => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +38,8 @@ abstract class $MyVeggieDiaryCopyWith<$Res> {
           MyVeggieDiary value, $Res Function(MyVeggieDiary) then) =
       _$MyVeggieDiaryCopyWithImpl<$Res, MyVeggieDiary>;
   @useResult
-  $Res call({String date, String image, String content, bool isOpen});
+  $Res call(
+      {String date, String image, String content, String state, bool isOpen});
 }
 
 /// @nodoc
@@ -56,6 +58,7 @@ class _$MyVeggieDiaryCopyWithImpl<$Res, $Val extends MyVeggieDiary>
     Object? date = null,
     Object? image = null,
     Object? content = null,
+    Object? state = null,
     Object? isOpen = null,
   }) {
     return _then(_value.copyWith(
@@ -70,6 +73,10 @@ class _$MyVeggieDiaryCopyWithImpl<$Res, $Val extends MyVeggieDiary>
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
+              as String,
+      state: null == state
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
               as String,
       isOpen: null == isOpen
           ? _value.isOpen
@@ -87,7 +94,8 @@ abstract class _$$MyVeggieDiaryImplCopyWith<$Res>
       __$$MyVeggieDiaryImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String date, String image, String content, bool isOpen});
+  $Res call(
+      {String date, String image, String content, String state, bool isOpen});
 }
 
 /// @nodoc
@@ -104,6 +112,7 @@ class __$$MyVeggieDiaryImplCopyWithImpl<$Res>
     Object? date = null,
     Object? image = null,
     Object? content = null,
+    Object? state = null,
     Object? isOpen = null,
   }) {
     return _then(_$MyVeggieDiaryImpl(
@@ -118,6 +127,10 @@ class __$$MyVeggieDiaryImplCopyWithImpl<$Res>
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
+              as String,
+      state: null == state
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
               as String,
       isOpen: null == isOpen
           ? _value.isOpen
@@ -134,6 +147,7 @@ class _$MyVeggieDiaryImpl implements _MyVeggieDiary {
       {required this.date,
       required this.image,
       required this.content,
+      required this.state,
       required this.isOpen});
 
   factory _$MyVeggieDiaryImpl.fromJson(Map<String, dynamic> json) =>
@@ -146,11 +160,13 @@ class _$MyVeggieDiaryImpl implements _MyVeggieDiary {
   @override
   final String content;
   @override
+  final String state;
+  @override
   final bool isOpen;
 
   @override
   String toString() {
-    return 'MyVeggieDiary(date: $date, image: $image, content: $content, isOpen: $isOpen)';
+    return 'MyVeggieDiary(date: $date, image: $image, content: $content, state: $state, isOpen: $isOpen)';
   }
 
   @override
@@ -161,12 +177,14 @@ class _$MyVeggieDiaryImpl implements _MyVeggieDiary {
             (identical(other.date, date) || other.date == date) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.content, content) || other.content == content) &&
+            (identical(other.state, state) || other.state == state) &&
             (identical(other.isOpen, isOpen) || other.isOpen == isOpen));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, date, image, content, isOpen);
+  int get hashCode =>
+      Object.hash(runtimeType, date, image, content, state, isOpen);
 
   @JsonKey(ignore: true)
   @override
@@ -187,6 +205,7 @@ abstract class _MyVeggieDiary implements MyVeggieDiary {
       {required final String date,
       required final String image,
       required final String content,
+      required final String state,
       required final bool isOpen}) = _$MyVeggieDiaryImpl;
 
   factory _MyVeggieDiary.fromJson(Map<String, dynamic> json) =
@@ -198,6 +217,8 @@ abstract class _MyVeggieDiary implements MyVeggieDiary {
   String get image;
   @override
   String get content;
+  @override
+  String get state;
   @override
   bool get isOpen;
   @override
