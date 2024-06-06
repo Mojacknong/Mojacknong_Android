@@ -8,6 +8,7 @@ part 'my_veggie_list_notifier.g.dart';
 
 @riverpod
 class MyVeggieListNotifier extends _$MyVeggieListNotifier {
+
   @override
   List<MyVegeModel> build() {
     return [
@@ -20,5 +21,23 @@ class MyVeggieListNotifier extends _$MyVeggieListNotifier {
     var jsonResponse = convert.jsonDecode(response) as Map<String, dynamic>;
 
     return jsonResponse['data'] ?? [];
+  }
+
+  Future<List<MyVegeModel>> fetchMyVeggieList() async {
+    final response = await MyVeggieGardenRepository.myVeggieList();
+    var jsonResponse = convert.jsonDecode(response) as Map<String, dynamic>;
+    var veggieData = jsonResponse['data'] ?? [];
+
+    List<MyVegeModel> veggieList = veggieData.map<MyVegeModel>((item) {
+      return MyVegeModel(
+        vegeName: item['nickname'],
+        vegeType: '',
+        nowDay: '',
+        startDay: '',
+      );
+    }).toList();
+
+    state = veggieList;
+    return veggieList;
   }
 }

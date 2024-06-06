@@ -39,7 +39,6 @@ class HomeScreen extends ConsumerWidget {
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (snapshot.hasData) {
-            ref.watch(myVeggieListNotifierProvider.notifier).myVeggieList();
             final veggieListData = snapshot.data![0] as List<dynamic>;
             return SingleChildScrollView(
               child: Padding(
@@ -55,7 +54,7 @@ class HomeScreen extends ConsumerWidget {
                         _ => const CircularProgressIndicator(),
                       },
                     if (veggieListData.isNotEmpty) ...[
-                      const HomeMyVegeList(),
+                       const HomeMyVegeList(),
                       const SizedBox(height: 8),
                       HomeMyVege(size: size),
                       const HomeMotivation(
