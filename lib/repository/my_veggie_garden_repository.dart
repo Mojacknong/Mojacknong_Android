@@ -26,4 +26,9 @@ class MyVeggieGardenRepository {
 
     return response;
   }
+
+  static Future<String> myVeggieInfoList() async {
+    String? response = await MyVeggieService().myVeggieInfoList();
+    return response;
+  }
 }

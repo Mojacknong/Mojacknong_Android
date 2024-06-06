@@ -11,13 +11,14 @@ import '../../common/button/add_button.dart';
 import '../../common/button/delete_button.dart';
 import '../../common/theme/farmus_theme_color.dart';
 import '../../view_model/home/home_vege_add_provider.dart';
+import '../../view_model/my_vege/notifier/my_veggie_info.dart';
 import '../../view_model/vege_delete/vege_delete_provider.dart';
 import '../vege_add/home_vege_add_screen.dart';
 import '../vege_delete/vege_delete_screen.dart';
 import 'component/my_vege_list_info.dart';
 
 class MyVegeScreen extends ConsumerStatefulWidget {
-  const MyVegeScreen({super.key});
+  const MyVegeScreen({Key? key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _MyVegeScreenState();
@@ -26,10 +27,9 @@ class MyVegeScreen extends ConsumerStatefulWidget {
 class _MyVegeScreenState extends ConsumerState<MyVegeScreen> {
   @override
   Widget build(BuildContext context) {
-    final myVegeList = ref.watch(myVegeProvider);
+    final myVegeList = ref.watch(myVeggieInfoProvider);
     final myVegeDeleteMode = ref.watch(myVegeDeleteProvider);
     final myVegeNotifier = ref.read(myVegeProvider.notifier);
-
     void showActionSheet(BuildContext context) {
       showCupertinoModalPopup(
         context: context,
@@ -84,64 +84,71 @@ class _MyVegeScreenState extends ConsumerState<MyVegeScreen> {
           )
         ],
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: myVegeList.length,
-              itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    MyVegeListInfo(
-                      myVege: myVegeList[index],
-                    ),
-                    if (myVegeList.length - 1 != index)
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.0),
-                        child: Divider(
-                          height: 1,
-                          color: FarmusThemeColor.gray5,
+      body: myVegeList.when(
+        data: (myVegeListData) {
+          return Column(
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  itemCount: myVegeListData.length,
+                  itemBuilder: (context, index) {
+                    return Column(
+                      children: [
+                        MyVegeListInfo(
+                          myVege: myVegeListData[index],
                         ),
-                      ),
-                  ],
-                );
-              },
-            ),
-          ),
-          Visibility(
-            visible: myVegeDeleteMode,
-            child: const Text(
-              "채소는 한 번에 하나씩 삭제할 수 있어요",
-              style: FarmusThemeTextStyle.redMedium13,
-            ),
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          BottomBackgroundDividerButton(
-            button: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: myVegeDeleteMode
-                  ? DeleteButton(
-                      enabled:
-                          myVegeNotifier.selectedVege.isEmpty ? false : true,
-                      onPressed: () {
-                        showActionSheet(context);
-                      },
-                    )
-                  : AddButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const HomeVegeAddScreen(),
+                        if (myVegeListData.length - 1 != index)
+                          const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 16.0),
+                            child: Divider(
+                              height: 1,
+                              color: FarmusThemeColor.gray5,
+                            ),
                           ),
-                        );
-                      },
-                    ),
-            ),
-          )
-        ],
+                      ],
+                    );
+                  },
+                ),
+              ),
+              Visibility(
+                visible: myVegeDeleteMode,
+                child: const Text(
+                  "채소는 한 번에 하나씩 삭제할 수 있어요",
+                  style: FarmusThemeTextStyle.redMedium13,
+                ),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              BottomBackgroundDividerButton(
+                button: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: myVegeDeleteMode
+                      ? DeleteButton(
+                          enabled: myVegeNotifier.selectedVege.isEmpty
+                              ? false
+                              : true,
+                          onPressed: () {
+                            showActionSheet(context);
+                          },
+                        )
+                      : AddButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const HomeVegeAddScreen(),
+                              ),
+                            );
+                          },
+                        ),
+                ),
+              )
+            ],
+          );
+        },
+        loading: () => const CircularProgressIndicator(),
+        error: (error, stack) => Text('Error: ${error.toString()}'),
       ),
     );
   }

@@ -1,33 +1,12 @@
+import 'package:farmus/model/my_vege/my_veggie_info.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../model/my_vege/my_vege_model.dart';
+class MyVegeNotifier extends StateNotifier<List<MyVeggieInfo>> {
+  MyVegeNotifier() : super([]);
 
-class MyVegeNotifier extends StateNotifier<List<MyVegeModel>> {
-  MyVegeNotifier()
-      : super([
-          MyVegeModel(
-            vegeName: "상훈이",
-            vegeType: "상추",
-            nowDay: "8",
-            startDay: "23.06.27",
-          ),
-          MyVegeModel(
-            vegeName: "방울이",
-            vegeType: "방울토마토",
-            nowDay: "8",
-            startDay: "24.03.23",
-          ),
-          MyVegeModel(
-            vegeName: "깨르륵",
-            vegeType: "깻잎",
-            nowDay: "5",
-            startDay: "24.03.25",
-          ),
-        ]);
+  final selectedVege = <MyVeggieInfo>{};
 
-  final selectedVege = <MyVegeModel>{};
-
-  void toggleSelect(MyVegeModel vege) {
+  void toggleSelect(MyVeggieInfo vege) {
     if (selectedVege.contains(vege)) {
       selectedVege.remove(vege);
     } else {
@@ -36,7 +15,7 @@ class MyVegeNotifier extends StateNotifier<List<MyVegeModel>> {
     state = [...state];
   }
 
-  bool isVegeSelected(MyVegeModel vege) {
+  bool isVegeSelected(MyVeggieInfo vege) {
     return selectedVege.contains(vege);
   }
 
@@ -45,7 +24,7 @@ class MyVegeNotifier extends StateNotifier<List<MyVegeModel>> {
     selectedVege.clear();
   }
 
-  void add(MyVegeModel newVege) {
+  void add(MyVeggieInfo newVege) {
     state = [...state, newVege];
   }
 }

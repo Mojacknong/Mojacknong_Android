@@ -1,4 +1,4 @@
-import 'package:farmus/model/my_vege/my_vege_model.dart';
+import 'package:farmus/model/my_vege/my_veggie_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -10,7 +10,7 @@ import '../../../view_model/my_vege/my_vege_provider.dart';
 class MyVegeListInfo extends ConsumerWidget {
   const MyVegeListInfo({super.key, required this.myVege});
 
-  final MyVegeModel myVege;
+  final MyVeggieInfo myVege;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -39,6 +39,7 @@ class MyVegeListInfo extends ConsumerWidget {
                 borderRadius: BorderRadius.circular(30),
               ),
             ),
+            child: Image.network(myVege.image),
           ),
         ),
         Expanded(
@@ -50,7 +51,7 @@ class MyVegeListInfo extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      myVege.vegeName,
+                      myVege.nickname,
                       style: FarmusThemeTextStyle.darkSemiBold17,
                     ),
                     const VerticalDivider(
@@ -59,7 +60,7 @@ class MyVegeListInfo extends ConsumerWidget {
                       color: FarmusThemeColor.gray4,
                     ),
                     Text(
-                      myVege.vegeType,
+                      myVege.veggieName,
                       style: FarmusThemeTextStyle.darkMedium15,
                     ),
                   ],
@@ -69,7 +70,7 @@ class MyVegeListInfo extends ConsumerWidget {
                 height: 8,
               ),
               Text(
-                "+${myVege.nowDay}일 ${myVege.startDay} -",
+                "+${myVege.period}일 ${myVege.birthDay} -",
                 style: FarmusThemeTextStyle.gray2Medium15,
               ),
             ],
