@@ -29,4 +29,10 @@ class SearchFarmclubRepository {
       filteredDifficulties,
     );
   }
+
+  static Future<String> postSignUpVeggie(int farmClubId, int myVeggieId) async {
+    String? response =
+        await SearchFarmclubService().postSignUpVeggie(farmClubId, myVeggieId);
+    return response;
+  }
 }

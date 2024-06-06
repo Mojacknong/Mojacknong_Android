@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:farmus/data/network/base_api_services.dart';
 import 'package:farmus/model/search/recommended_farmclubs_model.dart';
@@ -87,6 +88,26 @@ class SearchFarmclubService {
     } else {
       throw Exception(
           'Failed to load recommended farm clubs: ${response.statusCode}');
+    }
+  }
+
+  Future<String> postSignUpVeggie(int farmClubId, int myVeggieId) async {
+    const url = '/api/farm-club/register';
+
+    Map<String, String> headers = {
+      HttpHeaders.contentTypeHeader: 'application/json',
+    };
+    final body = jsonEncode({
+      'farmClubId': farmClubId,
+      'myVeggieId': myVeggieId,
+    });
+    ApiClient apiClient = ApiClient();
+    final response = await apiClient.post(url, headers: headers, body: body);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('Failed to post vege');
     }
   }
 }
