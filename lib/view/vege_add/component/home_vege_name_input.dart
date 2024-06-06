@@ -15,10 +15,9 @@ class HomeVegeNameInput extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final myVeggieAddNotifier = ref.read(myVeggieAddNotifierProvider).value;
+    final myVeggieAddNotifier = ref.watch(myVeggieAddNotifierProvider).value;
     final name = myVeggieAddNotifier?.name ?? '';
 
-    var nowLength = name.length;
     return PrimaryTextFormField(
       initialValue: name,
       maxLength: maxLength ?? 8,
@@ -28,7 +27,7 @@ class HomeVegeNameInput extends ConsumerWidget {
       onChanged: (value) {
         ref.read(myVeggieAddNotifierProvider.notifier).updateNickname(value);
       },
-      suffix: Text("$nowLength /${maxLength ?? 8}"),
+      suffix: Text("${name.length} /${maxLength ?? 8}"),
     );
   }
 }

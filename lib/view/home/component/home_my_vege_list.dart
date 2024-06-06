@@ -50,6 +50,7 @@ class HomeMyVegeList extends ConsumerWidget {
                       enabled: true,
                       text: veggie.vegeName,
                       onPressed: () {},
+                      fontPadding: 0.0,
                     ),
                   ),
                 ),
