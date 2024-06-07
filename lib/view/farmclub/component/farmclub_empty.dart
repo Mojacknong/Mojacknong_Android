@@ -93,6 +93,7 @@ class FarmclubEmpty extends ConsumerWidget {
                           ),
                         );
                       },
+                      fontPadding: 16.0,
                       enabled: true,
                     ),
                   ),

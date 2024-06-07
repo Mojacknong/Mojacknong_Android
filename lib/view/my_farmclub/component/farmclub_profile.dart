@@ -6,9 +6,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../common/theme/farmus_theme_text_style.dart';
+import '../../../model/my_farmclub/my_farmclub_model.dart';
 
 class FarmclubProfile extends ConsumerWidget {
-  const FarmclubProfile({super.key});
+  final MyFarmclubModel? farmClub;
+
+  const FarmclubProfile({Key? key, this.farmClub}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -21,17 +24,17 @@ class FarmclubProfile extends ConsumerWidget {
             SvgPicture.asset('assets/image/ic_farmclub_mark.svg'),
           ],
         ),
-        const Padding(
+         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '상추는 현실이 되다',
+                farmClub!.farmClubName,
                 style: FarmusThemeTextStyle.darkSemiBold20,
               ),
               Text(
-                '가입한 지 +12일',
+                '가입한 지 ${farmClub!.veggieName}일',
                 style: FarmusThemeTextStyle.gray1Medium13,
               ),
             ],
