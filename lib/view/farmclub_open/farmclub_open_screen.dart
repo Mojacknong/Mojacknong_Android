@@ -72,6 +72,7 @@ class FarmclubOpenScreen extends ConsumerWidget {
                     width: double.infinity,
                     child: PrimaryColorButton(
                       enabled: enabled,
+                      fontSize: 15,
                       text: "개설하기",
                       fontPadding: 15,
                       onPressed: () {

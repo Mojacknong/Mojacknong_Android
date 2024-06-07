@@ -15,6 +15,7 @@ class SearchFarmclubDetailModel with _$SearchFarmclubDetailModel {
     required String startedAt,
     required int maxMemberCount,
     required int currentMemberCount,
+    required String veggieInfoId,
     required FarmclubHelpInfoModel help,
   }) = _SearchFarmclubDetailModel;
 
