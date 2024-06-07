@@ -38,7 +38,7 @@ class FarmclubStep extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Step ${step.stepNum}",
+                        "Step ${step.stepNum + 1}",
                         style: FarmusThemeTextStyle.gray2SemiBold13,
                       ),
                       const SizedBox(
