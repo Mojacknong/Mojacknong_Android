@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -6,23 +5,23 @@ import '../theme/farmus_theme_text_style.dart';
 import 'primary_app_bar.dart';
 
 class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const HomeScreenAppBar({
-    super.key,
-  });
+  const HomeScreenAppBar({super.key, required this.veggieCount});
+
+  final String veggieCount;
 
   @override
   Widget build(BuildContext context) {
     return PrimaryAppBar(
-      leading: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+      leading: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Row(
           children: [
-            Text(
-              "내 텃밭 ",
+            const Text(
+              '내 텃밭 ',
               style: FarmusThemeTextStyle.darkSemiBold20,
             ),
             Text(
-              "3",
+              veggieCount,
               style: FarmusThemeTextStyle.gray2SemiBold20,
             ),
           ],

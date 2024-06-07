@@ -24,8 +24,8 @@ class FarmclubTabBar extends StatelessWidget {
               children: [
                 const FarmclubStep(
                   stepImages: [
-                    'assets/image/img_home_motivation.png',
-                    'assets/image/img_home_motivation.png'
+                    'assets/image/img_about_farmclub_first.png',
+                    'assets/image/img_about_farmclub_first.png'
                   ],
                 ),
                 const SizedBox(

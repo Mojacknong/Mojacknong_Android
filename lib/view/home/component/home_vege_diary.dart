@@ -1,5 +1,6 @@
+import 'package:farmus/common/farmus_picture_fix.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:farmus/model/home/veggie_diary_model.dart';
+import 'package:farmus/model/home/veggie_diary_one_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../vege_diary/vege_diary_screen.dart';
@@ -20,11 +21,9 @@ class HomeVegeDiary extends StatelessWidget {
       },
       child: Row(
         children: [
-          Image.network(
-            diary.image!,
-            width: 64,
-            height: 64,
-            fit: BoxFit.cover,
+          FarmusPictureFix(
+            size: 64,
+            image: diary.image,
           ),
           const SizedBox(
             width: 16,

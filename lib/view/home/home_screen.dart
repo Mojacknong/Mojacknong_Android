@@ -1,6 +1,6 @@
 import 'package:farmus/model/home/my_veggie_list_model.dart';
 import 'package:farmus/model/home/my_veggie_profile.dart';
-import 'package:farmus/model/home/veggie_diary_model.dart';
+import 'package:farmus/model/home/veggie_diary_one_model.dart';
 import 'package:farmus/view/home/component/home_motivation.dart';
 import 'package:farmus/view/home/component/home_my_vege_list.dart';
 import 'package:farmus/view/home/component/home_sub_title.dart';
@@ -38,7 +38,17 @@ class HomeScreen extends ConsumerWidget {
     String toDo = ref.watch(homeToDoProvider);
 
     return Scaffold(
-      appBar: const HomeScreenAppBar(),
+      appBar: veggieList.when(
+        data: (veggieListData) => HomeScreenAppBar(
+          veggieCount: veggieListData.length.toString(),
+        ),
+        error: (error, stack) => const HomeScreenAppBar(
+          veggieCount: "0",
+        ),
+        loading: () => const HomeScreenAppBar(
+          veggieCount: "0",
+        ),
+      ),
       body: veggieList.when(
         data: (veggieListData) {
           return SingleChildScrollView(
@@ -120,9 +130,9 @@ class HomeScreen extends ConsumerWidget {
                   if (veggieListData.isNotEmpty)
                     if (selectedVeggieId != null)
                       FutureBuilder<VeggieDiaryOneModel?>(
-                        future: ref.read(veggieDiaryOneModelProvider(
-                                selectedVeggieId.toString())
-                            .future),
+                        future: ref.watch(
+                            veggieDiaryOneModelProvider(selectedVeggieId)
+                                .future),
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {
@@ -152,7 +162,7 @@ class HomeScreen extends ConsumerWidget {
                     else
                       FutureBuilder<VeggieDiaryOneModel?>(
                         future: ref.read(veggieDiaryOneModelProvider(
-                                veggieList.value!.first.myVeggieId.toString())
+                                veggieList.value!.first.myVeggieId)
                             .future),
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==

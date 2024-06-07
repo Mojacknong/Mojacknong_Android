@@ -5,4 +5,4 @@ final homeToDoProvider = StateNotifierProvider<ToDoNotifier, String>((ref) {
   return ToDoNotifier();
 });
 
-final selectedVeggieIdProvider = StateProvider<String?>((ref) => null);
+final selectedVeggieIdProvider = StateProvider<int?>((ref) => null);

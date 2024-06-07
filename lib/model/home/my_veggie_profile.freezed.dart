@@ -20,6 +20,7 @@ MyVeggieProfile _$MyVeggieProfileFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MyVeggieProfile {
+  String get nickname => throw _privateConstructorUsedError;
   String get veggieName => throw _privateConstructorUsedError;
   String get veggieImage => throw _privateConstructorUsedError;
   String get createdVeggie => throw _privateConstructorUsedError;
@@ -39,7 +40,8 @@ abstract class $MyVeggieProfileCopyWith<$Res> {
       _$MyVeggieProfileCopyWithImpl<$Res, MyVeggieProfile>;
   @useResult
   $Res call(
-      {String veggieName,
+      {String nickname,
+      String veggieName,
       String veggieImage,
       String createdVeggie,
       int period,
@@ -59,6 +61,7 @@ class _$MyVeggieProfileCopyWithImpl<$Res, $Val extends MyVeggieProfile>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? nickname = null,
     Object? veggieName = null,
     Object? veggieImage = null,
     Object? createdVeggie = null,
@@ -66,6 +69,10 @@ class _$MyVeggieProfileCopyWithImpl<$Res, $Val extends MyVeggieProfile>
     Object? step = null,
   }) {
     return _then(_value.copyWith(
+      nickname: null == nickname
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as String,
       veggieName: null == veggieName
           ? _value.veggieName
           : veggieName // ignore: cast_nullable_to_non_nullable
@@ -99,7 +106,8 @@ abstract class _$$MyVeggieProfileImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String veggieName,
+      {String nickname,
+      String veggieName,
       String veggieImage,
       String createdVeggie,
       int period,
@@ -117,6 +125,7 @@ class __$$MyVeggieProfileImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? nickname = null,
     Object? veggieName = null,
     Object? veggieImage = null,
     Object? createdVeggie = null,
@@ -124,6 +133,10 @@ class __$$MyVeggieProfileImplCopyWithImpl<$Res>
     Object? step = null,
   }) {
     return _then(_$MyVeggieProfileImpl(
+      nickname: null == nickname
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as String,
       veggieName: null == veggieName
           ? _value.veggieName
           : veggieName // ignore: cast_nullable_to_non_nullable
@@ -152,7 +165,8 @@ class __$$MyVeggieProfileImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$MyVeggieProfileImpl implements _MyVeggieProfile {
   const _$MyVeggieProfileImpl(
-      {required this.veggieName,
+      {required this.nickname,
+      required this.veggieName,
       required this.veggieImage,
       required this.createdVeggie,
       required this.period,
@@ -161,6 +175,8 @@ class _$MyVeggieProfileImpl implements _MyVeggieProfile {
   factory _$MyVeggieProfileImpl.fromJson(Map<String, dynamic> json) =>
       _$$MyVeggieProfileImplFromJson(json);
 
+  @override
+  final String nickname;
   @override
   final String veggieName;
   @override
@@ -174,7 +190,7 @@ class _$MyVeggieProfileImpl implements _MyVeggieProfile {
 
   @override
   String toString() {
-    return 'MyVeggieProfile(veggieName: $veggieName, veggieImage: $veggieImage, createdVeggie: $createdVeggie, period: $period, step: $step)';
+    return 'MyVeggieProfile(nickname: $nickname, veggieName: $veggieName, veggieImage: $veggieImage, createdVeggie: $createdVeggie, period: $period, step: $step)';
   }
 
   @override
@@ -182,6 +198,8 @@ class _$MyVeggieProfileImpl implements _MyVeggieProfile {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MyVeggieProfileImpl &&
+            (identical(other.nickname, nickname) ||
+                other.nickname == nickname) &&
             (identical(other.veggieName, veggieName) ||
                 other.veggieName == veggieName) &&
             (identical(other.veggieImage, veggieImage) ||
@@ -194,8 +212,8 @@ class _$MyVeggieProfileImpl implements _MyVeggieProfile {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, veggieName, veggieImage, createdVeggie, period, step);
+  int get hashCode => Object.hash(runtimeType, nickname, veggieName,
+      veggieImage, createdVeggie, period, step);
 
   @JsonKey(ignore: true)
   @override
@@ -214,7 +232,8 @@ class _$MyVeggieProfileImpl implements _MyVeggieProfile {
 
 abstract class _MyVeggieProfile implements MyVeggieProfile {
   const factory _MyVeggieProfile(
-      {required final String veggieName,
+      {required final String nickname,
+      required final String veggieName,
       required final String veggieImage,
       required final String createdVeggie,
       required final int period,
@@ -223,6 +242,8 @@ abstract class _MyVeggieProfile implements MyVeggieProfile {
   factory _MyVeggieProfile.fromJson(Map<String, dynamic> json) =
       _$MyVeggieProfileImpl.fromJson;
 
+  @override
+  String get nickname;
   @override
   String get veggieName;
   @override

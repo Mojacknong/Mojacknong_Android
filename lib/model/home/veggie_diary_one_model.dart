@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'veggie_diary_model.freezed.dart';
-part 'veggie_diary_model.g.dart';
+part 'veggie_diary_one_model.freezed.dart';
+part 'veggie_diary_one_model.g.dart';
 
 @freezed
 class VeggieDiaryOneModel with _$VeggieDiaryOneModel {

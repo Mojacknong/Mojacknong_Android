@@ -4,10 +4,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'theme/farmus_theme_color.dart';
 
 class FarmusPictureFix extends ConsumerWidget {
-  const FarmusPictureFix({super.key, required this.size, this.asset});
+  const FarmusPictureFix({Key? key, required this.size, this.image})
+      : super(key: key);
 
   final double size;
-  final String? asset;
+  final String? image;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -15,9 +16,9 @@ class FarmusPictureFix extends ConsumerWidget {
       width: size,
       height: size,
       decoration: ShapeDecoration(
-        image: asset != null
+        image: image != null
             ? DecorationImage(
-                image: AssetImage(asset!),
+                image: NetworkImage(image!),
                 fit: BoxFit.cover,
               )
             : null,

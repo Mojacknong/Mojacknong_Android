@@ -6,6 +6,7 @@ part 'my_veggie_profile.g.dart';
 @freezed
 class MyVeggieProfile with _$MyVeggieProfile {
   const factory MyVeggieProfile({
+    required String nickname,
     required String veggieName,
     required String veggieImage,
     required String createdVeggie,

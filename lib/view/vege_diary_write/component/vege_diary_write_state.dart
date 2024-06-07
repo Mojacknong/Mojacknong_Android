@@ -40,26 +40,26 @@ class VegeDiaryWriteState extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     HomeMyVegeButton(
-                      enabled: vegeState == 'bad',
+                      enabled: vegeState == '나쁨',
                       text: "나쁨",
                       onPressed: () {
-                        notifier.updateVegeState('bad');
+                        notifier.updateVegeState('나쁨');
                       },
                       fontPadding: 0,
                     ),
                     HomeMyVegeButton(
-                      enabled: vegeState == 'normal',
+                      enabled: vegeState == '보통',
                       text: "보통",
                       onPressed: () {
-                        notifier.updateVegeState('normal');
+                        notifier.updateVegeState('보통');
                       },
                       fontPadding: 0,
                     ),
                     HomeMyVegeButton(
-                      enabled: vegeState == 'good',
+                      enabled: vegeState == '좋음',
                       text: "좋음",
                       onPressed: () {
-                        notifier.updateVegeState('good');
+                        notifier.updateVegeState('좋음');
                       },
                       fontPadding: 0,
                     ),
