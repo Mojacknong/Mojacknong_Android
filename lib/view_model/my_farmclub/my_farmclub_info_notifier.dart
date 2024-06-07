@@ -7,15 +7,13 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'my_farmclub_info_notifier.g.dart';
 
 @riverpod
-Future<List<MyFarmclubInfoModel>> myFarmclubInfoModel(
+Future<MyFarmclubInfoModel> myFarmclubInfoModel(
     MyFarmclubInfoModelRef ref) async {
-  final response = await MyFarmclubRepository.myFarmclub();
+  final response = await MyFarmclubRepository.myFarmclubInfo(6);
   final json = jsonDecode(response) as Map<String, dynamic>;
 
-  final dataList = json['data'] as List<dynamic>;
+  final data = json['data'] as Map<String, dynamic>;
 
-  final List<MyFarmclubInfoModel> farmclub = dataList
-      .map((data) => MyFarmclubInfoModel.fromJson(data as Map<String, dynamic>))
-      .toList();
+  final MyFarmclubInfoModel farmclub = MyFarmclubInfoModel.fromJson(data);
   return farmclub;
 }

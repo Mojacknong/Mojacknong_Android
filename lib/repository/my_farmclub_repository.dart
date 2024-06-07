@@ -6,8 +6,8 @@ class MyFarmclubRepository {
     return response;
   }
 
-  static Future<String> myFarmclubInfo(int myVeggieId) async {
-    String? response = await MyFarmclubService().myFarmclubInfo(myVeggieId);
+  static Future<String> myFarmclubInfo(int farmclubId) async {
+    String? response = await MyFarmclubService().myFarmclubInfo(farmclubId);
     return response;
   }
 }

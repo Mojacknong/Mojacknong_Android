@@ -17,8 +17,8 @@ class MyFarmclubService {
     }
   }
 
-  Future<String> myFarmclubInfo(int myVeggieId) async {
-    final url = '/api/farm-club/me/$myVeggieId';
+  Future<String> myFarmclubInfo(int farmclubId) async {
+    final url = '/api/farm-club/me/$farmclubId';
 
     ApiClient apiClient = ApiClient();
 
