@@ -50,7 +50,7 @@ class _MySettingScreenState extends ConsumerState<MySettingScreen> {
               Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) => const MySettingWeb(
                     url:
-                        "https://www.notion.so/FARMUS-5a883da34dd14ff594e952b470dd19f6?pvs=4"),
+                        "https://thoughtful-chokeberry-dba.notion.site/FARMUS-5a883da34dd14ff594e952b470dd19f6?pvs=4"),
               ));
             },
           ),
@@ -65,7 +65,7 @@ class _MySettingScreenState extends ConsumerState<MySettingScreen> {
               Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) => const MySettingWeb(
                     url:
-                        "https://www.notion.so/FARMUS-b479368ce7e64145943e39d2162e7166?pvs=4"),
+                        "https://thoughtful-chokeberry-dba.notion.site/FARMUS-b479368ce7e64145943e39d2162e7166?pvs=4"),
               ));
             },
           ),

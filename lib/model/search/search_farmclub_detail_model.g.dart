@@ -17,6 +17,7 @@ _$SearchFarmclubDetailModelImpl _$$SearchFarmclubDetailModelImplFromJson(
       startedAt: json['startedAt'] as String,
       maxMemberCount: (json['maxMemberCount'] as num).toInt(),
       currentMemberCount: (json['currentMemberCount'] as num).toInt(),
+      veggieInfoId: json['veggieInfoId'] as String,
       help:
           FarmclubHelpInfoModel.fromJson(json['help'] as Map<String, dynamic>),
     );
@@ -32,5 +33,6 @@ Map<String, dynamic> _$$SearchFarmclubDetailModelImplToJson(
       'startedAt': instance.startedAt,
       'maxMemberCount': instance.maxMemberCount,
       'currentMemberCount': instance.currentMemberCount,
+      'veggieInfoId': instance.veggieInfoId,
       'help': instance.help,
     };
