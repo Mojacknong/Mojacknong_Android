@@ -99,6 +99,8 @@ class FarmclubSignUpBottomSheetContent extends ConsumerWidget {
                             ? farmclubDetailAsyncValue.when(
                                 data: (data) {
                                   return PrimaryColorButton(
+                                    fontPadding: 15,
+                                    fontSize: 15,
                                     enabled: toggleNotifier.isChecked,
                                     text: "가입하기",
                                     onPressed: () {
@@ -120,6 +122,7 @@ class FarmclubSignUpBottomSheetContent extends ConsumerWidget {
                                 },
                               )
                             : PrimaryButton(
+                                fontPadding: 15,
                                 textColor: FarmusThemeColor.gray1,
                                 backgroundColor: FarmusThemeColor.gray4,
                                 borderColor: FarmusThemeColor.gray5,

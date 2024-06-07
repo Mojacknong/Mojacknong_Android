@@ -19,7 +19,9 @@ class FarmclubSignUpButton extends ConsumerWidget {
       child: SizedBox(
         width: double.infinity,
         child: PrimaryColorButton(
+          fontPadding: 15,
           enabled: true,
+          fontSize: 16,
           text: "팜클럽 가입하기",
           onPressed: () {
             showFarmclubSignupBottomSheet(
