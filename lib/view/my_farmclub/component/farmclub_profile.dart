@@ -6,32 +6,35 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../common/theme/farmus_theme_text_style.dart';
+import '../../../model/my_farmclub/my_farmclub_model.dart';
 
 class FarmclubProfile extends ConsumerWidget {
-  const FarmclubProfile({super.key});
+  final MyFarmclubModel? farmclub;
+
+  const FarmclubProfile({Key? key, this.farmclub}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Row(
       children: [
-        Stack(
+         Stack(
           alignment: Alignment.bottomRight,
           children: [
-            const FarmclubSelectProfile(),
+            FarmclubSelectProfile(image: farmclub!.farmClubImage,),
             SvgPicture.asset('assets/image/ic_farmclub_mark.svg'),
           ],
         ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '상추는 현실이 되다',
+                farmclub!.farmClubName,
                 style: FarmusThemeTextStyle.darkSemiBold20,
               ),
               Text(
-                '가입한 지 +12일',
+                '가입한 지 ${farmclub!.veggieName}일',
                 style: FarmusThemeTextStyle.gray1Medium13,
               ),
             ],

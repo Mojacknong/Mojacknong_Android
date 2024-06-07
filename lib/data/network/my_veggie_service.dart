@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
 import 'dart:io';
 
 import 'base_api_services.dart';
@@ -45,7 +44,7 @@ class MyVeggieService {
     }
   }
 
-  Future<String> myVeggieProfileList(String myVeggieId) async {
+  Future<String> myVeggieProfileList(int myVeggieId) async {
     final url = '/api/my-veggie/$myVeggieId/profile';
 
     ApiClient apiClient = ApiClient();

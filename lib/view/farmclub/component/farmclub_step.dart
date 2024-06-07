@@ -6,11 +6,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
+import '../../../model/my_farmclub/my_farmclub_info_model.dart';
 
 class FarmclubStep extends ConsumerWidget {
-  const FarmclubStep({super.key, required this.stepImages});
+  const FarmclubStep({super.key, required this.step});
 
-  final List<String> stepImages;
+  final StepModel step;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -22,12 +23,13 @@ class FarmclubStep extends ConsumerWidget {
           borderRadius: BorderRadius.circular(24),
         ),
       ),
+      margin: const EdgeInsets.symmetric(vertical: 8.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          const Padding(
-            padding: EdgeInsets.all(16.0),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
             child: Row(
               children: [
                 Expanded(
@@ -36,20 +38,22 @@ class FarmclubStep extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Step 3",
+                        "Step ${step.stepNum + 1}",
                         style: FarmusThemeTextStyle.gray2SemiBold13,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 8,
                       ),
                       Text(
-                        '상추 이파리 사진 찍기',
+                        step.stepName,
                         style: FarmusThemeTextStyle.darkSemiBold17,
                       )
                     ],
                   ),
                 ),
-                MissionWriteRouteButton(isButton: true,)
+                const MissionWriteRouteButton(
+                  isButton: true,
+                )
               ],
             ),
           ),
@@ -62,18 +66,18 @@ class FarmclubStep extends ConsumerWidget {
               children: [
                 Row(
                   children: [
-                    const Text.rich(
+                    Text.rich(
                       TextSpan(
                         style: FarmusThemeTextStyle.gray2SemiBold13,
                         //apply style to all
                         children: [
                           TextSpan(
-                            text: '8명 중 ',
+                            text: '${step.completeMemberCount}명 중 ',
                           ),
                           TextSpan(
-                              text: '3명',
+                              text: '${step.completeMemberCount}명',
                               style: FarmusThemeTextStyle.redSemiBold13),
-                          TextSpan(
+                          const TextSpan(
                             text: '이 완료했어요',
                           ),
                         ],
@@ -100,24 +104,25 @@ class FarmclubStep extends ConsumerWidget {
                   height: 8,
                 ),
                 Row(
-                  children: [
-                    for (var image in stepImages)
-                      GestureDetector(
-                        onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (builder) =>
-                                    const MissionFeedScreen())),
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child: FarmusPictureFix(
-                            size: 82,
-                            image: image,
-                          ),
-                        ),
-                      )
-                  ],
-                )
+                  children: step.images.isNotEmpty
+                      ? step.images.map((image) {
+                          return GestureDetector(
+                            onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (builder) =>
+                                        const MissionFeedScreen())),
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 8.0),
+                              child: FarmusPictureFix(
+                                size: 82,
+                                image: image,
+                              ),
+                            ),
+                          );
+                        }).toList()
+                      : [const SizedBox()],
+                ),
               ],
             ),
           ),

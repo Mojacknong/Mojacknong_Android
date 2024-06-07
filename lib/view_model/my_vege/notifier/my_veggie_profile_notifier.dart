@@ -9,7 +9,7 @@ part 'my_veggie_profile_notifier.g.dart';
 
 @riverpod
 Future<MyVeggieProfile> myVeggieProfile(
-    MyVeggieProfileRef ref, String myVeggieId) async {
+    MyVeggieProfileRef ref, int myVeggieId) async {
   final response =
       await MyVeggieGardenRepository.myVeggieProfileList(myVeggieId);
   final json = jsonDecode(response) as Map<String, dynamic>;

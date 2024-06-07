@@ -4,7 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../common/theme/farmus_theme_color.dart';
 
 class FarmclubSelectProfile extends ConsumerWidget {
-  const FarmclubSelectProfile({super.key});
+  final String image;
+
+  const FarmclubSelectProfile({super.key, required this.image});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -32,8 +34,11 @@ class FarmclubSelectProfile extends ConsumerWidget {
         Container(
           width: 48,
           height: 48,
-          decoration: const BoxDecoration(
-            color: FarmusThemeColor.gray7,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: NetworkImage(image),
+              fit: BoxFit.cover,
+            ),
             shape: BoxShape.circle,
           ),
         )

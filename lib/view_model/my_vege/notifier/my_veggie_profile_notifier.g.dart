@@ -6,7 +6,7 @@ part of 'my_veggie_profile_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$myVeggieProfileHash() => r'f6b32dcbcbedcbe3d27e81846bdd24e5b92a94bf';
+String _$myVeggieProfileHash() => r'c4e1f710f95831b2350a6e3b3b45412bdff71afa';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -40,7 +40,7 @@ class MyVeggieProfileFamily extends Family<AsyncValue<MyVeggieProfile>> {
 
   /// See also [myVeggieProfile].
   MyVeggieProfileProvider call(
-    String myVeggieId,
+    int myVeggieId,
   ) {
     return MyVeggieProfileProvider(
       myVeggieId,
@@ -76,7 +76,7 @@ class MyVeggieProfileProvider
     extends AutoDisposeFutureProvider<MyVeggieProfile> {
   /// See also [myVeggieProfile].
   MyVeggieProfileProvider(
-    String myVeggieId,
+    int myVeggieId,
   ) : this._internal(
           (ref) => myVeggieProfile(
             ref as MyVeggieProfileRef,
@@ -104,7 +104,7 @@ class MyVeggieProfileProvider
     required this.myVeggieId,
   }) : super.internal();
 
-  final String myVeggieId;
+  final int myVeggieId;
 
   @override
   Override overrideWith(
@@ -145,7 +145,7 @@ class MyVeggieProfileProvider
 
 mixin MyVeggieProfileRef on AutoDisposeFutureProviderRef<MyVeggieProfile> {
   /// The parameter `myVeggieId` of this provider.
-  String get myVeggieId;
+  int get myVeggieId;
 }
 
 class _MyVeggieProfileProviderElement
@@ -154,7 +154,7 @@ class _MyVeggieProfileProviderElement
   _MyVeggieProfileProviderElement(super.provider);
 
   @override
-  String get myVeggieId => (origin as MyVeggieProfileProvider).myVeggieId;
+  int get myVeggieId => (origin as MyVeggieProfileProvider).myVeggieId;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
