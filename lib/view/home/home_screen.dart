@@ -3,13 +3,13 @@ import 'package:farmus/view/home/component/home_my_vege_list.dart';
 import 'package:farmus/view/home/component/home_sub_title.dart';
 import 'package:farmus/view/home/component/home_to_do.dart';
 import 'package:farmus/view/home/component/home_vege_to_do.dart';
-import 'package:farmus/view_model/home/recommend_veggie_info_notifier.dart';
 import 'package:farmus/view_model/my_vege/notifier/my_veggie_list_notifier.dart';
+import 'package:farmus/view_model/veggie_info/recommend_veggie_info_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../common/app_bar/home_app_bar.dart';
-import '../../model/home/recommend_veggie_model.dart';
+import '../../model/veggie_info/recommend_veggie_model.dart';
 import '../../view_model/home/home_provider.dart';
 import 'component/home_my_vege.dart';
 import 'component/home_vege_diary.dart';
@@ -44,19 +44,17 @@ class HomeScreen extends ConsumerWidget {
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
-
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     if (veggieListData.isEmpty)
                       switch (recommend) {
                         AsyncData(:final value) =>
                           HomeMyVegeNone(recommendVeggieInfo: value),
-                        AsyncError() =>
-                          const Text('Oops, something unexpected happened'),
+                        AsyncError() => const Text('추천 채소 불러오기 실패'),
                         _ => const CircularProgressIndicator(),
                       },
                     if (veggieListData.isNotEmpty) ...[
-                      const HomeMyVegeList(),
+                       const HomeMyVegeList(),
                       const SizedBox(height: 8),
                       HomeMyVege(size: size),
                       const HomeMotivation(

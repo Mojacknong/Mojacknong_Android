@@ -197,7 +197,8 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
             );
           }
-          if (user.early == false){
+          if (user.early == false) {
+            Navigator.pop(context);
             Navigator.push(
               context,
               MaterialPageRoute(
@@ -231,7 +232,8 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
             );
           }
-          if (user.early == false){
+          if (user.early == false) {
+            Navigator.pop(context);
             Navigator.push(
               context,
               MaterialPageRoute(
