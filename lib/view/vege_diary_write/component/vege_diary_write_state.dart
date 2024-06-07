@@ -45,6 +45,7 @@ class VegeDiaryWriteState extends ConsumerWidget {
                       onPressed: () {
                         notifier.updateVegeState('bad');
                       },
+                      fontPadding: 0,
                     ),
                     HomeMyVegeButton(
                       enabled: vegeState == 'normal',
@@ -52,6 +53,7 @@ class VegeDiaryWriteState extends ConsumerWidget {
                       onPressed: () {
                         notifier.updateVegeState('normal');
                       },
+                      fontPadding: 0,
                     ),
                     HomeMyVegeButton(
                       enabled: vegeState == 'good',
@@ -59,6 +61,7 @@ class VegeDiaryWriteState extends ConsumerWidget {
                       onPressed: () {
                         notifier.updateVegeState('good');
                       },
+                      fontPadding: 0,
                     ),
                   ],
                 )

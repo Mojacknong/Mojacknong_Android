@@ -1,19 +1,22 @@
-import 'package:farmus/view/vege_info/vege_info_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
+import '../../../model/home/my_veggie_profile.dart';
+import '../../vege_info/vege_info_screen.dart';
 import 'my_vege_step.dart';
 
 class HomeMyVege extends ConsumerWidget {
   const HomeMyVege({
     super.key,
     required this.size,
+    required this.profile,
   });
 
   final Size size;
+  final MyVeggieProfile profile;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -48,6 +51,10 @@ class HomeMyVege extends ConsumerWidget {
                       color: FarmusThemeColor.gray4,
                     ),
                   ),
+                  image: DecorationImage(
+                    image: NetworkImage(profile.veggieImage),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
@@ -64,72 +71,53 @@ class HomeMyVege extends ConsumerWidget {
                     const SizedBox(
                       width: 8,
                     ),
-                    const Text(
-                      "상훈이",
+                    Text(
+                      profile.veggieName,
                       style: FarmusThemeTextStyle.darkSemiBold22,
                     ),
                   ],
                 ),
-                const Column(
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       children: [
                         Text(
-                          "Step 3",
+                          "Step ${profile.step}",
                           style: FarmusThemeTextStyle.green1SemiBold13,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 8,
                         ),
                         Text(
-                          "+28일 ",
+                          "+${profile.period}일 ",
                           style: FarmusThemeTextStyle.gray1Medium13,
                         ),
                         Text(
-                          "23.06.27 -",
+                          profile.createdVeggie,
                           style: FarmusThemeTextStyle.gray1Medium13,
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
-                      children: [
-                        MyVegeStep(
-                          color: FarmusThemeColor.green1,
-                        ),
-                        SizedBox(
-                          width: 1,
-                        ),
-                        MyVegeStep(
-                          color: FarmusThemeColor.green1,
-                        ),
-                        SizedBox(
-                          width: 1,
-                        ),
-                        MyVegeStep(
-                          color: FarmusThemeColor.green1,
-                        ),
-                        SizedBox(
-                          width: 1,
-                        ),
-                        MyVegeStep(
-                          color: FarmusThemeColor.gray3,
-                        ),
-                        SizedBox(
-                          width: 1,
-                        ),
-                        MyVegeStep(
-                          color: FarmusThemeColor.gray3,
-                        ),
-                      ],
-                    )
+                      children: List.generate(5, (index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 1.0),
+                          child: MyVegeStep(
+                            color: index < profile.step
+                                ? FarmusThemeColor.green1
+                                : FarmusThemeColor.gray3,
+                          ),
+                        );
+                      }),
+                    ),
                   ],
-                )
+                ),
               ],
-            )
+            ),
           ],
         ),
       ),

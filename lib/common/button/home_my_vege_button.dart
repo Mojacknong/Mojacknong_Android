@@ -10,6 +10,7 @@ class HomeMyVegeButton extends ConsumerWidget {
     required this.enabled,
     required this.text,
     required this.onPressed,
+    required this.fontPadding,
   });
 
   final bool enabled;
@@ -17,6 +18,8 @@ class HomeMyVegeButton extends ConsumerWidget {
   final void Function()? onPressed;
 
   final String text;
+
+  final double fontPadding;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -30,7 +33,7 @@ class HomeMyVegeButton extends ConsumerWidget {
           enabled ? FarmusThemeColor.green1 : FarmusThemeColor.background,
       borderRadius: 25.0,
       onPressed: onPressed,
-      fontPadding: 0,
+      fontPadding: fontPadding,
     );
   }
 }
