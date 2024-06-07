@@ -38,7 +38,9 @@ class HomeScreen extends ConsumerWidget {
     String toDo = ref.watch(homeToDoProvider);
 
     return Scaffold(
-      appBar: const HomeScreenAppBar(),
+      appBar: HomeScreenAppBar(
+        veggieCount: veggieList.value!.length.toString(),
+      ),
       body: veggieList.when(
         data: (veggieListData) {
           return SingleChildScrollView(
@@ -120,9 +122,9 @@ class HomeScreen extends ConsumerWidget {
                   if (veggieListData.isNotEmpty)
                     if (selectedVeggieId != null)
                       FutureBuilder<VeggieDiaryOneModel?>(
-                        future: ref.read(veggieDiaryOneModelProvider(
-                                selectedVeggieId)
-                            .future),
+                        future: ref.watch(
+                            veggieDiaryOneModelProvider(selectedVeggieId)
+                                .future),
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {

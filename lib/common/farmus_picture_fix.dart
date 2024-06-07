@@ -16,12 +16,17 @@ class FarmusPictureFix extends ConsumerWidget {
       width: size,
       height: size,
       decoration: ShapeDecoration(
+        image: image != null
+            ? DecorationImage(
+                image: NetworkImage(image!),
+                fit: BoxFit.cover,
+              )
+            : null,
         color: FarmusThemeColor.background,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16.0),
         ),
       ),
-      child: image != null ? Image.network(image!) : null,
     );
   }
 }

@@ -20,6 +20,8 @@ class HomeMyVege extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    var isFarmclub = profile.step == -1 ? false : true;
+
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -67,9 +69,16 @@ class HomeMyVege extends ConsumerWidget {
               children: [
                 Row(
                   children: [
-                    SvgPicture.asset("assets/image/ic_farmclub_mark.svg"),
-                    const SizedBox(
-                      width: 8,
+                    Visibility(
+                      visible: isFarmclub,
+                      child: Row(
+                        children: [
+                          SvgPicture.asset("assets/image/ic_farmclub_mark.svg"),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                        ],
+                      ),
                     ),
                     Text(
                       profile.nickname,
@@ -82,12 +91,19 @@ class HomeMyVege extends ConsumerWidget {
                   children: [
                     Row(
                       children: [
-                        Text(
-                          "Step ${profile.step}",
-                          style: FarmusThemeTextStyle.green1SemiBold13,
-                        ),
-                        const SizedBox(
-                          width: 8,
+                        Visibility(
+                          visible: isFarmclub,
+                          child: Row(
+                            children: [
+                              Text(
+                                "Step ${profile.step}",
+                                style: FarmusThemeTextStyle.green1SemiBold13,
+                              ),
+                              const SizedBox(
+                                width: 8,
+                              ),
+                            ],
+                          ),
                         ),
                         Text(
                           "+${profile.period}일 ",
@@ -102,17 +118,21 @@ class HomeMyVege extends ConsumerWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                    Row(
-                      children: List.generate(5, (index) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 1.0),
-                          child: MyVegeStep(
-                            color: index < profile.step
-                                ? FarmusThemeColor.green1
-                                : FarmusThemeColor.gray3,
-                          ),
-                        );
-                      }),
+                    Visibility(
+                      visible: isFarmclub,
+                      child: Row(
+                        children: List.generate(5, (index) {
+                          return Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 1.0),
+                            child: MyVegeStep(
+                              color: index < profile.step
+                                  ? FarmusThemeColor.green1
+                                  : FarmusThemeColor.gray3,
+                            ),
+                          );
+                        }),
+                      ),
                     ),
                   ],
                 ),

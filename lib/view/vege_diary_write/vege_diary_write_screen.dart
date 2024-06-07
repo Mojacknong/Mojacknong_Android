@@ -16,8 +16,10 @@ import '../../common/dialog/check_dialog.dart';
 import '../../common/form/content_input_text_form.dart';
 import '../../common/theme/farmus_theme_color.dart';
 import '../../model/home/my_veggie_list_model.dart';
+import '../../view_model/my_vege/notifier/my_veggie_diary.dart';
 import '../../view_model/my_vege/notifier/my_veggie_list.dart';
 import '../../view_model/routine/routine_provider.dart';
+import '../main/main_screen.dart';
 
 class VegeDiaryWriteScreen extends ConsumerWidget {
   const VegeDiaryWriteScreen({Key? key}) : super(key: key);
@@ -49,13 +51,27 @@ class VegeDiaryWriteScreen extends ConsumerWidget {
             fontSize: 13,
             onPressed: () {
               Navigator.pop(context);
-              ref.read(postDiaryNotifierProvider.notifier).postDiary(
-                  DiaryWriteModel(
+              ref
+                  .read(postDiaryNotifierProvider.notifier)
+                  .postDiary(DiaryWriteModel(
                       file: File(file),
                       content: content,
                       isOpen: isOpen,
                       state: state,
-                      myVeggieId: selectedVeggieId ?? -1));
+                      myVeggieId: selectedVeggieId ?? -1))
+                  .then((_) {
+                ref.invalidate((myVeggieDiaryProvider(selectedVeggieId!)));
+                ref.read((myVeggieDiaryProvider(selectedVeggieId)));
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const MainScreen(selectedIndex: 0);
+                    },
+                  ),
+                      (route) => false,
+                );
+              });
               showDialog(
                 context: context,
                 builder: (BuildContext context) {

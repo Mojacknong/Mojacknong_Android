@@ -32,7 +32,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
   @override
   void initState() {
     super.initState();
-    _selectedIndex = widget.selectedIndex;
+    _selectedIndex = widget.selectedIndex ?? 0;
   }
 
   void _onItemTapped(int index) {
