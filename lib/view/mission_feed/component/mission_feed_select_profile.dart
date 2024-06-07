@@ -13,7 +13,9 @@ class MissionFeedSelectProfile extends ConsumerWidget {
       padding: EdgeInsets.symmetric(horizontal: 8.0),
       child: Column(
         children: [
-          FarmclubSelectProfile(),
+          FarmclubSelectProfile(
+            image: '',
+          ),
           SizedBox(
             height: 8.0,
           ),

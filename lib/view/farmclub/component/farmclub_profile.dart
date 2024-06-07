@@ -17,7 +17,7 @@ class FarmclubProfile extends ConsumerWidget {
         Stack(
           alignment: Alignment.bottomRight,
           children: [
-            const FarmclubSelectProfile(),
+            const FarmclubSelectProfile(image: '',),
             SvgPicture.asset('assets/image/ic_farmclub_mark.svg'),
           ],
         ),

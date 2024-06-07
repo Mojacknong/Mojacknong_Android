@@ -9,32 +9,32 @@ import '../../../common/theme/farmus_theme_text_style.dart';
 import '../../../model/my_farmclub/my_farmclub_model.dart';
 
 class FarmclubProfile extends ConsumerWidget {
-  final MyFarmclubModel? farmClub;
+  final MyFarmclubModel? farmclub;
 
-  const FarmclubProfile({Key? key, this.farmClub}) : super(key: key);
+  const FarmclubProfile({Key? key, this.farmclub}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Row(
       children: [
-        Stack(
+         Stack(
           alignment: Alignment.bottomRight,
           children: [
-            const FarmclubSelectProfile(),
+            FarmclubSelectProfile(image: farmclub!.farmClubImage,),
             SvgPicture.asset('assets/image/ic_farmclub_mark.svg'),
           ],
         ),
-         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                farmClub!.farmClubName,
+                farmclub!.farmClubName,
                 style: FarmusThemeTextStyle.darkSemiBold20,
               ),
               Text(
-                '가입한 지 ${farmClub!.veggieName}일',
+                '가입한 지 ${farmclub!.veggieName}일',
                 style: FarmusThemeTextStyle.gray1Medium13,
               ),
             ],

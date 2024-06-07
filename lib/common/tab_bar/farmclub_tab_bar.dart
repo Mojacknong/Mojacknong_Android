@@ -23,10 +23,7 @@ class FarmclubTabBar extends StatelessWidget {
             child: Column(
               children: [
                 const FarmclubStep(
-                  stepImages: [
-                    'assets/image/img_about_farmclub_first.png',
-                    'assets/image/img_about_farmclub_first.png'
-                  ],
+                  stepImages: [],
                 ),
                 const SizedBox(
                   height: 16.0,

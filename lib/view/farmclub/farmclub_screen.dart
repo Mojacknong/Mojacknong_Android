@@ -20,18 +20,47 @@ class FarmclubScreen extends ConsumerWidget {
     final myFarmclub = ref.watch(myFarmclubModelProvider);
 
     return Scaffold(
-      appBar: FarmusLogoAppBar(
-        actions: [
-          GestureDetector(
-            onTap: () {
-              showFarmclubExitBottomSheet(context);
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SvgPicture.asset('assets/image/ic_exit.svg'),
+      appBar: myFarmclub.when(
+        data: (farmclub) => FarmusLogoAppBar(
+          actions: [
+            if (farmclub.isNotEmpty)
+              GestureDetector(
+                onTap: () {
+                  showFarmclubExitBottomSheet(context);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SvgPicture.asset('assets/image/ic_exit.svg'),
+                ),
+              ),
+          ],
+        ),
+        error: (error, stack) => FarmusLogoAppBar(
+          actions: [
+            GestureDetector(
+              onTap: () {
+                showFarmclubExitBottomSheet(context);
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SvgPicture.asset('assets/image/ic_exit.svg'),
+              ),
             ),
-          )
-        ],
+          ],
+        ),
+        loading: () => FarmusLogoAppBar(
+          actions: [
+            GestureDetector(
+              onTap: () {
+                showFarmclubExitBottomSheet(context);
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SvgPicture.asset('assets/image/ic_exit.svg'),
+              ),
+            ),
+          ],
+        ),
       ),
       body: myFarmclub.when(
         data: (farmclub) {
@@ -49,7 +78,7 @@ class FarmclubScreen extends ConsumerWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: FarmclubProfile(
-                            farmClub: farmclub.isNotEmpty ? farmclub[0] : null,
+                            farmclub: farmclub[0],
                           ),
                         ),
                       ),
