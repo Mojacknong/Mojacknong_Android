@@ -1,18 +1,16 @@
-import 'package:farmus/common/farmus_picture_fix.dart';
-import 'package:farmus/view/vege_diary/vege_diary_screen.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:farmus/common/theme/farmus_theme_text_style.dart';
+import 'package:farmus/model/home/veggie_diary_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../common/theme/farmus_theme_text_style.dart';
+import '../../vege_diary/vege_diary_screen.dart';
 
-class HomeVegeDiary extends ConsumerWidget {
-  const HomeVegeDiary({
-    super.key,
-  });
+class HomeVegeDiary extends StatelessWidget {
+  final VeggieDiaryOneModel diary;
+
+  const HomeVegeDiary({Key? key, required this.diary}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -20,12 +18,15 @@ class HomeVegeDiary extends ConsumerWidget {
           MaterialPageRoute(builder: (context) => const VegeDiaryScreen()),
         );
       },
-      child: const Row(
+      child: Row(
         children: [
-          FarmusPictureFix(
-            size: 64,
+          Image.network(
+            diary.image!,
+            width: 64,
+            height: 64,
+            fit: BoxFit.cover,
           ),
-          SizedBox(
+          const SizedBox(
             width: 16,
           ),
           Expanded(
@@ -33,14 +34,14 @@ class HomeVegeDiary extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "2023년 11월 25일",
+                  diary.date!,
                   style: FarmusThemeTextStyle.gray1Medium13,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Text(
-                  "우리 상훈이가 쑥쑥 자라고 있네? 얼른 다 자라서 삼겹살이랑 쌈장 마늘 해서···",
+                  diary.content!,
                   style: FarmusThemeTextStyle.darkMedium15,
                 ),
               ],

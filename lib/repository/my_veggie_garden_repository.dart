@@ -3,7 +3,6 @@ import 'package:farmus/data/network/my_veggie_service.dart';
 class MyVeggieGardenRepository {
   static Future<String> myVeggieList() async {
     String? response = await MyVeggieService().myVeggieList();
-    print(response);
     return response;
   }
 
@@ -14,6 +13,17 @@ class MyVeggieGardenRepository {
   ) async {
     String response =
         await MyVeggieService().myVeggieAdd(nickname, birth, veggieInfoId);
+    return response;
+  }
+
+  static Future<String> myVeggieProfileList(String myVeggieId) async {
+    String? response = await MyVeggieService().myVeggieProfileList(myVeggieId);
+    return response;
+  }
+
+  static Future<String> myVeggieDiaryOne(String myVeggieId) async {
+    String? response = await MyVeggieService().myVeggieDiaryOne(myVeggieId);
+
     return response;
   }
 }
