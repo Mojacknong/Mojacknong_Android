@@ -23,7 +23,11 @@ class FarmclubTabBar extends StatelessWidget {
             child: Column(
               children: [
                 const FarmclubStep(
-                  stepImages: [],
+                  stepImages: [
+                    'https://farmusdevdata.s3.ap-northeast-2.amazonaws.com/veggieInfo/%E1%84%89%E1%85%A1%E1%86%BC%E1%84%8E%E1%85%AEv2.png',
+                    'https://farmusdevdata.s3.ap-northeast-2.amazonaws.com/veggieInfo/%E1%84%89%E1%85%A1%E1%86%BC%E1%84%8E%E1%85%AEv2.png',
+                    'https://farmusdevdata.s3.ap-northeast-2.amazonaws.com/veggieInfo/%E1%84%89%E1%85%A1%E1%86%BC%E1%84%8E%E1%85%AEv2.png'
+                  ],
                 ),
                 const SizedBox(
                   height: 16.0,
@@ -51,21 +55,30 @@ class FarmclubTabBar extends StatelessWidget {
                 padding: EdgeInsets.all(16.0),
                 child: FarmclubStep(
                   stepImages: [
-                    'assets/image/img_home_motivation.png',
-                    'assets/image/img_home_motivation.png'
+                    'https://farmusdevdata.s3.ap-northeast-2.amazonaws.com/veggieInfo/%E1%84%89%E1%85%A1%E1%86%BC%E1%84%8E%E1%85%AEv2.png',
+                    'https://farmusdevdata.s3.ap-northeast-2.amazonaws.com/veggieInfo/%E1%84%89%E1%85%A1%E1%86%BC%E1%84%8E%E1%85%AEv2.png',
+                    'https://farmusdevdata.s3.ap-northeast-2.amazonaws.com/veggieInfo/%E1%84%89%E1%85%A1%E1%86%BC%E1%84%8E%E1%85%AEv2.png'
                   ],
                 ),
               ),
               Padding(
                 padding: EdgeInsets.all(16.0),
                 child: FarmclubStep(
-                  stepImages: [],
+                  stepImages: [
+                    'https://farmusdevdata.s3.ap-northeast-2.amazonaws.com/veggieInfo/%E1%84%89%E1%85%A1%E1%86%BC%E1%84%8E%E1%85%AEv2.png',
+                    'https://farmusdevdata.s3.ap-northeast-2.amazonaws.com/veggieInfo/%E1%84%89%E1%85%A1%E1%86%BC%E1%84%8E%E1%85%AEv2.png',
+                    'https://farmusdevdata.s3.ap-northeast-2.amazonaws.com/veggieInfo/%E1%84%89%E1%85%A1%E1%86%BC%E1%84%8E%E1%85%AEv2.png'
+                  ],
                 ),
               ),
               Padding(
                 padding: EdgeInsets.all(16.0),
                 child: FarmclubStep(
-                  stepImages: [],
+                  stepImages: [
+                    'https://farmusdevdata.s3.ap-northeast-2.amazonaws.com/veggieInfo/%E1%84%89%E1%85%A1%E1%86%BC%E1%84%8E%E1%85%AEv2.png',
+                    'https://farmusdevdata.s3.ap-northeast-2.amazonaws.com/veggieInfo/%E1%84%89%E1%85%A1%E1%86%BC%E1%84%8E%E1%85%AEv2.png',
+                    'https://farmusdevdata.s3.ap-northeast-2.amazonaws.com/veggieInfo/%E1%84%89%E1%85%A1%E1%86%BC%E1%84%8E%E1%85%AEv2.png'
+                  ],
                 ),
               ),
             ],

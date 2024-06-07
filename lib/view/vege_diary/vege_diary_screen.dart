@@ -44,7 +44,7 @@ class VegeDiaryScreen extends ConsumerWidget {
                   children: [
                     VegeDiaryInfo(
                       myVeggieDiaryList: myVeggieDiaryList.value ?? [],
-                      selectId: selectedVeggieId.toString(),
+                      selectId: selectedVeggieId,
                     ),
                     const Padding(
                       padding: EdgeInsets.symmetric(vertical: 24.0),

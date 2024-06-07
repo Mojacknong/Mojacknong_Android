@@ -70,8 +70,7 @@ class HomeScreen extends ConsumerWidget {
                     if (selectedVeggieId != null)
                       FutureBuilder<MyVeggieProfile>(
                         future: ref.read(
-                            myVeggieProfileProvider(selectedVeggieId.toString())
-                                .future),
+                            myVeggieProfileProvider(selectedVeggieId).future),
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {
@@ -89,7 +88,7 @@ class HomeScreen extends ConsumerWidget {
                     else
                       FutureBuilder<MyVeggieProfile>(
                         future: ref.read(myVeggieProfileProvider(
-                                veggieList.value!.first.myVeggieId.toString())
+                                veggieList.value!.first.myVeggieId)
                             .future),
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==

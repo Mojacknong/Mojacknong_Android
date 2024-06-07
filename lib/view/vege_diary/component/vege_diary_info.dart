@@ -9,7 +9,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class VegeDiaryInfo extends ConsumerWidget {
   final List<MyVeggieDiary> myVeggieDiaryList;
-  final String selectId;
+  final int selectId;
 
   const VegeDiaryInfo(
       {Key? key, required this.myVeggieDiaryList, required this.selectId});

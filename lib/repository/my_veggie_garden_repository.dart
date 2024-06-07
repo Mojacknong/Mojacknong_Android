@@ -18,14 +18,13 @@ class MyVeggieGardenRepository {
     return response;
   }
 
-  static Future<String> myVeggieProfileList(String myVeggieId) async {
+  static Future<String> myVeggieProfileList(int myVeggieId) async {
     String? response = await MyVeggieService().myVeggieProfileList(myVeggieId);
     return response;
   }
 
   static Future<String> myVeggieDiaryOne(int myVeggieId) async {
     String? response = await MyVeggieService().myVeggieDiaryOne(myVeggieId);
-
     return response;
   }
 
