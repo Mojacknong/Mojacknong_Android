@@ -121,7 +121,7 @@ class HomeScreen extends ConsumerWidget {
                     if (selectedVeggieId != null)
                       FutureBuilder<VeggieDiaryOneModel?>(
                         future: ref.read(veggieDiaryOneModelProvider(
-                                selectedVeggieId.toString())
+                                selectedVeggieId)
                             .future),
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==
@@ -152,7 +152,7 @@ class HomeScreen extends ConsumerWidget {
                     else
                       FutureBuilder<VeggieDiaryOneModel?>(
                         future: ref.read(veggieDiaryOneModelProvider(
-                                veggieList.value!.first.myVeggieId.toString())
+                                veggieList.value!.first.myVeggieId)
                             .future),
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==

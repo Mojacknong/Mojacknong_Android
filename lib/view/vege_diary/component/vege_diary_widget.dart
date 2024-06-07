@@ -75,14 +75,14 @@ class VegeDiaryWidget extends StatelessWidget {
             ],
           ),
           const SizedBox(
-            height: 12.0,
+            height: 16.0,
           ),
           Text(
             diary.content,
             style: FarmusThemeTextStyle.darkMedium15,
           ),
           const Padding(
-            padding: EdgeInsets.symmetric(vertical: 12.0),
+            padding: EdgeInsets.symmetric(vertical: 16.0),
             child: Divider(
               height: 1,
               color: FarmusThemeColor.gray4,

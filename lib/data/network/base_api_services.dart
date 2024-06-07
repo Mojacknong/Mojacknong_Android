@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:io';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -85,5 +86,47 @@ class ApiClient {
 
     final url = Uri.parse('$baseUrl$endpoint');
     return await client.patch(url, headers: headers);
+  }
+
+  Future<http.Response> postDiary(
+    String endpoint,
+    File file,
+    String content,
+    bool isOpen,
+    String state,
+    int myVeggieId,
+  ) async {
+    String? accessToken = await storage.read(key: "accessToken");
+    final url = Uri.parse('$baseUrl$endpoint');
+
+    var request = http.MultipartRequest('POST', url);
+
+    if (accessToken != null) {
+      request.headers[HttpHeaders.authorizationHeader] = 'Bearer $accessToken';
+    }
+
+    final mimeTypeData = lookupMimeType(file.path)?.split('/') ??
+        ['application', 'octet-stream'];
+    if (mimeTypeData[0] == 'application' && mimeTypeData[1] == 'octet-stream') {
+      return http.Response('Unsupported file type', 400);
+    }
+
+    request.headers['Content-Type'] = 'application/json';
+
+    request.fields['content'] = content;
+    request.fields['isOpen'] = isOpen.toString();
+    request.fields['state'] = state;
+    request.fields['myVeggieId'] = myVeggieId.toString();
+
+    request.files.add(
+      await http.MultipartFile.fromPath(
+        'file',
+        file.path,
+        contentType: MediaType('multipart', 'form-data'),
+      ),
+    );
+
+    var response = await request.send();
+    return await http.Response.fromStream(response);
   }
 }

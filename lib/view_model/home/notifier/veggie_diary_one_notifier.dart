@@ -9,7 +9,7 @@ part 'veggie_diary_one_notifier.g.dart';
 
 @riverpod
 Future<VeggieDiaryOneModel?> veggieDiaryOneModel(
-    VeggieDiaryOneModelRef ref, String myVeggieId) async {
+    VeggieDiaryOneModelRef ref, int myVeggieId) async {
   final response = await MyVeggieGardenRepository.myVeggieDiaryOne(myVeggieId);
   final json = jsonDecode(response) as Map<String, dynamic>;
   if (json['code'] == 3000) {

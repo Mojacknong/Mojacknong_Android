@@ -72,7 +72,7 @@ class HomeMyVege extends ConsumerWidget {
                       width: 8,
                     ),
                     Text(
-                      profile.veggieName,
+                      profile.nickname,
                       style: FarmusThemeTextStyle.darkSemiBold22,
                     ),
                   ],

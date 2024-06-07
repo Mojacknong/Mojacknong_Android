@@ -7,7 +7,7 @@ part of 'on_boarding_user_profile.dart';
 // **************************************************************************
 
 String _$onBoardingUserProfileModelNotifierHash() =>
-    r'0e36e5876fd193a40af601da0de0f266e8240e67';
+    r'cd9598e2097b0f86d19a095bdfd9473958b108f0';
 
 /// See also [OnBoardingUserProfileModelNotifier].
 @ProviderFor(OnBoardingUserProfileModelNotifier)

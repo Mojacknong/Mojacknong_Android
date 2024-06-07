@@ -6,7 +6,7 @@ part of 'my_veggie_diary.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$myVeggieDiaryHash() => r'978651723db3b61b21b4767ae47918a4249d255e';
+String _$myVeggieDiaryHash() => r'520f3bd77208e96d0bc2842ad8b0ed612667590a';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -40,7 +40,7 @@ class MyVeggieDiaryFamily extends Family<AsyncValue<List<MyVeggieDiary>>> {
 
   /// See also [myVeggieDiary].
   MyVeggieDiaryProvider call(
-    String myVeggieId,
+    int myVeggieId,
   ) {
     return MyVeggieDiaryProvider(
       myVeggieId,
@@ -76,7 +76,7 @@ class MyVeggieDiaryProvider
     extends AutoDisposeFutureProvider<List<MyVeggieDiary>> {
   /// See also [myVeggieDiary].
   MyVeggieDiaryProvider(
-    String myVeggieId,
+    int myVeggieId,
   ) : this._internal(
           (ref) => myVeggieDiary(
             ref as MyVeggieDiaryRef,
@@ -104,7 +104,7 @@ class MyVeggieDiaryProvider
     required this.myVeggieId,
   }) : super.internal();
 
-  final String myVeggieId;
+  final int myVeggieId;
 
   @override
   Override overrideWith(
@@ -145,7 +145,7 @@ class MyVeggieDiaryProvider
 
 mixin MyVeggieDiaryRef on AutoDisposeFutureProviderRef<List<MyVeggieDiary>> {
   /// The parameter `myVeggieId` of this provider.
-  String get myVeggieId;
+  int get myVeggieId;
 }
 
 class _MyVeggieDiaryProviderElement
@@ -154,7 +154,7 @@ class _MyVeggieDiaryProviderElement
   _MyVeggieDiaryProviderElement(super.provider);
 
   @override
-  String get myVeggieId => (origin as MyVeggieDiaryProvider).myVeggieId;
+  int get myVeggieId => (origin as MyVeggieDiaryProvider).myVeggieId;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

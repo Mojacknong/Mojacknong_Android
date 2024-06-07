@@ -1,8 +1,13 @@
+import 'dart:io';
+
 import 'package:farmus/common/app_bar/delete_app_bar.dart';
 import 'package:farmus/common/button/primary_color_button.dart';
 import 'package:farmus/common/image_picker/write_image_picker.dart';
+import 'package:farmus/model/home/diary_write_model.dart';
 import 'package:farmus/view/vege_diary_write/component/vege_diary_write_bottom.dart';
 import 'package:farmus/view/vege_diary_write/component/vege_diary_write_state.dart';
+import 'package:farmus/view_model/home/home_provider.dart';
+import 'package:farmus/view_model/vege_diary_write/notifier/post_diary_notifier.dart';
 import 'package:farmus/view_model/vege_diary_write/vege_diary_write_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,13 +15,29 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../common/dialog/check_dialog.dart';
 import '../../common/form/content_input_text_form.dart';
 import '../../common/theme/farmus_theme_color.dart';
+import '../../model/home/my_veggie_list_model.dart';
+import '../../view_model/my_vege/notifier/my_veggie_list.dart';
+import '../../view_model/routine/routine_provider.dart';
 
 class VegeDiaryWriteScreen extends ConsumerWidget {
   const VegeDiaryWriteScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    var selectedVeggieId = ref.watch(selectedVeggieIdProvider);
+    final AsyncValue<List<MyVeggieListModel>> veggieList =
+        ref.watch(myVeggieListModelProvider);
+
+    if (selectedVeggieId == null && veggieList.value?.isNotEmpty == true) {
+      selectedVeggieId = veggieList.value!.first.myVeggieId;
+    }
+
     bool enabled = ref.watch(vegeDiaryWriteProvider).isComplete;
+
+    var file = ref.watch(vegeDiaryWriteProvider).image?.path ?? '';
+    var content = ref.watch(vegeDiaryWriteProvider).content ?? '';
+    var isOpen = ref.watch(routineCycleSwitchProvider);
+    var state = ref.watch(vegeDiaryWriteProvider).vegeState ?? '';
 
     return Scaffold(
       appBar: DeleteAppBar(
@@ -28,6 +49,13 @@ class VegeDiaryWriteScreen extends ConsumerWidget {
             fontSize: 13,
             onPressed: () {
               Navigator.pop(context);
+              ref.read(postDiaryNotifierProvider.notifier).postDiary(
+                  DiaryWriteModel(
+                      file: File(file),
+                      content: content,
+                      isOpen: isOpen,
+                      state: state,
+                      myVeggieId: selectedVeggieId ?? -1));
               showDialog(
                 context: context,
                 builder: (BuildContext context) {
@@ -78,8 +106,8 @@ class VegeDiaryWriteScreen extends ConsumerWidget {
                       maxLength: 300,
                       nowContent: ref.watch(vegeDiaryWriteProvider).content,
                       updateContent: (value) => ref
-                          .watch(vegeDiaryWriteProvider.notifier)
-                          .updateContent(value!),
+                          .read(vegeDiaryWriteProvider.notifier)
+                          .updateContent(value ?? ''),
                     ),
                   ),
                   const VegeDiaryWriteState(),

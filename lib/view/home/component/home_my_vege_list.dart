@@ -50,11 +50,11 @@ class HomeMyVegeList extends ConsumerWidget {
                   child: HomeMyVegeButton(
                     enabled: selectedVeggieId == null
                         ? veggie.myVeggieId == veggieList.first.myVeggieId
-                        : veggie.myVeggieId.toString() == selectedVeggieId,
+                        : veggie.myVeggieId == selectedVeggieId,
                     text: veggie.nickname,
                     onPressed: () {
                       ref.read(selectedVeggieIdProvider.notifier).state =
-                          veggie.myVeggieId.toString();
+                          veggie.myVeggieId;
                     },
                     fontPadding: 0.0,
                   ),

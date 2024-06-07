@@ -9,7 +9,7 @@ part 'my_veggie_diary.g.dart';
 
 @riverpod
 Future<List<MyVeggieDiary>> myVeggieDiary(
-    MyVeggieDiaryRef ref, String myVeggieId) async {
+    MyVeggieDiaryRef ref, int myVeggieId) async {
   final response = await MyVeggieGardenRepository.myVeggieDiaryAll(myVeggieId);
   final json = jsonDecode(response) as Map<String, dynamic>;
 

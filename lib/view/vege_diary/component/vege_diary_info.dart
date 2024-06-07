@@ -16,8 +16,7 @@ class VegeDiaryInfo extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    int writtenDiaryCount =
-        myVeggieDiaryList.length;
+    int writtenDiaryCount = myVeggieDiaryList.length;
     int publicDiaryCount =
         myVeggieDiaryList.where((diary) => diary.isOpen).length;
     AsyncValue<MyVeggieProfile> profile =
@@ -38,7 +37,7 @@ class VegeDiaryInfo extends ConsumerWidget {
             Row(
               children: [
                 Text(
-                  myVeggieDiaryList.isNotEmpty ? profile.value!.veggieName : "",
+                  myVeggieDiaryList.isNotEmpty ? profile.value!.nickname : "",
                   style: FarmusThemeTextStyle.darkSemiBold17,
                 ),
                 const SizedBox(

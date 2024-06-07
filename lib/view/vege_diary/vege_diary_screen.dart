@@ -22,11 +22,11 @@ class VegeDiaryScreen extends ConsumerWidget {
         ref.watch(myVeggieListModelProvider);
 
     if (selectedVeggieId == null && veggieList.value?.isNotEmpty == true) {
-      selectedVeggieId = veggieList.value!.first.myVeggieId.toString();
+      selectedVeggieId = veggieList.value!.first.myVeggieId;
     }
 
     final AsyncValue<List<MyVeggieDiary>> myVeggieDiaryList =
-        ref.watch(myVeggieDiaryProvider(selectedVeggieId.toString()));
+        ref.watch(myVeggieDiaryProvider(selectedVeggieId!));
 
     return Scaffold(
       appBar: const BackLeftTitleAppBar(
@@ -72,7 +72,7 @@ class VegeDiaryScreen extends ConsumerWidget {
             ),
           ),
           const Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: EdgeInsets.all(24.0),
             child: DiaryButton(),
           ),
         ],

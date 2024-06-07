@@ -7,7 +7,7 @@ part of 'veggie_diary_one_notifier.dart';
 // **************************************************************************
 
 String _$veggieDiaryOneModelHash() =>
-    r'8158597ddbc8b1c00d3e5dd03b44a852e7aa0530';
+    r'14c5b98e6a2eacb27f1fd6168db297ee0c2f2470';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -42,7 +42,7 @@ class VeggieDiaryOneModelFamily
 
   /// See also [veggieDiaryOneModel].
   VeggieDiaryOneModelProvider call(
-    String myVeggieId,
+    int myVeggieId,
   ) {
     return VeggieDiaryOneModelProvider(
       myVeggieId,
@@ -78,7 +78,7 @@ class VeggieDiaryOneModelProvider
     extends AutoDisposeFutureProvider<VeggieDiaryOneModel?> {
   /// See also [veggieDiaryOneModel].
   VeggieDiaryOneModelProvider(
-    String myVeggieId,
+    int myVeggieId,
   ) : this._internal(
           (ref) => veggieDiaryOneModel(
             ref as VeggieDiaryOneModelRef,
@@ -106,7 +106,7 @@ class VeggieDiaryOneModelProvider
     required this.myVeggieId,
   }) : super.internal();
 
-  final String myVeggieId;
+  final int myVeggieId;
 
   @override
   Override overrideWith(
@@ -150,7 +150,7 @@ class VeggieDiaryOneModelProvider
 mixin VeggieDiaryOneModelRef
     on AutoDisposeFutureProviderRef<VeggieDiaryOneModel?> {
   /// The parameter `myVeggieId` of this provider.
-  String get myVeggieId;
+  int get myVeggieId;
 }
 
 class _VeggieDiaryOneModelProviderElement
@@ -159,7 +159,7 @@ class _VeggieDiaryOneModelProviderElement
   _VeggieDiaryOneModelProviderElement(super.provider);
 
   @override
-  String get myVeggieId => (origin as VeggieDiaryOneModelProvider).myVeggieId;
+  int get myVeggieId => (origin as VeggieDiaryOneModelProvider).myVeggieId;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

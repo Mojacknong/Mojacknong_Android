@@ -9,6 +9,7 @@ part of 'my_veggie_profile.dart';
 _$MyVeggieProfileImpl _$$MyVeggieProfileImplFromJson(
         Map<String, dynamic> json) =>
     _$MyVeggieProfileImpl(
+      nickname: json['nickname'] as String,
       veggieName: json['veggieName'] as String,
       veggieImage: json['veggieImage'] as String,
       createdVeggie: json['createdVeggie'] as String,
@@ -19,6 +20,7 @@ _$MyVeggieProfileImpl _$$MyVeggieProfileImplFromJson(
 Map<String, dynamic> _$$MyVeggieProfileImplToJson(
         _$MyVeggieProfileImpl instance) =>
     <String, dynamic>{
+      'nickname': instance.nickname,
       'veggieName': instance.veggieName,
       'veggieImage': instance.veggieImage,
       'createdVeggie': instance.createdVeggie,

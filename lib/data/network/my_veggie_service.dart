@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 import 'dart:io';
 
 import 'base_api_services.dart';
@@ -58,7 +59,7 @@ class MyVeggieService {
     }
   }
 
-  Future<String> myVeggieDiaryOne(String myVeggieId) async {
+  Future<String> myVeggieDiaryOne(int myVeggieId) async {
     final url = '/api/my-veggie/diary/$myVeggieId/one';
 
     ApiClient apiClient = ApiClient();
@@ -86,7 +87,7 @@ class MyVeggieService {
     }
   }
 
-  Future<String> myVeggieDiaryAll(String myVeggieId) async {
+  Future<String> myVeggieDiaryAll(int myVeggieId) async {
     final url = '/api/my-veggie/diary/$myVeggieId/all';
 
     ApiClient apiClient = ApiClient();
@@ -97,6 +98,33 @@ class MyVeggieService {
       return utf8.decode(response.bodyBytes);
     } else {
       throw Exception('Failed to My Veggie Diary');
+    }
+  }
+
+  Future<String> myVeggieDiaryAdd(
+    File file,
+    String content,
+    bool isOpen,
+    String state,
+    int myVeggieId,
+  ) async {
+    const url = '/api/my-veggie/diary';
+
+    ApiClient apiClient = ApiClient();
+
+    final response = await apiClient.postDiary(
+      url,
+      file,
+      content,
+      isOpen,
+      state,
+      myVeggieId,
+    );
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('Failed to add myVeggieDiaryAdd');
     }
   }
 }
