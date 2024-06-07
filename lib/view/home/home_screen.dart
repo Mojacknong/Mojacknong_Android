@@ -38,8 +38,16 @@ class HomeScreen extends ConsumerWidget {
     String toDo = ref.watch(homeToDoProvider);
 
     return Scaffold(
-      appBar: HomeScreenAppBar(
-        veggieCount: veggieList.value!.length.toString(),
+      appBar: veggieList.when(
+        data: (veggieListData) => HomeScreenAppBar(
+          veggieCount: veggieListData.length.toString(),
+        ),
+        error: (error, stack) => const HomeScreenAppBar(
+          veggieCount: "0",
+        ),
+        loading: () => const HomeScreenAppBar(
+          veggieCount: "0",
+        ),
       ),
       body: veggieList.when(
         data: (veggieListData) {

@@ -11,12 +11,11 @@ import 'package:flutter_svg/svg.dart';
 class MainScreen extends ConsumerStatefulWidget {
   final int selectedIndex;
 
-  const MainScreen({Key? key, required this.selectedIndex}) : super(key: key);
+  const MainScreen({Key? key, this.selectedIndex = 0}) : super(key: key);
 
   @override
   ConsumerState createState() => _MainScreenState(selectedIndex);
 }
-
 class _MainScreenState extends ConsumerState<MainScreen> {
   int _selectedIndex;
 
