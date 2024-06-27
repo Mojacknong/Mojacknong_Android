@@ -9,14 +9,22 @@ part 'on_boarding_finish_notifier.g.dart';
 class OnBoardingFinishNotifier extends _$OnBoardingFinishNotifier {
   @override
   Future<String> build() async {
-    return '';
+    return fetchNickName();
   }
 
   Future<String> fetchNickName() async {
     final response = await UserRepository.userInfo();
-    print(response);
-    var jsonResponse =
-        convert.jsonDecode(response) as Map<String, dynamic>;
+    print('fetchNickName response: $response');
+    var jsonResponse = convert.jsonDecode(response) as Map<String, dynamic>;
+    print('jsonResponse: $jsonResponse');
+
+    if (jsonResponse['data'] == null) {
+      throw Exception('Data is null');
+    }
+    if (jsonResponse['data']['nickName'] == null) {
+      throw Exception('NickName is null');
+    }
+
     print(jsonResponse['data']['nickName']);
     return jsonResponse['data']['nickName'];
   }
