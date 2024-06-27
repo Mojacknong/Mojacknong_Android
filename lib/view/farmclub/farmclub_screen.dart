@@ -70,80 +70,75 @@ class FarmclubScreen extends ConsumerWidget {
       ),
       body: myFarmclub.when(
         data: (farmclub) {
-          return myFarmclubInfo.when(
-            data: (farmclubInfo) {
-              return SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    if (farmclub.isNotEmpty)
-                      Column(
-                        children: [
-                          GestureDetector(
-                            onLongPress: () {
-                              showFarmclubChangeBottomSheet(context);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: FarmclubProfile(
-                                farmclub: farmclub[0],
-                                farmclubInfoModel: farmclubInfo,
-                              ),
-                            ),
+          if (farmclub.isEmpty) {
+            return const FarmclubEmpty();
+          } else {
+            return myFarmclubInfo.when(
+              data: (farmclubInfo) {
+                return SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      GestureDetector(
+                        onLongPress: () {
+                          showFarmclubChangeBottomSheet(context);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: FarmclubProfile(
+                            farmclub: farmclub[0],
+                            farmclubInfoModel: farmclubInfo,
                           ),
-                          const SizedBox(
-                            height: 16.0,
-                          ),
-                          FarmclubTabBar(farmclubInfo: farmclubInfo),
-                          const Divider(
-                            thickness: 6.0,
-                            color: FarmusThemeColor.gray7,
-                          ),
-                          const SizedBox(
-                            height: 16.0,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Column(
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 16.0,
+                      ),
+                      FarmclubTabBar(farmclubInfo: farmclubInfo),
+                      const Divider(
+                        thickness: 6.0,
+                        color: FarmusThemeColor.gray7,
+                      ),
+                      const SizedBox(
+                        height: 16.0,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          children: [
+                            const Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      '공개된 일기',
-                                      style:
-                                          FarmusThemeTextStyle.gray1SemiBold17,
-                                    ),
-                                    Text(
-                                      '최신순',
-                                      style: FarmusThemeTextStyle.gray2Medium13,
-                                    ),
-                                  ],
+                                Text(
+                                  '공개된 일기',
+                                  style: FarmusThemeTextStyle.gray1SemiBold17,
                                 ),
-                                FarmclubFeed(
-                                  farmclubInfoModel: farmclubInfo,
-                                ),
-                                const SizedBox(
-                                  height: 16.0,
-                                ),
-                                FarmclubFeed(
-                                  farmclubInfoModel: farmclubInfo,
+                                Text(
+                                  '최신순',
+                                  style: FarmusThemeTextStyle.gray2Medium13,
                                 ),
                               ],
                             ),
-                          ),
-                        ],
-                      )
-                    else
-                      const FarmclubEmpty(),
-                  ],
-                ),
-              );
-            },
-            loading: () => const Center(child: CircularProgressIndicator()),
-            error: (error, stack) => Center(child: Text('Error: $error')),
-          );
+                            FarmclubFeed(
+                              farmclubInfoModel: farmclubInfo,
+                            ),
+                            const SizedBox(
+                              height: 16.0,
+                            ),
+                            FarmclubFeed(
+                              farmclubInfoModel: farmclubInfo,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+              loading: () => const Center(child: CircularProgressIndicator()),
+              error: (error, stack) => Center(child: Text('Error: $error')),
+            );
+          }
         },
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (error, stack) => Center(child: Text('Error: $error')),
