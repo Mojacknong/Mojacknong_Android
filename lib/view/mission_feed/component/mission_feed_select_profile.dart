@@ -15,6 +15,7 @@ class MissionFeedSelectProfile extends ConsumerWidget {
         children: [
           FarmclubSelectProfile(
             image: '',
+            size: 64,
           ),
           SizedBox(
             height: 8.0,

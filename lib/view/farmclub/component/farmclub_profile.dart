@@ -1,3 +1,4 @@
+import 'package:farmus/common/base/bouncing.dart';
 import 'package:farmus/model/my_farmclub/my_farmclub_info_model.dart';
 import 'package:farmus/view/farmclub/component/farmclub_select_profile.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,18 +14,24 @@ class FarmclubProfile extends ConsumerWidget {
   final MyFarmclubModel? farmclub;
   final MyFarmclubInfoModel? farmclubInfoModel;
 
-  const FarmclubProfile({Key? key, this.farmclub, this.farmclubInfoModel}) : super(key: key);
+  const FarmclubProfile({Key? key, this.farmclub, this.farmclubInfoModel})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Row(
       children: [
-        Stack(
-          alignment: Alignment.bottomRight,
-          children: [
-            FarmclubSelectProfile(image: farmclub!.farmClubImage,),
-            SvgPicture.asset('assets/image/ic_farmclub_mark.svg'),
-          ],
+        Bouncing(
+          child: Stack(
+            alignment: Alignment.bottomRight,
+            children: [
+              FarmclubSelectProfile(
+                image: farmclub!.farmClubImage,
+                size: 64,
+              ),
+              SvgPicture.asset('assets/image/ic_farmclub_mark.svg'),
+            ],
+          ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
