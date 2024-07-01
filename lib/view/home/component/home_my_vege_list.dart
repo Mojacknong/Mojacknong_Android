@@ -56,7 +56,8 @@ class HomeMyVegeList extends ConsumerWidget {
                       ref.read(selectedVeggieIdProvider.notifier).state =
                           veggie.myVeggieId;
                     },
-                    fontPadding: 0.0,
+                    fontPadding: 0,
+                    padding: 16.0,
                   ),
                 ),
               ),

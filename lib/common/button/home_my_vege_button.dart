@@ -5,13 +5,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../theme/farmus_theme_color.dart';
 
 class HomeMyVegeButton extends ConsumerWidget {
-  const HomeMyVegeButton({
-    super.key,
-    required this.enabled,
-    required this.text,
-    required this.onPressed,
-    required this.fontPadding,
-  });
+  const HomeMyVegeButton(
+      {super.key,
+      required this.enabled,
+      required this.text,
+      required this.onPressed,
+      required this.fontPadding,
+      required this.padding});
 
   final bool enabled;
 
@@ -20,6 +20,7 @@ class HomeMyVegeButton extends ConsumerWidget {
   final String text;
 
   final double fontPadding;
+  final double padding;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -34,6 +35,7 @@ class HomeMyVegeButton extends ConsumerWidget {
       borderRadius: 25.0,
       onPressed: onPressed,
       fontPadding: fontPadding,
+      padding: EdgeInsets.symmetric(horizontal: padding),
     );
   }
 }

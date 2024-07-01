@@ -46,6 +46,7 @@ class VegeDiaryWriteState extends ConsumerWidget {
                         notifier.updateVegeState('나쁨');
                       },
                       fontPadding: 0,
+                      padding: 0,
                     ),
                     HomeMyVegeButton(
                       enabled: vegeState == '보통',
@@ -54,6 +55,7 @@ class VegeDiaryWriteState extends ConsumerWidget {
                         notifier.updateVegeState('보통');
                       },
                       fontPadding: 0,
+                      padding: 0,
                     ),
                     HomeMyVegeButton(
                       enabled: vegeState == '좋음',
@@ -62,6 +64,7 @@ class VegeDiaryWriteState extends ConsumerWidget {
                         notifier.updateVegeState('좋음');
                       },
                       fontPadding: 0,
+                      padding: 0,
                     ),
                   ],
                 )
