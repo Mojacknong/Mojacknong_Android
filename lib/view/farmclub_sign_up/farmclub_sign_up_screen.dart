@@ -115,7 +115,7 @@ class FarmclubSignUpScreen extends ConsumerWidget {
       },
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (error, stack) =>
-          Center(child: Text('Failed to load data: $error')),
+          Center(child: Text('Failed to load : $error')),
     );
   }
 }

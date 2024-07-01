@@ -91,7 +91,7 @@ class FarmclubSignUpBottomSheetContent extends ConsumerWidget {
                   right: 0,
                   bottom: 0,
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
+                    padding: const EdgeInsets.fromLTRB(16, 8, 16, 30),
                     child: BottomBackgroundDividerButton(
                       button: SizedBox(
                         width: double.infinity,

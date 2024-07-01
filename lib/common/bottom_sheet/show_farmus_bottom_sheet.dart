@@ -64,7 +64,7 @@ void showFarmclubSignupBottomSheet(
       return FarmclubSignUpBottomSheetContent(
         infoId: myVeggieInfoId,
         id: farmClubId,
-        subTitle: "",
+        subTitle: " ",
         title: title,
         onPressed: () {
           Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const MainScreen(selectedIndex: 1,)), (route) => false);
