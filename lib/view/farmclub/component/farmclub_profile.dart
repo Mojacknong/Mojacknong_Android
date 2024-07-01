@@ -8,13 +8,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../common/theme/farmus_theme_text_style.dart';
-import '../../../model/my_farmclub/my_farmclub_model.dart';
 
 class FarmclubProfile extends ConsumerWidget {
   final MyFarmclubInfoModel? farmclubInfoModel;
 
-  const FarmclubProfile({Key? key, this.farmclubInfoModel})
-      : super(key: key);
+  const FarmclubProfile({Key? key, this.farmclubInfoModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
