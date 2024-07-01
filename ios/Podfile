@@ -1,4 +1,4 @@
-platform :ios, '12.0'
+platform :ios, '13.0'
 
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
@@ -31,8 +31,8 @@ target 'Runner' do
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 
-  pod 'Firebase/Auth', '10.25.0'
-  pod 'Firebase/CoreOnly', '10.25.0'
+  pod 'Firebase/Auth', '10.27.0'
+  pod 'Firebase/CoreOnly', '10.27.0'
 
   target 'RunnerTests' do
     inherit! :search_paths

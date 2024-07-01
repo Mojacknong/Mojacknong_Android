@@ -47,6 +47,7 @@ class FarmclubChangeBottomSheetContent extends ConsumerWidget {
                                 return Column(
                                   children: [
                                     FarmclubChangeInfo(
+                                      farmclubId: club.farmClubId,
                                       farmclubImage: club.farmClubImage,
                                       farmclubName: club.farmClubName,
                                       type: club.veggieName,

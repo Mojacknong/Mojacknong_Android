@@ -6,7 +6,7 @@ part of 'farmclub_sign_up_final_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$signUpVeggieHash() => r'b6db0359821cc973c2a1eda8faed71f983eb8fc1';
+String _$signUpVeggieHash() => r'a7e963ba42784251bfac5b34c428be45cd2ef9e0';
 
 /// Copied from Dart SDK
 class _SystemHash {
