@@ -11,68 +11,62 @@ class OnBoardingFinishScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final nickName =
-        ref.watch(onBoardingFinishNotifierProvider.notifier).fetchNickName();
+    final asyncNickName = ref.watch(onBoardingFinishNotifierProvider);
+
     ref.read(onBoardingFinishNotifierProvider.notifier).onBoardingComplete();
-    return FutureBuilder<String>(
-      future: nickName,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
-        } else if (snapshot.hasError) {
-          return Text('Error: ${snapshot.error}');
-        } else {
-          return Scaffold(
-            appBar: PrimaryAppBar(
-              leading: Container(),
-              title: null,
+
+    return Scaffold(
+      appBar: PrimaryAppBar(
+        leading: Container(),
+        title: null,
+      ),
+      body: asyncNickName.when(
+        data: (nickName) => Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.all(16.0),
+              child: MainSubTitle(
+                mainText: "$nickName 님의 가입이 완료되었어요!",
+                subText: "홈에서 추천 채소를 확인해보세요.",
+              ),
             ),
-            body: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: MainSubTitle(
-                    mainText: "${snapshot.data} 님의 가입이 완료되었어요!",
-                    subText: "홈에서 추천 채소를 확인해보세요.",
-                  ),
+            Expanded(
+              child: Center(
+                child: Image.asset(
+                  "assets/image/img_on_board_finish.png",
+                  fit: BoxFit.fill,
                 ),
-                Expanded(
-                  child: Center(
-                    child: Image.asset(
-                      "assets/image/img_on_board_finish.png",
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0, vertical: 64.0),
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: PrimaryColorButton(
-                      text: "시작하기",
-                      fontPadding: 16.0,
-                      onPressed: () {
-                        Navigator.pop(context);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const MainScreen(
-                              selectedIndex: 0,
-                            ),
-                          ),
-                        );
-                      },
-                      enabled: true,
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
-          );
-        }
-      },
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 64.0),
+              child: SizedBox(
+                width: double.infinity,
+                child: PrimaryColorButton(
+                  text: "시작하기",
+                  fontPadding: 16.0,
+                  onPressed: () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const MainScreen(
+                          selectedIndex: 0,
+                        ),
+                      ),
+                    );
+                  },
+                  enabled: true,
+                ),
+              ),
+            ),
+          ],
+        ),
+        loading: () => const Center(child: CircularProgressIndicator()),
+        error: (error, stack) => Center(child: Text('Error: $error')),
+      ),
     );
   }
 }

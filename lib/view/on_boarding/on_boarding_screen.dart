@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../common/app_bar/page_index_app_bar.dart';
+import '../../view_model/on_boarding/on_boarding_finish_notifier.dart';
 import '../../view_model/on_boarding/on_boarding_level_notifier.dart';
 import 'component/on_boarding_fourth.dart';
 import 'component/on_boarding_second.dart';
@@ -162,6 +163,7 @@ class OnBoardingScreen extends ConsumerWidget {
                             ref
                                 .read(onBoardingLevelNotifierProvider.notifier)
                                 .postLevel();
+                            ref.read(onBoardingFinishNotifierProvider.notifier).onBoardingComplete();
                             Navigator.pop(context);
                             Navigator.push(
                               context,
