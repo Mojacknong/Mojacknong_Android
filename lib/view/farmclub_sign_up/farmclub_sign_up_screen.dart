@@ -2,6 +2,7 @@ import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
 import 'package:farmus/common/button/bottom_backgroud_divider_button.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
+import 'package:farmus/view/farmclub/farmclub_screen.dart';
 import 'package:farmus/view/farmclub_sign_up/component/farmclub_%20preparations.dart';
 import 'package:farmus/view/farmclub_sign_up/component/farmclub_more_info_widget.dart';
 import 'package:farmus/view/farmclub_sign_up/component/farmclub_only_container.dart';
@@ -104,7 +105,8 @@ class FarmclubSignUpScreen extends ConsumerWidget {
                 button: FarmclubSignUpButton(
                   id: farmclubDetailModel.farmClubId,
                   myVeggieInfoId: farmclubDetailModel.veggieInfoId,
-                  onPressed: () {},
+                  onPressed: () {
+                  },
                 ),
               ),
             ],

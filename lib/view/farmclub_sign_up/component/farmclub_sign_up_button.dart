@@ -3,6 +3,9 @@ import 'package:farmus/common/button/primary_color_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../farmclub/farmclub_screen.dart';
+import '../../main/main_screen.dart';
+
 class FarmclubSignUpButton extends ConsumerWidget {
   const FarmclubSignUpButton(
       {super.key,
@@ -26,7 +29,8 @@ class FarmclubSignUpButton extends ConsumerWidget {
           onPressed: () {
             showFarmclubSignupBottomSheet(
                 id, myVeggieInfoId, context, ref, "팜클럽 가입");
-          },
+                },
+
         ),
       ),
     );
