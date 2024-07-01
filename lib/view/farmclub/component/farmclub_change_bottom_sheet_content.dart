@@ -1,6 +1,7 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/farmclub/component/farmclub_change_info.dart';
+import 'package:farmus/view_model/home/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -14,6 +15,7 @@ class FarmclubChangeBottomSheetContent extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final AsyncValue<List<MyFarmclubModel>> myFarmclub =
         ref.watch(myFarmclubModelProvider);
+    var selectedFarmclubId = ref.watch(selectedFarmclubIdProvider);
 
     return myFarmclub.when(
       data: (farmclub) {
@@ -51,7 +53,11 @@ class FarmclubChangeBottomSheetContent extends ConsumerWidget {
                                       farmclubImage: club.farmClubImage,
                                       farmclubName: club.farmClubName,
                                       type: club.veggieName,
-                                      isCheck: true,
+                                      isCheck: selectedFarmclubId == null
+                                          ? club.farmClubId ==
+                                              myFarmclub.value?.first.farmClubId
+                                          : selectedFarmclubId ==
+                                              club.farmClubId,
                                     ),
                                     const Divider(
                                       height: 1.0,
