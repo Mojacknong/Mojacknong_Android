@@ -7,7 +7,7 @@ part of 'my_farmclub_info_notifier.dart';
 // **************************************************************************
 
 String _$myFarmclubInfoModelHash() =>
-    r'12fd92b3e9181cab1ee6d8fa5ba619bd699b7ff4';
+    r'd9cb7f4b0725584079c7c39e3a789e958ad444b6';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -42,7 +42,7 @@ class MyFarmclubInfoModelFamily
 
   /// See also [myFarmclubInfoModel].
   MyFarmclubInfoModelProvider call(
-    int farmclubId,
+    int? farmclubId,
   ) {
     return MyFarmclubInfoModelProvider(
       farmclubId,
@@ -78,7 +78,7 @@ class MyFarmclubInfoModelProvider
     extends AutoDisposeFutureProvider<MyFarmclubInfoModel> {
   /// See also [myFarmclubInfoModel].
   MyFarmclubInfoModelProvider(
-    int farmclubId,
+    int? farmclubId,
   ) : this._internal(
           (ref) => myFarmclubInfoModel(
             ref as MyFarmclubInfoModelRef,
@@ -106,7 +106,7 @@ class MyFarmclubInfoModelProvider
     required this.farmclubId,
   }) : super.internal();
 
-  final int farmclubId;
+  final int? farmclubId;
 
   @override
   Override overrideWith(
@@ -150,7 +150,7 @@ class MyFarmclubInfoModelProvider
 mixin MyFarmclubInfoModelRef
     on AutoDisposeFutureProviderRef<MyFarmclubInfoModel> {
   /// The parameter `farmclubId` of this provider.
-  int get farmclubId;
+  int? get farmclubId;
 }
 
 class _MyFarmclubInfoModelProviderElement
@@ -159,7 +159,7 @@ class _MyFarmclubInfoModelProviderElement
   _MyFarmclubInfoModelProviderElement(super.provider);
 
   @override
-  int get farmclubId => (origin as MyFarmclubInfoModelProvider).farmclubId;
+  int? get farmclubId => (origin as MyFarmclubInfoModelProvider).farmclubId;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

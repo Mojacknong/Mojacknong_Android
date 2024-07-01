@@ -25,7 +25,7 @@ class FarmclubScreen extends ConsumerWidget {
         ref.watch(myFarmclubModelProvider);
     final selectedFarmclubId = ref.watch(selectedFarmclubIdProvider);
     final AsyncValue<MyFarmclubInfoModel> myFarmclubInfo =
-        ref.watch(myFarmclubInfoModelProvider(selectedFarmclubId ?? myFarmclub.asData!.value.first.farmClubId.toInt()));
+        ref.watch(myFarmclubInfoModelProvider(selectedFarmclubId ?? myFarmclub.value?.first.farmClubId));
 
     return Scaffold(
       appBar: myFarmclub.when(
@@ -88,7 +88,6 @@ class FarmclubScreen extends ConsumerWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: FarmclubProfile(
-                            farmclub: farmclub[0],
                             farmclubInfoModel: farmclubInfo,
                           ),
                         ),

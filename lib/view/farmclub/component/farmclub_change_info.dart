@@ -38,6 +38,7 @@ class FarmclubChangeInfo extends ConsumerWidget {
                 onTap: () {
                   ref.read(selectedFarmclubIdProvider.notifier).state =
                       farmclubId;
+                  Navigator.pop(context);
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,

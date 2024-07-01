@@ -11,10 +11,9 @@ import '../../../common/theme/farmus_theme_text_style.dart';
 import '../../../model/my_farmclub/my_farmclub_model.dart';
 
 class FarmclubProfile extends ConsumerWidget {
-  final MyFarmclubModel? farmclub;
   final MyFarmclubInfoModel? farmclubInfoModel;
 
-  const FarmclubProfile({Key? key, this.farmclub, this.farmclubInfoModel})
+  const FarmclubProfile({Key? key, this.farmclubInfoModel})
       : super(key: key);
 
   @override
@@ -26,7 +25,7 @@ class FarmclubProfile extends ConsumerWidget {
             alignment: Alignment.bottomRight,
             children: [
               FarmclubSelectProfile(
-                image: farmclub!.farmClubImage,
+                image: farmclubInfoModel!.farmClubImage,
                 size: 64,
               ),
               SvgPicture.asset('assets/image/ic_farmclub_mark.svg'),
@@ -39,7 +38,7 @@ class FarmclubProfile extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                farmclub!.farmClubName,
+                farmclubInfoModel!.farmClubName,
                 style: FarmusThemeTextStyle.darkSemiBold20,
               ),
               Text(
