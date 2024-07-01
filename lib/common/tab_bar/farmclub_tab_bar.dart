@@ -40,6 +40,7 @@ class FarmclubTabBar extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 16.0),
                   child: FarmclubStep(
+                    wholeMember: farmclubInfo.wholeMemberCount,
                     step: step,
                   ),
                 );
