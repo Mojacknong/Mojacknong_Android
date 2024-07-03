@@ -19,8 +19,10 @@ class TipStepText extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               'Step $stepIndex',
@@ -29,10 +31,12 @@ class TipStepText extends ConsumerWidget {
             const SizedBox(
               width: 8,
             ),
-            Text(
-              stepTitle,
-              style: FarmusThemeTextStyle.darkSemiBold17,
-            )
+            Expanded(
+              child: Text(
+                stepTitle,
+                style: FarmusThemeTextStyle.darkSemiBold17,
+              ),
+            ),
           ],
         ),
         const SizedBox(
@@ -42,6 +46,7 @@ class TipStepText extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
                   width: 16,
@@ -52,24 +57,21 @@ class TipStepText extends ConsumerWidget {
                       borderRadius: BorderRadius.circular(21),
                     ),
                   ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        '${entry.key}',
-                        style: FarmusThemeTextStyle.whiteMedium10,
-                      ),
-                    ],
+                  child: Center(
+                    child: Text(
+                      '${entry.key}',
+                      style: FarmusThemeTextStyle.whiteMedium10,
+                    ),
                   ),
                 ),
                 const SizedBox(
                   width: 8.0,
                 ),
-                Text(
-                  entry.value,
-                  style: FarmusThemeTextStyle.darkMedium15,
+                Expanded(
+                  child: Text(
+                    entry.value,
+                    style: FarmusThemeTextStyle.darkMedium15,
+                  ),
                 ),
               ],
             ),
