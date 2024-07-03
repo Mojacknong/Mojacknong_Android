@@ -20,7 +20,8 @@ FarmclubHelpModel _$FarmclubHelpModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FarmclubHelpModel {
-  Help get help => throw _privateConstructorUsedError;
+  FarmclubHelpInfoModel get farmclubHelpInfoModel =>
+      throw _privateConstructorUsedError;
   List<HelpStep> get steps => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,9 +36,10 @@ abstract class $FarmclubHelpModelCopyWith<$Res> {
           FarmclubHelpModel value, $Res Function(FarmclubHelpModel) then) =
       _$FarmclubHelpModelCopyWithImpl<$Res, FarmclubHelpModel>;
   @useResult
-  $Res call({Help help, List<HelpStep> steps});
+  $Res call(
+      {FarmclubHelpInfoModel farmclubHelpInfoModel, List<HelpStep> steps});
 
-  $HelpCopyWith<$Res> get help;
+  $FarmclubHelpInfoModelCopyWith<$Res> get farmclubHelpInfoModel;
 }
 
 /// @nodoc
@@ -53,14 +55,14 @@ class _$FarmclubHelpModelCopyWithImpl<$Res, $Val extends FarmclubHelpModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? help = null,
+    Object? farmclubHelpInfoModel = null,
     Object? steps = null,
   }) {
     return _then(_value.copyWith(
-      help: null == help
-          ? _value.help
-          : help // ignore: cast_nullable_to_non_nullable
-              as Help,
+      farmclubHelpInfoModel: null == farmclubHelpInfoModel
+          ? _value.farmclubHelpInfoModel
+          : farmclubHelpInfoModel // ignore: cast_nullable_to_non_nullable
+              as FarmclubHelpInfoModel,
       steps: null == steps
           ? _value.steps
           : steps // ignore: cast_nullable_to_non_nullable
@@ -70,9 +72,10 @@ class _$FarmclubHelpModelCopyWithImpl<$Res, $Val extends FarmclubHelpModel>
 
   @override
   @pragma('vm:prefer-inline')
-  $HelpCopyWith<$Res> get help {
-    return $HelpCopyWith<$Res>(_value.help, (value) {
-      return _then(_value.copyWith(help: value) as $Val);
+  $FarmclubHelpInfoModelCopyWith<$Res> get farmclubHelpInfoModel {
+    return $FarmclubHelpInfoModelCopyWith<$Res>(_value.farmclubHelpInfoModel,
+        (value) {
+      return _then(_value.copyWith(farmclubHelpInfoModel: value) as $Val);
     });
   }
 }
@@ -85,10 +88,11 @@ abstract class _$$FarmclubHelpModelImplCopyWith<$Res>
       __$$FarmclubHelpModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Help help, List<HelpStep> steps});
+  $Res call(
+      {FarmclubHelpInfoModel farmclubHelpInfoModel, List<HelpStep> steps});
 
   @override
-  $HelpCopyWith<$Res> get help;
+  $FarmclubHelpInfoModelCopyWith<$Res> get farmclubHelpInfoModel;
 }
 
 /// @nodoc
@@ -102,14 +106,14 @@ class __$$FarmclubHelpModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? help = null,
+    Object? farmclubHelpInfoModel = null,
     Object? steps = null,
   }) {
     return _then(_$FarmclubHelpModelImpl(
-      help: null == help
-          ? _value.help
-          : help // ignore: cast_nullable_to_non_nullable
-              as Help,
+      farmclubHelpInfoModel: null == farmclubHelpInfoModel
+          ? _value.farmclubHelpInfoModel
+          : farmclubHelpInfoModel // ignore: cast_nullable_to_non_nullable
+              as FarmclubHelpInfoModel,
       steps: null == steps
           ? _value._steps
           : steps // ignore: cast_nullable_to_non_nullable
@@ -122,14 +126,15 @@ class __$$FarmclubHelpModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$FarmclubHelpModelImpl implements _FarmclubHelpModel {
   const _$FarmclubHelpModelImpl(
-      {required this.help, required final List<HelpStep> steps})
+      {required this.farmclubHelpInfoModel,
+      required final List<HelpStep> steps})
       : _steps = steps;
 
   factory _$FarmclubHelpModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$FarmclubHelpModelImplFromJson(json);
 
   @override
-  final Help help;
+  final FarmclubHelpInfoModel farmclubHelpInfoModel;
   final List<HelpStep> _steps;
   @override
   List<HelpStep> get steps {
@@ -140,7 +145,7 @@ class _$FarmclubHelpModelImpl implements _FarmclubHelpModel {
 
   @override
   String toString() {
-    return 'FarmclubHelpModel(help: $help, steps: $steps)';
+    return 'FarmclubHelpModel(farmclubHelpInfoModel: $farmclubHelpInfoModel, steps: $steps)';
   }
 
   @override
@@ -148,14 +153,15 @@ class _$FarmclubHelpModelImpl implements _FarmclubHelpModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FarmclubHelpModelImpl &&
-            (identical(other.help, help) || other.help == help) &&
+            (identical(other.farmclubHelpInfoModel, farmclubHelpInfoModel) ||
+                other.farmclubHelpInfoModel == farmclubHelpInfoModel) &&
             const DeepCollectionEquality().equals(other._steps, _steps));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, help, const DeepCollectionEquality().hash(_steps));
+  int get hashCode => Object.hash(runtimeType, farmclubHelpInfoModel,
+      const DeepCollectionEquality().hash(_steps));
 
   @JsonKey(ignore: true)
   @override
@@ -174,207 +180,19 @@ class _$FarmclubHelpModelImpl implements _FarmclubHelpModel {
 
 abstract class _FarmclubHelpModel implements FarmclubHelpModel {
   const factory _FarmclubHelpModel(
-      {required final Help help,
+      {required final FarmclubHelpInfoModel farmclubHelpInfoModel,
       required final List<HelpStep> steps}) = _$FarmclubHelpModelImpl;
 
   factory _FarmclubHelpModel.fromJson(Map<String, dynamic> json) =
       _$FarmclubHelpModelImpl.fromJson;
 
   @override
-  Help get help;
+  FarmclubHelpInfoModel get farmclubHelpInfoModel;
   @override
   List<HelpStep> get steps;
   @override
   @JsonKey(ignore: true)
   _$$FarmclubHelpModelImplCopyWith<_$FarmclubHelpModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-Help _$HelpFromJson(Map<String, dynamic> json) {
-  return _Help.fromJson(json);
-}
-
-/// @nodoc
-mixin _$Help {
-  String get material => throw _privateConstructorUsedError;
-  List<String> get selectHow => throw _privateConstructorUsedError;
-  List<String> get features => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $HelpCopyWith<Help> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $HelpCopyWith<$Res> {
-  factory $HelpCopyWith(Help value, $Res Function(Help) then) =
-      _$HelpCopyWithImpl<$Res, Help>;
-  @useResult
-  $Res call({String material, List<String> selectHow, List<String> features});
-}
-
-/// @nodoc
-class _$HelpCopyWithImpl<$Res, $Val extends Help>
-    implements $HelpCopyWith<$Res> {
-  _$HelpCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? material = null,
-    Object? selectHow = null,
-    Object? features = null,
-  }) {
-    return _then(_value.copyWith(
-      material: null == material
-          ? _value.material
-          : material // ignore: cast_nullable_to_non_nullable
-              as String,
-      selectHow: null == selectHow
-          ? _value.selectHow
-          : selectHow // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      features: null == features
-          ? _value.features
-          : features // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$HelpImplCopyWith<$Res> implements $HelpCopyWith<$Res> {
-  factory _$$HelpImplCopyWith(
-          _$HelpImpl value, $Res Function(_$HelpImpl) then) =
-      __$$HelpImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String material, List<String> selectHow, List<String> features});
-}
-
-/// @nodoc
-class __$$HelpImplCopyWithImpl<$Res>
-    extends _$HelpCopyWithImpl<$Res, _$HelpImpl>
-    implements _$$HelpImplCopyWith<$Res> {
-  __$$HelpImplCopyWithImpl(_$HelpImpl _value, $Res Function(_$HelpImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? material = null,
-    Object? selectHow = null,
-    Object? features = null,
-  }) {
-    return _then(_$HelpImpl(
-      material: null == material
-          ? _value.material
-          : material // ignore: cast_nullable_to_non_nullable
-              as String,
-      selectHow: null == selectHow
-          ? _value._selectHow
-          : selectHow // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      features: null == features
-          ? _value._features
-          : features // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$HelpImpl implements _Help {
-  const _$HelpImpl(
-      {required this.material,
-      required final List<String> selectHow,
-      required final List<String> features})
-      : _selectHow = selectHow,
-        _features = features;
-
-  factory _$HelpImpl.fromJson(Map<String, dynamic> json) =>
-      _$$HelpImplFromJson(json);
-
-  @override
-  final String material;
-  final List<String> _selectHow;
-  @override
-  List<String> get selectHow {
-    if (_selectHow is EqualUnmodifiableListView) return _selectHow;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_selectHow);
-  }
-
-  final List<String> _features;
-  @override
-  List<String> get features {
-    if (_features is EqualUnmodifiableListView) return _features;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_features);
-  }
-
-  @override
-  String toString() {
-    return 'Help(material: $material, selectHow: $selectHow, features: $features)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$HelpImpl &&
-            (identical(other.material, material) ||
-                other.material == material) &&
-            const DeepCollectionEquality()
-                .equals(other._selectHow, _selectHow) &&
-            const DeepCollectionEquality().equals(other._features, _features));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      material,
-      const DeepCollectionEquality().hash(_selectHow),
-      const DeepCollectionEquality().hash(_features));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$HelpImplCopyWith<_$HelpImpl> get copyWith =>
-      __$$HelpImplCopyWithImpl<_$HelpImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$HelpImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _Help implements Help {
-  const factory _Help(
-      {required final String material,
-      required final List<String> selectHow,
-      required final List<String> features}) = _$HelpImpl;
-
-  factory _Help.fromJson(Map<String, dynamic> json) = _$HelpImpl.fromJson;
-
-  @override
-  String get material;
-  @override
-  List<String> get selectHow;
-  @override
-  List<String> get features;
-  @override
-  @JsonKey(ignore: true)
-  _$$HelpImplCopyWith<_$HelpImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

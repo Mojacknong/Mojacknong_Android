@@ -6,7 +6,7 @@ part of 'farmclub_help_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$farmclubHelpModelHash() => r'f3ae736b404d3827d09c9dd152da1a88de0b7dd2';
+String _$farmclubHelpModelHash() => r'b4c534e4f8b82d714e42b7ef6ee34ccbbfbfeb19';
 
 /// Copied from Dart SDK
 class _SystemHash {

@@ -29,7 +29,7 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final Size size = MediaQuery.of(context).size;
-    final selectedVeggieId = ref.watch(selectedVeggieIdProvider);
+    final selectedVegeId = ref.watch(selectedVegeIdProvider);
     final AsyncValue<List<MyVeggieListModel>> veggieList =
         ref.watch(myVeggieListModelProvider);
     final AsyncValue<List<RecommendVeggieModel>> recommend =
@@ -67,10 +67,10 @@ class HomeScreen extends ConsumerWidget {
                   if (veggieListData.isNotEmpty) ...[
                     const HomeMyVegeList(),
                     const SizedBox(height: 8),
-                    if (selectedVeggieId != null)
+                    if (selectedVegeId != null)
                       FutureBuilder<MyVeggieProfile>(
                         future: ref.read(
-                            myVeggieProfileProvider(selectedVeggieId).future),
+                            myVeggieProfileProvider(selectedVegeId).future),
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {
@@ -127,10 +127,10 @@ class HomeScreen extends ConsumerWidget {
                   const SizedBox(height: 24),
                   const HomeSubTitle(title: "성장 일기"),
                   if (veggieListData.isNotEmpty)
-                    if (selectedVeggieId != null)
+                    if (selectedVegeId != null)
                       FutureBuilder<VeggieDiaryOneModel?>(
                         future: ref.watch(
-                            veggieDiaryOneModelProvider(selectedVeggieId)
+                            veggieDiaryOneModelProvider(selectedVegeId)
                                 .future),
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==
