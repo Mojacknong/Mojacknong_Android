@@ -15,4 +15,14 @@ class MyFarmclubRepository {
     String? response = await MyFarmclubService().farmclubHelp(farmclubId);
     return response;
   }
+
+  static Future<String> farmclubMission(int farmclubId) async {
+    String? response = await MyFarmclubService().farmclubMissionFeed(farmclubId);
+    return response;
+  }
+
+  static Future<String> farmclubMissionCertification() async {
+    String? response = await MyFarmclubService().farmclubMissionCertification();
+    return response;
+  }
 }

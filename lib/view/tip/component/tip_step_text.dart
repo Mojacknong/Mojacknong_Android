@@ -46,7 +46,7 @@ class TipStepText extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
                   width: 16,
