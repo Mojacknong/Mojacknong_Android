@@ -12,7 +12,7 @@ import '../../../common/theme/farmus_theme_text_style.dart';
 class FarmclubProfile extends ConsumerWidget {
   final MyFarmclubInfoModel? farmclubInfoModel;
 
-  const FarmclubProfile({Key? key, this.farmclubInfoModel}) : super(key: key);
+  const FarmclubProfile({super.key, this.farmclubInfoModel});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

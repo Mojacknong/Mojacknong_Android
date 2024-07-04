@@ -31,7 +31,7 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         IconButton(
           onPressed: () {},
-          icon: SvgPicture.asset("assets/image/ic_bell.svg"),
+          icon: SvgPicture.asset('assets/image/ic_bell.svg'),
         )
       ],
     );

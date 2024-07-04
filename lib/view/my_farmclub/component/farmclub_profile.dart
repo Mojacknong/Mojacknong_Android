@@ -11,7 +11,7 @@ import '../../../model/my_farmclub/my_farmclub_model.dart';
 class FarmclubProfile extends ConsumerWidget {
   final MyFarmclubModel? farmclub;
 
-  const FarmclubProfile({Key? key, this.farmclub}) : super(key: key);
+  const FarmclubProfile({super.key, this.farmclub});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
