@@ -7,9 +7,13 @@ import 'mission_write_route_button.dart';
 
 class MissionStepInfo extends ConsumerWidget {
   const MissionStepInfo(
-      {super.key, required this.stepNum, required this.isButton});
+      {super.key,
+      required this.stepNum,
+      required this.stepName,
+      required this.isButton});
 
   final int stepNum;
+  final String stepName;
   final bool isButton;
 
   @override
@@ -27,23 +31,28 @@ class MissionStepInfo extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Step $stepNum',
-                style: FarmusThemeTextStyle.gray2SemiBold13,
-              ),
-              const SizedBox(
-                height: 8.0,
-              ),
-              const Text(
-                '준비물을 챙겨요',
-                style: FarmusThemeTextStyle.darkSemiBold15,
-              ),
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Step ${stepNum + 1}',
+                  style: FarmusThemeTextStyle.gray2SemiBold13,
+                ),
+                const SizedBox(
+                  height: 8.0,
+                ),
+                Text(
+                  stepName,
+                  style: FarmusThemeTextStyle.darkSemiBold15,
+                ),
+              ],
+            ),
           ),
-           MissionWriteRouteButton(isButton: isButton)
+          const SizedBox(
+            width: 8.0,
+          ),
+          MissionWriteRouteButton(isButton: isButton)
         ],
       ),
     );

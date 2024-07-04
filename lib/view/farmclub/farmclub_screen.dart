@@ -17,7 +17,7 @@ import 'component/farmclub_feed.dart';
 import 'component/farmclub_profile.dart';
 
 class FarmclubScreen extends ConsumerWidget {
-  const FarmclubScreen({Key? key}) : super(key: key);
+  const FarmclubScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

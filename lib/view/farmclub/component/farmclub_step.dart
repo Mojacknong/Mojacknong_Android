@@ -10,16 +10,24 @@ import '../../mission_feed/mission_feed_screen.dart';
 
 class FarmclubStep extends ConsumerWidget {
   const FarmclubStep(
-      {super.key, required this.wholeMember, required this.step});
+      {super.key,
+      required this.wholeMember,
+      required this.step,
+      required this.farmclubInfo});
 
   final int wholeMember;
   final StepModel step;
+  final MyFarmclubInfoModel farmclubInfo;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
-      onTap: () => Navigator.push(context,
-          MaterialPageRoute(builder: (builder) => const MissionFeedScreen())),
+      onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (builder) => MissionFeedScreen(
+                    farmclubInfo: farmclubInfo,
+                  ))),
       child: Container(
         width: double.infinity,
         decoration: ShapeDecoration(
