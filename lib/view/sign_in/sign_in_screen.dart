@@ -54,13 +54,14 @@ class _SignInScreenState extends State<SignInScreen> {
         _currentPage++;
       } else {
         _currentPage = 0;
-        _pageController.jumpToPage(0);
       }
-      _pageController.animateToPage(
-        _currentPage,
-        duration: const Duration(milliseconds: 200),
-        curve: Curves.easeInOut,
-      );
+      if (_pageController.hasClients) {
+        _pageController.animateToPage(
+          _currentPage,
+          duration: const Duration(milliseconds: 200),
+          curve: Curves.easeInOut,
+        );
+      }
     });
   }
 
@@ -184,7 +185,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
   fetchKaKaoData(String token) {
     UserRepository.kakaoSignInApi(token).then(
-      (value) {
+          (value) {
         if (value != null) {
           setState(() {
             user = value;
@@ -213,13 +214,13 @@ class _SignInScreenState extends State<SignInScreen> {
 
   googleLogin() async {
     final GoogleSignInAccount? googleSignInAccount =
-        await googleSignIn.signIn();
+    await googleSignIn.signIn();
 
     final GoogleSignInAuthentication googleSignInAuthentication =
-        await googleSignInAccount!.authentication;
+    await googleSignInAccount!.authentication;
 
     UserRepository.googleSignInApi(googleSignInAuthentication.accessToken).then(
-      (value) {
+          (value) {
         if (value != null) {
           setState(() {
             user = value;

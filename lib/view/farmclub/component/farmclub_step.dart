@@ -9,8 +9,10 @@ import '../../../common/theme/farmus_theme_text_style.dart';
 import '../../../model/my_farmclub/my_farmclub_info_model.dart';
 
 class FarmclubStep extends ConsumerWidget {
-  const FarmclubStep({super.key, required this.step});
+  const FarmclubStep(
+      {super.key, required this.wholeMember, required this.step});
 
+  final int wholeMember;
   final StepModel step;
 
   @override
@@ -72,7 +74,7 @@ class FarmclubStep extends ConsumerWidget {
                         //apply style to all
                         children: [
                           TextSpan(
-                            text: '${step.completeMemberCount}명 중 ',
+                            text: '$wholeMember명 중 ',
                           ),
                           TextSpan(
                               text: '${step.completeMemberCount}명',

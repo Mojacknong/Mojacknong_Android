@@ -5,8 +5,10 @@ import '../../../common/theme/farmus_theme_color.dart';
 
 class FarmclubSelectProfile extends ConsumerWidget {
   final String image;
+  final double size;
 
-  const FarmclubSelectProfile({super.key, required this.image});
+  const FarmclubSelectProfile(
+      {super.key, required this.image, required this.size});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -14,8 +16,8 @@ class FarmclubSelectProfile extends ConsumerWidget {
       alignment: Alignment.center,
       children: [
         Container(
-          width: 64,
-          height: 64,
+          width: size,
+          height: size,
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
           ),

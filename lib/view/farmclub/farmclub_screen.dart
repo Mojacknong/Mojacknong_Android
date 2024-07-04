@@ -1,3 +1,4 @@
+import 'package:farmus/view_model/home/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -22,8 +23,9 @@ class FarmclubScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final AsyncValue<List<MyFarmclubModel>> myFarmclub =
         ref.watch(myFarmclubModelProvider);
+    final selectedFarmclubId = ref.watch(selectedFarmclubIdProvider);
     final AsyncValue<MyFarmclubInfoModel> myFarmclubInfo =
-        ref.watch(myFarmclubInfoModelProvider);
+        ref.watch(myFarmclubInfoModelProvider(selectedFarmclubId ?? myFarmclub.value?.first.farmClubId));
 
     return Scaffold(
       appBar: myFarmclub.when(
@@ -86,7 +88,6 @@ class FarmclubScreen extends ConsumerWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: FarmclubProfile(
-                            farmclub: farmclub[0],
                             farmclubInfoModel: farmclubInfo,
                           ),
                         ),
