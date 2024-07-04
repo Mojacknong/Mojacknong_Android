@@ -64,7 +64,8 @@ class FarmclubStep extends ConsumerWidget {
                       ],
                     ),
                   ),
-                  const MissionWriteRouteButton(
+                  MissionWriteRouteButton(
+                    step: step,
                     isButton: true,
                   )
                 ],

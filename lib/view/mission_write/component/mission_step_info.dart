@@ -1,3 +1,4 @@
+import 'package:farmus/model/my_farmclub/my_farmclub_info_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -7,13 +8,9 @@ import 'mission_write_route_button.dart';
 
 class MissionStepInfo extends ConsumerWidget {
   const MissionStepInfo(
-      {super.key,
-      required this.stepNum,
-      required this.stepName,
-      required this.isButton});
+      {super.key, required this.step, required this.isButton});
 
-  final int stepNum;
-  final String stepName;
+  final StepModel step;
   final bool isButton;
 
   @override
@@ -36,14 +33,14 @@ class MissionStepInfo extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Step ${stepNum + 1}',
+                  'Step ${step.stepNum + 1}',
                   style: FarmusThemeTextStyle.gray2SemiBold13,
                 ),
                 const SizedBox(
                   height: 8.0,
                 ),
                 Text(
-                  stepName,
+                  step.stepName,
                   style: FarmusThemeTextStyle.darkSemiBold15,
                 ),
               ],
@@ -52,7 +49,7 @@ class MissionStepInfo extends ConsumerWidget {
           const SizedBox(
             width: 8.0,
           ),
-          MissionWriteRouteButton(isButton: isButton)
+          MissionWriteRouteButton(step: step, isButton: isButton)
         ],
       ),
     );

@@ -46,8 +46,6 @@ class MissionFeedTabBar extends ConsumerWidget {
         ),
       ),
     ];
-
-    // Dynamic steps tab views
     for (var step in farmclubInfo.steps) {
       tabViews.add(
         SingleChildScrollView(
@@ -56,8 +54,7 @@ class MissionFeedTabBar extends ConsumerWidget {
             child: Column(
               children: [
                 MissionStepInfo(
-                  stepNum: step.stepNum,
-                  stepName: step.stepName,
+                  step: step,
                   isButton: true,
                 ),
                 if (step.stepNum == farmclubInfo.steps.last.stepNum)
