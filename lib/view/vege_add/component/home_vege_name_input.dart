@@ -16,7 +16,7 @@ class HomeVegeNameInput extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final myVeggieAddNotifier = ref.watch(myVeggieAddNotifierProvider).value;
-    final name = myVeggieAddNotifier?.name ?? '';
+    final name = hintText ?? myVeggieAddNotifier?.name ?? '';
 
     return PrimaryTextFormField(
       initialValue: name,

@@ -13,14 +13,13 @@ class PrimaryColorButton extends ConsumerWidget {
   final double? fontPadding;
 
   const PrimaryColorButton(
-      {Key? key,
+      {super.key,
       required this.text,
       required this.onPressed,
       required this.enabled,
       this.fontSize,
       this.borderRadius,
-      this.fontPadding})
-      : super(key: key);
+      this.fontPadding});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -36,7 +35,7 @@ class PrimaryColorButton extends ConsumerWidget {
         borderColor: FarmusThemeColor.white,
         borderRadius: borderRadius,
         fontSize: fontSize ?? 15,
-        fontPadding: fontPadding,
+        fontPadding: fontPadding ?? 16.0,
       ),
     );
   }
