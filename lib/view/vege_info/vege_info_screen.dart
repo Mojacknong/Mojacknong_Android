@@ -11,6 +11,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../common/button/bottom_backgroud_divider_button.dart';
+import '../../model/home/my_veggie_list_model.dart';
+import '../../model/home/my_veggie_profile.dart';
+import '../../view_model/home/home_provider.dart';
+import '../../view_model/my_vege/notifier/my_veggie_list.dart';
+import '../../view_model/my_vege/notifier/my_veggie_profile_notifier.dart';
+import '../../view_model/on_boarding/on_boarding_finish_notifier.dart';
 import '../vege_add/component/home_vege_name_input.dart';
 
 class VegeInfoScreen extends ConsumerWidget {
@@ -18,6 +24,11 @@ class VegeInfoScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AsyncValue<List<MyVeggieListModel>> veggieList =
+        ref.watch(myVeggieListModelProvider);
+    final selectedVegeId = ref.watch(selectedVegeIdProvider);
+    final nickName = ref.watch(onBoardingFinishNotifierProvider);
+
     return Scaffold(
       appBar: BackLeftTitleAppBar(
         title: '채소 정보',
@@ -35,77 +46,95 @@ class VegeInfoScreen extends ConsumerWidget {
           )
         ],
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: VegeInfoDetail(
-                      info: const {
-                        '채소': '상추',
-                        '날짜': '2023.11.23',
-                        '파머': '파머시치',
-                      },
-                      bottomWidget: Padding(
-                        padding: const EdgeInsets.only(top: 16.0, right: 8.0),
-                        child: SvgPicture.asset(
-                          'assets/image/logo_farmus.svg',
-                          colorFilter: const ColorFilter.mode(
-                              FarmusThemeColor.gray3, BlendMode.srcIn),
+      body: veggieList.when(
+        data: (veggieListData) {
+          final myVeggieId = selectedVegeId ?? veggieListData.first.myVeggieId;
+          final AsyncValue<MyVeggieProfile> myVeggieProfile =
+              ref.watch(myVeggieProfileProvider(myVeggieId));
+
+          return myVeggieProfile.when(
+            data: (profile) => Column(
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: VegeInfoDetail(
+                            info: {
+                              '채소': profile.veggieName,
+                              '날짜': profile.createdVeggie,
+                              '파머': nickName.value ?? '',
+                            },
+                            bottomWidget: Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 16.0, right: 8.0),
+                              child: SvgPicture.asset(
+                                'assets/image/logo_farmus.svg',
+                                colorFilter: const ColorFilter.mode(
+                                    FarmusThemeColor.gray3, BlendMode.srcIn),
+                              ),
+                            ),
+                            vegeNickname: profile.nickname,
+                            farmClubName: null,
+                            imageUrl: profile.veggieImage,
+                          ),
                         ),
+                        const SizedBox(
+                          height: 32.0,
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Text(
+                            '채소 별명',
+                            style: FarmusThemeTextStyle.darkSemiBold15,
+                          ),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 16.0),
+                          child: HomeVegeNameInput(),
+                        ),
+                        const SizedBox(
+                          height: 32.0,
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 16.0),
+                          child: Text(
+                            '키우기 시작한 날',
+                            style: FarmusThemeTextStyle.darkSemiBold15,
+                          ),
+                        ),
+                        FarmusCalender(),
+                        const SizedBox(
+                          height: 32.0,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                BottomBackgroundDividerButton(
+                  button: SizedBox(
+                    width: double.infinity,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: PrimaryColorButton(
+                        onPressed: () {},
+                        text: '수정',
+                        enabled: true,
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 32.0,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Text(
-                      '채소 별명',
-                      style: FarmusThemeTextStyle.darkSemiBold15,
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.0),
-                    child: HomeVegeNameInput(),
-                  ),
-                  const SizedBox(
-                    height: 32.0,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Text(
-                      '키우기 시작한 날',
-                      style: FarmusThemeTextStyle.darkSemiBold15,
-                    ),
-                  ),
-                  FarmusCalender(),
-                  const SizedBox(
-                    height: 32.0,
-                  ),
-                ],
-              ),
+                )
+              ],
             ),
-          ),
-          BottomBackgroundDividerButton(
-            button: SizedBox(
-              width: double.infinity,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: PrimaryColorButton(
-                  onPressed: () {},
-                  text: '수정',
-                  enabled: true,
-                ),
-              ),
-            ),
-          )
-        ],
+            loading: () => const Center(child: CircularProgressIndicator()),
+            error: (error, stack) => Center(child: Text('Error: $error')),
+          );
+        },
+        loading: () => const Center(child: CircularProgressIndicator()),
+        error: (error, stack) => Center(child: Text('Error: $error')),
       ),
     );
   }
