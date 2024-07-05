@@ -19,7 +19,8 @@ class PrimaryTextFormField extends StatelessWidget implements BaseTextInput {
       this.suffix,
       this.keyboardType,
       this.inputFormatters,
-      this.readOnly});
+      this.readOnly,
+      this.controller});
 
   @override
   final String? hintText;
@@ -44,10 +45,12 @@ class PrimaryTextFormField extends StatelessWidget implements BaseTextInput {
   final TextInputType? keyboardType;
   final List<TextInputFormatter>? inputFormatters;
   final bool? readOnly;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       initialValue: initialValue,
       maxLength: maxLength,
       minLines: minLines,
