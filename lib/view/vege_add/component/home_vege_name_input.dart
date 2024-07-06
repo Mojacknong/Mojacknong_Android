@@ -5,10 +5,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomeVegeNameInput extends ConsumerStatefulWidget {
   const HomeVegeNameInput({
-    Key? key,
+    super.key,
     this.maxLength,
     this.hintText,
-  }) : super(key: key);
+  });
 
   final String? hintText;
   final int? maxLength;
@@ -23,27 +23,27 @@ class _HomeVegeNameInputState extends ConsumerState<HomeVegeNameInput> {
   @override
   void initState() {
     super.initState();
-    final myVeggieAddNotifier = ref.read(myVeggieAddNotifierProvider).value;
-    final name = widget.hintText ?? myVeggieAddNotifier?.name ?? '';
-    _controller = TextEditingController(text: name);
-    _controller.addListener(() {
-      setState(() {});
-    });
+    _controller = TextEditingController(text: widget.hintText ?? '');
   }
 
   @override
   Widget build(BuildContext context) {
-    return PrimaryTextFormField(
-      controller: _controller,
-      maxLength: widget.maxLength ?? 8,
-      minLines: 1,
-      maxLines: 1,
-      hintText: widget.hintText ?? "쑥쑥이",
-      onChanged: (value) {
-        ref.read(myVeggieAddNotifierProvider.notifier).updateNickname(value);
-      },
-      suffix: Text("${_controller.text.length} /${widget.maxLength ?? 8}"),
-    );
+    return Consumer(builder: (context, ref, child) {
+      final myVeggieAddNotifier =
+      ref.watch(myVeggieAddNotifierProvider.notifier);
+
+      return PrimaryTextFormField(
+        controller: _controller,
+        maxLength: widget.maxLength ?? 8,
+        minLines: 1,
+        maxLines: 1,
+        hintText: widget.hintText ?? "쑥쑥이",
+        onChanged: (value) {
+          myVeggieAddNotifier.updateNickname(value);
+        },
+        suffix: Text("${_controller.text.length} /${widget.maxLength ?? 8}"),
+      );
+    });
   }
 
   @override

@@ -150,13 +150,13 @@ class VegeInfoScreen extends ConsumerWidget {
                                 .first;
                             final changeName = ref
                                 .read(myVeggieAddNotifierProvider)
-                                .value?.name;
+                                .asData!
+                                .value
+                                .name;
 
                             ref
                                 .read(myVeggieProfileChangeProvider.notifier)
-                                .putVeggieInfo(
-                                    myVeggieId,
-                                    changeName ?? '',
+                                .putVeggieInfo(myVeggieId, changeName!,
                                     createdVeggieDateString);
                           },
                           text: '수정',
