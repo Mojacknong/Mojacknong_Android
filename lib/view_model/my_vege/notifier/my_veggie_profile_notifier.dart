@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:farmus/model/my_vege/my_veggie_info_model.dart';
 import 'package:farmus/repository/my_veggie_garden_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

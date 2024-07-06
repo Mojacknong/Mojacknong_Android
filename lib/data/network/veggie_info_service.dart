@@ -19,18 +19,14 @@ class VeggieInfoService {
   Future<String> veggieInfoChange(
     int myVeggieId,
     String nickname,
-    DateTime birth,
+    String birth,
   ) async {
     const url = '/api/my-veggie';
-
-    Map<String, String> headers = {
-      HttpHeaders.contentTypeHeader: 'application/json',
-    };
 
     final body = jsonEncode(
         {'myVeggieId': myVeggieId, 'nickname': nickname, 'birth': birth});
 
-    return _updateData(url, headers, body, '채소 정보 수정 실패');
+    return _updateData(url, body, '채소 정보 수정 실패');
   }
 
   Future<String> _fetchData(String url, String errorMessage) async {
@@ -43,8 +39,12 @@ class VeggieInfoService {
     }
   }
 
-  Future<String> _updateData(String url, Map<String, String>? headers,
-      Object body, String errorMessage) async {
+  Future<String> _updateData(
+      String url, Object body, String errorMessage) async {
+    Map<String, String> headers = {
+      HttpHeaders.contentTypeHeader: 'application/json',
+    };
+
     final response = await apiClient.put(url, headers: headers, body: body);
 
     if (response.statusCode == 200) {

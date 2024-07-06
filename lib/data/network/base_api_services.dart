@@ -28,7 +28,9 @@ class ApiClient {
   Future<http.Response> _sendRequest(String method, String endpoint,
       {Map<String, String>? headers, Object? body, File? file}) async {
     final url = Uri.parse('$baseUrl$endpoint');
-    headers ??= await _getHeaders();
+    final tokenHeaders = await _getHeaders();
+
+    headers = headers == null ? tokenHeaders : {...headers, ...tokenHeaders};
 
     http.Response response;
     switch (method) {
@@ -62,6 +64,8 @@ class ApiClient {
     if (response.statusCode == 200) {
       return response;
     } else {
+      print("Response status: ${response.statusCode}");
+      print("Response body: ${response.body}");
       throw Exception('Failed to perform $method request to $endpoint');
     }
   }
@@ -82,7 +86,7 @@ class ApiClient {
   }
 
   Future<http.Response> patch(String endpoint,
-      {Map<String, String>? headers}) async {
+      {Map<String, String>? headers, Object? body}) async {
     return _sendRequest('PATCH', endpoint, headers: headers);
   }
 

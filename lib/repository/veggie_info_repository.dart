@@ -14,7 +14,7 @@ class VeggieInfoRepository {
   static Future<String> veggieInfoChange(
     int myVeggieId,
     String nickname,
-    DateTime birth,
+    String birth,
   ) async {
     String? response =
         await VeggieInfoService().veggieInfoChange(myVeggieId, nickname, birth);
