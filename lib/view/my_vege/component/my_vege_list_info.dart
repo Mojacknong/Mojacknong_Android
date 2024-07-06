@@ -84,7 +84,7 @@ class MyVegeListInfo extends ConsumerWidget {
                 icon: SvgPicture.asset(
                   myVegeNotifier.isVegeSelected(myVege)
                       ? "assets/image/ic_check.svg"
-                      : "assets/image/ic_check_empty.svg",
+                       : "assets/image/ic_check_empty.svg",
                 ),
               )
             : Container(),

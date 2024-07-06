@@ -144,10 +144,11 @@ class VegeInfoScreen extends ConsumerWidget {
                         padding: const EdgeInsets.all(16.0),
                         child: PrimaryColorButton(
                           onPressed: () {
-                            final createdVeggieDateString = createdVeggieDate
-                                .toIso8601String()
-                                .split('T')
-                                .first;
+                            final createdVeggieDateString = ref
+                                .read(myVeggieAddNotifierProvider)
+                                .asData!
+                                .value
+                                .date;
                             final changeName = ref
                                 .read(myVeggieAddNotifierProvider)
                                 .asData!
@@ -156,8 +157,18 @@ class VegeInfoScreen extends ConsumerWidget {
 
                             ref
                                 .read(myVeggieProfileChangeProvider.notifier)
-                                .putVeggieInfo(myVeggieId, changeName!,
-                                    createdVeggieDateString);
+                                .putVeggieInfo(
+                                  myVeggieId,
+                                  changeName.isEmpty
+                                      ? profile.nickname
+                                      : changeName,
+                                  createdVeggieDateString.isEmpty
+                                      ? parseDate(profile.createdVeggie)
+                                          .toIso8601String()
+                                          .split('T')
+                                          .first
+                                      : createdVeggieDateString,
+                                );
                           },
                           text: '수정',
                           enabled: true,

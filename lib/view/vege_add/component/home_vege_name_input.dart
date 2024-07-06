@@ -19,18 +19,22 @@ class HomeVegeNameInput extends ConsumerStatefulWidget {
 
 class _HomeVegeNameInputState extends ConsumerState<HomeVegeNameInput> {
   late TextEditingController _controller;
+  int currentLength = 0;
 
   @override
   void initState() {
     super.initState();
     _controller = TextEditingController(text: widget.hintText ?? '');
+    currentLength = widget.hintText?.length ??
+        ref.read(myVeggieAddNotifierProvider).value?.name.length ??
+        0;
   }
 
   @override
   Widget build(BuildContext context) {
     return Consumer(builder: (context, ref, child) {
       final myVeggieAddNotifier =
-      ref.watch(myVeggieAddNotifierProvider.notifier);
+          ref.watch(myVeggieAddNotifierProvider.notifier);
 
       return PrimaryTextFormField(
         controller: _controller,
@@ -40,8 +44,11 @@ class _HomeVegeNameInputState extends ConsumerState<HomeVegeNameInput> {
         hintText: widget.hintText ?? "쑥쑥이",
         onChanged: (value) {
           myVeggieAddNotifier.updateNickname(value);
+          setState(() {
+            currentLength = value.length;
+          });
         },
-        suffix: Text("${_controller.text.length} /${widget.maxLength ?? 8}"),
+        suffix: Text("$currentLength / ${widget.maxLength ?? 8}"),
       );
     });
   }
