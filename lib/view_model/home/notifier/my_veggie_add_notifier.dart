@@ -43,7 +43,8 @@ class MyVeggieAddNotifier extends _$MyVeggieAddNotifier {
   }
 
   void updateNickname(String name) {
-    state = AsyncData(VegeAddInfoModel(
+    if (state.value != null) {
+      state = AsyncData(VegeAddInfoModel(
         isFirstSelect: state.value!.isFirstSelect,
         isSecondSelect: state.value!.isSecondSelect,
         isThirdSelect: state.value!.isThirdSelect,
@@ -54,12 +55,15 @@ class MyVeggieAddNotifier extends _$MyVeggieAddNotifier {
         date: state.value!.date,
         isVegeSelectComplete: state.value!.isVegeSelectComplete,
         isVegeAddInfoComplete: state.value!.isVegeAddInfoComplete,
-        selectedIndex: state.value!.selectedIndex));
-    _updateVegeInfoStatus();
+        selectedIndex: state.value!.selectedIndex,
+      ));
+      _updateVegeInfoStatus();
+    }
   }
 
   void updateDate(String date) {
-    state = AsyncData(VegeAddInfoModel(
+    if (state.value != null) {
+      state = AsyncData(VegeAddInfoModel(
         isFirstSelect: state.value!.isFirstSelect,
         isSecondSelect: state.value!.isSecondSelect,
         isThirdSelect: state.value!.isThirdSelect,
@@ -70,8 +74,10 @@ class MyVeggieAddNotifier extends _$MyVeggieAddNotifier {
         date: date,
         isVegeSelectComplete: state.value!.isVegeSelectComplete,
         isVegeAddInfoComplete: state.value!.isVegeAddInfoComplete,
-        selectedIndex: state.value!.selectedIndex));
-    _updateVegeInfoStatus();
+        selectedIndex: state.value!.selectedIndex,
+      ));
+      _updateVegeInfoStatus();
+    }
   }
 
   void updateDateFormatted(DateTime date) {
@@ -81,23 +87,26 @@ class MyVeggieAddNotifier extends _$MyVeggieAddNotifier {
   }
 
   void _updateVegeInfoStatus() {
-    state = AsyncData(VegeAddInfoModel(
-      isFirstSelect: state.value!.isFirstSelect,
-      isSecondSelect: state.value!.isSecondSelect,
-      isThirdSelect: state.value!.isThirdSelect,
-      isFourthSelect: state.value!.isFourthSelect,
-      isFiveSelect: state.value!.isFiveSelect,
-      isSixSelect: state.value!.isSixSelect,
-      name: state.value!.name,
-      date: state.value!.date,
-      isVegeAddInfoComplete:
-          state.value!.name.isNotEmpty && state.value!.date.isNotEmpty,
-      isVegeSelectComplete: state.value!.isVegeSelectComplete,
-      selectedIndex: state.value!.selectedIndex,
-    ));
+    if (state.value != null) {
+      state = AsyncData(VegeAddInfoModel(
+        isFirstSelect: state.value!.isFirstSelect,
+        isSecondSelect: state.value!.isSecondSelect,
+        isThirdSelect: state.value!.isThirdSelect,
+        isFourthSelect: state.value!.isFourthSelect,
+        isFiveSelect: state.value!.isFiveSelect,
+        isSixSelect: state.value!.isSixSelect,
+        name: state.value!.name,
+        date: state.value!.date,
+        isVegeAddInfoComplete:
+        state.value!.name.isNotEmpty && state.value!.date.isNotEmpty,
+        isVegeSelectComplete: state.value!.isVegeSelectComplete,
+        selectedIndex: state.value!.selectedIndex,
+      ));
+    }
   }
 
   String? _getSelectedVeggieInfoId() {
+    if (state.value == null) return null;
     if (state.value!.isFirstSelect) return '65fe9366569b132880977375';
     if (state.value!.isSecondSelect) return '65fe9273569b13288097736f';
     if (state.value!.isThirdSelect) return '65fe933f569b132880977373';

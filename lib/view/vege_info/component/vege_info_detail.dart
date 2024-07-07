@@ -13,6 +13,7 @@ class VegeInfoDetail extends ConsumerWidget {
     this.showBoxDecoration = true,
     this.showVegeContainer = true,
     this.titleWidget,
+    this.vegeNickname,
     this.farmClubName,
     this.imageUrl,
     this.bottomWidgetAlignment = Alignment.topRight,
@@ -24,6 +25,7 @@ class VegeInfoDetail extends ConsumerWidget {
   final bool showBoxDecoration;
   final bool showVegeContainer;
   final Widget? titleWidget;
+  final String? vegeNickname;
   final String? farmClubName;
   final String? imageUrl;
   final Alignment bottomWidgetAlignment;
@@ -64,7 +66,7 @@ class VegeInfoDetail extends ConsumerWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 24.0),
                         child: Text(
-                          farmClubName ?? "팜클럽이름",
+                          farmClubName ?? vegeNickname ?? '',
                           style: FarmusThemeTextStyle.gray1SemiBold23,
                         ),
                       ),

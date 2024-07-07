@@ -39,7 +39,6 @@ class UserRepository {
 
   static Future<String> userInfo() async {
     String response = await OnBoardingService().userInfo();
-    print('userInfo response: $response');
     return response;
   }
 }

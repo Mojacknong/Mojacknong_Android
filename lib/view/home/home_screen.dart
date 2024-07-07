@@ -31,9 +31,9 @@ class HomeScreen extends ConsumerWidget {
     final Size size = MediaQuery.of(context).size;
     final selectedVegeId = ref.watch(selectedVegeIdProvider);
     final AsyncValue<List<MyVeggieListModel>> veggieList =
-        ref.watch(myVeggieListModelProvider);
+    ref.watch(myVeggieListModelProvider);
     final AsyncValue<List<RecommendVeggieModel>> recommend =
-        ref.watch(recommendVeggieModelProvider);
+    ref.watch(recommendVeggieModelProvider);
 
     String toDo = ref.watch(homeToDoProvider);
 
@@ -68,41 +68,20 @@ class HomeScreen extends ConsumerWidget {
                     const HomeMyVegeList(),
                     const SizedBox(height: 8),
                     if (selectedVegeId != null)
-                      FutureBuilder<MyVeggieProfile>(
-                        future: ref.read(
-                            myVeggieProfileProvider(selectedVegeId).future),
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
-                            return const CircularProgressIndicator();
-                          } else if (snapshot.hasError) {
-                            return Text('Error: ${snapshot.error}');
-                          } else if (snapshot.hasData) {
-                            final profile = snapshot.data!;
-                            return HomeMyVege(size: size, profile: profile);
-                          } else {
-                            return const SizedBox();
-                          }
+                      ref.watch(myVeggieProfileProvider(selectedVegeId)).when(
+                        data: (profile) {
+                          return HomeMyVege(size: size, profile: profile);
                         },
+                        loading: () => const CircularProgressIndicator(),
+                        error: (error, stack) => Text('Error: $error'),
                       )
                     else
-                      FutureBuilder<MyVeggieProfile>(
-                        future: ref.read(myVeggieProfileProvider(
-                                veggieList.value!.first.myVeggieId)
-                            .future),
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
-                            return const CircularProgressIndicator();
-                          } else if (snapshot.hasError) {
-                            return Text('Error: ${snapshot.error}');
-                          } else if (snapshot.hasData) {
-                            final profile = snapshot.data!;
-                            return HomeMyVege(size: size, profile: profile);
-                          } else {
-                            return const Text('채소를 선택하세요.');
-                          }
+                      ref.watch(myVeggieProfileProvider(veggieListData.first.myVeggieId)).when(
+                        data: (profile) {
+                          return HomeMyVege(size: size, profile: profile);
                         },
+                        loading: () => const CircularProgressIndicator(),
+                        error: (error, stack) => Text('Error: $error'),
                       ),
                     const HomeMotivation(
                       motivation: "텃밭에서 식탁까지 팜어스와 늘 함께해요!",
@@ -119,28 +98,19 @@ class HomeScreen extends ConsumerWidget {
                   else
                     toDo == "routine"
                         ? const HomeNoneContainer(
-                            text: '아직 루틴을 등록하지 않았어요',
-                          )
+                      text: '아직 루틴을 등록하지 않았어요',
+                    )
                         : const HomeNoneContainer(
-                            text: '아직 팜클럽에 가입하지 않았어요',
-                          ),
+                      text: '아직 팜클럽에 가입하지 않았어요',
+                    ),
                   const SizedBox(height: 24),
                   const HomeSubTitle(title: "성장 일기"),
                   if (veggieListData.isNotEmpty)
                     if (selectedVegeId != null)
-                      FutureBuilder<VeggieDiaryOneModel?>(
-                        future: ref.watch(
-                            veggieDiaryOneModelProvider(selectedVegeId)
-                                .future),
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
-                            return const CircularProgressIndicator();
-                          } else if (snapshot.hasError) {
-                            return Text('Error: ${snapshot.error}');
-                          } else if (snapshot.hasData) {
-                            final diary = snapshot.data;
-                            return HomeVegeDiary(diary: diary!);
+                      ref.watch(veggieDiaryOneModelProvider(selectedVegeId)).when(
+                        data: (diary) {
+                          if (diary != null) {
+                            return HomeVegeDiary(diary: diary);
                           } else {
                             return GestureDetector(
                               onTap: () {
@@ -148,32 +118,24 @@ class HomeScreen extends ConsumerWidget {
                                   context,
                                   MaterialPageRoute(
                                     builder: (builder) =>
-                                        const VegeDiaryWriteScreen(),
+                                    const VegeDiaryWriteScreen(),
                                   ),
                                 );
                               },
-                              child:
-                                  const HomeNoneContent(text: '아직 작성한 일기가 없어요'),
+                              child: const HomeNoneContent(
+                                text: '아직 작성한 일기가 없어요',
+                              ),
                             );
                           }
                         },
+                        loading: () => const CircularProgressIndicator(),
+                        error: (error, stack) => Text('Error: $error'),
                       )
                     else
-                      FutureBuilder<VeggieDiaryOneModel?>(
-                        future: ref.read(veggieDiaryOneModelProvider(
-                                veggieList.value!.first.myVeggieId)
-                            .future),
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
-                            return const CircularProgressIndicator();
-                          } else if (snapshot.hasError) {
-                            return Text('Error: ${snapshot.error}');
-                          } else if (snapshot.hasData) {
-                            final diary = snapshot.data;
-                            return HomeVegeDiary(
-                              diary: diary!,
-                            );
+                      ref.watch(veggieDiaryOneModelProvider(veggieListData.first.myVeggieId)).when(
+                        data: (diary) {
+                          if (diary != null) {
+                            return HomeVegeDiary(diary: diary);
                           } else {
                             return GestureDetector(
                               onTap: () {
@@ -181,15 +143,18 @@ class HomeScreen extends ConsumerWidget {
                                   context,
                                   MaterialPageRoute(
                                     builder: (builder) =>
-                                        const VegeDiaryWriteScreen(),
+                                    const VegeDiaryWriteScreen(),
                                   ),
                                 );
                               },
-                              child:
-                                  const HomeNoneContent(text: '아직 작성한 일기가 없어요'),
+                              child: const HomeNoneContent(
+                                text: '아직 작성한 일기가 없어요',
+                              ),
                             );
                           }
                         },
+                        loading: () => const CircularProgressIndicator(),
+                        error: (error, stack) => Text('Error: $error'),
                       ),
                 ],
               ),

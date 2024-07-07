@@ -10,4 +10,14 @@ class VeggieInfoRepository {
     String? response = await VeggieInfoService().veggieInfo();
     return response;
   }
+
+  static Future<String> veggieInfoChange(
+    int myVeggieId,
+    String nickname,
+    String birth,
+  ) async {
+    String? response =
+        await VeggieInfoService().veggieInfoChange(myVeggieId, nickname, birth);
+    return response;
+  }
 }

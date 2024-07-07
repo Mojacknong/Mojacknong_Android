@@ -1,4 +1,4 @@
-import 'package:farmus/model/my_vege/my_veggie_info.dart';
+import 'package:farmus/model/my_vege/my_veggie_info_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -10,7 +10,7 @@ import '../../../view_model/my_vege/my_vege_provider.dart';
 class MyVegeListInfo extends ConsumerWidget {
   const MyVegeListInfo({super.key, required this.myVege});
 
-  final MyVeggieInfo myVege;
+  final MyVeggieInfoModel myVege;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -84,7 +84,7 @@ class MyVegeListInfo extends ConsumerWidget {
                 icon: SvgPicture.asset(
                   myVegeNotifier.isVegeSelected(myVege)
                       ? "assets/image/ic_check.svg"
-                      : "assets/image/ic_check_empty.svg",
+                       : "assets/image/ic_check_empty.svg",
                 ),
               )
             : Container(),

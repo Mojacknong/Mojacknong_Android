@@ -19,7 +19,8 @@ class PrimaryTextFormField extends StatelessWidget implements BaseTextInput {
       this.suffix,
       this.keyboardType,
       this.inputFormatters,
-      this.readOnly});
+      this.readOnly,
+      this.controller});
 
   @override
   final String? hintText;
@@ -44,17 +45,24 @@ class PrimaryTextFormField extends StatelessWidget implements BaseTextInput {
   final TextInputType? keyboardType;
   final List<TextInputFormatter>? inputFormatters;
   final bool? readOnly;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       initialValue: initialValue,
       maxLength: maxLength,
       minLines: minLines,
       maxLines: maxLines,
+      smartDashesType: SmartDashesType.disabled,
+      smartQuotesType: SmartQuotesType.disabled,
       expands: (minLines == null && maxLines == null) ? true : false,
       keyboardType: keyboardType ?? TextInputType.text,
-      inputFormatters: inputFormatters ?? [],
+      inputFormatters: [
+        EmojiInputFormatter(),
+        ...?inputFormatters,
+      ],
       readOnly: readOnly ?? false,
       decoration: InputDecoration(
           hintText: hintText,
@@ -89,6 +97,43 @@ class PrimaryTextFormField extends StatelessWidget implements BaseTextInput {
           ),
           suffixStyle: FarmusThemeTextStyle.gray2Medium13),
       onChanged: onChanged,
+    );
+  }
+}
+
+class EmojiInputFormatter extends TextInputFormatter {
+  static final RegExp _emojiRegex = RegExp(
+      r'[\u{1F600}-\u{1F64F}'
+      r'\u{1F300}-\u{1F5FF}'
+      r'\u{1F680}-\u{1F6FF}'
+      r'\u{1F700}-\u{1F77F}'
+      r'\u{1F780}-\u{1F7FF}'
+      r'\u{1F800}-\u{1F8FF}'
+      r'\u{1F900}-\u{1F9FF}'
+      r'\u{1FA00}-\u{1FA6F}'
+      r'\u{1FA70}-\u{1FAFF}'
+      r'\u{2600}-\u{26FF}'
+      r'\u{2700}-\u{27BF}'
+      r'\u{E0020}-\u{E007F}'
+      r'\u{FE00}-\u{FE0F}'
+      r'\u{1F018}-\u{1F270}'
+      r'\u{238C}-\u{2454}'
+      r']+',
+      unicode: true,
+      dotAll: true);
+
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    final filteredText = newValue.text.replaceAll(_emojiRegex, '');
+    return TextEditingValue(
+      text: filteredText,
+      selection: newValue.selection.copyWith(
+        baseOffset: filteredText.length -
+            (newValue.text.length - newValue.selection.baseOffset),
+        extentOffset: filteredText.length -
+            (newValue.text.length - newValue.selection.extentOffset),
+      ),
     );
   }
 }
