@@ -7,7 +7,7 @@ part of 'my_veggie_routine_info_notifier.dart';
 // **************************************************************************
 
 String _$myVeggieRoutineInfoModelHash() =>
-    r'111c9917f6db70d04aafccb5c04fabbd7f178bc4';
+    r'a3a683d1eafcc32ea5c61d6928823f530478c4fe';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -36,7 +36,7 @@ const myVeggieRoutineInfoModelProvider = MyVeggieRoutineInfoModelFamily();
 
 /// See also [myVeggieRoutineInfoModel].
 class MyVeggieRoutineInfoModelFamily
-    extends Family<AsyncValue<MyVeggieRoutineInfoModel>> {
+    extends Family<AsyncValue<List<MyVeggieRoutineInfoModel>>> {
   /// See also [myVeggieRoutineInfoModel].
   const MyVeggieRoutineInfoModelFamily();
 
@@ -75,7 +75,7 @@ class MyVeggieRoutineInfoModelFamily
 
 /// See also [myVeggieRoutineInfoModel].
 class MyVeggieRoutineInfoModelProvider
-    extends AutoDisposeFutureProvider<MyVeggieRoutineInfoModel> {
+    extends AutoDisposeFutureProvider<List<MyVeggieRoutineInfoModel>> {
   /// See also [myVeggieRoutineInfoModel].
   MyVeggieRoutineInfoModelProvider(
     int? myVeggieId,
@@ -110,7 +110,7 @@ class MyVeggieRoutineInfoModelProvider
 
   @override
   Override overrideWith(
-    FutureOr<MyVeggieRoutineInfoModel> Function(
+    FutureOr<List<MyVeggieRoutineInfoModel>> Function(
             MyVeggieRoutineInfoModelRef provider)
         create,
   ) {
@@ -129,7 +129,8 @@ class MyVeggieRoutineInfoModelProvider
   }
 
   @override
-  AutoDisposeFutureProviderElement<MyVeggieRoutineInfoModel> createElement() {
+  AutoDisposeFutureProviderElement<List<MyVeggieRoutineInfoModel>>
+      createElement() {
     return _MyVeggieRoutineInfoModelProviderElement(this);
   }
 
@@ -149,13 +150,13 @@ class MyVeggieRoutineInfoModelProvider
 }
 
 mixin MyVeggieRoutineInfoModelRef
-    on AutoDisposeFutureProviderRef<MyVeggieRoutineInfoModel> {
+    on AutoDisposeFutureProviderRef<List<MyVeggieRoutineInfoModel>> {
   /// The parameter `myVeggieId` of this provider.
   int? get myVeggieId;
 }
 
 class _MyVeggieRoutineInfoModelProviderElement
-    extends AutoDisposeFutureProviderElement<MyVeggieRoutineInfoModel>
+    extends AutoDisposeFutureProviderElement<List<MyVeggieRoutineInfoModel>>
     with MyVeggieRoutineInfoModelRef {
   _MyVeggieRoutineInfoModelProviderElement(super.provider);
 

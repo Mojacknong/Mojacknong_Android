@@ -36,10 +36,6 @@ class HomeScreen extends ConsumerWidget {
         ref.watch(myVeggieListModelProvider);
     final AsyncValue<List<RecommendVeggieModel>> recommend =
         ref.watch(recommendVeggieModelProvider);
-    final AsyncValue<RoutineListModel> routineList =
-        ref.watch(routineListModelProvider);
-    final AsyncValue<MyVeggieRoutineInfoModel> myVeggieRoutineList =
-        ref.watch(myVeggieRoutineInfoModelProvider(selectedVegeId));
 
     String toDo = ref.watch(homeToDoProvider);
 
