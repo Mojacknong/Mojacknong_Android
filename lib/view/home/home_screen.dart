@@ -1,18 +1,15 @@
 import 'package:farmus/model/home/my_veggie_list_model.dart';
-import 'package:farmus/model/routine/my_veggie_routine_info_model.dart';
-import 'package:farmus/model/routine/routine_list_model.dart';
 import 'package:farmus/view/home/component/home_motivation.dart';
 import 'package:farmus/view/home/component/home_my_vege_list.dart';
 import 'package:farmus/view/home/component/home_sub_title.dart';
 import 'package:farmus/view/home/component/home_to_do.dart';
 import 'package:farmus/view/home/component/home_vege_to_do.dart';
 import 'package:farmus/view/home/component/none/home_none_content.dart';
+import 'package:farmus/view/main/main_screen.dart';
 import 'package:farmus/view/vege_diary_write/vege_diary_write_screen.dart';
 import 'package:farmus/view_model/home/notifier/veggie_diary_one_notifier.dart';
 import 'package:farmus/view_model/my_vege/notifier/my_veggie_list.dart';
 import 'package:farmus/view_model/my_vege/notifier/my_veggie_profile_notifier.dart';
-import 'package:farmus/view_model/routine/notifier/my_veggie_routine_info_notifier.dart';
-import 'package:farmus/view_model/routine/notifier/routine_list_notifier.dart';
 import 'package:farmus/view_model/veggie_info/recommend_veggie_info_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -20,6 +17,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../common/app_bar/home_app_bar.dart';
 import '../../model/veggie_info/recommend_veggie_model.dart';
 import '../../view_model/home/home_provider.dart';
+import '../routine/routine_screen.dart';
 import 'component/home_my_vege.dart';
 import 'component/home_vege_diary.dart';
 import 'component/none/home_my_vege_none.dart';
@@ -102,11 +100,30 @@ class HomeScreen extends ConsumerWidget {
                     const HomeVegeTodo()
                   else
                     toDo == "routine"
-                        ? const HomeNoneContainer(
+                        ? HomeNoneContainer(
                             text: '아직 루틴을 등록하지 않았어요',
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const RoutineScreen()),
+                              );
+                            },
                           )
-                        : const HomeNoneContainer(
+                        : HomeNoneContainer(
                             text: '아직 팜클럽에 가입하지 않았어요',
+                            onTap: () {
+                              Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return const MainScreen(selectedIndex: 2);
+                                  },
+                                ),
+                                (route) => false,
+                              );
+                            },
                           ),
                   const SizedBox(height: 24),
                   const HomeSubTitle(title: "성장 일기"),
@@ -119,7 +136,8 @@ class HomeScreen extends ConsumerWidget {
                               if (diary != null) {
                                 return HomeVegeDiary(diary: diary);
                               } else {
-                                return GestureDetector(
+                                return HomeNoneContainer(
+                                  text: '아직 작성한 일기가 없어요',
                                   onTap: () {
                                     Navigator.push(
                                       context,
@@ -129,9 +147,6 @@ class HomeScreen extends ConsumerWidget {
                                       ),
                                     );
                                   },
-                                  child: const HomeNoneContent(
-                                    text: '아직 작성한 일기가 없어요',
-                                  ),
                                 );
                               }
                             },
@@ -147,19 +162,17 @@ class HomeScreen extends ConsumerWidget {
                               if (diary != null) {
                                 return HomeVegeDiary(diary: diary);
                               } else {
-                                return GestureDetector(
+                                return HomeNoneContainer(
+                                  text: '아직 작성한 일기가 없어요',
                                   onTap: () {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                         builder: (builder) =>
-                                            const VegeDiaryWriteScreen(),
+                                        const VegeDiaryWriteScreen(),
                                       ),
                                     );
                                   },
-                                  child: const HomeNoneContent(
-                                    text: '아직 작성한 일기가 없어요',
-                                  ),
                                 );
                               }
                             },
