@@ -1,0 +1,27 @@
+import 'dart:convert';
+
+import 'base_api_services.dart';
+
+class RoutineService {
+  final ApiClient apiClient = ApiClient();
+
+  Future<String> routineList() async {
+    const url = '/api/my-veggie/routine/list';
+    return _fetchData(url, '내 채소 루틴 리스트 조회 실패');
+  }
+
+  Future<String> myVeggieRoutineInfo(int myVeggieId) async {
+    final url = '/api/my-veggie/routine/$myVeggieId';
+    return _fetchData(url, '내 채소 루틴 조회 실패');
+  }
+
+  Future<String> _fetchData(String url, String errorMessage) async {
+    final response = await apiClient.get(url);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception(errorMessage);
+    }
+  }
+}
