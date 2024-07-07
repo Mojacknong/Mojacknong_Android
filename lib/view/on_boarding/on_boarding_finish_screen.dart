@@ -11,7 +11,7 @@ class OnBoardingFinishScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final asyncNickName = ref.watch(onBoardingFinishNotifierProvider);
+    final nickName = ref.watch(onBoardingFinishNotifierProvider);
 
     ref.read(onBoardingFinishNotifierProvider.notifier).onBoardingComplete();
 
@@ -20,12 +20,12 @@ class OnBoardingFinishScreen extends ConsumerWidget {
         leading: Container(),
         title: null,
       ),
-      body: asyncNickName.when(
+      body: nickName.when(
         data: (nickName) => Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: MainSubTitle(
                 mainText: "$nickName 님의 가입이 완료되었어요!",
                 subText: "홈에서 추천 채소를 확인해보세요.",

@@ -1,5 +1,6 @@
 import 'package:farmus/common/app_bar/delete_app_bar.dart';
 import 'package:farmus/common/button/primary_color_button.dart';
+import 'package:farmus/model/my_farmclub/my_farmclub_info_model.dart';
 import 'package:farmus/view/mission_write/component/mission_step_info.dart';
 import 'package:farmus/view_model/mission_write/mission_write_provider.dart';
 import 'package:flutter/material.dart';
@@ -10,9 +11,9 @@ import '../../common/form/content_input_text_form.dart';
 import '../../common/image_picker/write_image_picker.dart';
 
 class MissionWriteScreen extends ConsumerWidget {
-  const MissionWriteScreen({super.key, required this.stepNum});
+  const MissionWriteScreen({super.key, required this.step});
 
-  final int stepNum;
+  final StepModel step;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -33,7 +34,7 @@ class MissionWriteScreen extends ConsumerWidget {
                     Navigator.of(context).pop();
                   });
                   return CheckDialog(
-                    text: "Step $stepNum 미션을 인증했어요",
+                    text: "Step ${step.stepNum + 1} 미션을 인증했어요",
                   );
                 },
               );
@@ -51,7 +52,7 @@ class MissionWriteScreen extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: MissionStepInfo(
-                stepNum: stepNum,
+                step: step,
                 isButton: false,
               ),
             ),

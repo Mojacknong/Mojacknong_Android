@@ -28,10 +28,6 @@ class FarmclubChangeInfo extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
         children: [
-          FarmclubSelectProfile(image: farmclubImage, size: 56),
-          const SizedBox(
-            width: 16.0,
-          ),
           Expanded(
             child: IntrinsicHeight(
               child: GestureDetector(
@@ -43,6 +39,10 @@ class FarmclubChangeInfo extends ConsumerWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
+                    FarmclubSelectProfile(image: farmclubImage, size: 56),
+                    const SizedBox(
+                      width: 16.0,
+                    ),
                     Text(
                       farmclubName,
                       style: FarmusThemeTextStyle.darkSemiBold17,

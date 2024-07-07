@@ -14,9 +14,7 @@ class OnBoardingFinishNotifier extends _$OnBoardingFinishNotifier {
 
   Future<String> fetchNickName() async {
     final response = await UserRepository.userInfo();
-    print('fetchNickName response: $response');
     var jsonResponse = convert.jsonDecode(response) as Map<String, dynamic>;
-    print('jsonResponse: $jsonResponse');
 
     if (jsonResponse['data'] == null) {
       throw Exception('Data is null');
@@ -25,7 +23,6 @@ class OnBoardingFinishNotifier extends _$OnBoardingFinishNotifier {
       throw Exception('NickName is null');
     }
 
-    print(jsonResponse['data']['nickName']);
     return jsonResponse['data']['nickName'];
   }
 
@@ -34,7 +31,6 @@ class OnBoardingFinishNotifier extends _$OnBoardingFinishNotifier {
   }
 
   Future<void> onBoardingComplete() async {
-    final response = await UserRepository.onBoardingComplete();
-    print(response);
+    await UserRepository.onBoardingComplete();
   }
 }

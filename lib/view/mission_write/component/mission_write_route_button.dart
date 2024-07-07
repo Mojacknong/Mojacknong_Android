@@ -1,3 +1,4 @@
+import 'package:farmus/model/my_farmclub/my_farmclub_info_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -6,8 +7,10 @@ import '../../../common/theme/farmus_theme_text_style.dart';
 import '../mission_write_screen.dart';
 
 class MissionWriteRouteButton extends ConsumerWidget {
-  const MissionWriteRouteButton({super.key, required this.isButton});
+  const MissionWriteRouteButton(
+      {super.key, required this.step, required this.isButton});
 
+  final StepModel step;
   final bool isButton;
 
   @override
@@ -19,8 +22,8 @@ class MissionWriteRouteButton extends ConsumerWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (builder) => const MissionWriteScreen(
-                stepNum: 3,
+              builder: (builder) => MissionWriteScreen(
+                step: step,
               ),
             ),
           );

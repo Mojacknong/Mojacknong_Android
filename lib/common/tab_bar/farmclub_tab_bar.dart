@@ -8,15 +8,14 @@ import 'package:flutter/material.dart';
 class FarmclubTabBar extends StatelessWidget {
   final MyFarmclubInfoModel farmclubInfo;
 
-  const FarmclubTabBar({Key? key, required this.farmclubInfo})
-      : super(key: key);
+  const FarmclubTabBar({super.key, required this.farmclubInfo});
 
   @override
   Widget build(BuildContext context) {
     final List<StepModel> steps = farmclubInfo.steps;
 
     int currentStepIndex = (farmclubInfo.daysSinceStart >= 0 &&
-        farmclubInfo.daysSinceStart < steps.length)
+            farmclubInfo.daysSinceStart < steps.length)
         ? farmclubInfo.daysSinceStart
         : 0;
 
@@ -25,7 +24,7 @@ class FarmclubTabBar extends StatelessWidget {
         : [steps[currentStepIndex]];
 
     final List<StepModel> previousSteps =
-    (currentStepIndex > 0) ? steps.sublist(0, currentStepIndex) : [];
+        (currentStepIndex > 0) ? steps.sublist(0, currentStepIndex) : [];
     final List<StepModel> nextSteps = (currentStepIndex < steps.length - 1)
         ? steps.sublist(currentStepIndex + 1)
         : [];
@@ -42,9 +41,10 @@ class FarmclubTabBar extends StatelessWidget {
                   child: FarmclubStep(
                     wholeMember: farmclubInfo.wholeMemberCount,
                     step: step,
+                    farmclubInfo: farmclubInfo,
                   ),
                 );
-              }).toList(),
+              }),
               if (addTip)
                 FarmclubStepTip(
                   tip: farmclubInfo.advice,

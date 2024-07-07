@@ -17,7 +17,7 @@ class VegeDiaryScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var selectedVeggieId = ref.watch(selectedVeggieIdProvider);
+    var selectedVeggieId = ref.watch(selectedVegeIdProvider);
     final AsyncValue<List<MyVeggieListModel>> veggieList =
         ref.watch(myVeggieListModelProvider);
 

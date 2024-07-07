@@ -13,7 +13,7 @@ class HomeMyVegeList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedVeggieId = ref.watch(selectedVeggieIdProvider);
+    final selectedVegeId = ref.watch(selectedVegeIdProvider);
 
     return FutureBuilder<List<MyVeggieListModel>>(
       future: ref.watch(myVeggieListModelProvider.future),
@@ -48,15 +48,16 @@ class HomeMyVegeList extends ConsumerWidget {
                 (veggie) => Padding(
                   padding: const EdgeInsets.only(right: 6.0),
                   child: HomeMyVegeButton(
-                    enabled: selectedVeggieId == null
+                    enabled: selectedVegeId == null
                         ? veggie.myVeggieId == veggieList.first.myVeggieId
-                        : veggie.myVeggieId == selectedVeggieId,
+                        : veggie.myVeggieId == selectedVegeId,
                     text: veggie.nickname,
                     onPressed: () {
-                      ref.read(selectedVeggieIdProvider.notifier).state =
+                      ref.read(selectedVegeIdProvider.notifier).state =
                           veggie.myVeggieId;
                     },
-                    fontPadding: 0.0,
+                    fontPadding: 0,
+                    padding: 16.0,
                   ),
                 ),
               ),
