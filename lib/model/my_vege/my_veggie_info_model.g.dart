@@ -1,13 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'my_veggie_info.dart';
+part of 'my_veggie_info_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$MyVeggieInfoImpl _$$MyVeggieInfoImplFromJson(Map<String, dynamic> json) =>
-    _$MyVeggieInfoImpl(
+_$MyVeggieInfoModelImpl _$$MyVeggieInfoModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$MyVeggieInfoModelImpl(
       nickname: json['nickname'] as String,
       image: json['image'] as String,
       veggieName: json['veggieName'] as String,
@@ -16,7 +17,8 @@ _$MyVeggieInfoImpl _$$MyVeggieInfoImplFromJson(Map<String, dynamic> json) =>
       myVeggieId: (json['myVeggieId'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$MyVeggieInfoImplToJson(_$MyVeggieInfoImpl instance) =>
+Map<String, dynamic> _$$MyVeggieInfoModelImplToJson(
+        _$MyVeggieInfoModelImpl instance) =>
     <String, dynamic>{
       'nickname': instance.nickname,
       'image': instance.image,

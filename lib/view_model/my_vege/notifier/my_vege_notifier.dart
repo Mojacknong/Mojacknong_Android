@@ -1,12 +1,12 @@
-import 'package:farmus/model/my_vege/my_veggie_info.dart';
+import 'package:farmus/model/my_vege/my_veggie_info_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MyVegeNotifier extends StateNotifier<List<MyVeggieInfo>> {
+class MyVegeNotifier extends StateNotifier<List<MyVeggieInfoModel>> {
   MyVegeNotifier() : super([]);
 
-  final selectedVege = <MyVeggieInfo>{};
+  final selectedVege = <MyVeggieInfoModel>{};
 
-  void toggleSelect(MyVeggieInfo vege) {
+  void toggleSelect(MyVeggieInfoModel vege) {
     if (selectedVege.contains(vege)) {
       selectedVege.remove(vege);
     } else {
@@ -15,7 +15,7 @@ class MyVegeNotifier extends StateNotifier<List<MyVeggieInfo>> {
     state = [...state];
   }
 
-  bool isVegeSelected(MyVeggieInfo vege) {
+  bool isVegeSelected(MyVeggieInfoModel vege) {
     return selectedVege.contains(vege);
   }
 
@@ -24,7 +24,7 @@ class MyVegeNotifier extends StateNotifier<List<MyVeggieInfo>> {
     selectedVege.clear();
   }
 
-  void add(MyVeggieInfo newVege) {
+  void add(MyVeggieInfoModel newVege) {
     state = [...state, newVege];
   }
 }

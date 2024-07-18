@@ -20,7 +20,7 @@ class HomeMyVege extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var isFarmclub = profile.step == -1 ? false : true;
+    var isFarmclub = profile.step != -1;
 
     return GestureDetector(
       onTap: () {
@@ -63,80 +63,66 @@ class HomeMyVege extends ConsumerWidget {
             const SizedBox(
               width: 16,
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Row(
-                  children: [
-                    Visibility(
-                      visible: isFarmclub,
-                      child: Row(
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Row(
+                    children: [
+                      if (isFarmclub) ...[
+                        SvgPicture.asset("assets/image/ic_farmclub_mark.svg"),
+                        const SizedBox(width: 8),
+                      ],
+                      Expanded(
+                        child: Text(
+                          profile.nickname,
+                          style: FarmusThemeTextStyle.darkSemiBold22,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
                         children: [
-                          SvgPicture.asset("assets/image/ic_farmclub_mark.svg"),
-                          const SizedBox(
-                            width: 8,
+                          if (isFarmclub) ...[
+                            Text(
+                              "Step ${profile.step}",
+                              style: FarmusThemeTextStyle.green1SemiBold13,
+                            ),
+                            const SizedBox(width: 8),
+                          ],
+                          Text(
+                            "+${profile.period}일 ",
+                            style: FarmusThemeTextStyle.gray1Medium13,
+                          ),
+                          Text(
+                            profile.createdVeggie,
+                            style: FarmusThemeTextStyle.gray1Medium13,
                           ),
                         ],
                       ),
-                    ),
-                    Text(
-                      profile.nickname,
-                      style: FarmusThemeTextStyle.darkSemiBold22,
-                    ),
-                  ],
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Visibility(
-                          visible: isFarmclub,
-                          child: Row(
-                            children: [
-                              Text(
-                                "Step ${profile.step}",
-                                style: FarmusThemeTextStyle.green1SemiBold13,
+                      const SizedBox(height: 10),
+                      if (isFarmclub)
+                        Row(
+                          children: List.generate(5, (index) {
+                            return Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 1.0),
+                              child: MyVegeStep(
+                                color: index < profile.step
+                                    ? FarmusThemeColor.green1
+                                    : FarmusThemeColor.gray3,
                               ),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                            ],
-                          ),
+                            );
+                          }),
                         ),
-                        Text(
-                          "+${profile.period}일 ",
-                          style: FarmusThemeTextStyle.gray1Medium13,
-                        ),
-                        Text(
-                          profile.createdVeggie,
-                          style: FarmusThemeTextStyle.gray1Medium13,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Visibility(
-                      visible: isFarmclub,
-                      child: Row(
-                        children: List.generate(5, (index) {
-                          return Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 1.0),
-                            child: MyVegeStep(
-                              color: index < profile.step
-                                  ? FarmusThemeColor.green1
-                                  : FarmusThemeColor.gray3,
-                            ),
-                          );
-                        }),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
           ],
         ),

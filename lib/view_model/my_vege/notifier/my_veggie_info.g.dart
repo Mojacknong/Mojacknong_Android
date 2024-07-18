@@ -6,12 +6,12 @@ part of 'my_veggie_info.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$myVeggieInfoHash() => r'9ba89a68742ea2154f3de035a48f0e1c29e5be87';
+String _$myVeggieInfoHash() => r'e7bf318ed2b94244fbae3b855a202ba4b51ba0fa';
 
 /// See also [myVeggieInfo].
 @ProviderFor(myVeggieInfo)
 final myVeggieInfoProvider =
-    AutoDisposeFutureProvider<List<MyVeggieInfo>>.internal(
+    AutoDisposeFutureProvider<List<MyVeggieInfoModel>>.internal(
   myVeggieInfo,
   name: r'myVeggieInfoProvider',
   debugGetCreateSourceHash:
@@ -20,6 +20,6 @@ final myVeggieInfoProvider =
   allTransitiveDependencies: null,
 );
 
-typedef MyVeggieInfoRef = AutoDisposeFutureProviderRef<List<MyVeggieInfo>>;
+typedef MyVeggieInfoRef = AutoDisposeFutureProviderRef<List<MyVeggieInfoModel>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
