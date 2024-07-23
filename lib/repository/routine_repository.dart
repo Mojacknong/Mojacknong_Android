@@ -15,4 +15,11 @@ class RoutineRepository {
     String? response = await RoutineService().myVeggieRoutineCheck(routineId);
     return response;
   }
+
+  static Future<String> routineAdd(
+      int myVeggieId, String content, int period) async {
+    String? response =
+        await RoutineService().routineAdd(myVeggieId, content, period);
+    return response;
+  }
 }

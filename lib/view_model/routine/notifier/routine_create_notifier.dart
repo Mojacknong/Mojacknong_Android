@@ -8,7 +8,7 @@ class RoutineCreateNotifier extends StateNotifier<RoutineModel> {
   void updateName(String name) {
     state = state.copyWith(
       routineName: name,
-      cycle: state.cycle,
+      period: state.period,
       isComplete: name.isNotEmpty,
     );
   }

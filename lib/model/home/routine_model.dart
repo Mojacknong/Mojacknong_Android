@@ -1,22 +1,26 @@
 class RoutineModel {
+  final int? myVeggieId;
   final String? routineName;
-  final String? cycle;
+  final int? period;
   final bool isComplete;
 
   RoutineModel({
+    this.myVeggieId,
     required this.routineName,
-    this.cycle,
+    this.period,
     required this.isComplete,
   });
 
   RoutineModel copyWith({
+    int? myVeggieId,
     String? routineName,
-    String? cycle,
+    int? period,
     bool? isComplete,
   }) {
     return RoutineModel(
+      myVeggieId: myVeggieId ?? this.myVeggieId,
       routineName: routineName ?? this.routineName,
-      cycle: cycle ?? this.cycle,
+      period: period ?? this.period,
       isComplete: isComplete ?? this.isComplete,
     );
   }

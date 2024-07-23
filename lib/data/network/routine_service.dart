@@ -31,6 +31,24 @@ class RoutineService {
     }
   }
 
+  Future<String> routineAdd(int myVeggieId, String content, int period) async {
+    const url = '/api/my-veggie/routine';
+
+    final body = jsonEncode({
+      'myVeggieId': myVeggieId,
+      'content': content,
+      'period': period,
+    });
+
+    final response = await apiClient.post(url, body: body);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('채소 루틴 추가 실패');
+    }
+  }
+
   Future<String> _fetchData(String url, String errorMessage) async {
     final response = await apiClient.get(url);
 
