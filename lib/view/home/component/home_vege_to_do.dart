@@ -85,7 +85,7 @@ class HomeVegeTodo extends ConsumerWidget {
                                               const RoutineScreen()),
                                     );
                                   },
-                                  isChecked: !routineInfo.check,
+                                  isChecked: routineInfo.check,
                                   onCheck: () {
 
                                   },

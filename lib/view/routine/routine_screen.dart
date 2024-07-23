@@ -30,7 +30,10 @@ class RoutineScreen extends ConsumerWidget {
                 ...routine.map((routineItem) {
                   final routineDayMap = {
                     for (var item in routineItem.myVeggieRoutineList)
-                      item.content: item.period.toString()
+                      item.content: {
+                        'period': item.period.toString(),
+                        'check': item.check
+                      }
                   };
                   return RoutineAdd(
                     vege: routineItem.veggieName,
