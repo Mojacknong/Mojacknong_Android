@@ -10,6 +10,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../view/farmclub/component/farmclub_change_bottom_sheet_content.dart';
 import '../../view/farmclub/component/farmclub_exit_bottom_sheet_content.dart';
+import '../../view/main/main_screen.dart';
 import '../../view/sign_in/sign_in_screen.dart';
 import '../theme/farmus_theme_color.dart';
 
@@ -66,6 +67,7 @@ void showFarmclubSignupBottomSheet(
         subTitle: "",
         title: title,
         onPressed: () {
+          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const MainScreen(selectedIndex: 1,)), (route) => false);
           showDialog(
             context: context,
             builder: (BuildContext context) {
