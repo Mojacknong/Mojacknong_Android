@@ -10,4 +10,9 @@ class RoutineRepository {
     String? response = await RoutineService().myVeggieRoutineInfo(myVeggieId);
     return response;
   }
+
+  static Future<String> myVeggieRoutineCheck(int routineId) async {
+    String? response = await RoutineService().myVeggieRoutineCheck(routineId);
+    return response;
+  }
 }

@@ -4,7 +4,6 @@ import 'package:farmus/view/home/component/home_my_vege_list.dart';
 import 'package:farmus/view/home/component/home_sub_title.dart';
 import 'package:farmus/view/home/component/home_to_do.dart';
 import 'package:farmus/view/home/component/home_vege_to_do.dart';
-import 'package:farmus/view/home/component/none/home_none_content.dart';
 import 'package:farmus/view/main/main_screen.dart';
 import 'package:farmus/view/vege_diary_write/vege_diary_write_screen.dart';
 import 'package:farmus/view_model/home/notifier/veggie_diary_one_notifier.dart';
@@ -169,7 +168,7 @@ class HomeScreen extends ConsumerWidget {
                                       context,
                                       MaterialPageRoute(
                                         builder: (builder) =>
-                                        const VegeDiaryWriteScreen(),
+                                            const VegeDiaryWriteScreen(),
                                       ),
                                     );
                                   },

@@ -15,6 +15,22 @@ class RoutineService {
     return _fetchData(url, '내 채소 루틴 조회 실패');
   }
 
+  Future<String> myVeggieRoutineCheck(int routineId) async {
+    const url = '/api/my-veggie/routine/check';
+
+    final body = jsonEncode({
+      'routineId': routineId,
+    });
+
+    final response = await apiClient.post(url, body: body);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('채소 루틴 체킹 실패');
+    }
+  }
+
   Future<String> _fetchData(String url, String errorMessage) async {
     final response = await apiClient.get(url);
 

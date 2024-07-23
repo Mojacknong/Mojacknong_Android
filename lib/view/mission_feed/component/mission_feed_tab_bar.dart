@@ -70,7 +70,7 @@ class MissionFeedTabBar extends ConsumerWidget {
 
     return PrimaryTabBar(
       tab: ['전체'] +
-          farmclubInfo.steps.map((step) => 'Step ${step.stepNum + 1}').toList(),
+          farmclubInfo.steps.map((step) => 'Step ${step.stepNum}').toList(),
       tabView: tabViews,
     );
   }

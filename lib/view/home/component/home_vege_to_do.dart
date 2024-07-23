@@ -86,6 +86,9 @@ class HomeVegeTodo extends ConsumerWidget {
                                     );
                                   },
                                   isChecked: !routineInfo.check,
+                                  onCheck: () {
+
+                                  },
                                 ),
                                 const Divider(
                                   height: 1,
