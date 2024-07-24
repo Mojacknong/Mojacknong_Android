@@ -5,8 +5,8 @@ import 'base_api_services.dart';
 class RoutineService {
   final ApiClient apiClient = ApiClient();
 
-  Future<String> routineList() async {
-    const url = '/api/my-veggie/routine/list';
+  Future<String> routineList(String date) async {
+    final url = '/api/my-veggie/routine/date/$date';
     return _fetchData(url, '내 채소 루틴 리스트 조회 실패');
   }
 

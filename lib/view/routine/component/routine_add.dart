@@ -11,11 +11,13 @@ import '../../../common/theme/farmus_theme_text_style.dart';
 class RoutineAdd extends ConsumerWidget {
   const RoutineAdd({
     super.key,
+    required this.myVeggieId,
     required this.vege,
     required this.vegeName,
     required this.routineDayMap,
   });
 
+  final int myVeggieId;
   final String vege;
   final String vegeName;
   final Map<String, Map<String, dynamic>> routineDayMap;
@@ -60,8 +62,8 @@ class RoutineAdd extends ConsumerWidget {
                   IconButton(
                     onPressed: () {
                       ref.invalidate(routineEditProvider);
-                      showRoutineEditBottomSheet(
-                          context, entry.key, entry.value['period']);
+                      showRoutineEditBottomSheet(context, myVeggieId, entry.key,
+                          entry.value['period']);
                     },
                     icon: SvgPicture.asset('assets/image/ic_more_vertical.svg'),
                   )
@@ -73,7 +75,7 @@ class RoutineAdd extends ConsumerWidget {
             child: RoutineAddButton(
               onPressed: () {
                 ref.invalidate(routineCreateProvider);
-                showRoutineAddBottomSheet(context);
+                showRoutineAddBottomSheet(context, myVeggieId);
               },
             ),
           ),

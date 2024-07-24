@@ -7,7 +7,7 @@ part of 'routine_add_notifier.dart';
 // **************************************************************************
 
 String _$routineAddNotifierHash() =>
-    r'41f4853d180f9569e17eedf376216006aba3ec34';
+    r'b4c8a83603849455462d1b6456e4f61fc9301acf';
 
 /// See also [RoutineAddNotifier].
 @ProviderFor(RoutineAddNotifier)

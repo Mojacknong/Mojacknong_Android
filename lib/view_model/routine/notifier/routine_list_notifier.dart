@@ -8,7 +8,8 @@ part 'routine_list_notifier.g.dart';
 
 @riverpod
 Future<List<RoutineListModel>> routineListModel(RoutineListModelRef ref) async {
-  final response = await RoutineRepository.routineList();
+  const date = '2024-07-24';
+  final response = await RoutineRepository.routineList(date);
 
 
   final json = jsonDecode(response);

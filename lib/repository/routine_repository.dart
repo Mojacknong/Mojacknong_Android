@@ -1,8 +1,8 @@
 import 'package:farmus/data/network/routine_service.dart';
 
 class RoutineRepository {
-  static Future<String> routineList() async {
-    String? response = await RoutineService().routineList();
+  static Future<String> routineList(String date) async {
+    String? response = await RoutineService().routineList(date);
     return response;
   }
 

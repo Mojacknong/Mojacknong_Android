@@ -14,15 +14,19 @@ import '../../view/main/main_screen.dart';
 import '../../view/sign_in/sign_in_screen.dart';
 import '../theme/farmus_theme_color.dart';
 
-void showRoutineAddBottomSheet(BuildContext context) {
+void showRoutineAddBottomSheet(
+  BuildContext context,
+  int myVeggieId,
+) {
   showModalBottomSheet<void>(
     context: context,
     isScrollControlled: true,
     backgroundColor: FarmusThemeColor.white,
     builder: (BuildContext context) {
-      return const RoutineBottomSheetContent(
+      return RoutineBottomSheetContent(
+        myVeggieId: myVeggieId,
         routine: '',
-        day: '',
+        day: 0,
         isCreate: true,
       );
     },
@@ -31,8 +35,9 @@ void showRoutineAddBottomSheet(BuildContext context) {
 
 void showRoutineEditBottomSheet(
   BuildContext context,
+  int myVeggieId,
   String routine,
-  String day,
+  int day,
 ) {
   showModalBottomSheet<void>(
     context: context,
@@ -40,6 +45,7 @@ void showRoutineEditBottomSheet(
     backgroundColor: FarmusThemeColor.white,
     builder: (BuildContext context) {
       return RoutineBottomSheetContent(
+        myVeggieId: myVeggieId,
         routine: routine,
         day: day,
         isCreate: false,
@@ -67,7 +73,13 @@ void showFarmclubSignupBottomSheet(
         subTitle: "",
         title: title,
         onPressed: () {
-          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const MainScreen(selectedIndex: 1,)), (route) => false);
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const MainScreen(
+                        selectedIndex: 1,
+                      )),
+              (route) => false);
           showDialog(
             context: context,
             builder: (BuildContext context) {
