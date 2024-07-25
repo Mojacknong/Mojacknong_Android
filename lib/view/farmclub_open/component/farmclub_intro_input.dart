@@ -1,5 +1,4 @@
 import 'package:farmus/common/form/content_input_text_form.dart';
-import 'package:farmus/view_model/farmclub_open/farmclub_open_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

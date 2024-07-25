@@ -1,8 +1,5 @@
 
- import 'dart:math';
-
-import '../data/network/farmclub_open_service.dart';
-import '../model/farmclub_open/farmclub_vege_list_model.dart';
+ import '../data/network/farmclub_open_service.dart';
 
  class FarmclubOpenRepository {
 
