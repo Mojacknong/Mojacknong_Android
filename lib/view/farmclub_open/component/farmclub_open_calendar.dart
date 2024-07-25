@@ -1,9 +1,10 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:farmus/view_model/farmclub_open/farmclub_open_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:table_calendar/table_calendar.dart';
+
+import '../../../view_model/farmclub_open/notifier/farmclub_open_info_notifier.dart';
 
 class FarmclubOpenCalendar extends ConsumerStatefulWidget {
   const FarmclubOpenCalendar({super.key});
@@ -14,35 +15,36 @@ class FarmclubOpenCalendar extends ConsumerStatefulWidget {
 
 class _FarmclubOpenCalendarState extends ConsumerState<FarmclubOpenCalendar> {
   DateTime? _selectedDay;
-
   DateTime _focusedDay = DateTime.now();
   final DateTime _lastDay = DateTime.now().add(const Duration(days: 18262));
 
   @override
   Widget build(BuildContext context) {
-    final notifier = ref.read(farmclubOpenInfoAddProvider.notifier);
+    final farmclubVeggieAddState = ref.watch(farmclubOpenInfoNotifierProvider);
 
-    if (ref.read(farmclubOpenInfoAddProvider).startDate != '') {
-      _selectedDay = DateTime.parse(ref.read(farmclubOpenInfoAddProvider).startDate);
+    if (farmclubVeggieAddState.value?.startDate != null &&
+        farmclubVeggieAddState.value!.startDate.isNotEmpty) {
+      _selectedDay = DateTime.parse(farmclubVeggieAddState.value!.startDate);
       _focusedDay = _selectedDay!;
     }
 
     Future<void> selectDate(BuildContext context) async {
       DateTime? selectedDate = await showDatePicker(
-          context: context,
-          initialDate: _selectedDay,
-          firstDate: DateTime.utc(2020, 10, 16),
-          lastDate: _lastDay,
-          locale: const Locale('ko', 'KR'),
-          initialDatePickerMode: DatePickerMode.year,
-          initialEntryMode: DatePickerEntryMode.calendarOnly);
+        context: context,
+        initialDate: _selectedDay ?? DateTime.now(),
+        firstDate: DateTime.now(),
+        lastDate: _lastDay,
+        locale: const Locale('ko', 'KR'),
+        initialDatePickerMode: DatePickerMode.year,
+        initialEntryMode: DatePickerEntryMode.calendarOnly,
+      );
 
       if (selectedDate != null) {
         setState(() {
           _selectedDay = selectedDate;
           _focusedDay = selectedDate;
         });
-        notifier.updateStartDate(selectedDate.toString());
+        ref.read(farmclubOpenInfoNotifierProvider.notifier).updateDateFormatted(selectedDate);
       }
     }
 
@@ -50,7 +52,7 @@ class _FarmclubOpenCalendarState extends ConsumerState<FarmclubOpenCalendar> {
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: TableCalendar(
         focusedDay: _focusedDay,
-        firstDay: DateTime.utc(2020, 10, 16),
+        firstDay: DateTime.now(),
         lastDay: _lastDay,
         locale: 'ko_KR',
         selectedDayPredicate: (day) {
@@ -61,8 +63,8 @@ class _FarmclubOpenCalendarState extends ConsumerState<FarmclubOpenCalendar> {
             setState(() {
               _selectedDay = selectedDay;
               _focusedDay = focusedDay;
-              notifier.updateStartDate(selectedDay.toString());
             });
+            ref.read(farmclubOpenInfoNotifierProvider.notifier).updateDateFormatted(selectedDay);
           }
         },
         onPageChanged: (focusedDay) {
@@ -70,15 +72,16 @@ class _FarmclubOpenCalendarState extends ConsumerState<FarmclubOpenCalendar> {
         },
         onHeaderTapped: (dateTime) => selectDate(context),
         headerStyle: const HeaderStyle(
-            formatButtonVisible: false,
-            leftChevronVisible: false,
-            rightChevronVisible: false,
-            titleCentered: true,
-            titleTextStyle: FarmusThemeTextStyle.gray1Medium13,
-            headerMargin: EdgeInsets.symmetric(vertical: 16.0),
-            decoration: BoxDecoration(
-              color: FarmusThemeColor.background,
-            )),
+          formatButtonVisible: false,
+          leftChevronVisible: false,
+          rightChevronVisible: false,
+          titleCentered: true,
+          titleTextStyle: FarmusThemeTextStyle.gray1Medium13,
+          headerMargin: EdgeInsets.symmetric(vertical: 16.0),
+          decoration: BoxDecoration(
+            color: FarmusThemeColor.background,
+          ),
+        ),
         calendarStyle: const CalendarStyle(
           weekendTextStyle: FarmusThemeTextStyle.darkReqular14,
           defaultTextStyle: FarmusThemeTextStyle.darkReqular14,

@@ -15,7 +15,7 @@ class DigitsTextFormField extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return PrimaryTextFormField(
       initialValue: initialValue != '' ? initialValue : null,
-      maxLength: 1,
+      maxLength: 2,
       maxLines: 1,
       minLines: 1,
       onChanged: onChanged,
@@ -24,7 +24,7 @@ class DigitsTextFormField extends ConsumerWidget {
       keyboardType: TextInputType.number,
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly,
-        LengthLimitingTextInputFormatter(1),
+        LengthLimitingTextInputFormatter(2),
       ],
     );
   }

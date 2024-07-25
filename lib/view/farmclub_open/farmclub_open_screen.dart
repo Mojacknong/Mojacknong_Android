@@ -2,20 +2,17 @@ import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
 import 'package:farmus/common/button/bottom_backgroud_divider_button.dart';
 import 'package:farmus/common/button/primary_color_button.dart';
 import 'package:farmus/common/dialog/check_dialog.dart';
-import 'package:farmus/common/farmus_calender.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/farmclub_open/component/farmclub_intro_input.dart';
-import 'package:farmus/view/farmclub_open/component/farmclub_my_vege_list.dart';
 import 'package:farmus/view/farmclub_open/component/farmclub_name_input.dart';
 import 'package:farmus/view/farmclub_open/component/farmclub_num_input.dart';
 import 'package:farmus/view/farmclub_open/component/farmclub_open_text.dart';
 import 'package:farmus/view/farmclub_open/component/farmclub_open_titles.dart';
 import 'package:farmus/view/farmclub_open/component/farmclub_vege_list.dart';
-import 'package:farmus/view_model/farmclub_open/farmclub_open_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../home/component/home_my_vege_list.dart';
+import '../../view_model/farmclub_open/notifier/farmclub_open_info_notifier.dart';
 import 'component/farmclub_open_calendar.dart';
 
 class FarmclubOpenScreen extends ConsumerWidget {
@@ -58,7 +55,6 @@ class FarmclubOpenScreen extends ConsumerWidget {
                   FarmclubIntroInput(),
                   FarmclubOpenTitles(text: "모집 마감일"),
                   FarmclubOpenCalendar(
-                    // lastDay: DateTime.now().add(const Duration(days: 18262)),
                   ),
                 ],
               ),
@@ -68,10 +64,15 @@ class FarmclubOpenScreen extends ConsumerWidget {
           BottomBackgroundDividerButton(
             button: Consumer(
               builder: (context, ref, child) {
-                final farmclubInfo = ref.watch(farmclubOpenInfoAddProvider);
-                final isFarmclubOpenInfoComplete = farmclubInfo.isFarmclubOpenInfoComplete ?? false;
-
+                final farmclubInfo = ref.watch(farmclubOpenInfoNotifierProvider).value;
+                final isFarmclubOpenInfoComplete = farmclubInfo != null &&
+                    farmclubInfo.farmClubName.isNotEmpty &&
+                    farmclubInfo.farmClubDescription.isNotEmpty &&
+                    farmclubInfo.maxMemberCount != 0 &&
+                    farmclubInfo.startDate.isNotEmpty &&
+                    farmclubInfo.myVeggieId != 0;
                 bool enabled = isFarmclubOpenInfoComplete;
+                print(farmclubInfo);
 
                 return Padding(
                   padding: const EdgeInsets.fromLTRB(8, 4, 8, 32),
@@ -83,6 +84,7 @@ class FarmclubOpenScreen extends ConsumerWidget {
                       text: "개설하기",
                       fontPadding: 15,
                       onPressed: () {
+                        ref.read(farmclubOpenInfoNotifierProvider.notifier).farmclubOpen();
                         Navigator.of(context).pop();
                         showDialog(
                           context: context,
@@ -96,6 +98,7 @@ class FarmclubOpenScreen extends ConsumerWidget {
                           },
                         );
                       },
+
                     ),
                   ),
                 );

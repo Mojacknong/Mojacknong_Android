@@ -5,6 +5,7 @@ import '../../../common/button/home_my_vege_button.dart';
 import '../../../model/farmclub_open/farmclub_my_vege_model.dart';
 import '../../../view_model/farmclub_open/farmclub_my_vege_provider.dart';
 import '../../../view_model/farmclub_open/farmclub_open_provider.dart';
+import '../../../view_model/farmclub_open/notifier/farmclub_open_info_notifier.dart';
 
 class FarmclubVegeList extends ConsumerWidget {
   const FarmclubVegeList({Key? key}) : super(key: key);
@@ -40,9 +41,11 @@ class FarmclubVegeList extends ConsumerWidget {
                         : veggie.myVeggieId == selectedVegeId,
                     text: veggie.nickname,
                     onPressed: () {
+                      ref.read(farmclubOpenInfoNotifierProvider.notifier).updateMyVeggieId(veggie.myVeggieId);
+                      ref.read(farmclubOpenInfoNotifierProvider.notifier).updateVeggieInfoId(veggie.veggieInfoId);
                       ref.read(selectedFarmclubVegeIdProvider.notifier).state =
                           veggie.myVeggieId;
-                      print(veggie.myVeggieId);
+
                     },
                     fontPadding: 0,
                     padding: 16.0,

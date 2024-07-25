@@ -1,4 +1,3 @@
-import 'package:farmus/view_model/farmclub_open/farmclub_open_provider.dart';
 import 'package:farmus/view_model/home/notifier/my_veggie_add_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -24,8 +23,8 @@ class _FarmusCalenderState extends ConsumerState<FarmusCalender> {
   @override
   Widget build(BuildContext context) {
     final notifier = ref.read(myVeggieAddNotifierProvider.notifier);
+
     final myVeggieAddState = ref.read(myVeggieAddNotifierProvider).value;
-    final farmclubVeggieAddState = ref.read(farmclubOpenInfoAddProvider).startDate;
 
     if (myVeggieAddState?.date != null && myVeggieAddState!.date.isNotEmpty) {
       _selectedDay = DateTime.parse(myVeggieAddState.date);
