@@ -10,9 +10,13 @@ import 'package:farmus/view/farmclub_open/component/farmclub_name_input.dart';
 import 'package:farmus/view/farmclub_open/component/farmclub_num_input.dart';
 import 'package:farmus/view/farmclub_open/component/farmclub_open_text.dart';
 import 'package:farmus/view/farmclub_open/component/farmclub_open_titles.dart';
+import 'package:farmus/view/farmclub_open/component/farmclub_vege_list.dart';
 import 'package:farmus/view_model/farmclub_open/farmclub_open_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../home/component/home_my_vege_list.dart';
+import 'component/farmclub_open_calendar.dart';
 
 class FarmclubOpenScreen extends ConsumerWidget {
   const FarmclubOpenScreen({Key? key}) : super(key: key);
@@ -26,16 +30,19 @@ class FarmclubOpenScreen extends ConsumerWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
+          const Expanded(
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const FarmclubOpenText(),
-                  const FarmclubMyVegeList(),
-                  const FarmclubOpenTitles(text: "팜클럽 이름"),
-                  const FarmclubNameInput(),
-                  const Row(
+                  FarmclubOpenText(),
+                  Padding(
+                    padding: EdgeInsets.only(left : 8.0, bottom: 8),
+                    child: FarmclubVegeList(),
+                  ),
+                  FarmclubOpenTitles(text: "팜클럽 이름"),
+                  FarmclubNameInput(),
+                  Row(
                     children: [
                       FarmclubOpenTitles(
                         text: '인원수',
@@ -46,12 +53,12 @@ class FarmclubOpenScreen extends ConsumerWidget {
                       ),
                     ],
                   ),
-                  const FarmclubNumInput(),
-                  const FarmclubOpenTitles(text: "팜클럽 한 줄 소개"),
-                  const FarmclubIntroInput(),
-                  const FarmclubOpenTitles(text: "모집 마감일"),
-                  FarmusCalender(
-                    lastDay: DateTime.now().add(const Duration(days: 18262)),
+                  FarmclubNumInput(),
+                  FarmclubOpenTitles(text: "팜클럽 한 줄 소개"),
+                  FarmclubIntroInput(),
+                  FarmclubOpenTitles(text: "모집 마감일"),
+                  FarmclubOpenCalendar(
+                    // lastDay: DateTime.now().add(const Duration(days: 18262)),
                   ),
                 ],
               ),
@@ -62,8 +69,8 @@ class FarmclubOpenScreen extends ConsumerWidget {
             button: Consumer(
               builder: (context, ref, child) {
                 final farmclubInfo = ref.watch(farmclubOpenInfoAddProvider);
-                final isFarmclubOpenInfoComplete =
-                    farmclubInfo.isFarmclubOpenInfoComplete;
+                final isFarmclubOpenInfoComplete = farmclubInfo.isFarmclubOpenInfoComplete ?? false;
+
                 bool enabled = isFarmclubOpenInfoComplete;
 
                 return Padding(

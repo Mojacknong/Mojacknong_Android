@@ -10,16 +10,16 @@ class FarmclubNumInput extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final num = ref.read(farmclubOpenInfoAddProvider).num;
+    final num = ref.read(farmclubOpenInfoAddProvider).maxMemberCount;
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
       child: DigitsTextFormField(
-        initialValue: num,
+        initialValue: '',
         onChanged: (value) {
           ref
               .read(farmclubOpenInfoAddProvider.notifier)
-              .updateFarmclubNum(value);
+              .updateMaxMemberCount(value as int);
         },
       ),
     );

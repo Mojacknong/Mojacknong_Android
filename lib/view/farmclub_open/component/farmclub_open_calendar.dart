@@ -22,8 +22,8 @@ class _FarmclubOpenCalendarState extends ConsumerState<FarmclubOpenCalendar> {
   Widget build(BuildContext context) {
     final notifier = ref.read(farmclubOpenInfoAddProvider.notifier);
 
-    if (ref.read(farmclubOpenInfoAddProvider).date != '') {
-      _selectedDay = DateTime.parse(ref.read(farmclubOpenInfoAddProvider).date);
+    if (ref.read(farmclubOpenInfoAddProvider).startDate != '') {
+      _selectedDay = DateTime.parse(ref.read(farmclubOpenInfoAddProvider).startDate);
       _focusedDay = _selectedDay!;
     }
 
@@ -42,7 +42,7 @@ class _FarmclubOpenCalendarState extends ConsumerState<FarmclubOpenCalendar> {
           _selectedDay = selectedDate;
           _focusedDay = selectedDate;
         });
-        notifier.updateDate(selectedDate.toString());
+        notifier.updateStartDate(selectedDate.toString());
       }
     }
 
@@ -61,7 +61,7 @@ class _FarmclubOpenCalendarState extends ConsumerState<FarmclubOpenCalendar> {
             setState(() {
               _selectedDay = selectedDay;
               _focusedDay = focusedDay;
-              notifier.updateDate(selectedDay.toString());
+              notifier.updateStartDate(selectedDay.toString());
             });
           }
         },

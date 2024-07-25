@@ -1,67 +1,66 @@
-import 'package:farmus/model/farmclub_open/farmclub_open_info_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../model/farmclub_open/farmclub_vege_list_model.dart';
 
-class FarmclubOpenInfoNotifier extends StateNotifier<FarmclubOpenInfoModel> {
+class FarmclubOpenInfoNotifier extends StateNotifier<FarmclubVegeListModel> {
   FarmclubOpenInfoNotifier()
-      : super(FarmclubOpenInfoModel(
-          isButtonPressed: false,
-          name: '',
-          num: '',
-          intro: '',
-          date: '',
-          isFarmclubOpenInfoComplete: false,
-        ));
+      : super(const FarmclubVegeListModel(
+    farmClubName: '',
+    farmClubDescription: '',
+    maxMemberCount: 0,
+    startDate: '',
+    myVeggieId: 0,
+    veggieInfoId: '',
+    isFarmclubOpenInfoComplete: false,
+  ));
 
   void reset() {
-    state = FarmclubOpenInfoModel(
-      isButtonPressed: false,
-      name: '',
-      num: '',
-      intro: '',
-      date: '',
+    state = const FarmclubVegeListModel(
+      farmClubName: '',
+      farmClubDescription: '',
+      maxMemberCount: 0,
+      startDate: '',
+      myVeggieId: 0,
+      veggieInfoId: '',
       isFarmclubOpenInfoComplete: false,
     );
   }
 
-  void updateButtonPressed(bool isButtonPressed) {
-    state = state.copyWith(isButtonPressed: isButtonPressed);
+
+  void updateFarmclubName(String farmClubName) {
+    state = state.copyWith(farmClubName: farmClubName);
     _updateFarmclubOpenInfoStatus();
   }
 
-  void updateFarmclubName(String name) {
-    state = state.copyWith(
-      name: name,
-    );
+  void updateFarmclubDescription(String farmClubDescription) {
+    state = state.copyWith(farmClubDescription: farmClubDescription);
     _updateFarmclubOpenInfoStatus();
   }
 
-  void updateFarmclubNum(String num) {
-    state = state.copyWith(
-      num: num,
-    );
+  void updateMaxMemberCount(int maxMemberCount) {
+    state = state.copyWith(maxMemberCount: maxMemberCount);
     _updateFarmclubOpenInfoStatus();
   }
 
-  void updateFarmclubIntro(String intro) {
-    state = state.copyWith(
-      intro: intro,
-    );
+  void updateStartDate(String startDate) {
+    state = state.copyWith(startDate: startDate);
     _updateFarmclubOpenInfoStatus();
   }
 
-  void updateDate(String date) {
-    state = state.copyWith(
-      date: date,
-    );
+  void updateMyVeggieId(int myVeggieId) {
+    state = state.copyWith(myVeggieId: myVeggieId);
+    _updateFarmclubOpenInfoStatus();
+  }
+
+  void updateVeggieInfoId(String veggieInfoId) {
+    state = state.copyWith(veggieInfoId: veggieInfoId);
     _updateFarmclubOpenInfoStatus();
   }
 
   void _updateFarmclubOpenInfoStatus() {
     state = state.copyWith(
-        isFarmclubOpenInfoComplete:
-            state.name != '' && state.num != '' && state.intro != ''
-        // state.date != '',
-        // && state.isButtonPressed
-        );
+        isFarmclubOpenInfoComplete: state.farmClubName!= '' &&
+            state.farmClubDescription!= '' &&
+            state.maxMemberCount != 0 &&
+            state.startDate!= '' );
   }
 }

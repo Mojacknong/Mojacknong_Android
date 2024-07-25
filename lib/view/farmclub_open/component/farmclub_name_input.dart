@@ -16,9 +16,9 @@ class FarmclubNameInput extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final name = ref.read(farmclubOpenInfoAddProvider).name;
+    final name = ref.read(farmclubOpenInfoAddProvider).farmClubName;
 
-    var nowLength = ref.watch(farmclubOpenInfoAddProvider).name.length;
+    var nowLength = ref.watch(farmclubOpenInfoAddProvider).farmClubName.length;
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
       child: PrimaryTextFormField(
