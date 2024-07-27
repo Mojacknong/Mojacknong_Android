@@ -17,7 +17,6 @@ class FarmclubNameInput extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    print('Build called');
     final farmclubAddNotifier = ref.read(farmclubOpenInfoNotifierProvider).value;
     final name = farmclubAddNotifier?.farmClubName ?? '';
     return Padding(

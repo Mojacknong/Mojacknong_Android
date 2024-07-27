@@ -19,13 +19,11 @@ class FarmclubOpenService {
     if (response.statusCode == 201) {
       final String decodedBody = utf8.decode(response.bodyBytes);
       final Map<String, dynamic> jsonResponse = jsonDecode(decodedBody);
-      print(decodedBody);
+
       return FarmclubVegeListModel.fromJson(jsonResponse['data']);
     } else {
       final String decodedBody = utf8.decode(response.bodyBytes);
       final Map<String, dynamic> jsonResponse = jsonDecode(decodedBody);
-      print('Request failed with status: ${response.statusCode}');
-      print('Response body: $decodedBody');
       throw Exception('Failed to post vege: ${jsonResponse['message']}');
     }
   }

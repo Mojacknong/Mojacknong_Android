@@ -9,7 +9,6 @@ part 'farmclub_possible_vege.g.dart';
 @riverpod
 Future<FarmclubPossibleModel> farmclubPossibleModel(FarmclubPossibleModelRef ref) async {
   final response = await FarmclubOpenRepository.farmclubPossible();
-  print('Decoding response');
 
   final Map<String, dynamic> json = jsonDecode(response) as Map<String, dynamic>;
   final data = json['data'] as Map<String, dynamic>;
