@@ -7,7 +7,7 @@ part of 'farmclub_open_info_notifier.dart';
 // **************************************************************************
 
 String _$farmclubOpenInfoNotifierHash() =>
-    r'e7ce868a237ba5edbeb0fcc9583717fe8ba6356a';
+    r'8ebea12131b78360b0d3e178a316c9501e835d45';
 
 /// See also [FarmclubOpenInfoNotifier].
 @ProviderFor(FarmclubOpenInfoNotifier)

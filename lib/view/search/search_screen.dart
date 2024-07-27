@@ -16,6 +16,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../common/bottom_sheet/show_farmus_bottom_sheet.dart';
+import '../../view_model/farmclub_open/farmclub_possible_vege.dart';
+
 class SearchScreen extends ConsumerStatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
 
@@ -58,11 +61,26 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const FarmclubOpenScreen()),
-          );
+        onPressed: () async {
+          final modelAsyncValue = await ref.read(farmclubPossibleModelProvider.future);
+          if (modelAsyncValue.reason == 1) {
+            showAllVeggieSignedActionSheet(
+                context,
+                '내 텃밭에 등록된 모든 채소가 \n팜클럽에 가입되어 있어요'
+            );
+          } else if (modelAsyncValue.reason == 2) {
+            showAllVeggieSignedActionSheet(
+                context,
+                '내 채소에 등록된 채소가 없어요'
+            );
+          } else if (modelAsyncValue.reason == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const FarmclubOpenScreen()
+              ),
+            );
+          }
         },
         backgroundColor: FarmusThemeColor.primary,
         shape: const CircleBorder(),

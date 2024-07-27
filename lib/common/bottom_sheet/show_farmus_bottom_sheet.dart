@@ -225,3 +225,61 @@ void showFarmclubChangeBottomSheet(BuildContext context) {
     },
   );
 }
+
+void showAllVeggieSignedActionSheet(BuildContext context, String text) {
+  showCupertinoModalPopup(
+    context: context,
+    builder: (BuildContext context) => PrimaryActionSheet(
+      message: "팜클럽을 개설할 수 없어요",
+      messagePadding: const EdgeInsets.symmetric(vertical: 8),
+      actions: <CupertinoActionSheetAction>[
+        CupertinoActionSheetAction(
+          onPressed: () {},
+          child: Align(
+            alignment: Alignment.center,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 20.0),
+                  child: SvgPicture.asset(
+                    'assets/image/ic_alert_circle.svg',
+                  ),
+                ),
+                const SizedBox(height: 14.0),
+                Text(
+                  text,
+                  style: FarmusThemeTextStyle.redMedium15,
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 14.0),
+                const Padding(
+                  padding: EdgeInsets.only(bottom: 41.0),
+                  child: Text(
+                    '새 채소를 등록해 팜클럽을 개설해보세요!',
+                    style: FarmusThemeTextStyle.gray2Medium14,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+      cancelButton: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          CupertinoActionSheetAction(
+            child: const Text(
+              "확인",
+              style: FarmusThemeTextStyle.darkMedium15,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ],
+      ),
+    ),
+  );
+}

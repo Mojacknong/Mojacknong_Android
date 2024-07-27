@@ -94,5 +94,19 @@ class FarmclubOpenService {
       throw Exception('Failed to add my veggie');
     }
   }
+
+  Future<String> farmclubPossible() async {
+    const url = '/api/farm-club/check';
+
+    ApiClient apiClient = ApiClient();
+
+    final response = await apiClient.get(url);
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+
+    } else {
+      throw Exception('Failed to Check');
+    }
+  }
 }
 

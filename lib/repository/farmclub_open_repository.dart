@@ -20,4 +20,9 @@
      await FarmclubOpenService().farmclubOpen(farmClubName,farmClubDescription,maxMemberCount,startDate,myVeggieId,veggieInfoId);
      return response;
    }
+
+   static Future<String> farmclubPossible() async {
+     String? response = await FarmclubOpenService().farmclubPossible();
+     return response;
+   }
  }

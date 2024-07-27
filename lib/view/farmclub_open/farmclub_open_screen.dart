@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../view_model/farmclub_open/notifier/farmclub_open_info_notifier.dart';
+import '../main/main_screen.dart';
 import 'component/farmclub_open_calendar.dart';
 
 class FarmclubOpenScreen extends ConsumerWidget {
@@ -90,7 +91,11 @@ class FarmclubOpenScreen extends ConsumerWidget {
                           context: context,
                           builder: (BuildContext context) {
                             Future.delayed(const Duration(seconds: 2), () {
-                              Navigator.of(context).pop();
+                              Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                    builder: (context) => const MainScreen(selectedIndex: 1),
+                                  ),
+                              );
                             });
                             return const CheckDialog(
                               text: "팜클럽을 개설했어요",
