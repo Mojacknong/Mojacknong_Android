@@ -7,13 +7,6 @@ import '../../repository/farmclub_open_repository.dart';
 part 'farmclub_possible_vege.g.dart';
 
 @riverpod
-// Future<List<FarmclubPossibleModel>> farmclubPossibleModel(FarmclubPossibleModelRef ref) async {
-//   final response = await FarmclubOpenRepository.farmclubPossible();
-//   print('Decoding response');
-//   final json = jsonDecode(response) as Map<String, dynamic>;
-//   final List<dynamic> data = json['data'] as List<dynamic>;
-//   return data.map((item) => FarmclubPossibleModel.fromJson(item)).toList();
-// }
 Future<FarmclubPossibleModel> farmclubPossibleModel(FarmclubPossibleModelRef ref) async {
   final response = await FarmclubOpenRepository.farmclubPossible();
   print('Decoding response');
