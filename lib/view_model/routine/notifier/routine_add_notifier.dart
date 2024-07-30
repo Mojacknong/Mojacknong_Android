@@ -1,6 +1,5 @@
 import 'package:farmus/model/home/routine_model.dart';
 import 'package:farmus/repository/routine_repository.dart';
-import 'package:farmus/view_model/routine/notifier/my_veggie_routine_info_notifier.dart';
 import 'package:farmus/view_model/routine/notifier/routine_list_notifier.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -39,10 +38,10 @@ class RoutineAddNotifier extends _$RoutineAddNotifier {
   }
 
   Future<void> routineAdd(
-      int myVeggieId,
-      String content,
-      int period,
-      ) async {
+    int myVeggieId,
+    String content,
+    int period,
+  ) async {
     await RoutineRepository.routineAdd(myVeggieId, content, period);
 
     ref.invalidate(routineAddNotifierProvider);

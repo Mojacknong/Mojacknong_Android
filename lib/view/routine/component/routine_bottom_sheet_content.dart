@@ -155,7 +155,7 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                             ref
                                 .read(routineAddNotifierProvider.notifier)
                                 .routineAdd(
-                                    routineInfo.value!.myVeggieId,
+                                    myVeggieId,
                                     routineInfo.value!.routineName!,
                                     routineInfo.value!.period!);
                             Navigator.pop(context);

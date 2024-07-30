@@ -38,6 +38,7 @@ class RoutineScreen extends ConsumerWidget {
                       }
                   };
                   return RoutineAdd(
+                    // TODO 루틴 추가 API 수정
                     myVeggieId: 1,
                     vege: routineItem.veggieName,
                     vegeName: routineItem.nickname,
