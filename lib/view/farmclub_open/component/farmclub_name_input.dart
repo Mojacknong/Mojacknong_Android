@@ -1,7 +1,8 @@
 import 'package:farmus/common/form/primary_text_form_field.dart';
-import 'package:farmus/view_model/farmclub_open/farmclub_open_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../view_model/farmclub_open/notifier/farmclub_open_info_notifier.dart';
 
 class FarmclubNameInput extends ConsumerWidget {
   const FarmclubNameInput({
@@ -16,9 +17,8 @@ class FarmclubNameInput extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final name = ref.read(farmclubOpenInfoAddProvider).name;
-
-    var nowLength = ref.watch(farmclubOpenInfoAddProvider).name.length;
+    final farmclubAddNotifier = ref.read(farmclubOpenInfoNotifierProvider).value;
+    final name = farmclubAddNotifier?.farmClubName ?? '';
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
       child: PrimaryTextFormField(
@@ -29,10 +29,9 @@ class FarmclubNameInput extends ConsumerWidget {
         hintText: "파송송",
         onChanged: (value) {
           ref
-              .read(farmclubOpenInfoAddProvider.notifier)
-              .updateFarmclubName(value);
+              .read(farmclubOpenInfoNotifierProvider.notifier).updateFarmclubName(value);
         },
-        suffix: Text("$nowLength /8"),
+        suffix: Text("${name.length} /${maxLength ?? 8}"),
       ),
     );
   }

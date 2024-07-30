@@ -31,6 +31,7 @@ class _FarmusCalenderState extends ConsumerState<FarmusCalender> {
   @override
   Widget build(BuildContext context) {
     final notifier = ref.read(myVeggieAddNotifierProvider.notifier);
+
     final myVeggieAddState = ref.read(myVeggieAddNotifierProvider).value;
 
     if (myVeggieAddState?.date != null && myVeggieAddState!.date.isNotEmpty) {

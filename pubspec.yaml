@@ -33,7 +33,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   google_sign_in: ^6.1.5
-  kakao_flutter_sdk: ^1.6.1
+  kakao_flutter_sdk: ^1.9.4
   firebase_core: ^3.1.1
   firebase_auth: ^5.1.1
   flutter_secure_storage: ^9.0.0
