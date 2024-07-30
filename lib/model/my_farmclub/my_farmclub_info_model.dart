@@ -9,6 +9,7 @@ abstract class MyFarmclubInfoModel with _$MyFarmclubInfoModel {
     required String farmClubName,
     required String farmClubImage,
     required int wholeMemberCount,
+    required int currentStep,
     required List<StepModel> steps,
     required String advice,
     required int daysSinceStart,

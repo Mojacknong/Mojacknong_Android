@@ -1,12 +1,10 @@
 import 'package:farmus/model/home/my_veggie_list_model.dart';
-import 'package:farmus/model/home/my_veggie_profile.dart';
-import 'package:farmus/model/home/veggie_diary_one_model.dart';
 import 'package:farmus/view/home/component/home_motivation.dart';
 import 'package:farmus/view/home/component/home_my_vege_list.dart';
 import 'package:farmus/view/home/component/home_sub_title.dart';
 import 'package:farmus/view/home/component/home_to_do.dart';
 import 'package:farmus/view/home/component/home_vege_to_do.dart';
-import 'package:farmus/view/home/component/none/home_none_content.dart';
+import 'package:farmus/view/main/main_screen.dart';
 import 'package:farmus/view/vege_diary_write/vege_diary_write_screen.dart';
 import 'package:farmus/view_model/home/notifier/veggie_diary_one_notifier.dart';
 import 'package:farmus/view_model/my_vege/notifier/my_veggie_list.dart';
@@ -18,6 +16,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../common/app_bar/home_app_bar.dart';
 import '../../model/veggie_info/recommend_veggie_model.dart';
 import '../../view_model/home/home_provider.dart';
+import '../routine/routine_screen.dart';
 import 'component/home_my_vege.dart';
 import 'component/home_vege_diary.dart';
 import 'component/none/home_my_vege_none.dart';
@@ -31,9 +30,9 @@ class HomeScreen extends ConsumerWidget {
     final Size size = MediaQuery.of(context).size;
     final selectedVegeId = ref.watch(selectedVegeIdProvider);
     final AsyncValue<List<MyVeggieListModel>> veggieList =
-    ref.watch(myVeggieListModelProvider);
+        ref.watch(myVeggieListModelProvider);
     final AsyncValue<List<RecommendVeggieModel>> recommend =
-    ref.watch(recommendVeggieModelProvider);
+        ref.watch(recommendVeggieModelProvider);
 
     String toDo = ref.watch(homeToDoProvider);
 
@@ -69,20 +68,23 @@ class HomeScreen extends ConsumerWidget {
                     const SizedBox(height: 8),
                     if (selectedVegeId != null)
                       ref.watch(myVeggieProfileProvider(selectedVegeId)).when(
-                        data: (profile) {
-                          return HomeMyVege(size: size, profile: profile);
-                        },
-                        loading: () => const CircularProgressIndicator(),
-                        error: (error, stack) => Text('Error: $error'),
-                      )
+                            data: (profile) {
+                              return HomeMyVege(size: size, profile: profile);
+                            },
+                            loading: () => const CircularProgressIndicator(),
+                            error: (error, stack) => Text('Error: $error'),
+                          )
                     else
-                      ref.watch(myVeggieProfileProvider(veggieListData.first.myVeggieId)).when(
-                        data: (profile) {
-                          return HomeMyVege(size: size, profile: profile);
-                        },
-                        loading: () => const CircularProgressIndicator(),
-                        error: (error, stack) => Text('Error: $error'),
-                      ),
+                      ref
+                          .watch(myVeggieProfileProvider(
+                              veggieListData.first.myVeggieId))
+                          .when(
+                            data: (profile) {
+                              return HomeMyVege(size: size, profile: profile);
+                            },
+                            loading: () => const CircularProgressIndicator(),
+                            error: (error, stack) => Text('Error: $error'),
+                          ),
                     const HomeMotivation(
                       motivation: "텃밭에서 식탁까지 팜어스와 늘 함께해요!",
                     ),
@@ -97,65 +99,85 @@ class HomeScreen extends ConsumerWidget {
                     const HomeVegeTodo()
                   else
                     toDo == "routine"
-                        ? const HomeNoneContainer(
-                      text: '아직 루틴을 등록하지 않았어요',
-                    )
-                        : const HomeNoneContainer(
-                      text: '아직 팜클럽에 가입하지 않았어요',
-                    ),
+                        ? HomeNoneContainer(
+                            text: '아직 루틴을 등록하지 않았어요',
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const RoutineScreen()),
+                              );
+                            },
+                          )
+                        : HomeNoneContainer(
+                            text: '아직 팜클럽에 가입하지 않았어요',
+                            onTap: () {
+                              Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return const MainScreen(selectedIndex: 2);
+                                  },
+                                ),
+                                (route) => false,
+                              );
+                            },
+                          ),
                   const SizedBox(height: 24),
                   const HomeSubTitle(title: "성장 일기"),
                   if (veggieListData.isNotEmpty)
                     if (selectedVegeId != null)
-                      ref.watch(veggieDiaryOneModelProvider(selectedVegeId)).when(
-                        data: (diary) {
-                          if (diary != null) {
-                            return HomeVegeDiary(diary: diary);
-                          } else {
-                            return GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (builder) =>
-                                    const VegeDiaryWriteScreen(),
-                                  ),
+                      ref
+                          .watch(veggieDiaryOneModelProvider(selectedVegeId))
+                          .when(
+                            data: (diary) {
+                              if (diary != null) {
+                                return HomeVegeDiary(diary: diary);
+                              } else {
+                                return HomeNoneContainer(
+                                  text: '아직 작성한 일기가 없어요',
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (builder) =>
+                                            const VegeDiaryWriteScreen(),
+                                      ),
+                                    );
+                                  },
                                 );
-                              },
-                              child: const HomeNoneContent(
-                                text: '아직 작성한 일기가 없어요',
-                              ),
-                            );
-                          }
-                        },
-                        loading: () => const CircularProgressIndicator(),
-                        error: (error, stack) => Text('Error: $error'),
-                      )
+                              }
+                            },
+                            loading: () => const CircularProgressIndicator(),
+                            error: (error, stack) => Text('Error: $error'),
+                          )
                     else
-                      ref.watch(veggieDiaryOneModelProvider(veggieListData.first.myVeggieId)).when(
-                        data: (diary) {
-                          if (diary != null) {
-                            return HomeVegeDiary(diary: diary);
-                          } else {
-                            return GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (builder) =>
-                                    const VegeDiaryWriteScreen(),
-                                  ),
+                      ref
+                          .watch(veggieDiaryOneModelProvider(
+                              veggieListData.first.myVeggieId))
+                          .when(
+                            data: (diary) {
+                              if (diary != null) {
+                                return HomeVegeDiary(diary: diary);
+                              } else {
+                                return HomeNoneContainer(
+                                  text: '아직 작성한 일기가 없어요',
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (builder) =>
+                                            const VegeDiaryWriteScreen(),
+                                      ),
+                                    );
+                                  },
                                 );
-                              },
-                              child: const HomeNoneContent(
-                                text: '아직 작성한 일기가 없어요',
-                              ),
-                            );
-                          }
-                        },
-                        loading: () => const CircularProgressIndicator(),
-                        error: (error, stack) => Text('Error: $error'),
-                      ),
+                              }
+                            },
+                            loading: () => const CircularProgressIndicator(),
+                            error: (error, stack) => Text('Error: $error'),
+                          ),
                 ],
               ),
             ),

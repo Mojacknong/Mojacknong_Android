@@ -1,3 +1,4 @@
+import 'package:farmus/view_model/routine/notifier/routine_add_notifier.dart';
 import 'package:farmus/view_model/routine/routine_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -12,10 +13,15 @@ import '../../../common/theme/farmus_theme_text_style.dart';
 
 class RoutineBottomSheetContent extends ConsumerWidget {
   const RoutineBottomSheetContent(
-      {super.key, this.routine, this.day, required this.isCreate});
+      {super.key,
+      required this.myVeggieId,
+      required this.routine,
+      required this.day,
+      required this.isCreate});
 
-  final String? routine;
-  final String? day;
+  final int myVeggieId;
+  final String routine;
+  final int day;
   final bool isCreate;
 
   @override
@@ -53,7 +59,7 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                             child: NotUnderlineTextFormField(
                               maxLength: 10,
                               hintText: '루틴을 입력해 주세요',
-                              initialValue: '$routine',
+                              initialValue: routine,
                               onChanged: (value) {
                                 isCreate
                                     ? ref
@@ -129,6 +135,9 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                         child: PrimaryColorButton(
                           text: isCreate ? '확인' : '수정',
                           onPressed: () {
+                            ref
+                                .read(routineAddNotifierProvider.notifier)
+                                .routineAdd(myVeggieId, routine, day);
                             Navigator.pop(context);
                           },
                           enabled: isCreate

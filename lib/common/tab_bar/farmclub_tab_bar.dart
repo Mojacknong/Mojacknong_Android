@@ -13,15 +13,9 @@ class FarmclubTabBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<StepModel> steps = farmclubInfo.steps;
+    final int currentStepIndex = farmclubInfo.currentStep - 1;
 
-    int currentStepIndex = (farmclubInfo.daysSinceStart >= 0 &&
-            farmclubInfo.daysSinceStart < steps.length)
-        ? farmclubInfo.daysSinceStart
-        : 0;
-
-    final List<StepModel> currentSteps = (farmclubInfo.daysSinceStart == -1)
-        ? [steps[0]]
-        : [steps[currentStepIndex]];
+    final List<StepModel> currentSteps = [steps[currentStepIndex]];
 
     final List<StepModel> previousSteps =
         (currentStepIndex > 0) ? steps.sublist(0, currentStepIndex) : [];
@@ -45,31 +39,26 @@ class FarmclubTabBar extends StatelessWidget {
                   ),
                 );
               }),
-              if (addTip)
-                FarmclubStepTip(
-                  tip: farmclubInfo.advice,
-                ),
+              if (addTip) FarmclubStepTip(tip: farmclubInfo.advice),
             ],
           ),
         ),
       );
     }
 
+    Widget buildTabView(List<StepModel> steps,
+        {bool isLast = false, bool addTip = false}) {
+      return steps.isNotEmpty
+          ? buildStepView(steps, addTip: addTip)
+          : FarmclubStepEmpty(isLast: isLast);
+    }
+
     return PrimaryTabBar(
       tab: const ['현재', '이전', '다음'],
       tabView: [
-        if (currentSteps.isNotEmpty)
-          buildStepView(currentSteps, addTip: true)
-        else
-          const FarmclubStepEmpty(isLast: false),
-        if (previousSteps.isNotEmpty)
-          buildStepView(previousSteps)
-        else
-          const FarmclubStepEmpty(isLast: false),
-        if (nextSteps.isNotEmpty)
-          buildStepView(nextSteps)
-        else
-          const FarmclubStepEmpty(isLast: true),
+        buildTabView(currentSteps, addTip: true),
+        buildTabView(previousSteps),
+        buildTabView(nextSteps, isLast: true),
       ],
       tabViewHeights: 368,
     );

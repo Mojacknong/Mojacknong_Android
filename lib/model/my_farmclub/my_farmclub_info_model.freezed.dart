@@ -23,6 +23,7 @@ mixin _$MyFarmclubInfoModel {
   String get farmClubName => throw _privateConstructorUsedError;
   String get farmClubImage => throw _privateConstructorUsedError;
   int get wholeMemberCount => throw _privateConstructorUsedError;
+  int get currentStep => throw _privateConstructorUsedError;
   List<StepModel> get steps => throw _privateConstructorUsedError;
   String get advice => throw _privateConstructorUsedError;
   int get daysSinceStart => throw _privateConstructorUsedError;
@@ -43,6 +44,7 @@ abstract class $MyFarmclubInfoModelCopyWith<$Res> {
       {String farmClubName,
       String farmClubImage,
       int wholeMemberCount,
+      int currentStep,
       List<StepModel> steps,
       String advice,
       int daysSinceStart});
@@ -64,6 +66,7 @@ class _$MyFarmclubInfoModelCopyWithImpl<$Res, $Val extends MyFarmclubInfoModel>
     Object? farmClubName = null,
     Object? farmClubImage = null,
     Object? wholeMemberCount = null,
+    Object? currentStep = null,
     Object? steps = null,
     Object? advice = null,
     Object? daysSinceStart = null,
@@ -80,6 +83,10 @@ class _$MyFarmclubInfoModelCopyWithImpl<$Res, $Val extends MyFarmclubInfoModel>
       wholeMemberCount: null == wholeMemberCount
           ? _value.wholeMemberCount
           : wholeMemberCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      currentStep: null == currentStep
+          ? _value.currentStep
+          : currentStep // ignore: cast_nullable_to_non_nullable
               as int,
       steps: null == steps
           ? _value.steps
@@ -109,6 +116,7 @@ abstract class _$$MyFarmclubInfoModelImplCopyWith<$Res>
       {String farmClubName,
       String farmClubImage,
       int wholeMemberCount,
+      int currentStep,
       List<StepModel> steps,
       String advice,
       int daysSinceStart});
@@ -128,6 +136,7 @@ class __$$MyFarmclubInfoModelImplCopyWithImpl<$Res>
     Object? farmClubName = null,
     Object? farmClubImage = null,
     Object? wholeMemberCount = null,
+    Object? currentStep = null,
     Object? steps = null,
     Object? advice = null,
     Object? daysSinceStart = null,
@@ -144,6 +153,10 @@ class __$$MyFarmclubInfoModelImplCopyWithImpl<$Res>
       wholeMemberCount: null == wholeMemberCount
           ? _value.wholeMemberCount
           : wholeMemberCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      currentStep: null == currentStep
+          ? _value.currentStep
+          : currentStep // ignore: cast_nullable_to_non_nullable
               as int,
       steps: null == steps
           ? _value._steps
@@ -168,6 +181,7 @@ class _$MyFarmclubInfoModelImpl implements _MyFarmclubInfoModel {
       {required this.farmClubName,
       required this.farmClubImage,
       required this.wholeMemberCount,
+      required this.currentStep,
       required final List<StepModel> steps,
       required this.advice,
       required this.daysSinceStart})
@@ -182,6 +196,8 @@ class _$MyFarmclubInfoModelImpl implements _MyFarmclubInfoModel {
   final String farmClubImage;
   @override
   final int wholeMemberCount;
+  @override
+  final int currentStep;
   final List<StepModel> _steps;
   @override
   List<StepModel> get steps {
@@ -197,7 +213,7 @@ class _$MyFarmclubInfoModelImpl implements _MyFarmclubInfoModel {
 
   @override
   String toString() {
-    return 'MyFarmclubInfoModel(farmClubName: $farmClubName, farmClubImage: $farmClubImage, wholeMemberCount: $wholeMemberCount, steps: $steps, advice: $advice, daysSinceStart: $daysSinceStart)';
+    return 'MyFarmclubInfoModel(farmClubName: $farmClubName, farmClubImage: $farmClubImage, wholeMemberCount: $wholeMemberCount, currentStep: $currentStep, steps: $steps, advice: $advice, daysSinceStart: $daysSinceStart)';
   }
 
   @override
@@ -211,6 +227,8 @@ class _$MyFarmclubInfoModelImpl implements _MyFarmclubInfoModel {
                 other.farmClubImage == farmClubImage) &&
             (identical(other.wholeMemberCount, wholeMemberCount) ||
                 other.wholeMemberCount == wholeMemberCount) &&
+            (identical(other.currentStep, currentStep) ||
+                other.currentStep == currentStep) &&
             const DeepCollectionEquality().equals(other._steps, _steps) &&
             (identical(other.advice, advice) || other.advice == advice) &&
             (identical(other.daysSinceStart, daysSinceStart) ||
@@ -224,6 +242,7 @@ class _$MyFarmclubInfoModelImpl implements _MyFarmclubInfoModel {
       farmClubName,
       farmClubImage,
       wholeMemberCount,
+      currentStep,
       const DeepCollectionEquality().hash(_steps),
       advice,
       daysSinceStart);
@@ -248,6 +267,7 @@ abstract class _MyFarmclubInfoModel implements MyFarmclubInfoModel {
       {required final String farmClubName,
       required final String farmClubImage,
       required final int wholeMemberCount,
+      required final int currentStep,
       required final List<StepModel> steps,
       required final String advice,
       required final int daysSinceStart}) = _$MyFarmclubInfoModelImpl;
@@ -261,6 +281,8 @@ abstract class _MyFarmclubInfoModel implements MyFarmclubInfoModel {
   String get farmClubImage;
   @override
   int get wholeMemberCount;
+  @override
+  int get currentStep;
   @override
   List<StepModel> get steps;
   @override

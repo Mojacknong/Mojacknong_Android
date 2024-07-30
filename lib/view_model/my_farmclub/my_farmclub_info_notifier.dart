@@ -10,15 +10,12 @@ part 'my_farmclub_info_notifier.g.dart';
 @riverpod
 Future<MyFarmclubInfoModel> myFarmclubInfoModel(
     MyFarmclubInfoModelRef ref, int? farmclubId) async {
-  final farmclubs = await ref.watch(myFarmclubModelProvider.future);
-
-  if (farmclubs.isEmpty) {
-    throw Exception("No farmclubs available");
+  if (farmclubId == null) {
+    final farmclubs = await ref.watch(myFarmclubModelProvider.future);
+    farmclubId = farmclubs.first.farmClubId.toInt();
   }
 
-  final farmclubFirstId = farmclubs.first.farmClubId.toInt();
-  final response = await MyFarmclubRepository.myFarmclubInfo(
-      farmclubId ?? farmclubFirstId.toInt());
+  final response = await MyFarmclubRepository.myFarmclubInfo(farmclubId);
   final json = jsonDecode(response) as Map<String, dynamic>;
   final data = json['data'] as Map<String, dynamic>;
 

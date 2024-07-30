@@ -12,6 +12,7 @@ _$MyFarmclubInfoModelImpl _$$MyFarmclubInfoModelImplFromJson(
       farmClubName: json['farmClubName'] as String,
       farmClubImage: json['farmClubImage'] as String,
       wholeMemberCount: (json['wholeMemberCount'] as num).toInt(),
+      currentStep: (json['currentStep'] as num).toInt(),
       steps: (json['steps'] as List<dynamic>)
           .map((e) => StepModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -25,6 +26,7 @@ Map<String, dynamic> _$$MyFarmclubInfoModelImplToJson(
       'farmClubName': instance.farmClubName,
       'farmClubImage': instance.farmClubImage,
       'wholeMemberCount': instance.wholeMemberCount,
+      'currentStep': instance.currentStep,
       'steps': instance.steps,
       'advice': instance.advice,
       'daysSinceStart': instance.daysSinceStart,

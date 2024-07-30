@@ -11,14 +11,16 @@ import '../../../common/theme/farmus_theme_text_style.dart';
 class RoutineAdd extends ConsumerWidget {
   const RoutineAdd({
     super.key,
+    required this.myVeggieId,
     required this.vege,
     required this.vegeName,
     required this.routineDayMap,
   });
 
+  final int myVeggieId;
   final String vege;
   final String vegeName;
-  final Map<String, String> routineDayMap;
+  final Map<String, Map<String, dynamic>> routineDayMap;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -46,21 +48,22 @@ class RoutineAdd extends ConsumerWidget {
               Row(
                 children: [
                   Expanded(
-                      child: VegeRoutine(
-                    routine: entry.key,
-                    day: entry.value,
-                    isChecked: ref.watch(routineCheckProvider(entry.key)),
-                    onCheck: () {
-                      ref
-                          .read(routineCheckProvider(entry.key).notifier)
-                          .toggleRoutine();
-                    },
-                  )),
+                    child: VegeRoutine(
+                      routine: entry.key,
+                      day: entry.value['period'],
+                      isChecked: entry.value['check'],
+                      onCheck: () {
+                        ref
+                            .read(routineCheckProvider(entry.key).notifier)
+                            .toggleRoutine();
+                      },
+                    ),
+                  ),
                   IconButton(
                     onPressed: () {
                       ref.invalidate(routineEditProvider);
-                      showRoutineEditBottomSheet(
-                          context, entry.key, entry.value);
+                      showRoutineEditBottomSheet(context, myVeggieId, entry.key,
+                          entry.value['period']);
                     },
                     icon: SvgPicture.asset('assets/image/ic_more_vertical.svg'),
                   )
@@ -72,7 +75,7 @@ class RoutineAdd extends ConsumerWidget {
             child: RoutineAddButton(
               onPressed: () {
                 ref.invalidate(routineCreateProvider);
-                showRoutineAddBottomSheet(context);
+                showRoutineAddBottomSheet(context, myVeggieId);
               },
             ),
           ),
