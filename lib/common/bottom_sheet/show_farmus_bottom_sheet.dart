@@ -1,16 +1,19 @@
 import 'package:farmus/common/bottom_sheet/primary_action_sheet.dart';
 import 'package:farmus/common/dialog/check_dialog.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
+import 'package:farmus/view/farmclub_open/component/farmclub_open_bottom_sheet_content.dart';
 import 'package:farmus/view/farmclub_sign_up/component/farmclub_sign_up_bottom_sheet_content.dart';
 import 'package:farmus/view/routine/component/routine_bottom_sheet_content.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:path/path.dart';
 
 import '../../view/farmclub/component/farmclub_change_bottom_sheet_content.dart';
 import '../../view/farmclub/component/farmclub_exit_bottom_sheet_content.dart';
 import '../../view/main/main_screen.dart';
+import '../../view/my_setting/component/farmclub_quit_bottom_sheet_content.dart';
 import '../../view/sign_in/sign_in_screen.dart';
 import '../theme/farmus_theme_color.dart';
 
@@ -119,88 +122,10 @@ void showLogoutActionSheet(BuildContext context) {
 
 void showQuitActionSheet(BuildContext context) {
   showCupertinoModalPopup(
-    context: context,
-    builder: (BuildContext context) => PrimaryActionSheet(
-      message: "팜어스를 탈퇴하시겠어요?",
-      messagePadding: const EdgeInsets.symmetric(vertical: 8),
-      actions: <CupertinoActionSheetAction>[
-        CupertinoActionSheetAction(
-          onPressed: () {},
-          child: Align(
-            alignment: Alignment.center,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 2.0),
-                  child: SvgPicture.asset(
-                    'assets/image/ic_alert_circle.svg',
-                  ),
-                ),
-                const SizedBox(width: 8.0),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      '지금까지의 홈파밍 기록이 모두 사라져요',
-                      style: FarmusThemeTextStyle.redMedium15,
-                    ),
-                    Center(
-                      child: RichText(
-                        text: const TextSpan(
-                          children: [
-                            TextSpan(
-                              text:
-                                  '\n\n채소/팜클럽 히스토리가 모두 사라져요\n\n미션/루틴을 체크할 수 없어요\n\n성장일기가 모두 사라져요\n',
-                              style: FarmusThemeTextStyle.gray2Medium13,
-                              children: [],
-                            ),
-                          ],
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
-      cancelButton: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          CupertinoActionSheetAction(
-            child: const Text(
-              "취소",
-              style: FarmusThemeTextStyle.darkMedium15,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-          const SizedBox(
-            height: 50,
-            child: VerticalDivider(
-              color: FarmusThemeColor.gray4,
-            ),
-          ),
-          CupertinoActionSheetAction(
-            child: const Text(
-              "탈퇴하기",
-              style: FarmusThemeTextStyle.darkMedium15,
-            ),
-            onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const SignInScreen()),
-              );
-            },
-          ),
-        ],
-      ),
-    ),
+      context: context,
+      builder: (BuildContext context) {
+        return const FarmclubQuitBottomSheetContent();
+      }
   );
 }
 
@@ -228,58 +153,9 @@ void showFarmclubChangeBottomSheet(BuildContext context) {
 
 void showAllVeggieSignedActionSheet(BuildContext context, String text) {
   showCupertinoModalPopup(
-    context: context,
-    builder: (BuildContext context) => PrimaryActionSheet(
-      message: "팜클럽을 개설할 수 없어요",
-      messagePadding: const EdgeInsets.symmetric(vertical: 8),
-      actions: <CupertinoActionSheetAction>[
-        CupertinoActionSheetAction(
-          onPressed: () {},
-          child: Align(
-            alignment: Alignment.center,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                  child: SvgPicture.asset(
-                    'assets/image/ic_alert_circle.svg',
-                  ),
-                ),
-                const SizedBox(height: 14.0),
-                Text(
-                  text,
-                  style: FarmusThemeTextStyle.redMedium15,
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 14.0),
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 41.0),
-                  child: Text(
-                    '새 채소를 등록해 팜클럽을 개설해보세요!',
-                    style: FarmusThemeTextStyle.gray2Medium14,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
-      cancelButton: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          CupertinoActionSheetAction(
-            child: const Text(
-              "확인",
-              style: FarmusThemeTextStyle.darkMedium15,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ],
-      ),
-    ),
+      context: context,
+      builder: (BuildContext context) {
+        return FarmclubOpenBottomSheetContent(text: text);
+      }
   );
 }
