@@ -21,6 +21,7 @@ class HomeMyVege extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var isFarmclub = profile.step != -1;
+    var stepCount = isFarmclub ? profile.step : 0;
 
     return GestureDetector(
       onTap: () {
@@ -106,18 +107,28 @@ class HomeMyVege extends ConsumerWidget {
                       ),
                       const SizedBox(height: 10),
                       if (isFarmclub)
-                        Row(
-                          children: List.generate(5, (index) {
-                            return Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 1.0),
-                              child: MyVegeStep(
-                                color: index < profile.step
-                                    ? FarmusThemeColor.green1
-                                    : FarmusThemeColor.gray3,
-                              ),
+                        LayoutBuilder(
+                          builder: (context, constraints) {
+                            final availableWidth = constraints.maxWidth;
+                            final stepWidth =
+                                (availableWidth - (stepCount) * 2 - 16) /
+                                    stepCount;
+
+                            return Row(
+                              children: List.generate(stepCount, (index) {
+                                return Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 1.0),
+                                  child: MyVegeStep(
+                                    width: stepWidth,
+                                    color: index < profile.step
+                                        ? FarmusThemeColor.green1
+                                        : FarmusThemeColor.gray3,
+                                  ),
+                                );
+                              }),
                             );
-                          }),
+                          },
                         ),
                     ],
                   ),
