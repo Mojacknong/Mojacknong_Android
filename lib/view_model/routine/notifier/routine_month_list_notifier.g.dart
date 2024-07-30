@@ -1,27 +1,28 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'routine_list_notifier.dart';
+part of 'routine_month_list_notifier.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$routineListModelHash() => r'2354f51329aecf9de27c529b4f51f863fa121f5d';
+String _$routineMonthListModelHash() =>
+    r'428e8ddc786e245593559bf9a695a3def5791f0e';
 
-/// See also [routineListModel].
-@ProviderFor(routineListModel)
-final routineListModelProvider =
-    AutoDisposeFutureProvider<List<RoutineDateListModel>>.internal(
-  routineListModel,
-  name: r'routineListModelProvider',
+/// See also [routineMonthListModel].
+@ProviderFor(routineMonthListModel)
+final routineMonthListModelProvider =
+    AutoDisposeFutureProvider<RoutineMonthListModel>.internal(
+  routineMonthListModel,
+  name: r'routineMonthListModelProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$routineListModelHash,
+      : _$routineMonthListModelHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef RoutineListModelRef
-    = AutoDisposeFutureProviderRef<List<RoutineDateListModel>>;
+typedef RoutineMonthListModelRef
+    = AutoDisposeFutureProviderRef<RoutineMonthListModel>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
