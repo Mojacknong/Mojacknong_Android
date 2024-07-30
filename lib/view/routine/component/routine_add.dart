@@ -50,13 +50,13 @@ class RoutineAdd extends ConsumerWidget {
                   Expanded(
                     child: VegeRoutine(
                       routine: entry.key,
-                      day: entry.value['period'].toString(),
                       isChecked: entry.value['complete'],
                       onCheck: () {
                         ref
                             .read(routineCheckProvider(entry.key).notifier)
                             .toggleRoutine();
                       },
+                      day: entry.value['period'],
                     ),
                   ),
                   IconButton(
@@ -74,7 +74,6 @@ class RoutineAdd extends ConsumerWidget {
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: RoutineAddButton(
               onPressed: () {
-                ref.invalidate(routineCreateProvider);
                 showRoutineAddBottomSheet(context, myVeggieId);
               },
             ),

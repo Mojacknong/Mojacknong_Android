@@ -11,12 +11,12 @@ class VegeRoutine extends ConsumerWidget {
   const VegeRoutine(
       {super.key,
       required this.routine,
-      required this.day,
+      this.day,
       required this.isChecked,
       this.onCheck});
 
   final String routine;
-  final String day;
+  final int? day;
   final bool isChecked;
   final Function()? onCheck;
 

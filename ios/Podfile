@@ -31,8 +31,8 @@ target 'Runner' do
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 
-  pod 'Firebase/Auth', '10.27.0'
-  pod 'Firebase/CoreOnly', '10.27.0'
+  pod 'Firebase/Auth', '10.29.0'
+  pod 'Firebase/CoreOnly', '10.29.0'
 
   target 'RunnerTests' do
     inherit! :search_paths

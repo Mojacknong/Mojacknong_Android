@@ -66,7 +66,7 @@ class HomeVegeRoutine extends ConsumerWidget {
                         children: [
                           VegeRoutine(
                             routine: routineInfo.content,
-                            day: routineInfo.period.toString(),
+                            day: routineInfo.period,
                             isChecked: routineInfo.complete,
                             onCheck: () {},
                           ),

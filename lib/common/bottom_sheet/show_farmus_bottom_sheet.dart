@@ -29,7 +29,6 @@ void showRoutineAddBottomSheet(
       return RoutineBottomSheetContent(
         myVeggieId: myVeggieId,
         routine: '',
-        day: 0,
         isCreate: true,
       );
     },

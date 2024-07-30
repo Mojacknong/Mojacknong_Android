@@ -69,9 +69,9 @@ class VegeInfoScreen extends ConsumerWidget {
             data: (profile) {
               final DateTime createdVeggieDate =
                   parseDate(profile.createdVeggie);
-
               final myVeggieAddData =
                   ref.watch(myVeggieAddNotifierProvider).asData;
+
               return Column(
                 children: [
                   Expanded(

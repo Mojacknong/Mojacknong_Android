@@ -5,16 +5,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DigitsTextFormField extends ConsumerWidget {
   const DigitsTextFormField(
-      {super.key, required this.initialValue, this.readOnly, this.onChanged});
+      {super.key, this.initialValue, this.readOnly, this.onChanged});
 
-  final String initialValue;
+  final String? initialValue;
   final bool? readOnly;
   final ValueChanged<String>? onChanged;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return PrimaryTextFormField(
-      initialValue: initialValue != '' ? initialValue : null,
+      initialValue: initialValue != 'null' ? initialValue : '',
       maxLength: 2,
       maxLines: 1,
       minLines: 1,
