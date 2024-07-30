@@ -59,8 +59,8 @@ class HomeScreen extends ConsumerWidget {
                           HomeMyVegeNone(recommendVeggieInfo: value),
                       error: (error, stack) => const Text('추천 채소 불러오기 실패'),
                       loading: () => const CircularProgressIndicator(),
-                    ),
-                  if (veggieListData.isNotEmpty) ...[
+                    )
+                  else ...[
                     const HomeMyVegeList(),
                     const SizedBox(height: 8),
                     if (selectedVegeId != null)

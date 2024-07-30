@@ -130,7 +130,7 @@ class VegeInfoScreen extends ConsumerWidget {
                             ),
                           ),
                           FarmusCalender(
-                            createdVeggie: createdVeggieDate,
+                            selectedDay: createdVeggieDate,
                           ),
                           const SizedBox(
                             height: 32.0,

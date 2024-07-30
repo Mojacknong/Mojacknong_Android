@@ -7,11 +7,11 @@ import 'theme/farmus_theme_color.dart';
 import 'theme/farmus_theme_text_style.dart';
 
 class FarmusCalender extends ConsumerStatefulWidget {
-  FarmusCalender({super.key, DateTime? lastDay, this.createdVeggie})
+  FarmusCalender({super.key, DateTime? lastDay, this.selectedDay})
       : lastDay = lastDay ?? DateTime.now();
 
   final DateTime? lastDay;
-  final DateTime? createdVeggie;
+  final DateTime? selectedDay;
 
   @override
   ConsumerState createState() => _FarmusCalenderState();
@@ -24,8 +24,8 @@ class _FarmusCalenderState extends ConsumerState<FarmusCalender> {
   @override
   void initState() {
     super.initState();
-    _selectedDay = widget.createdVeggie;
-    _focusedDay = widget.createdVeggie ?? DateTime.now();
+    _selectedDay = widget.selectedDay;
+    _focusedDay = widget.selectedDay ?? DateTime.now();
   }
 
   @override

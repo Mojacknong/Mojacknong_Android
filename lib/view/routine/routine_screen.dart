@@ -12,7 +12,7 @@ class RoutineScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final AsyncValue<List<RoutineListModel>> routineList =
-    ref.watch(routineListModelProvider);
+        ref.watch(routineListModelProvider);
 
     return Scaffold(
       appBar: const BackLeftTitleAppBar(
@@ -23,7 +23,9 @@ class RoutineScreen extends ConsumerWidget {
           data: (routine) {
             return Column(
               children: [
-                FarmusCalender(),
+                FarmusCalender(
+                  selectedDay: DateTime.now(),
+                ),
                 const SizedBox(
                   height: 16.0,
                 ),

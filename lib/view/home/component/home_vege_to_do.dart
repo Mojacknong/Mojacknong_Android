@@ -67,14 +67,6 @@ class HomeVegeRoutine extends ConsumerWidget {
                           VegeRoutine(
                             routine: routineInfo.content,
                             day: routineInfo.period.toString(),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const RoutineScreen()),
-                              );
-                            },
                             isChecked: routineInfo.complete,
                             onCheck: () {},
                           ),
