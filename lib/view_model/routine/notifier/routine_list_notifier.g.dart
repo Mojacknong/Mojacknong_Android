@@ -6,7 +6,7 @@ part of 'routine_list_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$routineListModelHash() => r'fbb06c940fa075c11aa0f3e45af95dcb84322c7c';
+String _$routineListModelHash() => r'be1d69e6be9414de402382750ef0bcbe2076b9da';
 
 /// See also [routineListModel].
 @ProviderFor(routineListModel)

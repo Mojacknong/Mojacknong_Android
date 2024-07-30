@@ -6,7 +6,7 @@ part 'my_veggie_routine_info_model.g.dart';
 @freezed
 class MyVeggieRoutineInfoModel with _$MyVeggieRoutineInfoModel {
   const factory MyVeggieRoutineInfoModel({
-    required bool check,
+    required bool complete,
     required String content,
     required int period,
     required int routineId,

@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'home_motivation.dart';
 import 'home_sub_title.dart';
-import 'home_to_do.dart';
 import 'none/home_my_vege_none.dart';
 import 'none/home_none_content.dart';
 
@@ -25,7 +24,6 @@ class HomeNoneVege extends ConsumerWidget {
           height: 16,
         ),
         HomeSubTitle(title: "오늘 할 일"),
-        HomeToDo(),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 16.0),
           child: HomeNoneContent(text: "아직 루틴을 등록하지 않았어요"),

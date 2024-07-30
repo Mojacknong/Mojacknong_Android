@@ -32,7 +32,7 @@ class RoutineScreen extends ConsumerWidget {
                     for (var item in routineItem.myVeggieRoutineList)
                       item.content: {
                         'period': item.period.toString(),
-                        'check': item.check
+                        'check': item.complete
                       }
                   };
                   return RoutineAdd(

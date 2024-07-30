@@ -9,7 +9,7 @@ part of 'my_veggie_routine_info_model.dart';
 _$MyVeggieRoutineInfoModelImpl _$$MyVeggieRoutineInfoModelImplFromJson(
         Map<String, dynamic> json) =>
     _$MyVeggieRoutineInfoModelImpl(
-      check: json['check'] as bool,
+      complete: json['complete'] as bool,
       content: json['content'] as String,
       period: (json['period'] as num).toInt(),
       routineId: (json['routineId'] as num).toInt(),
@@ -18,7 +18,7 @@ _$MyVeggieRoutineInfoModelImpl _$$MyVeggieRoutineInfoModelImplFromJson(
 Map<String, dynamic> _$$MyVeggieRoutineInfoModelImplToJson(
         _$MyVeggieRoutineInfoModelImpl instance) =>
     <String, dynamic>{
-      'check': instance.check,
+      'complete': instance.complete,
       'content': instance.content,
       'period': instance.period,
       'routineId': instance.routineId,

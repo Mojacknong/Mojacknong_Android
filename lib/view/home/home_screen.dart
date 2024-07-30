@@ -2,9 +2,7 @@ import 'package:farmus/model/home/my_veggie_list_model.dart';
 import 'package:farmus/view/home/component/home_motivation.dart';
 import 'package:farmus/view/home/component/home_my_vege_list.dart';
 import 'package:farmus/view/home/component/home_sub_title.dart';
-import 'package:farmus/view/home/component/home_to_do.dart';
 import 'package:farmus/view/home/component/home_vege_to_do.dart';
-import 'package:farmus/view/main/main_screen.dart';
 import 'package:farmus/view/vege_diary_write/vege_diary_write_screen.dart';
 import 'package:farmus/view_model/home/notifier/veggie_diary_one_notifier.dart';
 import 'package:farmus/view_model/my_vege/notifier/my_veggie_list.dart';
@@ -16,7 +14,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../common/app_bar/home_app_bar.dart';
 import '../../model/veggie_info/recommend_veggie_model.dart';
 import '../../view_model/home/home_provider.dart';
-import '../routine/routine_screen.dart';
 import 'component/home_my_vege.dart';
 import 'component/home_vege_diary.dart';
 import 'component/none/home_my_vege_none.dart';
@@ -33,8 +30,6 @@ class HomeScreen extends ConsumerWidget {
         ref.watch(myVeggieListModelProvider);
     final AsyncValue<List<RecommendVeggieModel>> recommend =
         ref.watch(recommendVeggieModelProvider);
-
-    String toDo = ref.watch(homeToDoProvider);
 
     return Scaffold(
       appBar: veggieList.when(
@@ -90,40 +85,11 @@ class HomeScreen extends ConsumerWidget {
                     ),
                   ],
                   const SizedBox(height: 8),
-                  const HomeSubTitle(title: "오늘 할 일"),
-                  const HomeToDo(),
+                  const HomeSubTitle(title: "루틴"),
                   const SizedBox(
                     height: 8.0,
                   ),
-                  if (veggieListData.isNotEmpty)
-                    const HomeVegeTodo()
-                  else
-                    toDo == "routine"
-                        ? HomeNoneContainer(
-                            text: '아직 루틴을 등록하지 않았어요',
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const RoutineScreen()),
-                              );
-                            },
-                          )
-                        : HomeNoneContainer(
-                            text: '아직 팜클럽에 가입하지 않았어요',
-                            onTap: () {
-                              Navigator.pushAndRemoveUntil(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return const MainScreen(selectedIndex: 2);
-                                  },
-                                ),
-                                (route) => false,
-                              );
-                            },
-                          ),
+                  const HomeVegeRoutine(),
                   const SizedBox(height: 24),
                   const HomeSubTitle(title: "성장 일기"),
                   if (veggieListData.isNotEmpty)

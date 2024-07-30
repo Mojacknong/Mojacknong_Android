@@ -64,8 +64,6 @@ class ApiClient {
     if (response.statusCode == 200) {
       return response;
     } else {
-      print("Response status: ${response.statusCode}");
-      print("Response body: ${response.body}");
       throw Exception('Failed to perform $method request to $endpoint');
     }
   }
