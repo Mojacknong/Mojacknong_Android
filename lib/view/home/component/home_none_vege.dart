@@ -11,25 +11,25 @@ class HomeNoneVege extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        HomeMyVegeNone(
+        const HomeMyVegeNone(
           recommendVeggieInfo: [],
         ),
-        HomeMotivation(
+        const HomeMotivation(
           motivation: '텃밭에서 식탁까지 팜어스와 늘 함께해요!',
         ),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
-        HomeSubTitle(title: "오늘 할 일"),
-        Padding(
+        HomeSubTitle(title: "루틴", onTap: () {}),
+        const Padding(
           padding: EdgeInsets.symmetric(vertical: 16.0),
           child: HomeNoneContent(text: "아직 루틴을 등록하지 않았어요"),
         ),
-        HomeSubTitle(title: "성장 일기"),
-        HomeNoneContent(text: "아직 작성한 일기가 없어요"),
+        HomeSubTitle(title: "성장 일기", onTap: () {}),
+        const HomeNoneContent(text: "아직 작성한 일기가 없어요"),
       ],
     );
   }

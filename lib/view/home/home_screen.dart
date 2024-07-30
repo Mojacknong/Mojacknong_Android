@@ -3,6 +3,8 @@ import 'package:farmus/view/home/component/home_motivation.dart';
 import 'package:farmus/view/home/component/home_my_vege_list.dart';
 import 'package:farmus/view/home/component/home_sub_title.dart';
 import 'package:farmus/view/home/component/home_vege_to_do.dart';
+import 'package:farmus/view/routine/routine_screen.dart';
+import 'package:farmus/view/vege_diary/vege_diary_screen.dart';
 import 'package:farmus/view/vege_diary_write/vege_diary_write_screen.dart';
 import 'package:farmus/view_model/home/notifier/veggie_diary_one_notifier.dart';
 import 'package:farmus/view_model/my_vege/notifier/my_veggie_list.dart';
@@ -84,14 +86,31 @@ class HomeScreen extends ConsumerWidget {
                       motivation: "텃밭에서 식탁까지 팜어스와 늘 함께해요!",
                     ),
                   ],
-                  const SizedBox(height: 8),
-                  const HomeSubTitle(title: "루틴"),
-                  const SizedBox(
-                    height: 8.0,
+                  const SizedBox(height: 16),
+                  HomeSubTitle(
+                    title: "루틴",
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (builder) => const RoutineScreen(),
+                        ),
+                      );
+                    },
                   ),
                   const HomeVegeRoutine(),
                   const SizedBox(height: 24),
-                  const HomeSubTitle(title: "성장 일기"),
+                  HomeSubTitle(
+                    title: "성장 일기",
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (builder) => const VegeDiaryScreen(),
+                        ),
+                      );
+                    },
+                  ),
                   if (veggieListData.isNotEmpty)
                     if (selectedVegeId != null)
                       ref
