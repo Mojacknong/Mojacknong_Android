@@ -16,7 +16,7 @@ class FarmclubQuitBottomSheetContent extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 8),
         child: Text(
           "팜어스를 탈퇴하시겠어요?",
-          style: FarmusThemeTextStyle.redMedium15,
+          style: FarmusThemeTextStyle.darkMedium15,
         ),
       ),
       actions: <CupertinoActionSheetAction>[

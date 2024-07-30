@@ -14,6 +14,7 @@ import '../../view/farmclub/component/farmclub_change_bottom_sheet_content.dart'
 import '../../view/farmclub/component/farmclub_exit_bottom_sheet_content.dart';
 import '../../view/main/main_screen.dart';
 import '../../view/my_setting/component/farmclub_quit_bottom_sheet_content.dart';
+import '../../view/my_setting/component/farmus_logout_bottom_sheet.dart';
 import '../../view/sign_in/sign_in_screen.dart';
 import '../theme/farmus_theme_color.dart';
 
@@ -90,33 +91,10 @@ void showFarmclubSignupBottomSheet(
 
 void showLogoutActionSheet(BuildContext context) {
   showCupertinoModalPopup(
-    context: context,
-    builder: (BuildContext context) => PrimaryActionSheet(
-      title: "로그아웃 하시겠어요?",
-      actions: <CupertinoActionSheetAction>[
-        CupertinoActionSheetAction(
-          onPressed: () {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const SignInScreen()),
-            );
-          },
-          child: const Text(
-            "로그아웃 하기",
-            style: FarmusThemeTextStyle.redMedium15,
-          ),
-        ),
-        CupertinoActionSheetAction(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text(
-            "취소",
-            style: FarmusThemeTextStyle.dark2Medium15,
-          ),
-        ),
-      ],
-    ),
+      context: context,
+      builder: (BuildContext context) {
+        return const FarmusLogoutBottomSheetContent();
+      }
   );
 }
 
