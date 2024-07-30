@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:path/path.dart';
-
 import '../../view/farmclub/component/farmclub_change_bottom_sheet_content.dart';
 import '../../view/farmclub/component/farmclub_exit_bottom_sheet_content.dart';
 import '../../view/main/main_screen.dart';

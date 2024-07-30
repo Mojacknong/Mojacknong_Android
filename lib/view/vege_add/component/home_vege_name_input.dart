@@ -3,7 +3,7 @@ import 'package:farmus/view_model/home/notifier/my_veggie_add_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomeVegeNameInput extends ConsumerWidget {
+class HomeVegeNameInput extends ConsumerStatefulWidget {
   const HomeVegeNameInput({
     super.key,
     this.maxLength,
@@ -14,20 +14,48 @@ class HomeVegeNameInput extends ConsumerWidget {
   final int? maxLength;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final myVeggieAddNotifier = ref.watch(myVeggieAddNotifierProvider).value;
-    final name = myVeggieAddNotifier?.name ?? '';
+  _HomeVegeNameInputState createState() => _HomeVegeNameInputState();
+}
 
-    return PrimaryTextFormField(
-      initialValue: name,
-      maxLength: maxLength ?? 8,
-      minLines: 1,
-      maxLines: 1,
-      hintText: hintText ?? "쑥쑥이",
-      onChanged: (value) {
-        ref.read(myVeggieAddNotifierProvider.notifier).updateNickname(value);
-      },
-      suffix: Text("${name.length} /${maxLength ?? 8}"),
-    );
+class _HomeVegeNameInputState extends ConsumerState<HomeVegeNameInput> {
+  late TextEditingController _controller;
+  int currentLength = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController(text: widget.hintText ?? '');
+    currentLength = widget.hintText?.length ??
+        ref.read(myVeggieAddNotifierProvider).value?.name.length ??
+        0;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer(builder: (context, ref, child) {
+      final myVeggieAddNotifier =
+          ref.watch(myVeggieAddNotifierProvider.notifier);
+
+      return PrimaryTextFormField(
+        controller: _controller,
+        maxLength: widget.maxLength ?? 8,
+        minLines: 1,
+        maxLines: 1,
+        hintText: widget.hintText ?? "쑥쑥이",
+        onChanged: (value) {
+          myVeggieAddNotifier.updateNickname(value);
+          setState(() {
+            currentLength = value.length;
+          });
+        },
+        suffix: Text("$currentLength / ${widget.maxLength ?? 8}"),
+      );
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 }

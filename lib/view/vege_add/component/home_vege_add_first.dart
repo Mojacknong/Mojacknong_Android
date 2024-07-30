@@ -8,7 +8,7 @@ import '../../home/component/home_add_sub_title.dart';
 import '../../home/component/none/home_vege_info.dart';
 
 class HomeVegeAddFirst extends ConsumerWidget {
-  const HomeVegeAddFirst({Key? key}) : super(key: key);
+  const HomeVegeAddFirst({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

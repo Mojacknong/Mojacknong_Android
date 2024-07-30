@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'my_veggie_info.dart';
+part of 'my_veggie_info_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-MyVeggieInfo _$MyVeggieInfoFromJson(Map<String, dynamic> json) {
-  return _MyVeggieInfo.fromJson(json);
+MyVeggieInfoModel _$MyVeggieInfoModelFromJson(Map<String, dynamic> json) {
+  return _MyVeggieInfoModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$MyVeggieInfo {
+mixin _$MyVeggieInfoModel {
   String get nickname => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
   String get veggieName => throw _privateConstructorUsedError;
@@ -29,15 +29,15 @@ mixin _$MyVeggieInfo {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $MyVeggieInfoCopyWith<MyVeggieInfo> get copyWith =>
+  $MyVeggieInfoModelCopyWith<MyVeggieInfoModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MyVeggieInfoCopyWith<$Res> {
-  factory $MyVeggieInfoCopyWith(
-          MyVeggieInfo value, $Res Function(MyVeggieInfo) then) =
-      _$MyVeggieInfoCopyWithImpl<$Res, MyVeggieInfo>;
+abstract class $MyVeggieInfoModelCopyWith<$Res> {
+  factory $MyVeggieInfoModelCopyWith(
+          MyVeggieInfoModel value, $Res Function(MyVeggieInfoModel) then) =
+      _$MyVeggieInfoModelCopyWithImpl<$Res, MyVeggieInfoModel>;
   @useResult
   $Res call(
       {String nickname,
@@ -49,9 +49,9 @@ abstract class $MyVeggieInfoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MyVeggieInfoCopyWithImpl<$Res, $Val extends MyVeggieInfo>
-    implements $MyVeggieInfoCopyWith<$Res> {
-  _$MyVeggieInfoCopyWithImpl(this._value, this._then);
+class _$MyVeggieInfoModelCopyWithImpl<$Res, $Val extends MyVeggieInfoModel>
+    implements $MyVeggieInfoModelCopyWith<$Res> {
+  _$MyVeggieInfoModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -98,11 +98,11 @@ class _$MyVeggieInfoCopyWithImpl<$Res, $Val extends MyVeggieInfo>
 }
 
 /// @nodoc
-abstract class _$$MyVeggieInfoImplCopyWith<$Res>
-    implements $MyVeggieInfoCopyWith<$Res> {
-  factory _$$MyVeggieInfoImplCopyWith(
-          _$MyVeggieInfoImpl value, $Res Function(_$MyVeggieInfoImpl) then) =
-      __$$MyVeggieInfoImplCopyWithImpl<$Res>;
+abstract class _$$MyVeggieInfoModelImplCopyWith<$Res>
+    implements $MyVeggieInfoModelCopyWith<$Res> {
+  factory _$$MyVeggieInfoModelImplCopyWith(_$MyVeggieInfoModelImpl value,
+          $Res Function(_$MyVeggieInfoModelImpl) then) =
+      __$$MyVeggieInfoModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -115,11 +115,11 @@ abstract class _$$MyVeggieInfoImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$MyVeggieInfoImplCopyWithImpl<$Res>
-    extends _$MyVeggieInfoCopyWithImpl<$Res, _$MyVeggieInfoImpl>
-    implements _$$MyVeggieInfoImplCopyWith<$Res> {
-  __$$MyVeggieInfoImplCopyWithImpl(
-      _$MyVeggieInfoImpl _value, $Res Function(_$MyVeggieInfoImpl) _then)
+class __$$MyVeggieInfoModelImplCopyWithImpl<$Res>
+    extends _$MyVeggieInfoModelCopyWithImpl<$Res, _$MyVeggieInfoModelImpl>
+    implements _$$MyVeggieInfoModelImplCopyWith<$Res> {
+  __$$MyVeggieInfoModelImplCopyWithImpl(_$MyVeggieInfoModelImpl _value,
+      $Res Function(_$MyVeggieInfoModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -132,7 +132,7 @@ class __$$MyVeggieInfoImplCopyWithImpl<$Res>
     Object? period = null,
     Object? myVeggieId = null,
   }) {
-    return _then(_$MyVeggieInfoImpl(
+    return _then(_$MyVeggieInfoModelImpl(
       nickname: null == nickname
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
@@ -163,8 +163,8 @@ class __$$MyVeggieInfoImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$MyVeggieInfoImpl implements _MyVeggieInfo {
-  const _$MyVeggieInfoImpl(
+class _$MyVeggieInfoModelImpl implements _MyVeggieInfoModel {
+  const _$MyVeggieInfoModelImpl(
       {required this.nickname,
       required this.image,
       required this.veggieName,
@@ -172,8 +172,8 @@ class _$MyVeggieInfoImpl implements _MyVeggieInfo {
       required this.period,
       required this.myVeggieId});
 
-  factory _$MyVeggieInfoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MyVeggieInfoImplFromJson(json);
+  factory _$MyVeggieInfoModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MyVeggieInfoModelImplFromJson(json);
 
   @override
   final String nickname;
@@ -190,14 +190,14 @@ class _$MyVeggieInfoImpl implements _MyVeggieInfo {
 
   @override
   String toString() {
-    return 'MyVeggieInfo(nickname: $nickname, image: $image, veggieName: $veggieName, birthDay: $birthDay, period: $period, myVeggieId: $myVeggieId)';
+    return 'MyVeggieInfoModel(nickname: $nickname, image: $image, veggieName: $veggieName, birthDay: $birthDay, period: $period, myVeggieId: $myVeggieId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MyVeggieInfoImpl &&
+            other is _$MyVeggieInfoModelImpl &&
             (identical(other.nickname, nickname) ||
                 other.nickname == nickname) &&
             (identical(other.image, image) || other.image == image) &&
@@ -218,28 +218,29 @@ class _$MyVeggieInfoImpl implements _MyVeggieInfo {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$MyVeggieInfoImplCopyWith<_$MyVeggieInfoImpl> get copyWith =>
-      __$$MyVeggieInfoImplCopyWithImpl<_$MyVeggieInfoImpl>(this, _$identity);
+  _$$MyVeggieInfoModelImplCopyWith<_$MyVeggieInfoModelImpl> get copyWith =>
+      __$$MyVeggieInfoModelImplCopyWithImpl<_$MyVeggieInfoModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$MyVeggieInfoImplToJson(
+    return _$$MyVeggieInfoModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _MyVeggieInfo implements MyVeggieInfo {
-  const factory _MyVeggieInfo(
+abstract class _MyVeggieInfoModel implements MyVeggieInfoModel {
+  const factory _MyVeggieInfoModel(
       {required final String nickname,
       required final String image,
       required final String veggieName,
       required final String birthDay,
       required final int period,
-      required final int myVeggieId}) = _$MyVeggieInfoImpl;
+      required final int myVeggieId}) = _$MyVeggieInfoModelImpl;
 
-  factory _MyVeggieInfo.fromJson(Map<String, dynamic> json) =
-      _$MyVeggieInfoImpl.fromJson;
+  factory _MyVeggieInfoModel.fromJson(Map<String, dynamic> json) =
+      _$MyVeggieInfoModelImpl.fromJson;
 
   @override
   String get nickname;
@@ -255,6 +256,6 @@ abstract class _MyVeggieInfo implements MyVeggieInfo {
   int get myVeggieId;
   @override
   @JsonKey(ignore: true)
-  _$$MyVeggieInfoImplCopyWith<_$MyVeggieInfoImpl> get copyWith =>
+  _$$MyVeggieInfoModelImplCopyWith<_$MyVeggieInfoModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

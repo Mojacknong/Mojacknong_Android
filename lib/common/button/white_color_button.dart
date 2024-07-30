@@ -31,7 +31,7 @@ class WhiteColorButton extends ConsumerWidget {
         backgroundColor: FarmusThemeColor.white,
         borderColor: FarmusThemeColor.gray3,
         fontSize: 15,
-        fontPadding: fontPadding,
+        fontPadding: fontPadding ?? 16.0,
       ),
     );
   }
