@@ -1,22 +1,22 @@
 import 'dart:convert';
 
-import 'package:farmus/model/routine/routine_list_model.dart';
+import 'package:farmus/model/routine/routine_date_list_model.dart';
 import 'package:farmus/repository/routine_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'routine_list_notifier.g.dart';
 
 @riverpod
-Future<List<RoutineListModel>> routineListModel(RoutineListModelRef ref) async {
+Future<List<RoutineDateListModel>> routineListModel(RoutineListModelRef ref) async {
   const date = '2024-07-31';
-  final response = await RoutineRepository.routineList(date);
+  final response = await RoutineRepository.routineDateList(date);
 
 
   final json = jsonDecode(response);
   final List<dynamic> dataList = json['data'];
 
-  final List<RoutineListModel> routineList =
-      dataList.map((item) => RoutineListModel.fromJson(item)).toList();
+  final List<RoutineDateListModel> routineList =
+      dataList.map((item) => RoutineDateListModel.fromJson(item)).toList();
 
   return routineList;
 }

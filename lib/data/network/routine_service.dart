@@ -6,9 +6,14 @@ import 'base_api_services.dart';
 class RoutineService {
   final ApiClient apiClient = ApiClient();
 
-  Future<String> routineList(String date) async {
+  Future<String> routineDateList(String date) async {
     final url = '/api/my-veggie/routine/date/$date';
-    return _fetchData(url, '내 채소 루틴 리스트 조회 실패');
+    return _fetchData(url, '날짜별 채소 루틴 리스트 조회 실패');
+  }
+
+  Future<String> routineMonthList(String month) async {
+    final url = '/api/my-veggie/routine/date/$month';
+    return _fetchData(url, '월별 채소 루틴 리스트 조회 실패');
   }
 
   Future<String> myVeggieRoutineInfo(int myVeggieId) async {
