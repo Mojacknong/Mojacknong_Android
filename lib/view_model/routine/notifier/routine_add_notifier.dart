@@ -11,7 +11,11 @@ class RoutineAddNotifier extends _$RoutineAddNotifier {
   @override
   Future<RoutineModel> build() async {
     return RoutineModel(
-        myVeggieId: -1, routineName: '', period: -1, isComplete: false);
+        myVeggieId: -1,
+        routineName: '',
+        period: -1,
+        isSwitch: true,
+        isComplete: false);
   }
 
   void updateName(String name) {
@@ -21,7 +25,10 @@ class RoutineAddNotifier extends _$RoutineAddNotifier {
         myVeggieId: state.value!.myVeggieId,
         routineName: name,
         period: period,
-        isComplete: name.isNotEmpty && period != null && period != -1,
+        isSwitch: state.value!.isSwitch,
+        isComplete: state.value!.isSwitch
+            ? name.isNotEmpty && period != null && period != -1
+            : name.isNotEmpty,
       ),
     );
   }
@@ -33,7 +40,29 @@ class RoutineAddNotifier extends _$RoutineAddNotifier {
         myVeggieId: state.value!.myVeggieId,
         routineName: name,
         period: period ?? -1,
-        isComplete: name != null && name.isNotEmpty && period != null,
+        isSwitch: state.value!.isSwitch,
+        isComplete: state.value!.isSwitch
+            ? name != null && name.isNotEmpty && period != null
+            : name != null && name.isNotEmpty,
+      ),
+    );
+  }
+
+  void toggle() {
+    final currentState = state.value!;
+    final newIsSwitch = !currentState.isSwitch;
+
+    state = AsyncData(
+      RoutineModel(
+        myVeggieId: currentState.myVeggieId,
+        routineName: currentState.routineName,
+        period: newIsSwitch ? currentState.period : -1,
+        isSwitch: newIsSwitch,
+        isComplete: newIsSwitch
+            ? currentState.routineName!.isNotEmpty &&
+                currentState.period != null &&
+                currentState.period != -1
+            : currentState.routineName!.isNotEmpty,
       ),
     );
   }
@@ -43,6 +72,9 @@ class RoutineAddNotifier extends _$RoutineAddNotifier {
     String content,
     int period,
   ) async {
+    if (state.value!.isSwitch == false) {
+      period = 0;
+    }
     await RoutineRepository.routineAdd(myVeggieId, content, period);
 
     ref.invalidate(routineDateListModelProvider);

@@ -6,6 +6,7 @@ class RoutineEditNotifier extends StateNotifier<RoutineModel> {
       : super(RoutineModel(
           myVeggieId: 0,
           routineName: initName ?? '',
+          isSwitch: true,
           isComplete: initName!.isNotEmpty && initName != '' ? true : false,
         ));
 

@@ -30,9 +30,9 @@ class RoutineBottomSheetContent extends ConsumerWidget {
     final routineNotifier = ref.watch(routineAddNotifierProvider.notifier);
 
     var isComplete = routineInfo.value?.isComplete ?? false;
+    var isSwitch = routineInfo.value?.isSwitch ?? true;
 
     var routineName = ref.watch(routineEditProvider(routine)).routineName;
-    var isSwitch = ref.watch(routineCycleSwitchProvider);
 
     return Padding(
       padding:
@@ -96,8 +96,8 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                             SizedBox(
                                 width: 50,
                                 child: DigitsTextFormField(
-                                  initialValue: isSwitch ? '$day' : '',
-                                  readOnly: !isSwitch,
+                                  initialValue: isCreate ? '' : '$day',
+                                  readOnly: isCreate ? !isSwitch : false,
                                   onChanged: (value) {
                                     if (isCreate) {
                                       int? period = int.tryParse(value);
@@ -127,9 +127,7 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                       PrimarySwitch(
                         switchValue: isSwitch,
                         switchToggle: () {
-                          ref
-                              .read(routineCycleSwitchProvider.notifier)
-                              .toggle();
+                          routineNotifier.toggle();
                         },
                       ),
                     ],
