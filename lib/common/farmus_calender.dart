@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+import '../view_model/routine/routine_provider.dart';
 import 'theme/farmus_theme_color.dart';
 import 'theme/farmus_theme_text_style.dart';
 
@@ -51,8 +52,7 @@ class _FarmusCalenderState extends ConsumerState<FarmusCalender> {
 
   @override
   Widget build(BuildContext context) {
-    final notifier = ref.read(myVeggieAddNotifierProvider.notifier);
-
+    final myVeggieAddNotifier = ref.read(myVeggieAddNotifierProvider.notifier);
     final myVeggieAddState = ref.read(myVeggieAddNotifierProvider).value;
 
     if (myVeggieAddState?.date != null && myVeggieAddState!.date.isNotEmpty) {
@@ -76,7 +76,7 @@ class _FarmusCalenderState extends ConsumerState<FarmusCalender> {
           _selectedDay = selectedDate;
           _focusedDay = selectedDate;
         });
-        notifier.updateDateFormatted(selectedDate);
+        myVeggieAddNotifier.updateDateFormatted(selectedDate);
       }
     }
 
@@ -101,7 +101,8 @@ class _FarmusCalenderState extends ConsumerState<FarmusCalender> {
             setState(() {
               _selectedDay = selectedDay;
               _focusedDay = focusedDay;
-              notifier.updateDateFormatted(selectedDay);
+              myVeggieAddNotifier.updateDateFormatted(selectedDay);
+              ref.read(selectedDateProvider.notifier).state = selectedDay.toIso8601String().split('T').first;
             });
           }
         },

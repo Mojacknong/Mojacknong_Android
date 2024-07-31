@@ -47,6 +47,10 @@ class HomeVegeRoutine extends ConsumerWidget {
                   ),
                   Row(
                     children: [
+                      const Text(
+                        "오늘 ",
+                        style: FarmusThemeTextStyle.gray1Medium13,
+                      ),
                       Text(
                         "$toDoRoutineCount개",
                         style: FarmusThemeTextStyle.redSemiBold13,

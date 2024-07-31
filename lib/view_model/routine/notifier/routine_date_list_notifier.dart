@@ -7,10 +7,11 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'routine_date_list_notifier.g.dart';
 
 @riverpod
-Future<List<RoutineDateListModel>> routineDateListModel(RoutineDateListModelRef ref) async {
-  const date = '2024-07-31';
+Future<List<RoutineDateListModel>> routineDateListModel(
+  RoutineDateListModelRef ref,
+  String date,
+) async {
   final response = await RoutineRepository.routineDateList(date);
-
 
   final json = jsonDecode(response);
   final List<dynamic> dataList = json['data'];

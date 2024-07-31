@@ -21,3 +21,7 @@ final routineCycleSwitchProvider =
     StateNotifierProvider<RoutineCycleSwitchNotifier, bool>((ref) {
   return RoutineCycleSwitchNotifier();
 });
+
+final selectedDateProvider = StateProvider.autoDispose<String?>(
+    (ref) => DateTime.now().toIso8601String().split('T').first);
+final selectedMonthProvider = StateProvider.autoDispose<String?>((ref) => null);

@@ -5,6 +5,7 @@ import 'package:farmus/model/routine/routine_month_list_model.dart';
 import 'package:farmus/view/routine/component/routine_add.dart';
 import 'package:farmus/view_model/routine/notifier/routine_date_list_notifier.dart';
 import 'package:farmus/view_model/routine/notifier/routine_month_list_notifier.dart';
+import 'package:farmus/view_model/routine/routine_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -13,8 +14,13 @@ class RoutineScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final selectedDate = ref.watch(selectedDateProvider);
+    final selectedMonth = ref.watch(selectedMonthProvider);
+    final date =
+        selectedDate ?? DateTime.now().toIso8601String().split('T').first;
+
     final AsyncValue<List<RoutineDateListModel>> routineDateList =
-        ref.watch(routineDateListModelProvider);
+        ref.watch(routineDateListModelProvider(date));
     final AsyncValue<RoutineMonthListModel> routineMonthList =
         ref.watch(routineMonthListModelProvider);
 
@@ -35,7 +41,7 @@ class RoutineScreen extends ConsumerWidget {
                       }
 
                       return FarmusCalender(
-                        selectedDay: DateTime.now(),
+                        selectedDay: parseDate(date),
                         routineMonth: routineMonthDates,
                       );
                     },
@@ -72,4 +78,8 @@ class RoutineScreen extends ConsumerWidget {
       ),
     );
   }
+}
+
+DateTime parseDate(String date) {
+  return DateTime.parse(date);
 }

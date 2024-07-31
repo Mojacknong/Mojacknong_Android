@@ -9,7 +9,7 @@ import '../../../view_model/my_vege/notifier/my_veggie_list.dart';
 import '../../vege_add/home_vege_add_screen.dart';
 
 class HomeMyVegeList extends ConsumerWidget {
-  const HomeMyVegeList({Key? key}) : super(key: key);
+  const HomeMyVegeList({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
