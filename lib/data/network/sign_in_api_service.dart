@@ -38,6 +38,7 @@ class SignInApiServices {
         await storage.write(key: "accessToken", value: farmusUser.accessToken);
         await storage.write(
             key: "refreshToken", value: farmusUser.refreshToken);
+        await storage.write(key: "early", value: farmusUser.early.toString());
         return farmusUser;
       }
     } catch (error) {
@@ -71,6 +72,7 @@ class SignInApiServices {
         await storage.write(key: "accessToken", value: farmusUser.accessToken);
         await storage.write(
             key: "refreshToken", value: farmusUser.refreshToken);
+        await storage.write(key: "early", value: farmusUser.early.toString());
         return farmusUser;
       }
     } catch (error) {
