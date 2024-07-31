@@ -40,7 +40,7 @@ class RoutineScreen extends ConsumerWidget {
                       );
                     },
                     error: (error, stackTrace) => Center(
-                          child: Text(''),
+                          child: Text('Error: $error'),
                         ),
                     loading: () => const CircularProgressIndicator()),
                 const SizedBox(
@@ -55,8 +55,7 @@ class RoutineScreen extends ConsumerWidget {
                       }
                   };
                   return RoutineAdd(
-                    // TODO 루틴 추가 API 수정
-                    myVeggieId: 1,
+                    myVeggieId: routineItem.myVeggieId,
                     vege: routineItem.veggieName,
                     vegeName: routineItem.nickname,
                     routineDayMap: routineDayMap,

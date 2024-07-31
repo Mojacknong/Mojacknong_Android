@@ -22,6 +22,7 @@ RoutineDateListModel _$RoutineDateListModelFromJson(Map<String, dynamic> json) {
 mixin _$RoutineDateListModel {
   String get nickname => throw _privateConstructorUsedError;
   String get veggieName => throw _privateConstructorUsedError;
+  int get myVeggieId => throw _privateConstructorUsedError;
   List<MyVeggieRoutineInfoModel> get myVeggieRoutineList =>
       throw _privateConstructorUsedError;
 
@@ -40,6 +41,7 @@ abstract class $RoutineDateListModelCopyWith<$Res> {
   $Res call(
       {String nickname,
       String veggieName,
+      int myVeggieId,
       List<MyVeggieRoutineInfoModel> myVeggieRoutineList});
 }
 
@@ -59,6 +61,7 @@ class _$RoutineDateListModelCopyWithImpl<$Res,
   $Res call({
     Object? nickname = null,
     Object? veggieName = null,
+    Object? myVeggieId = null,
     Object? myVeggieRoutineList = null,
   }) {
     return _then(_value.copyWith(
@@ -70,6 +73,10 @@ class _$RoutineDateListModelCopyWithImpl<$Res,
           ? _value.veggieName
           : veggieName // ignore: cast_nullable_to_non_nullable
               as String,
+      myVeggieId: null == myVeggieId
+          ? _value.myVeggieId
+          : myVeggieId // ignore: cast_nullable_to_non_nullable
+              as int,
       myVeggieRoutineList: null == myVeggieRoutineList
           ? _value.myVeggieRoutineList
           : myVeggieRoutineList // ignore: cast_nullable_to_non_nullable
@@ -89,6 +96,7 @@ abstract class _$$RoutineDateListModelImplCopyWith<$Res>
   $Res call(
       {String nickname,
       String veggieName,
+      int myVeggieId,
       List<MyVeggieRoutineInfoModel> myVeggieRoutineList});
 }
 
@@ -105,6 +113,7 @@ class __$$RoutineDateListModelImplCopyWithImpl<$Res>
   $Res call({
     Object? nickname = null,
     Object? veggieName = null,
+    Object? myVeggieId = null,
     Object? myVeggieRoutineList = null,
   }) {
     return _then(_$RoutineDateListModelImpl(
@@ -116,6 +125,10 @@ class __$$RoutineDateListModelImplCopyWithImpl<$Res>
           ? _value.veggieName
           : veggieName // ignore: cast_nullable_to_non_nullable
               as String,
+      myVeggieId: null == myVeggieId
+          ? _value.myVeggieId
+          : myVeggieId // ignore: cast_nullable_to_non_nullable
+              as int,
       myVeggieRoutineList: null == myVeggieRoutineList
           ? _value._myVeggieRoutineList
           : myVeggieRoutineList // ignore: cast_nullable_to_non_nullable
@@ -130,6 +143,7 @@ class _$RoutineDateListModelImpl implements _RoutineDateListModel {
   const _$RoutineDateListModelImpl(
       {required this.nickname,
       required this.veggieName,
+      required this.myVeggieId,
       required final List<MyVeggieRoutineInfoModel> myVeggieRoutineList})
       : _myVeggieRoutineList = myVeggieRoutineList;
 
@@ -140,6 +154,8 @@ class _$RoutineDateListModelImpl implements _RoutineDateListModel {
   final String nickname;
   @override
   final String veggieName;
+  @override
+  final int myVeggieId;
   final List<MyVeggieRoutineInfoModel> _myVeggieRoutineList;
   @override
   List<MyVeggieRoutineInfoModel> get myVeggieRoutineList {
@@ -151,7 +167,7 @@ class _$RoutineDateListModelImpl implements _RoutineDateListModel {
 
   @override
   String toString() {
-    return 'RoutineDateListModel(nickname: $nickname, veggieName: $veggieName, myVeggieRoutineList: $myVeggieRoutineList)';
+    return 'RoutineDateListModel(nickname: $nickname, veggieName: $veggieName, myVeggieId: $myVeggieId, myVeggieRoutineList: $myVeggieRoutineList)';
   }
 
   @override
@@ -163,13 +179,15 @@ class _$RoutineDateListModelImpl implements _RoutineDateListModel {
                 other.nickname == nickname) &&
             (identical(other.veggieName, veggieName) ||
                 other.veggieName == veggieName) &&
+            (identical(other.myVeggieId, myVeggieId) ||
+                other.myVeggieId == myVeggieId) &&
             const DeepCollectionEquality()
                 .equals(other._myVeggieRoutineList, _myVeggieRoutineList));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, nickname, veggieName,
+  int get hashCode => Object.hash(runtimeType, nickname, veggieName, myVeggieId,
       const DeepCollectionEquality().hash(_myVeggieRoutineList));
 
   @JsonKey(ignore: true)
@@ -192,6 +210,7 @@ abstract class _RoutineDateListModel implements RoutineDateListModel {
   const factory _RoutineDateListModel(
           {required final String nickname,
           required final String veggieName,
+          required final int myVeggieId,
           required final List<MyVeggieRoutineInfoModel> myVeggieRoutineList}) =
       _$RoutineDateListModelImpl;
 
@@ -202,6 +221,8 @@ abstract class _RoutineDateListModel implements RoutineDateListModel {
   String get nickname;
   @override
   String get veggieName;
+  @override
+  int get myVeggieId;
   @override
   List<MyVeggieRoutineInfoModel> get myVeggieRoutineList;
   @override

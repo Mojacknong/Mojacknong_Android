@@ -45,7 +45,6 @@ class RoutineAddNotifier extends _$RoutineAddNotifier {
   ) async {
     await RoutineRepository.routineAdd(myVeggieId, content, period);
 
-    ref.invalidate(routineAddNotifierProvider);
     ref.invalidate(routineDateListModelProvider);
     ref.invalidate(myVeggieRoutineInfoModelProvider);
   }

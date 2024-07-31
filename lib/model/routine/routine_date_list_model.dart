@@ -9,6 +9,7 @@ class RoutineDateListModel with _$RoutineDateListModel {
   const factory RoutineDateListModel({
     required String nickname,
     required String veggieName,
+    required int myVeggieId,
     required List<MyVeggieRoutineInfoModel> myVeggieRoutineList,
   }) = _RoutineDateListModel;
 

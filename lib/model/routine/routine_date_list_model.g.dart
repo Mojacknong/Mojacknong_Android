@@ -11,6 +11,7 @@ _$RoutineDateListModelImpl _$$RoutineDateListModelImplFromJson(
     _$RoutineDateListModelImpl(
       nickname: json['nickname'] as String,
       veggieName: json['veggieName'] as String,
+      myVeggieId: (json['myVeggieId'] as num).toInt(),
       myVeggieRoutineList: (json['myVeggieRoutineList'] as List<dynamic>)
           .map((e) =>
               MyVeggieRoutineInfoModel.fromJson(e as Map<String, dynamic>))
@@ -22,5 +23,6 @@ Map<String, dynamic> _$$RoutineDateListModelImplToJson(
     <String, dynamic>{
       'nickname': instance.nickname,
       'veggieName': instance.veggieName,
+      'myVeggieId': instance.myVeggieId,
       'myVeggieRoutineList': instance.myVeggieRoutineList,
     };
