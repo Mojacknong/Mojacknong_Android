@@ -13,11 +13,15 @@ class FarmusCalender extends ConsumerStatefulWidget {
     DateTime? lastDay,
     this.selectedDay,
     this.routineMonth,
+    this.onDaySelected,
+    this.onMonthChanged,
   }) : lastDay = lastDay ?? DateTime.now();
 
   final DateTime? lastDay;
   final DateTime? selectedDay;
   final List<String>? routineMonth;
+  final ValueChanged<DateTime>? onDaySelected;
+  final ValueChanged<DateTime>? onMonthChanged;
 
   @override
   ConsumerState createState() => _FarmusCalenderState();
@@ -102,12 +106,13 @@ class _FarmusCalenderState extends ConsumerState<FarmusCalender> {
               _selectedDay = selectedDay;
               _focusedDay = focusedDay;
               myVeggieAddNotifier.updateDateFormatted(selectedDay);
-              ref.read(selectedDateProvider.notifier).state = selectedDay.toIso8601String().split('T').first;
+              widget.onDaySelected?.call(selectedDay);
             });
           }
         },
         onPageChanged: (focusedDay) {
           _focusedDay = focusedDay;
+          widget.onMonthChanged?.call(focusedDay);
         },
         onHeaderTapped: (dateTime) => selectDate(context),
         headerStyle: const HeaderStyle(

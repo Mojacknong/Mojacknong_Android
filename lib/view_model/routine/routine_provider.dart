@@ -24,4 +24,7 @@ final routineCycleSwitchProvider =
 
 final selectedDateProvider = StateProvider.autoDispose<String?>(
     (ref) => DateTime.now().toIso8601String().split('T').first);
-final selectedMonthProvider = StateProvider.autoDispose<String?>((ref) => null);
+final selectedMonthProvider = StateProvider.autoDispose<String?>((ref) {
+  final nowDate = DateTime.now();
+  return '${nowDate.year}-${nowDate.month.toString().padLeft(2, '0')}';
+});

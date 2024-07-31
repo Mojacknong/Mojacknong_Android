@@ -9,8 +9,7 @@ part 'routine_month_list_notifier.g.dart';
 
 @riverpod
 Future<RoutineMonthListModel> routineMonthListModel(
-    RoutineMonthListModelRef ref) async {
-  const month = '2024-07';
+    RoutineMonthListModelRef ref, String month) async {
   final response = await RoutineRepository.routineMonthList(month);
   final json = jsonDecode(response) as Map<String, dynamic>;
 
