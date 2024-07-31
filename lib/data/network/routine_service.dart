@@ -12,7 +12,7 @@ class RoutineService {
   }
 
   Future<String> routineMonthList(String month) async {
-    final url = '/api/my-veggie/routine/date/$month';
+    final url = '/api/my-veggie/routine/month/$month';
     return _fetchData(url, '월별 채소 루틴 리스트 조회 실패');
   }
 

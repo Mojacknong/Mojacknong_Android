@@ -7,11 +7,16 @@ import 'theme/farmus_theme_color.dart';
 import 'theme/farmus_theme_text_style.dart';
 
 class FarmusCalender extends ConsumerStatefulWidget {
-  FarmusCalender({super.key, DateTime? lastDay, this.selectedDay})
-      : lastDay = lastDay ?? DateTime.now();
+  FarmusCalender({
+    super.key,
+    DateTime? lastDay,
+    this.selectedDay,
+    this.routineMonth,
+  }) : lastDay = lastDay ?? DateTime.now();
 
   final DateTime? lastDay;
   final DateTime? selectedDay;
+  final List<String>? routineMonth;
 
   @override
   ConsumerState createState() => _FarmusCalenderState();
@@ -20,12 +25,28 @@ class FarmusCalender extends ConsumerStatefulWidget {
 class _FarmusCalenderState extends ConsumerState<FarmusCalender> {
   DateTime? _selectedDay;
   late DateTime _focusedDay;
+  late Set<String> _routineDates;
 
   @override
   void initState() {
     super.initState();
     _selectedDay = widget.selectedDay;
     _focusedDay = widget.selectedDay ?? DateTime.now();
+    _updateRoutineDates();
+  }
+
+  @override
+  void didUpdateWidget(FarmusCalender oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.routineMonth != oldWidget.routineMonth) {
+      _updateRoutineDates();
+    }
+  }
+
+  void _updateRoutineDates() {
+    setState(() {
+      _routineDates = widget.routineMonth?.toSet() ?? {};
+    });
   }
 
   @override
@@ -69,6 +90,12 @@ class _FarmusCalenderState extends ConsumerState<FarmusCalender> {
         selectedDayPredicate: (day) {
           return isSameDay(_selectedDay, day);
         },
+        eventLoader: (day) {
+          if (_routineDates.contains(day.toIso8601String().split('T').first)) {
+            return ['Routine'];
+          }
+          return [];
+        },
         onDaySelected: (selectedDay, focusedDay) {
           if (!isSameDay(_selectedDay, selectedDay)) {
             setState(() {
@@ -101,6 +128,21 @@ class _FarmusCalenderState extends ConsumerState<FarmusCalender> {
             shape: BoxShape.circle,
           ),
           isTodayHighlighted: false,
+        ),
+        calendarBuilders: CalendarBuilders(
+          markerBuilder: (context, date, events) {
+            if (events.isNotEmpty) {
+              return Container(
+                width: 8.0,
+                height: 8.0,
+                decoration: const BoxDecoration(
+                  color: FarmusThemeColor.gray1,
+                  shape: BoxShape.circle,
+                ),
+              );
+            }
+            return null;
+          },
         ),
       ),
     );

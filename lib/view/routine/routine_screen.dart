@@ -27,9 +27,22 @@ class RoutineScreen extends ConsumerWidget {
           data: (routine) {
             return Column(
               children: [
-                FarmusCalender(
-                  selectedDay: DateTime.now(),
-                ),
+                routineMonthList.when(
+                    data: (month) {
+                      List<String>? routineMonthDates;
+                      if (routineMonthList.value != null) {
+                        routineMonthDates = routineMonthList.value!.date;
+                      }
+
+                      return FarmusCalender(
+                        selectedDay: DateTime.now(),
+                        routineMonth: routineMonthDates,
+                      );
+                    },
+                    error: (error, stackTrace) => Center(
+                          child: Text(''),
+                        ),
+                    loading: () => const CircularProgressIndicator()),
                 const SizedBox(
                   height: 16.0,
                 ),
