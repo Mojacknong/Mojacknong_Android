@@ -72,7 +72,7 @@ class HomeVegeRoutine extends ConsumerWidget {
                             routine: routineInfo.content,
                             day: routineInfo.period,
                             isChecked: routineInfo.complete,
-                            onCheck: () {},
+                            routineId: routineInfo.routineId,
                           ),
                           const Divider(
                             height: 1,

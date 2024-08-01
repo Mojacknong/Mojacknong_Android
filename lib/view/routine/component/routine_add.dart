@@ -52,12 +52,8 @@ class RoutineAdd extends ConsumerWidget {
                     child: VegeRoutine(
                       routine: entry.key,
                       isChecked: entry.value['complete'],
-                      onCheck: () {
-                        ref
-                            .read(routineCheckNotifierProvider.notifier)
-                            .routineCheck(entry.value['routineId']);
-                      },
                       day: entry.value['period'],
+                      routineId: entry.value['routineId'],
                     ),
                   ),
                   IconButton(
