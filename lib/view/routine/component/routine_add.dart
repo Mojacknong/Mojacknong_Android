@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../common/bottom_sheet/show_farmus_bottom_sheet.dart';
 import '../../../common/button/routine_add_button.dart';
+import '../../../common/dialog/check_dialog.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 
 class RoutineAdd extends ConsumerWidget {

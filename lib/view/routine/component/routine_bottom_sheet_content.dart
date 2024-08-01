@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../common/button/primary_color_button.dart';
 import '../../../common/button/white_color_button.dart';
+import '../../../common/dialog/check_dialog.dart';
 import '../../../common/form/digits_text_form_field.dart';
 import '../../../common/form/not_underline_text_form_field.dart';
 import '../../../common/switch/primary_switch.dart';
@@ -149,15 +150,31 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                       Expanded(
                         child: PrimaryColorButton(
                           text: isCreate ? '확인' : '수정',
-                          onPressed: () {
-                            ref
-                                .read(routineAddNotifierProvider.notifier)
-                                .routineAdd(
-                                    myVeggieId,
-                                    routineInfo.value!.routineName!,
-                                    routineInfo.value!.period!);
-                            Navigator.pop(context);
-                          },
+                          onPressed: isCreate
+                              ? () {
+                                  ref
+                                      .read(routineAddNotifierProvider.notifier)
+                                      .routineAdd(
+                                          myVeggieId,
+                                          routineInfo.value!.routineName!,
+                                          routineInfo.value!.period!);
+                                  Navigator.pop(context);
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      Future.delayed(const Duration(seconds: 2),
+                                          () {
+                                        Navigator.of(context).pop();
+                                      });
+                                      return const CheckDialog(
+                                        text: "새 루틴을 추가했어요",
+                                      );
+                                    },
+                                  );
+                                }
+                              : () {
+                                  Navigator.pop(context);
+                                },
                           enabled: isCreate
                               ? isComplete
                               : ref
