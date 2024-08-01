@@ -1,4 +1,5 @@
 import 'package:farmus/view/home/component/vege_routine.dart';
+import 'package:farmus/view_model/routine/notifier/routine_check_notifier.dart';
 import 'package:farmus/view_model/routine/routine_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,7 +7,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../common/bottom_sheet/show_farmus_bottom_sheet.dart';
 import '../../../common/button/routine_add_button.dart';
-import '../../../common/dialog/check_dialog.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 
 class RoutineAdd extends ConsumerWidget {
@@ -54,8 +54,8 @@ class RoutineAdd extends ConsumerWidget {
                       isChecked: entry.value['complete'],
                       onCheck: () {
                         ref
-                            .read(routineCheckProvider(entry.key).notifier)
-                            .toggleRoutine();
+                            .read(routineCheckNotifierProvider.notifier)
+                            .routineCheck(entry.value['routineId']);
                       },
                       day: entry.value['period'],
                     ),
