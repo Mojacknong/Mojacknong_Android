@@ -74,6 +74,10 @@ class ApiClient {
 
   Future<http.Response> post(String endpoint,
       {Map<String, String>? headers, Object? body}) async {
+    Map<String, String> headers = {
+      HttpHeaders.contentTypeHeader: 'application/json',
+    };
+
     return _sendRequest('POST', endpoint, headers: headers, body: body);
   }
 

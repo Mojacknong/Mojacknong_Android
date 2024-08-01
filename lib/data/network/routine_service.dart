@@ -39,16 +39,14 @@ class RoutineService {
 
   Future<String> routineAdd(int myVeggieId, String content, int period) async {
     const url = '/api/my-veggie/routine';
-    Map<String, String> headers = {
-      HttpHeaders.contentTypeHeader: 'application/json',
-    };
+
     final body = jsonEncode({
       'myVeggieId': myVeggieId,
       'content': content,
       'period': period,
     });
 
-    final response = await apiClient.post(url, headers: headers, body: body);
+    final response = await apiClient.post(url, body: body);
 
     if (response.statusCode == 200) {
       return utf8.decode(response.bodyBytes);

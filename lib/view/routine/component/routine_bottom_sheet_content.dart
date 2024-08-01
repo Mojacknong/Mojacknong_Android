@@ -164,7 +164,7 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                                     builder: (BuildContext context) {
                                       Future.delayed(const Duration(seconds: 2),
                                           () {
-                                        Navigator.of(context).pop();
+                                        Navigator.pop(context);
                                       });
                                       return const CheckDialog(
                                         text: "새 루틴을 추가했어요",
