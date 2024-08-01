@@ -2,9 +2,9 @@ import 'package:farmus/model/home/my_veggie_list_model.dart';
 import 'package:farmus/view/home/component/home_motivation.dart';
 import 'package:farmus/view/home/component/home_my_vege_list.dart';
 import 'package:farmus/view/home/component/home_sub_title.dart';
-import 'package:farmus/view/home/component/home_to_do.dart';
 import 'package:farmus/view/home/component/home_vege_to_do.dart';
-import 'package:farmus/view/main/main_screen.dart';
+import 'package:farmus/view/routine/routine_screen.dart';
+import 'package:farmus/view/vege_diary/vege_diary_screen.dart';
 import 'package:farmus/view/vege_diary_write/vege_diary_write_screen.dart';
 import 'package:farmus/view_model/home/notifier/veggie_diary_one_notifier.dart';
 import 'package:farmus/view_model/my_vege/notifier/my_veggie_list.dart';
@@ -16,7 +16,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../common/app_bar/home_app_bar.dart';
 import '../../model/veggie_info/recommend_veggie_model.dart';
 import '../../view_model/home/home_provider.dart';
-import '../routine/routine_screen.dart';
 import 'component/home_my_vege.dart';
 import 'component/home_vege_diary.dart';
 import 'component/none/home_my_vege_none.dart';
@@ -33,8 +32,6 @@ class HomeScreen extends ConsumerWidget {
         ref.watch(myVeggieListModelProvider);
     final AsyncValue<List<RecommendVeggieModel>> recommend =
         ref.watch(recommendVeggieModelProvider);
-
-    String toDo = ref.watch(homeToDoProvider);
 
     return Scaffold(
       appBar: veggieList.when(
@@ -62,8 +59,8 @@ class HomeScreen extends ConsumerWidget {
                           HomeMyVegeNone(recommendVeggieInfo: value),
                       error: (error, stack) => const Text('추천 채소 불러오기 실패'),
                       loading: () => const CircularProgressIndicator(),
-                    ),
-                  if (veggieListData.isNotEmpty) ...[
+                    )
+                  else ...[
                     const HomeMyVegeList(),
                     const SizedBox(height: 8),
                     if (selectedVegeId != null)
@@ -89,43 +86,31 @@ class HomeScreen extends ConsumerWidget {
                       motivation: "텃밭에서 식탁까지 팜어스와 늘 함께해요!",
                     ),
                   ],
-                  const SizedBox(height: 8),
-                  const HomeSubTitle(title: "오늘 할 일"),
-                  const HomeToDo(),
-                  const SizedBox(
-                    height: 8.0,
+                  const SizedBox(height: 16),
+                  HomeSubTitle(
+                    title: "루틴",
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (builder) => const RoutineScreen(),
+                        ),
+                      );
+                    },
                   ),
-                  if (veggieListData.isNotEmpty)
-                    const HomeVegeTodo()
-                  else
-                    toDo == "routine"
-                        ? HomeNoneContainer(
-                            text: '아직 루틴을 등록하지 않았어요',
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const RoutineScreen()),
-                              );
-                            },
-                          )
-                        : HomeNoneContainer(
-                            text: '아직 팜클럽에 가입하지 않았어요',
-                            onTap: () {
-                              Navigator.pushAndRemoveUntil(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return const MainScreen(selectedIndex: 2);
-                                  },
-                                ),
-                                (route) => false,
-                              );
-                            },
-                          ),
+                  const HomeVegeRoutine(),
                   const SizedBox(height: 24),
-                  const HomeSubTitle(title: "성장 일기"),
+                  HomeSubTitle(
+                    title: "성장 일기",
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (builder) => const VegeDiaryScreen(),
+                        ),
+                      );
+                    },
+                  ),
                   if (veggieListData.isNotEmpty)
                     if (selectedVegeId != null)
                       ref

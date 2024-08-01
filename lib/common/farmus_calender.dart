@@ -3,15 +3,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+import '../view_model/routine/routine_provider.dart';
 import 'theme/farmus_theme_color.dart';
 import 'theme/farmus_theme_text_style.dart';
 
 class FarmusCalender extends ConsumerStatefulWidget {
-  FarmusCalender({super.key, DateTime? lastDay, this.createdVeggie})
-      : lastDay = lastDay ?? DateTime.now();
+  FarmusCalender({
+    super.key,
+    DateTime? lastDay,
+    this.selectedDay,
+    this.routineMonth,
+    this.onDaySelected,
+    this.onMonthChanged,
+  }) : lastDay = lastDay ?? DateTime.now();
 
   final DateTime? lastDay;
-  final DateTime? createdVeggie;
+  final DateTime? selectedDay;
+  final List<String>? routineMonth;
+  final ValueChanged<DateTime>? onDaySelected;
+  final ValueChanged<DateTime>? onMonthChanged;
 
   @override
   ConsumerState createState() => _FarmusCalenderState();
@@ -20,18 +30,33 @@ class FarmusCalender extends ConsumerStatefulWidget {
 class _FarmusCalenderState extends ConsumerState<FarmusCalender> {
   DateTime? _selectedDay;
   late DateTime _focusedDay;
+  late Set<String> _routineDates;
 
   @override
   void initState() {
     super.initState();
-    _selectedDay = widget.createdVeggie;
-    _focusedDay = widget.createdVeggie ?? DateTime.now();
+    _selectedDay = widget.selectedDay;
+    _focusedDay = widget.selectedDay ?? DateTime.now();
+    _updateRoutineDates();
+  }
+
+  @override
+  void didUpdateWidget(FarmusCalender oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.routineMonth != oldWidget.routineMonth) {
+      _updateRoutineDates();
+    }
+  }
+
+  void _updateRoutineDates() {
+    setState(() {
+      _routineDates = widget.routineMonth?.toSet() ?? {};
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    final notifier = ref.read(myVeggieAddNotifierProvider.notifier);
-
+    final myVeggieAddNotifier = ref.read(myVeggieAddNotifierProvider.notifier);
     final myVeggieAddState = ref.read(myVeggieAddNotifierProvider).value;
 
     if (myVeggieAddState?.date != null && myVeggieAddState!.date.isNotEmpty) {
@@ -55,7 +80,7 @@ class _FarmusCalenderState extends ConsumerState<FarmusCalender> {
           _selectedDay = selectedDate;
           _focusedDay = selectedDate;
         });
-        notifier.updateDateFormatted(selectedDate);
+        myVeggieAddNotifier.updateDateFormatted(selectedDate);
       }
     }
 
@@ -69,17 +94,25 @@ class _FarmusCalenderState extends ConsumerState<FarmusCalender> {
         selectedDayPredicate: (day) {
           return isSameDay(_selectedDay, day);
         },
+        eventLoader: (day) {
+          if (_routineDates.contains(day.toIso8601String().split('T').first)) {
+            return ['Routine'];
+          }
+          return [];
+        },
         onDaySelected: (selectedDay, focusedDay) {
           if (!isSameDay(_selectedDay, selectedDay)) {
             setState(() {
               _selectedDay = selectedDay;
               _focusedDay = focusedDay;
-              notifier.updateDateFormatted(selectedDay);
+              myVeggieAddNotifier.updateDateFormatted(selectedDay);
+              widget.onDaySelected?.call(selectedDay);
             });
           }
         },
         onPageChanged: (focusedDay) {
           _focusedDay = focusedDay;
+          widget.onMonthChanged?.call(focusedDay);
         },
         onHeaderTapped: (dateTime) => selectDate(context),
         headerStyle: const HeaderStyle(
@@ -101,6 +134,21 @@ class _FarmusCalenderState extends ConsumerState<FarmusCalender> {
             shape: BoxShape.circle,
           ),
           isTodayHighlighted: false,
+        ),
+        calendarBuilders: CalendarBuilders(
+          markerBuilder: (context, date, events) {
+            if (events.isNotEmpty) {
+              return Container(
+                width: 8.0,
+                height: 8.0,
+                decoration: const BoxDecoration(
+                  color: FarmusThemeColor.gray1,
+                  shape: BoxShape.circle,
+                ),
+              );
+            }
+            return null;
+          },
         ),
       ),
     );

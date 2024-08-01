@@ -3,13 +3,7 @@ import 'package:farmus/view_model/routine/notifier/routine_cycle_switch_notifier
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'notifier/routine_check_notifier.dart';
-import 'notifier/routine_create_notifier.dart';
 import 'notifier/routine_edit_notifier.dart';
-
-final routineCreateProvider =
-    StateNotifierProvider<RoutineCreateNotifier, RoutineModel>((ref) {
-  return RoutineCreateNotifier();
-});
 
 final routineEditProvider =
     StateNotifierProviderFamily<RoutineEditNotifier, RoutineModel, String?>(
@@ -26,4 +20,11 @@ final routineCheckProvider =
 final routineCycleSwitchProvider =
     StateNotifierProvider<RoutineCycleSwitchNotifier, bool>((ref) {
   return RoutineCycleSwitchNotifier();
+});
+
+final selectedDateProvider = StateProvider.autoDispose<String?>(
+    (ref) => DateTime.now().toIso8601String().split('T').first);
+final selectedMonthProvider = StateProvider.autoDispose<String?>((ref) {
+  final nowDate = DateTime.now();
+  return '${nowDate.year}-${nowDate.month.toString().padLeft(2, '0')}';
 });

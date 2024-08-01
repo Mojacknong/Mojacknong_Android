@@ -16,19 +16,23 @@ class RoutineBottomSheetContent extends ConsumerWidget {
       {super.key,
       required this.myVeggieId,
       required this.routine,
-      required this.day,
+      this.day,
       required this.isCreate});
 
   final int myVeggieId;
   final String routine;
-  final int day;
+  final int? day;
   final bool isCreate;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final routineInfo = ref.watch(routineAddNotifierProvider);
+    final routineNotifier = ref.watch(routineAddNotifierProvider.notifier);
+
+    var isComplete = routineInfo.value?.isComplete ?? false;
+    var isSwitch = routineInfo.value?.isSwitch ?? true;
+
     var routineName = ref.watch(routineEditProvider(routine)).routineName;
-    var isComplete = ref.watch(routineCreateProvider).isComplete;
-    var isSwitch = ref.watch(routineCycleSwitchProvider);
 
     return Padding(
       padding:
@@ -62,9 +66,7 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                               initialValue: routine,
                               onChanged: (value) {
                                 isCreate
-                                    ? ref
-                                        .read(routineCreateProvider.notifier)
-                                        .updateName(value)
+                                    ? routineNotifier.updateName(value)
                                     : ref
                                         .read(routineEditProvider(routineName)
                                             .notifier)
@@ -94,8 +96,23 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                             SizedBox(
                                 width: 50,
                                 child: DigitsTextFormField(
-                                  initialValue: isSwitch ? '$day' : '',
-                                  readOnly: !isSwitch,
+                                  initialValue: isCreate ? '' : '$day',
+                                  readOnly: isCreate ? !isSwitch : false,
+                                  onChanged: (value) {
+                                    if (isCreate) {
+                                      int? period = int.tryParse(value);
+                                      routineNotifier.updatePeriod(period);
+                                    } else {
+                                      int? period = int.tryParse(value);
+                                      if (period != null) {
+                                        ref
+                                            .read(
+                                                routineEditProvider(routineName)
+                                                    .notifier)
+                                            .updateName(value);
+                                      }
+                                    }
+                                  },
                                 )),
                             const SizedBox(
                               width: 10,
@@ -110,9 +127,7 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                       PrimarySwitch(
                         switchValue: isSwitch,
                         switchToggle: () {
-                          ref
-                              .read(routineCycleSwitchProvider.notifier)
-                              .toggle();
+                          routineNotifier.toggle();
                         },
                       ),
                     ],
@@ -137,7 +152,10 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                           onPressed: () {
                             ref
                                 .read(routineAddNotifierProvider.notifier)
-                                .routineAdd(myVeggieId, routine, day);
+                                .routineAdd(
+                                    myVeggieId,
+                                    routineInfo.value!.routineName!,
+                                    routineInfo.value!.period!);
                             Navigator.pop(context);
                           },
                           enabled: isCreate

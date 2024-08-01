@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'routine_list_model.dart';
+part of 'routine_date_list_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,39 +14,42 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-RoutineListModel _$RoutineListModelFromJson(Map<String, dynamic> json) {
-  return _RoutineListModel.fromJson(json);
+RoutineDateListModel _$RoutineDateListModelFromJson(Map<String, dynamic> json) {
+  return _RoutineDateListModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$RoutineListModel {
+mixin _$RoutineDateListModel {
   String get nickname => throw _privateConstructorUsedError;
   String get veggieName => throw _privateConstructorUsedError;
+  int get myVeggieId => throw _privateConstructorUsedError;
   List<MyVeggieRoutineInfoModel> get myVeggieRoutineList =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $RoutineListModelCopyWith<RoutineListModel> get copyWith =>
+  $RoutineDateListModelCopyWith<RoutineDateListModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RoutineListModelCopyWith<$Res> {
-  factory $RoutineListModelCopyWith(
-          RoutineListModel value, $Res Function(RoutineListModel) then) =
-      _$RoutineListModelCopyWithImpl<$Res, RoutineListModel>;
+abstract class $RoutineDateListModelCopyWith<$Res> {
+  factory $RoutineDateListModelCopyWith(RoutineDateListModel value,
+          $Res Function(RoutineDateListModel) then) =
+      _$RoutineDateListModelCopyWithImpl<$Res, RoutineDateListModel>;
   @useResult
   $Res call(
       {String nickname,
       String veggieName,
+      int myVeggieId,
       List<MyVeggieRoutineInfoModel> myVeggieRoutineList});
 }
 
 /// @nodoc
-class _$RoutineListModelCopyWithImpl<$Res, $Val extends RoutineListModel>
-    implements $RoutineListModelCopyWith<$Res> {
-  _$RoutineListModelCopyWithImpl(this._value, this._then);
+class _$RoutineDateListModelCopyWithImpl<$Res,
+        $Val extends RoutineDateListModel>
+    implements $RoutineDateListModelCopyWith<$Res> {
+  _$RoutineDateListModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -58,6 +61,7 @@ class _$RoutineListModelCopyWithImpl<$Res, $Val extends RoutineListModel>
   $Res call({
     Object? nickname = null,
     Object? veggieName = null,
+    Object? myVeggieId = null,
     Object? myVeggieRoutineList = null,
   }) {
     return _then(_value.copyWith(
@@ -69,6 +73,10 @@ class _$RoutineListModelCopyWithImpl<$Res, $Val extends RoutineListModel>
           ? _value.veggieName
           : veggieName // ignore: cast_nullable_to_non_nullable
               as String,
+      myVeggieId: null == myVeggieId
+          ? _value.myVeggieId
+          : myVeggieId // ignore: cast_nullable_to_non_nullable
+              as int,
       myVeggieRoutineList: null == myVeggieRoutineList
           ? _value.myVeggieRoutineList
           : myVeggieRoutineList // ignore: cast_nullable_to_non_nullable
@@ -78,25 +86,26 @@ class _$RoutineListModelCopyWithImpl<$Res, $Val extends RoutineListModel>
 }
 
 /// @nodoc
-abstract class _$$RoutineListModelImplCopyWith<$Res>
-    implements $RoutineListModelCopyWith<$Res> {
-  factory _$$RoutineListModelImplCopyWith(_$RoutineListModelImpl value,
-          $Res Function(_$RoutineListModelImpl) then) =
-      __$$RoutineListModelImplCopyWithImpl<$Res>;
+abstract class _$$RoutineDateListModelImplCopyWith<$Res>
+    implements $RoutineDateListModelCopyWith<$Res> {
+  factory _$$RoutineDateListModelImplCopyWith(_$RoutineDateListModelImpl value,
+          $Res Function(_$RoutineDateListModelImpl) then) =
+      __$$RoutineDateListModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {String nickname,
       String veggieName,
+      int myVeggieId,
       List<MyVeggieRoutineInfoModel> myVeggieRoutineList});
 }
 
 /// @nodoc
-class __$$RoutineListModelImplCopyWithImpl<$Res>
-    extends _$RoutineListModelCopyWithImpl<$Res, _$RoutineListModelImpl>
-    implements _$$RoutineListModelImplCopyWith<$Res> {
-  __$$RoutineListModelImplCopyWithImpl(_$RoutineListModelImpl _value,
-      $Res Function(_$RoutineListModelImpl) _then)
+class __$$RoutineDateListModelImplCopyWithImpl<$Res>
+    extends _$RoutineDateListModelCopyWithImpl<$Res, _$RoutineDateListModelImpl>
+    implements _$$RoutineDateListModelImplCopyWith<$Res> {
+  __$$RoutineDateListModelImplCopyWithImpl(_$RoutineDateListModelImpl _value,
+      $Res Function(_$RoutineDateListModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -104,9 +113,10 @@ class __$$RoutineListModelImplCopyWithImpl<$Res>
   $Res call({
     Object? nickname = null,
     Object? veggieName = null,
+    Object? myVeggieId = null,
     Object? myVeggieRoutineList = null,
   }) {
-    return _then(_$RoutineListModelImpl(
+    return _then(_$RoutineDateListModelImpl(
       nickname: null == nickname
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
@@ -115,6 +125,10 @@ class __$$RoutineListModelImplCopyWithImpl<$Res>
           ? _value.veggieName
           : veggieName // ignore: cast_nullable_to_non_nullable
               as String,
+      myVeggieId: null == myVeggieId
+          ? _value.myVeggieId
+          : myVeggieId // ignore: cast_nullable_to_non_nullable
+              as int,
       myVeggieRoutineList: null == myVeggieRoutineList
           ? _value._myVeggieRoutineList
           : myVeggieRoutineList // ignore: cast_nullable_to_non_nullable
@@ -125,20 +139,23 @@ class __$$RoutineListModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$RoutineListModelImpl implements _RoutineListModel {
-  const _$RoutineListModelImpl(
+class _$RoutineDateListModelImpl implements _RoutineDateListModel {
+  const _$RoutineDateListModelImpl(
       {required this.nickname,
       required this.veggieName,
+      required this.myVeggieId,
       required final List<MyVeggieRoutineInfoModel> myVeggieRoutineList})
       : _myVeggieRoutineList = myVeggieRoutineList;
 
-  factory _$RoutineListModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$RoutineListModelImplFromJson(json);
+  factory _$RoutineDateListModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RoutineDateListModelImplFromJson(json);
 
   @override
   final String nickname;
   @override
   final String veggieName;
+  @override
+  final int myVeggieId;
   final List<MyVeggieRoutineInfoModel> _myVeggieRoutineList;
   @override
   List<MyVeggieRoutineInfoModel> get myVeggieRoutineList {
@@ -150,60 +167,66 @@ class _$RoutineListModelImpl implements _RoutineListModel {
 
   @override
   String toString() {
-    return 'RoutineListModel(nickname: $nickname, veggieName: $veggieName, myVeggieRoutineList: $myVeggieRoutineList)';
+    return 'RoutineDateListModel(nickname: $nickname, veggieName: $veggieName, myVeggieId: $myVeggieId, myVeggieRoutineList: $myVeggieRoutineList)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RoutineListModelImpl &&
+            other is _$RoutineDateListModelImpl &&
             (identical(other.nickname, nickname) ||
                 other.nickname == nickname) &&
             (identical(other.veggieName, veggieName) ||
                 other.veggieName == veggieName) &&
+            (identical(other.myVeggieId, myVeggieId) ||
+                other.myVeggieId == myVeggieId) &&
             const DeepCollectionEquality()
                 .equals(other._myVeggieRoutineList, _myVeggieRoutineList));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, nickname, veggieName,
+  int get hashCode => Object.hash(runtimeType, nickname, veggieName, myVeggieId,
       const DeepCollectionEquality().hash(_myVeggieRoutineList));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RoutineListModelImplCopyWith<_$RoutineListModelImpl> get copyWith =>
-      __$$RoutineListModelImplCopyWithImpl<_$RoutineListModelImpl>(
-          this, _$identity);
+  _$$RoutineDateListModelImplCopyWith<_$RoutineDateListModelImpl>
+      get copyWith =>
+          __$$RoutineDateListModelImplCopyWithImpl<_$RoutineDateListModelImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$RoutineListModelImplToJson(
+    return _$$RoutineDateListModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _RoutineListModel implements RoutineListModel {
-  const factory _RoutineListModel(
+abstract class _RoutineDateListModel implements RoutineDateListModel {
+  const factory _RoutineDateListModel(
           {required final String nickname,
           required final String veggieName,
+          required final int myVeggieId,
           required final List<MyVeggieRoutineInfoModel> myVeggieRoutineList}) =
-      _$RoutineListModelImpl;
+      _$RoutineDateListModelImpl;
 
-  factory _RoutineListModel.fromJson(Map<String, dynamic> json) =
-      _$RoutineListModelImpl.fromJson;
+  factory _RoutineDateListModel.fromJson(Map<String, dynamic> json) =
+      _$RoutineDateListModelImpl.fromJson;
 
   @override
   String get nickname;
   @override
   String get veggieName;
   @override
+  int get myVeggieId;
+  @override
   List<MyVeggieRoutineInfoModel> get myVeggieRoutineList;
   @override
   @JsonKey(ignore: true)
-  _$$RoutineListModelImplCopyWith<_$RoutineListModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$RoutineDateListModelImplCopyWith<_$RoutineDateListModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

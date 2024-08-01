@@ -7,7 +7,7 @@ part of 'farmclub_possible_vege.dart';
 // **************************************************************************
 
 String _$farmclubPossibleModelHash() =>
-    r'4905bcf1cf8bbdaa70c5d0a7141d6c614aae8e13';
+    r'685a2bfedd855e69d525890f0e12261e84db9ae8';
 
 /// See also [farmclubPossibleModel].
 @ProviderFor(farmclubPossibleModel)

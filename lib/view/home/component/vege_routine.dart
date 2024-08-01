@@ -11,14 +11,12 @@ class VegeRoutine extends ConsumerWidget {
   const VegeRoutine(
       {super.key,
       required this.routine,
-      required this.day,
-      this.onTap,
+      this.day,
       required this.isChecked,
       this.onCheck});
 
   final String routine;
-  final String day;
-  final Function()? onTap;
+  final int? day;
   final bool isChecked;
   final Function()? onCheck;
 
@@ -57,32 +55,28 @@ class VegeRoutine extends ConsumerWidget {
           const SizedBox(
             width: 8.0,
           ),
-          GestureDetector(
-            onTap: onTap,
-            child: Row(
-              children: [
-                Text(
-                  routine,
-                  style: FarmusThemeTextStyle.darkSemiBold17,
+          Row(
+            children: [
+              Text(
+                routine,
+                style: FarmusThemeTextStyle.darkSemiBold17,
+              ),
+              const SizedBox(
+                width: 12,
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 5),
+                decoration: ShapeDecoration(
+                  color: FarmusThemeColor.greenLight3,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4)),
                 ),
-                const SizedBox(
-                  width: 12,
+                child: Text(
+                  "$day일 1회",
+                  style: FarmusThemeTextStyle.green1SemiBold11,
                 ),
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 6, vertical: 5),
-                  decoration: ShapeDecoration(
-                    color: FarmusThemeColor.greenLight3,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(4)),
-                  ),
-                  child: Text(
-                    "$day일 1회",
-                    style: FarmusThemeTextStyle.green1SemiBold11,
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),

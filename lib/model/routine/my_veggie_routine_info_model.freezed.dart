@@ -21,7 +21,7 @@ MyVeggieRoutineInfoModel _$MyVeggieRoutineInfoModelFromJson(
 
 /// @nodoc
 mixin _$MyVeggieRoutineInfoModel {
-  bool get check => throw _privateConstructorUsedError;
+  bool get complete => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
   int get period => throw _privateConstructorUsedError;
   int get routineId => throw _privateConstructorUsedError;
@@ -38,7 +38,7 @@ abstract class $MyVeggieRoutineInfoModelCopyWith<$Res> {
           $Res Function(MyVeggieRoutineInfoModel) then) =
       _$MyVeggieRoutineInfoModelCopyWithImpl<$Res, MyVeggieRoutineInfoModel>;
   @useResult
-  $Res call({bool check, String content, int period, int routineId});
+  $Res call({bool complete, String content, int period, int routineId});
 }
 
 /// @nodoc
@@ -55,15 +55,15 @@ class _$MyVeggieRoutineInfoModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? check = null,
+    Object? complete = null,
     Object? content = null,
     Object? period = null,
     Object? routineId = null,
   }) {
     return _then(_value.copyWith(
-      check: null == check
-          ? _value.check
-          : check // ignore: cast_nullable_to_non_nullable
+      complete: null == complete
+          ? _value.complete
+          : complete // ignore: cast_nullable_to_non_nullable
               as bool,
       content: null == content
           ? _value.content
@@ -90,7 +90,7 @@ abstract class _$$MyVeggieRoutineInfoModelImplCopyWith<$Res>
       __$$MyVeggieRoutineInfoModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool check, String content, int period, int routineId});
+  $Res call({bool complete, String content, int period, int routineId});
 }
 
 /// @nodoc
@@ -106,15 +106,15 @@ class __$$MyVeggieRoutineInfoModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? check = null,
+    Object? complete = null,
     Object? content = null,
     Object? period = null,
     Object? routineId = null,
   }) {
     return _then(_$MyVeggieRoutineInfoModelImpl(
-      check: null == check
-          ? _value.check
-          : check // ignore: cast_nullable_to_non_nullable
+      complete: null == complete
+          ? _value.complete
+          : complete // ignore: cast_nullable_to_non_nullable
               as bool,
       content: null == content
           ? _value.content
@@ -136,7 +136,7 @@ class __$$MyVeggieRoutineInfoModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$MyVeggieRoutineInfoModelImpl implements _MyVeggieRoutineInfoModel {
   const _$MyVeggieRoutineInfoModelImpl(
-      {required this.check,
+      {required this.complete,
       required this.content,
       required this.period,
       required this.routineId});
@@ -145,7 +145,7 @@ class _$MyVeggieRoutineInfoModelImpl implements _MyVeggieRoutineInfoModel {
       _$$MyVeggieRoutineInfoModelImplFromJson(json);
 
   @override
-  final bool check;
+  final bool complete;
   @override
   final String content;
   @override
@@ -155,7 +155,7 @@ class _$MyVeggieRoutineInfoModelImpl implements _MyVeggieRoutineInfoModel {
 
   @override
   String toString() {
-    return 'MyVeggieRoutineInfoModel(check: $check, content: $content, period: $period, routineId: $routineId)';
+    return 'MyVeggieRoutineInfoModel(complete: $complete, content: $content, period: $period, routineId: $routineId)';
   }
 
   @override
@@ -163,7 +163,8 @@ class _$MyVeggieRoutineInfoModelImpl implements _MyVeggieRoutineInfoModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MyVeggieRoutineInfoModelImpl &&
-            (identical(other.check, check) || other.check == check) &&
+            (identical(other.complete, complete) ||
+                other.complete == complete) &&
             (identical(other.content, content) || other.content == content) &&
             (identical(other.period, period) || other.period == period) &&
             (identical(other.routineId, routineId) ||
@@ -173,7 +174,7 @@ class _$MyVeggieRoutineInfoModelImpl implements _MyVeggieRoutineInfoModel {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, check, content, period, routineId);
+      Object.hash(runtimeType, complete, content, period, routineId);
 
   @JsonKey(ignore: true)
   @override
@@ -192,7 +193,7 @@ class _$MyVeggieRoutineInfoModelImpl implements _MyVeggieRoutineInfoModel {
 
 abstract class _MyVeggieRoutineInfoModel implements MyVeggieRoutineInfoModel {
   const factory _MyVeggieRoutineInfoModel(
-      {required final bool check,
+      {required final bool complete,
       required final String content,
       required final int period,
       required final int routineId}) = _$MyVeggieRoutineInfoModelImpl;
@@ -201,7 +202,7 @@ abstract class _MyVeggieRoutineInfoModel implements MyVeggieRoutineInfoModel {
       _$MyVeggieRoutineInfoModelImpl.fromJson;
 
   @override
-  bool get check;
+  bool get complete;
   @override
   String get content;
   @override

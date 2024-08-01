@@ -103,7 +103,7 @@ class HomeMyVegeNone extends ConsumerWidget {
                 ),
               ],
             );
-          }).toList(),
+          }),
         ],
       ),
     );

@@ -4,8 +4,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class RoutineEditNotifier extends StateNotifier<RoutineModel> {
   RoutineEditNotifier({String? initName})
       : super(RoutineModel(
-            routineName: initName ?? '',
-            isComplete: initName!.isNotEmpty && initName != '' ? true : false));
+          myVeggieId: 0,
+          routineName: initName ?? '',
+          isSwitch: true,
+          isComplete: initName!.isNotEmpty && initName != '' ? true : false,
+        ));
 
   void updateName(String name) {
     state = state.copyWith(
