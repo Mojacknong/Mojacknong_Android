@@ -71,7 +71,7 @@ class _MyPageInfoState extends ConsumerState<MyPageInfo> {
                               userImageUrl,
                               fit: BoxFit.cover,
                               errorBuilder: (context, error, stackTrace) {
-                                return const Icon(Icons.error); // 에러 시 아이콘 표시
+                                return const Icon(Icons.error);
                               },
                             ),
                           ),
