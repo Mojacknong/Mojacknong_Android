@@ -1,5 +1,5 @@
 import 'package:farmus/view_model/routine/notifier/routine_add_notifier.dart';
-import 'package:farmus/view_model/routine/notifier/routine_check_notifier.dart';
+import 'package:farmus/view_model/routine/notifier/routine_delete_notifier.dart';
 import 'package:farmus/view_model/routine/routine_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -151,8 +151,8 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                               : () {
                                   Navigator.pop(context);
                                   ref
-                                      .read(
-                                          routineCheckNotifierProvider.notifier)
+                                      .read(routineDeleteNotifierProvider
+                                          .notifier)
                                       .routineDelete(routineId!);
                                 },
                           enabled: true,

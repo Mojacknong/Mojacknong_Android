@@ -50,6 +50,7 @@ class ApiClient {
         break;
       case 'DELETE':
         response = await client.delete(url, headers: headers, body: body);
+        break;
       case 'POST_MULTIPART':
         var request = http.MultipartRequest('POST', url);
         request.headers.addAll(headers);
@@ -103,13 +104,13 @@ class ApiClient {
   }
 
   Future<http.Response> postDiary(
-    String endpoint,
-    File file,
-    String content,
-    bool isOpen,
-    String state,
-    int myVeggieId,
-  ) async {
+      String endpoint,
+      File file,
+      String content,
+      bool isOpen,
+      String state,
+      int myVeggieId,
+      ) async {
     Map<String, String> body = {
       'content': content,
       'isOpen': isOpen.toString(),

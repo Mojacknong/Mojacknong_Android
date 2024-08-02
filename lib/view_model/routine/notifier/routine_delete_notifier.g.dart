@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'routine_check_notifier.dart';
+part of 'routine_delete_notifier.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$routineCheckNotifierHash() =>
-    r'f2714c9fda11a60925f9a6cb66b5e03be2e288bc';
+String _$routineDeleteNotifierHash() =>
+    r'aac326b72c1d7b2cf93e2915f95577a8853a2877';
 
-/// See also [RoutineCheckNotifier].
-@ProviderFor(RoutineCheckNotifier)
-final routineCheckNotifierProvider =
-    AutoDisposeAsyncNotifierProvider<RoutineCheckNotifier, bool>.internal(
-  RoutineCheckNotifier.new,
-  name: r'routineCheckNotifierProvider',
+/// See also [RoutineDeleteNotifier].
+@ProviderFor(RoutineDeleteNotifier)
+final routineDeleteNotifierProvider =
+    AutoDisposeAsyncNotifierProvider<RoutineDeleteNotifier, void>.internal(
+  RoutineDeleteNotifier.new,
+  name: r'routineDeleteNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$routineCheckNotifierHash,
+      : _$routineDeleteNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$RoutineCheckNotifier = AutoDisposeAsyncNotifier<bool>;
+typedef _$RoutineDeleteNotifier = AutoDisposeAsyncNotifier<void>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
