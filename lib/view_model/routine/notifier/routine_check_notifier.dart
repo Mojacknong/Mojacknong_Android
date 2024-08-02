@@ -19,4 +19,11 @@ class RoutineCheckNotifier extends _$RoutineCheckNotifier {
     ref.invalidate(routineDateListModelProvider);
     ref.invalidate(myVeggieRoutineInfoModelProvider);
   }
+
+  Future<void> routineDelete(int routineId) async {
+    await RoutineRepository.routineDelete(routineId);
+
+    ref.invalidate(routineDateListModelProvider);
+    ref.invalidate(myVeggieRoutineInfoModelProvider);
+  }
 }

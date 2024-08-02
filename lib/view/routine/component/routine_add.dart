@@ -1,5 +1,4 @@
 import 'package:farmus/view/home/component/vege_routine.dart';
-import 'package:farmus/view_model/routine/notifier/routine_check_notifier.dart';
 import 'package:farmus/view_model/routine/routine_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -59,7 +58,11 @@ class RoutineAdd extends ConsumerWidget {
                   IconButton(
                     onPressed: () {
                       ref.invalidate(routineEditProvider);
-                      showRoutineEditBottomSheet(context, myVeggieId, entry.key,
+                      showRoutineEditBottomSheet(
+                          context,
+                          myVeggieId,
+                          entry.value['routineId'],
+                          entry.key,
                           entry.value['period']);
                     },
                     icon: SvgPicture.asset('assets/image/ic_more_vertical.svg'),

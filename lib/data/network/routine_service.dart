@@ -54,6 +54,22 @@ class RoutineService {
     }
   }
 
+  Future<String> routineDelete(int routineId) async {
+    const url = '/api/my-veggie/routine';
+
+    final body = jsonEncode({
+      'routineId': routineId,
+    });
+
+    final response = await apiClient.delete(url, body: body);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('루틴 삭제 실패');
+    }
+  }
+
   Future<String> _fetchData(String url, String errorMessage) async {
     final response = await apiClient.get(url);
 

@@ -1,4 +1,5 @@
 import 'package:farmus/view_model/routine/notifier/routine_add_notifier.dart';
+import 'package:farmus/view_model/routine/notifier/routine_check_notifier.dart';
 import 'package:farmus/view_model/routine/routine_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,11 +17,13 @@ class RoutineBottomSheetContent extends ConsumerWidget {
   const RoutineBottomSheetContent(
       {super.key,
       required this.myVeggieId,
+      this.routineId,
       required this.routine,
       this.day,
       required this.isCreate});
 
   final int myVeggieId;
+  final int? routineId;
   final String routine;
   final int? day;
   final bool isCreate;
@@ -141,9 +144,17 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                       Expanded(
                         child: WhiteColorButton(
                           text: isCreate ? '취소' : '삭제',
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
+                          onPressed: isCreate
+                              ? () {
+                                  Navigator.pop(context);
+                                }
+                              : () {
+                                  Navigator.pop(context);
+                                  ref
+                                      .read(
+                                          routineCheckNotifierProvider.notifier)
+                                      .routineDelete(routineId!);
+                                },
                           enabled: true,
                         ),
                       ),

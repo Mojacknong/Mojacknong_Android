@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-import '../view_model/routine/routine_provider.dart';
 import 'theme/farmus_theme_color.dart';
 import 'theme/farmus_theme_text_style.dart';
 

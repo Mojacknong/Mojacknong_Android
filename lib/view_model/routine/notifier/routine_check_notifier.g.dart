@@ -7,7 +7,7 @@ part of 'routine_check_notifier.dart';
 // **************************************************************************
 
 String _$routineCheckNotifierHash() =>
-    r'f2714c9fda11a60925f9a6cb66b5e03be2e288bc';
+    r'c3f62b047e0b226a39a170857f1fbeb6c308ef76';
 
 /// See also [RoutineCheckNotifier].
 @ProviderFor(RoutineCheckNotifier)
