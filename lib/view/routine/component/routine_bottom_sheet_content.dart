@@ -102,7 +102,11 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                             SizedBox(
                                 width: 50,
                                 child: DigitsTextFormField(
-                                  initialValue: isCreate ? '' : '$day',
+                                  initialValue: isCreate
+                                      ? ''
+                                      : day != -1
+                                          ? '$day'
+                                          : '',
                                   readOnly: !isSwitch,
                                   onChanged: (value) {
                                     int? period = int.tryParse(value);
