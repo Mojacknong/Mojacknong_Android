@@ -1,7 +1,5 @@
-import 'dart:io';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:farmus/model/my_page/my_page_info_model.dart';
 import 'package:farmus/view/my_page/my_profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
