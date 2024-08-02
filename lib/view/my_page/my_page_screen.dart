@@ -34,7 +34,7 @@ class MyPageScreen extends StatelessWidget {
               height: 140,
               child: Padding(
                 padding: EdgeInsets.only(top: 8),
-                child: MyPageInfo(image: ""),
+                child: MyPageInfo(),
               ),
             ),
             SizedBox(
