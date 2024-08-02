@@ -4,10 +4,10 @@ import 'package:farmus/view_model/routine/notifier/my_veggie_routine_info_notifi
 import 'package:farmus/view_model/routine/notifier/routine_date_list_notifier.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'routine_add_notifier.g.dart';
+part 'routine_bottom_sheet_notifier.g.dart';
 
 @riverpod
-class RoutineAddNotifier extends _$RoutineAddNotifier {
+class RoutineBottomSheetNotifier extends _$RoutineBottomSheetNotifier {
   @override
   Future<RoutineModel> build() async {
     return RoutineModel(
@@ -67,6 +67,11 @@ class RoutineAddNotifier extends _$RoutineAddNotifier {
     );
   }
 
+  void _initRoutine() {
+    ref.invalidate(routineDateListModelProvider);
+    ref.invalidate(myVeggieRoutineInfoModelProvider);
+  }
+
   Future<void> routineAdd(
     int myVeggieId,
     String content,
@@ -76,8 +81,15 @@ class RoutineAddNotifier extends _$RoutineAddNotifier {
       period = 0;
     }
     await RoutineRepository.routineAdd(myVeggieId, content, period);
+    _initRoutine();
+  }
 
-    ref.invalidate(routineDateListModelProvider);
-    ref.invalidate(myVeggieRoutineInfoModelProvider);
+  Future<void> routineEdit(
+    int routineId,
+    String content,
+    int period,
+  ) async {
+    await RoutineRepository.routineEdit(routineId, content, period);
+    _initRoutine();
   }
 }

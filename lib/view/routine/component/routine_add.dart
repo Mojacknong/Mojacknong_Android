@@ -57,7 +57,6 @@ class RoutineAdd extends ConsumerWidget {
                   ),
                   IconButton(
                     onPressed: () {
-                      ref.invalidate(routineEditProvider);
                       showRoutineEditBottomSheet(
                           context,
                           myVeggieId,

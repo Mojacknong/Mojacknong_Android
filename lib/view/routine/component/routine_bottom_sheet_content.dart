@@ -1,6 +1,5 @@
-import 'package:farmus/view_model/routine/notifier/routine_add_notifier.dart';
+import 'package:farmus/view_model/routine/notifier/routine_bottom_sheet_notifier.dart';
 import 'package:farmus/view_model/routine/notifier/routine_delete_notifier.dart';
-import 'package:farmus/view_model/routine/routine_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -30,13 +29,12 @@ class RoutineBottomSheetContent extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final routineInfo = ref.watch(routineAddNotifierProvider);
-    final routineNotifier = ref.watch(routineAddNotifierProvider.notifier);
+    final routineInfo = ref.watch(routineBottomSheetNotifierProvider);
+    final routineNotifier =
+        ref.watch(routineBottomSheetNotifierProvider.notifier);
 
     var isComplete = routineInfo.value?.isComplete ?? false;
     var isSwitch = routineInfo.value?.isSwitch ?? true;
-
-    var routineName = ref.watch(routineEditProvider(routine)).routineName;
 
     return Padding(
       padding:
@@ -69,12 +67,7 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                               hintText: '루틴을 입력해 주세요',
                               initialValue: routine,
                               onChanged: (value) {
-                                isCreate
-                                    ? routineNotifier.updateName(value)
-                                    : ref
-                                        .read(routineEditProvider(routineName)
-                                            .notifier)
-                                        .updateName(value);
+                                routineNotifier.updateName(value);
                               },
                             ),
                           ),
@@ -101,21 +94,10 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                                 width: 50,
                                 child: DigitsTextFormField(
                                   initialValue: isCreate ? '' : '$day',
-                                  readOnly: isCreate ? !isSwitch : false,
+                                  readOnly: !isSwitch,
                                   onChanged: (value) {
-                                    if (isCreate) {
-                                      int? period = int.tryParse(value);
-                                      routineNotifier.updatePeriod(period);
-                                    } else {
-                                      int? period = int.tryParse(value);
-                                      if (period != null) {
-                                        ref
-                                            .read(
-                                                routineEditProvider(routineName)
-                                                    .notifier)
-                                            .updateName(value);
-                                      }
-                                    }
+                                    int? period = int.tryParse(value);
+                                    routineNotifier.updatePeriod(period);
                                   },
                                 )),
                             const SizedBox(
@@ -164,7 +146,8 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                           onPressed: isCreate
                               ? () {
                                   ref
-                                      .read(routineAddNotifierProvider.notifier)
+                                      .read(routineBottomSheetNotifierProvider
+                                          .notifier)
                                       .routineAdd(
                                           myVeggieId,
                                           routineInfo.value!.routineName!,
@@ -184,13 +167,16 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                                   );
                                 }
                               : () {
+                                  ref
+                                      .read(routineBottomSheetNotifierProvider
+                                          .notifier)
+                                      .routineEdit(
+                                          routineId!,
+                                          routineInfo.value!.routineName!,
+                                          routineInfo.value!.period!);
                                   Navigator.pop(context);
                                 },
-                          enabled: isCreate
-                              ? isComplete
-                              : ref
-                                  .watch(routineEditProvider(routineName))
-                                  .isComplete,
+                          enabled: isComplete,
                         ),
                       ),
                     ],

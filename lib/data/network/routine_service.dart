@@ -70,6 +70,24 @@ class RoutineService {
     }
   }
 
+  Future<String> routineEdit(int routineId, String content, int period) async {
+    const url = '/api/my-veggie/routine';
+
+    final body = jsonEncode({
+      'routineId': routineId,
+      'content': content,
+      'period': period,
+    });
+
+    final response = await apiClient.patch(url, body: body);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('루틴 수정 실패');
+    }
+  }
+
   Future<String> _fetchData(String url, String errorMessage) async {
     final response = await apiClient.get(url);
 
