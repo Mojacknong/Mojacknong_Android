@@ -50,7 +50,11 @@ class RoutineBottomSheetNotifier extends _$RoutineBottomSheetNotifier {
         period: period ?? -1,
         isSwitch: state.value!.isSwitch,
         isComplete: state.value!.isSwitch
-            ? name.isNotEmpty && period != -1 && period != null
+            ? name.isNotEmpty &&
+                period != -1 &&
+                period != 00 &&
+                period != 0 &&
+                period != null
             : name.isNotEmpty,
       ),
     );
