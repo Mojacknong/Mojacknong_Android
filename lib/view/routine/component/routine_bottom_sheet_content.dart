@@ -1,5 +1,4 @@
 import 'package:farmus/view_model/routine/notifier/routine_bottom_sheet_notifier.dart';
-import 'package:farmus/view_model/routine/notifier/routine_delete_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -33,13 +32,13 @@ class RoutineBottomSheetContent extends ConsumerWidget {
       myVeggieId: myVeggieId,
       routineName: routine,
       period: day ?? -1,
-      isSwitch: day != null && day != -1,
+      isSwitch: isCreate ? true : day != null && day != -1,
     ));
     final routineNotifier = ref.watch(routineBottomSheetNotifierProvider(
       myVeggieId: myVeggieId,
       routineName: routine,
       period: day ?? -1,
-      isSwitch: day != null && day != -1,
+      isSwitch: isCreate ? true : day != null && day != -1,
     ).notifier);
 
     var isComplete = routineInfo.value?.isComplete ?? false;
@@ -146,7 +145,7 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                               : () {
                                   Navigator.pop(context);
                                   ref
-                                      .read(routineDeleteNotifierProvider
+                                      .read(routineBottomSheetNotifierProvider()
                                           .notifier)
                                       .routineDelete(routineId!);
                                 },
@@ -159,12 +158,8 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                           onPressed: isCreate
                               ? () {
                                   ref
-                                      .read(routineBottomSheetNotifierProvider(
-                                        myVeggieId: myVeggieId,
-                                        routineName: routine,
-                                        period: day ?? -1,
-                                        isSwitch: day != null && day != -1,
-                                      ).notifier)
+                                      .read(routineBottomSheetNotifierProvider()
+                                          .notifier)
                                       .routineAdd(
                                           myVeggieId,
                                           routineInfo.value!.routineName!,
@@ -185,12 +180,8 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                                 }
                               : () {
                                   ref
-                                      .read(routineBottomSheetNotifierProvider(
-                                        myVeggieId: myVeggieId,
-                                        routineName: routine,
-                                        period: day ?? -1,
-                                        isSwitch: day != null && day != -1,
-                                      ).notifier)
+                                      .read(routineBottomSheetNotifierProvider()
+                                          .notifier)
                                       .routineEdit(
                                           routineId!,
                                           routineInfo.value!.routineName!,

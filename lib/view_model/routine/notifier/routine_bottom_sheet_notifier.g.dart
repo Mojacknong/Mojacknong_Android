@@ -7,7 +7,7 @@ part of 'routine_bottom_sheet_notifier.dart';
 // **************************************************************************
 
 String _$routineBottomSheetNotifierHash() =>
-    r'f54ac07cc471fa6b7478c6a890af87bc36d77172';
+    r'aae3bb818d259dac67910521ea60de5201a6e308';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -32,16 +32,16 @@ class _SystemHash {
 
 abstract class _$RoutineBottomSheetNotifier
     extends BuildlessAutoDisposeAsyncNotifier<RoutineModel> {
-  late final int myVeggieId;
-  late final String routineName;
-  late final int period;
-  late final bool isSwitch;
+  late final int? myVeggieId;
+  late final String? routineName;
+  late final int? period;
+  late final bool? isSwitch;
 
   FutureOr<RoutineModel> build({
-    required int myVeggieId,
-    required String routineName,
-    required int period,
-    required bool isSwitch,
+    int? myVeggieId,
+    String? routineName,
+    int? period,
+    bool? isSwitch,
   });
 }
 
@@ -57,10 +57,10 @@ class RoutineBottomSheetNotifierFamily
 
   /// See also [RoutineBottomSheetNotifier].
   RoutineBottomSheetNotifierProvider call({
-    required int myVeggieId,
-    required String routineName,
-    required int period,
-    required bool isSwitch,
+    int? myVeggieId,
+    String? routineName,
+    int? period,
+    bool? isSwitch,
   }) {
     return RoutineBottomSheetNotifierProvider(
       myVeggieId: myVeggieId,
@@ -103,10 +103,10 @@ class RoutineBottomSheetNotifierProvider
         RoutineModel> {
   /// See also [RoutineBottomSheetNotifier].
   RoutineBottomSheetNotifierProvider({
-    required int myVeggieId,
-    required String routineName,
-    required int period,
-    required bool isSwitch,
+    int? myVeggieId,
+    String? routineName,
+    int? period,
+    bool? isSwitch,
   }) : this._internal(
           () => RoutineBottomSheetNotifier()
             ..myVeggieId = myVeggieId
@@ -141,10 +141,10 @@ class RoutineBottomSheetNotifierProvider
     required this.isSwitch,
   }) : super.internal();
 
-  final int myVeggieId;
-  final String routineName;
-  final int period;
-  final bool isSwitch;
+  final int? myVeggieId;
+  final String? routineName;
+  final int? period;
+  final bool? isSwitch;
 
   @override
   FutureOr<RoutineModel> runNotifierBuild(
@@ -211,16 +211,16 @@ class RoutineBottomSheetNotifierProvider
 mixin RoutineBottomSheetNotifierRef
     on AutoDisposeAsyncNotifierProviderRef<RoutineModel> {
   /// The parameter `myVeggieId` of this provider.
-  int get myVeggieId;
+  int? get myVeggieId;
 
   /// The parameter `routineName` of this provider.
-  String get routineName;
+  String? get routineName;
 
   /// The parameter `period` of this provider.
-  int get period;
+  int? get period;
 
   /// The parameter `isSwitch` of this provider.
-  bool get isSwitch;
+  bool? get isSwitch;
 }
 
 class _RoutineBottomSheetNotifierProviderElement
@@ -229,15 +229,15 @@ class _RoutineBottomSheetNotifierProviderElement
   _RoutineBottomSheetNotifierProviderElement(super.provider);
 
   @override
-  int get myVeggieId =>
+  int? get myVeggieId =>
       (origin as RoutineBottomSheetNotifierProvider).myVeggieId;
   @override
-  String get routineName =>
+  String? get routineName =>
       (origin as RoutineBottomSheetNotifierProvider).routineName;
   @override
-  int get period => (origin as RoutineBottomSheetNotifierProvider).period;
+  int? get period => (origin as RoutineBottomSheetNotifierProvider).period;
   @override
-  bool get isSwitch => (origin as RoutineBottomSheetNotifierProvider).isSwitch;
+  bool? get isSwitch => (origin as RoutineBottomSheetNotifierProvider).isSwitch;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

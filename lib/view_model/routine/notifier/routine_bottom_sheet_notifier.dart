@@ -10,19 +10,19 @@ part 'routine_bottom_sheet_notifier.g.dart';
 class RoutineBottomSheetNotifier extends _$RoutineBottomSheetNotifier {
   @override
   Future<RoutineModel> build({
-    required int myVeggieId,
-    required String routineName,
-    required int period,
-    required bool isSwitch,
+    int? myVeggieId,
+    String? routineName,
+    int? period,
+    bool? isSwitch,
   }) async {
     return RoutineModel(
-      myVeggieId: myVeggieId,
+      myVeggieId: myVeggieId ?? -1,
       routineName: routineName,
       period: period,
-      isSwitch: isSwitch,
-      isComplete: isSwitch
-          ? routineName.isNotEmpty && period != -1
-          : routineName.isNotEmpty,
+      isSwitch: isSwitch ?? true,
+      isComplete: isSwitch!
+          ? routineName!.isNotEmpty && period != -1
+          : routineName!.isNotEmpty,
     );
   }
 
@@ -90,5 +90,12 @@ class RoutineBottomSheetNotifier extends _$RoutineBottomSheetNotifier {
   Future<void> routineEdit(int routineId, String content, int period) async {
     await RoutineRepository.routineEdit(routineId, content, period);
     _initRoutine();
+  }
+
+  Future<void> routineDelete(int routineId) async {
+    await RoutineRepository.routineDelete(routineId);
+
+    ref.invalidate(routineDateListModelProvider);
+    ref.invalidate(myVeggieRoutineInfoModelProvider);
   }
 }
