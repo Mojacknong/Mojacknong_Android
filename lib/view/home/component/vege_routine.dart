@@ -70,18 +70,22 @@ class VegeRoutine extends ConsumerWidget {
               const SizedBox(
                 width: 12,
               ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 5),
-                decoration: ShapeDecoration(
-                  color: FarmusThemeColor.greenLight3,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4)),
+              Visibility(
+                visible: day != -1,
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 6, vertical: 5),
+                  decoration: ShapeDecoration(
+                    color: FarmusThemeColor.greenLight3,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4)),
+                  ),
+                  child: Text(
+                    "$day일 1회",
+                    style: FarmusThemeTextStyle.green1SemiBold11,
+                  ),
                 ),
-                child: Text(
-                  "$day일 1회",
-                  style: FarmusThemeTextStyle.green1SemiBold11,
-                ),
-              ),
+              )
             ],
           ),
         ],

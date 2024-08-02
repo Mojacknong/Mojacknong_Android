@@ -9,17 +9,25 @@ part 'routine_bottom_sheet_notifier.g.dart';
 @riverpod
 class RoutineBottomSheetNotifier extends _$RoutineBottomSheetNotifier {
   @override
-  Future<RoutineModel> build() async {
+  Future<RoutineModel> build({
+    required int myVeggieId,
+    required String routineName,
+    required int period,
+    required bool isSwitch,
+  }) async {
     return RoutineModel(
-        myVeggieId: -1,
-        routineName: '',
-        period: -1,
-        isSwitch: true,
-        isComplete: false);
+      myVeggieId: myVeggieId,
+      routineName: routineName,
+      period: period,
+      isSwitch: isSwitch,
+      isComplete: isSwitch
+          ? routineName.isNotEmpty && period != -1
+          : routineName.isNotEmpty,
+    );
   }
 
   void updateName(String name) {
-    final period = state.value?.period;
+    final period = state.value?.period ?? -1;
     state = AsyncData(
       RoutineModel(
         myVeggieId: state.value!.myVeggieId,
@@ -27,14 +35,14 @@ class RoutineBottomSheetNotifier extends _$RoutineBottomSheetNotifier {
         period: period,
         isSwitch: state.value!.isSwitch,
         isComplete: state.value!.isSwitch
-            ? name.isNotEmpty && period != null && period != -1
+            ? name.isNotEmpty && period != -1
             : name.isNotEmpty,
       ),
     );
   }
 
   void updatePeriod(int? period) {
-    final name = state.value?.routineName;
+    final name = state.value?.routineName ?? '';
     state = AsyncData(
       RoutineModel(
         myVeggieId: state.value!.myVeggieId,
@@ -42,8 +50,8 @@ class RoutineBottomSheetNotifier extends _$RoutineBottomSheetNotifier {
         period: period ?? -1,
         isSwitch: state.value!.isSwitch,
         isComplete: state.value!.isSwitch
-            ? name != null && name.isNotEmpty && period != null
-            : name != null && name.isNotEmpty,
+            ? name.isNotEmpty && period != -1 && period != null
+            : name.isNotEmpty,
       ),
     );
   }
@@ -59,9 +67,7 @@ class RoutineBottomSheetNotifier extends _$RoutineBottomSheetNotifier {
         period: newIsSwitch ? currentState.period : -1,
         isSwitch: newIsSwitch,
         isComplete: newIsSwitch
-            ? currentState.routineName!.isNotEmpty &&
-                currentState.period != null &&
-                currentState.period != -1
+            ? currentState.routineName!.isNotEmpty && currentState.period != -1
             : currentState.routineName!.isNotEmpty,
       ),
     );
@@ -72,23 +78,12 @@ class RoutineBottomSheetNotifier extends _$RoutineBottomSheetNotifier {
     ref.invalidate(myVeggieRoutineInfoModelProvider);
   }
 
-  Future<void> routineAdd(
-    int myVeggieId,
-    String content,
-    int period,
-  ) async {
-    if (state.value!.isSwitch == false) {
-      period = 0;
-    }
+  Future<void> routineAdd(int myVeggieId, String content, int period) async {
     await RoutineRepository.routineAdd(myVeggieId, content, period);
     _initRoutine();
   }
 
-  Future<void> routineEdit(
-    int routineId,
-    String content,
-    int period,
-  ) async {
+  Future<void> routineEdit(int routineId, String content, int period) async {
     await RoutineRepository.routineEdit(routineId, content, period);
     _initRoutine();
   }

@@ -15,11 +15,11 @@ import '../../../common/theme/farmus_theme_text_style.dart';
 class RoutineBottomSheetContent extends ConsumerWidget {
   const RoutineBottomSheetContent(
       {super.key,
-      required this.myVeggieId,
-      this.routineId,
-      required this.routine,
-      this.day,
-      required this.isCreate});
+        required this.myVeggieId,
+        this.routineId,
+        required this.routine,
+        this.day,
+        required this.isCreate});
 
   final int myVeggieId;
   final int? routineId;
@@ -29,16 +29,25 @@ class RoutineBottomSheetContent extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final routineInfo = ref.watch(routineBottomSheetNotifierProvider);
-    final routineNotifier =
-        ref.watch(routineBottomSheetNotifierProvider.notifier);
+    final routineInfo = ref.watch(routineBottomSheetNotifierProvider(
+      myVeggieId: myVeggieId,
+      routineName: routine,
+      period: day ?? -1,
+      isSwitch: day != null && day != -1,
+    ));
+    final routineNotifier = ref.watch(routineBottomSheetNotifierProvider(
+      myVeggieId: myVeggieId,
+      routineName: routine,
+      period: day ?? -1,
+      isSwitch: day != null && day != -1,
+    ).notifier);
 
     var isComplete = routineInfo.value?.isComplete ?? false;
     var isSwitch = routineInfo.value?.isSwitch ?? true;
 
     return Padding(
       padding:
-          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: SizedBox(
         height: 300,
         child: Column(
@@ -78,7 +87,7 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                 ),
                 const Padding(
                   padding:
-                      EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                  EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                   child: Divider(
                     color: FarmusThemeColor.gray4,
                   ),
@@ -128,15 +137,15 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                           text: isCreate ? '취소' : '삭제',
                           onPressed: isCreate
                               ? () {
-                                  Navigator.pop(context);
-                                }
+                            Navigator.pop(context);
+                          }
                               : () {
-                                  Navigator.pop(context);
-                                  ref
-                                      .read(routineDeleteNotifierProvider
-                                          .notifier)
-                                      .routineDelete(routineId!);
-                                },
+                            Navigator.pop(context);
+                            ref
+                                .read(routineDeleteNotifierProvider
+                                .notifier)
+                                .routineDelete(routineId!);
+                          },
                           enabled: true,
                         ),
                       ),
@@ -145,37 +154,45 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                           text: isCreate ? '확인' : '수정',
                           onPressed: isCreate
                               ? () {
-                                  ref
-                                      .read(routineBottomSheetNotifierProvider
-                                          .notifier)
-                                      .routineAdd(
-                                          myVeggieId,
-                                          routineInfo.value!.routineName!,
-                                          routineInfo.value!.period!);
-                                  Navigator.pop(context);
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      Future.delayed(const Duration(seconds: 2),
-                                          () {
-                                        Navigator.pop(context);
-                                      });
-                                      return const CheckDialog(
-                                        text: "새 루틴을 추가했어요",
-                                      );
-                                    },
-                                  );
-                                }
+                            ref
+                                .read(routineBottomSheetNotifierProvider(
+                              myVeggieId: myVeggieId,
+                              routineName: routine,
+                              period: day ?? -1,
+                              isSwitch: day != null && day != -1,
+                            ).notifier)
+                                .routineAdd(
+                                myVeggieId,
+                                routineInfo.value!.routineName!,
+                                routineInfo.value!.period!);
+                            Navigator.pop(context);
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                Future.delayed(const Duration(seconds: 2),
+                                        () {
+                                      Navigator.pop(context);
+                                    });
+                                return const CheckDialog(
+                                  text: "새 루틴을 추가했어요",
+                                );
+                              },
+                            );
+                          }
                               : () {
-                                  ref
-                                      .read(routineBottomSheetNotifierProvider
-                                          .notifier)
-                                      .routineEdit(
-                                          routineId!,
-                                          routineInfo.value!.routineName!,
-                                          routineInfo.value!.period!);
-                                  Navigator.pop(context);
-                                },
+                            ref
+                                .read(routineBottomSheetNotifierProvider(
+                              myVeggieId: myVeggieId,
+                              routineName: routine,
+                              period: day ?? -1,
+                              isSwitch: day != null && day != -1,
+                            ).notifier)
+                                .routineEdit(
+                                routineId!,
+                                routineInfo.value!.routineName!,
+                                routineInfo.value!.period!);
+                            Navigator.pop(context);
+                          },
                           enabled: isComplete,
                         ),
                       ),

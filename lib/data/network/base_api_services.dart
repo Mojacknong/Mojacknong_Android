@@ -43,7 +43,7 @@ class ApiClient {
         response = await client.post(url, headers: headers, body: body);
         break;
       case 'PATCH':
-        response = await client.patch(url, headers: headers);
+        response = await client.patch(url, headers: headers, body: body);
         break;
       case 'PUT':
         response = await client.put(url, headers: headers, body: body);
@@ -90,7 +90,7 @@ class ApiClient {
 
   Future<http.Response> patch(String endpoint,
       {Map<String, String>? headers, Object? body}) async {
-    return _sendRequest('PATCH', endpoint, headers: headers);
+    return _sendRequest('PATCH', endpoint, headers: headers, body: body);
   }
 
   Future<http.Response> put(String endpoint,
@@ -104,13 +104,13 @@ class ApiClient {
   }
 
   Future<http.Response> postDiary(
-      String endpoint,
-      File file,
-      String content,
-      bool isOpen,
-      String state,
-      int myVeggieId,
-      ) async {
+    String endpoint,
+    File file,
+    String content,
+    bool isOpen,
+    String state,
+    int myVeggieId,
+  ) async {
     Map<String, String> body = {
       'content': content,
       'isOpen': isOpen.toString(),
