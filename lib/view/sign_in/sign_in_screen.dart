@@ -36,10 +36,25 @@ class _SignInScreenState extends State<SignInScreen> {
   ];
   int _currentPage = 0;
 
+  _asyncMethod() async {
+    if (await storage.read(key: "accessToken") != null) {
+      if (!mounted) return;
+      if (await storage.read(key: "early") != "true") {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const MainScreen(),
+          ),
+        );
+      }
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     _startTimer();
+    _asyncMethod();
   }
 
   @override
@@ -185,7 +200,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
   fetchKaKaoData(String token) {
     UserRepository.kakaoSignInApi(token).then(
-          (value) {
+      (value) {
         if (value != null) {
           setState(() {
             user = value;
@@ -214,13 +229,13 @@ class _SignInScreenState extends State<SignInScreen> {
 
   googleLogin() async {
     final GoogleSignInAccount? googleSignInAccount =
-    await googleSignIn.signIn();
+        await googleSignIn.signIn();
 
     final GoogleSignInAuthentication googleSignInAuthentication =
-    await googleSignInAccount!.authentication;
+        await googleSignInAccount!.authentication;
 
     UserRepository.googleSignInApi(googleSignInAuthentication.accessToken).then(
-          (value) {
+      (value) {
         if (value != null) {
           setState(() {
             user = value;
