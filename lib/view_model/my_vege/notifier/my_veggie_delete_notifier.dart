@@ -1,7 +1,7 @@
 import 'package:farmus/model/my_vege/my_veggie_info_model.dart';
 import 'package:farmus/repository/my_veggie_garden_repository.dart';
 import 'package:farmus/view_model/my_farmclub/my_farmclub_info_notifier.dart';
-import 'package:farmus/view_model/my_vege/notifier/my_veggie_list.dart';
+import 'package:farmus/view_model/my_vege/notifier/my_veggie_info_notifier.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'my_vege_delete_notifier.dart';
@@ -62,7 +62,6 @@ class MyVeggieDeleteNotifier extends _$MyVeggieDeleteNotifier {
     );
 
     ref.invalidate(myVegeDeleteProvider);
-    ref.invalidate(myVeggieDeleteNotifierProvider);
-    ref.invalidate(myFarmclubInfoModelProvider);
+    ref.invalidate(myVeggieInfoProvider);
   }
 }
