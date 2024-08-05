@@ -8,7 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../common/bottom_sheet/primary_action_sheet.dart';
 import '../../common/button/add_button.dart';
-import '../../common/button/delete_button.dart';
+import '../../common/button/primary_color_button.dart';
 import '../../common/theme/farmus_theme_color.dart';
 import '../../view_model/home/home_vege_add_provider.dart';
 import '../../view_model/my_vege/notifier/my_veggie_info.dart';
@@ -124,13 +124,15 @@ class _MyVegeScreenState extends ConsumerState<MyVegeScreen> {
                 button: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: myVegeDeleteMode
-                      ? DeleteButton(
-                          enabled: myVegeNotifier.selectedVege.isEmpty
-                              ? false
-                              : true,
-                          onPressed: () {
-                            showActionSheet(context);
-                          },
+                      ? SizedBox(
+                          width: double.infinity,
+                          child: PrimaryColorButton(
+                            text: '채소 삭제',
+                            onPressed: () {
+                              showActionSheet(context);
+                            },
+                            enabled: true,
+                          ),
                         )
                       : AddButton(
                           onPressed: () {

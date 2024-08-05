@@ -4,10 +4,10 @@ import 'dart:io';
 import 'base_api_services.dart';
 
 class MyVeggieService {
+  final ApiClient apiClient = ApiClient();
+
   Future<String> myVeggieList() async {
     const url = '/api/my-veggie/simple-list';
-
-    ApiClient apiClient = ApiClient();
 
     final response = await apiClient.get(url);
 
@@ -24,7 +24,6 @@ class MyVeggieService {
     String veggieInfoId,
   ) async {
     const url = '/api/my-veggie';
-    ApiClient apiClient = ApiClient();
     Map<String, String> headers = {
       HttpHeaders.contentTypeHeader: 'application/json',
     };
@@ -47,8 +46,6 @@ class MyVeggieService {
   Future<String> myVeggieProfileList(int myVeggieId) async {
     final url = '/api/my-veggie/$myVeggieId/profile';
 
-    ApiClient apiClient = ApiClient();
-
     final response = await apiClient.get(url);
 
     if (response.statusCode == 200) {
@@ -60,8 +57,6 @@ class MyVeggieService {
 
   Future<String> myVeggieDiaryOne(int myVeggieId) async {
     final url = '/api/my-veggie/diary/$myVeggieId/one';
-
-    ApiClient apiClient = ApiClient();
 
     final response = await apiClient.get(url);
 
@@ -86,10 +81,24 @@ class MyVeggieService {
     }
   }
 
+  Future<String> myVeggieDelete(int myVeggieId) async {
+    const url = '/api/my-veggie';
+
+    final body = jsonEncode({
+      'myVeggieId': myVeggieId,
+    });
+
+    final response = await apiClient.delete(url, body: body);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('채소 삭제 실패');
+    }
+  }
+
   Future<String> myVeggieDiaryAll(int myVeggieId) async {
     final url = '/api/my-veggie/diary/$myVeggieId/all';
-
-    ApiClient apiClient = ApiClient();
 
     final response = await apiClient.get(url);
 
@@ -108,8 +117,6 @@ class MyVeggieService {
     int myVeggieId,
   ) async {
     const url = '/api/my-veggie/diary';
-
-    ApiClient apiClient = ApiClient();
 
     final response = await apiClient.postDiary(
       url,
