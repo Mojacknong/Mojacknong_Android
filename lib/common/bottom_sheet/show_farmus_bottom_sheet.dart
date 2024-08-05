@@ -1,6 +1,7 @@
 import 'package:farmus/common/dialog/check_dialog.dart';
 import 'package:farmus/view/farmclub_open/component/farmclub_open_bottom_sheet_content.dart';
 import 'package:farmus/view/farmclub_sign_up/component/farmclub_sign_up_bottom_sheet_content.dart';
+import 'package:farmus/view/my_vege/component/veggie_delete_bottom_sheet_content.dart';
 import 'package:farmus/view/routine/component/routine_bottom_sheet_content.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -141,4 +142,13 @@ void showAllVeggieSignedActionSheet(BuildContext context, String text) {
       builder: (BuildContext context) {
         return FarmclubOpenBottomSheetContent(text: text);
       });
+}
+
+void showVeggieDeleteBottomSheet(BuildContext context) {
+  showCupertinoModalPopup(
+    context: context,
+    builder: (BuildContext context) {
+      return const VeggieDeleteBottomSheetContent();
+    },
+  );
 }

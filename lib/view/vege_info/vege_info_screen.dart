@@ -6,6 +6,7 @@ import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/my_vege/my_vege_screen.dart';
 import 'package:farmus/view/vege_info/component/vege_info_detail.dart';
 import 'package:farmus/view_model/my_vege/my_vege_provider.dart';
+import 'package:farmus/view_model/my_vege/notifier/my_veggie_delete_notifier.dart';
 import 'package:farmus/view_model/my_vege/notifier/my_veggie_profile_change_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -49,7 +50,6 @@ class VegeInfoScreen extends ConsumerWidget {
           IconButton(
             onPressed: () {
               ref.invalidate(myVegeDeleteProvider);
-              ref.invalidate(myVegeProvider);
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const MyVegeScreen()),
@@ -170,8 +170,7 @@ class VegeInfoScreen extends ConsumerWidget {
                           text: '수정',
                           enabled: (myVeggieAddData?.value.date.isNotEmpty ??
                                   false) ||
-                              (myVeggieAddData?.value.name.isNotEmpty ??
-                                  false),
+                              (myVeggieAddData?.value.name.isNotEmpty ?? false),
                         ),
                       ),
                     ),
