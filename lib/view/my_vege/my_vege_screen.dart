@@ -1,7 +1,6 @@
 import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
 import 'package:farmus/common/button/bottom_backgroud_divider_button.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:farmus/view_model/my_vege/my_vege_provider.dart';
 import 'package:farmus/view_model/my_vege/notifier/my_veggie_delete_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,7 +9,8 @@ import '../../common/bottom_sheet/show_farmus_bottom_sheet.dart';
 import '../../common/button/add_button.dart';
 import '../../common/button/primary_color_button.dart';
 import '../../common/theme/farmus_theme_color.dart';
-import '../../view_model/my_vege/notifier/my_veggie_info.dart';
+import '../../view_model/my_vege/notifier/my_vege_delete_notifier.dart';
+import '../../view_model/my_vege/notifier/my_veggie_info_notifier.dart';
 import '../vege_add/home_vege_add_screen.dart';
 import 'component/my_vege_list_info.dart';
 
@@ -32,7 +32,6 @@ class MyVegeScreen extends ConsumerWidget {
             onPressed: () {
               ref.read(myVegeDeleteProvider.notifier).changeMyVegeScreenMode();
               ref.invalidate(myVeggieDeleteNotifierProvider);
-
             },
             child: Text(
               myVegeDeleteMode ? '취소' : '삭제',

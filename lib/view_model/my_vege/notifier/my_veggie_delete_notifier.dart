@@ -1,6 +1,10 @@
 import 'package:farmus/model/my_vege/my_veggie_info_model.dart';
 import 'package:farmus/repository/my_veggie_garden_repository.dart';
+import 'package:farmus/view_model/my_farmclub/my_farmclub_info_notifier.dart';
+import 'package:farmus/view_model/my_vege/notifier/my_veggie_list.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import 'my_vege_delete_notifier.dart';
 
 part 'my_veggie_delete_notifier.g.dart';
 
@@ -43,8 +47,8 @@ class MyVeggieDeleteNotifier extends _$MyVeggieDeleteNotifier {
     );
   }
 
-  Future<void> veggieDelete(int myVeggieId) async {
-    await MyVeggieGardenRepository.myVeggieDelete(myVeggieId);
+  Future<void> veggieDelete() async {
+    await MyVeggieGardenRepository.myVeggieDelete(selectedVeggieId ?? -1);
 
     state = const AsyncData(
       MyVeggieInfoModel(
@@ -56,5 +60,9 @@ class MyVeggieDeleteNotifier extends _$MyVeggieDeleteNotifier {
         myVeggieId: -1,
       ),
     );
+
+    ref.invalidate(myVegeDeleteProvider);
+    ref.invalidate(myVeggieDeleteNotifierProvider);
+    ref.invalidate(myFarmclubInfoModelProvider);
   }
 }

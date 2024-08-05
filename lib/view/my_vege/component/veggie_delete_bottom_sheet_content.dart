@@ -15,7 +15,7 @@ class VeggieDeleteBottomSheetContent extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return PrimaryActionSheet(
       title: "채소를 삭제하시겠어요?",
-      actions: <CupertinoActionSheetAction>[
+      actions: [
         CupertinoActionSheetAction(
           onPressed: () {
             Navigator.pop(context);

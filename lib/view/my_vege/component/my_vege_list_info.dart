@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
-import '../../../view_model/my_vege/my_vege_provider.dart';
+import '../../../view_model/my_vege/notifier/my_vege_delete_notifier.dart';
 
 class MyVegeListInfo extends ConsumerWidget {
   const MyVegeListInfo({super.key, required this.myVege});

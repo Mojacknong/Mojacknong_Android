@@ -7,7 +7,7 @@ part of 'my_veggie_delete_notifier.dart';
 // **************************************************************************
 
 String _$myVeggieDeleteNotifierHash() =>
-    r'9669d221aae0598c73e52a5a7584bd349108fcb5';
+    r'255cecd0f513a6d4843514a21c8fd26c1abd0145';
 
 /// See also [MyVeggieDeleteNotifier].
 @ProviderFor(MyVeggieDeleteNotifier)

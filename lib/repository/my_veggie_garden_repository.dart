@@ -28,8 +28,8 @@ class MyVeggieGardenRepository {
     return response;
   }
 
-  static Future<String> myVeggieDelete(int routineId) async {
-    String? response = await MyVeggieService().myVeggieDelete(routineId);
+  static Future<String> myVeggieDelete(int veggieId) async {
+    String? response = await MyVeggieService().myVeggieDelete(veggieId);
     return response;
   }
 

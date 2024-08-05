@@ -5,7 +5,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../model/my_vege/my_veggie_info_model.dart';
 
-part 'my_veggie_info.g.dart';
+part 'my_veggie_info_notifier.g.dart';
 
 @riverpod
 Future<List<MyVeggieInfoModel>> myVeggieInfo(MyVeggieInfoRef ref) async {
