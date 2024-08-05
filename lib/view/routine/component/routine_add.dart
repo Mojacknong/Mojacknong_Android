@@ -51,18 +51,17 @@ class RoutineAdd extends ConsumerWidget {
                     child: VegeRoutine(
                       routine: entry.key,
                       isChecked: entry.value['complete'],
-                      onCheck: () {
-                        ref
-                            .read(routineCheckProvider(entry.key).notifier)
-                            .toggleRoutine();
-                      },
                       day: entry.value['period'],
+                      routineId: entry.value['routineId'],
                     ),
                   ),
                   IconButton(
                     onPressed: () {
-                      ref.invalidate(routineEditProvider);
-                      showRoutineEditBottomSheet(context, myVeggieId, entry.key,
+                      showRoutineEditBottomSheet(
+                          context,
+                          myVeggieId,
+                          entry.value['routineId'],
+                          entry.key,
                           entry.value['period']);
                     },
                     icon: SvgPicture.asset('assets/image/ic_more_vertical.svg'),

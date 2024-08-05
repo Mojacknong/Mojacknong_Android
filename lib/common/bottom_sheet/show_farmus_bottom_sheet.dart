@@ -34,6 +34,7 @@ void showRoutineAddBottomSheet(
 void showRoutineEditBottomSheet(
   BuildContext context,
   int myVeggieId,
+  int routineId,
   String routine,
   int day,
 ) {
@@ -44,6 +45,7 @@ void showRoutineEditBottomSheet(
     builder: (BuildContext context) {
       return RoutineBottomSheetContent(
         myVeggieId: myVeggieId,
+        routineId: routineId,
         routine: routine,
         day: day,
         isCreate: false,

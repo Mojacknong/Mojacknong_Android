@@ -6,19 +6,21 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
+import '../../../view_model/routine/notifier/routine_check_notifier.dart';
 
 class VegeRoutine extends ConsumerWidget {
-  const VegeRoutine(
-      {super.key,
-      required this.routine,
-      this.day,
-      required this.isChecked,
-      this.onCheck});
+  const VegeRoutine({
+    super.key,
+    required this.routine,
+    this.day,
+    required this.isChecked,
+    required this.routineId,
+  });
 
   final String routine;
   final int? day;
   final bool isChecked;
-  final Function()? onCheck;
+  final int routineId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -27,7 +29,11 @@ class VegeRoutine extends ConsumerWidget {
       child: Row(
         children: [
           GestureDetector(
-            onTap: onCheck,
+            onTap: () {
+              ref
+                  .read(routineCheckNotifierProvider.notifier)
+                  .routineCheck(routineId);
+            },
             child: Container(
               width: 24,
               height: 24,
@@ -64,18 +70,22 @@ class VegeRoutine extends ConsumerWidget {
               const SizedBox(
                 width: 12,
               ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 5),
-                decoration: ShapeDecoration(
-                  color: FarmusThemeColor.greenLight3,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4)),
+              Visibility(
+                visible: day != -1,
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 6, vertical: 5),
+                  decoration: ShapeDecoration(
+                    color: FarmusThemeColor.greenLight3,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4)),
+                  ),
+                  child: Text(
+                    "$day일 1회",
+                    style: FarmusThemeTextStyle.green1SemiBold11,
+                  ),
                 ),
-                child: Text(
-                  "$day일 1회",
-                  style: FarmusThemeTextStyle.green1SemiBold11,
-                ),
-              ),
+              )
             ],
           ),
         ],

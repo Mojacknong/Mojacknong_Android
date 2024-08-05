@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'base_api_services.dart';
 
@@ -39,21 +38,53 @@ class RoutineService {
 
   Future<String> routineAdd(int myVeggieId, String content, int period) async {
     const url = '/api/my-veggie/routine';
-    Map<String, String> headers = {
-      HttpHeaders.contentTypeHeader: 'application/json',
-    };
+
     final body = jsonEncode({
       'myVeggieId': myVeggieId,
       'content': content,
       'period': period,
     });
 
-    final response = await apiClient.post(url, headers: headers, body: body);
+    final response = await apiClient.post(url, body: body);
 
     if (response.statusCode == 200) {
       return utf8.decode(response.bodyBytes);
     } else {
       throw Exception('채소 루틴 추가 실패');
+    }
+  }
+
+  Future<String> routineDelete(int routineId) async {
+    const url = '/api/my-veggie/routine';
+
+    final body = jsonEncode({
+      'routineId': routineId,
+    });
+
+    final response = await apiClient.delete(url, body: body);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('루틴 삭제 실패');
+    }
+  }
+
+  Future<String> routineEdit(int routineId, String content, int period) async {
+    const url = '/api/my-veggie/routine';
+
+    final body = jsonEncode({
+      'routineId': routineId,
+      'content': content,
+      'period': period,
+    });
+
+    final response = await apiClient.patch(url, body: body);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('루틴 수정 실패');
     }
   }
 

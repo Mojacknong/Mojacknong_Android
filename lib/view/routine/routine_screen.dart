@@ -58,7 +58,8 @@ class RoutineScreen extends ConsumerWidget {
                       for (var item in routineItem.myVeggieRoutineList)
                         item.content: {
                           'period': item.period,
-                          'complete': item.complete
+                          'complete': item.complete,
+                          'routineId': item.routineId
                         }
                     };
                     return RoutineAdd(

@@ -27,4 +27,16 @@ class RoutineRepository {
         await RoutineService().routineAdd(myVeggieId, content, period);
     return response;
   }
+
+  static Future<String> routineDelete(int routineId) async {
+    String? response = await RoutineService().routineDelete(routineId);
+    return response;
+  }
+
+  static Future<String> routineEdit(
+      int routineId, String content, int period) async {
+    String? response =
+        await RoutineService().routineEdit(routineId, content, period);
+    return response;
+  }
 }

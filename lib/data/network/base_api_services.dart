@@ -18,7 +18,9 @@ class ApiClient {
 
   Future<Map<String, String>> _getHeaders() async {
     String? accessToken = await storage.read(key: "accessToken");
-    Map<String, String> headers = {};
+    Map<String, String> headers = {
+      HttpHeaders.contentTypeHeader: 'application/json',
+    };
     if (accessToken != null) {
       headers["Authorization"] = "Bearer $accessToken";
     }
@@ -41,10 +43,13 @@ class ApiClient {
         response = await client.post(url, headers: headers, body: body);
         break;
       case 'PATCH':
-        response = await client.patch(url, headers: headers);
+        response = await client.patch(url, headers: headers, body: body);
         break;
       case 'PUT':
         response = await client.put(url, headers: headers, body: body);
+        break;
+      case 'DELETE':
+        response = await client.delete(url, headers: headers, body: body);
         break;
       case 'POST_MULTIPART':
         var request = http.MultipartRequest('POST', url);
@@ -85,12 +90,17 @@ class ApiClient {
 
   Future<http.Response> patch(String endpoint,
       {Map<String, String>? headers, Object? body}) async {
-    return _sendRequest('PATCH', endpoint, headers: headers);
+    return _sendRequest('PATCH', endpoint, headers: headers, body: body);
   }
 
   Future<http.Response> put(String endpoint,
       {Map<String, String>? headers, Object? body}) async {
     return _sendRequest('PUT', endpoint, headers: headers, body: body);
+  }
+
+  Future<http.Response> delete(String endpoint,
+      {Map<String, String>? headers, Object? body}) async {
+    return _sendRequest('DELETE', endpoint, headers: headers, body: body);
   }
 
   Future<http.Response> postDiary(

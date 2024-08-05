@@ -1,10 +1,10 @@
-import 'package:farmus/view_model/routine/notifier/routine_add_notifier.dart';
-import 'package:farmus/view_model/routine/routine_provider.dart';
+import 'package:farmus/view_model/routine/notifier/routine_bottom_sheet_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../common/button/primary_color_button.dart';
 import '../../../common/button/white_color_button.dart';
+import '../../../common/dialog/check_dialog.dart';
 import '../../../common/form/digits_text_form_field.dart';
 import '../../../common/form/not_underline_text_form_field.dart';
 import '../../../common/switch/primary_switch.dart';
@@ -15,24 +15,34 @@ class RoutineBottomSheetContent extends ConsumerWidget {
   const RoutineBottomSheetContent(
       {super.key,
       required this.myVeggieId,
+      this.routineId,
       required this.routine,
       this.day,
       required this.isCreate});
 
   final int myVeggieId;
+  final int? routineId;
   final String routine;
   final int? day;
   final bool isCreate;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final routineInfo = ref.watch(routineAddNotifierProvider);
-    final routineNotifier = ref.watch(routineAddNotifierProvider.notifier);
+    final routineInfo = ref.watch(routineBottomSheetNotifierProvider(
+      myVeggieId: myVeggieId,
+      routineName: routine,
+      period: day ?? -1,
+      isSwitch: isCreate ? true : day != null && day != -1,
+    ));
+    final routineNotifier = ref.watch(routineBottomSheetNotifierProvider(
+      myVeggieId: myVeggieId,
+      routineName: routine,
+      period: day ?? -1,
+      isSwitch: isCreate ? true : day != null && day != -1,
+    ).notifier);
 
     var isComplete = routineInfo.value?.isComplete ?? false;
     var isSwitch = routineInfo.value?.isSwitch ?? true;
-
-    var routineName = ref.watch(routineEditProvider(routine)).routineName;
 
     return Padding(
       padding:
@@ -65,12 +75,7 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                               hintText: '루틴을 입력해 주세요',
                               initialValue: routine,
                               onChanged: (value) {
-                                isCreate
-                                    ? routineNotifier.updateName(value)
-                                    : ref
-                                        .read(routineEditProvider(routineName)
-                                            .notifier)
-                                        .updateName(value);
+                                routineNotifier.updateName(value);
                               },
                             ),
                           ),
@@ -96,22 +101,15 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                             SizedBox(
                                 width: 50,
                                 child: DigitsTextFormField(
-                                  initialValue: isCreate ? '' : '$day',
-                                  readOnly: isCreate ? !isSwitch : false,
+                                  initialValue: isCreate
+                                      ? ''
+                                      : day != -1
+                                          ? '$day'
+                                          : '',
+                                  readOnly: !isSwitch,
                                   onChanged: (value) {
-                                    if (isCreate) {
-                                      int? period = int.tryParse(value);
-                                      routineNotifier.updatePeriod(period);
-                                    } else {
-                                      int? period = int.tryParse(value);
-                                      if (period != null) {
-                                        ref
-                                            .read(
-                                                routineEditProvider(routineName)
-                                                    .notifier)
-                                            .updateName(value);
-                                      }
-                                    }
+                                    int? period = int.tryParse(value);
+                                    routineNotifier.updatePeriod(period);
                                   },
                                 )),
                             const SizedBox(
@@ -140,29 +138,57 @@ class RoutineBottomSheetContent extends ConsumerWidget {
                       Expanded(
                         child: WhiteColorButton(
                           text: isCreate ? '취소' : '삭제',
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
+                          onPressed: isCreate
+                              ? () {
+                                  Navigator.pop(context);
+                                }
+                              : () {
+                                  Navigator.pop(context);
+                                  ref
+                                      .read(routineBottomSheetNotifierProvider()
+                                          .notifier)
+                                      .routineDelete(routineId!);
+                                },
                           enabled: true,
                         ),
                       ),
                       Expanded(
                         child: PrimaryColorButton(
                           text: isCreate ? '확인' : '수정',
-                          onPressed: () {
-                            ref
-                                .read(routineAddNotifierProvider.notifier)
-                                .routineAdd(
-                                    myVeggieId,
-                                    routineInfo.value!.routineName!,
-                                    routineInfo.value!.period!);
-                            Navigator.pop(context);
-                          },
-                          enabled: isCreate
-                              ? isComplete
-                              : ref
-                                  .watch(routineEditProvider(routineName))
-                                  .isComplete,
+                          onPressed: isCreate
+                              ? () {
+                                  ref
+                                      .read(routineBottomSheetNotifierProvider()
+                                          .notifier)
+                                      .routineAdd(
+                                          myVeggieId,
+                                          routineInfo.value!.routineName!,
+                                          routineInfo.value!.period!);
+                                  Navigator.pop(context);
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      Future.delayed(const Duration(seconds: 2),
+                                          () {
+                                        Navigator.pop(context);
+                                      });
+                                      return const CheckDialog(
+                                        text: "새 루틴을 추가했어요",
+                                      );
+                                    },
+                                  );
+                                }
+                              : () {
+                                  ref
+                                      .read(routineBottomSheetNotifierProvider()
+                                          .notifier)
+                                      .routineEdit(
+                                          routineId!,
+                                          routineInfo.value!.routineName!,
+                                          routineInfo.value!.period!);
+                                  Navigator.pop(context);
+                                },
+                          enabled: isComplete,
                         ),
                       ),
                     ],
