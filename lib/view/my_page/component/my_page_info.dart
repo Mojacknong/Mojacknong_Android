@@ -1,3 +1,4 @@
+import 'package:farmus/common/farmus_picture.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/my_page/my_profile_screen.dart';
@@ -8,18 +9,12 @@ import 'package:image_picker/image_picker.dart';
 import '../../../view_model/my_page/my_page_info_provider.dart';
 import '../../../view_model/on_boarding/on_boarding_provider.dart';
 
-class MyPageInfo extends ConsumerStatefulWidget {
+class MyPageInfo extends ConsumerWidget {
   const MyPageInfo({super.key});
 
   @override
-  ConsumerState<MyPageInfo> createState() => _MyPageInfoState();
-}
-
-class _MyPageInfoState extends ConsumerState<MyPageInfo> {
-  XFile? file;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    XFile? file;
     file = ref.read(onBoardingProfileSetProvider).profileImage;
     final myPageInfoAsyncValue = ref.watch(myPageInfoModelProvider);
 
@@ -45,25 +40,10 @@ class _MyPageInfoState extends ConsumerState<MyPageInfo> {
                   height: 100,
                   child: Row(
                     children: [
-                      Container(
-                        height: 100,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16.0,
-                          vertical: 16.0,
-                        ),
+                     AspectRatio(
+                        aspectRatio: 1.0,
                         child: Container(
-                          width: 68,
-                          height: 68,
-                          decoration: ShapeDecoration(
-                            color: FarmusThemeColor.gray5,
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                width: 0.60,
-                                color: FarmusThemeColor.gray4,
-                              ),
-                              borderRadius: BorderRadius.circular(60),
-                            ),
-                          ),
+                          padding: const EdgeInsets.all(12),
                           child: ClipOval(
                             child: Image.network(
                               userImageUrl,

@@ -14,8 +14,8 @@ Future<MyPageInfoModel> myPageInfoModel(MyPageInfoModelRef ref) async {
     if (json['code'] == 200) {
       final data = json['data'] as Map<String, dynamic>;
 
-      final nickName = data['nickName'] as String;
-      final userImageUrl = data['userImageUrl'] as String;
+      final nickName = data['nickName'];
+      final userImageUrl = data['userImageUrl'];
 
       final dday = data['dday'];
 
