@@ -1,5 +1,5 @@
-import 'package:farmus/common/farmus_picture_fix.dart';
 import 'package:farmus/common/button/round_gray_button.dart';
+import 'package:farmus/common/farmus_picture_fix.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -14,11 +14,13 @@ class FarmclubStep extends ConsumerWidget {
       {super.key,
       required this.wholeMember,
       required this.step,
-      required this.farmclubInfo});
+      required this.farmclubInfo,
+      required this.isButton});
 
   final int wholeMember;
   final StepModel step;
   final MyFarmclubInfoModel farmclubInfo;
+  final bool isButton;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -76,7 +78,7 @@ class FarmclubStep extends ConsumerWidget {
                         ),
                       );
                     },
-                    isButton: true,
+                    isButton: isButton,
                     text: '인증하기',
                   )
                 ],

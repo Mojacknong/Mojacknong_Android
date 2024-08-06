@@ -13,18 +13,17 @@ class HomeNoneContainer extends ConsumerWidget {
       required this.buttonText});
 
   final String title;
-  final Function()? onTap;
+  final Function() onTap;
   final String buttonText;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
-      onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
         child: Container(
           width: double.infinity,
-          padding: const EdgeInsets.all(50),
+          padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 10.0),
           alignment: Alignment.center,
           decoration: ShapeDecoration(
             color: FarmusThemeColor.background,
@@ -42,7 +41,7 @@ class HomeNoneContainer extends ConsumerWidget {
                 height: 20,
               ),
               RoundGrayButton(
-                onTap: () {},
+                onTap: onTap,
                 isButton: true,
                 text: buttonText,
               )

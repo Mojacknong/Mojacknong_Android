@@ -1,3 +1,4 @@
+import 'package:farmus/common/button/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -18,25 +19,18 @@ class RoundGrayButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Visibility(
-      visible: isButton,
-      child: GestureDetector(
-        onTap: onTap,
-        child: Container(
+        visible: isButton,
+        child: PrimaryButton(
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
-          decoration: ShapeDecoration(
-            color: FarmusThemeColor.gray6,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30),
-            ),
+          borderRadius: 30,
+          backgroundColor: FarmusThemeColor.gray1,
+          buttonChild: Text(
+            text,
+            style: FarmusThemeTextStyle.whiteSemiBold15,
           ),
-          child: Center(
-            child: Text(
-              text,
-              style: FarmusThemeTextStyle.whiteSemiBold15,
-            ),
-          ),
-        ),
-      ),
-    );
+          enabled: true,
+          textColor: FarmusThemeColor.white,
+          borderColor: FarmusThemeColor.background,
+        ));
   }
 }

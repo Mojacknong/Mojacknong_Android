@@ -15,4 +15,3 @@ class RoutineModel {
     required this.isComplete,
   });
 }
-
