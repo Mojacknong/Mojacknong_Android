@@ -121,7 +121,7 @@ class HomeScreen extends ConsumerWidget {
                                 return HomeVegeDiary(diary: diary);
                               } else {
                                 return HomeNoneContainer(
-                                  text: '아직 작성한 일기가 없어요',
+                                  title: '오늘 작성한 일기가 없어요',
                                   onTap: () {
                                     Navigator.push(
                                       context,
@@ -131,6 +131,7 @@ class HomeScreen extends ConsumerWidget {
                                       ),
                                     );
                                   },
+                                  buttonText: '성장일기 쓰기',
                                 );
                               }
                             },
@@ -147,7 +148,7 @@ class HomeScreen extends ConsumerWidget {
                                 return HomeVegeDiary(diary: diary);
                               } else {
                                 return HomeNoneContainer(
-                                  text: '아직 작성한 일기가 없어요',
+                                  title: '오늘 작성한 일기가 없어요',
                                   onTap: () {
                                     Navigator.push(
                                       context,
@@ -157,6 +158,7 @@ class HomeScreen extends ConsumerWidget {
                                       ),
                                     );
                                   },
+                                  buttonText: '성장일기 쓰기',
                                 );
                               }
                             },

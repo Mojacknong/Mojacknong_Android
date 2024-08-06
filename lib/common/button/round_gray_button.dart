@@ -1,33 +1,26 @@
-import 'package:farmus/model/my_farmclub/my_farmclub_info_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../common/theme/farmus_theme_color.dart';
-import '../../../common/theme/farmus_theme_text_style.dart';
-import '../mission_write_screen.dart';
+import '../theme/farmus_theme_color.dart';
+import '../theme/farmus_theme_text_style.dart';
 
-class MissionWriteRouteButton extends ConsumerWidget {
-  const MissionWriteRouteButton(
-      {super.key, required this.step, required this.isButton});
+class RoundGrayButton extends ConsumerWidget {
+  const RoundGrayButton(
+      {super.key,
+      required this.onTap,
+      required this.isButton,
+      required this.text});
 
-  final StepModel step;
+  final Function() onTap;
   final bool isButton;
+  final String text;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Visibility(
       visible: isButton,
       child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (builder) => MissionWriteScreen(
-                step: step,
-              ),
-            ),
-          );
-        },
+        onTap: onTap,
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
           decoration: ShapeDecoration(
@@ -36,9 +29,9 @@ class MissionWriteRouteButton extends ConsumerWidget {
               borderRadius: BorderRadius.circular(30),
             ),
           ),
-          child: const Center(
+          child: Center(
             child: Text(
-              '인증하기',
+              text,
               style: FarmusThemeTextStyle.whiteSemiBold15,
             ),
           ),

@@ -30,7 +30,7 @@ class HomeVegeRoutine extends ConsumerWidget {
 
         return myVeggieRoutineInfo.isEmpty
             ? HomeNoneContainer(
-                text: '아직 루틴을 등록하지 않았어요',
+                title: '오늘 루틴이 없어요',
                 onTap: () {
                   Navigator.push(
                     context,
@@ -38,6 +38,7 @@ class HomeVegeRoutine extends ConsumerWidget {
                         builder: (context) => const RoutineScreen()),
                   );
                 },
+          buttonText: '루틴 등록하기',
               )
             : Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
