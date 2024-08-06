@@ -3,7 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'my_veggie_diary.freezed.dart';
 part 'my_veggie_diary.g.dart';
 
-
 @freezed
 class MyVeggieDiary with _$MyVeggieDiary {
   const factory MyVeggieDiary({
@@ -12,6 +11,10 @@ class MyVeggieDiary with _$MyVeggieDiary {
     required String content,
     required String state,
     required bool isOpen,
+    required int diaryId,
+    required int likeCount,
+    required int commentCount,
+    required bool myLike,
   }) = _MyVeggieDiary;
 
   factory MyVeggieDiary.fromJson(Map<String, dynamic> json) =>

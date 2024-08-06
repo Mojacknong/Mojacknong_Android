@@ -8,7 +8,7 @@ import '../../common/theme/farmus_theme_text_style.dart';
 import '../../model/home/my_veggie_list_model.dart';
 import '../../model/my_vege/my_veggie_diary.dart';
 import '../../view_model/home/home_provider.dart';
-import '../../view_model/my_vege/notifier/my_veggie_diary.dart';
+import '../../view_model/my_vege/notifier/my_veggie_diary_notifier.dart';
 import '../../view_model/my_vege/notifier/my_veggie_list.dart';
 import 'component/vege_diary_info.dart';
 
@@ -26,7 +26,7 @@ class VegeDiaryScreen extends ConsumerWidget {
     }
 
     final AsyncValue<List<MyVeggieDiary>> myVeggieDiaryList =
-        ref.watch(myVeggieDiaryProvider(selectedVeggieId!));
+        ref.watch(myVeggieDiaryNotifierProvider(selectedVeggieId!));
 
     return Scaffold(
       appBar: const BackLeftTitleAppBar(

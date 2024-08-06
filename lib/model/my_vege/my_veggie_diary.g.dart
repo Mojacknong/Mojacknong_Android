@@ -13,6 +13,10 @@ _$MyVeggieDiaryImpl _$$MyVeggieDiaryImplFromJson(Map<String, dynamic> json) =>
       content: json['content'] as String,
       state: json['state'] as String,
       isOpen: json['isOpen'] as bool,
+      diaryId: (json['diaryId'] as num).toInt(),
+      likeCount: (json['likeCount'] as num).toInt(),
+      commentCount: (json['commentCount'] as num).toInt(),
+      myLike: json['myLike'] as bool,
     );
 
 Map<String, dynamic> _$$MyVeggieDiaryImplToJson(_$MyVeggieDiaryImpl instance) =>
@@ -22,4 +26,8 @@ Map<String, dynamic> _$$MyVeggieDiaryImplToJson(_$MyVeggieDiaryImpl instance) =>
       'content': instance.content,
       'state': instance.state,
       'isOpen': instance.isOpen,
+      'diaryId': instance.diaryId,
+      'likeCount': instance.likeCount,
+      'commentCount': instance.commentCount,
+      'myLike': instance.myLike,
     };

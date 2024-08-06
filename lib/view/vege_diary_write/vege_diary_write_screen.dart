@@ -7,6 +7,7 @@ import 'package:farmus/model/home/diary_write_model.dart';
 import 'package:farmus/view/vege_diary_write/component/vege_diary_write_bottom.dart';
 import 'package:farmus/view/vege_diary_write/component/vege_diary_write_state.dart';
 import 'package:farmus/view_model/home/home_provider.dart';
+import 'package:farmus/view_model/my_vege/notifier/my_veggie_diary_notifier.dart';
 import 'package:farmus/view_model/vege_diary_write/notifier/post_diary_notifier.dart';
 import 'package:farmus/view_model/vege_diary_write/vege_diary_write_provider.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,6 @@ import '../../common/dialog/check_dialog.dart';
 import '../../common/form/content_input_text_form.dart';
 import '../../common/theme/farmus_theme_color.dart';
 import '../../model/home/my_veggie_list_model.dart';
-import '../../view_model/my_vege/notifier/my_veggie_diary.dart';
 import '../../view_model/my_vege/notifier/my_veggie_list.dart';
 import '../../view_model/routine/routine_provider.dart';
 import '../main/main_screen.dart';
@@ -60,8 +60,9 @@ class VegeDiaryWriteScreen extends ConsumerWidget {
                       state: state,
                       myVeggieId: selectedVeggieId ?? -1))
                   .then((_) {
-                ref.invalidate((myVeggieDiaryProvider(selectedVeggieId!)));
-                ref.read((myVeggieDiaryProvider(selectedVeggieId)));
+                ref.invalidate(
+                    (myVeggieDiaryNotifierProvider(selectedVeggieId!)));
+                ref.read((myVeggieDiaryNotifierProvider(selectedVeggieId)));
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
@@ -69,7 +70,7 @@ class VegeDiaryWriteScreen extends ConsumerWidget {
                       return const MainScreen(selectedIndex: 0);
                     },
                   ),
-                      (route) => false,
+                  (route) => false,
                 );
               });
               showDialog(
