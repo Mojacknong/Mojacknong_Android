@@ -1,4 +1,3 @@
-import 'package:farmus/common/farmus_picture.dart';
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/my_page/my_profile_screen.dart';
