@@ -40,11 +40,12 @@ class _SignInScreenState extends State<SignInScreen> {
     if (await storage.read(key: "accessToken") != null) {
       if (!mounted) return;
       if (await storage.read(key: "early") != "true") {
-        Navigator.push(
+        Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
             builder: (context) => const MainScreen(),
           ),
+          (route) => false,
         );
       }
     }

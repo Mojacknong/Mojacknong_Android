@@ -10,8 +10,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'none/home_none_container.dart';
 
-class HomeVegeRoutine extends ConsumerWidget {
-  const HomeVegeRoutine({
+class HomeRoutine extends ConsumerWidget {
+  const HomeRoutine({
     super.key,
   });
 

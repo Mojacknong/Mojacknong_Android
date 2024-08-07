@@ -1,12 +1,11 @@
 import 'package:farmus/model/home/my_veggie_list_model.dart';
+import 'package:farmus/view/home/component/home_diary.dart';
 import 'package:farmus/view/home/component/home_motivation.dart';
 import 'package:farmus/view/home/component/home_my_vege_list.dart';
+import 'package:farmus/view/home/component/home_routine.dart';
 import 'package:farmus/view/home/component/home_sub_title.dart';
-import 'package:farmus/view/home/component/home_vege_to_do.dart';
 import 'package:farmus/view/routine/routine_screen.dart';
 import 'package:farmus/view/vege_diary/vege_diary_screen.dart';
-import 'package:farmus/view/vege_diary_write/vege_diary_write_screen.dart';
-import 'package:farmus/view_model/home/notifier/veggie_diary_one_notifier.dart';
 import 'package:farmus/view_model/my_vege/notifier/my_veggie_list.dart';
 import 'package:farmus/view_model/my_vege/notifier/my_veggie_profile_notifier.dart';
 import 'package:farmus/view_model/veggie_info/recommend_veggie_info_notifier.dart';
@@ -17,9 +16,7 @@ import '../../common/app_bar/home_app_bar.dart';
 import '../../model/veggie_info/recommend_veggie_model.dart';
 import '../../view_model/home/home_provider.dart';
 import 'component/home_my_vege.dart';
-import 'component/home_vege_diary.dart';
 import 'component/none/home_my_vege_none.dart';
-import 'component/none/home_none_container.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -98,7 +95,7 @@ class HomeScreen extends ConsumerWidget {
                       );
                     },
                   ),
-                  const HomeVegeRoutine(),
+                  const HomeRoutine(),
                   const SizedBox(height: 24),
                   HomeSubTitle(
                     title: "성장 일기",
@@ -111,60 +108,7 @@ class HomeScreen extends ConsumerWidget {
                       );
                     },
                   ),
-                  if (veggieListData.isNotEmpty)
-                    if (selectedVegeId != null)
-                      ref
-                          .watch(veggieDiaryOneModelProvider(selectedVegeId))
-                          .when(
-                            data: (diary) {
-                              if (diary != null) {
-                                return HomeVegeDiary(diary: diary);
-                              } else {
-                                return HomeNoneContainer(
-                                  title: '오늘 작성한 일기가 없어요',
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (builder) =>
-                                            const VegeDiaryWriteScreen(),
-                                      ),
-                                    );
-                                  },
-                                  buttonText: '성장일기 쓰기',
-                                );
-                              }
-                            },
-                            loading: () => const CircularProgressIndicator(),
-                            error: (error, stack) => Text('Error: $error'),
-                          )
-                    else
-                      ref
-                          .watch(veggieDiaryOneModelProvider(
-                              veggieListData.first.myVeggieId))
-                          .when(
-                            data: (diary) {
-                              if (diary != null) {
-                                return HomeVegeDiary(diary: diary);
-                              } else {
-                                return HomeNoneContainer(
-                                  title: '오늘 작성한 일기가 없어요',
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (builder) =>
-                                            const VegeDiaryWriteScreen(),
-                                      ),
-                                    );
-                                  },
-                                  buttonText: '성장일기 쓰기',
-                                );
-                              }
-                            },
-                            loading: () => const CircularProgressIndicator(),
-                            error: (error, stack) => Text('Error: $error'),
-                          ),
+                  const HomeDiary(),
                 ],
               ),
             ),
