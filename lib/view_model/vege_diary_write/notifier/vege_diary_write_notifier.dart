@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../../model/my_vege/vege_diary_write_model.dart';
+import '../../../model/diary/vege_diary_write_model.dart';
 
 class VegeDiaryWriteNotifier extends StateNotifier<VegeDiaryWriteModel> {
   VegeDiaryWriteNotifier()

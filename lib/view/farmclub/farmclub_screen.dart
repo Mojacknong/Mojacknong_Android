@@ -1,3 +1,5 @@
+import 'package:farmus/model/diary/farmclub_open_diary_model.dart';
+import 'package:farmus/view_model/diary/farmclub_open_diary_notifier.dart';
 import 'package:farmus/view_model/home/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -26,6 +28,8 @@ class FarmclubScreen extends ConsumerWidget {
     final selectedFarmclubId = ref.watch(selectedFarmclubIdProvider);
     final AsyncValue<MyFarmclubInfoModel> myFarmclubInfo =
         ref.watch(myFarmclubInfoModelProvider(selectedFarmclubId));
+    final AsyncValue<List<FarmclubOpenDiaryModel>> farmclubOpenDiary =
+        ref.watch(farmclubOpenDiaryModelProvider(selectedFarmclubId));
 
     return Scaffold(
       appBar: myFarmclub.when(

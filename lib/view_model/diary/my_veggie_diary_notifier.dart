@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../model/my_vege/my_veggie_diary.dart';
-import '../../../repository/my_veggie_garden_repository.dart';
-import 'my_veggie_list.dart';
+import '../../model/diary/my_veggie_diary.dart';
+import '../../repository/my_veggie_garden_repository.dart';
+import '../my_vege/notifier/my_veggie_list.dart';
 
 part 'my_veggie_diary_notifier.g.dart';
 

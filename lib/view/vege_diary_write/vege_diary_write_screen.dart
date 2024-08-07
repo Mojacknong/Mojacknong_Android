@@ -7,7 +7,7 @@ import 'package:farmus/model/home/diary_write_model.dart';
 import 'package:farmus/view/vege_diary_write/component/vege_diary_write_bottom.dart';
 import 'package:farmus/view/vege_diary_write/component/vege_diary_write_state.dart';
 import 'package:farmus/view_model/home/home_provider.dart';
-import 'package:farmus/view_model/my_vege/notifier/my_veggie_diary_notifier.dart';
+import 'package:farmus/view_model/diary/my_veggie_diary_notifier.dart';
 import 'package:farmus/view_model/vege_diary_write/notifier/post_diary_notifier.dart';
 import 'package:farmus/view_model/vege_diary_write/vege_diary_write_provider.dart';
 import 'package:flutter/material.dart';

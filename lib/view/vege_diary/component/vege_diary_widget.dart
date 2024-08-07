@@ -1,4 +1,4 @@
-import 'package:farmus/model/my_vege/my_veggie_diary.dart';
+import 'package:farmus/model/diary/my_veggie_diary.dart';
 import 'package:farmus/view/vege_diary_detail/vege_diary_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
