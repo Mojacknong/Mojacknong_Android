@@ -7,14 +7,11 @@ import '../../../../common/theme/farmus_theme_text_style.dart';
 
 class HomeNoneContainer extends ConsumerWidget {
   const HomeNoneContainer(
-      {super.key,
-      required this.title,
-      required this.onPressed,
-      required this.buttonText});
+      {super.key, this.title, this.onPressed, this.buttonText});
 
-  final String title;
-  final Function() onPressed;
-  final String buttonText;
+  final String? title;
+  final Function()? onPressed;
+  final String? buttonText;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -34,15 +31,15 @@ class HomeNoneContainer extends ConsumerWidget {
           child: Column(
             children: [
               Text(
-                title,
+                title == null ? '등록된 채소가 없어요' : title!,
                 style: FarmusThemeTextStyle.gray2Medium15,
               ),
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: title == null ? 0 : 20,
               ),
               RoundGrayButton(
                 onPressed: onPressed,
-                isButton: true,
+                isButton: title == null ? false : true,
                 text: buttonText,
               )
             ],

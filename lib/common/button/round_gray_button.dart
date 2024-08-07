@@ -7,14 +7,11 @@ import '../theme/farmus_theme_text_style.dart';
 
 class RoundGrayButton extends ConsumerWidget {
   const RoundGrayButton(
-      {super.key,
-      required this.onPressed,
-      required this.isButton,
-      required this.text});
+      {super.key, this.onPressed, required this.isButton, this.text});
 
-  final Function() onPressed;
+  final Function()? onPressed;
   final bool isButton;
-  final String text;
+  final String? text;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -26,7 +23,7 @@ class RoundGrayButton extends ConsumerWidget {
           borderRadius: 30,
           backgroundColor: FarmusThemeColor.gray1,
           buttonChild: Text(
-            text,
+            text ?? '',
             style: FarmusThemeTextStyle.whiteSemiBold15,
           ),
           enabled: true,

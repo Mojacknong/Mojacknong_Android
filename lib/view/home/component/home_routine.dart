@@ -38,7 +38,7 @@ class HomeRoutine extends ConsumerWidget {
                         builder: (context) => const RoutineScreen()),
                   );
                 },
-          buttonText: '루틴 등록하기',
+                buttonText: '루틴 등록하기',
               )
             : Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

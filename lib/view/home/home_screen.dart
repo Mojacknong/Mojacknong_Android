@@ -5,6 +5,7 @@ import 'package:farmus/view/home/component/home_motivation.dart';
 import 'package:farmus/view/home/component/home_my_vege_list.dart';
 import 'package:farmus/view/home/component/home_routine.dart';
 import 'package:farmus/view/home/component/home_sub_title.dart';
+import 'package:farmus/view/home/component/none/home_none_container.dart';
 import 'package:farmus/view/routine/routine_screen.dart';
 import 'package:farmus/view/vege_diary/vege_diary_screen.dart';
 import 'package:farmus/view_model/my_vege/notifier/my_veggie_list.dart';
@@ -95,8 +96,13 @@ class HomeScreen extends ConsumerWidget {
                         ),
                       );
                     },
+                    visible: veggieList.value!.isNotEmpty,
                   ),
-                  const HomeRoutine(),
+                  veggieList.value!.isNotEmpty
+                      ? const HomeRoutine()
+                      : const HomeNoneContainer(
+                          title: null,
+                        ),
                   const SizedBox(height: 32),
                   HomeSubTitle(
                     title: '성장 일기',
@@ -108,14 +114,24 @@ class HomeScreen extends ConsumerWidget {
                         ),
                       );
                     },
+                    visible: veggieList.value!.isNotEmpty,
                   ),
-                  const HomeDiary(),
+                  veggieList.value!.isNotEmpty
+                      ? const HomeDiary()
+                      : const HomeNoneContainer(
+                          title: null,
+                        ),
                   const SizedBox(height: 32),
                   HomeSubTitle(
                     title: '팜클럽 미션',
                     onTap: () {},
+                    visible: veggieList.value!.isNotEmpty,
                   ),
-                  const HomeFarmclubMission(),
+                  veggieList.value!.isNotEmpty
+                      ? const HomeFarmclubMission()
+                      : const HomeNoneContainer(
+                          title: null,
+                        ),
                 ],
               ),
             ),
