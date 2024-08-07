@@ -5,11 +5,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../common/app_bar/back_left_title_app_bar.dart';
 import '../../common/button/diary_button.dart';
 import '../../common/theme/farmus_theme_text_style.dart';
-import '../../model/home/my_veggie_list_model.dart';
 import '../../model/my_vege/my_veggie_diary.dart';
 import '../../view_model/home/home_provider.dart';
 import '../../view_model/my_vege/notifier/my_veggie_diary_notifier.dart';
-import '../../view_model/my_vege/notifier/my_veggie_list.dart';
 import 'component/vege_diary_info.dart';
 
 class VegeDiaryScreen extends ConsumerWidget {
@@ -18,19 +16,13 @@ class VegeDiaryScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var selectedVeggieId = ref.watch(selectedVegeIdProvider);
-    final AsyncValue<List<MyVeggieListModel>> veggieList =
-        ref.watch(myVeggieListModelProvider);
-
-    if (selectedVeggieId == null && veggieList.value?.isNotEmpty == true) {
-      selectedVeggieId = veggieList.value!.first.myVeggieId;
-    }
 
     final AsyncValue<List<MyVeggieDiary>> myVeggieDiaryList =
-        ref.watch(myVeggieDiaryNotifierProvider(selectedVeggieId!));
+        ref.watch(myVeggieDiaryNotifierProvider(selectedVeggieId));
 
     return Scaffold(
       appBar: const BackLeftTitleAppBar(
-        title: "성장일기",
+        title: '성장 일기',
       ),
       body: Column(
         children: [
@@ -44,7 +36,7 @@ class VegeDiaryScreen extends ConsumerWidget {
                   children: [
                     VegeDiaryInfo(
                       myVeggieDiaryList: myVeggieDiaryList.value ?? [],
-                      selectId: selectedVeggieId,
+                      selectedVeggieId: selectedVeggieId,
                     ),
                     const Padding(
                       padding: EdgeInsets.symmetric(vertical: 24.0),

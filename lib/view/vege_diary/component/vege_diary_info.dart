@@ -9,10 +9,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class VegeDiaryInfo extends ConsumerWidget {
   final List<MyVeggieDiary> myVeggieDiaryList;
-  final int selectId;
+  final int? selectedVeggieId;
 
   const VegeDiaryInfo(
-      {Key? key, required this.myVeggieDiaryList, required this.selectId});
+      {Key? key, required this.myVeggieDiaryList, this.selectedVeggieId});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,7 +20,7 @@ class VegeDiaryInfo extends ConsumerWidget {
     int publicDiaryCount =
         myVeggieDiaryList.where((diary) => diary.isOpen).length;
     AsyncValue<MyVeggieProfile> profile =
-        ref.watch(myVeggieProfileProvider(selectId));
+        ref.watch(myVeggieProfileProvider(selectedVeggieId));
 
     return Container(
       width: double.infinity,
@@ -37,14 +37,14 @@ class VegeDiaryInfo extends ConsumerWidget {
             Row(
               children: [
                 Text(
-                  myVeggieDiaryList.isNotEmpty ? profile.value!.nickname : "",
+                  profile.value!.nickname,
                   style: FarmusThemeTextStyle.darkSemiBold17,
                 ),
                 const SizedBox(
                   width: 8,
                 ),
                 Text(
-                  "+${myVeggieDiaryList.isNotEmpty ? profile.value!.period : ""}일",
+                  "+${profile.value!.period}일",
                   style: FarmusThemeTextStyle.gray2Medium15,
                 )
               ],

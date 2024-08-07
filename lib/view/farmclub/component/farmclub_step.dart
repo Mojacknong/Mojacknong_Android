@@ -120,8 +120,8 @@ class FarmclubStep extends ConsumerWidget {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(4)),
                         ),
-                        child: const Text(
-                          '상추좋아',
+                        child: Text(
+                          farmclubInfo.farmClubName,
                           style: FarmusThemeTextStyle.green1SemiBold11,
                         ),
                       ),

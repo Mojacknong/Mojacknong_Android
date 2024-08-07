@@ -7,7 +7,7 @@ part of 'my_veggie_diary_notifier.dart';
 // **************************************************************************
 
 String _$myVeggieDiaryNotifierHash() =>
-    r'03c5ffed7007ac742401bbbe2818ab8ec771eaad';
+    r'909a9d2b544e30dc55efd11f0a648e95564d21bb';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -42,7 +42,7 @@ class MyVeggieDiaryNotifierFamily
 
   /// See also [myVeggieDiaryNotifier].
   MyVeggieDiaryNotifierProvider call(
-    int myVeggieId,
+    int? myVeggieId,
   ) {
     return MyVeggieDiaryNotifierProvider(
       myVeggieId,
@@ -78,7 +78,7 @@ class MyVeggieDiaryNotifierProvider
     extends AutoDisposeFutureProvider<List<MyVeggieDiary>> {
   /// See also [myVeggieDiaryNotifier].
   MyVeggieDiaryNotifierProvider(
-    int myVeggieId,
+    int? myVeggieId,
   ) : this._internal(
           (ref) => myVeggieDiaryNotifier(
             ref as MyVeggieDiaryNotifierRef,
@@ -106,7 +106,7 @@ class MyVeggieDiaryNotifierProvider
     required this.myVeggieId,
   }) : super.internal();
 
-  final int myVeggieId;
+  final int? myVeggieId;
 
   @override
   Override overrideWith(
@@ -150,7 +150,7 @@ class MyVeggieDiaryNotifierProvider
 mixin MyVeggieDiaryNotifierRef
     on AutoDisposeFutureProviderRef<List<MyVeggieDiary>> {
   /// The parameter `myVeggieId` of this provider.
-  int get myVeggieId;
+  int? get myVeggieId;
 }
 
 class _MyVeggieDiaryNotifierProviderElement
@@ -159,7 +159,7 @@ class _MyVeggieDiaryNotifierProviderElement
   _MyVeggieDiaryNotifierProviderElement(super.provider);
 
   @override
-  int get myVeggieId => (origin as MyVeggieDiaryNotifierProvider).myVeggieId;
+  int? get myVeggieId => (origin as MyVeggieDiaryNotifierProvider).myVeggieId;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

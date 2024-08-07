@@ -7,7 +7,7 @@ part of 'veggie_diary_one_notifier.dart';
 // **************************************************************************
 
 String _$veggieDiaryOneModelHash() =>
-    r'4d184176bf30328792f4331a07d219af28432fd2';
+    r'ed901e50b60b0bf2dfe9398481c6b15c92485ff1';
 
 /// Copied from Dart SDK
 class _SystemHash {
