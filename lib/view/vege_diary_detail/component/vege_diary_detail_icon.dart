@@ -5,7 +5,15 @@ import 'package:flutter_svg/svg.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 
 class VegeDiaryDetailIcon extends ConsumerWidget {
-  const VegeDiaryDetailIcon({super.key});
+  const VegeDiaryDetailIcon(
+      {super.key,
+      required this.commentCount,
+      required this.likeCount,
+      required this.myLike});
+
+  final int commentCount;
+  final int likeCount;
+  final bool myLike;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -19,20 +27,19 @@ class VegeDiaryDetailIcon extends ConsumerWidget {
             child: SvgPicture.asset('assets/image/ic_heart.svg'),
           ),
         ),
-        const Text(
-          '2',
+        Text(
+          '$likeCount',
           style: FarmusThemeTextStyle.gray2Medium13,
         ),
         Padding(
           padding: const EdgeInsets.only(left: 12.0, right: 4.0),
           child: GestureDetector(
             onTap: () {},
-            child: SvgPicture.asset(
-                'assets/image/ic_message_typing.svg'),
+            child: SvgPicture.asset('assets/image/ic_message_typing.svg'),
           ),
         ),
-        const Text(
-          '2',
+        Text(
+          '$commentCount',
           style: FarmusThemeTextStyle.gray2Medium13,
         ),
       ],

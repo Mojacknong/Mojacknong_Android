@@ -6,15 +6,24 @@ import '../../../common/farmus_picture_fix.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 
 class FeedProfile extends ConsumerWidget {
-  const FeedProfile({super.key, required this.isDetail});
+  const FeedProfile(
+      {super.key,
+      this.profileImage,
+      required this.isDetail,
+      required this.nickname,
+      required this.writeDateTime});
 
+  final String? profileImage;
   final bool isDetail;
+  final String nickname;
+  final String writeDateTime;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Row(
       children: [
         FarmusPictureFix(
+          image: profileImage,
           size: isDetail ? 32.0 : 36.0,
         ),
         Expanded(
@@ -26,8 +35,8 @@ class FeedProfile extends ConsumerWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      '감자',
+                    Text(
+                      nickname,
                       style: FarmusThemeTextStyle.darkMedium15,
                     ),
                     isDetail
@@ -39,8 +48,8 @@ class FeedProfile extends ConsumerWidget {
                         : Container(),
                   ],
                 ),
-                const Text(
-                  '23.10.29 16:17',
+                Text(
+                  writeDateTime,
                   style: FarmusThemeTextStyle.gray2Medium13,
                 ),
               ],

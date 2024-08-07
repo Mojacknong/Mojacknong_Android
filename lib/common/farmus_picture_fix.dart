@@ -4,8 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'theme/farmus_theme_color.dart';
 
 class FarmusPictureFix extends ConsumerWidget {
-  const FarmusPictureFix({Key? key, required this.size, this.image})
-      : super(key: key);
+  const FarmusPictureFix({super.key, required this.size, this.image});
 
   final double size;
   final String? image;

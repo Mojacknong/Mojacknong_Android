@@ -24,15 +24,25 @@ class MissionFeedDetailScreen extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    FeedProfile(isDetail: false),
+                    FeedProfile(
+                      isDetail: false,
+                      nickname: '',
+                      writeDateTime: '',
+                    ),
                     SizedBox(
                       height: 16.0,
                     ),
-                    VegeDiaryDetailContent(),
+                    VegeDiaryDetailContent(
+                      content: 'content',
+                    ),
                     SizedBox(
                       height: 64.0,
                     ),
-                    VegeDiaryDetailIcon(),
+                    VegeDiaryDetailIcon(
+                      commentCount: 0,
+                      likeCount: 0,
+                      myLike: false,
+                    ),
                     FeedComment(),
                   ],
                 ),
