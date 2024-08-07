@@ -23,41 +23,17 @@ class MyProfileScreen extends ConsumerWidget {
         FocusScope.of(context).unfocus();
         FocusManager.instance.primaryFocus?.unfocus();
       },
-      child: Scaffold(
-        appBar: const BackLeftTitleAppBar(
+      child: const Scaffold(
+        appBar: BackLeftTitleAppBar(
           title: "프로필",
         ),
         resizeToAvoidBottomInset: true,
         body: Column(
           children: [
-            const Expanded(
+            Expanded(
               child: Padding(
                 padding: EdgeInsets.all(8.0),
                 child: MyPageProfile(),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: PrimaryColorButton(
-                      text: nextButtonText,
-                      onPressed: () {
-                        Navigator.pop(context);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const MainScreen(
-                                    selectedIndex: 3,
-                                  )),
-                        );
-                      },
-                      enabled: enabled,
-                    ),
-                  ),
-                ],
               ),
             ),
           ],
