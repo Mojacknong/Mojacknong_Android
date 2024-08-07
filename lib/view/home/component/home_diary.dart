@@ -24,7 +24,7 @@ class HomeDiary extends ConsumerWidget {
         if (diary == null) {
           return HomeNoneContainer(
             title: '오늘 작성한 일기가 없어요',
-            onTap: () {
+            onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(

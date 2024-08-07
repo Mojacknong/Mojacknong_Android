@@ -31,7 +31,7 @@ class HomeRoutine extends ConsumerWidget {
         return myVeggieRoutineInfo.isEmpty
             ? HomeNoneContainer(
                 title: '오늘 루틴이 없어요',
-                onTap: () {
+                onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(

@@ -68,7 +68,7 @@ class FarmclubStep extends ConsumerWidget {
                     ),
                   ),
                   RoundGrayButton(
-                    onTap: () {
+                    onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(

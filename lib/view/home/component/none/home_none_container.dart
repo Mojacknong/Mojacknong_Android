@@ -9,11 +9,11 @@ class HomeNoneContainer extends ConsumerWidget {
   const HomeNoneContainer(
       {super.key,
       required this.title,
-      required this.onTap,
+      required this.onPressed,
       required this.buttonText});
 
   final String title;
-  final Function() onTap;
+  final Function() onPressed;
   final String buttonText;
 
   @override
@@ -41,7 +41,7 @@ class HomeNoneContainer extends ConsumerWidget {
                 height: 20,
               ),
               RoundGrayButton(
-                onTap: onTap,
+                onPressed: onPressed,
                 isButton: true,
                 text: buttonText,
               )

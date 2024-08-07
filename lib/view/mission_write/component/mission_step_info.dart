@@ -51,7 +51,7 @@ class MissionStepInfo extends ConsumerWidget {
             width: 8.0,
           ),
           RoundGrayButton(
-            onTap: () {
+            onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(

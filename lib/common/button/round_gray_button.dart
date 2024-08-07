@@ -8,11 +8,11 @@ import '../theme/farmus_theme_text_style.dart';
 class RoundGrayButton extends ConsumerWidget {
   const RoundGrayButton(
       {super.key,
-      required this.onTap,
+      required this.onPressed,
       required this.isButton,
       required this.text});
 
-  final Function() onTap;
+  final Function() onPressed;
   final bool isButton;
   final String text;
 
@@ -21,6 +21,7 @@ class RoundGrayButton extends ConsumerWidget {
     return Visibility(
         visible: isButton,
         child: PrimaryButton(
+          onPressed: onPressed,
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
           borderRadius: 30,
           backgroundColor: FarmusThemeColor.gray1,

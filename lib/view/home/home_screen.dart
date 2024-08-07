@@ -1,5 +1,6 @@
 import 'package:farmus/model/home/my_veggie_list_model.dart';
 import 'package:farmus/view/home/component/home_diary.dart';
+import 'package:farmus/view/home/component/home_farmclub_mission.dart';
 import 'package:farmus/view/home/component/home_motivation.dart';
 import 'package:farmus/view/home/component/home_my_vege_list.dart';
 import 'package:farmus/view/home/component/home_routine.dart';
@@ -36,10 +37,10 @@ class HomeScreen extends ConsumerWidget {
           veggieCount: veggieListData.length.toString(),
         ),
         error: (error, stack) => const HomeScreenAppBar(
-          veggieCount: "0",
+          veggieCount: '0',
         ),
         loading: () => const HomeScreenAppBar(
-          veggieCount: "0",
+          veggieCount: '0',
         ),
       ),
       body: veggieList.when(
@@ -80,12 +81,12 @@ class HomeScreen extends ConsumerWidget {
                             error: (error, stack) => Text('Error: $error'),
                           ),
                     const HomeMotivation(
-                      motivation: "텃밭에서 식탁까지 팜어스와 늘 함께해요!",
+                      motivation: '텃밭에서 식탁까지 팜어스와 늘 함께해요!',
                     ),
                   ],
                   const SizedBox(height: 16),
                   HomeSubTitle(
-                    title: "루틴",
+                    title: '루틴',
                     onTap: () {
                       Navigator.push(
                         context,
@@ -96,9 +97,9 @@ class HomeScreen extends ConsumerWidget {
                     },
                   ),
                   const HomeRoutine(),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 32),
                   HomeSubTitle(
-                    title: "성장 일기",
+                    title: '성장 일기',
                     onTap: () {
                       Navigator.push(
                         context,
@@ -109,6 +110,12 @@ class HomeScreen extends ConsumerWidget {
                     },
                   ),
                   const HomeDiary(),
+                  const SizedBox(height: 32),
+                  HomeSubTitle(
+                    title: '팜클럽 미션',
+                    onTap: () {},
+                  ),
+                  const HomeFarmclubMission(),
                 ],
               ),
             ),
