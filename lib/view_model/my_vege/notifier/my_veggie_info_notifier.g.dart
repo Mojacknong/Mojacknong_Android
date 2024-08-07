@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'my_veggie_info.dart';
+part of 'my_veggie_info_notifier.dart';
 
 // **************************************************************************
 // RiverpodGenerator

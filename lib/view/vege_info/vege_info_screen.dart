@@ -5,7 +5,6 @@ import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/my_vege/my_vege_screen.dart';
 import 'package:farmus/view/vege_info/component/vege_info_detail.dart';
-import 'package:farmus/view_model/my_vege/my_vege_provider.dart';
 import 'package:farmus/view_model/my_vege/notifier/my_veggie_profile_change_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,6 +15,7 @@ import '../../model/home/my_veggie_list_model.dart';
 import '../../model/home/my_veggie_profile.dart';
 import '../../view_model/home/home_provider.dart';
 import '../../view_model/home/notifier/my_veggie_add_notifier.dart';
+import '../../view_model/my_vege/notifier/my_vege_delete_notifier.dart';
 import '../../view_model/my_vege/notifier/my_veggie_list.dart';
 import '../../view_model/my_vege/notifier/my_veggie_profile_notifier.dart';
 import '../../view_model/on_boarding/on_boarding_finish_notifier.dart';
@@ -49,7 +49,6 @@ class VegeInfoScreen extends ConsumerWidget {
           IconButton(
             onPressed: () {
               ref.invalidate(myVegeDeleteProvider);
-              ref.invalidate(myVegeProvider);
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const MyVegeScreen()),
@@ -170,8 +169,7 @@ class VegeInfoScreen extends ConsumerWidget {
                           text: '수정',
                           enabled: (myVeggieAddData?.value.date.isNotEmpty ??
                                   false) ||
-                              (myVeggieAddData?.value.name.isNotEmpty ??
-                                  false),
+                              (myVeggieAddData?.value.name.isNotEmpty ?? false),
                         ),
                       ),
                     ),

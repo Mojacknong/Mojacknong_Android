@@ -112,8 +112,8 @@ class PrimaryButton extends StatelessWidget implements BaseButton {
                         : BorderRadius.circular(borderRadius!),
                   ),
                 ),
-                padding: WidgetStateProperty.all(
-                    padding ?? const EdgeInsets.all(0)),
+                padding:
+                    WidgetStateProperty.all(padding ?? const EdgeInsets.all(0)),
               ),
               child: buttonChild == null
                   ? Padding(

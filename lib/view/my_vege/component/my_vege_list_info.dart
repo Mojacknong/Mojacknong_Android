@@ -1,11 +1,12 @@
 import 'package:farmus/model/my_vege/my_veggie_info_model.dart';
+import 'package:farmus/view_model/my_vege/notifier/my_veggie_delete_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
-import '../../../view_model/my_vege/my_vege_provider.dart';
+import '../../../view_model/my_vege/notifier/my_vege_delete_notifier.dart';
 
 class MyVegeListInfo extends ConsumerWidget {
   const MyVegeListInfo({super.key, required this.myVege});
@@ -15,7 +16,8 @@ class MyVegeListInfo extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final myVegeDeleteMode = ref.watch(myVegeDeleteProvider);
-    final myVegeNotifier = ref.read(myVegeProvider.notifier);
+    var myVeggieDeleteNotifier =
+        ref.watch(myVeggieDeleteNotifierProvider.notifier);
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -79,12 +81,12 @@ class MyVegeListInfo extends ConsumerWidget {
         myVegeDeleteMode
             ? IconButton(
                 onPressed: () {
-                  myVegeNotifier.toggleSelect(myVege);
+                  myVeggieDeleteNotifier.toggleSelect(myVege);
                 },
                 icon: SvgPicture.asset(
-                  myVegeNotifier.isVegeSelected(myVege)
+                  myVeggieDeleteNotifier.isVegeSelected(myVege.myVeggieId)
                       ? "assets/image/ic_check.svg"
-                       : "assets/image/ic_check_empty.svg",
+                      : "assets/image/ic_check_empty.svg",
                 ),
               )
             : Container(),

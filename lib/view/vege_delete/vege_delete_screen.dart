@@ -2,7 +2,7 @@ import 'package:farmus/common/app_bar/page_index_app_bar.dart';
 import 'package:farmus/common/button/white_color_button.dart';
 import 'package:farmus/view/vege_delete/component/vege_delete_fail.dart';
 import 'package:farmus/view_model/home/home_vege_add_provider.dart';
-import 'package:farmus/view_model/my_vege/my_vege_provider.dart';
+import 'package:farmus/view_model/my_vege/notifier/my_veggie_delete_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -10,6 +10,7 @@ import '../../common/button/primary_color_button.dart';
 import '../../common/dialog/check_dialog.dart';
 import '../../common/theme/farmus_theme_color.dart';
 import '../../view_model/vege_delete/vege_delete_provider.dart';
+import '../main/main_screen.dart';
 import 'component/vege_delete_reason.dart';
 import 'component/vege_delete_success.dart';
 
@@ -23,6 +24,8 @@ class VegeDeleteScreen extends ConsumerWidget {
     final movePage = ref.read(homeVegeAddMoveProvider.notifier);
     final successButtonText = ref.watch(vegeDeleteSuccessProvider);
     final failProvider = ref.watch(vegeDeleteFailProvider);
+    final selectProvider = ref.watch(vegeDeleteFailProvider);
+
     String nextButtonText = '다음';
     String currentIndex;
     bool enabled = false;
@@ -65,21 +68,35 @@ class VegeDeleteScreen extends ConsumerWidget {
             );
             break;
         }
-        onPressed = () {
-          ref.read(myVegeProvider.notifier).removeAllSelected();
-          Navigator.pop(context);
-          showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              Future.delayed(const Duration(seconds: 2), () {
-                Navigator.of(context).pop();
-              });
-              return const CheckDialog(
-                text: "홈파밍을 종료했어요",
-              );
-            },
-          );
-        };
+        onPressed = selectProvider == 'fin'
+            ? () {
+                ref
+                    .read(myVeggieDeleteNotifierProvider.notifier)
+                    .veggieDelete();
+                Navigator.pop(context);
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    Future.delayed(const Duration(seconds: 2), () {
+                      Navigator.of(context).pop();
+                    });
+                    return const CheckDialog(
+                      text: "홈파밍을 종료했어요",
+                    );
+                  },
+                );
+              }
+            : () {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const MainScreen(selectedIndex: 2);
+                    },
+                  ),
+                  (route) => false,
+                );
+              };
         break;
       default:
         currentIndex = "0";

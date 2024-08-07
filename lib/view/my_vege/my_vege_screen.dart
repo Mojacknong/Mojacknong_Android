@@ -1,70 +1,28 @@
 import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
 import 'package:farmus/common/button/bottom_backgroud_divider_button.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:farmus/view_model/my_vege/my_vege_provider.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:farmus/view_model/my_vege/notifier/my_veggie_delete_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../common/bottom_sheet/primary_action_sheet.dart';
+import '../../common/bottom_sheet/show_farmus_bottom_sheet.dart';
 import '../../common/button/add_button.dart';
-import '../../common/button/delete_button.dart';
+import '../../common/button/primary_color_button.dart';
 import '../../common/theme/farmus_theme_color.dart';
-import '../../view_model/home/home_vege_add_provider.dart';
-import '../../view_model/my_vege/notifier/my_veggie_info.dart';
-import '../../view_model/vege_delete/vege_delete_provider.dart';
+import '../../view_model/my_vege/notifier/my_vege_delete_notifier.dart';
+import '../../view_model/my_vege/notifier/my_veggie_info_notifier.dart';
 import '../vege_add/home_vege_add_screen.dart';
-import '../vege_delete/vege_delete_screen.dart';
 import 'component/my_vege_list_info.dart';
 
-class MyVegeScreen extends ConsumerStatefulWidget {
-  const MyVegeScreen({Key? key});
+class MyVegeScreen extends ConsumerWidget {
+  const MyVegeScreen({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _MyVegeScreenState();
-}
-
-class _MyVegeScreenState extends ConsumerState<MyVegeScreen> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final myVegeList = ref.watch(myVeggieInfoProvider);
     final myVegeDeleteMode = ref.watch(myVegeDeleteProvider);
-    final myVegeNotifier = ref.read(myVegeProvider.notifier);
-    void showActionSheet(BuildContext context) {
-      showCupertinoModalPopup(
-        context: context,
-        builder: (BuildContext context) => PrimaryActionSheet(
-          title: "채소를 삭제하시겠어요?",
-          actions: <CupertinoActionSheetAction>[
-            CupertinoActionSheetAction(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text(
-                "취소",
-                style: FarmusThemeTextStyle.dark2Medium15,
-              ),
-            ),
-            CupertinoActionSheetAction(
-              onPressed: () {
-                Navigator.pop(context);
-                ref.read(homeVegeAddMoveProvider.notifier).moveToFirstPage();
-                ref.read(vegeDeleteReasonProvider.notifier).reset();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const VegeDeleteScreen()),
-                );
-              },
-              child: const Text(
-                "확인",
-                style: FarmusThemeTextStyle.dark2Medium15,
-              ),
-            ),
-          ],
-        ),
-      );
-    }
+    var deleteNotifier = ref.watch(myVeggieDeleteNotifierProvider.notifier);
+    var deleteModel = ref.watch(myVeggieDeleteNotifierProvider);
 
     return Scaffold(
       appBar: BackLeftTitleAppBar(
@@ -73,6 +31,7 @@ class _MyVegeScreenState extends ConsumerState<MyVegeScreen> {
           TextButton(
             onPressed: () {
               ref.read(myVegeDeleteProvider.notifier).changeMyVegeScreenMode();
+              ref.invalidate(myVeggieDeleteNotifierProvider);
             },
             child: Text(
               myVegeDeleteMode ? '취소' : '삭제',
@@ -124,13 +83,16 @@ class _MyVegeScreenState extends ConsumerState<MyVegeScreen> {
                 button: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: myVegeDeleteMode
-                      ? DeleteButton(
-                          enabled: myVegeNotifier.selectedVege.isEmpty
-                              ? false
-                              : true,
-                          onPressed: () {
-                            showActionSheet(context);
-                          },
+                      ? SizedBox(
+                          width: double.infinity,
+                          child: PrimaryColorButton(
+                            text: '채소 삭제',
+                            onPressed: () {
+                              showVeggieDeleteBottomSheet(context);
+                            },
+                            enabled: deleteNotifier
+                                .isVegeSelected(deleteModel.value!.myVeggieId),
+                          ),
                         )
                       : AddButton(
                           onPressed: () {

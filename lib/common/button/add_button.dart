@@ -17,29 +17,33 @@ class AddButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 16.0),
+      padding: const EdgeInsets.all(8.0),
       child: PrimaryButton(
-        height: 50,
-        enabled: true,
-        textColor: FarmusThemeColor.white,
-        backgroundColor: FarmusThemeColor.primary,
-        borderColor: FarmusThemeColor.white,
-        onPressed: onPressed,
-        buttonChild: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SvgPicture.asset(
-              'assets/image/ic_plus.svg',
+          enabled: true,
+          textColor: FarmusThemeColor.white,
+          backgroundColor: FarmusThemeColor.primary,
+          borderColor: FarmusThemeColor.white,
+          onPressed: onPressed,
+          buttonChild: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                  'assets/image/ic_plus.svg',
+                ),
+                const SizedBox(width: 6),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    "추가",
+                    style: FarmusThemeTextStyle.whiteSemiBold15,
+                  ),
+                )
+              ],
             ),
-            const SizedBox(width: 6),
-            const Text(
-              "추가",
-              style: FarmusThemeTextStyle.whiteSemiBold15,
-            ),
-          ],
-        ),
-      ),
+          )),
     );
   }
 }
