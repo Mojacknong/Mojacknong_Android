@@ -46,6 +46,7 @@ class FarmclubFeed extends ConsumerWidget {
                     commentCount: commentCount,
                     likeCount: likeCount,
                     myLike: myLike,
+                    commentId: -1,
                   ))),
       child: Column(
         children: [
@@ -57,6 +58,7 @@ class FarmclubFeed extends ConsumerWidget {
               writeDateTime: writeDateTime,
               profileImage: profileImage,
               myComment: false,
+              commentId: -1,
             ),
           ),
           VegeDiaryDetailContent(

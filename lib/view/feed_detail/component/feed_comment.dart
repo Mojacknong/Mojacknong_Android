@@ -64,6 +64,7 @@ class FeedComment extends ConsumerWidget {
                         content: comment.content,
                         isLast: idx == comments.length - 1,
                         myComment: comment.myComment,
+                        commentId: -1,
                       ),
                     );
                   }).toList(),

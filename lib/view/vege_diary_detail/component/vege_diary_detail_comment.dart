@@ -6,14 +6,16 @@ import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 
 class VegeDiaryDetailComment extends ConsumerWidget {
-  const VegeDiaryDetailComment(
-      {super.key,
-      this.profileImage,
-      required this.nickname,
-      required this.date,
-      required this.content,
-      this.isLast = false,
-      required this.myComment});
+  const VegeDiaryDetailComment({
+    super.key,
+    this.profileImage,
+    required this.nickname,
+    required this.date,
+    required this.content,
+    this.isLast = false,
+    required this.myComment,
+    required this.commentId,
+  });
 
   final String? profileImage;
   final String nickname;
@@ -21,6 +23,7 @@ class VegeDiaryDetailComment extends ConsumerWidget {
   final String content;
   final bool isLast;
   final bool myComment;
+  final int commentId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -33,6 +36,7 @@ class VegeDiaryDetailComment extends ConsumerWidget {
           writeDateTime: date,
           profileImage: profileImage,
           myComment: myComment,
+          commentId: commentId,
         ),
         const SizedBox(
           height: 6.0,

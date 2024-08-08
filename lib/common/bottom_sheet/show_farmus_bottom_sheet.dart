@@ -156,22 +156,28 @@ void showVeggieDeleteBottomSheet(BuildContext context) {
   );
 }
 
-void showDiaryCommentBottomSheet(BuildContext context) {
+void showDiaryCommentBottomSheet(BuildContext context, int diaryCommentId) {
   showModalBottomSheet<void>(
     context: context,
     isScrollControlled: true,
     backgroundColor: FarmusThemeColor.white,
     builder: (BuildContext context) {
-      return const DiaryCommentBottomSheetContent();
+      return DiaryCommentBottomSheetContent(
+        diaryCommentId: diaryCommentId,
+      );
     },
   );
 }
 
-void showReportBottomSheet(BuildContext context, String title) {
+void showReportBottomSheet(
+    BuildContext context, String title, String dialogText) {
   showCupertinoModalPopup(
     context: context,
     builder: (BuildContext context) {
-      return ReportBottomSheet(title: title);
+      return ReportBottomSheet(
+        title: title,
+        dialogText: dialogText,
+      );
     },
   );
 }

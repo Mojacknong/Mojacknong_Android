@@ -1,3 +1,4 @@
+import 'package:farmus/view_model/diary/diary_comment_delete_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,7 +8,10 @@ import '../button/white_color_button.dart';
 import '../theme/farmus_theme_text_style.dart';
 
 class DiaryCommentBottomSheetContent extends ConsumerWidget {
-  const DiaryCommentBottomSheetContent({super.key});
+  const DiaryCommentBottomSheetContent(
+      {super.key, required this.diaryCommentId});
+
+  final int diaryCommentId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -53,6 +57,10 @@ class DiaryCommentBottomSheetContent extends ConsumerWidget {
                                   text: '삭제',
                                   onPressed: () {
                                     Navigator.pop(context);
+                                    ref
+                                        .read(diaryCommentDeleteNotifierProvider
+                                            .notifier)
+                                        .diaryCommentDelete(diaryCommentId);
                                   },
                                   enabled: true,
                                 ),

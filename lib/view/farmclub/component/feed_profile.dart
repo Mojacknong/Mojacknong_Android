@@ -14,6 +14,7 @@ class FeedProfile extends ConsumerWidget {
     required this.nickname,
     required this.writeDateTime,
     required this.myComment,
+    required this.commentId,
   });
 
   final String? profileImage;
@@ -21,6 +22,7 @@ class FeedProfile extends ConsumerWidget {
   final String nickname;
   final String writeDateTime;
   final bool myComment;
+  final int commentId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -47,10 +49,14 @@ class FeedProfile extends ConsumerWidget {
                         ? GestureDetector(
                             onTap: myComment
                                 ? () {
-                                    showDiaryCommentBottomSheet(context);
+                                    showDiaryCommentBottomSheet(
+                                        context, commentId);
                                   }
                                 : () {
-                                    showReportBottomSheet(context, '댓글 신고');
+                                    showDiaryCommentBottomSheet(
+                                        context, commentId);
+                                    // showReportBottomSheet(
+                                    //     context, '댓글 신고', '댓글을 신고했어요');
                                   },
                             child: SvgPicture.asset(
                                 'assets/image/ic_more_vertical.svg'),

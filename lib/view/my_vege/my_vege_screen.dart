@@ -9,7 +9,7 @@ import '../../common/bottom_sheet/show_farmus_bottom_sheet.dart';
 import '../../common/button/add_button.dart';
 import '../../common/button/primary_color_button.dart';
 import '../../common/theme/farmus_theme_color.dart';
-import '../../view_model/my_vege/notifier/my_vege_delete_notifier.dart';
+import '../../view_model/my_vege/notifier/my_veggie_info_mode_notifier.dart';
 import '../../view_model/my_vege/notifier/my_veggie_info_notifier.dart';
 import '../vege_add/home_vege_add_screen.dart';
 import 'component/my_vege_list_info.dart';
@@ -20,7 +20,7 @@ class MyVegeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final myVegeList = ref.watch(myVeggieInfoProvider);
-    final myVegeDeleteMode = ref.watch(myVegeDeleteProvider);
+    final myVegeDeleteMode = ref.watch(myVeggieInfoModeProvider);
     var deleteNotifier = ref.watch(myVeggieDeleteNotifierProvider.notifier);
     var deleteModel = ref.watch(myVeggieDeleteNotifierProvider);
 
@@ -30,7 +30,7 @@ class MyVegeScreen extends ConsumerWidget {
         actions: [
           TextButton(
             onPressed: () {
-              ref.read(myVegeDeleteProvider.notifier).changeMyVegeScreenMode();
+              ref.read(myVeggieInfoModeProvider.notifier).changeMyVeggieScreenMode();
               ref.invalidate(myVeggieDeleteNotifierProvider);
             },
             child: Text(

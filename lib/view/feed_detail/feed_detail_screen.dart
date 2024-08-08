@@ -19,6 +19,7 @@ class FeedDetailScreen extends ConsumerWidget {
     required this.commentCount,
     required this.likeCount,
     required this.myLike,
+    required this.commentId,
   });
 
   final int diaryId;
@@ -30,6 +31,7 @@ class FeedDetailScreen extends ConsumerWidget {
   final int commentCount;
   final int likeCount;
   final bool myLike;
+  final int commentId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -51,6 +53,7 @@ class FeedDetailScreen extends ConsumerWidget {
                       nickname: nickname,
                       writeDateTime: writeDateTime,
                       myComment: false,
+                      commentId: commentCount,
                     ),
                     const SizedBox(
                       height: 16.0,

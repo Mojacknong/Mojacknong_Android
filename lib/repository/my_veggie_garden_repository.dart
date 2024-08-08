@@ -65,7 +65,7 @@ class MyVeggieGardenRepository {
     return response;
   }
 
-  static Future<String> routineDelete(int diaryCommentId) async {
+  static Future<String> diaryCommentDelete(int diaryCommentId) async {
     String? response =
         await MyVeggieService().diaryCommentDelete(diaryCommentId);
     return response;
