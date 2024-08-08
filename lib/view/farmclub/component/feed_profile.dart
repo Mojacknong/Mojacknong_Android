@@ -50,7 +50,7 @@ class FeedProfile extends ConsumerWidget {
                                     showDiaryCommentBottomSheet(context);
                                   }
                                 : () {
-                                    showDiaryCommentBottomSheet(context);
+                                    showReportBottomSheet(context, '댓글 신고');
                                   },
                             child: SvgPicture.asset(
                                 'assets/image/ic_more_vertical.svg'),

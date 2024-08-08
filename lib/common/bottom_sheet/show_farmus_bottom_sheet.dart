@@ -1,4 +1,5 @@
 import 'package:farmus/common/bottom_sheet/diary_comment_bottom_sheet_content.dart';
+import 'package:farmus/common/bottom_sheet/report_bottom_sheet.dart';
 import 'package:farmus/common/dialog/check_dialog.dart';
 import 'package:farmus/view/farmclub_open/component/farmclub_open_bottom_sheet_content.dart';
 import 'package:farmus/view/farmclub_sign_up/component/farmclub_sign_up_bottom_sheet_content.dart';
@@ -162,6 +163,15 @@ void showDiaryCommentBottomSheet(BuildContext context) {
     backgroundColor: FarmusThemeColor.white,
     builder: (BuildContext context) {
       return const DiaryCommentBottomSheetContent();
+    },
+  );
+}
+
+void showReportBottomSheet(BuildContext context, String title) {
+  showCupertinoModalPopup(
+    context: context,
+    builder: (BuildContext context) {
+      return ReportBottomSheet(title: title);
     },
   );
 }
