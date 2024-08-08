@@ -9,6 +9,7 @@ import 'feed_profile.dart';
 class FarmclubFeed extends ConsumerWidget {
   const FarmclubFeed(
       {super.key,
+      required this.diaryId,
       required this.nickname,
       this.profileImage,
       required this.writeDateTime,
@@ -18,6 +19,7 @@ class FarmclubFeed extends ConsumerWidget {
       required this.likeCount,
       required this.myLike});
 
+  final int diaryId;
   final String nickname;
   final String? profileImage;
   final String writeDateTime;
@@ -34,6 +36,7 @@ class FarmclubFeed extends ConsumerWidget {
           context,
           MaterialPageRoute(
               builder: (builder) => MissionFeedDetailScreen(
+                    diaryId: diaryId,
                     nickname: nickname,
                     writeDateTime: writeDateTime,
                     profileImage: profileImage,

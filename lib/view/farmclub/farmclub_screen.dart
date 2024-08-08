@@ -130,6 +130,7 @@ class FarmclubScreen extends ConsumerWidget {
                                     ? Column(
                                         children: diaries.map((diary) {
                                           return FarmclubFeed(
+                                            diaryId: diary.diaryId,
                                             nickname: diary.nickname,
                                             profileImage: diary.profileImage,
                                             writeDateTime: diary.writeDateTime,

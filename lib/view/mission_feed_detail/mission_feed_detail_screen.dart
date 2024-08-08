@@ -8,17 +8,18 @@ import '../vege_diary_detail/component/vege_diary_detail_content.dart';
 import '../vege_diary_detail/component/vege_diary_detail_icon.dart';
 
 class MissionFeedDetailScreen extends ConsumerWidget {
-  const MissionFeedDetailScreen(
-      {super.key,
-      required this.nickname,
-      this.profileImage,
-      required this.writeDateTime,
-      required this.content,
-      required this.diaryImage,
-      required this.commentCount,
-      required this.likeCount,
-      required this.myLike});
+  const MissionFeedDetailScreen({super.key,
+    required this.diaryId,
+    required this.nickname,
+    this.profileImage,
+    required this.writeDateTime,
+    required this.content,
+    required this.diaryImage,
+    required this.commentCount,
+    required this.likeCount,
+    required this.myLike});
 
+  final int diaryId;
   final String nickname;
   final String? profileImage;
   final String writeDateTime;
@@ -64,6 +65,7 @@ class MissionFeedDetailScreen extends ConsumerWidget {
                       myLike: myLike,
                     ),
                     FeedComment(
+                      diaryId: diaryId,
                       commentCount: commentCount,
                     ),
                   ],
