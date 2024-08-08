@@ -54,4 +54,9 @@ class MyVeggieGardenRepository {
     String? response = await MyVeggieService().farmclubDiaryAll(farmclubId);
     return response;
   }
+
+  static Future<String> diaryComment(int diaryId) async {
+    String? response = await MyVeggieService().diaryComment(diaryId);
+    return response;
+  }
 }
