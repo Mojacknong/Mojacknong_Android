@@ -2,20 +2,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../common/theme/farmus_theme_color.dart';
-import '../../../common/theme/farmus_theme_text_style.dart';
+import 'theme/farmus_theme_color.dart';
+import 'theme/farmus_theme_text_style.dart';
 
-class FarmclubStepEmpty extends ConsumerWidget {
-  const FarmclubStepEmpty({super.key, required this.isLast});
+class ContentEmpty extends ConsumerWidget {
+  const ContentEmpty({super.key, required this.text, this.padding});
 
-  final bool isLast;
+  final String text;
+  final double? padding;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Container(
-        padding: const EdgeInsets.all(10),
+        padding: EdgeInsets.all(padding ?? 10),
         decoration: ShapeDecoration(
           color: FarmusThemeColor.background,
           shape: RoundedRectangleBorder(
@@ -31,8 +32,8 @@ class FarmclubStepEmpty extends ConsumerWidget {
             const SizedBox(
               height: 10.0,
             ),
-             Text(
-              isLast ? '마지막 미션을 진행 중이에요!' : '아직 완료한 미션이 없어요',
+            Text(
+              text,
               style: FarmusThemeTextStyle.gray2Medium15,
             ),
           ],

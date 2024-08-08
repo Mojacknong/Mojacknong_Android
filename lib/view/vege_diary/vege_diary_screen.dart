@@ -4,10 +4,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../common/app_bar/back_left_title_app_bar.dart';
 import '../../common/button/diary_button.dart';
+import '../../common/content_empty.dart';
 import '../../common/theme/farmus_theme_text_style.dart';
 import '../../model/diary/my_veggie_diary.dart';
-import '../../view_model/home/home_provider.dart';
 import '../../view_model/diary/my_veggie_diary_notifier.dart';
+import '../../view_model/home/home_provider.dart';
 import 'component/vege_diary_info.dart';
 
 class VegeDiaryScreen extends ConsumerWidget {
@@ -60,13 +61,11 @@ class VegeDiaryScreen extends ConsumerWidget {
                                   ),
                                 ],
                               )
-                            : const Center(
-                                child: Padding(
-                                  padding: EdgeInsets.only(top: 24.0),
-                                  child: Text(
-                                    '아직 작성한 성장 일기가 없어요',
-                                    style: FarmusThemeTextStyle.gray2Medium13,
-                                  ),
+                            : const SizedBox(
+                                width: double.infinity,
+                                child: ContentEmpty(
+                                  text: '아직 작성한 성장 일기가 없어요',
+                                  padding: 48.0,
                                 ),
                               );
                       },
