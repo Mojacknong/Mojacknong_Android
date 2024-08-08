@@ -1,10 +1,11 @@
 import 'package:farmus/model/my_farmclub/my_farmclub_info_model.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
-import 'mission_write_route_button.dart';
+import '../mission_write_screen.dart';
+import '../../../common/button/round_gray_button.dart';
 
 class MissionStepInfo extends ConsumerWidget {
   const MissionStepInfo(
@@ -49,7 +50,20 @@ class MissionStepInfo extends ConsumerWidget {
           const SizedBox(
             width: 8.0,
           ),
-          MissionWriteRouteButton(step: step, isButton: isButton)
+          RoundGrayButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (builder) => MissionWriteScreen(
+                    step: step,
+                  ),
+                ),
+              );
+            },
+            isButton: isButton,
+            text: '인증하기',
+          )
         ],
       ),
     );

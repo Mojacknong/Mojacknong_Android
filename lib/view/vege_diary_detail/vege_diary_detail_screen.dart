@@ -98,7 +98,9 @@ class VegeDiaryDetailScreen extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    const VegeDiaryDetailContent(),
+                    const VegeDiaryDetailContent(
+                      content: 'content',
+                    ),
                     Container(
                       padding: const EdgeInsets.all(16),
                       decoration: ShapeDecoration(
@@ -124,8 +126,14 @@ class VegeDiaryDetailScreen extends ConsumerWidget {
                     const SizedBox(
                       height: 32,
                     ),
-                    const VegeDiaryDetailIcon(),
-                    const FeedComment(),
+                    const VegeDiaryDetailIcon(
+                      commentCount: 0,
+                      likeCount: 0,
+                      myLike: false,
+                    ),
+                    const FeedComment(
+                      commentCount: 0,
+                    ),
                   ],
                 ),
               ),

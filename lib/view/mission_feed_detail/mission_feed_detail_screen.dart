@@ -8,32 +8,64 @@ import '../vege_diary_detail/component/vege_diary_detail_content.dart';
 import '../vege_diary_detail/component/vege_diary_detail_icon.dart';
 
 class MissionFeedDetailScreen extends ConsumerWidget {
-  const MissionFeedDetailScreen({super.key});
+  const MissionFeedDetailScreen(
+      {super.key,
+      required this.nickname,
+      this.profileImage,
+      required this.writeDateTime,
+      required this.content,
+      required this.diaryImage,
+      required this.commentCount,
+      required this.likeCount,
+      required this.myLike});
+
+  final String nickname;
+  final String? profileImage;
+  final String writeDateTime;
+  final String content;
+  final String diaryImage;
+  final int commentCount;
+  final int likeCount;
+  final bool myLike;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const Scaffold(
-      appBar: BackLeftTitleAppBar(),
+    return Scaffold(
+      appBar: const BackLeftTitleAppBar(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    FeedProfile(isDetail: false),
-                    SizedBox(
+                    FeedProfile(
+                      isDetail: false,
+                      profileImage: profileImage,
+                      nickname: nickname,
+                      writeDateTime: writeDateTime,
+                    ),
+                    const SizedBox(
                       height: 16.0,
                     ),
-                    VegeDiaryDetailContent(),
-                    SizedBox(
+                    VegeDiaryDetailContent(
+                      content: content,
+                      diaryImage: diaryImage,
+                    ),
+                    const SizedBox(
                       height: 64.0,
                     ),
-                    VegeDiaryDetailIcon(),
-                    FeedComment(),
+                    VegeDiaryDetailIcon(
+                      commentCount: commentCount,
+                      likeCount: likeCount,
+                      myLike: myLike,
+                    ),
+                    FeedComment(
+                      commentCount: commentCount,
+                    ),
                   ],
                 ),
               ),

@@ -105,7 +105,7 @@ class MyVeggieService {
     if (response.statusCode == 200) {
       return utf8.decode(response.bodyBytes);
     } else {
-      throw Exception('Failed to My Veggie Diary');
+      throw Exception('채소의 모든 일기 조회 실패');
     }
   }
 
@@ -130,7 +130,19 @@ class MyVeggieService {
     if (response.statusCode == 200) {
       return utf8.decode(response.bodyBytes);
     } else {
-      throw Exception('Failed to add myVeggieDiaryAdd');
+      throw Exception('채소 일기 추가 실패');
+    }
+  }
+
+  Future<String> farmclubDiaryAll(int farmClubId) async {
+    final url = '/api/my-veggie/diary/$farmClubId';
+
+    final response = await apiClient.get(url);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('팜클럽의 공개된 일기 조회 실패');
     }
   }
 }

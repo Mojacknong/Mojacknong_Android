@@ -10,8 +10,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'none/home_none_container.dart';
 
-class HomeVegeRoutine extends ConsumerWidget {
-  const HomeVegeRoutine({
+class HomeRoutine extends ConsumerWidget {
+  const HomeRoutine({
     super.key,
   });
 
@@ -30,14 +30,15 @@ class HomeVegeRoutine extends ConsumerWidget {
 
         return myVeggieRoutineInfo.isEmpty
             ? HomeNoneContainer(
-                text: '아직 루틴을 등록하지 않았어요',
-                onTap: () {
+                title: '오늘 루틴이 없어요',
+                onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => const RoutineScreen()),
                   );
                 },
+                buttonText: '루틴 등록하기',
               )
             : Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

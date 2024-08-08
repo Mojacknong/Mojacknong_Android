@@ -1,12 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'my_veggie_diary.dart';
+part of 'my_veggie_diary_notifier.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$myVeggieDiaryHash() => r'520f3bd77208e96d0bc2842ad8b0ed612667590a';
+String _$myVeggieDiaryNotifierHash() =>
+    r'909a9d2b544e30dc55efd11f0a648e95564d21bb';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,27 +30,28 @@ class _SystemHash {
   }
 }
 
-/// See also [myVeggieDiary].
-@ProviderFor(myVeggieDiary)
-const myVeggieDiaryProvider = MyVeggieDiaryFamily();
+/// See also [myVeggieDiaryNotifier].
+@ProviderFor(myVeggieDiaryNotifier)
+const myVeggieDiaryNotifierProvider = MyVeggieDiaryNotifierFamily();
 
-/// See also [myVeggieDiary].
-class MyVeggieDiaryFamily extends Family<AsyncValue<List<MyVeggieDiary>>> {
-  /// See also [myVeggieDiary].
-  const MyVeggieDiaryFamily();
+/// See also [myVeggieDiaryNotifier].
+class MyVeggieDiaryNotifierFamily
+    extends Family<AsyncValue<List<MyVeggieDiary>>> {
+  /// See also [myVeggieDiaryNotifier].
+  const MyVeggieDiaryNotifierFamily();
 
-  /// See also [myVeggieDiary].
-  MyVeggieDiaryProvider call(
-    int myVeggieId,
+  /// See also [myVeggieDiaryNotifier].
+  MyVeggieDiaryNotifierProvider call(
+    int? myVeggieId,
   ) {
-    return MyVeggieDiaryProvider(
+    return MyVeggieDiaryNotifierProvider(
       myVeggieId,
     );
   }
 
   @override
-  MyVeggieDiaryProvider getProviderOverride(
-    covariant MyVeggieDiaryProvider provider,
+  MyVeggieDiaryNotifierProvider getProviderOverride(
+    covariant MyVeggieDiaryNotifierProvider provider,
   ) {
     return call(
       provider.myVeggieId,
@@ -68,33 +70,33 @@ class MyVeggieDiaryFamily extends Family<AsyncValue<List<MyVeggieDiary>>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'myVeggieDiaryProvider';
+  String? get name => r'myVeggieDiaryNotifierProvider';
 }
 
-/// See also [myVeggieDiary].
-class MyVeggieDiaryProvider
+/// See also [myVeggieDiaryNotifier].
+class MyVeggieDiaryNotifierProvider
     extends AutoDisposeFutureProvider<List<MyVeggieDiary>> {
-  /// See also [myVeggieDiary].
-  MyVeggieDiaryProvider(
-    int myVeggieId,
+  /// See also [myVeggieDiaryNotifier].
+  MyVeggieDiaryNotifierProvider(
+    int? myVeggieId,
   ) : this._internal(
-          (ref) => myVeggieDiary(
-            ref as MyVeggieDiaryRef,
+          (ref) => myVeggieDiaryNotifier(
+            ref as MyVeggieDiaryNotifierRef,
             myVeggieId,
           ),
-          from: myVeggieDiaryProvider,
-          name: r'myVeggieDiaryProvider',
+          from: myVeggieDiaryNotifierProvider,
+          name: r'myVeggieDiaryNotifierProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$myVeggieDiaryHash,
-          dependencies: MyVeggieDiaryFamily._dependencies,
+                  : _$myVeggieDiaryNotifierHash,
+          dependencies: MyVeggieDiaryNotifierFamily._dependencies,
           allTransitiveDependencies:
-              MyVeggieDiaryFamily._allTransitiveDependencies,
+              MyVeggieDiaryNotifierFamily._allTransitiveDependencies,
           myVeggieId: myVeggieId,
         );
 
-  MyVeggieDiaryProvider._internal(
+  MyVeggieDiaryNotifierProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -104,16 +106,17 @@ class MyVeggieDiaryProvider
     required this.myVeggieId,
   }) : super.internal();
 
-  final int myVeggieId;
+  final int? myVeggieId;
 
   @override
   Override overrideWith(
-    FutureOr<List<MyVeggieDiary>> Function(MyVeggieDiaryRef provider) create,
+    FutureOr<List<MyVeggieDiary>> Function(MyVeggieDiaryNotifierRef provider)
+        create,
   ) {
     return ProviderOverride(
       origin: this,
-      override: MyVeggieDiaryProvider._internal(
-        (ref) => create(ref as MyVeggieDiaryRef),
+      override: MyVeggieDiaryNotifierProvider._internal(
+        (ref) => create(ref as MyVeggieDiaryNotifierRef),
         from: from,
         name: null,
         dependencies: null,
@@ -126,12 +129,13 @@ class MyVeggieDiaryProvider
 
   @override
   AutoDisposeFutureProviderElement<List<MyVeggieDiary>> createElement() {
-    return _MyVeggieDiaryProviderElement(this);
+    return _MyVeggieDiaryNotifierProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is MyVeggieDiaryProvider && other.myVeggieId == myVeggieId;
+    return other is MyVeggieDiaryNotifierProvider &&
+        other.myVeggieId == myVeggieId;
   }
 
   @override
@@ -143,18 +147,19 @@ class MyVeggieDiaryProvider
   }
 }
 
-mixin MyVeggieDiaryRef on AutoDisposeFutureProviderRef<List<MyVeggieDiary>> {
+mixin MyVeggieDiaryNotifierRef
+    on AutoDisposeFutureProviderRef<List<MyVeggieDiary>> {
   /// The parameter `myVeggieId` of this provider.
-  int get myVeggieId;
+  int? get myVeggieId;
 }
 
-class _MyVeggieDiaryProviderElement
+class _MyVeggieDiaryNotifierProviderElement
     extends AutoDisposeFutureProviderElement<List<MyVeggieDiary>>
-    with MyVeggieDiaryRef {
-  _MyVeggieDiaryProviderElement(super.provider);
+    with MyVeggieDiaryNotifierRef {
+  _MyVeggieDiaryNotifierProviderElement(super.provider);
 
   @override
-  int get myVeggieId => (origin as MyVeggieDiaryProvider).myVeggieId;
+  int? get myVeggieId => (origin as MyVeggieDiaryNotifierProvider).myVeggieId;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -25,6 +25,10 @@ mixin _$MyVeggieDiary {
   String get content => throw _privateConstructorUsedError;
   String get state => throw _privateConstructorUsedError;
   bool get isOpen => throw _privateConstructorUsedError;
+  int get diaryId => throw _privateConstructorUsedError;
+  int get likeCount => throw _privateConstructorUsedError;
+  int get commentCount => throw _privateConstructorUsedError;
+  bool get myLike => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,7 +43,15 @@ abstract class $MyVeggieDiaryCopyWith<$Res> {
       _$MyVeggieDiaryCopyWithImpl<$Res, MyVeggieDiary>;
   @useResult
   $Res call(
-      {String date, String image, String content, String state, bool isOpen});
+      {String date,
+      String image,
+      String content,
+      String state,
+      bool isOpen,
+      int diaryId,
+      int likeCount,
+      int commentCount,
+      bool myLike});
 }
 
 /// @nodoc
@@ -60,6 +72,10 @@ class _$MyVeggieDiaryCopyWithImpl<$Res, $Val extends MyVeggieDiary>
     Object? content = null,
     Object? state = null,
     Object? isOpen = null,
+    Object? diaryId = null,
+    Object? likeCount = null,
+    Object? commentCount = null,
+    Object? myLike = null,
   }) {
     return _then(_value.copyWith(
       date: null == date
@@ -82,6 +98,22 @@ class _$MyVeggieDiaryCopyWithImpl<$Res, $Val extends MyVeggieDiary>
           ? _value.isOpen
           : isOpen // ignore: cast_nullable_to_non_nullable
               as bool,
+      diaryId: null == diaryId
+          ? _value.diaryId
+          : diaryId // ignore: cast_nullable_to_non_nullable
+              as int,
+      likeCount: null == likeCount
+          ? _value.likeCount
+          : likeCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      commentCount: null == commentCount
+          ? _value.commentCount
+          : commentCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      myLike: null == myLike
+          ? _value.myLike
+          : myLike // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -95,7 +127,15 @@ abstract class _$$MyVeggieDiaryImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String date, String image, String content, String state, bool isOpen});
+      {String date,
+      String image,
+      String content,
+      String state,
+      bool isOpen,
+      int diaryId,
+      int likeCount,
+      int commentCount,
+      bool myLike});
 }
 
 /// @nodoc
@@ -114,6 +154,10 @@ class __$$MyVeggieDiaryImplCopyWithImpl<$Res>
     Object? content = null,
     Object? state = null,
     Object? isOpen = null,
+    Object? diaryId = null,
+    Object? likeCount = null,
+    Object? commentCount = null,
+    Object? myLike = null,
   }) {
     return _then(_$MyVeggieDiaryImpl(
       date: null == date
@@ -136,6 +180,22 @@ class __$$MyVeggieDiaryImplCopyWithImpl<$Res>
           ? _value.isOpen
           : isOpen // ignore: cast_nullable_to_non_nullable
               as bool,
+      diaryId: null == diaryId
+          ? _value.diaryId
+          : diaryId // ignore: cast_nullable_to_non_nullable
+              as int,
+      likeCount: null == likeCount
+          ? _value.likeCount
+          : likeCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      commentCount: null == commentCount
+          ? _value.commentCount
+          : commentCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      myLike: null == myLike
+          ? _value.myLike
+          : myLike // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -148,7 +208,11 @@ class _$MyVeggieDiaryImpl implements _MyVeggieDiary {
       required this.image,
       required this.content,
       required this.state,
-      required this.isOpen});
+      required this.isOpen,
+      required this.diaryId,
+      required this.likeCount,
+      required this.commentCount,
+      required this.myLike});
 
   factory _$MyVeggieDiaryImpl.fromJson(Map<String, dynamic> json) =>
       _$$MyVeggieDiaryImplFromJson(json);
@@ -163,10 +227,18 @@ class _$MyVeggieDiaryImpl implements _MyVeggieDiary {
   final String state;
   @override
   final bool isOpen;
+  @override
+  final int diaryId;
+  @override
+  final int likeCount;
+  @override
+  final int commentCount;
+  @override
+  final bool myLike;
 
   @override
   String toString() {
-    return 'MyVeggieDiary(date: $date, image: $image, content: $content, state: $state, isOpen: $isOpen)';
+    return 'MyVeggieDiary(date: $date, image: $image, content: $content, state: $state, isOpen: $isOpen, diaryId: $diaryId, likeCount: $likeCount, commentCount: $commentCount, myLike: $myLike)';
   }
 
   @override
@@ -178,13 +250,19 @@ class _$MyVeggieDiaryImpl implements _MyVeggieDiary {
             (identical(other.image, image) || other.image == image) &&
             (identical(other.content, content) || other.content == content) &&
             (identical(other.state, state) || other.state == state) &&
-            (identical(other.isOpen, isOpen) || other.isOpen == isOpen));
+            (identical(other.isOpen, isOpen) || other.isOpen == isOpen) &&
+            (identical(other.diaryId, diaryId) || other.diaryId == diaryId) &&
+            (identical(other.likeCount, likeCount) ||
+                other.likeCount == likeCount) &&
+            (identical(other.commentCount, commentCount) ||
+                other.commentCount == commentCount) &&
+            (identical(other.myLike, myLike) || other.myLike == myLike));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, date, image, content, state, isOpen);
+  int get hashCode => Object.hash(runtimeType, date, image, content, state,
+      isOpen, diaryId, likeCount, commentCount, myLike);
 
   @JsonKey(ignore: true)
   @override
@@ -206,7 +284,11 @@ abstract class _MyVeggieDiary implements MyVeggieDiary {
       required final String image,
       required final String content,
       required final String state,
-      required final bool isOpen}) = _$MyVeggieDiaryImpl;
+      required final bool isOpen,
+      required final int diaryId,
+      required final int likeCount,
+      required final int commentCount,
+      required final bool myLike}) = _$MyVeggieDiaryImpl;
 
   factory _MyVeggieDiary.fromJson(Map<String, dynamic> json) =
       _$MyVeggieDiaryImpl.fromJson;
@@ -221,6 +303,14 @@ abstract class _MyVeggieDiary implements MyVeggieDiary {
   String get state;
   @override
   bool get isOpen;
+  @override
+  int get diaryId;
+  @override
+  int get likeCount;
+  @override
+  int get commentCount;
+  @override
+  bool get myLike;
   @override
   @JsonKey(ignore: true)
   _$$MyVeggieDiaryImplCopyWith<_$MyVeggieDiaryImpl> get copyWith =>

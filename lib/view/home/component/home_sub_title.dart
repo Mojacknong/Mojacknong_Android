@@ -6,12 +6,13 @@ import '../../../common/theme/farmus_theme_text_style.dart';
 class HomeSubTitle extends StatelessWidget {
   final String title;
   final Function() onTap;
+  final bool visible;
 
-  const HomeSubTitle({
-    super.key,
-    required this.title,
-    required this.onTap,
-  });
+  const HomeSubTitle(
+      {super.key,
+      required this.title,
+      required this.onTap,
+      required this.visible});
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +22,13 @@ class HomeSubTitle extends StatelessWidget {
           title,
           style: FarmusThemeTextStyle.gray1SemiBold17,
         ),
-        GestureDetector(
-          onTap: onTap,
-          child: SvgPicture.asset('assets/image/ic_right.svg'),
-        )
+        Visibility(
+          visible: visible,
+          child: GestureDetector(
+            onTap: onTap,
+            child: SvgPicture.asset('assets/image/ic_right.svg'),
+          ),
+        ),
       ],
     );
   }

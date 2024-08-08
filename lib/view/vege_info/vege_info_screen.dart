@@ -49,9 +49,12 @@ class VegeInfoScreen extends ConsumerWidget {
           IconButton(
             onPressed: () {
               ref.invalidate(myVegeDeleteProvider);
+              Navigator.pop(context);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const MyVegeScreen()),
+                MaterialPageRoute(
+                  builder: (context) => const MyVegeScreen(),
+                ),
               );
             },
             icon: SvgPicture.asset('assets/image/ic_list.svg'),

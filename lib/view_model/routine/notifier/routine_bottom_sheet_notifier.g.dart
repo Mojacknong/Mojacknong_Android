@@ -7,7 +7,7 @@ part of 'routine_bottom_sheet_notifier.dart';
 // **************************************************************************
 
 String _$routineBottomSheetNotifierHash() =>
-    r'aae3bb818d259dac67910521ea60de5201a6e308';
+    r'2476ed9988a83bdb1a2cac00415ad46860f57681';
 
 /// Copied from Dart SDK
 class _SystemHash {

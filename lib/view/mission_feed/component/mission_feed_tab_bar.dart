@@ -57,10 +57,6 @@ class MissionFeedTabBar extends ConsumerWidget {
                   step: step,
                   isButton: true,
                 ),
-                if (step.stepNum == farmclubInfo.steps.last.stepNum)
-                  FarmclubFeed(
-                    farmclubInfoModel: farmclubInfo,
-                  ),
               ],
             ),
           ),

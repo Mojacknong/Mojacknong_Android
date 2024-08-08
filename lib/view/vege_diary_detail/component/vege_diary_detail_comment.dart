@@ -16,7 +16,11 @@ class VegeDiaryDetailComment extends ConsumerWidget {
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        FeedProfile(isDetail: true),
+        FeedProfile(
+          isDetail: true,
+          nickname: '',
+          writeDateTime: '',
+        ),
         SizedBox(
           height: 6.0,
         ),

@@ -36,6 +36,7 @@ class FarmclubTabBar extends StatelessWidget {
                     wholeMember: farmclubInfo.wholeMemberCount,
                     step: step,
                     farmclubInfo: farmclubInfo,
+                    isButton: step.stepNum == currentStepIndex + 1,
                   ),
                 );
               }),

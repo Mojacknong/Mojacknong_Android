@@ -1,5 +1,5 @@
+import 'package:farmus/common/button/round_gray_button.dart';
 import 'package:farmus/common/farmus_picture_fix.dart';
-import 'package:farmus/view/mission_write/component/mission_write_route_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -7,17 +7,20 @@ import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 import '../../../model/my_farmclub/my_farmclub_info_model.dart';
 import '../../mission_feed/mission_feed_screen.dart';
+import '../../mission_write/mission_write_screen.dart';
 
 class FarmclubStep extends ConsumerWidget {
   const FarmclubStep(
       {super.key,
       required this.wholeMember,
       required this.step,
-      required this.farmclubInfo});
+      required this.farmclubInfo,
+      required this.isButton});
 
   final int wholeMember;
   final StepModel step;
   final MyFarmclubInfoModel farmclubInfo;
+  final bool isButton;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -64,9 +67,19 @@ class FarmclubStep extends ConsumerWidget {
                       ],
                     ),
                   ),
-                  MissionWriteRouteButton(
-                    step: step,
-                    isButton: true,
+                  RoundGrayButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (builder) => MissionWriteScreen(
+                            step: step,
+                          ),
+                        ),
+                      );
+                    },
+                    isButton: isButton,
+                    text: '인증하기',
                   )
                 ],
               ),
@@ -107,8 +120,8 @@ class FarmclubStep extends ConsumerWidget {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(4)),
                         ),
-                        child: const Text(
-                          '상추좋아',
+                        child: Text(
+                          farmclubInfo.farmClubName,
                           style: FarmusThemeTextStyle.green1SemiBold11,
                         ),
                       ),

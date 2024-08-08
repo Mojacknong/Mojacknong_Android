@@ -5,20 +5,24 @@ import '../../../common/farmus_picture.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 
 class VegeDiaryDetailContent extends ConsumerWidget {
-  const VegeDiaryDetailContent({super.key});
+  const VegeDiaryDetailContent({super.key, required this.content, this.diaryImage});
+
+  final String content;
+  final String? diaryImage;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const FarmusPicture(
+        FarmusPicture(
           height: 270,
+          image: diaryImage,
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 16.0),
           child: Text(
-            '피드' * 20,
+            content,
             style: FarmusThemeTextStyle.darkMedium15,
           ),
         ),

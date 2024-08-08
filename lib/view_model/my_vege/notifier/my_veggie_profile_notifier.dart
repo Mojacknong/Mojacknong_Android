@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:farmus/repository/my_veggie_garden_repository.dart';
+import 'package:farmus/view_model/my_vege/notifier/my_veggie_list.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../model/home/my_veggie_profile.dart';
@@ -9,7 +10,12 @@ part 'my_veggie_profile_notifier.g.dart';
 
 @riverpod
 Future<MyVeggieProfile> myVeggieProfile(
-    MyVeggieProfileRef ref, int myVeggieId) async {
+    MyVeggieProfileRef ref, int? myVeggieId) async {
+  if (myVeggieId == null) {
+    final veggieList = await ref.watch(myVeggieListModelProvider.future);
+    myVeggieId = veggieList.first.myVeggieId.toInt();
+  }
+
   final response =
       await MyVeggieGardenRepository.myVeggieProfileList(myVeggieId);
   final json = jsonDecode(response) as Map<String, dynamic>;

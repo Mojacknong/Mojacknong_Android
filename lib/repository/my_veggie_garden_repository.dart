@@ -49,4 +49,9 @@ class MyVeggieGardenRepository {
         diary.file, diary.content, diary.isOpen, diary.state, diary.myVeggieId);
     return response;
   }
+
+  static Future<String> farmclubDiaryAll(int farmclubId) async {
+    String? response = await MyVeggieService().farmclubDiaryAll(farmclubId);
+    return response;
+  }
 }
