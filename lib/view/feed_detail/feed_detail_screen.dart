@@ -1,14 +1,15 @@
 import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
 import 'package:farmus/view/farmclub/component/feed_profile.dart';
-import 'package:farmus/view/mission_feed_detail/component/feed_comment.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../vege_diary_detail/component/vege_diary_detail_content.dart';
 import '../vege_diary_detail/component/vege_diary_detail_icon.dart';
+import 'component/feed_comment.dart';
 
-class MissionFeedDetailScreen extends ConsumerWidget {
-  const MissionFeedDetailScreen({super.key,
+class FeedDetailScreen extends ConsumerWidget {
+  const FeedDetailScreen({
+    super.key,
     required this.diaryId,
     required this.nickname,
     this.profileImage,
@@ -17,7 +18,8 @@ class MissionFeedDetailScreen extends ConsumerWidget {
     required this.diaryImage,
     required this.commentCount,
     required this.likeCount,
-    required this.myLike});
+    required this.myLike,
+  });
 
   final int diaryId;
   final String nickname;
@@ -48,6 +50,7 @@ class MissionFeedDetailScreen extends ConsumerWidget {
                       profileImage: profileImage,
                       nickname: nickname,
                       writeDateTime: writeDateTime,
+                      myComment: false,
                     ),
                     const SizedBox(
                       height: 16.0,

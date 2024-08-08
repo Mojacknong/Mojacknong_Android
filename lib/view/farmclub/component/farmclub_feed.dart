@@ -1,23 +1,24 @@
-import 'package:farmus/view/mission_feed_detail/mission_feed_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../feed_detail/feed_detail_screen.dart';
 import '../../vege_diary_detail/component/vege_diary_detail_content.dart';
 import '../../vege_diary_detail/component/vege_diary_detail_icon.dart';
 import 'feed_profile.dart';
 
 class FarmclubFeed extends ConsumerWidget {
-  const FarmclubFeed(
-      {super.key,
-      required this.diaryId,
-      required this.nickname,
-      this.profileImage,
-      required this.writeDateTime,
-      required this.content,
-      required this.diaryImage,
-      required this.commentCount,
-      required this.likeCount,
-      required this.myLike});
+  const FarmclubFeed({
+    super.key,
+    required this.diaryId,
+    required this.nickname,
+    this.profileImage,
+    required this.writeDateTime,
+    required this.content,
+    required this.diaryImage,
+    required this.commentCount,
+    required this.likeCount,
+    required this.myLike,
+  });
 
   final int diaryId;
   final String nickname;
@@ -35,7 +36,7 @@ class FarmclubFeed extends ConsumerWidget {
       onTap: () => Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (builder) => MissionFeedDetailScreen(
+              builder: (builder) => FeedDetailScreen(
                     diaryId: diaryId,
                     nickname: nickname,
                     writeDateTime: writeDateTime,
@@ -55,6 +56,7 @@ class FarmclubFeed extends ConsumerWidget {
               nickname: nickname,
               writeDateTime: writeDateTime,
               profileImage: profileImage,
+              myComment: false,
             ),
           ),
           VegeDiaryDetailContent(

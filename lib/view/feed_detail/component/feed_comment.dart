@@ -63,6 +63,7 @@ class FeedComment extends ConsumerWidget {
                         date: comment.date,
                         content: comment.content,
                         isLast: idx == comments.length - 1,
+                        myComment: comment.myComment,
                       ),
                     );
                   }).toList(),
