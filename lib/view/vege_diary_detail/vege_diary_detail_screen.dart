@@ -131,7 +131,9 @@ class VegeDiaryDetailScreen extends ConsumerWidget {
                       likeCount: 0,
                       myLike: false,
                     ),
-                    const FeedComment(),
+                    const FeedComment(
+                      commentCount: 0,
+                    ),
                   ],
                 ),
               ),

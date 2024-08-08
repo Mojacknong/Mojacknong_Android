@@ -24,7 +24,9 @@ class VegeDiaryDetailIcon extends ConsumerWidget {
           padding: const EdgeInsets.only(right: 4.0),
           child: GestureDetector(
             onTap: () {},
-            child: SvgPicture.asset('assets/image/ic_heart.svg'),
+            child: myLike
+                ? SvgPicture.asset('assets/image/ic_heart_true.svg')
+                : SvgPicture.asset('assets/image/ic_heart.svg'),
           ),
         ),
         Text(

@@ -7,15 +7,16 @@ import '../../vege_diary_detail/component/vege_diary_detail_icon.dart';
 import 'feed_profile.dart';
 
 class FarmclubFeed extends ConsumerWidget {
-  const FarmclubFeed({super.key,
-    required this.nickname,
-    this.profileImage,
-    required this.writeDateTime,
-    required this.content,
-    required this.diaryImage,
-    required this.commentCount,
-    required this.likeCount,
-    required this.myLike});
+  const FarmclubFeed(
+      {super.key,
+      required this.nickname,
+      this.profileImage,
+      required this.writeDateTime,
+      required this.content,
+      required this.diaryImage,
+      required this.commentCount,
+      required this.likeCount,
+      required this.myLike});
 
   final String nickname;
   final String? profileImage;
@@ -29,11 +30,19 @@ class FarmclubFeed extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
-      onTap: () =>
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (builder) => const MissionFeedDetailScreen())),
+      onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (builder) => MissionFeedDetailScreen(
+                    nickname: nickname,
+                    writeDateTime: writeDateTime,
+                    profileImage: profileImage,
+                    content: content,
+                    diaryImage: diaryImage,
+                    commentCount: commentCount,
+                    likeCount: likeCount,
+                    myLike: myLike,
+                  ))),
       child: Column(
         children: [
           Padding(
