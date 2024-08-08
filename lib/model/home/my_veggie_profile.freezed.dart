@@ -26,6 +26,7 @@ mixin _$MyVeggieProfile {
   String get createdVeggie => throw _privateConstructorUsedError;
   int get period => throw _privateConstructorUsedError;
   int get step => throw _privateConstructorUsedError;
+  int get stepCount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +46,8 @@ abstract class $MyVeggieProfileCopyWith<$Res> {
       String veggieImage,
       String createdVeggie,
       int period,
-      int step});
+      int step,
+      int stepCount});
 }
 
 /// @nodoc
@@ -67,6 +69,7 @@ class _$MyVeggieProfileCopyWithImpl<$Res, $Val extends MyVeggieProfile>
     Object? createdVeggie = null,
     Object? period = null,
     Object? step = null,
+    Object? stepCount = null,
   }) {
     return _then(_value.copyWith(
       nickname: null == nickname
@@ -93,6 +96,10 @@ class _$MyVeggieProfileCopyWithImpl<$Res, $Val extends MyVeggieProfile>
           ? _value.step
           : step // ignore: cast_nullable_to_non_nullable
               as int,
+      stepCount: null == stepCount
+          ? _value.stepCount
+          : stepCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -111,7 +118,8 @@ abstract class _$$MyVeggieProfileImplCopyWith<$Res>
       String veggieImage,
       String createdVeggie,
       int period,
-      int step});
+      int step,
+      int stepCount});
 }
 
 /// @nodoc
@@ -131,6 +139,7 @@ class __$$MyVeggieProfileImplCopyWithImpl<$Res>
     Object? createdVeggie = null,
     Object? period = null,
     Object? step = null,
+    Object? stepCount = null,
   }) {
     return _then(_$MyVeggieProfileImpl(
       nickname: null == nickname
@@ -157,6 +166,10 @@ class __$$MyVeggieProfileImplCopyWithImpl<$Res>
           ? _value.step
           : step // ignore: cast_nullable_to_non_nullable
               as int,
+      stepCount: null == stepCount
+          ? _value.stepCount
+          : stepCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -170,7 +183,8 @@ class _$MyVeggieProfileImpl implements _MyVeggieProfile {
       required this.veggieImage,
       required this.createdVeggie,
       required this.period,
-      required this.step});
+      required this.step,
+      required this.stepCount});
 
   factory _$MyVeggieProfileImpl.fromJson(Map<String, dynamic> json) =>
       _$$MyVeggieProfileImplFromJson(json);
@@ -187,10 +201,12 @@ class _$MyVeggieProfileImpl implements _MyVeggieProfile {
   final int period;
   @override
   final int step;
+  @override
+  final int stepCount;
 
   @override
   String toString() {
-    return 'MyVeggieProfile(nickname: $nickname, veggieName: $veggieName, veggieImage: $veggieImage, createdVeggie: $createdVeggie, period: $period, step: $step)';
+    return 'MyVeggieProfile(nickname: $nickname, veggieName: $veggieName, veggieImage: $veggieImage, createdVeggie: $createdVeggie, period: $period, step: $step, stepCount: $stepCount)';
   }
 
   @override
@@ -207,13 +223,15 @@ class _$MyVeggieProfileImpl implements _MyVeggieProfile {
             (identical(other.createdVeggie, createdVeggie) ||
                 other.createdVeggie == createdVeggie) &&
             (identical(other.period, period) || other.period == period) &&
-            (identical(other.step, step) || other.step == step));
+            (identical(other.step, step) || other.step == step) &&
+            (identical(other.stepCount, stepCount) ||
+                other.stepCount == stepCount));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, nickname, veggieName,
-      veggieImage, createdVeggie, period, step);
+      veggieImage, createdVeggie, period, step, stepCount);
 
   @JsonKey(ignore: true)
   @override
@@ -237,7 +255,8 @@ abstract class _MyVeggieProfile implements MyVeggieProfile {
       required final String veggieImage,
       required final String createdVeggie,
       required final int period,
-      required final int step}) = _$MyVeggieProfileImpl;
+      required final int step,
+      required final int stepCount}) = _$MyVeggieProfileImpl;
 
   factory _MyVeggieProfile.fromJson(Map<String, dynamic> json) =
       _$MyVeggieProfileImpl.fromJson;
@@ -254,6 +273,8 @@ abstract class _MyVeggieProfile implements MyVeggieProfile {
   int get period;
   @override
   int get step;
+  @override
+  int get stepCount;
   @override
   @JsonKey(ignore: true)
   _$$MyVeggieProfileImplCopyWith<_$MyVeggieProfileImpl> get copyWith =>

@@ -12,7 +12,9 @@ class MyVeggieProfile with _$MyVeggieProfile {
     required String createdVeggie,
     required int period,
     required int step,
+    required int stepCount,
   }) = _MyVeggieProfile;
 
-  factory MyVeggieProfile.fromJson(Map<String, dynamic> json) => _$MyVeggieProfileFromJson(json);
+  factory MyVeggieProfile.fromJson(Map<String, dynamic> json) =>
+      _$MyVeggieProfileFromJson(json);
 }

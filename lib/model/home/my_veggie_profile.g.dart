@@ -15,6 +15,7 @@ _$MyVeggieProfileImpl _$$MyVeggieProfileImplFromJson(
       createdVeggie: json['createdVeggie'] as String,
       period: (json['period'] as num).toInt(),
       step: (json['step'] as num).toInt(),
+      stepCount: (json['stepCount'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$MyVeggieProfileImplToJson(
@@ -26,4 +27,5 @@ Map<String, dynamic> _$$MyVeggieProfileImplToJson(
       'createdVeggie': instance.createdVeggie,
       'period': instance.period,
       'step': instance.step,
+      'stepCount': instance.stepCount,
     };

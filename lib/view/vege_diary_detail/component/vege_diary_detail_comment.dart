@@ -12,12 +12,14 @@ class VegeDiaryDetailComment extends ConsumerWidget {
     required this.nickname,
     required this.date,
     required this.content,
+    this.isLast = false,
   });
 
   final String? profileImage;
   final String nickname;
   final String date;
   final String content;
+  final bool isLast;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -37,12 +39,14 @@ class VegeDiaryDetailComment extends ConsumerWidget {
           content,
           style: FarmusThemeTextStyle.darkMedium14,
         ),
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 12.0),
-          child: Divider(
-            height: 1,
-            color: FarmusThemeColor.gray4,
-          ),
+        Padding(
+          padding: EdgeInsets.only(top: isLast ? 24.0 : 12.0),
+          child: isLast
+              ? const SizedBox()
+              : const Divider(
+                  height: 1,
+                  color: FarmusThemeColor.gray4,
+                ),
         ),
       ],
     );

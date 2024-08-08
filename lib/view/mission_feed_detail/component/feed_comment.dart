@@ -52,7 +52,9 @@ class FeedComment extends ConsumerWidget {
         diaryComments.when(
           data: (comments) => comments.isNotEmpty
               ? Column(
-                  children: comments.map((comment) {
+                  children: comments.asMap().entries.map((entry) {
+                    int idx = entry.key;
+                    DiaryCommentModel comment = entry.value;
                     return Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: VegeDiaryDetailComment(
@@ -60,6 +62,7 @@ class FeedComment extends ConsumerWidget {
                         nickname: comment.nickname,
                         date: comment.date,
                         content: comment.content,
+                        isLast: idx == comments.length - 1,
                       ),
                     );
                   }).toList(),

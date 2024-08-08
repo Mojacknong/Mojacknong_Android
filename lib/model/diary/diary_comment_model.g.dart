@@ -13,7 +13,7 @@ _$DiaryCommentModelImpl _$$DiaryCommentModelImplFromJson(
       content: json['content'] as String,
       date: json['date'] as String,
       nickname: json['nickname'] as String,
-      profileImage: json['profileImage'] as String,
+      profileImage: json['profileImage'] as String?,
     );
 
 Map<String, dynamic> _$$DiaryCommentModelImplToJson(

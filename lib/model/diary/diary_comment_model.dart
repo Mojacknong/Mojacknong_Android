@@ -10,7 +10,7 @@ class DiaryCommentModel with _$DiaryCommentModel {
     required String content,
     required String date,
     required String nickname,
-    required String profileImage,
+    required String? profileImage,
   }) = _DiaryCommentModel;
 
   factory DiaryCommentModel.fromJson(Map<String, dynamic> json) =>

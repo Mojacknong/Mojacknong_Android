@@ -24,7 +24,7 @@ mixin _$DiaryCommentModel {
   String get content => throw _privateConstructorUsedError;
   String get date => throw _privateConstructorUsedError;
   String get nickname => throw _privateConstructorUsedError;
-  String get profileImage => throw _privateConstructorUsedError;
+  String? get profileImage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +43,7 @@ abstract class $DiaryCommentModelCopyWith<$Res> {
       String content,
       String date,
       String nickname,
-      String profileImage});
+      String? profileImage});
 }
 
 /// @nodoc
@@ -63,7 +63,7 @@ class _$DiaryCommentModelCopyWithImpl<$Res, $Val extends DiaryCommentModel>
     Object? content = null,
     Object? date = null,
     Object? nickname = null,
-    Object? profileImage = null,
+    Object? profileImage = freezed,
   }) {
     return _then(_value.copyWith(
       myComment: null == myComment
@@ -82,10 +82,10 @@ class _$DiaryCommentModelCopyWithImpl<$Res, $Val extends DiaryCommentModel>
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
               as String,
-      profileImage: null == profileImage
+      profileImage: freezed == profileImage
           ? _value.profileImage
           : profileImage // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -103,7 +103,7 @@ abstract class _$$DiaryCommentModelImplCopyWith<$Res>
       String content,
       String date,
       String nickname,
-      String profileImage});
+      String? profileImage});
 }
 
 /// @nodoc
@@ -121,7 +121,7 @@ class __$$DiaryCommentModelImplCopyWithImpl<$Res>
     Object? content = null,
     Object? date = null,
     Object? nickname = null,
-    Object? profileImage = null,
+    Object? profileImage = freezed,
   }) {
     return _then(_$DiaryCommentModelImpl(
       myComment: null == myComment
@@ -140,10 +140,10 @@ class __$$DiaryCommentModelImplCopyWithImpl<$Res>
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
               as String,
-      profileImage: null == profileImage
+      profileImage: freezed == profileImage
           ? _value.profileImage
           : profileImage // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -170,7 +170,7 @@ class _$DiaryCommentModelImpl implements _DiaryCommentModel {
   @override
   final String nickname;
   @override
-  final String profileImage;
+  final String? profileImage;
 
   @override
   String toString() {
@@ -218,7 +218,7 @@ abstract class _DiaryCommentModel implements DiaryCommentModel {
       required final String content,
       required final String date,
       required final String nickname,
-      required final String profileImage}) = _$DiaryCommentModelImpl;
+      required final String? profileImage}) = _$DiaryCommentModelImpl;
 
   factory _DiaryCommentModel.fromJson(Map<String, dynamic> json) =
       _$DiaryCommentModelImpl.fromJson;
@@ -232,7 +232,7 @@ abstract class _DiaryCommentModel implements DiaryCommentModel {
   @override
   String get nickname;
   @override
-  String get profileImage;
+  String? get profileImage;
   @override
   @JsonKey(ignore: true)
   _$$DiaryCommentModelImplCopyWith<_$DiaryCommentModelImpl> get copyWith =>
