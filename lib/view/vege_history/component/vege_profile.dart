@@ -1,19 +1,24 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
+import 'package:farmus/model/veggie_history/veggie_history_list_model.dart';
 import 'package:farmus/view/my_page/component/my_vege_image_widget.dart';
 import 'package:farmus/view/vege_history/vege_history_tap_screen.dart';
 import 'package:farmus/view_model/my_page/vege_info_privider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../view_model/vege_history/veggie_history_list_provider.dart';
+
 class VegeProfile extends ConsumerWidget {
   const VegeProfile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final vegeInfo = ref.watch(vegeInfoProvider).vegeInfo;
-
-    return InkWell(
+    final AsyncValue<VeggieHistoryListModel> veggieListAsyncValue =
+    ref.watch(veggieHistoryListModelProvider);
+    return veggieListAsyncValue.when(
+        data: (veggieList) {
+      return InkWell(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => const VegeHistoryTabScreen(),
@@ -40,7 +45,7 @@ class VegeProfile extends ConsumerWidget {
                           style: DefaultTextStyle.of(context).style,
                           children: <TextSpan>[
                             TextSpan(
-                              text: '${vegeInfo.veggieName} ',
+                              text: veggieList.historyName,
                               style: FarmusThemeTextStyle.darkSemiBold17,
                             ),
                             const TextSpan(
@@ -49,7 +54,7 @@ class VegeProfile extends ConsumerWidget {
                                   fontSize: 17, color: FarmusThemeColor.gray4),
                             ),
                             TextSpan(
-                              text: vegeInfo.veggieType,
+                              text: veggieList.detailId,
                               style: FarmusThemeTextStyle.darkMedium15,
                             ),
                           ],
@@ -61,17 +66,17 @@ class VegeProfile extends ConsumerWidget {
                           style: DefaultTextStyle.of(context).style,
                           children: <TextSpan>[
                             TextSpan(
-                              text: '${vegeInfo.periodStart} ',
+                              text: veggieList.period,
                               style: FarmusThemeTextStyle.gray2Medium15,
                             ),
                             const TextSpan(
                               text: '- ',
                               style: FarmusThemeTextStyle.gray2Medium15,
                             ),
-                            TextSpan(
-                              text: vegeInfo.periodEnd,
-                              style: FarmusThemeTextStyle.gray2Medium15,
-                            ),
+                            // TextSpan(
+                            //   text: vegeInfo.periodEnd,
+                            //   style: FarmusThemeTextStyle.gray2Medium15,
+                            // ),
                           ],
                         ),
                       ),
@@ -83,6 +88,9 @@ class VegeProfile extends ConsumerWidget {
           ],
         ),
       ),
+    );
+  },loading: () => const Center(child: CircularProgressIndicator()),
+    error: (error, stack) => Center(child: Text('$error')),
     );
   }
 }

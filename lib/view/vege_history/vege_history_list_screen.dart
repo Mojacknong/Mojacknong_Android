@@ -19,12 +19,6 @@ class VegeHistoryListScreen extends StatelessWidget {
               child: Column(
                 children: [
                   VegeProfile(),
-                  MyDivider(),
-                  VegeProfile(),
-                  MyDivider(),
-                  VegeProfile(),
-                  MyDivider(),
-                  VegeProfile()
                 ],
               ),
             ),
