@@ -1,6 +1,5 @@
 import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
 import 'package:farmus/view/my_page/component/my_page_profile.dart';
-import 'package:farmus/view_model/on_boarding/on_boarding_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

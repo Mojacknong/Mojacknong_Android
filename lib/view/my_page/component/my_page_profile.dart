@@ -1,23 +1,19 @@
 import 'dart:io';
-import 'package:farmus/common/farmus_picture.dart';
+
 import 'package:farmus/model/my_page/my_page_profile_model.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_nickname_text_input.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../common/bottom_sheet/primary_action_sheet.dart';
 import '../../../common/button/primary_color_button.dart';
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
-import '../../../model/on_boarding/on_boarding_user_profile_model.dart';
 import '../../../view_model/my_page/my_page_info_provider.dart';
-import '../../../view_model/my_page/notifier/my_page_info_change_notifier.dart';
 import '../../../view_model/my_page/notifier/my_page_user_profile_model_notifier.dart';
 import '../../../view_model/on_boarding/on_boarding_provider.dart';
-import '../../../view_model/on_boarding/on_boarding_user_profile.dart';
 import '../../main/main_screen.dart';
 
 class MyPageProfile extends ConsumerStatefulWidget {
