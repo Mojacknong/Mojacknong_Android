@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -54,13 +55,23 @@ class ApiClient {
       case 'POST_MULTIPART':
         var request = http.MultipartRequest('POST', url);
         request.headers.addAll(headers);
-        request.fields.addAll(body as Map<String, String>);
-        request.files.add(await http.MultipartFile.fromPath(
-          'file',
-          file!.path,
-          contentType: MediaType('multipart', 'form-data'),
-        ));
+        if (body is Map<String, String>) {
+          request.fields['nickname'] = body['nickname'] ?? '';
+        }
+
+        if (file != null) {
+          request.files.add(
+            await http.MultipartFile.fromPath(
+              'image',
+              file.path,
+            ),
+          );
+
+        } else {
+          print('전송할 파일 null임.');
+        }
         response = await http.Response.fromStream(await request.send());
+        print('베이스 api: ${utf8.decode(response.bodyBytes)}');
         break;
       default:
         throw Exception('Unsupported HTTP method: $method');
@@ -84,7 +95,7 @@ class ApiClient {
 
   Future<http.Response> postMultipart(
       String endpoint, String nickname, File file) async {
-    Map<String, String> body = {'nickname': nickname};
+    Map<String, String> body = {'nickname': nickname,};
     return _sendRequest('POST_MULTIPART', endpoint, body: body, file: file);
   }
 
