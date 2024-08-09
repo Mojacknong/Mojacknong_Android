@@ -13,8 +13,6 @@ class MyPageInfo extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    XFile? file;
-    file = ref.read(onBoardingProfileSetProvider).profileImage;
     final myPageInfoAsyncValue = ref.watch(myPageInfoModelProvider);
 
     return Scaffold(

@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:farmus/common/farmus_picture.dart';
+import 'package:farmus/model/my_page/my_page_profile_model.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_nickname_text_input.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +13,9 @@ import '../../../common/button/primary_color_button.dart';
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 import '../../../model/on_boarding/on_boarding_user_profile_model.dart';
+import '../../../view_model/my_page/my_page_info_provider.dart';
+import '../../../view_model/my_page/notifier/my_page_info_change_notifier.dart';
+import '../../../view_model/my_page/notifier/my_page_user_profile_model_notifier.dart';
 import '../../../view_model/on_boarding/on_boarding_provider.dart';
 import '../../../view_model/on_boarding/on_boarding_user_profile.dart';
 import '../../main/main_screen.dart';
@@ -26,21 +31,27 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
   XFile? file;
 
   Future<void> _pickGalleryImage() async {
-    final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       setState(() {
         file = pickedFile;
-        ref.read(onBoardingProfileSetProvider.notifier).updateProfileImage(pickedFile);
+        ref
+            .read(onBoardingProfileSetProvider.notifier)
+            .updateProfileImage(pickedFile);
       });
     }
   }
 
   Future<void> _pickCameraImage() async {
-    final pickedFile = await ImagePicker().pickImage(source: ImageSource.camera);
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.camera);
     if (pickedFile != null) {
       setState(() {
         file = pickedFile;
-        ref.read(onBoardingProfileSetProvider.notifier).updateProfileImage(pickedFile);
+        ref
+            .read(onBoardingProfileSetProvider.notifier)
+            .updateProfileImage(pickedFile);
       });
     }
   }
@@ -86,100 +97,114 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
     );
   }
 
-  Future<void> _saveProfile() async {
+  Future<void> _saveProfile(String userImageUrl, String displayNickname) async {
     final profile = ref.read(onBoardingProfileSetProvider);
-    if (file != null || profile.nickname != null) {
-      ref
-          .read(onBoardingUserProfileModelNotifierProvider
-          .notifier)
-          .postUserProfile(
-        OnBoardingUserProfileModel(
-            file: File(profile.profileImage!.path),
-            nickName: profile.nickname!),
-      );
-      print(profile.nickname);
-      print(file?.path);
-      Navigator.pop(context);
-      Navigator.push(
+
+    final imageFile = profile.profileImage != null
+        ? File(profile.profileImage!.path)
+        : File('');
+
+    final nickname = profile.nickname ?? displayNickname;
+
+    await ref
+        .read(myPageUserProfileModelNotifierProvider.notifier)
+        .postUserProfile(
+          MyPageProfileModel(
+            image: imageFile,
+            nickname: nickname,
+          ),
+        );
+
+    ref.refresh(myPageInfoModelProvider);
+
+    Future.delayed(const Duration(milliseconds: 100), () {
+      Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
           builder: (context) => const MainScreen(selectedIndex: 3),
         ),
+        (route) => false,
       );
-    }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    final myPageInfoAsyncValue = ref.watch(myPageInfoModelProvider);
     final profile = ref.watch(onBoardingProfileSetProvider);
     final isSpecial = ref.watch(onBoardingSpecialCharactersProvider);
-    bool enabled = profile.isProfileComplete && !isSpecial;
-    file = ref.read(onBoardingProfileSetProvider).profileImage;
-    final nickname = ref.read(onBoardingProfileSetProvider).nickname;
-    final hasSpecialCharacters = ref.watch(onBoardingSpecialCharactersProvider);
 
-    if (file != null) {
-      print('Current image path: ${file!.path}');
-    } else {
-      print('No image selected');
-    }
+    file = profile.profileImage;
+    final nickname = profile.nickname;
+    final hasSpecialCharacters = isSpecial;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+    return Scaffold(
+        body: myPageInfoAsyncValue.when(
+          data: (myPageInfo) {
+            final userImageUrl = myPageInfo.userImageUrl;
+            final displayNickname = myPageInfo.nickName;
+
+            return Column(
               children: [
-                const SizedBox(height: 30),
-                Center(
-                  child: Container(
-                    width: 110,
-                    height: 110,
-                    decoration: const ShapeDecoration(
-                      color: FarmusThemeColor.gray5,
-                      shape: OvalBorder(),
-                    ),
-                    child: (file == null)
-                        ? Stack(
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Center(
-                          child: GestureDetector(
-                            onTap: () => _showActionSheet(context),
-                            child: SvgPicture.asset("assets/image/ic_camera.svg"),
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(125, 8, 125, 8),
+                            child: AspectRatio(
+                              aspectRatio: 1.0,
+                              child: Container(
+                                decoration: const ShapeDecoration(
+                                  color: FarmusThemeColor.gray5,
+                                  shape: CircleBorder(),
+                                ),
+                                child: (file == null)
+                                    ? GestureDetector(
+                                        onTap: () => _showActionSheet(context),
+                                        child: ClipOval(
+                                          child: Image.network(
+                                            userImageUrl,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      )
+                                    : GestureDetector(
+                                        onTap: () => _showActionSheet(context),
+                                        child: ClipOval(
+                                          child: Image.file(
+                                            File(file!.path),
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      ),
+                              ),
+                            ),
                           ),
-                        )
-                      ],
-                    )
-                        : GestureDetector(
-                      onTap: () => _showActionSheet(context),
-                      child: ClipOval(
-                        child: Image.file(
-                          File(file!.path),
-                          fit: BoxFit.cover,
                         ),
-                      ),
+                        const SizedBox(height: 8),
+                        const Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Text(
+                            "닉네임",
+                            textAlign: TextAlign.start,
+                            style: FarmusThemeTextStyle.darkMedium13,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: OnBoardingNicknameTextInput(
+                            initialValue: displayNickname,
+                            errorText:
+                                hasSpecialCharacters ? "특수문자는 입력할 수 없어요" : null,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
-                const SizedBox(height: 8),
-                const Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Text(
-                    "닉네임",
-                    textAlign: TextAlign.start,
-                    style: FarmusThemeTextStyle.darkMedium13,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: OnBoardingNicknameTextInput(
-                    initialValue: nickname,
-                    errorText: hasSpecialCharacters ? "특수문자는 입력할 수 없어요" : null,
-                  ),
-                ),
-                const SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
@@ -189,19 +214,21 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
                         child: PrimaryColorButton(
                           text: "수정완료",
                           onPressed: () async {
-                            await _saveProfile();
+                            await _saveProfile(userImageUrl, displayNickname);
                           },
-                          enabled: enabled,
+                          enabled: (file?.path.isNotEmpty ?? false) ||
+                              (nickname?.isNotEmpty ?? false) && !isSpecial,
                         ),
                       ),
                     ],
                   ),
                 ),
               ],
-            ),
-          ),
+            );
+          },
+          loading: () => Center(child: CircularProgressIndicator()),
+          error: (error, stackTrace) => Center(child: Text('Error: $error')),
         ),
-      ],
-    );
+      );
   }
 }
