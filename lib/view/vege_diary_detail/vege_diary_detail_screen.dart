@@ -16,7 +16,6 @@ class VegeDiaryDetailScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: MoreVerticalAppBar(
-        title: "2023년 11월 25일",
         actions: [
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),

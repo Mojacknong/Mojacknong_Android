@@ -65,6 +65,8 @@ class PrimaryTextFormField extends StatelessWidget implements BaseTextInput {
       ],
       readOnly: readOnly ?? false,
       decoration: InputDecoration(
+          filled: true,
+          fillColor: FarmusThemeColor.white,
           hintText: hintText,
           hintStyle: const TextStyle(
             color: FarmusThemeColor.gray3,
