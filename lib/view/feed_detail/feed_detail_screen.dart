@@ -23,6 +23,7 @@ class FeedDetailScreen extends ConsumerWidget {
     required this.likeCount,
     required this.myLike,
     required this.commentId,
+    required this.state,
   });
 
   final int diaryId;
@@ -35,6 +36,7 @@ class FeedDetailScreen extends ConsumerWidget {
   final int likeCount;
   final bool myLike;
   final int commentId;
+  final String state;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -76,13 +78,13 @@ class FeedDetailScreen extends ConsumerWidget {
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
-                      child: const Row(
+                      child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text('채소 상태',
+                          const Text('채소 상태',
                               style: FarmusThemeTextStyle.gray2Medium13),
-                          SizedBox(width: 8),
-                          Text('좋음',
+                          const SizedBox(width: 8),
+                          Text(state,
                               style: FarmusThemeTextStyle.gray6SemiBold13),
                         ],
                       ),

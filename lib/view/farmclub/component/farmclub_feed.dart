@@ -18,6 +18,7 @@ class FarmclubFeed extends ConsumerWidget {
     required this.commentCount,
     required this.likeCount,
     required this.myLike,
+    required this.state,
   });
 
   final int diaryId;
@@ -29,6 +30,7 @@ class FarmclubFeed extends ConsumerWidget {
   final int commentCount;
   final int likeCount;
   final bool myLike;
+  final String state;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -47,6 +49,7 @@ class FarmclubFeed extends ConsumerWidget {
                     likeCount: likeCount,
                     myLike: myLike,
                     commentId: -1,
+                    state: state,
                   ))),
       child: Column(
         children: [

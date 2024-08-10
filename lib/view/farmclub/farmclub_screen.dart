@@ -140,6 +140,7 @@ class FarmclubScreen extends ConsumerWidget {
                                             commentCount: diary.commentCount,
                                             likeCount: diary.likeCount,
                                             myLike: diary.myLike,
+                                            state: diary.state,
                                           );
                                         }).toList(),
                                       )
