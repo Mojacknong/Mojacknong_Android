@@ -1,4 +1,4 @@
-import 'package:farmus/model/home/routine_model.dart';
+import 'package:farmus/model/routine/routine_model.dart';
 import 'package:farmus/repository/routine_repository.dart';
 import 'package:farmus/view_model/routine/notifier/my_veggie_routine_info_notifier.dart';
 import 'package:farmus/view_model/routine/notifier/routine_date_list_notifier.dart';
