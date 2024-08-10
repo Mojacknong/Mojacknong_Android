@@ -47,7 +47,7 @@ class FeedComment extends ConsumerWidget {
               ),
             ],
           ),
-          loading: () => const Center(child: CircularProgressIndicator()),
+          loading: () => Container(),
           error: (error, stack) => Center(child: Text('Error: $error')),
         ),
         const SizedBox(
