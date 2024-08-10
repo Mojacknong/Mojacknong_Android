@@ -111,7 +111,9 @@ class FeedDetailScreen extends ConsumerWidget {
             decoration: const BoxDecoration(
               color: FarmusThemeColor.gray5,
             ),
-            child: const CommentTextFormField(),
+            child: CommentTextFormField(
+              diaryId: diaryId,
+            ),
           ),
         ],
       ),

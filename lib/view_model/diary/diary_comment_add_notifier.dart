@@ -1,4 +1,5 @@
 import 'package:farmus/model/diary/diary_comment_add_model.dart';
+import 'package:farmus/repository/my_veggie_garden_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'diary_comment_add_notifier.g.dart';
@@ -17,4 +18,10 @@ class DiaryCommentAddNotifier extends _$DiaryCommentAddNotifier {
     );
   }
 
+  Future<void> addDiaryComment(int diaryId) async {
+    await MyVeggieGardenRepository.diaryCommentAdd(
+        diaryId, state.value!.comment!);
+
+    ref.invalidateSelf();
+  }
 }
