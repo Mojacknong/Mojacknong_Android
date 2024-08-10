@@ -31,20 +31,24 @@ class FeedComment extends ConsumerWidget {
             color: FarmusThemeColor.gray4,
           ),
         ),
-        Row(
-          children: [
-            const Text(
-              '댓글',
-              style: FarmusThemeTextStyle.gray1Medium15,
-            ),
-            const SizedBox(
-              width: 4,
-            ),
-            Text(
-              '$commentCount',
-              style: FarmusThemeTextStyle.gray1Medium15,
-            ),
-          ],
+        diaryComments.when(
+          data: (comments) => Row(
+            children: [
+              const Text(
+                '댓글',
+                style: FarmusThemeTextStyle.gray1Medium15,
+              ),
+              const SizedBox(
+                width: 4,
+              ),
+              Text(
+                '${comments.length}',
+                style: FarmusThemeTextStyle.gray1Medium15,
+              ),
+            ],
+          ),
+          loading: () => const Center(child: CircularProgressIndicator()),
+          error: (error, stack) => Center(child: Text('Error: $error')),
         ),
         const SizedBox(
           height: 8.0,
@@ -64,7 +68,7 @@ class FeedComment extends ConsumerWidget {
                         content: comment.content,
                         isLast: idx == comments.length - 1,
                         myComment: comment.myComment,
-                        commentId: -1,
+                        commentId: comment.commentId,
                       ),
                     );
                   }).toList(),

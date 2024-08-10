@@ -14,6 +14,7 @@ _$DiaryCommentModelImpl _$$DiaryCommentModelImplFromJson(
       date: json['date'] as String,
       nickname: json['nickname'] as String,
       profileImage: json['profileImage'] as String?,
+      commentId: (json['commentId'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$DiaryCommentModelImplToJson(
@@ -24,4 +25,5 @@ Map<String, dynamic> _$$DiaryCommentModelImplToJson(
       'date': instance.date,
       'nickname': instance.nickname,
       'profileImage': instance.profileImage,
+      'commentId': instance.commentId,
     };

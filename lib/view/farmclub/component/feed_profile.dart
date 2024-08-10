@@ -53,10 +53,8 @@ class FeedProfile extends ConsumerWidget {
                                         context, commentId);
                                   }
                                 : () {
-                                    showDiaryCommentBottomSheet(
-                                        context, commentId);
-                                    // showReportBottomSheet(
-                                    //     context, '댓글 신고', '댓글을 신고했어요');
+                                    showReportBottomSheet(
+                                        context, '댓글 신고', '댓글을 신고했어요');
                                   },
                             child: SvgPicture.asset(
                                 'assets/image/ic_more_vertical.svg'),

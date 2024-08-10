@@ -1,6 +1,6 @@
 class DiaryCommentAddModel {
-  final String? comment;
+  final String comment;
   final bool isNotEmpty;
 
-  DiaryCommentAddModel({this.comment, required this.isNotEmpty});
+  DiaryCommentAddModel({required this.comment, required this.isNotEmpty});
 }

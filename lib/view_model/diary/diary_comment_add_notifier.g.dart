@@ -7,7 +7,7 @@ part of 'diary_comment_add_notifier.dart';
 // **************************************************************************
 
 String _$diaryCommentAddNotifierHash() =>
-    r'31b28e5e86e280d53dc19799270c9759c3374647';
+    r'3488edf4d36bcad52d389c3344afa430c0de69cb';
 
 /// See also [DiaryCommentAddNotifier].
 @ProviderFor(DiaryCommentAddNotifier)

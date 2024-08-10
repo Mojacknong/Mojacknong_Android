@@ -5,25 +5,37 @@ import 'package:flutter_svg/svg.dart';
 
 import '../theme/farmus_theme_color.dart';
 
-class CommentTextFormField extends ConsumerWidget {
+class CommentTextFormField extends ConsumerStatefulWidget {
   const CommentTextFormField({super.key, required this.diaryId});
 
   final int diaryId;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  _CommentTextFormFieldState createState() => _CommentTextFormFieldState();
+}
+
+class _CommentTextFormFieldState extends ConsumerState<CommentTextFormField> {
+  final TextEditingController _controller = TextEditingController();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     var notifier = ref.watch(diaryCommentAddNotifierProvider);
 
     return Padding(
       padding: const EdgeInsets.only(
           top: 16.0, left: 16.0, right: 16.0, bottom: 24.0),
       child: TextFormField(
-        initialValue: '',
+        controller: _controller,
         minLines: 1,
         maxLines: 1,
         keyboardType: TextInputType.text,
         textInputAction: TextInputAction.done,
-        onFieldSubmitted: (value) {},
         decoration: InputDecoration(
           filled: true,
           fillColor: FarmusThemeColor.white,
@@ -37,7 +49,8 @@ class CommentTextFormField extends ConsumerWidget {
               if (notifier.value!.isNotEmpty) {
                 ref
                     .read(diaryCommentAddNotifierProvider.notifier)
-                    .addDiaryComment(diaryId);
+                    .addDiaryComment(widget.diaryId);
+                _controller.clear();
               }
             },
             icon: SvgPicture.asset('assets/image/ic_send.svg'),

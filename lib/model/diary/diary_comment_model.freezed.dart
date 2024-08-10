@@ -25,6 +25,7 @@ mixin _$DiaryCommentModel {
   String get date => throw _privateConstructorUsedError;
   String get nickname => throw _privateConstructorUsedError;
   String? get profileImage => throw _privateConstructorUsedError;
+  int get commentId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +44,8 @@ abstract class $DiaryCommentModelCopyWith<$Res> {
       String content,
       String date,
       String nickname,
-      String? profileImage});
+      String? profileImage,
+      int commentId});
 }
 
 /// @nodoc
@@ -64,6 +66,7 @@ class _$DiaryCommentModelCopyWithImpl<$Res, $Val extends DiaryCommentModel>
     Object? date = null,
     Object? nickname = null,
     Object? profileImage = freezed,
+    Object? commentId = null,
   }) {
     return _then(_value.copyWith(
       myComment: null == myComment
@@ -86,6 +89,10 @@ class _$DiaryCommentModelCopyWithImpl<$Res, $Val extends DiaryCommentModel>
           ? _value.profileImage
           : profileImage // ignore: cast_nullable_to_non_nullable
               as String?,
+      commentId: null == commentId
+          ? _value.commentId
+          : commentId // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -103,7 +110,8 @@ abstract class _$$DiaryCommentModelImplCopyWith<$Res>
       String content,
       String date,
       String nickname,
-      String? profileImage});
+      String? profileImage,
+      int commentId});
 }
 
 /// @nodoc
@@ -122,6 +130,7 @@ class __$$DiaryCommentModelImplCopyWithImpl<$Res>
     Object? date = null,
     Object? nickname = null,
     Object? profileImage = freezed,
+    Object? commentId = null,
   }) {
     return _then(_$DiaryCommentModelImpl(
       myComment: null == myComment
@@ -144,6 +153,10 @@ class __$$DiaryCommentModelImplCopyWithImpl<$Res>
           ? _value.profileImage
           : profileImage // ignore: cast_nullable_to_non_nullable
               as String?,
+      commentId: null == commentId
+          ? _value.commentId
+          : commentId // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -156,7 +169,8 @@ class _$DiaryCommentModelImpl implements _DiaryCommentModel {
       required this.content,
       required this.date,
       required this.nickname,
-      required this.profileImage});
+      required this.profileImage,
+      required this.commentId});
 
   factory _$DiaryCommentModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$DiaryCommentModelImplFromJson(json);
@@ -171,10 +185,12 @@ class _$DiaryCommentModelImpl implements _DiaryCommentModel {
   final String nickname;
   @override
   final String? profileImage;
+  @override
+  final int commentId;
 
   @override
   String toString() {
-    return 'DiaryCommentModel(myComment: $myComment, content: $content, date: $date, nickname: $nickname, profileImage: $profileImage)';
+    return 'DiaryCommentModel(myComment: $myComment, content: $content, date: $date, nickname: $nickname, profileImage: $profileImage, commentId: $commentId)';
   }
 
   @override
@@ -189,13 +205,15 @@ class _$DiaryCommentModelImpl implements _DiaryCommentModel {
             (identical(other.nickname, nickname) ||
                 other.nickname == nickname) &&
             (identical(other.profileImage, profileImage) ||
-                other.profileImage == profileImage));
+                other.profileImage == profileImage) &&
+            (identical(other.commentId, commentId) ||
+                other.commentId == commentId));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, myComment, content, date, nickname, profileImage);
+      runtimeType, myComment, content, date, nickname, profileImage, commentId);
 
   @JsonKey(ignore: true)
   @override
@@ -218,7 +236,8 @@ abstract class _DiaryCommentModel implements DiaryCommentModel {
       required final String content,
       required final String date,
       required final String nickname,
-      required final String? profileImage}) = _$DiaryCommentModelImpl;
+      required final String? profileImage,
+      required final int commentId}) = _$DiaryCommentModelImpl;
 
   factory _DiaryCommentModel.fromJson(Map<String, dynamic> json) =
       _$DiaryCommentModelImpl.fromJson;
@@ -233,6 +252,8 @@ abstract class _DiaryCommentModel implements DiaryCommentModel {
   String get nickname;
   @override
   String? get profileImage;
+  @override
+  int get commentId;
   @override
   @JsonKey(ignore: true)
   _$$DiaryCommentModelImplCopyWith<_$DiaryCommentModelImpl> get copyWith =>
