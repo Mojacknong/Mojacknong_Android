@@ -28,7 +28,10 @@ class ApiClient {
   }
 
   Future<http.Response> _sendRequest(String method, String endpoint,
-      {Map<String, String>? headers, Object? body, File? file}) async {
+      {Map<String, String>? headers,
+      Object? body,
+      File? file,
+      String fileFieldName = 'file'}) async {
     final url = Uri.parse('$baseUrl$endpoint');
     final tokenHeaders = await _getHeaders();
 
@@ -54,15 +57,20 @@ class ApiClient {
       case 'POST_MULTIPART':
         var request = http.MultipartRequest('POST', url);
         request.headers.addAll(headers);
-        if (body is Map<String, String>) {
-          request.fields['nickname'] = body['nickname'] ?? '';
+
+        if (body is Map<String, dynamic>) {
+          body.forEach((key, value) {
+            if (value is String) {
+              request.fields[key] = value;
+            }
+          });
         }
 
         if (file != null) {
           try {
             request.files.add(
               await http.MultipartFile.fromPath(
-                'image',
+                fileFieldName,
                 file.path,
               ),
             );
@@ -70,8 +78,8 @@ class ApiClient {
             throw Exception('Error adding file: $e');
           }
         }
+
         response = await http.Response.fromStream(await request.send());
-        print('베이스 api: ${utf8.decode(response.bodyBytes)}');
         break;
       default:
         throw Exception('Unsupported HTTP method: $method');
@@ -93,10 +101,14 @@ class ApiClient {
     return _sendRequest('POST', endpoint, headers: headers, body: body);
   }
 
-  Future<http.Response> postMultipart(
-      String endpoint, String nickname, File file) async {
-    Map<String, String> body = {'nickname': nickname,};
-    return _sendRequest('POST_MULTIPART', endpoint, body: body, file: file);
+  Future<http.Response> postMultipart(String endpoint, String stringFieldName,
+      String fileFieldName, String text, File file) async {
+    Map<String, String> body = {
+      stringFieldName: text,
+    };
+
+    return _sendRequest('POST_MULTIPART', endpoint,
+        body: body, file: file, fileFieldName: fileFieldName);
   }
 
   Future<http.Response> patch(String endpoint,
