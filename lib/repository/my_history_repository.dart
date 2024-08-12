@@ -1,4 +1,5 @@
 import '../data/network/my_history_service.dart';
+import '../model/my_farmclub_history/my_farmclub_certification_model.dart';
 import '../model/my_farmclub_history/user_farmclub_history_model.dart';
 
 class MyHistoryRepository {
@@ -8,4 +9,5 @@ class MyHistoryRepository {
     final userFarmclubHistory = await _myHistoryService.getMyFarmclubHistory();
     return userFarmclubHistory;
   }
+
 }

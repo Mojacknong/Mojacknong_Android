@@ -2,7 +2,12 @@ import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:flutter/material.dart';
 
 class MyPageFeedPicture extends StatelessWidget {
-  const MyPageFeedPicture({Key? key}) : super(key: key);
+  final String? image;
+
+  const MyPageFeedPicture({
+    super.key,
+    this.image,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +19,10 @@ class MyPageFeedPicture extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           color: FarmusThemeColor.background,
+          image: DecorationImage(
+            image: NetworkImage(image!),
+            fit: BoxFit.cover,
+          ),
         ),
       ),
     );

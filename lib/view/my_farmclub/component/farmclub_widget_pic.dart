@@ -1,16 +1,15 @@
-import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class FarmclubWidgetPic extends StatelessWidget {
   final String? imageUrl;
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final double? size;
 
   const FarmclubWidgetPic({
     Key? key,
     this.imageUrl,
-    this.backgroundColor = FarmusThemeColor.gray1,
+    this.backgroundColor,
     this.size,
   }) : super(key: key);
 

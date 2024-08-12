@@ -23,6 +23,7 @@ MyFarmclubHistoryModel _$MyFarmclubHistoryModelFromJson(
 mixin _$MyFarmclubHistoryModel {
   String get detailId => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
+  String get backgroundColor => throw _privateConstructorUsedError;
   String get historyName => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get period => throw _privateConstructorUsedError;
@@ -42,6 +43,7 @@ abstract class $MyFarmclubHistoryModelCopyWith<$Res> {
   $Res call(
       {String detailId,
       String image,
+      String backgroundColor,
       String historyName,
       String name,
       String period});
@@ -63,6 +65,7 @@ class _$MyFarmclubHistoryModelCopyWithImpl<$Res,
   $Res call({
     Object? detailId = null,
     Object? image = null,
+    Object? backgroundColor = null,
     Object? historyName = null,
     Object? name = null,
     Object? period = null,
@@ -75,6 +78,10 @@ class _$MyFarmclubHistoryModelCopyWithImpl<$Res,
       image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      backgroundColor: null == backgroundColor
+          ? _value.backgroundColor
+          : backgroundColor // ignore: cast_nullable_to_non_nullable
               as String,
       historyName: null == historyName
           ? _value.historyName
@@ -104,6 +111,7 @@ abstract class _$$MyFarmclubHistoryModelImplCopyWith<$Res>
   $Res call(
       {String detailId,
       String image,
+      String backgroundColor,
       String historyName,
       String name,
       String period});
@@ -124,6 +132,7 @@ class __$$MyFarmclubHistoryModelImplCopyWithImpl<$Res>
   $Res call({
     Object? detailId = null,
     Object? image = null,
+    Object? backgroundColor = null,
     Object? historyName = null,
     Object? name = null,
     Object? period = null,
@@ -136,6 +145,10 @@ class __$$MyFarmclubHistoryModelImplCopyWithImpl<$Res>
       image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      backgroundColor: null == backgroundColor
+          ? _value.backgroundColor
+          : backgroundColor // ignore: cast_nullable_to_non_nullable
               as String,
       historyName: null == historyName
           ? _value.historyName
@@ -159,6 +172,7 @@ class _$MyFarmclubHistoryModelImpl implements _MyFarmclubHistoryModel {
   const _$MyFarmclubHistoryModelImpl(
       {required this.detailId,
       required this.image,
+      required this.backgroundColor,
       required this.historyName,
       required this.name,
       required this.period});
@@ -171,6 +185,8 @@ class _$MyFarmclubHistoryModelImpl implements _MyFarmclubHistoryModel {
   @override
   final String image;
   @override
+  final String backgroundColor;
+  @override
   final String historyName;
   @override
   final String name;
@@ -179,7 +195,7 @@ class _$MyFarmclubHistoryModelImpl implements _MyFarmclubHistoryModel {
 
   @override
   String toString() {
-    return 'MyFarmclubHistoryModel(detailId: $detailId, image: $image, historyName: $historyName, name: $name, period: $period)';
+    return 'MyFarmclubHistoryModel(detailId: $detailId, image: $image, backgroundColor: $backgroundColor, historyName: $historyName, name: $name, period: $period)';
   }
 
   @override
@@ -190,6 +206,8 @@ class _$MyFarmclubHistoryModelImpl implements _MyFarmclubHistoryModel {
             (identical(other.detailId, detailId) ||
                 other.detailId == detailId) &&
             (identical(other.image, image) || other.image == image) &&
+            (identical(other.backgroundColor, backgroundColor) ||
+                other.backgroundColor == backgroundColor) &&
             (identical(other.historyName, historyName) ||
                 other.historyName == historyName) &&
             (identical(other.name, name) || other.name == name) &&
@@ -198,8 +216,8 @@ class _$MyFarmclubHistoryModelImpl implements _MyFarmclubHistoryModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, detailId, image, historyName, name, period);
+  int get hashCode => Object.hash(
+      runtimeType, detailId, image, backgroundColor, historyName, name, period);
 
   @JsonKey(ignore: true)
   @override
@@ -220,6 +238,7 @@ abstract class _MyFarmclubHistoryModel implements MyFarmclubHistoryModel {
   const factory _MyFarmclubHistoryModel(
       {required final String detailId,
       required final String image,
+      required final String backgroundColor,
       required final String historyName,
       required final String name,
       required final String period}) = _$MyFarmclubHistoryModelImpl;
@@ -231,6 +250,8 @@ abstract class _MyFarmclubHistoryModel implements MyFarmclubHistoryModel {
   String get detailId;
   @override
   String get image;
+  @override
+  String get backgroundColor;
   @override
   String get historyName;
   @override

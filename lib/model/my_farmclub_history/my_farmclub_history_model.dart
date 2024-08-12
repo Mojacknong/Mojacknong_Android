@@ -8,6 +8,7 @@ class MyFarmclubHistoryModel with _$MyFarmclubHistoryModel {
   const factory MyFarmclubHistoryModel({
     required String detailId,
     required String image,
+    required String backgroundColor,
     required String historyName,
     required String name,
     required String period,
