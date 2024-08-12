@@ -1,9 +1,13 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
-import 'package:farmus/view/vege_history/vege_history_list_screen.dart';
 import 'package:flutter/material.dart';
 
 class MyHistoryBox extends StatelessWidget {
-  const MyHistoryBox({super.key});
+  final Widget destination;
+
+  const MyHistoryBox({
+    Key? key,
+    required this.destination,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +18,8 @@ class MyHistoryBox extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => const VegeHistoryListScreen()),
+              builder: (context) => destination,
+            ),
           );
         },
         child: Container(
