@@ -1,3 +1,4 @@
+import 'package:farmus/common/content_empty.dart';
 import 'package:farmus/model/diary/farmclub_open_diary_model.dart';
 import 'package:farmus/view/farmclub/component/farmclub_feed.dart';
 import 'package:farmus/view_model/diary/farmclub_open_diary_notifier.dart';
@@ -130,6 +131,7 @@ class FarmclubScreen extends ConsumerWidget {
                                     ? Column(
                                         children: diaries.map((diary) {
                                           return FarmclubFeed(
+                                            diaryId: diary.diaryId,
                                             nickname: diary.nickname,
                                             profileImage: diary.profileImage,
                                             writeDateTime: diary.writeDateTime,
@@ -138,11 +140,16 @@ class FarmclubScreen extends ConsumerWidget {
                                             commentCount: diary.commentCount,
                                             likeCount: diary.likeCount,
                                             myLike: diary.myLike,
+                                            state: diary.state,
                                           );
                                         }).toList(),
                                       )
-                                    : const Center(
-                                        child: Text('아직 공개된 일기가 없어요'),
+                                    : const SizedBox(
+                                        width: double.infinity,
+                                        child: ContentEmpty(
+                                          text: '아직 공개된 일기가 없어요',
+                                          padding: 48.0,
+                                        ),
                                       );
                               },
                               loading: () => const Center(

@@ -1,3 +1,5 @@
+import 'package:farmus/common/bottom_sheet/diary_comment_bottom_sheet_content.dart';
+import 'package:farmus/common/bottom_sheet/report_bottom_sheet.dart';
 import 'package:farmus/common/dialog/check_dialog.dart';
 import 'package:farmus/view/farmclub_open/component/farmclub_open_bottom_sheet_content.dart';
 import 'package:farmus/view/farmclub_sign_up/component/farmclub_sign_up_bottom_sheet_content.dart';
@@ -100,10 +102,11 @@ void showFarmclubSignupBottomSheet(
 
 void showLogoutActionSheet(BuildContext context) {
   showCupertinoModalPopup(
-      context: context,
-      builder: (BuildContext context) {
-        return const FarmusLogoutBottomSheetContent();
-      });
+    context: context,
+    builder: (BuildContext context) {
+      return const FarmusLogoutBottomSheetContent();
+    },
+  );
 }
 
 void showQuitActionSheet(BuildContext context) {
@@ -149,6 +152,32 @@ void showVeggieDeleteBottomSheet(BuildContext context) {
     context: context,
     builder: (BuildContext context) {
       return const VeggieDeleteBottomSheetContent();
+    },
+  );
+}
+
+void showDiaryCommentBottomSheet(BuildContext context, int diaryCommentId) {
+  showModalBottomSheet<void>(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: FarmusThemeColor.white,
+    builder: (BuildContext context) {
+      return DiaryCommentBottomSheetContent(
+        diaryCommentId: diaryCommentId,
+      );
+    },
+  );
+}
+
+void showReportBottomSheet(
+    BuildContext context, String title, String dialogText) {
+  showCupertinoModalPopup(
+    context: context,
+    builder: (BuildContext context) {
+      return ReportBottomSheet(
+        title: title,
+        dialogText: dialogText,
+      );
     },
   );
 }

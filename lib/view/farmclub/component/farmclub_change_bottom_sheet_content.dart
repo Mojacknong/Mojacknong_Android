@@ -9,7 +9,7 @@ import '../../../model/my_farmclub/my_farmclub_model.dart';
 import '../../../view_model/my_farmclub/my_farmclub_notifier.dart';
 
 class FarmclubChangeBottomSheetContent extends ConsumerWidget {
-  const FarmclubChangeBottomSheetContent({Key? key}) : super(key: key);
+  const FarmclubChangeBottomSheetContent({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

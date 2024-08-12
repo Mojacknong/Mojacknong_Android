@@ -1,7 +1,7 @@
+import 'package:farmus/common/content_empty.dart';
 import 'package:farmus/common/tab_bar/primary_tab_bar.dart';
 import 'package:farmus/model/my_farmclub/my_farmclub_info_model.dart';
 import 'package:farmus/view/farmclub/component/farmclub_step.dart';
-import 'package:farmus/view/farmclub/component/farmclub_step_empty.dart';
 import 'package:farmus/view/farmclub/component/farmclub_step_tip.dart'; // 추가
 import 'package:flutter/material.dart';
 
@@ -15,10 +15,10 @@ class FarmclubTabBar extends StatelessWidget {
     final List<StepModel> steps = farmclubInfo.steps;
     final int currentStepIndex = farmclubInfo.currentStep - 1;
 
-    final List<StepModel> currentSteps = [steps[currentStepIndex]];
+    final List<StepModel> currentSteps = [steps[currentStepIndex - 1]];
 
     final List<StepModel> previousSteps =
-        (currentStepIndex > 0) ? steps.sublist(0, currentStepIndex) : [];
+        (currentStepIndex > 0) ? steps.sublist(0, currentStepIndex - 1) : [];
     final List<StepModel> nextSteps = (currentStepIndex < steps.length - 1)
         ? steps.sublist(currentStepIndex + 1)
         : [];
@@ -51,7 +51,7 @@ class FarmclubTabBar extends StatelessWidget {
         {bool isLast = false, bool addTip = false}) {
       return steps.isNotEmpty
           ? buildStepView(steps, addTip: addTip)
-          : FarmclubStepEmpty(isLast: isLast);
+          : ContentEmpty(text: isLast ? '마지막 미션을 진행 중이에요!' : '아직 완료한 미션이 없어요');
     }
 
     return PrimaryTabBar(

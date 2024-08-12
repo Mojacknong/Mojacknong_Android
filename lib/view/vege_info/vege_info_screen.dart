@@ -15,7 +15,7 @@ import '../../model/home/my_veggie_list_model.dart';
 import '../../model/home/my_veggie_profile.dart';
 import '../../view_model/home/home_provider.dart';
 import '../../view_model/home/notifier/my_veggie_add_notifier.dart';
-import '../../view_model/my_vege/notifier/my_vege_delete_notifier.dart';
+import '../../view_model/my_vege/notifier/my_veggie_info_mode_notifier.dart';
 import '../../view_model/my_vege/notifier/my_veggie_list.dart';
 import '../../view_model/my_vege/notifier/my_veggie_profile_notifier.dart';
 import '../../view_model/on_boarding/on_boarding_finish_notifier.dart';
@@ -48,7 +48,7 @@ class VegeInfoScreen extends ConsumerWidget {
         actions: [
           IconButton(
             onPressed: () {
-              ref.invalidate(myVegeDeleteProvider);
+              ref.invalidate(myVeggieInfoModeProvider);
               Navigator.pop(context);
               Navigator.push(
                 context,

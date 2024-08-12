@@ -11,9 +11,9 @@ class VegeDiaryWidget extends StatelessWidget {
   final MyVeggieDiary diary;
 
   const VegeDiaryWidget({
-    Key? key,
+    super.key,
     required this.diary,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

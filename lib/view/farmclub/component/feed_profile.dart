@@ -2,21 +2,27 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../common/bottom_sheet/show_farmus_bottom_sheet.dart';
 import '../../../common/farmus_picture_fix.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 
 class FeedProfile extends ConsumerWidget {
-  const FeedProfile(
-      {super.key,
-      this.profileImage,
-      required this.isDetail,
-      required this.nickname,
-      required this.writeDateTime});
+  const FeedProfile({
+    super.key,
+    this.profileImage,
+    required this.isDetail,
+    required this.nickname,
+    required this.writeDateTime,
+    required this.myComment,
+    required this.commentId,
+  });
 
   final String? profileImage;
   final bool isDetail;
   final String nickname;
   final String writeDateTime;
+  final bool myComment;
+  final int commentId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -41,7 +47,15 @@ class FeedProfile extends ConsumerWidget {
                     ),
                     isDetail
                         ? GestureDetector(
-                            onTap: () {},
+                            onTap: myComment
+                                ? () {
+                                    showDiaryCommentBottomSheet(
+                                        context, commentId);
+                                  }
+                                : () {
+                                    showReportBottomSheet(
+                                        context, '댓글 신고', '댓글을 신고했어요');
+                                  },
                             child: SvgPicture.asset(
                                 'assets/image/ic_more_vertical.svg'),
                           )

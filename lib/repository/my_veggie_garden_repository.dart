@@ -33,7 +33,6 @@ class MyVeggieGardenRepository {
     return response;
   }
 
-
   static Future<String> myVeggieDiaryOne(int myVeggieId) async {
     String? response = await MyVeggieService().myVeggieDiaryOne(myVeggieId);
     return response;
@@ -52,6 +51,23 @@ class MyVeggieGardenRepository {
 
   static Future<String> farmclubDiaryAll(int farmclubId) async {
     String? response = await MyVeggieService().farmclubDiaryAll(farmclubId);
+    return response;
+  }
+
+  static Future<String> diaryComment(int diaryId) async {
+    String? response = await MyVeggieService().diaryComment(diaryId);
+    return response;
+  }
+
+  static Future<String> diaryCommentAdd(int diaryId, String content) async {
+    String? response =
+        await MyVeggieService().diaryCommentAdd(diaryId, content);
+    return response;
+  }
+
+  static Future<String> diaryCommentDelete(int diaryCommentId) async {
+    String? response =
+        await MyVeggieService().diaryCommentDelete(diaryCommentId);
     return response;
   }
 }

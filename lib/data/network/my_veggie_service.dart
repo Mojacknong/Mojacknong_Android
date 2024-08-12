@@ -145,4 +145,49 @@ class MyVeggieService {
       throw Exception('팜클럽의 공개된 일기 조회 실패');
     }
   }
+
+  Future<String> diaryComment(int diaryId) async {
+    final url = '/api/my-veggie/diary/$diaryId/comment';
+
+    final response = await apiClient.get(url);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('일기 댓글 조회 실패');
+    }
+  }
+
+  Future<String> diaryCommentAdd(int diaryId, String content) async {
+    const url = '/api/my-veggie/diary/comment';
+
+    final body = jsonEncode({
+      'diaryId': diaryId,
+      'content': content,
+    });
+
+    final response = await apiClient.post(url, body: body);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('일기 댓글 추가 실패');
+    }
+  }
+
+  Future<String> diaryCommentDelete(int diaryCommentId) async {
+    const url = '/api/my-veggie/diary/comment';
+
+    final body = jsonEncode({
+      'diaryCommentId': diaryCommentId,
+    });
+
+    final response = await apiClient.delete(url, body: body);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('일기 댓글 삭제 실패');
+    }
+  }
 }

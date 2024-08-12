@@ -21,7 +21,7 @@ class HomeMyVege extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var isFarmclub = profile.step != -1;
-    var stepCount = isFarmclub ? profile.step : 0;
+    var stepCount = isFarmclub ? profile.stepCount : 0;
 
     return GestureDetector(
       onTap: () {
