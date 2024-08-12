@@ -28,7 +28,7 @@ class MyHistory extends StatelessWidget {
         ),
         MyFarmClubStackBox(
             image: Image.asset('assets/image/ic_farmclub_mark.svg'),
-            historyType: "팜클럽",
+            historyType: "팜클럽 ",
             message: "개의 팜클럽에서 모든 미션을 완료했어요.")
       ],
     );
