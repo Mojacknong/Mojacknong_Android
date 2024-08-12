@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:farmus/model/my_page/my_page_nickename_model.dart';
 import 'package:farmus/model/my_page/my_page_profile_model.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_nickname_text_input.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,6 +13,7 @@ import '../../../common/button/primary_color_button.dart';
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 import '../../../view_model/my_page/my_page_info_provider.dart';
+import '../../../view_model/my_page/notifier/my_page_user_nickname_model_notifier.dart';
 import '../../../view_model/my_page/notifier/my_page_user_profile_model_notifier.dart';
 import '../../../view_model/on_boarding/on_boarding_provider.dart';
 import '../../main/main_screen.dart';
@@ -93,35 +95,45 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
     );
   }
 
-  Future<void> _saveProfile(String userImageUrl, String displayNickname) async {
+  Future<void> _saveProfileWithImage(String displayNickname) async {
     final profile = ref.read(onBoardingProfileSetProvider);
-
-    final imageFile = profile.profileImage != null
-        ? File(profile.profileImage!.path)
-        : File('');
 
     final nickname = profile.nickname ?? displayNickname;
 
-    await ref
-        .read(myPageUserProfileModelNotifierProvider.notifier)
-        .postUserProfile(
-          MyPageProfileModel(
-            image: imageFile,
-            nickname: nickname,
-          ),
-        );
+    if (profile.profileImage == null) {
+      await ref
+          .read(myPageUserNicknameProfileModelNotifierProvider.notifier)
+          .postUserNickname(
+            MyPageNickenameModel(nickname: nickname),
+          );
+    } else if (profile.profileImage!.path.isEmpty) {
+      await ref
+          .read(myPageUserNicknameProfileModelNotifierProvider.notifier)
+          .postUserNickname(
+            MyPageNickenameModel(nickname: nickname),
+          );
+    } else {
+      final imageFile = File(profile.profileImage!.path);
+
+      await ref
+          .read(myPageUserProfileModelNotifierProvider.notifier)
+          .postUserProfile(
+            MyPageProfileModel(
+              image: imageFile,
+              nickname: nickname,
+            ),
+          );
+    }
 
     ref.refresh(myPageInfoModelProvider);
 
-    Future.delayed(const Duration(milliseconds: 100), () {
-      Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const MainScreen(selectedIndex: 3),
-        ),
-        (route) => false,
-      );
-    });
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const MainScreen(selectedIndex: 3),
+      ),
+      (route) => false,
+    );
   }
 
   @override
@@ -135,96 +147,99 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
     final hasSpecialCharacters = isSpecial;
 
     return Scaffold(
-        body: myPageInfoAsyncValue.when(
-          data: (myPageInfo) {
-            final userImageUrl = myPageInfo.userImageUrl;
-            final displayNickname = myPageInfo.nickName;
+      body: myPageInfoAsyncValue.when(
+        data: (myPageInfo) {
+          final userImageUrl = myPageInfo.userImageUrl;
+          final displayNickname = myPageInfo.nickName;
 
-            return Column(
-              children: [
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Center(
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(125, 8, 125, 8),
-                            child: AspectRatio(
-                              aspectRatio: 1.0,
-                              child: Container(
-                                decoration: const ShapeDecoration(
-                                  color: FarmusThemeColor.gray5,
-                                  shape: CircleBorder(),
-                                ),
-                                child: (file == null)
-                                    ? GestureDetector(
-                                        onTap: () => _showActionSheet(context),
-                                        child: ClipOval(
-                                          child: Image.network(
-                                            userImageUrl,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      )
-                                    : GestureDetector(
-                                        onTap: () => _showActionSheet(context),
-                                        child: ClipOval(
-                                          child: Image.file(
-                                            File(file!.path),
-                                            fit: BoxFit.cover,
-                                          ),
+          return Column(
+            children: [
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Center(
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(125, 8, 125, 8),
+                          child: AspectRatio(
+                            aspectRatio: 1.0,
+                            child: Container(
+                              decoration: const ShapeDecoration(
+                                color: FarmusThemeColor.gray5,
+                                shape: CircleBorder(),
+                              ),
+                              child: (file == null)
+                                  ? GestureDetector(
+                                      onTap: () => _showActionSheet(context),
+                                      child: ClipOval(
+                                        child: Image.network(
+                                          userImageUrl,
+                                          fit: BoxFit.cover,
                                         ),
                                       ),
-                              ),
+                                    )
+                                  : GestureDetector(
+                                      onTap: () => _showActionSheet(context),
+                                      child: ClipOval(
+                                        child: Image.file(
+                                          File(file!.path),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
                             ),
                           ),
                         ),
-                        const SizedBox(height: 8),
-                        const Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: Text(
-                            "닉네임",
-                            textAlign: TextAlign.start,
-                            style: FarmusThemeTextStyle.darkMedium13,
-                          ),
+                      ),
+                      const SizedBox(height: 8),
+                      const Padding(
+                        padding: EdgeInsets.all(16.0),
+                        child: Text(
+                          "닉네임",
+                          textAlign: TextAlign.start,
+                          style: FarmusThemeTextStyle.darkMedium13,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: OnBoardingNicknameTextInput(
-                            initialValue: displayNickname,
-                            errorText:
-                                hasSpecialCharacters ? "특수문자는 입력할 수 없어요" : null,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: PrimaryColorButton(
-                          text: "수정완료",
-                          onPressed: () async {
-                            await _saveProfile(userImageUrl, displayNickname);
-                          },
-                          enabled: (file?.path.isNotEmpty ?? false) ||
-                              (nickname?.isNotEmpty ?? false) && !isSpecial,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: OnBoardingNicknameTextInput(
+                          initialValue: displayNickname,
+                          errorText:
+                              hasSpecialCharacters ? "특수문자는 입력할 수 없어요" : null,
                         ),
                       ),
                     ],
                   ),
                 ),
-              ],
-            );
-          },
-          loading: () => Center(child: CircularProgressIndicator()),
-          error: (error, stackTrace) => Center(child: Text('Error: $error')),
-        ),
-      );
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: PrimaryColorButton(
+                        text: "수정완료",
+                        onPressed: () async {
+                          final profile =
+                              ref.read(onBoardingProfileSetProvider);
+
+                          await _saveProfileWithImage(displayNickname);
+                        },
+                        enabled: (file?.path.isNotEmpty ?? false) ||
+                            (nickname?.isNotEmpty ?? false) && !isSpecial,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          );
+        },
+        loading: () => Center(child: CircularProgressIndicator()),
+        error: (error, stackTrace) => Center(child: Text('Error: $error')),
+      ),
+    );
   }
 }

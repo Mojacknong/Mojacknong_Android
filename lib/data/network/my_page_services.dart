@@ -10,10 +10,13 @@ class MyPageServices {
     ApiClient apiClient = ApiClient();
 
     final response = await apiClient.postMultipart(
-      url,
-      nickname,
-      file,
+        url,
+        'nickname',
+        'image',
+        nickname,
+        file
     );
+
 
     if (response.statusCode == 200) {
       return utf8.decode(response.bodyBytes);

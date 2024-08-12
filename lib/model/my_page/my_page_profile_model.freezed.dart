@@ -22,7 +22,7 @@ MyPageProfileModel _$MyPageProfileModelFromJson(Map<String, dynamic> json) {
 mixin _$MyPageProfileModel {
   String get nickname => throw _privateConstructorUsedError;
   @FileConverter()
-  File get image => throw _privateConstructorUsedError;
+  File? get image => throw _privateConstructorUsedError;
   bool? get isInfoChangeComplete => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ abstract class $MyPageProfileModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String nickname,
-      @FileConverter() File image,
+      @FileConverter() File? image,
       bool? isInfoChangeComplete});
 }
 
@@ -57,7 +57,7 @@ class _$MyPageProfileModelCopyWithImpl<$Res, $Val extends MyPageProfileModel>
   @override
   $Res call({
     Object? nickname = null,
-    Object? image = null,
+    Object? image = freezed,
     Object? isInfoChangeComplete = freezed,
   }) {
     return _then(_value.copyWith(
@@ -65,10 +65,10 @@ class _$MyPageProfileModelCopyWithImpl<$Res, $Val extends MyPageProfileModel>
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
               as String,
-      image: null == image
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as File,
+              as File?,
       isInfoChangeComplete: freezed == isInfoChangeComplete
           ? _value.isInfoChangeComplete
           : isInfoChangeComplete // ignore: cast_nullable_to_non_nullable
@@ -87,7 +87,7 @@ abstract class _$$MyPageProfileModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {String nickname,
-      @FileConverter() File image,
+      @FileConverter() File? image,
       bool? isInfoChangeComplete});
 }
 
@@ -103,7 +103,7 @@ class __$$MyPageProfileModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? nickname = null,
-    Object? image = null,
+    Object? image = freezed,
     Object? isInfoChangeComplete = freezed,
   }) {
     return _then(_$MyPageProfileModelImpl(
@@ -111,10 +111,10 @@ class __$$MyPageProfileModelImplCopyWithImpl<$Res>
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
               as String,
-      image: null == image
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as File,
+              as File?,
       isInfoChangeComplete: freezed == isInfoChangeComplete
           ? _value.isInfoChangeComplete
           : isInfoChangeComplete // ignore: cast_nullable_to_non_nullable
@@ -128,7 +128,7 @@ class __$$MyPageProfileModelImplCopyWithImpl<$Res>
 class _$MyPageProfileModelImpl implements _MyPageProfileModel {
   const _$MyPageProfileModelImpl(
       {required this.nickname,
-      @FileConverter() required this.image,
+      @FileConverter() this.image,
       this.isInfoChangeComplete});
 
   factory _$MyPageProfileModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -138,7 +138,7 @@ class _$MyPageProfileModelImpl implements _MyPageProfileModel {
   final String nickname;
   @override
   @FileConverter()
-  final File image;
+  final File? image;
   @override
   final bool? isInfoChangeComplete;
 
@@ -182,7 +182,7 @@ class _$MyPageProfileModelImpl implements _MyPageProfileModel {
 abstract class _MyPageProfileModel implements MyPageProfileModel {
   const factory _MyPageProfileModel(
       {required final String nickname,
-      @FileConverter() required final File image,
+      @FileConverter() final File? image,
       final bool? isInfoChangeComplete}) = _$MyPageProfileModelImpl;
 
   factory _MyPageProfileModel.fromJson(Map<String, dynamic> json) =
@@ -192,7 +192,7 @@ abstract class _MyPageProfileModel implements MyPageProfileModel {
   String get nickname;
   @override
   @FileConverter()
-  File get image;
+  File? get image;
   @override
   bool? get isInfoChangeComplete;
   @override
