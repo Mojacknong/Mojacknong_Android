@@ -27,75 +27,126 @@ class MyFarmClubStackBox extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final AsyncValue<UserFarmclubHistoryModel> myFarmclubHistoryAsyncValue =
-    ref.watch(userFarmclubHistoryModelProvider);
+        ref.watch(userFarmclubHistoryModelProvider);
 
     return myFarmclubHistoryAsyncValue.when(
       data: (myFarmclubHistory) {
         return Stack(
           children: [
-            const MyHistoryBox(destination: MyFarmclubScreen()),
-            Padding(
-              padding: const EdgeInsets.only(left: 32, top: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
+            if (myFarmclubHistory.farmClubHistoryCount == 0 &&
+                myFarmclubHistory.farmClubHistoryIcons.isEmpty)
+              MyHistoryBox(
+                height: 100,
+                text: "아직 팜클럽을 완수하지 않았어요",
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 16, top: 20),
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      if (image != null) ...[
-                        SvgPicture.asset(
-                          imagePath!,
-                          height: 22,
-                        ),
-                        const SizedBox(width: 8),
-                      ],
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          if (image != null) ...[
+                            SvgPicture.asset(
+                              imagePath!,
+                              height: 22,
+                            ),
+                            const SizedBox(width: 8),
+                          ],
+                          Text.rich(
+                            TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: historyType,
+                                  style: FarmusThemeTextStyle.darkSemiBold17,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            if (myFarmclubHistory.farmClubHistoryCount > 0)
+              MyHistoryBox(
+                destination: const MyFarmclubScreen(),
+                height: 180,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 16, top: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          if (image != null) ...[
+                            SvgPicture.asset(
+                              imagePath!,
+                              height: 22,
+                            ),
+                            const SizedBox(width: 8),
+                          ],
+                          Text.rich(
+                            TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: historyType,
+                                  style: FarmusThemeTextStyle.darkSemiBold17,
+                                ),
+                                TextSpan(
+                                  text:
+                                      '${myFarmclubHistory.farmClubHistoryCount}',
+                                  style: FarmusThemeTextStyle.gray2SemiBold17,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
                       Text.rich(
                         TextSpan(
                           children: [
                             TextSpan(
-                                text: historyType,
-                                style: FarmusThemeTextStyle.darkSemiBold17),
+                              text: '${myFarmclubHistory.farmClubHistoryCount}',
+                              style: FarmusThemeTextStyle.green1SemiBold13,
+                            ),
                             TextSpan(
-                                text: '${myFarmclubHistory.farmClubHistoryCount}',
-                                style: FarmusThemeTextStyle.gray2SemiBold17),
+                              text: message,
+                              style: FarmusThemeTextStyle.gray1SemiBold13,
+                            ),
                           ],
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 20),
-                  Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(
-                            text: '${myFarmclubHistory.farmClubHistoryCount}',
-                            style: FarmusThemeTextStyle.green1SemiBold13),
-                        TextSpan(
-                            text: message,
-                            style: FarmusThemeTextStyle.gray1SemiBold13),
-                      ],
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ),
-            Positioned(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 105.0, left: 24, right: 24),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: myFarmclubHistory.farmClubHistoryIcons.map(
-                          (icon) => FarmclubWidgetPic(
+            if (myFarmclubHistory.farmClubHistoryIcons.isNotEmpty)
+              Positioned(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(top: 105.0, left: 24, right: 24),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: myFarmclubHistory.farmClubHistoryIcons.map(
+                        (icon) {
+                          return FarmclubWidgetPic(
                             size: 60,
                             imageUrl: icon.url,
-                            backgroundColor: Color(int.parse(icon.backgroundColor.replaceFirst('#', '0xff'))),
-                          ),
-                    ).toList(),
+                            backgroundColor: Color(int.parse(icon
+                                .backgroundColor
+                                .replaceFirst('#', '0xff'))),
+                          );
+                        },
+                      ).toList(),
+                    ),
                   ),
                 ),
               ),
-            ),
           ],
         );
       },
