@@ -10,9 +10,11 @@ class OnBoardingService {
     ApiClient apiClient = ApiClient();
 
     final response = await apiClient.postMultipart(
-      url,
-      nickname,
-      file,
+        url,
+        'nickname',
+        'image',
+        nickname,
+        file
     );
 
     if (response.statusCode == 200) {

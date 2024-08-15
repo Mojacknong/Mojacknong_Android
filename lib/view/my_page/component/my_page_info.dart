@@ -3,18 +3,14 @@ import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/my_page/my_profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:image_picker/image_picker.dart';
 
 import '../../../view_model/my_page/my_page_info_provider.dart';
-import '../../../view_model/on_boarding/on_boarding_provider.dart';
 
 class MyPageInfo extends ConsumerWidget {
   const MyPageInfo({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    XFile? file;
-    file = ref.read(onBoardingProfileSetProvider).profileImage;
     final myPageInfoAsyncValue = ref.watch(myPageInfoModelProvider);
 
     return Scaffold(
