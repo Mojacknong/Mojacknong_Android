@@ -7,7 +7,7 @@ part of 'diary_comment_notifier.dart';
 // **************************************************************************
 
 String _$diaryCommentNotifierHash() =>
-    r'77f3b5346403bb19b34c25c92a4944fca20d09e1';
+    r'0a723370ba236bf436020c2cc4681823e68062e4';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -35,8 +35,7 @@ class _SystemHash {
 const diaryCommentNotifierProvider = DiaryCommentNotifierFamily();
 
 /// See also [diaryCommentNotifier].
-class DiaryCommentNotifierFamily
-    extends Family<AsyncValue<List<DiaryCommentModel>>> {
+class DiaryCommentNotifierFamily extends Family<AsyncValue<DiaryDataModel>> {
   /// See also [diaryCommentNotifier].
   const DiaryCommentNotifierFamily();
 
@@ -75,7 +74,7 @@ class DiaryCommentNotifierFamily
 
 /// See also [diaryCommentNotifier].
 class DiaryCommentNotifierProvider
-    extends AutoDisposeFutureProvider<List<DiaryCommentModel>> {
+    extends AutoDisposeFutureProvider<DiaryDataModel> {
   /// See also [diaryCommentNotifier].
   DiaryCommentNotifierProvider(
     int diaryId,
@@ -110,8 +109,7 @@ class DiaryCommentNotifierProvider
 
   @override
   Override overrideWith(
-    FutureOr<List<DiaryCommentModel>> Function(DiaryCommentNotifierRef provider)
-        create,
+    FutureOr<DiaryDataModel> Function(DiaryCommentNotifierRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -128,7 +126,7 @@ class DiaryCommentNotifierProvider
   }
 
   @override
-  AutoDisposeFutureProviderElement<List<DiaryCommentModel>> createElement() {
+  AutoDisposeFutureProviderElement<DiaryDataModel> createElement() {
     return _DiaryCommentNotifierProviderElement(this);
   }
 
@@ -146,14 +144,13 @@ class DiaryCommentNotifierProvider
   }
 }
 
-mixin DiaryCommentNotifierRef
-    on AutoDisposeFutureProviderRef<List<DiaryCommentModel>> {
+mixin DiaryCommentNotifierRef on AutoDisposeFutureProviderRef<DiaryDataModel> {
   /// The parameter `diaryId` of this provider.
   int get diaryId;
 }
 
 class _DiaryCommentNotifierProviderElement
-    extends AutoDisposeFutureProviderElement<List<DiaryCommentModel>>
+    extends AutoDisposeFutureProviderElement<DiaryDataModel>
     with DiaryCommentNotifierRef {
   _DiaryCommentNotifierProviderElement(super.provider);
 

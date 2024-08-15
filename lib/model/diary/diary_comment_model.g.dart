@@ -6,6 +6,23 @@ part of 'diary_comment_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+_$DiaryDataModelImpl _$$DiaryDataModelImplFromJson(Map<String, dynamic> json) =>
+    _$DiaryDataModelImpl(
+      diaryCommentContent: (json['diaryCommentContent'] as List<dynamic>)
+          .map((e) => DiaryCommentModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      likeCount: (json['likeCount'] as num).toInt(),
+      commentCount: (json['commentCount'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$$DiaryDataModelImplToJson(
+        _$DiaryDataModelImpl instance) =>
+    <String, dynamic>{
+      'diaryCommentContent': instance.diaryCommentContent,
+      'likeCount': instance.likeCount,
+      'commentCount': instance.commentCount,
+    };
+
 _$DiaryCommentModelImpl _$$DiaryCommentModelImplFromJson(
         Map<String, dynamic> json) =>
     _$DiaryCommentModelImpl(

@@ -4,6 +4,18 @@ part 'diary_comment_model.freezed.dart';
 part 'diary_comment_model.g.dart';
 
 @freezed
+class DiaryDataModel with _$DiaryDataModel {
+  const factory DiaryDataModel({
+    required List<DiaryCommentModel> diaryCommentContent,
+    required int likeCount,
+    required int commentCount,
+  }) = _DiaryDataModel;
+
+  factory DiaryDataModel.fromJson(Map<String, dynamic> json) =>
+      _$DiaryDataModelFromJson(json);
+}
+
+@freezed
 class DiaryCommentModel with _$DiaryCommentModel {
   const factory DiaryCommentModel({
     required bool myComment,
