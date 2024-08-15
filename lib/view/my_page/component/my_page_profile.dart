@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:farmus/model/my_page/my_page_nickename_model.dart';
 import 'package:farmus/model/my_page/my_page_profile_model.dart';
-import 'package:farmus/view/on_boarding/component/on_boarding_nickname_text_input.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -147,7 +146,6 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
     final isSpecial = ref.watch(onBoardingSpecialCharactersProvider);
 
     file = profile.image;
-    final nickname = profile.nickname;
     final hasSpecialCharacters = isSpecial;
 
     return Scaffold(
