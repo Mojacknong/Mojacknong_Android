@@ -24,7 +24,7 @@ class MyHistoryService {
 
   Future<String> myFarmclubHistory() async {
     const url = '/api/history/farm-club';
-    return _fetchData(url, '내 팜클럽 불러오기 실패');
+    return _fetchData(url, '내 팜클럽 히스토리 불러오기 실패');
   }
 
   Future<String> _fetchData(String url, String errorMessage) async {
