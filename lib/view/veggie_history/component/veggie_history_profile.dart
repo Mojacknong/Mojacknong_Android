@@ -11,23 +11,25 @@ import '../veggie_history_tap_screen.dart';
 
 class VeggieHistoryProfile extends ConsumerWidget {
   final String? detailId;
+  final bool showDivider;
 
   const VeggieHistoryProfile({
     super.key,
     this.detailId,
+    this.showDivider = true,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final AsyncValue<List<MyVeggieHistoryModel>> veggieListAsyncValue =
-        ref.watch(myVeggieHistoryModelProvider);
+    ref.watch(myVeggieHistoryModelProvider);
     return veggieListAsyncValue.when(
       data: (veggieList) {
         final filteredHistory = detailId == null
             ? veggieList
             : veggieList
-                .where((veggie) => veggie.detailId == detailId)
-                .toList();
+            .where((veggie) => veggie.detailId == detailId)
+            .toList();
 
         return ListView.builder(
           shrinkWrap: true,
@@ -38,7 +40,9 @@ class VeggieHistoryProfile extends ConsumerWidget {
             return InkWell(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const VeggieHistoryTabScreen(),
+                  builder: (context) => VeggieHistoryTabScreen(
+                    detailId: veggie.detailId,
+                  ),
                 ));
               },
               child: Column(
@@ -53,7 +57,9 @@ class VeggieHistoryProfile extends ConsumerWidget {
                             child: FarmclubWidgetPic(
                               imageUrl: veggie.image,
                               size: 60,
-                              backgroundColor: Color(int.parse(veggie.backgroundColor.replaceFirst('#', '0xff'))),
+                              backgroundColor: Color(int.parse(
+                                veggie.backgroundColor.replaceFirst('#', '0xff'),
+                              )),
                             ),
                           ),
                         ],
@@ -90,7 +96,7 @@ class VeggieHistoryProfile extends ConsumerWidget {
                       ),
                     ],
                   ),
-                  const MyDivider(),
+                  if (showDivider) const MyDivider(),
                 ],
               ),
             );

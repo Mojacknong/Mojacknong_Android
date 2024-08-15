@@ -1,21 +1,32 @@
 import 'package:farmus/common/tab_bar/primary_tab_bar.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:farmus/view/my_page/my_page_feed/my_page_feed_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class VeggieHistoryTabBar extends StatefulWidget {
-  const VeggieHistoryTabBar({super.key});
+import '../../my_page/my_page_feed/my_page_diary_list.dart';
+import '../../my_page/my_page_feed/my_page_result_list.dart';
+
+class VeggieHistoryTabBar extends ConsumerStatefulWidget {
+  final String detailId;
+
+  const VeggieHistoryTabBar({
+    Key? key,
+    required this.detailId,
+  }) : super(key: key);
 
   @override
-  State<VeggieHistoryTabBar> createState() => _VegeHistoryTabBarState();
+  _VeggieHistoryTabBarState createState() => _VeggieHistoryTabBarState();
 }
 
-class _VegeHistoryTabBarState extends State<VeggieHistoryTabBar> {
+class _VeggieHistoryTabBarState extends ConsumerState<VeggieHistoryTabBar> {
   @override
   Widget build(BuildContext context) {
-    return const PrimaryTabBar(
-      tab: ["성장일기", "재배결과"],
-      tabView: [MyPageFeedList(), MyPageFeedList()],
+    return PrimaryTabBar(
+      tab: const ["성장일기", "재배결과"],
+      tabView: [
+        MyPageDiaryList(detailId: widget.detailId),
+        MyPageResultList(detailId: widget.detailId),
+      ],
       labelStyle: FarmusThemeTextStyle.darkSemiBold15,
       unselectedLabelStyle: FarmusThemeTextStyle.gray3SemiBold15,
     );

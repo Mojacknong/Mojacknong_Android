@@ -8,16 +8,18 @@ import '../../../common/farmus_picture_fix.dart';
 class MyPageFeed extends StatelessWidget {
   final String content;
   final String image;
+  final String postTime;
 
   const MyPageFeed({
     Key? key,
     required this.content,
     required this.image,
+    required this.postTime,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    String postTime = DateFormat('MM/dd kk:mm').format(DateTime.now());
+    // String postTime = DateFormat('MM/dd kk:mm').format(DateTime.now());
 
     return GestureDetector(
       child: Padding(
