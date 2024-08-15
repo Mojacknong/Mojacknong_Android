@@ -1,7 +1,6 @@
 import 'package:farmus/view/my_page/my_page_feed/my_page_feed_content.dart';
 import 'package:farmus/view/my_page/my_page_feed/my_page_feed_time.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import '../../../common/farmus_picture_fix.dart';
 
@@ -19,8 +18,6 @@ class MyPageFeed extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // String postTime = DateFormat('MM/dd kk:mm').format(DateTime.now());
-
     return GestureDetector(
       child: Padding(
         padding: const EdgeInsets.all(8.0),

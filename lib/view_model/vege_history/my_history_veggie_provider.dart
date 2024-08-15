@@ -1,4 +1,3 @@
-import 'package:farmus/model/my_farmclub_history/user_farmclub_history_model.dart';
 import 'package:farmus/repository/my_history_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

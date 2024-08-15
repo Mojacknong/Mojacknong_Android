@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:farmus/model/my_farmclub_history/my_farmclub_certification_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../model/veggie_history/my_veggie_diary_result_model.dart';
