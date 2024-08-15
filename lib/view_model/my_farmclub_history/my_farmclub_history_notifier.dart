@@ -3,13 +3,13 @@ import 'dart:convert';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../model/my_farmclub_history/my_farmclub_history_model.dart';
-import '../../repository/my_farmclub_history_repository.dart';
+import '../../repository/my_history_repository.dart';
 
 part 'my_farmclub_history_notifier.g.dart';
 
 @riverpod
 Future<List<MyFarmclubHistoryModel>> myFarmclubHistoryModel(MyFarmclubHistoryModelRef ref) async {
-  final response = await MyFarmclubHistoryRepository.myFarmclubHistory();
+  final response = await MyHistoryRepository.myFarmclubHistory();
   final json = jsonDecode(response) as Map<String, dynamic>;
 
   if (json['code'] == 200) {

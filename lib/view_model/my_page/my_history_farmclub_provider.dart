@@ -7,8 +7,7 @@ part 'my_history_farmclub_provider.g.dart';
 @riverpod
 Future<UserFarmclubHistoryModel> userFarmclubHistoryModel(
     UserFarmclubHistoryModelRef ref) async {
-  final repository = MyHistoryRepository();
-  final myFarmclubHistory = await repository.getMyFarmclubHistory();
+  final myFarmclubHistory = await MyHistoryRepository.getMyFarmclubHistory();
 
   return UserFarmclubHistoryModel(
     farmClubHistoryCount: myFarmclubHistory.farmClubHistoryCount,
