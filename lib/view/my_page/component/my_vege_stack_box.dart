@@ -1,6 +1,7 @@
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/my_page/component/my_history_box.dart';
 import 'package:farmus/view/my_page/component/my_vege_image_widget.dart';
+import 'package:farmus/view/vege_history/vege_history_list_screen.dart';
 import 'package:farmus/view_model/my_page/vege_count_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,7 +26,7 @@ class MyVegeStackBox extends ConsumerWidget {
 
     return Stack(
       children: [
-        const MyHistoryBox(),
+        const MyHistoryBox(destination: VegeHistoryListScreen(),),
         Padding(
           padding: const EdgeInsets.only(left: 32, top: 20),
           child: Column(

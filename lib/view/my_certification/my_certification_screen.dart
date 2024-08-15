@@ -1,17 +1,23 @@
-import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
-import 'package:farmus/view/my_certification/component/my_certification_feed.dart';
-import 'package:farmus/view/my_farmclub/component/farmclub_profile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MyCertificationScreen extends StatelessWidget {
+import '../../model/my_farmclub_history/my_farmclub_certification_model.dart';
+import '../../view_model/my_farmclub_history/my_farmclub_certification_provider.dart';
+import '../../common/app_bar/back_left_title_app_bar.dart';
+import '../../view/my_certification/component/my_certification_feed.dart';
+import '../../view/my_farmclub/component/farmclub_history_profile.dart';
+
+class MyCertificationScreen extends ConsumerWidget {
+  final String detailId;
   final String? veggieName;
   final String? veggieType;
   final String? periodStart;
   final String? periodEnd;
   final String? image;
 
-  const MyCertificationScreen({
+  MyCertificationScreen({
     Key? key,
+    required this.detailId,
     this.veggieName,
     this.veggieType,
     this.periodStart,
@@ -20,29 +26,36 @@ class MyCertificationScreen extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final AsyncValue<MyFarmclubCertificationModel> certificationData = ref.watch(myFarmclubCertificationModelProvider(detailId));
+
     return Scaffold(
       appBar: const BackLeftTitleAppBar(
         title: "나의 인증",
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const IgnorePointer(ignoring: true, child: FarmclubProfile()),
-            MyCertificationFeed(
-              content: "진짜 맛있음 " * 20,
-              title: "상추 심고 사진 찍기",
-              step: '1',
-              image: "",
+      body: certificationData.when(
+        data: (data) {
+          final missionPosts = data.missionPosts;
+
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                IgnorePointer(ignoring: true, child: FarmclubHistoryProfile(
+                  detailId: detailId,
+                ),),
+                ...missionPosts.map((post) => MyCertificationFeed(
+                  content: post.content,
+                  title: post.stepName,
+                  step: post.stepNum.toString(),
+                  image: post.postImage,
+                  time : post.date
+                )).toList(),
+              ],
             ),
-            MyCertificationFeed(
-              content: "진짜 맛있음 " * 20,
-              title: "어쩌구저쩌구",
-              step: '2',
-              image: "",
-            ),
-          ],
-        ),
+          );
+        },
+        loading: () => const Center(child: CircularProgressIndicator()),
+        error: (error, stack) => Center(child: Text('Error: $error')),
       ),
     );
   }
