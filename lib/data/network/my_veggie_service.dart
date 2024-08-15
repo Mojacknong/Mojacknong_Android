@@ -206,4 +206,20 @@ class MyVeggieService {
       throw Exception('일기 좋아요 실패');
     }
   }
+
+  Future<String> diaryLikeDelete(int diaryId) async {
+    const url = '/api/my-veggie/diary/like';
+
+    final body = jsonEncode({
+      'diaryId': diaryId,
+    });
+
+    final response = await apiClient.delete(url, body: body);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('일기 좋아요 삭제 실패');
+    }
+  }
 }

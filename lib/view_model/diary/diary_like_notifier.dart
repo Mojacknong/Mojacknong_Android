@@ -23,4 +23,9 @@ class DiaryLikeNotifier extends _$DiaryLikeNotifier {
     await MyVeggieGardenRepository.diaryLike(diaryId);
     _initDiary();
   }
+
+  Future<void> diaryLikeDelete(int diaryId) async {
+    await MyVeggieGardenRepository.diaryLikeDelete(diaryId);
+    _initDiary();
+  }
 }

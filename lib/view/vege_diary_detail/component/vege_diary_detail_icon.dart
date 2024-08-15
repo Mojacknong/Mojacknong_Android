@@ -27,13 +27,15 @@ class VegeDiaryDetailIcon extends ConsumerWidget {
         Padding(
           padding: const EdgeInsets.only(right: 4.0),
           child: GestureDetector(
-            onTap: myLike
-                ? () {}
-                : () {
-                    ref
-                        .read(diaryLikeNotifierProvider.notifier)
-                        .diaryLike(diaryId);
-                  },
+            onTap: () {
+              myLike
+                  ? ref
+                      .read(diaryLikeNotifierProvider.notifier)
+                      .diaryLike(diaryId)
+                  : ref
+                      .read(diaryLikeNotifierProvider.notifier)
+                      .diaryLike(diaryId);
+            },
             child: myLike
                 ? SvgPicture.asset('assets/image/ic_heart_true.svg')
                 : SvgPicture.asset('assets/image/ic_heart.svg'),
