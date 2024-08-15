@@ -39,7 +39,7 @@ class MyPageServices {
     }
   }
 
-  Future<String> postNickname(String nickname) async {
+  Future<String> postNickname(String? nickname) async {
     const url = '/api/user/nickname';
 
     final body = jsonEncode({

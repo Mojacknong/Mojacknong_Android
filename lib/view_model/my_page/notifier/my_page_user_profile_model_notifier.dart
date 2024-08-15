@@ -11,7 +11,7 @@ part 'my_page_user_profile_model_notifier.g.dart';
 class MyPageUserProfileModelNotifier
     extends _$MyPageUserProfileModelNotifier {
   Future<MyPageProfileModel> build() async {
-    return MyPageProfileModel(image: File(''), nickname: 'nickname');
+    return MyPageProfileModel(image: File(''), nickname: 'nickname', isInfoChangeComplete: false);
   }
 
   Future<void> postUserProfile(MyPageProfileModel profile) async {

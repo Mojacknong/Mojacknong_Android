@@ -7,9 +7,10 @@ part 'my_page_profile_model.g.dart';
 @freezed
 class MyPageProfileModel with _$MyPageProfileModel {
   const factory MyPageProfileModel({
-    required String nickname,
+    required String? nickname,
     @FileConverter() File? image,
-    final bool? isInfoChangeComplete,
+    required bool isInfoChangeComplete,
+
   }) = _MyPageProfileModel;
 
   factory MyPageProfileModel.fromJson(Map<String, dynamic> json) => _$MyPageProfileModelFromJson(json);

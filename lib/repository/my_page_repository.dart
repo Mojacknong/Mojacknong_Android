@@ -9,8 +9,7 @@ class MyPageRepository {
     if (profile.image == null) {
       return await MyPageServices().postNickname(profile.nickname);
     }
-
-    return await MyPageServices().changeMyProfile(profile.image!, profile.nickname);
+    return await MyPageServices().changeMyProfile(profile.image!, profile.nickname!);
   }
 
 

@@ -7,7 +7,7 @@ part of 'my_page_user_profile_model_notifier.dart';
 // **************************************************************************
 
 String _$myPageUserProfileModelNotifierHash() =>
-    r'77ffe6a24e342e15a0ad78f3c7baa4d6c7189275';
+    r'aef390fa276650f70c91e5c3a62aa9433b81ce37';
 
 /// See also [MyPageUserProfileModelNotifier].
 @ProviderFor(MyPageUserProfileModelNotifier)

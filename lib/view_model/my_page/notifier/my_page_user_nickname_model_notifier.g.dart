@@ -7,7 +7,7 @@ part of 'my_page_user_nickname_model_notifier.dart';
 // **************************************************************************
 
 String _$myPageUserNicknameProfileModelNotifierHash() =>
-    r'b984de326abeceebf428b573b081006e15475efa';
+    r'a46ba9cbd020b0159d094e6f4e1dad1dddd316c6';
 
 /// See also [MyPageUserNicknameProfileModelNotifier].
 @ProviderFor(MyPageUserNicknameProfileModelNotifier)

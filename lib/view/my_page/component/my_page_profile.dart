@@ -17,6 +17,7 @@ import '../../../view_model/my_page/notifier/my_page_user_nickname_model_notifie
 import '../../../view_model/my_page/notifier/my_page_user_profile_model_notifier.dart';
 import '../../../view_model/on_boarding/on_boarding_provider.dart';
 import '../../main/main_screen.dart';
+import 'my_profile_nickname_text_input.dart';
 
 class MyPageProfile extends ConsumerStatefulWidget {
   const MyPageProfile({Key? key}) : super(key: key);
@@ -26,17 +27,18 @@ class MyPageProfile extends ConsumerStatefulWidget {
 }
 
 class _MyPageProfileState extends ConsumerState<MyPageProfile> {
-  XFile? file;
+  File? file;
 
   Future<void> _pickGalleryImage() async {
     final pickedFile =
         await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
+      final file = File(pickedFile.path);
+
       setState(() {
-        file = pickedFile;
         ref
-            .read(onBoardingProfileSetProvider.notifier)
-            .updateProfileImage(pickedFile);
+            .read(myProfileSetProvider.notifier)
+            .updateProfileImage(file);
       });
     }
   }
@@ -45,11 +47,12 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
     final pickedFile =
         await ImagePicker().pickImage(source: ImageSource.camera);
     if (pickedFile != null) {
+      final file = File(pickedFile.path);
+
       setState(() {
-        file = pickedFile;
         ref
-            .read(onBoardingProfileSetProvider.notifier)
-            .updateProfileImage(pickedFile);
+            .read(myProfileSetProvider.notifier)
+            .updateProfileImage(file);
       });
     }
   }
@@ -96,32 +99,32 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
   }
 
   Future<void> _saveProfileWithImage(String displayNickname) async {
-    final profile = ref.read(onBoardingProfileSetProvider);
+    final profile = ref.read(myProfileSetProvider);
 
     final nickname = profile.nickname ?? displayNickname;
 
-    if (profile.profileImage == null) {
+    if (profile.image == null) {
       await ref
           .read(myPageUserNicknameProfileModelNotifierProvider.notifier)
           .postUserNickname(
             MyPageNickenameModel(nickname: nickname),
           );
-    } else if (profile.profileImage!.path.isEmpty) {
+    } else if (profile.image!.path.isEmpty) {
       await ref
           .read(myPageUserNicknameProfileModelNotifierProvider.notifier)
           .postUserNickname(
             MyPageNickenameModel(nickname: nickname),
           );
     } else {
-      final imageFile = File(profile.profileImage!.path);
+      final imageFile = File(profile.image!.path);
 
       await ref
           .read(myPageUserProfileModelNotifierProvider.notifier)
           .postUserProfile(
             MyPageProfileModel(
-              image: imageFile,
-              nickname: nickname,
-            ),
+                image: imageFile,
+                nickname: nickname,
+                isInfoChangeComplete: true),
           );
     }
 
@@ -139,10 +142,11 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
   @override
   Widget build(BuildContext context) {
     final myPageInfoAsyncValue = ref.watch(myPageInfoModelProvider);
-    final profile = ref.watch(onBoardingProfileSetProvider);
+    final profile = ref.watch(myProfileSetProvider);
+
     final isSpecial = ref.watch(onBoardingSpecialCharactersProvider);
 
-    file = profile.profileImage;
+    file = profile.image;
     final nickname = profile.nickname;
     final hasSpecialCharacters = isSpecial;
 
@@ -203,7 +207,7 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: OnBoardingNicknameTextInput(
+                        child: MyProfileNicknameTextInput(
                           initialValue: displayNickname,
                           errorText:
                               hasSpecialCharacters ? "특수문자는 입력할 수 없어요" : null,
@@ -222,13 +226,10 @@ class _MyPageProfileState extends ConsumerState<MyPageProfile> {
                       child: PrimaryColorButton(
                         text: "수정완료",
                         onPressed: () async {
-                          final profile =
-                              ref.read(onBoardingProfileSetProvider);
-
                           await _saveProfileWithImage(displayNickname);
                         },
-                        enabled: (file?.path.isNotEmpty ?? false) ||
-                            (nickname?.isNotEmpty ?? false) && !isSpecial,
+                        enabled: profile.isInfoChangeComplete &&
+                            !hasSpecialCharacters,
                       ),
                     ),
                   ],
