@@ -7,7 +7,7 @@ part of 'my_farmclub_certification_provider.dart';
 // **************************************************************************
 
 String _$myFarmclubCertificationModelHash() =>
-    r'ba1ec5011cdb0d2f3e8685870f6a169f77c95144';
+    r'008c48f2a823deffa5ee6be9c8d1ab106f7e7fa0';
 
 /// Copied from Dart SDK
 class _SystemHash {

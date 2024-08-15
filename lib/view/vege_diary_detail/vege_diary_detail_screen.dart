@@ -88,6 +88,7 @@ class VegeDiaryDetailScreen extends ConsumerWidget {
                       height: 32,
                     ),
                     const VegeDiaryDetailIcon(
+                      diaryId: 0,
                       commentCount: 0,
                       likeCount: 0,
                       myLike: false,

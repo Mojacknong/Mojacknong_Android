@@ -69,6 +69,7 @@ class FarmclubFeed extends ConsumerWidget {
             diaryImage: diaryImage,
           ),
           VegeDiaryDetailIcon(
+            diaryId: diaryId,
             commentCount: commentCount,
             likeCount: likeCount,
             myLike: myLike,
