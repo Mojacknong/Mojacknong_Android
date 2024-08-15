@@ -1,8 +1,9 @@
 import 'package:farmus/view/my_certification/component/step_title.dart';
 import 'package:farmus/view/my_page/my_page_feed/my_page_feed_content.dart';
-import 'package:farmus/view/my_page/my_page_feed/my_page_feed_picture.dart';
 import 'package:farmus/view/my_page/my_page_feed/my_page_feed_time.dart';
 import 'package:flutter/material.dart';
+
+import '../../../common/farmus_picture_fix.dart';
 
 class MyCertificationFeed extends StatelessWidget {
   final String title;
@@ -32,7 +33,7 @@ class MyCertificationFeed extends StatelessWidget {
               title: title,
               step: step,
             ),
-            MyPageFeedPicture(image: image),
+            FarmusPictureFix(heightSize: 248,image: image),
             const SizedBox(
               height: 8,
             ),

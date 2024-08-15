@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:farmus/data/network/base_api_services.dart';
-import '../../model/my_farmclub_history/farmclub_history_icon_model.dart';
+
 import '../../model/my_farmclub_history/my_farmclub_certification_model.dart';
 import '../../model/my_farmclub_history/user_farmclub_history_model.dart';
 
@@ -13,7 +13,7 @@ class MyHistoryService {
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> responseData =
-      jsonDecode(utf8.decode(response.bodyBytes));
+          jsonDecode(utf8.decode(response.bodyBytes));
       final Map<String, dynamic> data = responseData['data'] ?? {};
       return UserFarmclubHistoryModel.fromJson(data);
     } else {
@@ -21,7 +21,6 @@ class MyHistoryService {
           'Failed to load certification data: ${response.statusCode}');
     }
   }
-
 
   Future<String> myFarmclubHistory() async {
     const url = '/api/history/farm-club';

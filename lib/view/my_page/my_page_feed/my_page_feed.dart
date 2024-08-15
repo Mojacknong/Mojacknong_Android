@@ -1,8 +1,9 @@
 import 'package:farmus/view/my_page/my_page_feed/my_page_feed_content.dart';
-import 'package:farmus/view/my_page/my_page_feed/my_page_feed_picture.dart';
 import 'package:farmus/view/my_page/my_page_feed/my_page_feed_time.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
+import '../../../common/farmus_picture_fix.dart';
 
 class MyPageFeed extends StatelessWidget {
   final String content;
@@ -24,7 +25,7 @@ class MyPageFeed extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const MyPageFeedPicture(),
+            FarmusPictureFix(heightSize: 248,image: image),
             const SizedBox(
               height: 8,
             ),
