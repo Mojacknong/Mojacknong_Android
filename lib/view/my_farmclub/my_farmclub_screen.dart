@@ -1,7 +1,7 @@
 import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
 import 'package:flutter/material.dart';
 
-import '../vege_history/component/vege_profile.dart';
+import 'component/farmclub_history_list.dart';
 
 class MyFarmclubScreen extends StatelessWidget {
   const MyFarmclubScreen({Key? key}) : super(key: key);
@@ -18,7 +18,7 @@ class MyFarmclubScreen extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  VegeProfile(),
+                  FarmclubHistoryList(),
                 ],
               ),
             ),

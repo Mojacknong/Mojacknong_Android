@@ -3,14 +3,14 @@ import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/my_page/my_page_feed/my_page_feed_list.dart';
 import 'package:flutter/material.dart';
 
-class VegeHistoryTabBar extends StatefulWidget {
-  const VegeHistoryTabBar({super.key});
+class VeggieHistoryTabBar extends StatefulWidget {
+  const VeggieHistoryTabBar({super.key});
 
   @override
-  State<VegeHistoryTabBar> createState() => _VegeHistoryTabBarState();
+  State<VeggieHistoryTabBar> createState() => _VegeHistoryTabBarState();
 }
 
-class _VegeHistoryTabBarState extends State<VegeHistoryTabBar> {
+class _VegeHistoryTabBarState extends State<VeggieHistoryTabBar> {
   @override
   Widget build(BuildContext context) {
     return const PrimaryTabBar(
