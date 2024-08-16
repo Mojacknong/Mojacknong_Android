@@ -56,14 +56,13 @@ class ApiClient {
         break;
       case 'POST_MULTIPART':
         var request = http.MultipartRequest('POST', url);
-        request.headers.addAll(headers);
+        request.headers.addAll({
+          ...headers,
+          HttpHeaders.contentTypeHeader: 'application/json',
+        });
 
         if (body is Map<String, dynamic>) {
-          body.forEach((key, value) {
-            if (value is String) {
-              request.fields[key] = value;
-            }
-          });
+          request.fields['json'] = jsonEncode(body);
         }
 
         if (file != null) {
@@ -124,22 +123,5 @@ class ApiClient {
   Future<http.Response> delete(String endpoint,
       {Map<String, String>? headers, Object? body}) async {
     return _sendRequest('DELETE', endpoint, headers: headers, body: body);
-  }
-
-  Future<http.Response> postDiary(
-    String endpoint,
-    File file,
-    String content,
-    bool isOpen,
-    String state,
-    int myVeggieId,
-  ) async {
-    Map<String, String> body = {
-      'content': content,
-      'isOpen': isOpen.toString(),
-      'state': state,
-      'myVeggieId': myVeggieId.toString(),
-    };
-    return _sendRequest('POST_MULTIPART', endpoint, body: body, file: file);
   }
 }

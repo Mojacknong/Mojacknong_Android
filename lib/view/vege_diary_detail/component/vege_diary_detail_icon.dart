@@ -31,7 +31,7 @@ class VegeDiaryDetailIcon extends ConsumerWidget {
               myLike
                   ? ref
                       .read(diaryLikeNotifierProvider.notifier)
-                      .diaryLike(diaryId)
+                      .diaryLikeDelete(diaryId)
                   : ref
                       .read(diaryLikeNotifierProvider.notifier)
                       .diaryLike(diaryId);
