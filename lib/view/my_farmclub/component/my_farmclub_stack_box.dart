@@ -72,9 +72,9 @@ class MyFarmClubStackBox extends ConsumerWidget {
             if (myFarmclubHistory.farmClubHistoryCount > 0)
               MyHistoryBox(
                 destination: const MyFarmclubScreen(),
-                height: 180,
+                height: 156,
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 16, top: 20),
+                  padding: const EdgeInsets.all(16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -105,7 +105,7 @@ class MyFarmClubStackBox extends ConsumerWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 80),
                       Text.rich(
                         TextSpan(
                           children: [
@@ -128,7 +128,7 @@ class MyFarmClubStackBox extends ConsumerWidget {
               Positioned(
                 child: Padding(
                   padding:
-                      const EdgeInsets.only(top: 105.0, left: 24, right: 24),
+                      const EdgeInsets.only(top: 50.0, left: 24, right: 24),
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(

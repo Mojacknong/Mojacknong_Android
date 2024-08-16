@@ -22,7 +22,7 @@ class MyHistory extends StatelessWidget {
             ],
           ),
         ),
-        const MyVegeStackBox(historyType: '채소', message: '번의 채소 재배에 성공했어요.'),
+        const MyVegeStackBox(historyType: '채소 ', message: '번의 채소 재배에 성공했어요.'),
         const SizedBox(
           height: 30,
         ),
