@@ -37,9 +37,13 @@ class _SignInScreenState extends State<SignInScreen> {
   int _currentPage = 0;
 
   _asyncMethod() async {
-    if (await storage.read(key: "accessToken") != null) {
+    final accessToken = await storage.read(key: "accessToken");
+
+    if (accessToken != null) {
       if (!mounted) return;
-      if (await storage.read(key: "early") != "true") {
+
+      final early = await storage.read(key: "early");
+      if (early != "true") {
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
@@ -55,7 +59,7 @@ class _SignInScreenState extends State<SignInScreen> {
   void initState() {
     super.initState();
     _startTimer();
-    // _asyncMethod();
+    _asyncMethod();
   }
 
   @override
