@@ -109,28 +109,35 @@ class MyVeggieService {
     }
   }
 
+
   Future<String> myVeggieDiaryAdd(
-    File file,
-    String content,
-    bool isOpen,
-    String state,
-    int myVeggieId,
-  ) async {
+      File file,
+      String content,
+      bool isOpen,
+      String state,
+      int myVeggieId,
+      ) async {
     const url = '/api/my-veggie/diary';
 
-    final response = await apiClient.postDiary(
+    final jsonBody = jsonEncode({
+      "content": content,
+      "isOpen": isOpen,
+      "state": state,
+      "myVeggieId": myVeggieId,
+    });
+
+    final response = await apiClient.postMultipart(
       url,
+      'myVeggieDiaryInsert',
+      'image',
+      jsonBody,
       file,
-      content,
-      isOpen,
-      state,
-      myVeggieId,
     );
 
     if (response.statusCode == 200) {
       return utf8.decode(response.bodyBytes);
     } else {
-      throw Exception('채소 일기 추가 실패');
+      throw Exception('일기 추가 실패');
     }
   }
 
@@ -188,6 +195,38 @@ class MyVeggieService {
       return utf8.decode(response.bodyBytes);
     } else {
       throw Exception('일기 댓글 삭제 실패');
+    }
+  }
+
+  Future<String> diaryLike(int diaryId) async {
+    const url = '/api/my-veggie/diary/like';
+
+    final body = jsonEncode({
+      'diaryId': diaryId,
+    });
+
+    final response = await apiClient.post(url, body: body);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('일기 좋아요 실패');
+    }
+  }
+
+  Future<String> diaryLikeDelete(int diaryId) async {
+    const url = '/api/my-veggie/diary/like';
+
+    final body = jsonEncode({
+      'diaryId': diaryId,
+    });
+
+    final response = await apiClient.delete(url, body: body);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('일기 좋아요 삭제 실패');
     }
   }
 }

@@ -1,3 +1,4 @@
+import 'package:farmus/view_model/diary/diary_like_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -5,12 +6,15 @@ import 'package:flutter_svg/svg.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 
 class VegeDiaryDetailIcon extends ConsumerWidget {
-  const VegeDiaryDetailIcon(
-      {super.key,
-      required this.commentCount,
-      required this.likeCount,
-      required this.myLike});
+  const VegeDiaryDetailIcon({
+    super.key,
+    required this.diaryId,
+    required this.commentCount,
+    required this.likeCount,
+    required this.myLike,
+  });
 
+  final int diaryId;
   final int commentCount;
   final int likeCount;
   final bool myLike;
@@ -23,7 +27,15 @@ class VegeDiaryDetailIcon extends ConsumerWidget {
         Padding(
           padding: const EdgeInsets.only(right: 4.0),
           child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              myLike
+                  ? ref
+                      .read(diaryLikeNotifierProvider.notifier)
+                      .diaryLikeDelete(diaryId)
+                  : ref
+                      .read(diaryLikeNotifierProvider.notifier)
+                      .diaryLike(diaryId);
+            },
             child: myLike
                 ? SvgPicture.asset('assets/image/ic_heart_true.svg')
                 : SvgPicture.asset('assets/image/ic_heart.svg'),

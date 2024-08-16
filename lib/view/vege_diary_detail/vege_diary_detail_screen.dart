@@ -7,7 +7,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../common/theme/farmus_theme_text_style.dart';
 import '../feed_detail/component/feed_comment.dart';
 import 'component/vege_diary_detail_content.dart';
-import 'component/vege_diary_detail_icon.dart';
 
 class VegeDiaryDetailScreen extends ConsumerWidget {
   const VegeDiaryDetailScreen({super.key});
@@ -87,14 +86,10 @@ class VegeDiaryDetailScreen extends ConsumerWidget {
                     const SizedBox(
                       height: 32,
                     ),
-                    const VegeDiaryDetailIcon(
-                      commentCount: 0,
-                      likeCount: 0,
-                      myLike: false,
-                    ),
                     const FeedComment(
                       diaryId: 0,
                       commentCount: 0,
+                      myLike: false,
                     ),
                   ],
                 ),

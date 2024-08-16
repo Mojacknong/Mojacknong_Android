@@ -92,14 +92,10 @@ class FeedDetailScreen extends ConsumerWidget {
                     const SizedBox(
                       height: 64.0,
                     ),
-                    VegeDiaryDetailIcon(
-                      commentCount: commentCount,
-                      likeCount: likeCount,
-                      myLike: myLike,
-                    ),
                     FeedComment(
                       diaryId: diaryId,
                       commentCount: commentCount,
+                      myLike: myLike,
                     ),
                   ],
                 ),
