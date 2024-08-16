@@ -1,4 +1,5 @@
 import 'dart:convert' as convert;
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -7,11 +8,14 @@ import 'package:http/http.dart' as http;
 
 import '../../model/farmus_user.dart';
 import '../../res/app_url/app_url.dart';
+import 'base_api_services.dart';
 
 final GoogleSignIn googleSignIn = GoogleSignIn();
 const storage = FlutterSecureStorage();
 
 class SignInApiServices {
+  final ApiClient apiClient = ApiClient();
+
   Future<FarmusUser?> getGoogleLogin(token) async {
     try {
       FarmusUser farmusUser = FarmusUser(refreshToken: '', accessToken: '');
@@ -79,5 +83,17 @@ class SignInApiServices {
       return null;
     }
     return null;
+  }
+
+  Future<String> logout() async {
+    const url = '/api/auth/logout';
+
+    final response = await apiClient.delete(url);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('로그아웃 실패');
+    }
   }
 }

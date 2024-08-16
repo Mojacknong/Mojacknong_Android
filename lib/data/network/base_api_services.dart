@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
+import 'package:http_parser/http_parser.dart';
 
 import '../../res/app_url/app_url.dart';
 
@@ -56,13 +57,12 @@ class ApiClient {
         break;
       case 'POST_MULTIPART':
         var request = http.MultipartRequest('POST', url);
-        request.headers.addAll({
-          ...headers,
-          HttpHeaders.contentTypeHeader: 'application/json',
-        });
+        request.headers.addAll(headers);
 
-        if (body is Map<String, dynamic>) {
-          request.fields['json'] = jsonEncode(body);
+        if (body is String) {
+          request.fields['myVeggieDiaryInsert'] = body;
+        } else if (body is Map<String, dynamic>) {
+          request.fields['myVeggieDiaryInsert'] = jsonEncode(body);
         }
 
         if (file != null) {
@@ -71,23 +71,26 @@ class ApiClient {
               await http.MultipartFile.fromPath(
                 fileFieldName,
                 file.path,
+                contentType: MediaType('image', 'jpeg'),
               ),
             );
           } catch (e) {
-            throw Exception('Error adding file: $e');
+            throw Exception('파일 추가 오류: $e');
           }
         }
 
-        response = await http.Response.fromStream(await request.send());
+        final streamedResponse = await request.send();
+        response = await http.Response.fromStream(streamedResponse);
         break;
       default:
-        throw Exception('Unsupported HTTP method: $method');
+        throw Exception('지원되지 않는 HTTP 메서드: $method');
     }
 
-    if (response.statusCode == 200) {
+    if (response.statusCode >= 200 && response.statusCode < 300) {
       return response;
     } else {
-      throw Exception('Failed to perform $method request to $endpoint');
+      throw Exception(
+          '$method 요청을 $endpoint에 수행 실패: ${response.statusCode} ${response.body}');
     }
   }
 

@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'diary_like_notifier.dart';
+part of 'logout_notifier.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$diaryLikeNotifierHash() => r'd4a9c8c2e336432bb71e59404e498ba1cd886b0e';
+String _$diaryLikeNotifierHash() => r'8e8af9a2686857ece85eae71b09e9461a764527b';
 
 /// See also [DiaryLikeNotifier].
 @ProviderFor(DiaryLikeNotifier)

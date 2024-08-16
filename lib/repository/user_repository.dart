@@ -41,4 +41,9 @@ class UserRepository {
     String response = await OnBoardingService().userInfo();
     return response;
   }
+
+  static Future<String> logout() async {
+    String response = await SignInApiServices().logout();
+    return response;
+  }
 }
