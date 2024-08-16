@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'my_farmclub_certification_provider.dart';
+part of 'my_veggie_diary_result_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$myFarmclubCertificationModelHash() =>
-    r'008c48f2a823deffa5ee6be9c8d1ab106f7e7fa0';
+String _$myVeggieDiaryResultModelHash() =>
+    r'3d2c83bc7dde43c566a79ea980024b0e22e1db2f';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,29 +30,28 @@ class _SystemHash {
   }
 }
 
-/// See also [myFarmclubCertificationModel].
-@ProviderFor(myFarmclubCertificationModel)
-const myFarmclubCertificationModelProvider =
-    MyFarmclubCertificationModelFamily();
+/// See also [myVeggieDiaryResultModel].
+@ProviderFor(myVeggieDiaryResultModel)
+const myVeggieDiaryResultModelProvider = MyVeggieDiaryResultModelFamily();
 
-/// See also [myFarmclubCertificationModel].
-class MyFarmclubCertificationModelFamily
-    extends Family<AsyncValue<MyFarmclubCertificationModel>> {
-  /// See also [myFarmclubCertificationModel].
-  const MyFarmclubCertificationModelFamily();
+/// See also [myVeggieDiaryResultModel].
+class MyVeggieDiaryResultModelFamily
+    extends Family<AsyncValue<MyVeggieDiaryResultModel>> {
+  /// See also [myVeggieDiaryResultModel].
+  const MyVeggieDiaryResultModelFamily();
 
-  /// See also [myFarmclubCertificationModel].
-  MyFarmclubCertificationModelProvider call(
+  /// See also [myVeggieDiaryResultModel].
+  MyVeggieDiaryResultModelProvider call(
     String id,
   ) {
-    return MyFarmclubCertificationModelProvider(
+    return MyVeggieDiaryResultModelProvider(
       id,
     );
   }
 
   @override
-  MyFarmclubCertificationModelProvider getProviderOverride(
-    covariant MyFarmclubCertificationModelProvider provider,
+  MyVeggieDiaryResultModelProvider getProviderOverride(
+    covariant MyVeggieDiaryResultModelProvider provider,
   ) {
     return call(
       provider.id,
@@ -71,33 +70,33 @@ class MyFarmclubCertificationModelFamily
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'myFarmclubCertificationModelProvider';
+  String? get name => r'myVeggieDiaryResultModelProvider';
 }
 
-/// See also [myFarmclubCertificationModel].
-class MyFarmclubCertificationModelProvider
-    extends AutoDisposeFutureProvider<MyFarmclubCertificationModel> {
-  /// See also [myFarmclubCertificationModel].
-  MyFarmclubCertificationModelProvider(
+/// See also [myVeggieDiaryResultModel].
+class MyVeggieDiaryResultModelProvider
+    extends AutoDisposeFutureProvider<MyVeggieDiaryResultModel> {
+  /// See also [myVeggieDiaryResultModel].
+  MyVeggieDiaryResultModelProvider(
     String id,
   ) : this._internal(
-          (ref) => myFarmclubCertificationModel(
-            ref as MyFarmclubCertificationModelRef,
+          (ref) => myVeggieDiaryResultModel(
+            ref as MyVeggieDiaryResultModelRef,
             id,
           ),
-          from: myFarmclubCertificationModelProvider,
-          name: r'myFarmclubCertificationModelProvider',
+          from: myVeggieDiaryResultModelProvider,
+          name: r'myVeggieDiaryResultModelProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$myFarmclubCertificationModelHash,
-          dependencies: MyFarmclubCertificationModelFamily._dependencies,
+                  : _$myVeggieDiaryResultModelHash,
+          dependencies: MyVeggieDiaryResultModelFamily._dependencies,
           allTransitiveDependencies:
-              MyFarmclubCertificationModelFamily._allTransitiveDependencies,
+              MyVeggieDiaryResultModelFamily._allTransitiveDependencies,
           id: id,
         );
 
-  MyFarmclubCertificationModelProvider._internal(
+  MyVeggieDiaryResultModelProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -111,14 +110,14 @@ class MyFarmclubCertificationModelProvider
 
   @override
   Override overrideWith(
-    FutureOr<MyFarmclubCertificationModel> Function(
-            MyFarmclubCertificationModelRef provider)
+    FutureOr<MyVeggieDiaryResultModel> Function(
+            MyVeggieDiaryResultModelRef provider)
         create,
   ) {
     return ProviderOverride(
       origin: this,
-      override: MyFarmclubCertificationModelProvider._internal(
-        (ref) => create(ref as MyFarmclubCertificationModelRef),
+      override: MyVeggieDiaryResultModelProvider._internal(
+        (ref) => create(ref as MyVeggieDiaryResultModelRef),
         from: from,
         name: null,
         dependencies: null,
@@ -130,14 +129,13 @@ class MyFarmclubCertificationModelProvider
   }
 
   @override
-  AutoDisposeFutureProviderElement<MyFarmclubCertificationModel>
-      createElement() {
-    return _MyFarmclubCertificationModelProviderElement(this);
+  AutoDisposeFutureProviderElement<MyVeggieDiaryResultModel> createElement() {
+    return _MyVeggieDiaryResultModelProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is MyFarmclubCertificationModelProvider && other.id == id;
+    return other is MyVeggieDiaryResultModelProvider && other.id == id;
   }
 
   @override
@@ -149,19 +147,19 @@ class MyFarmclubCertificationModelProvider
   }
 }
 
-mixin MyFarmclubCertificationModelRef
-    on AutoDisposeFutureProviderRef<MyFarmclubCertificationModel> {
+mixin MyVeggieDiaryResultModelRef
+    on AutoDisposeFutureProviderRef<MyVeggieDiaryResultModel> {
   /// The parameter `id` of this provider.
   String get id;
 }
 
-class _MyFarmclubCertificationModelProviderElement
-    extends AutoDisposeFutureProviderElement<MyFarmclubCertificationModel>
-    with MyFarmclubCertificationModelRef {
-  _MyFarmclubCertificationModelProviderElement(super.provider);
+class _MyVeggieDiaryResultModelProviderElement
+    extends AutoDisposeFutureProviderElement<MyVeggieDiaryResultModel>
+    with MyVeggieDiaryResultModelRef {
+  _MyVeggieDiaryResultModelProviderElement(super.provider);
 
   @override
-  String get id => (origin as MyFarmclubCertificationModelProvider).id;
+  String get id => (origin as MyVeggieDiaryResultModelProvider).id;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -7,7 +7,7 @@ part of 'my_history_farmclub_provider.dart';
 // **************************************************************************
 
 String _$userFarmclubHistoryModelHash() =>
-    r'c77b0a94b197e589119a957c2f3bf6eb92d9d2f2';
+    r'1bcee882449d1262fc61280f2ae1b4071220132f';
 
 /// See also [userFarmclubHistoryModel].
 @ProviderFor(userFarmclubHistoryModel)

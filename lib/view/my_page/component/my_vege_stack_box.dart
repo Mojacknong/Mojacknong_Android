@@ -1,10 +1,12 @@
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/view/my_page/component/my_history_box.dart';
-import 'package:farmus/view/my_page/component/my_vege_image_widget.dart';
-import 'package:farmus/view/vege_history/vege_history_list_screen.dart';
-import 'package:farmus/view_model/my_page/vege_count_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../model/veggie_history/user_veggie_history_model.dart';
+import '../../../view_model/vege_history/my_history_veggie_provider.dart';
+import '../../my_farmclub/component/farmclub_widget_pic.dart';
+import '../../veggie_history/veggie_history_list_screen.dart';
 
 class MyVegeStackBox extends ConsumerWidget {
   final String historyType;
@@ -22,67 +24,120 @@ class MyVegeStackBox extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final vegeCount = ref.watch(vegeCountProvider);
-
-    return Stack(
-      children: [
-        const MyHistoryBox(destination: VegeHistoryListScreen(),),
-        Padding(
-          padding: const EdgeInsets.only(left: 32, top: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(
-                            text: historyType,
-                            style: FarmusThemeTextStyle.darkSemiBold17),
-                        TextSpan(
-                            text: ' ${vegeCount.toString()}',
-                            style: FarmusThemeTextStyle.gray2SemiBold17),
-                      ],
-                    ),
+    final AsyncValue<UserVeggieHistoryModel> myVeggieHistoryAsyncValue =
+        ref.watch(userVeggieHistoryModelProvider);
+    return myVeggieHistoryAsyncValue.when(
+      data: (myVeggieHistory) {
+        return Stack(
+          children: [
+            if (myVeggieHistory.veggieHistoryCount == 0 &&
+                myVeggieHistory.veggieHistoryIcons.isEmpty)
+              MyHistoryBox(
+                height: 100,
+                text: "아직 재배를 완료하지 않았어요",
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 16, top: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text.rich(
+                            TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: historyType,
+                                  style: FarmusThemeTextStyle.darkSemiBold17,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                ],
-              ),
-              const SizedBox(height: 20),
-              Text.rich(
-                TextSpan(
-                  children: [
-                    TextSpan(
-                        text: ' ${vegeCount.toString()} ',
-                        style: FarmusThemeTextStyle.green1SemiBold13),
-                    TextSpan(
-                        text: message,
-                        style: FarmusThemeTextStyle.gray1SemiBold13),
-                  ],
                 ),
               ),
-            ],
-          ),
-        ),
-        const Positioned(
-          child: Padding(
-            padding: EdgeInsets.only(top: 90.0, left: 24, right: 24),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  MyVegeImageWidget(),
-                  MyVegeImageWidget(),
-                  MyVegeImageWidget(),
-                  MyVegeImageWidget(),
-                  MyVegeImageWidget()
-                ],
+            if (myVeggieHistory.veggieHistoryCount > 0)
+              MyHistoryBox(
+                destination: const VeggieHistoryListScreen(),
+                height: 156,
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text.rich(
+                            TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: historyType,
+                                  style: FarmusThemeTextStyle.darkSemiBold17,
+                                ),
+                                TextSpan(
+                                  text: '${myVeggieHistory.veggieHistoryCount}',
+                                  style: FarmusThemeTextStyle.gray2SemiBold17,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 80),
+                      Text.rich(
+                        TextSpan(
+                          children: [
+                            TextSpan(
+                              text: '${myVeggieHistory.veggieHistoryCount}',
+                              style: FarmusThemeTextStyle.green1SemiBold13,
+                            ),
+                            TextSpan(
+                              text: message,
+                              style: FarmusThemeTextStyle.gray1SemiBold13,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            ),
-          ),
-        ),
-      ],
+            if (myVeggieHistory.veggieHistoryIcons.isNotEmpty)
+              Positioned(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(top: 50.0, left: 24, right: 24),
+                  child: Column(
+                    children: [
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: myVeggieHistory.veggieHistoryIcons.map(
+                            (icon) {
+                              return FarmclubWidgetPic(
+                                size: 60,
+                                imageUrl: icon.url,
+                                backgroundColor: Color(int.parse(icon
+                                    .backgroundColor
+                                    .replaceFirst('#', '0xff'))),
+                              );
+                            },
+                          ).toList(),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+          ],
+        );
+      },
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (error, stack) => Center(child: Text('$error')),
     );
   }
 }
