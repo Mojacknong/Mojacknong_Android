@@ -15,14 +15,19 @@ class MyHistoryService {
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> responseData =
-          jsonDecode(utf8.decode(response.bodyBytes));
-      final Map<String, dynamic> data = responseData['data'] ?? {};
-      return UserFarmclubHistoryModel.fromJson(data);
+      jsonDecode(utf8.decode(response.bodyBytes));
+
+      if (responseData.containsKey('data') && responseData['data'] is Map<String, dynamic>) {
+        final Map<String, dynamic> data = responseData['data'];
+        return UserFarmclubHistoryModel.fromJson(data);
+      } else {
+        throw Exception('Invalid data format');
+      }
     } else {
-      throw Exception(
-          'Failed to load certification data: ${response.statusCode}');
+      throw Exception('Failed to load data: ${response.statusCode}');
     }
   }
+
 
   Future<String> myFarmclubHistory() async {
     const url = '/api/history/farm-club';
@@ -67,11 +72,15 @@ class MyHistoryService {
     if (response.statusCode == 200) {
       final Map<String, dynamic> responseData =
       jsonDecode(utf8.decode(response.bodyBytes));
-      final Map<String, dynamic> data = responseData['data'] ?? {};
-      return UserVeggieHistoryModel.fromJson(data);
+
+      if (responseData.containsKey('data') && responseData['data'] is Map<String, dynamic>) {
+        final Map<String, dynamic> data = responseData['data'];
+        return UserVeggieHistoryModel.fromJson(data);
+      } else {
+        throw Exception('Invalid data format');
+      }
     } else {
-      throw Exception(
-          'Failed to load certification data: ${response.statusCode}');
+      throw Exception('Failed to load data: ${response.statusCode}');
     }
   }
 

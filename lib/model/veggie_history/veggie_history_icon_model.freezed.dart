@@ -21,8 +21,8 @@ VeggieHistoryIconModel _$VeggieHistoryIconModelFromJson(
 
 /// @nodoc
 mixin _$VeggieHistoryIconModel {
-  String get url => throw _privateConstructorUsedError;
-  String get backgroundColor => throw _privateConstructorUsedError;
+  String? get url => throw _privateConstructorUsedError;
+  String? get backgroundColor => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +36,7 @@ abstract class $VeggieHistoryIconModelCopyWith<$Res> {
           $Res Function(VeggieHistoryIconModel) then) =
       _$VeggieHistoryIconModelCopyWithImpl<$Res, VeggieHistoryIconModel>;
   @useResult
-  $Res call({String url, String backgroundColor});
+  $Res call({String? url, String? backgroundColor});
 }
 
 /// @nodoc
@@ -53,18 +53,18 @@ class _$VeggieHistoryIconModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? url = null,
-    Object? backgroundColor = null,
+    Object? url = freezed,
+    Object? backgroundColor = freezed,
   }) {
     return _then(_value.copyWith(
-      url: null == url
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
-              as String,
-      backgroundColor: null == backgroundColor
+              as String?,
+      backgroundColor: freezed == backgroundColor
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -78,7 +78,7 @@ abstract class _$$VeggieHistoryIconModelImplCopyWith<$Res>
       __$$VeggieHistoryIconModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String url, String backgroundColor});
+  $Res call({String? url, String? backgroundColor});
 }
 
 /// @nodoc
@@ -94,18 +94,18 @@ class __$$VeggieHistoryIconModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? url = null,
-    Object? backgroundColor = null,
+    Object? url = freezed,
+    Object? backgroundColor = freezed,
   }) {
     return _then(_$VeggieHistoryIconModelImpl(
-      url: null == url
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
-              as String,
-      backgroundColor: null == backgroundColor
+              as String?,
+      backgroundColor: freezed == backgroundColor
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -120,9 +120,9 @@ class _$VeggieHistoryIconModelImpl implements _VeggieHistoryIconModel {
       _$$VeggieHistoryIconModelImplFromJson(json);
 
   @override
-  final String url;
+  final String? url;
   @override
-  final String backgroundColor;
+  final String? backgroundColor;
 
   @override
   String toString() {
@@ -160,16 +160,16 @@ class _$VeggieHistoryIconModelImpl implements _VeggieHistoryIconModel {
 
 abstract class _VeggieHistoryIconModel implements VeggieHistoryIconModel {
   const factory _VeggieHistoryIconModel(
-      {required final String url,
-      required final String backgroundColor}) = _$VeggieHistoryIconModelImpl;
+      {required final String? url,
+      required final String? backgroundColor}) = _$VeggieHistoryIconModelImpl;
 
   factory _VeggieHistoryIconModel.fromJson(Map<String, dynamic> json) =
       _$VeggieHistoryIconModelImpl.fromJson;
 
   @override
-  String get url;
+  String? get url;
   @override
-  String get backgroundColor;
+  String? get backgroundColor;
   @override
   @JsonKey(ignore: true)
   _$$VeggieHistoryIconModelImplCopyWith<_$VeggieHistoryIconModelImpl>

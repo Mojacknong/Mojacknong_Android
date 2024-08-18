@@ -26,8 +26,6 @@ class SearchFarmclubInfo extends ConsumerWidget {
         ? difficultiesState.keys.toList()
         : filteredDifficulties;
 
-    print('Filtered Difficulties: $difficultiesToFilter');
-
     return farmclubs.when(
       data: (data) {
         if (data != null && data.isNotEmpty) {
