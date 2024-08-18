@@ -1,36 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../feed_detail/feed_detail_screen.dart';
-import '../../vege_diary_detail/component/vege_diary_detail_content.dart';
-import '../../vege_diary_detail/component/vege_diary_detail_icon.dart';
-import 'feed_profile.dart';
+import '../view/farmclub/component/feed_profile.dart';
+import '../view/feed_detail/component/feed_detail_content.dart';
+import '../view/feed_detail/component/feed_detail_icon.dart';
+import '../view/feed_detail/feed_detail_screen.dart';
 
-class FarmclubFeed extends ConsumerWidget {
-  const FarmclubFeed({
+class FarmusFeed extends ConsumerWidget {
+  const FarmusFeed({
     super.key,
-    required this.diaryId,
+    required this.feedId,
     required this.nickname,
     this.profileImage,
     required this.writeDateTime,
     required this.content,
-    required this.diaryImage,
+    required this.image,
     required this.commentCount,
     required this.likeCount,
     required this.myLike,
-    required this.state,
+    this.state,
   });
 
-  final int diaryId;
+  final int feedId;
   final String nickname;
   final String? profileImage;
   final String writeDateTime;
   final String content;
-  final String diaryImage;
+  final String image;
   final int commentCount;
   final int likeCount;
   final bool myLike;
-  final String state;
+  final String? state;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -39,16 +39,15 @@ class FarmclubFeed extends ConsumerWidget {
           context,
           MaterialPageRoute(
               builder: (builder) => FeedDetailScreen(
-                    diaryId: diaryId,
+                    feedId: feedId,
                     nickname: nickname,
                     writeDateTime: writeDateTime,
                     profileImage: profileImage,
                     content: content,
-                    diaryImage: diaryImage,
+                    image: image,
                     commentCount: commentCount,
                     likeCount: likeCount,
                     myLike: myLike,
-                    commentId: -1,
                     state: state,
                   ))),
       child: Column(
@@ -64,12 +63,12 @@ class FarmclubFeed extends ConsumerWidget {
               commentId: -1,
             ),
           ),
-          VegeDiaryDetailContent(
+          FeedDetailContent(
             content: content,
-            diaryImage: diaryImage,
+            image: image,
           ),
-          VegeDiaryDetailIcon(
-            diaryId: diaryId,
+          FeedDetailIcon(
+            feedId: feedId,
             commentCount: commentCount,
             likeCount: likeCount,
             myLike: myLike,

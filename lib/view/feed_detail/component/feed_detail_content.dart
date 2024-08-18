@@ -4,11 +4,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../common/farmus_picture.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 
-class VegeDiaryDetailContent extends ConsumerWidget {
-  const VegeDiaryDetailContent({super.key, required this.content, this.diaryImage});
+class FeedDetailContent extends ConsumerWidget {
+  const FeedDetailContent({super.key, required this.content, this.image});
 
   final String content;
-  final String? diaryImage;
+  final String? image;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -17,7 +17,7 @@ class VegeDiaryDetailContent extends ConsumerWidget {
       children: [
         FarmusPicture(
           height: 270,
-          image: diaryImage,
+          image: image,
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 16.0),
