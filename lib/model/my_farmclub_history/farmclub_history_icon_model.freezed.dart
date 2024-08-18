@@ -21,8 +21,8 @@ FarmclubHistoryIconModel _$FarmclubHistoryIconModelFromJson(
 
 /// @nodoc
 mixin _$FarmclubHistoryIconModel {
-  String get url => throw _privateConstructorUsedError;
-  String get backgroundColor => throw _privateConstructorUsedError;
+  String? get url => throw _privateConstructorUsedError;
+  String? get backgroundColor => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +36,7 @@ abstract class $FarmclubHistoryIconModelCopyWith<$Res> {
           $Res Function(FarmclubHistoryIconModel) then) =
       _$FarmclubHistoryIconModelCopyWithImpl<$Res, FarmclubHistoryIconModel>;
   @useResult
-  $Res call({String url, String backgroundColor});
+  $Res call({String? url, String? backgroundColor});
 }
 
 /// @nodoc
@@ -53,18 +53,18 @@ class _$FarmclubHistoryIconModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? url = null,
-    Object? backgroundColor = null,
+    Object? url = freezed,
+    Object? backgroundColor = freezed,
   }) {
     return _then(_value.copyWith(
-      url: null == url
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
-              as String,
-      backgroundColor: null == backgroundColor
+              as String?,
+      backgroundColor: freezed == backgroundColor
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -78,7 +78,7 @@ abstract class _$$FarmclubHistoryIconModelImplCopyWith<$Res>
       __$$FarmclubHistoryIconModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String url, String backgroundColor});
+  $Res call({String? url, String? backgroundColor});
 }
 
 /// @nodoc
@@ -94,18 +94,18 @@ class __$$FarmclubHistoryIconModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? url = null,
-    Object? backgroundColor = null,
+    Object? url = freezed,
+    Object? backgroundColor = freezed,
   }) {
     return _then(_$FarmclubHistoryIconModelImpl(
-      url: null == url
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
-              as String,
-      backgroundColor: null == backgroundColor
+              as String?,
+      backgroundColor: freezed == backgroundColor
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -120,9 +120,9 @@ class _$FarmclubHistoryIconModelImpl implements _FarmclubHistoryIconModel {
       _$$FarmclubHistoryIconModelImplFromJson(json);
 
   @override
-  final String url;
+  final String? url;
   @override
-  final String backgroundColor;
+  final String? backgroundColor;
 
   @override
   String toString() {
@@ -160,16 +160,16 @@ class _$FarmclubHistoryIconModelImpl implements _FarmclubHistoryIconModel {
 
 abstract class _FarmclubHistoryIconModel implements FarmclubHistoryIconModel {
   const factory _FarmclubHistoryIconModel(
-      {required final String url,
-      required final String backgroundColor}) = _$FarmclubHistoryIconModelImpl;
+      {required final String? url,
+      required final String? backgroundColor}) = _$FarmclubHistoryIconModelImpl;
 
   factory _FarmclubHistoryIconModel.fromJson(Map<String, dynamic> json) =
       _$FarmclubHistoryIconModelImpl.fromJson;
 
   @override
-  String get url;
+  String? get url;
   @override
-  String get backgroundColor;
+  String? get backgroundColor;
   @override
   @JsonKey(ignore: true)
   _$$FarmclubHistoryIconModelImplCopyWith<_$FarmclubHistoryIconModelImpl>

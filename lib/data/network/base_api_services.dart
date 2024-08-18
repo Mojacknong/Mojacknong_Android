@@ -56,13 +56,14 @@ class ApiClient {
         break;
       case 'POST_MULTIPART':
         var request = http.MultipartRequest('POST', url);
-        request.headers.addAll({
-          ...headers,
-          HttpHeaders.contentTypeHeader: 'application/json',
-        });
+        request.headers.addAll(headers);
 
         if (body is Map<String, dynamic>) {
-          request.fields['json'] = jsonEncode(body);
+          body.forEach((key, value) {
+            if (value is String) {
+              request.fields[key] = value;
+            }
+          });
         }
 
         if (file != null) {
@@ -77,7 +78,6 @@ class ApiClient {
             throw Exception('Error adding file: $e');
           }
         }
-
         response = await http.Response.fromStream(await request.send());
         break;
       default:

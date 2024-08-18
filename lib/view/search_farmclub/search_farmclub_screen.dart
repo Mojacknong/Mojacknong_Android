@@ -5,6 +5,8 @@ import 'package:farmus/view_model/search_farmclub/search_farmclub_provider.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../common/app_bar/primary_app_bar.dart';
+
 class SearchFarmclubScreen extends ConsumerStatefulWidget {
   const SearchFarmclubScreen({Key? key}) : super(key: key);
 
@@ -21,6 +23,7 @@ class _SearchFarmclubScreenState extends ConsumerState<SearchFarmclubScreen> {
         ref.watch(searchFarmclubsResultProvider(searchText));
 
     return Scaffold(
+      appBar: const PrimaryAppBar(),
       body: SingleChildScrollView(
         child: Stack(
           children: [

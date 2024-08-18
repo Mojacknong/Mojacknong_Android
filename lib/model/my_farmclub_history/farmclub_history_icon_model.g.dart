@@ -9,8 +9,8 @@ part of 'farmclub_history_icon_model.dart';
 _$FarmclubHistoryIconModelImpl _$$FarmclubHistoryIconModelImplFromJson(
         Map<String, dynamic> json) =>
     _$FarmclubHistoryIconModelImpl(
-      url: json['url'] as String,
-      backgroundColor: json['backgroundColor'] as String,
+      url: json['url'] as String?,
+      backgroundColor: json['backgroundColor'] as String?,
     );
 
 Map<String, dynamic> _$$FarmclubHistoryIconModelImplToJson(
