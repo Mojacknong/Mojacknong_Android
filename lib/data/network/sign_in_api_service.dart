@@ -103,8 +103,10 @@ class SignInApiServices {
 
   Future<String> reissueToken() async {
     const url = '/api/auth/reissue-token';
+    final refreshToken = await storage.read(key: 'refreshToken');
 
-    final response = await apiClient.get(url);
+    final response = await apiClient
+        .get(url, headers: {'Authorization': 'Bearer $refreshToken'});
 
     if (response.statusCode == 200) {
       var jsonResponse =
@@ -114,7 +116,6 @@ class SignInApiServices {
           key: 'accessToken', value: jsonResponse['data']['accessToken']);
       await storage.write(
           key: 'refreshToken', value: jsonResponse['data']['refreshToken']);
-      await storage.write(key: 'early', value: jsonResponse['data']['early']);
 
       return utf8.decode(response.bodyBytes);
     } else {

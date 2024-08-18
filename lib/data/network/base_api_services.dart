@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -5,7 +6,6 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 
 import '../../main.dart';
-import '../../repository/user_repository.dart';
 import '../../res/app_url/app_url.dart';
 import '../../view/sign_in/sign_in_screen.dart';
 
@@ -20,12 +20,12 @@ class ApiClient {
   }
 
   Future<Map<String, String>> _getHeaders() async {
-    String? accessToken = await storage.read(key: "accessToken");
+    String? accessToken = await storage.read(key: 'accessToken');
     Map<String, String> headers = {
       HttpHeaders.contentTypeHeader: 'application/json',
     };
     if (accessToken != null) {
-      headers["Authorization"] = "Bearer $accessToken";
+      headers[HttpHeaders.authorizationHeader] = "Bearer $accessToken";
     }
     return headers;
   }
@@ -36,9 +36,9 @@ class ApiClient {
       File? file,
       String fileFieldName = 'file'}) async {
     final url = Uri.parse('$baseUrl$endpoint');
-    final tokenHeaders = await _getHeaders();
-
-    headers = headers == null ? tokenHeaders : {...headers, ...tokenHeaders};
+    headers = headers == null
+        ? await _getHeaders()
+        : {...headers, ...await _getHeaders()};
 
     http.Response response;
     try {
@@ -60,7 +60,7 @@ class ApiClient {
           break;
         case 'POST_MULTIPART':
           var request = http.MultipartRequest('POST', url);
-          request.headers.addAll(headers);
+          request.headers.addAll(headers!);
 
           if (body is Map<String, dynamic>) {
             body.forEach((key, value) {
@@ -91,18 +91,20 @@ class ApiClient {
       throw Exception('Request error: $e');
     }
 
-    if (response.statusCode == 419) {
+    final jsonResponse = jsonDecode(utf8.decode(response.bodyBytes));
+    if (jsonResponse['code'] == 419) {
       final refreshToken = await storage.read(key: 'refreshToken');
       if (refreshToken != null) {
         try {
-          String newAccessToken = await _getNewAccessToken(refreshToken);
-          headers['Authorization'] = 'Bearer $newAccessToken';
-
-          return await _retryRequest(
-              method, url, headers, body, file, fileFieldName);
+          final newToken = await _reissueToken(refreshToken);
+          headers[HttpHeaders.authorizationHeader] = 'Bearer $newToken';
+          return await _sendRequest(method, endpoint,
+              headers: headers,
+              body: body,
+              file: file,
+              fileFieldName: fileFieldName);
         } catch (e) {
-          await _handleTokenExpiry();
-          throw Exception('Failed to refresh token and retry request');
+          throw Exception('Failed to reissue token: $e');
         }
       } else {
         await _handleTokenExpiry();
@@ -118,6 +120,24 @@ class ApiClient {
     }
   }
 
+  Future<String> _reissueToken(String refreshToken) async {
+    const url = '/api/auth/reissue-token';
+    final response = await client.get(Uri.parse('$baseUrl$url'),
+        headers: {'Authorization': 'Bearer $refreshToken'});
+
+    if (response.statusCode == 200) {
+      var jsonResponse =
+          jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+      await storage.write(
+          key: 'accessToken', value: jsonResponse['data']['accessToken']);
+      await storage.write(
+          key: 'refreshToken', value: jsonResponse['data']['refreshToken']);
+      return jsonResponse['data']['accessToken'];
+    } else {
+      throw Exception('Token reissue failed');
+    }
+  }
+
   Future<void> _handleTokenExpiry() async {
     await storage.delete(key: 'accessToken');
     await storage.delete(key: 'refreshToken');
@@ -130,65 +150,9 @@ class ApiClient {
     );
   }
 
-  Future<String> _getNewAccessToken(String refreshToken) async {
-    try {
-      return await UserRepository.reissueToken();
-    } catch (e) {
-      throw Exception('Failed to request new access token');
-    }
-  }
-
-  Future<http.Response> _retryRequest(
-    String method,
-    Uri url,
-    Map<String, String>? headers,
-    Object? body,
-    File? file,
-    String fileFieldName,
-  ) async {
-    switch (method) {
-      case 'GET':
-        return await client.get(url, headers: headers);
-      case 'POST':
-        return await client.post(url, headers: headers, body: body);
-      case 'PATCH':
-        return await client.patch(url, headers: headers, body: body);
-      case 'PUT':
-        return await client.put(url, headers: headers, body: body);
-      case 'DELETE':
-        return await client.delete(url, headers: headers, body: body);
-      case 'POST_MULTIPART':
-        var request = http.MultipartRequest('POST', url);
-        request.headers.addAll(headers!);
-
-        if (body is Map<String, dynamic>) {
-          body.forEach((key, value) {
-            if (value is String) {
-              request.fields[key] = value;
-            }
-          });
-        }
-
-        if (file != null) {
-          try {
-            request.files.add(
-              await http.MultipartFile.fromPath(
-                fileFieldName,
-                file.path,
-              ),
-            );
-          } catch (e) {
-            throw Exception('Error adding file: $e');
-          }
-        }
-        return await http.Response.fromStream(await request.send());
-      default:
-        throw Exception('Unsupported HTTP method: $method');
-    }
-  }
-
-  Future<http.Response> get(String endpoint) async {
-    return _sendRequest('GET', endpoint);
+  Future<http.Response> get(String endpoint,
+      {Map<String, String>? headers}) async {
+    return _sendRequest('GET', endpoint, headers: headers);
   }
 
   Future<http.Response> post(String endpoint,

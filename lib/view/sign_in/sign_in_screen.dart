@@ -59,7 +59,7 @@ class _SignInScreenState extends State<SignInScreen> {
   void initState() {
     super.initState();
     _startTimer();
-    _asyncMethod();
+    // _asyncMethod();
   }
 
   @override
