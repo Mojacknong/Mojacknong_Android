@@ -100,26 +100,4 @@ class SignInApiServices {
       throw Exception('로그아웃 실패');
     }
   }
-
-  Future<String> reissueToken() async {
-    const url = '/api/auth/reissue-token';
-    final refreshToken = await storage.read(key: 'refreshToken');
-
-    final response = await apiClient
-        .get(url, headers: {'Authorization': 'Bearer $refreshToken'});
-
-    if (response.statusCode == 200) {
-      var jsonResponse =
-          convert.jsonDecode(response.body) as Map<String, dynamic>;
-
-      await storage.write(
-          key: 'accessToken', value: jsonResponse['data']['accessToken']);
-      await storage.write(
-          key: 'refreshToken', value: jsonResponse['data']['refreshToken']);
-
-      return utf8.decode(response.bodyBytes);
-    } else {
-      throw Exception('토큰 재발급 실패');
-    }
-  }
 }

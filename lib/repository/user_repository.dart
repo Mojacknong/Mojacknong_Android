@@ -46,9 +46,4 @@ class UserRepository {
     String response = await SignInApiServices().logout();
     return response;
   }
-
-  static Future<String> reissueToken() async {
-    String response = await SignInApiServices().reissueToken();
-    return response;
-  }
 }
