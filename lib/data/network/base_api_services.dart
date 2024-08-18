@@ -1,11 +1,13 @@
-import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
-import 'package:http_parser/http_parser.dart';
 
+import '../../main.dart';
+import '../../repository/user_repository.dart';
 import '../../res/app_url/app_url.dart';
+import '../../view/sign_in/sign_in_screen.dart';
 
 const storage = FlutterSecureStorage();
 
@@ -39,30 +41,132 @@ class ApiClient {
     headers = headers == null ? tokenHeaders : {...headers, ...tokenHeaders};
 
     http.Response response;
+    try {
+      switch (method) {
+        case 'GET':
+          response = await client.get(url, headers: headers);
+          break;
+        case 'POST':
+          response = await client.post(url, headers: headers, body: body);
+          break;
+        case 'PATCH':
+          response = await client.patch(url, headers: headers, body: body);
+          break;
+        case 'PUT':
+          response = await client.put(url, headers: headers, body: body);
+          break;
+        case 'DELETE':
+          response = await client.delete(url, headers: headers, body: body);
+          break;
+        case 'POST_MULTIPART':
+          var request = http.MultipartRequest('POST', url);
+          request.headers.addAll(headers);
+
+          if (body is Map<String, dynamic>) {
+            body.forEach((key, value) {
+              if (value is String) {
+                request.fields[key] = value;
+              }
+            });
+          }
+
+          if (file != null) {
+            try {
+              request.files.add(
+                await http.MultipartFile.fromPath(
+                  fileFieldName,
+                  file.path,
+                ),
+              );
+            } catch (e) {
+              throw Exception('Error adding file: $e');
+            }
+          }
+          response = await http.Response.fromStream(await request.send());
+          break;
+        default:
+          throw Exception('Unsupported HTTP method: $method');
+      }
+    } catch (e) {
+      throw Exception('Request error: $e');
+    }
+
+    if (response.statusCode == 419) {
+      final refreshToken = await storage.read(key: 'refreshToken');
+      if (refreshToken != null) {
+        try {
+          String newAccessToken = await _getNewAccessToken(refreshToken);
+          headers['Authorization'] = 'Bearer $newAccessToken';
+
+          return await _retryRequest(
+              method, url, headers, body, file, fileFieldName);
+        } catch (e) {
+          await _handleTokenExpiry();
+          throw Exception('Failed to refresh token and retry request');
+        }
+      } else {
+        await _handleTokenExpiry();
+        throw Exception('Unauthorized and no refresh token available');
+      }
+    }
+
+    if (response.statusCode >= 200 && response.statusCode < 300) {
+      return response;
+    } else {
+      throw Exception(
+          'Failed to perform $method request to $endpoint: ${response.statusCode} ${response.body}');
+    }
+  }
+
+  Future<void> _handleTokenExpiry() async {
+    await storage.delete(key: 'accessToken');
+    await storage.delete(key: 'refreshToken');
+    await storage.delete(key: 'early');
+
+    Navigator.pushAndRemoveUntil(
+      navigatorKey.currentContext!,
+      MaterialPageRoute(builder: (context) => const SignInScreen()),
+      (route) => false,
+    );
+  }
+
+  Future<String> _getNewAccessToken(String refreshToken) async {
+    try {
+      return await UserRepository.reissueToken();
+    } catch (e) {
+      throw Exception('Failed to request new access token');
+    }
+  }
+
+  Future<http.Response> _retryRequest(
+    String method,
+    Uri url,
+    Map<String, String>? headers,
+    Object? body,
+    File? file,
+    String fileFieldName,
+  ) async {
     switch (method) {
       case 'GET':
-        response = await client.get(url, headers: headers);
-        break;
+        return await client.get(url, headers: headers);
       case 'POST':
-        response = await client.post(url, headers: headers, body: body);
-        break;
+        return await client.post(url, headers: headers, body: body);
       case 'PATCH':
-        response = await client.patch(url, headers: headers, body: body);
-        break;
+        return await client.patch(url, headers: headers, body: body);
       case 'PUT':
-        response = await client.put(url, headers: headers, body: body);
-        break;
+        return await client.put(url, headers: headers, body: body);
       case 'DELETE':
-        response = await client.delete(url, headers: headers, body: body);
-        break;
+        return await client.delete(url, headers: headers, body: body);
       case 'POST_MULTIPART':
         var request = http.MultipartRequest('POST', url);
-        request.headers.addAll(headers);
+        request.headers.addAll(headers!);
 
-        if (body is String) {
-          request.fields['myVeggieDiaryInsert'] = body;
-        } else if (body is Map<String, dynamic>) {
-          request.fields['myVeggieDiaryInsert'] = jsonEncode(body);
+        if (body is Map<String, dynamic>) {
+          body.forEach((key, value) {
+            if (value is String) {
+              request.fields[key] = value;
+            }
+          });
         }
 
         if (file != null) {
@@ -71,26 +175,15 @@ class ApiClient {
               await http.MultipartFile.fromPath(
                 fileFieldName,
                 file.path,
-                contentType: MediaType('image', 'jpeg'),
               ),
             );
           } catch (e) {
-            throw Exception('파일 추가 오류: $e');
+            throw Exception('Error adding file: $e');
           }
         }
-
-        final streamedResponse = await request.send();
-        response = await http.Response.fromStream(streamedResponse);
-        break;
+        return await http.Response.fromStream(await request.send());
       default:
-        throw Exception('지원되지 않는 HTTP 메서드: $method');
-    }
-
-    if (response.statusCode >= 200 && response.statusCode < 300) {
-      return response;
-    } else {
-      throw Exception(
-          '$method 요청을 $endpoint에 수행 실패: ${response.statusCode} ${response.body}');
+        throw Exception('Unsupported HTTP method: $method');
     }
   }
 
@@ -103,31 +196,16 @@ class ApiClient {
     return _sendRequest('POST', endpoint, headers: headers, body: body);
   }
 
-  Future<http.Response> postMultipart(String endpoint,
-      Map<String, String> fields, String fileFieldName, File file) async {
-    final url = Uri.parse('$baseUrl$endpoint');
-    final tokenHeaders = await _getHeaders();
+  Future<http.Response> postMultipart(String endpoint, String stringFieldName,
+      String fileFieldName, String text, File file,
+      {Map<String, String>? headers}) async {
+    Map<String, String> body = {
+      stringFieldName: text,
+    };
 
-    var request = http.MultipartRequest('POST', url);
-    request.headers.addAll(tokenHeaders);
-
-    fields.forEach((key, value) {
-      request.fields[key] = value;
-    });
-
-    if (file != null) {
-      request.files.add(
-        await http.MultipartFile.fromPath(
-          fileFieldName,
-          file.path,
-        ),
-      );
-    }
-
-    final streamedResponse = await request.send();
-    return await http.Response.fromStream(streamedResponse);
+    return _sendRequest('POST_MULTIPART', endpoint,
+        headers: headers, body: body, file: file, fileFieldName: fileFieldName);
   }
-
 
   Future<http.Response> patch(String endpoint,
       {Map<String, String>? headers, Object? body}) async {

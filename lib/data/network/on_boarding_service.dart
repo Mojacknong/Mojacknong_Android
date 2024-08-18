@@ -9,16 +9,8 @@ class OnBoardingService {
 
     ApiClient apiClient = ApiClient();
 
-    Map<String, String> fields = {
-      'nickname': nickname,
-    };
-
-    final response = await apiClient.postMultipart(
-      url,
-      fields,
-      'image',
-      file,
-    );
+    final response =
+        await apiClient.postMultipart(url, 'nickname', 'image', nickname, file);
 
     if (response.statusCode == 200) {
       return utf8.decode(response.bodyBytes);

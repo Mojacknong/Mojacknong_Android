@@ -109,37 +109,35 @@ class MyVeggieService {
     }
   }
 
+
   Future<String> myVeggieDiaryAdd(
-    File file,
-    String content,
-    bool isOpen,
-    String state,
-    int myVeggieId,
-  ) async {
+      File file,
+      String content,
+      bool isOpen,
+      String state,
+      int myVeggieId,
+      ) async {
     const url = '/api/my-veggie/diary';
 
-    final myVeggieDiaryInsert = jsonEncode({
+    final jsonBody = jsonEncode({
       "content": content,
       "isOpen": isOpen,
       "state": state,
       "myVeggieId": myVeggieId,
     });
 
-    Map<String, String> fields = {
-      'myVeggieDiaryInsert': myVeggieDiaryInsert,
-    };
-
     final response = await apiClient.postMultipart(
       url,
-      fields,
+      'myVeggieDiaryInsert',
       'image',
+      jsonBody,
       file,
     );
 
     if (response.statusCode == 200) {
       return utf8.decode(response.bodyBytes);
     } else {
-      throw Exception('Failed to add diary entry');
+      throw Exception('일기 추가 실패');
     }
   }
 
