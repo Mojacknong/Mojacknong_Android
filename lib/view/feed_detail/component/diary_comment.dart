@@ -34,7 +34,7 @@ class DiaryComment extends ConsumerWidget {
                 feedId: diaryId,
                 commentCount: commentsData.commentCount,
                 likeCount: commentsData.likeCount,
-                myLike: false,
+                myLike: commentsData.myLike,
               ),
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: 16.0),

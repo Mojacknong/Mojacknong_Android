@@ -120,10 +120,10 @@ class MyVeggieService {
     const url = '/api/my-veggie/diary';
 
     final jsonBody = jsonEncode({
-      "content": content,
-      "isOpen": isOpen,
-      "state": state,
-      "myVeggieId": myVeggieId,
+      'content': content,
+      'isOpen': isOpen,
+      'state': state,
+      'myVeggieId': myVeggieId,
     });
 
     final response = await apiClient.postMultipart(
