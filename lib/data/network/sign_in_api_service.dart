@@ -101,4 +101,24 @@ class SignInApiServices {
     }
   }
 
+  Future<String> reissueToken() async {
+    const url = '/api/auth/reissue-token';
+
+    final response = await apiClient.get(url);
+
+    if (response.statusCode == 200) {
+      var jsonResponse =
+          convert.jsonDecode(response.body) as Map<String, dynamic>;
+
+      await storage.write(
+          key: 'accessToken', value: jsonResponse['data']['accessToken']);
+      await storage.write(
+          key: 'refreshToken', value: jsonResponse['data']['refreshToken']);
+      await storage.write(key: 'early', value: jsonResponse['data']['early']);
+
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('토큰 재발급 실패');
+    }
+  }
 }

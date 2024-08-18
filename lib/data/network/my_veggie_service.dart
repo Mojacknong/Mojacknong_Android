@@ -118,25 +118,28 @@ class MyVeggieService {
   ) async {
     const url = '/api/my-veggie/diary';
 
-    final myVeggieDiaryInsert = {
+    final myVeggieDiaryInsert = jsonEncode({
       "content": content,
       "isOpen": isOpen,
       "state": state,
       "myVeggieId": myVeggieId,
+    });
+
+    Map<String, String> fields = {
+      'myVeggieDiaryInsert': myVeggieDiaryInsert,
     };
 
     final response = await apiClient.postMultipart(
       url,
-      'myVeggieDiaryInsert',
+      fields,
       'image',
-      jsonEncode(myVeggieDiaryInsert),
       file,
     );
 
     if (response.statusCode == 200) {
       return utf8.decode(response.bodyBytes);
     } else {
-      throw Exception('일기 추가 실패');
+      throw Exception('Failed to add diary entry');
     }
   }
 

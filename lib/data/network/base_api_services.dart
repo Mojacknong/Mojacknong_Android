@@ -103,15 +103,31 @@ class ApiClient {
     return _sendRequest('POST', endpoint, headers: headers, body: body);
   }
 
-  Future<http.Response> postMultipart(String endpoint, String stringFieldName,
-      String fileFieldName, String text, File file) async {
-    Map<String, String> body = {
-      stringFieldName: text,
-    };
+  Future<http.Response> postMultipart(String endpoint,
+      Map<String, String> fields, String fileFieldName, File file) async {
+    final url = Uri.parse('$baseUrl$endpoint');
+    final tokenHeaders = await _getHeaders();
 
-    return _sendRequest('POST_MULTIPART', endpoint,
-        body: body, file: file, fileFieldName: fileFieldName);
+    var request = http.MultipartRequest('POST', url);
+    request.headers.addAll(tokenHeaders);
+
+    fields.forEach((key, value) {
+      request.fields[key] = value;
+    });
+
+    if (file != null) {
+      request.files.add(
+        await http.MultipartFile.fromPath(
+          fileFieldName,
+          file.path,
+        ),
+      );
+    }
+
+    final streamedResponse = await request.send();
+    return await http.Response.fromStream(streamedResponse);
   }
+
 
   Future<http.Response> patch(String endpoint,
       {Map<String, String>? headers, Object? body}) async {
