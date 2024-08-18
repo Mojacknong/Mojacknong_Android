@@ -109,27 +109,28 @@ class MyVeggieService {
     }
   }
 
+
   Future<String> myVeggieDiaryAdd(
-    File file,
-    String content,
-    bool isOpen,
-    String state,
-    int myVeggieId,
-  ) async {
+      File file,
+      String content,
+      bool isOpen,
+      String state,
+      int myVeggieId,
+      ) async {
     const url = '/api/my-veggie/diary';
 
-    final myVeggieDiaryInsert = {
+    final jsonBody = jsonEncode({
       "content": content,
       "isOpen": isOpen,
       "state": state,
       "myVeggieId": myVeggieId,
-    };
+    });
 
     final response = await apiClient.postMultipart(
       url,
       'myVeggieDiaryInsert',
       'image',
-      jsonEncode(myVeggieDiaryInsert),
+      jsonBody,
       file,
     );
 

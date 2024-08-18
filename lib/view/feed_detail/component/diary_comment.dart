@@ -1,15 +1,15 @@
 import 'package:farmus/model/diary/diary_comment_model.dart';
+import 'package:farmus/view/feed_detail/component/feed_detail_comment.dart';
+import 'package:farmus/view/feed_detail/component/feed_detail_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 import '../../../view_model/diary/diary_comment_notifier.dart';
-import '../../vege_diary_detail/component/vege_diary_detail_comment.dart';
-import '../../vege_diary_detail/component/vege_diary_detail_icon.dart';
 
-class FeedComment extends ConsumerWidget {
-  const FeedComment({
+class DiaryComment extends ConsumerWidget {
+  const DiaryComment({
     super.key,
     required this.diaryId,
     required this.commentCount,
@@ -30,8 +30,8 @@ class FeedComment extends ConsumerWidget {
         diaryComments.when(
           data: (commentsData) => Column(
             children: [
-              VegeDiaryDetailIcon(
-                diaryId: diaryId,
+              FeedDetailIcon(
+                feedId: diaryId,
                 commentCount: commentsData.commentCount,
                 likeCount: commentsData.likeCount,
                 myLike: false,
@@ -71,7 +71,7 @@ class FeedComment extends ConsumerWidget {
                         DiaryCommentModel comment = entry.value;
                         return Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8.0),
-                          child: VegeDiaryDetailComment(
+                          child: FeedDetailComment(
                             profileImage: comment.profileImage,
                             nickname: comment.nickname,
                             date: comment.date,

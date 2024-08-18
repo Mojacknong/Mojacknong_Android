@@ -6,9 +6,9 @@ import 'package:flutter_svg/svg.dart';
 import '../theme/farmus_theme_color.dart';
 
 class CommentTextFormField extends ConsumerStatefulWidget {
-  const CommentTextFormField({super.key, required this.diaryId});
+  const CommentTextFormField({super.key, required this.feedId});
 
-  final int diaryId;
+  final int feedId;
 
   @override
   _CommentTextFormFieldState createState() => _CommentTextFormFieldState();
@@ -49,7 +49,7 @@ class _CommentTextFormFieldState extends ConsumerState<CommentTextFormField> {
               if (notifier.value!.isNotEmpty) {
                 ref
                     .read(diaryCommentAddNotifierProvider.notifier)
-                    .addDiaryComment(widget.diaryId);
+                    .addDiaryComment(widget.feedId);
                 _controller.clear();
               }
             },

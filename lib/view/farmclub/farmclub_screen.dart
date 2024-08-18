@@ -1,6 +1,6 @@
 import 'package:farmus/common/content_empty.dart';
 import 'package:farmus/model/diary/farmclub_open_diary_model.dart';
-import 'package:farmus/view/farmclub/component/farmclub_feed.dart';
+import 'package:farmus/common/farmus_feed.dart';
 import 'package:farmus/view_model/diary/farmclub_open_diary_notifier.dart';
 import 'package:farmus/view_model/home/home_provider.dart';
 import 'package:flutter/material.dart';
@@ -130,13 +130,13 @@ class FarmclubScreen extends ConsumerWidget {
                                 return diaries.isNotEmpty
                                     ? Column(
                                         children: diaries.map((diary) {
-                                          return FarmclubFeed(
-                                            diaryId: diary.diaryId,
+                                          return FarmusFeed(
+                                            feedId: diary.diaryId,
                                             nickname: diary.nickname,
                                             profileImage: diary.profileImage,
                                             writeDateTime: diary.writeDateTime,
                                             content: diary.diaryContent,
-                                            diaryImage: diary.diaryImage,
+                                            image: diary.diaryImage,
                                             commentCount: diary.commentCount,
                                             likeCount: diary.likeCount,
                                             myLike: diary.myLike,
