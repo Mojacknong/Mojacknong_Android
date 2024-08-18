@@ -29,12 +29,12 @@ class SearchFarmclubBarWidget extends StatelessWidget {
               color: FarmusThemeColor.gray2,
             ),
             backgroundColor:
-                MaterialStateProperty.all(FarmusThemeColor.gray7),
-            elevation: MaterialStateProperty.all(0),
+                const WidgetStatePropertyAll(FarmusThemeColor.gray7),
+            elevation: const WidgetStatePropertyAll(0),
             hintText: "팜클럽 이름, 채소",
             hintStyle:
-                MaterialStateProperty.all(FarmusThemeTextStyle.gray3Medium15),
-            padding: MaterialStateProperty.all(const EdgeInsets.symmetric(
+            const WidgetStatePropertyAll(FarmusThemeTextStyle.gray3Medium15),
+            padding: const WidgetStatePropertyAll( EdgeInsets.symmetric(
               horizontal: 16,
             )),
             controller: TextEditingController(text: searchText)
