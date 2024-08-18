@@ -128,7 +128,6 @@ class SearchFarmclubService {
     if (response.statusCode == 200) {
       final String decodedBody = utf8.decode(response.bodyBytes);
       final Map<String, dynamic> jsonResponse = jsonDecode(decodedBody);
-      print(decodedBody);
       return FarmclubSignupModel.fromJson(jsonResponse['data']);
     } else {
       throw Exception('Failed to post vege');

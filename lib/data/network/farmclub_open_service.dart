@@ -85,7 +85,6 @@ class FarmclubOpenService {
 
     final response = await apiClient.post(url, headers: headers, body: body);
     if (response.statusCode == 201) {
-      print(response);
       return utf8.decode(response.bodyBytes);
 
     } else {

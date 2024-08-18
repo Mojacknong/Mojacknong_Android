@@ -17,28 +17,24 @@ StateNotifierProvider.autoDispose<MyProfileNotifier, MyPageProfileModel>(
 
 @riverpod
 Future<MyPageInfoModel> myPageInfoModel(MyPageInfoModelRef ref) async {
-  try {
-    final response = await MyPageRepository.myInfo();
-    final json = convert.jsonDecode(response) as Map<String, dynamic>;
+  final response = await MyPageRepository.myInfo();
+  final json = convert.jsonDecode(response) as Map<String, dynamic>;
 
-    if (json['code'] == 200) {
-      final data = json['data'] as Map<String, dynamic>;
+  if (json['code'] == 200) {
+    final data = json['data'] as Map<String, dynamic>;
 
-      final nickName = data['nickName'];
-      final userImageUrl = data['userImageUrl'];
+    final nickName = data['nickName'];
+    final userImageUrl = data['userImageUrl'];
+    final dday = data['dday'];
 
-      final dday = data['dday'];
-
-      return MyPageInfoModel(
-        nickName: nickName,
-        userImageUrl: userImageUrl,
-        dday: dday,
-      );
-    } else {
-      throw Exception('Error: ${json['message'] ?? 'Unknown error'}');
-    }
-  } catch (e) {
-    print('Error fetching my page info: $e');
-    throw Exception('Failed to load my page info');
+    return MyPageInfoModel(
+      nickName: nickName,
+      userImageUrl: userImageUrl,
+      dday: dday,
+    );
+  } else {
+    throw Exception('Error: ${json['message'] ?? 'Unknown error'}');
   }
 }
+
+
