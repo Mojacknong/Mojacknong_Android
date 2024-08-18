@@ -9,6 +9,7 @@ class DiaryDataModel with _$DiaryDataModel {
     required List<DiaryCommentModel> diaryCommentContent,
     required int likeCount,
     required int commentCount,
+    required bool myLike,
   }) = _DiaryDataModel;
 
   factory DiaryDataModel.fromJson(Map<String, dynamic> json) =>
