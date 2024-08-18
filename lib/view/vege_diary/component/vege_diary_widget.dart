@@ -1,13 +1,15 @@
 import 'package:farmus/model/diary/my_veggie_diary.dart';
-import 'package:farmus/view/vege_diary_detail/vege_diary_detail_screen.dart';
+import 'package:farmus/view/feed_detail/feed_detail_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../common/farmus_picture_fix.dart';
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
+import '../../../view_model/my_page/my_page_info_provider.dart';
 
-class VegeDiaryWidget extends StatelessWidget {
+class VegeDiaryWidget extends ConsumerWidget {
   final MyVeggieDiary diary;
 
   const VegeDiaryWidget({
@@ -16,13 +18,26 @@ class VegeDiaryWidget extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final myInfo = ref.watch(myPageInfoModelProvider);
+
     return GestureDetector(
       onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const VegeDiaryDetailScreen(),
+            builder: (context) => FeedDetailScreen(
+              feedId: diary.diaryId,
+              nickname: myInfo.value!.nickName,
+              profileImage: myInfo.value!.userImageUrl,
+              writeDateTime: diary.date,
+              content: diary.content,
+              image: diary.image,
+              commentCount: diary.commentCount,
+              likeCount: diary.likeCount,
+              myLike: diary.myLike,
+              state: diary.state,
+            ),
           ),
         );
       },

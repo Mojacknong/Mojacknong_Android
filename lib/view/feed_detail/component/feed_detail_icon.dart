@@ -5,16 +5,16 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../common/theme/farmus_theme_text_style.dart';
 
-class VegeDiaryDetailIcon extends ConsumerWidget {
-  const VegeDiaryDetailIcon({
+class FeedDetailIcon extends ConsumerWidget {
+  const FeedDetailIcon({
     super.key,
-    required this.diaryId,
+    required this.feedId,
     required this.commentCount,
     required this.likeCount,
     required this.myLike,
   });
 
-  final int diaryId;
+  final int feedId;
   final int commentCount;
   final int likeCount;
   final bool myLike;
@@ -31,10 +31,10 @@ class VegeDiaryDetailIcon extends ConsumerWidget {
               myLike
                   ? ref
                       .read(diaryLikeNotifierProvider.notifier)
-                      .diaryLikeDelete(diaryId)
+                      .diaryLikeDelete(feedId)
                   : ref
                       .read(diaryLikeNotifierProvider.notifier)
-                      .diaryLike(diaryId);
+                      .diaryLike(feedId);
             },
             child: myLike
                 ? SvgPicture.asset('assets/image/ic_heart_true.svg')

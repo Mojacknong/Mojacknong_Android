@@ -5,8 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 
-class VegeDiaryDetailComment extends ConsumerWidget {
-  const VegeDiaryDetailComment({
+class FeedDetailComment extends ConsumerWidget {
+  const FeedDetailComment({
     super.key,
     this.profileImage,
     required this.nickname,
