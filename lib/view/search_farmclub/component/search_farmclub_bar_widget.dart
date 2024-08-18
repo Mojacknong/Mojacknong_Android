@@ -19,61 +19,58 @@ class SearchFarmclubBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 40),
-      child: Row(
-        children: [
-          Expanded(
-            child: SearchBar(
-              constraints: const BoxConstraints(minHeight: 42),
-              leading: const Icon(
-                Icons.search,
-                color: FarmusThemeColor.gray2,
+    return Row(
+      children: [
+        Expanded(
+          child: SearchBar(
+            constraints: const BoxConstraints(minHeight: 42),
+            leading: const Icon(
+              Icons.search,
+              color: FarmusThemeColor.gray2,
+            ),
+            backgroundColor:
+                MaterialStateProperty.all(FarmusThemeColor.gray7),
+            elevation: MaterialStateProperty.all(0),
+            hintText: "팜클럽 이름, 채소",
+            hintStyle:
+                MaterialStateProperty.all(FarmusThemeTextStyle.gray3Medium15),
+            padding: MaterialStateProperty.all(const EdgeInsets.symmetric(
+              horizontal: 16,
+            )),
+            controller: TextEditingController(text: searchText)
+              ..selection = TextSelection.fromPosition(
+                TextPosition(offset: searchText.length),
               ),
-              backgroundColor:
-                  MaterialStateProperty.all(FarmusThemeColor.gray7),
-              elevation: MaterialStateProperty.all(0),
-              hintText: "팜클럽 이름, 채소",
-              hintStyle:
-                  MaterialStateProperty.all(FarmusThemeTextStyle.gray3Medium15),
-              padding: MaterialStateProperty.all(const EdgeInsets.symmetric(
-                horizontal: 16,
-              )),
-              controller: TextEditingController(text: searchText)
-                ..selection = TextSelection.fromPosition(
-                  TextPosition(offset: searchText.length),
-                ),
-              onChanged: onChanged,
-              onSubmitted: (value) {
-                onSearchSubmitted(value);
-              },
-              trailing: searchText.isNotEmpty
-                  ? [
-                      GestureDetector(
-                        onTap: () {
-                          onClearSearch();
-                        },
-                        child: SvgPicture.asset(
-                            "assets/image/ic_textfield_delete.svg"),
-                      ),
-                    ]
-                  : null,
+            onChanged: onChanged,
+            onSubmitted: (value) {
+              onSearchSubmitted(value);
+            },
+            trailing: searchText.isNotEmpty
+                ? [
+                    GestureDetector(
+                      onTap: () {
+                        onClearSearch();
+                      },
+                      child: SvgPicture.asset(
+                          "assets/image/ic_textfield_delete.svg"),
+                    ),
+                  ]
+                : null,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 16.0),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: const Text(
+              '취소',
+              style: FarmusThemeTextStyle.gray1SemiBold15,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: const Text(
-                '취소',
-                style: FarmusThemeTextStyle.gray1SemiBold15,
-              ),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
