@@ -11,13 +11,13 @@ import '../theme/farmus_theme_color.dart';
 
 class WriteImagePicker extends ConsumerStatefulWidget {
   const WriteImagePicker({
-    Key? key,
+    super.key,
     this.nullChild,
     this.boxDecoration,
     this.imageProvider,
     required this.updateImage,
     required this.deleteImage,
-  }) : super(key: key);
+  });
 
   final Widget? nullChild;
   final BoxDecoration? boxDecoration;
@@ -55,6 +55,7 @@ class _PrimaryImagePickerState extends ConsumerState<WriteImagePicker> {
       children: [
         Container(
           width: double.infinity,
+          height: 200.0,
           decoration: boxDecoration ??
               BoxDecoration(
                 color: FarmusThemeColor.gray4,
@@ -62,9 +63,10 @@ class _PrimaryImagePickerState extends ConsumerState<WriteImagePicker> {
               ),
           child: (successImage == null)
               ? Padding(
-                  padding: const EdgeInsets.all(90.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: nullChild ??
                       const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
                             '사진',
@@ -79,6 +81,7 @@ class _PrimaryImagePickerState extends ConsumerState<WriteImagePicker> {
                     File(successImage!.path),
                     fit: BoxFit.cover,
                     width: double.infinity,
+                    height: double.infinity,
                   ),
                 ),
         ),
