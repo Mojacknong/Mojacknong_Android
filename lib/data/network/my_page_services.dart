@@ -9,11 +9,16 @@ class MyPageServices {
 
     ApiClient apiClient = ApiClient();
 
+    final jsonData = {
+      'nickname': nickname,
+    };
+
+
     final response = await apiClient.postMultipart(
         url,
         'nickname',
         'image',
-        nickname,
+        jsonData,
         file
     );
 

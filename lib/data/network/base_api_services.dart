@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
+import 'package:http_parser/http_parser.dart';
 
 import '../../main.dart';
 import '../../res/app_url/app_url.dart';
@@ -60,13 +61,11 @@ class ApiClient {
           break;
         case 'POST_MULTIPART':
           var request = http.MultipartRequest('POST', url);
-          request.headers.addAll(headers!);
+          request.headers.addAll(headers);
 
           if (body is Map<String, dynamic>) {
             body.forEach((key, value) {
-              if (value is String) {
-                request.fields[key] = value;
-              }
+              request.fields[key] = value;
             });
           }
 
@@ -160,15 +159,47 @@ class ApiClient {
     return _sendRequest('POST', endpoint, headers: headers, body: body);
   }
 
-  Future<http.Response> postMultipart(String endpoint, String stringFieldName,
-      String fileFieldName, String text, File file,
+  Future<http.Response> postMultipart(String endpoint, String jsonFieldName,
+      String fileFieldName, Map<String, dynamic> jsonData, File? file,
       {Map<String, String>? headers}) async {
-    Map<String, String> body = {
-      stringFieldName: text,
-    };
+    final url = Uri.parse('$baseUrl$endpoint');
+    var request = http.MultipartRequest('POST', url);
 
-    return _sendRequest('POST_MULTIPART', endpoint,
-        headers: headers, body: body, file: file, fileFieldName: fileFieldName);
+    headers = headers ?? {};
+    final authHeaders = await _getHeaders();
+    request.headers.addAll({...authHeaders, ...headers});
+
+    var jsonRequest = jsonEncode(jsonData[jsonFieldName]);
+
+    var jsonPart = http.MultipartFile.fromString(
+      jsonFieldName,
+      jsonRequest,
+      contentType: MediaType('application', 'json'),
+    );
+
+    if (file != null) {
+      try {
+        request.files.add(await http.MultipartFile.fromPath(
+          fileFieldName,
+          file.path,
+        ));
+      } catch (e) {
+        throw Exception('Error adding file: $e');
+      }
+    }
+
+    request.files.add(jsonPart);
+
+    request.headers['Content-Type'] = 'multipart/form-data';
+    final streamedResponse = await request.send();
+    final response = await http.Response.fromStream(streamedResponse);
+
+    if (response.statusCode >= 200 && response.statusCode < 300) {
+      return response;
+    } else {
+      throw Exception(
+          'Failed to perform POST request to $endpoint: ${response.statusCode} ${response.body}');
+    }
   }
 
   Future<http.Response> patch(String endpoint,
