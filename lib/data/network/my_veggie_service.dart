@@ -109,22 +109,23 @@ class MyVeggieService {
     }
   }
 
-
   Future<String> myVeggieDiaryAdd(
-      File file,
-      String content,
-      bool isOpen,
-      String state,
-      int myVeggieId,
-      ) async {
+    File file,
+    String content,
+    bool isOpen,
+    String state,
+    int myVeggieId,
+  ) async {
     const url = '/api/my-veggie/diary';
 
-    final jsonBody = jsonEncode({
-      "content": content,
-      "isOpen": isOpen,
-      "state": state,
-      "myVeggieId": myVeggieId,
-    });
+    final jsonBody = {
+      'myVeggieDiaryInsert': {
+        'content': content,
+        'isOpen': isOpen,
+        'state': state,
+        'myVeggieId': myVeggieId,
+      }
+    };
 
     final response = await apiClient.postMultipart(
       url,
@@ -227,6 +228,34 @@ class MyVeggieService {
       return utf8.decode(response.bodyBytes);
     } else {
       throw Exception('일기 좋아요 삭제 실패');
+    }
+  }
+
+  Future<String> diaryDelete(int diaryId, int myVeggieId) async {
+    const url = '/api/my-veggie/diary';
+    final body = jsonEncode({
+      'diaryId': diaryId,
+      'myVeggieId': myVeggieId,
+    });
+
+    final response = await apiClient.delete(url, body: body);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('일기 삭제 실패');
+    }
+  }
+
+  Future<String> diaryCheck(int myVeggieId) async {
+    final url = '/api/my-veggie/diary/$myVeggieId/check';
+
+    final response = await apiClient.get(url);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('일기 추가 여부 확인 실패');
     }
   }
 }

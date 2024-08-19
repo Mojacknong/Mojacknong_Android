@@ -49,8 +49,8 @@ class FeedProfile extends ConsumerWidget {
                         ? GestureDetector(
                             onTap: myComment
                                 ? () {
-                                    showDiaryCommentBottomSheet(
-                                        context, commentId);
+                                    showDeleteBottomSheet(
+                                        context, commentId, null, '댓글');
                                   }
                                 : () {
                                     showReportBottomSheet(

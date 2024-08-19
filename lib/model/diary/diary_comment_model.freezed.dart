@@ -24,6 +24,7 @@ mixin _$DiaryDataModel {
       throw _privateConstructorUsedError;
   int get likeCount => throw _privateConstructorUsedError;
   int get commentCount => throw _privateConstructorUsedError;
+  bool get myLike => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,7 +41,8 @@ abstract class $DiaryDataModelCopyWith<$Res> {
   $Res call(
       {List<DiaryCommentModel> diaryCommentContent,
       int likeCount,
-      int commentCount});
+      int commentCount,
+      bool myLike});
 }
 
 /// @nodoc
@@ -59,6 +61,7 @@ class _$DiaryDataModelCopyWithImpl<$Res, $Val extends DiaryDataModel>
     Object? diaryCommentContent = null,
     Object? likeCount = null,
     Object? commentCount = null,
+    Object? myLike = null,
   }) {
     return _then(_value.copyWith(
       diaryCommentContent: null == diaryCommentContent
@@ -73,6 +76,10 @@ class _$DiaryDataModelCopyWithImpl<$Res, $Val extends DiaryDataModel>
           ? _value.commentCount
           : commentCount // ignore: cast_nullable_to_non_nullable
               as int,
+      myLike: null == myLike
+          ? _value.myLike
+          : myLike // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -88,7 +95,8 @@ abstract class _$$DiaryDataModelImplCopyWith<$Res>
   $Res call(
       {List<DiaryCommentModel> diaryCommentContent,
       int likeCount,
-      int commentCount});
+      int commentCount,
+      bool myLike});
 }
 
 /// @nodoc
@@ -105,6 +113,7 @@ class __$$DiaryDataModelImplCopyWithImpl<$Res>
     Object? diaryCommentContent = null,
     Object? likeCount = null,
     Object? commentCount = null,
+    Object? myLike = null,
   }) {
     return _then(_$DiaryDataModelImpl(
       diaryCommentContent: null == diaryCommentContent
@@ -119,6 +128,10 @@ class __$$DiaryDataModelImplCopyWithImpl<$Res>
           ? _value.commentCount
           : commentCount // ignore: cast_nullable_to_non_nullable
               as int,
+      myLike: null == myLike
+          ? _value.myLike
+          : myLike // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -129,7 +142,8 @@ class _$DiaryDataModelImpl implements _DiaryDataModel {
   const _$DiaryDataModelImpl(
       {required final List<DiaryCommentModel> diaryCommentContent,
       required this.likeCount,
-      required this.commentCount})
+      required this.commentCount,
+      required this.myLike})
       : _diaryCommentContent = diaryCommentContent;
 
   factory _$DiaryDataModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -148,10 +162,12 @@ class _$DiaryDataModelImpl implements _DiaryDataModel {
   final int likeCount;
   @override
   final int commentCount;
+  @override
+  final bool myLike;
 
   @override
   String toString() {
-    return 'DiaryDataModel(diaryCommentContent: $diaryCommentContent, likeCount: $likeCount, commentCount: $commentCount)';
+    return 'DiaryDataModel(diaryCommentContent: $diaryCommentContent, likeCount: $likeCount, commentCount: $commentCount, myLike: $myLike)';
   }
 
   @override
@@ -164,7 +180,8 @@ class _$DiaryDataModelImpl implements _DiaryDataModel {
             (identical(other.likeCount, likeCount) ||
                 other.likeCount == likeCount) &&
             (identical(other.commentCount, commentCount) ||
-                other.commentCount == commentCount));
+                other.commentCount == commentCount) &&
+            (identical(other.myLike, myLike) || other.myLike == myLike));
   }
 
   @JsonKey(ignore: true)
@@ -173,7 +190,8 @@ class _$DiaryDataModelImpl implements _DiaryDataModel {
       runtimeType,
       const DeepCollectionEquality().hash(_diaryCommentContent),
       likeCount,
-      commentCount);
+      commentCount,
+      myLike);
 
   @JsonKey(ignore: true)
   @override
@@ -194,7 +212,8 @@ abstract class _DiaryDataModel implements DiaryDataModel {
   const factory _DiaryDataModel(
       {required final List<DiaryCommentModel> diaryCommentContent,
       required final int likeCount,
-      required final int commentCount}) = _$DiaryDataModelImpl;
+      required final int commentCount,
+      required final bool myLike}) = _$DiaryDataModelImpl;
 
   factory _DiaryDataModel.fromJson(Map<String, dynamic> json) =
       _$DiaryDataModelImpl.fromJson;
@@ -205,6 +224,8 @@ abstract class _DiaryDataModel implements DiaryDataModel {
   int get likeCount;
   @override
   int get commentCount;
+  @override
+  bool get myLike;
   @override
   @JsonKey(ignore: true)
   _$$DiaryDataModelImplCopyWith<_$DiaryDataModelImpl> get copyWith =>

@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../common/theme/farmus_theme_text_style.dart';
-import '../../../view_model/routine/routine_provider.dart';
+import '../../../view_model/home/home_provider.dart';
 
 class VegeDiaryWriteBottom extends ConsumerWidget {
   const VegeDiaryWriteBottom({super.key});
@@ -26,9 +26,9 @@ class VegeDiaryWriteBottom extends ConsumerWidget {
                 ),
               ),
               PrimarySwitch(
-                switchValue: ref.watch(routineCycleSwitchProvider),
+                switchValue: ref.watch(toggleSwitchProvider),
                 switchToggle: () {
-                  ref.read(routineCycleSwitchProvider.notifier).toggle();
+                  ref.read(toggleSwitchProvider.notifier).toggle();
                 },
               ),
             ],

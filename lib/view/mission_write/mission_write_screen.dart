@@ -61,13 +61,13 @@ class MissionWriteScreen extends ConsumerWidget {
                 horizontal: 48.0,
                 vertical: 16.0,
               ),
-              child: WriteImagePicker(
-                imageProvider: ref.watch(missionWriteProvider).image,
-                updateImage: (value) =>
-                    ref.read(missionWriteProvider.notifier).updateImage(value),
-                deleteImage: (value) =>
-                    ref.read(missionWriteProvider.notifier).deleteImage(),
-              ),
+              // child: WriteImagePicker(
+              //   imageProvider: ref.watch(missionWriteProvider).image,
+              //   updateImage: (value) =>
+              //       ref.read(missionWriteProvider.notifier).updateImage(value),
+              //   deleteImage: (value) =>
+              //       ref.read(missionWriteProvider.notifier).deleteImage(),
+              // ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),

@@ -13,6 +13,7 @@ _$DiaryDataModelImpl _$$DiaryDataModelImplFromJson(Map<String, dynamic> json) =>
           .toList(),
       likeCount: (json['likeCount'] as num).toInt(),
       commentCount: (json['commentCount'] as num).toInt(),
+      myLike: json['myLike'] as bool,
     );
 
 Map<String, dynamic> _$$DiaryDataModelImplToJson(
@@ -21,6 +22,7 @@ Map<String, dynamic> _$$DiaryDataModelImplToJson(
       'diaryCommentContent': instance.diaryCommentContent,
       'likeCount': instance.likeCount,
       'commentCount': instance.commentCount,
+      'myLike': instance.myLike,
     };
 
 _$DiaryCommentModelImpl _$$DiaryCommentModelImplFromJson(

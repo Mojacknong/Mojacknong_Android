@@ -1,6 +1,6 @@
-import 'package:farmus/data/network/my_veggie_service.dart';
+import 'dart:io';
 
-import '../model/home/diary_write_model.dart';
+import 'package:farmus/data/network/my_veggie_service.dart';
 
 class MyVeggieGardenRepository {
   static Future<String> myVeggieList() async {
@@ -43,9 +43,10 @@ class MyVeggieGardenRepository {
     return response;
   }
 
-  static Future<String> postDiary(DiaryWriteModel diary) async {
-    String response = await MyVeggieService().myVeggieDiaryAdd(
-        diary.file, diary.content, diary.isOpen, diary.state, diary.myVeggieId);
+  static Future<String> postDiary(File file, String content, bool isOpen,
+      String state, int myVeggieId) async {
+    String response = await MyVeggieService()
+        .myVeggieDiaryAdd(file, content, isOpen, state, myVeggieId);
     return response;
   }
 
@@ -78,6 +79,16 @@ class MyVeggieGardenRepository {
 
   static Future<String> diaryLikeDelete(int diaryId) async {
     String? response = await MyVeggieService().diaryLikeDelete(diaryId);
+    return response;
+  }
+
+  static Future<String> diaryDelete(int diaryId, int myVeggieId) async {
+    String? response = await MyVeggieService().diaryDelete(diaryId, myVeggieId);
+    return response;
+  }
+
+  static Future<String> diaryCheck(int myVeggieId) async {
+    String? response = await MyVeggieService().diaryCheck(myVeggieId);
     return response;
   }
 }

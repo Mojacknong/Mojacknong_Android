@@ -1,4 +1,4 @@
-import 'package:farmus/view_model/vege_diary_write/vege_diary_write_provider.dart';
+import 'package:farmus/view_model/diary/post_diary_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -11,8 +11,8 @@ class VegeDiaryWriteState extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var notifier = ref.read(vegeDiaryWriteProvider.notifier);
-    var vegeState = ref.watch(vegeDiaryWriteProvider).vegeState;
+    var notifier = ref.read(postDiaryNotifierProvider.notifier);
+    var vegeState = ref.watch(postDiaryNotifierProvider).value?.state;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

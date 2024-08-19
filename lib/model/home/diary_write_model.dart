@@ -1,27 +1,18 @@
-import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 
 class DiaryWriteModel {
-  final File file;
+  final XFile? file;
   final String content;
   final bool isOpen;
   final String state;
   final int myVeggieId;
+  final bool? isComplete;
 
-  DiaryWriteModel({
-    required this.file,
-    required this.content,
-    required this.isOpen,
-    required this.state,
-    required this.myVeggieId,
-  });
-
-  factory DiaryWriteModel.fromJson(Map<String, dynamic> json) {
-    return DiaryWriteModel(
-      file: json['file'] ?? '',
-      content: json['content'] ?? '',
-      isOpen: json['isOpen'] ?? false,
-      state: json['state'] ?? '',
-      myVeggieId: json['content'] ?? -1,
-    );
-  }
+  DiaryWriteModel(
+      {this.file,
+      required this.content,
+      required this.isOpen,
+      required this.state,
+      required this.myVeggieId,
+      this.isComplete});
 }
