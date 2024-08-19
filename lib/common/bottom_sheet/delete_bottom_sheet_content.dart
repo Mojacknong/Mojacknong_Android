@@ -7,11 +7,12 @@ import '../button/primary_color_button.dart';
 import '../button/white_color_button.dart';
 import '../theme/farmus_theme_text_style.dart';
 
-class DiaryCommentBottomSheetContent extends ConsumerWidget {
-  const DiaryCommentBottomSheetContent(
-      {super.key, required this.diaryCommentId});
+class DeleteBottomSheetContent extends ConsumerWidget {
+  const DeleteBottomSheetContent(
+      {super.key, required this.id, required this.type});
 
-  final int diaryCommentId;
+  final int id;
+  final String type;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -32,9 +33,9 @@ class DiaryCommentBottomSheetContent extends ConsumerWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Center(
+                          Center(
                             child: Text(
-                              '댓글을 삭제하시겠어요?',
+                              '$type을 삭제하시겠어요?',
                               style: FarmusThemeTextStyle.gray1Medium15,
                             ),
                           ),
@@ -60,7 +61,7 @@ class DiaryCommentBottomSheetContent extends ConsumerWidget {
                                     ref
                                         .read(diaryCommentDeleteNotifierProvider
                                             .notifier)
-                                        .diaryCommentDelete(diaryCommentId);
+                                        .diaryCommentDelete(id);
                                   },
                                   enabled: true,
                                 ),
