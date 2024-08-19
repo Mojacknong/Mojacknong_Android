@@ -1,6 +1,6 @@
-
-import 'package:farmus/model/search/farmclub_help_info_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../search/farmclub_help_info_model.dart';
 
 part 'farmclub_help_model.freezed.dart';
 part 'farmclub_help_model.g.dart';
@@ -8,13 +8,15 @@ part 'farmclub_help_model.g.dart';
 @freezed
 class FarmclubHelpModel with _$FarmclubHelpModel {
   const factory FarmclubHelpModel({
-    required FarmclubHelpInfoModel farmclubHelpInfoModel,
+    required String veggieName,
+    required String backgroundColor,
+    required FarmclubHelpInfoModel help,
     required List<HelpStep> steps,
   }) = _FarmclubHelpModel;
 
-  factory FarmclubHelpModel.fromJson(Map<String, dynamic> json) => _$FarmclubHelpModelFromJson(json);
+  factory FarmclubHelpModel.fromJson(Map<String, dynamic> json) =>
+      _$FarmclubHelpModelFromJson(json);
 }
-
 
 @freezed
 class HelpStep with _$HelpStep {
@@ -24,5 +26,6 @@ class HelpStep with _$HelpStep {
     required List<String> tips,
   }) = _HelpStep;
 
-  factory HelpStep.fromJson(Map<String, dynamic> json) => _$HelpStepFromJson(json);
+  factory HelpStep.fromJson(Map<String, dynamic> json) =>
+      _$HelpStepFromJson(json);
 }

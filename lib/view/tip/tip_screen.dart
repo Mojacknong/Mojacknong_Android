@@ -16,7 +16,7 @@ class TipScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedFarmclubId = ref.watch(selectedFarmclubIdProvider);
     final AsyncValue<FarmclubHelpModel> farmclubHelp =
-        ref.watch(farmclubHelpModelProvider(selectedFarmclubId));
+        ref.watch(farmclubHelpNotifierProvider(selectedFarmclubId));
 
     return Scaffold(
       appBar: const DeleteAppBar(
@@ -28,18 +28,18 @@ class TipScreen extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    '대파 키우기',
+                    '${helpModel.veggieName} 키우기',
                     style: FarmusThemeTextStyle.darkSemiBold21,
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: TipExpandCard(
-                    helpInfoModel: helpModel.farmclubHelpInfoModel,
+                    helpModel: helpModel,
+                    helpInfoModel: helpModel.help,
                   ),
                 ),
                 const SizedBox(
@@ -54,7 +54,7 @@ class TipScreen extends ConsumerWidget {
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: TipStepText(
-                        stepIndex: step.num + 1,
+                        stepIndex: step.num,
                         stepTitle: step.content,
                         detailStep: {
                           for (var i = 0; i < step.tips.length; i++)

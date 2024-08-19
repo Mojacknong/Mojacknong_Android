@@ -1,5 +1,4 @@
 import 'package:farmus/common/theme/farmus_theme_color.dart';
-import 'package:farmus/model/home/motivation_message_model.dart';
 import 'package:farmus/model/home/my_veggie_list_model.dart';
 import 'package:farmus/view/home/component/home_diary.dart';
 import 'package:farmus/view/home/component/home_farmclub_mission.dart';
@@ -10,7 +9,6 @@ import 'package:farmus/view/home/component/home_sub_title.dart';
 import 'package:farmus/view/home/component/none/home_none_container.dart';
 import 'package:farmus/view/routine/routine_screen.dart';
 import 'package:farmus/view/vege_diary/vege_diary_screen.dart';
-import 'package:farmus/view_model/home/notifier/motivation_message_notifier.dart';
 import 'package:farmus/view_model/my_vege/notifier/my_veggie_list.dart';
 import 'package:farmus/view_model/my_vege/notifier/my_veggie_profile_notifier.dart';
 import 'package:farmus/view_model/veggie_info/recommend_veggie_info_notifier.dart';
@@ -144,7 +142,7 @@ class HomeScreen extends ConsumerWidget {
         },
         error: (error, stack) =>
             Center(child: Text('Error: ${error.toString()}')),
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => Container(),
       ),
     );
   }

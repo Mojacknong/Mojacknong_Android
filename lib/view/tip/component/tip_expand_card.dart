@@ -3,12 +3,23 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
+import '../../../model/my_farmclub/farmclub_help_model.dart';
 import '../../../model/search/farmclub_help_info_model.dart';
 
 class TipExpandCard extends ConsumerWidget {
-  const TipExpandCard({super.key, required this.helpInfoModel});
+  const TipExpandCard(
+      {super.key, required this.helpModel, required this.helpInfoModel});
 
+  final FarmclubHelpModel helpModel;
   final FarmclubHelpInfoModel helpInfoModel;
+
+  Color _hexToColor(String hex) {
+    hex = hex.replaceFirst('#', '');
+    if (hex.length == 6) {
+      hex = 'FF$hex';
+    }
+    return Color(int.parse(hex, radix: 16));
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -26,7 +37,7 @@ class TipExpandCard extends ConsumerWidget {
             width: 40,
             height: 40,
             decoration: ShapeDecoration(
-              color: FarmusThemeColor.black,
+              color: _hexToColor(helpModel.backgroundColor),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
               ),

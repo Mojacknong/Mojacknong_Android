@@ -6,7 +6,8 @@ part of 'farmclub_help_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$farmclubHelpModelHash() => r'b4c534e4f8b82d714e42b7ef6ee34ccbbfbfeb19';
+String _$farmclubHelpNotifierHash() =>
+    r'faae7c7102d90b240d2d9180f6b67c2b5ab74c9d';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,27 +30,36 @@ class _SystemHash {
   }
 }
 
-/// See also [farmclubHelpModel].
-@ProviderFor(farmclubHelpModel)
-const farmclubHelpModelProvider = FarmclubHelpModelFamily();
+abstract class _$FarmclubHelpNotifier
+    extends BuildlessAutoDisposeAsyncNotifier<FarmclubHelpModel> {
+  late final int? farmclubId;
 
-/// See also [farmclubHelpModel].
-class FarmclubHelpModelFamily extends Family<AsyncValue<FarmclubHelpModel>> {
-  /// See also [farmclubHelpModel].
-  const FarmclubHelpModelFamily();
+  FutureOr<FarmclubHelpModel> build(
+    int? farmclubId,
+  );
+}
 
-  /// See also [farmclubHelpModel].
-  FarmclubHelpModelProvider call(
+/// See also [FarmclubHelpNotifier].
+@ProviderFor(FarmclubHelpNotifier)
+const farmclubHelpNotifierProvider = FarmclubHelpNotifierFamily();
+
+/// See also [FarmclubHelpNotifier].
+class FarmclubHelpNotifierFamily extends Family<AsyncValue<FarmclubHelpModel>> {
+  /// See also [FarmclubHelpNotifier].
+  const FarmclubHelpNotifierFamily();
+
+  /// See also [FarmclubHelpNotifier].
+  FarmclubHelpNotifierProvider call(
     int? farmclubId,
   ) {
-    return FarmclubHelpModelProvider(
+    return FarmclubHelpNotifierProvider(
       farmclubId,
     );
   }
 
   @override
-  FarmclubHelpModelProvider getProviderOverride(
-    covariant FarmclubHelpModelProvider provider,
+  FarmclubHelpNotifierProvider getProviderOverride(
+    covariant FarmclubHelpNotifierProvider provider,
   ) {
     return call(
       provider.farmclubId,
@@ -68,33 +78,30 @@ class FarmclubHelpModelFamily extends Family<AsyncValue<FarmclubHelpModel>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'farmclubHelpModelProvider';
+  String? get name => r'farmclubHelpNotifierProvider';
 }
 
-/// See also [farmclubHelpModel].
-class FarmclubHelpModelProvider
-    extends AutoDisposeFutureProvider<FarmclubHelpModel> {
-  /// See also [farmclubHelpModel].
-  FarmclubHelpModelProvider(
+/// See also [FarmclubHelpNotifier].
+class FarmclubHelpNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
+    FarmclubHelpNotifier, FarmclubHelpModel> {
+  /// See also [FarmclubHelpNotifier].
+  FarmclubHelpNotifierProvider(
     int? farmclubId,
   ) : this._internal(
-          (ref) => farmclubHelpModel(
-            ref as FarmclubHelpModelRef,
-            farmclubId,
-          ),
-          from: farmclubHelpModelProvider,
-          name: r'farmclubHelpModelProvider',
+          () => FarmclubHelpNotifier()..farmclubId = farmclubId,
+          from: farmclubHelpNotifierProvider,
+          name: r'farmclubHelpNotifierProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$farmclubHelpModelHash,
-          dependencies: FarmclubHelpModelFamily._dependencies,
+                  : _$farmclubHelpNotifierHash,
+          dependencies: FarmclubHelpNotifierFamily._dependencies,
           allTransitiveDependencies:
-              FarmclubHelpModelFamily._allTransitiveDependencies,
+              FarmclubHelpNotifierFamily._allTransitiveDependencies,
           farmclubId: farmclubId,
         );
 
-  FarmclubHelpModelProvider._internal(
+  FarmclubHelpNotifierProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -107,13 +114,20 @@ class FarmclubHelpModelProvider
   final int? farmclubId;
 
   @override
-  Override overrideWith(
-    FutureOr<FarmclubHelpModel> Function(FarmclubHelpModelRef provider) create,
+  FutureOr<FarmclubHelpModel> runNotifierBuild(
+    covariant FarmclubHelpNotifier notifier,
   ) {
+    return notifier.build(
+      farmclubId,
+    );
+  }
+
+  @override
+  Override overrideWith(FarmclubHelpNotifier Function() create) {
     return ProviderOverride(
       origin: this,
-      override: FarmclubHelpModelProvider._internal(
-        (ref) => create(ref as FarmclubHelpModelRef),
+      override: FarmclubHelpNotifierProvider._internal(
+        () => create()..farmclubId = farmclubId,
         from: from,
         name: null,
         dependencies: null,
@@ -125,13 +139,15 @@ class FarmclubHelpModelProvider
   }
 
   @override
-  AutoDisposeFutureProviderElement<FarmclubHelpModel> createElement() {
-    return _FarmclubHelpModelProviderElement(this);
+  AutoDisposeAsyncNotifierProviderElement<FarmclubHelpNotifier,
+      FarmclubHelpModel> createElement() {
+    return _FarmclubHelpNotifierProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is FarmclubHelpModelProvider && other.farmclubId == farmclubId;
+    return other is FarmclubHelpNotifierProvider &&
+        other.farmclubId == farmclubId;
   }
 
   @override
@@ -143,18 +159,19 @@ class FarmclubHelpModelProvider
   }
 }
 
-mixin FarmclubHelpModelRef on AutoDisposeFutureProviderRef<FarmclubHelpModel> {
+mixin FarmclubHelpNotifierRef
+    on AutoDisposeAsyncNotifierProviderRef<FarmclubHelpModel> {
   /// The parameter `farmclubId` of this provider.
   int? get farmclubId;
 }
 
-class _FarmclubHelpModelProviderElement
-    extends AutoDisposeFutureProviderElement<FarmclubHelpModel>
-    with FarmclubHelpModelRef {
-  _FarmclubHelpModelProviderElement(super.provider);
+class _FarmclubHelpNotifierProviderElement
+    extends AutoDisposeAsyncNotifierProviderElement<FarmclubHelpNotifier,
+        FarmclubHelpModel> with FarmclubHelpNotifierRef {
+  _FarmclubHelpNotifierProviderElement(super.provider);
 
   @override
-  int? get farmclubId => (origin as FarmclubHelpModelProvider).farmclubId;
+  int? get farmclubId => (origin as FarmclubHelpNotifierProvider).farmclubId;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

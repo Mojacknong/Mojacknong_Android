@@ -34,21 +34,21 @@ class FarmclubStepTip extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                SvgPicture.asset(
-                  'assets/image/ic_farmclub_mark.svg',
-                ),
-                const SizedBox(
-                  width: 8,
-                ),
-                const Text(
-                  '도움말',
-                  style: FarmusThemeTextStyle.gray2SemiBold13,
-                ),
-                GestureDetector(
-                  onTap: () {},
-                  child: SvgPicture.asset(
+            GestureDetector(
+              onTap: () {},
+              child: Row(
+                children: [
+                  SvgPicture.asset(
+                    'assets/image/ic_farmclub_mark.svg',
+                  ),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  const Text(
+                    '도움말',
+                    style: FarmusThemeTextStyle.gray2SemiBold13,
+                  ),
+                  SvgPicture.asset(
                     'assets/image/ic_right.svg',
                     width: 19,
                     height: 19,
@@ -57,8 +57,8 @@ class FarmclubStepTip extends ConsumerWidget {
                       BlendMode.srcIn,
                     ),
                   ),
-                )
-              ],
+                ],
+              ),
             ),
             const SizedBox(
               height: 8,
