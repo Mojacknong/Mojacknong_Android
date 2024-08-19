@@ -157,14 +157,14 @@ void showVeggieDeleteBottomSheet(BuildContext context) {
 }
 
 void showDeleteBottomSheet(
-    BuildContext context, int diaryCommentId, String type) {
+    BuildContext context, int id, int? myVeggieId, String type) {
   showModalBottomSheet<void>(
     context: context,
     isScrollControlled: true,
     backgroundColor: FarmusThemeColor.white,
     builder: (BuildContext context) {
       return DeleteBottomSheetContent(
-          id: diaryCommentId, type: type);
+          id: id, myVeggieId: myVeggieId, type: type);
     },
   );
 }

@@ -50,7 +50,7 @@ class FeedProfile extends ConsumerWidget {
                             onTap: myComment
                                 ? () {
                                     showDeleteBottomSheet(
-                                        context, commentId, '댓글');
+                                        context, commentId, null, '댓글');
                                   }
                                 : () {
                                     showReportBottomSheet(
