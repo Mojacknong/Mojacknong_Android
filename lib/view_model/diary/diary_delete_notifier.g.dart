@@ -1,26 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'post_diary_notifier.dart';
+part of 'diary_delete_notifier.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$postDiaryNotifierHash() => r'7eb7ea479f491418e7f74688f25f78eaa1998d93';
+String _$diaryDeleteNotifierHash() =>
+    r'333a4dde7beda579eddd3e6797c42c988ff4db13';
 
-/// See also [PostDiaryNotifier].
-@ProviderFor(PostDiaryNotifier)
-final postDiaryNotifierProvider = AutoDisposeAsyncNotifierProvider<
-    PostDiaryNotifier, DiaryWriteModel>.internal(
-  PostDiaryNotifier.new,
-  name: r'postDiaryNotifierProvider',
+/// See also [DiaryDeleteNotifier].
+@ProviderFor(DiaryDeleteNotifier)
+final diaryDeleteNotifierProvider =
+    AutoDisposeAsyncNotifierProvider<DiaryDeleteNotifier, void>.internal(
+  DiaryDeleteNotifier.new,
+  name: r'diaryDeleteNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$postDiaryNotifierHash,
+      : _$diaryDeleteNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$PostDiaryNotifier = AutoDisposeAsyncNotifier<DiaryWriteModel>;
+typedef _$DiaryDeleteNotifier = AutoDisposeAsyncNotifier<void>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

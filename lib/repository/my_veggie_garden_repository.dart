@@ -81,4 +81,9 @@ class MyVeggieGardenRepository {
     String? response = await MyVeggieService().diaryLikeDelete(diaryId);
     return response;
   }
+
+  static Future<String> diaryDelete(int diaryId, int myVeggieId) async {
+    String? response = await MyVeggieService().diaryDelete(diaryId, myVeggieId);
+    return response;
+  }
 }
