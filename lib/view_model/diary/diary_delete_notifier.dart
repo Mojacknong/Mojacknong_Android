@@ -1,4 +1,5 @@
 import 'package:farmus/repository/my_veggie_garden_repository.dart';
+import 'package:farmus/view_model/diary/diary_check_notifier.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../home/notifier/veggie_diary_one_notifier.dart';
@@ -19,6 +20,7 @@ class DiaryDeleteNotifier extends _$DiaryDeleteNotifier {
     ref.invalidate(farmclubOpenDiaryModelProvider);
     ref.invalidate(myVeggieDiaryNotifierProvider);
     ref.invalidate(veggieDiaryOneModelProvider);
+    ref.invalidate(diaryCheckModelProvider);
     ref.invalidateSelf();
   }
 }

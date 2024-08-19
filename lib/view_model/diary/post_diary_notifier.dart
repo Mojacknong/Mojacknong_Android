@@ -8,6 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../home/notifier/veggie_diary_one_notifier.dart';
+import 'diary_check_notifier.dart';
 
 part 'post_diary_notifier.g.dart';
 
@@ -111,6 +112,7 @@ class PostDiaryNotifier extends _$PostDiaryNotifier {
     ref.invalidate(farmclubOpenDiaryModelProvider);
     ref.invalidate(myVeggieDiaryNotifierProvider);
     ref.invalidate(veggieDiaryOneModelProvider);
+    ref.invalidate(diaryCheckModelProvider);
     ref.invalidateSelf();
   }
 }

@@ -246,4 +246,16 @@ class MyVeggieService {
       throw Exception('일기 삭제 실패');
     }
   }
+
+  Future<String> diaryCheck(int myVeggieId) async {
+    final url = '/api/my-veggie/diary/$myVeggieId/check';
+
+    final response = await apiClient.get(url);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('일기 추가 여부 확인 실패');
+    }
+  }
 }
