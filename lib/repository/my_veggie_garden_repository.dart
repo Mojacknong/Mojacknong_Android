@@ -86,4 +86,9 @@ class MyVeggieGardenRepository {
     String? response = await MyVeggieService().diaryDelete(diaryId, myVeggieId);
     return response;
   }
+
+  static Future<String> diaryCheck(int myVeggieId) async {
+    String? response = await MyVeggieService().diaryCheck(myVeggieId);
+    return response;
+  }
 }
