@@ -1,4 +1,4 @@
-import 'package:farmus/common/bottom_sheet/diary_comment_bottom_sheet_content.dart';
+import 'package:farmus/common/bottom_sheet/delete_bottom_sheet_content.dart';
 import 'package:farmus/common/bottom_sheet/report_bottom_sheet.dart';
 import 'package:farmus/common/dialog/check_dialog.dart';
 import 'package:farmus/view/farmclub_open/component/farmclub_open_bottom_sheet_content.dart';
@@ -156,15 +156,15 @@ void showVeggieDeleteBottomSheet(BuildContext context) {
   );
 }
 
-void showDiaryCommentBottomSheet(BuildContext context, int diaryCommentId) {
+void showDeleteBottomSheet(
+    BuildContext context, int diaryCommentId, String type) {
   showModalBottomSheet<void>(
     context: context,
     isScrollControlled: true,
     backgroundColor: FarmusThemeColor.white,
     builder: (BuildContext context) {
-      return DiaryCommentBottomSheetContent(
-        diaryCommentId: diaryCommentId,
-      );
+      return DeleteBottomSheetContent(
+          id: diaryCommentId, type: type);
     },
   );
 }

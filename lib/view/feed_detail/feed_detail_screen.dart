@@ -3,7 +3,9 @@ import 'package:farmus/common/form/comment_text_form_field.dart';
 import 'package:farmus/view/farmclub/component/feed_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 
+import '../../common/bottom_sheet/show_farmus_bottom_sheet.dart';
 import '../../common/theme/farmus_theme_color.dart';
 import '../../common/theme/farmus_theme_text_style.dart';
 import 'component/diary_comment.dart';
@@ -38,7 +40,16 @@ class FeedDetailScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: const BackLeftTitleAppBar(),
+      appBar: BackLeftTitleAppBar(
+        actions: [
+          IconButton(
+            onPressed: () {
+              showDeleteBottomSheet(context, 1, '게시물');
+            },
+            icon: SvgPicture.asset('assets/image/ic_more_vertical.svg'),
+          )
+        ],
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
