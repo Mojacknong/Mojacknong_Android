@@ -6,7 +6,7 @@ part of 'diary_check_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$diaryCheckModelHash() => r'1888427bb7073772cf84302832bbaced16b42de0';
+String _$diaryCheckModelHash() => r'9da9a7fa5856562b560cbcb8e654fe5ec3cb90e4';
 
 /// Copied from Dart SDK
 class _SystemHash {

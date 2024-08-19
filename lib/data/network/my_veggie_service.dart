@@ -258,4 +258,16 @@ class MyVeggieService {
       throw Exception('일기 추가 여부 확인 실패');
     }
   }
+
+  Future<String> motivationMessage() async {
+    const url = '/api/user/on-boarding/encouragement-message';
+
+    final response = await apiClient.get(url);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('응원말 조회 실패');
+    }
+  }
 }

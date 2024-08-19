@@ -1,7 +1,11 @@
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomeMotivation extends StatelessWidget {
+import '../../../model/home/motivation_message_model.dart';
+import '../../../view_model/home/notifier/motivation_message_notifier.dart';
+
+class HomeMotivation extends ConsumerWidget {
   final String motivation;
 
   const HomeMotivation({
@@ -10,24 +14,42 @@ class HomeMotivation extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final AsyncValue<MotivationMessageModel> motivation =
+        ref.watch(motivationMessageProvider);
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16.0),
-      child: Stack(
-        alignment: Alignment.centerLeft,
+      child: Column(
         children: [
-          Center(
-            child: Image.asset(
-              "assets/image/img_home_motivation.png",
-              fit: BoxFit.fill,
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+            decoration: ShapeDecoration(
+              color: const Color(0xFFE0F490),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(24),
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-              left: 23.0,
-              right: 64.0,
+            child: motivation.when(
+              data: (data) {
+                return const Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        '텃밭에서 식탁까지 팜어스와 늘 함께해요!텃밭에서 식탁까지 팜어스와 늘 함께해요!',
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: FarmusThemeTextStyle.darkMedium13,
+                      ),
+                    ),
+                  ],
+                );
+              },
+              loading: () => const CircularProgressIndicator(),
+              error: (error, stack) => Text('Error: $error'),
             ),
-            child: Text(motivation, style: FarmusThemeTextStyle.darkMedium15,),
           ),
         ],
       ),

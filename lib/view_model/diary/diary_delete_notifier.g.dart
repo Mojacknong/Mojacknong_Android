@@ -7,7 +7,7 @@ part of 'diary_delete_notifier.dart';
 // **************************************************************************
 
 String _$diaryDeleteNotifierHash() =>
-    r'86fa0fc71515856a8663818feb01b0637ca8d74b';
+    r'215e38882802ac6c57c482bad4eb559c51fbcbb8';
 
 /// See also [DiaryDeleteNotifier].
 @ProviderFor(DiaryDeleteNotifier)

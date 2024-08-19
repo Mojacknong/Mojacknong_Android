@@ -91,4 +91,9 @@ class MyVeggieGardenRepository {
     String? response = await MyVeggieService().diaryCheck(myVeggieId);
     return response;
   }
+
+  static Future<String> motivationMessage() async {
+    String? response = await MyVeggieService().motivationMessage();
+    return response;
+  }
 }

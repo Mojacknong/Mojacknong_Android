@@ -1,26 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'post_diary_notifier.dart';
+part of 'motivation_message_notifier.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$postDiaryNotifierHash() => r'0472e339abf8f4cd7516eb26571c7be396b5884a';
+String _$motivationMessageHash() => r'f9f5851033b8772f0c1a590b4c41d93bcaca6235';
 
-/// See also [PostDiaryNotifier].
-@ProviderFor(PostDiaryNotifier)
-final postDiaryNotifierProvider = AutoDisposeAsyncNotifierProvider<
-    PostDiaryNotifier, DiaryWriteModel>.internal(
-  PostDiaryNotifier.new,
-  name: r'postDiaryNotifierProvider',
+/// See also [motivationMessage].
+@ProviderFor(motivationMessage)
+final motivationMessageProvider =
+    AutoDisposeFutureProvider<MotivationMessageModel>.internal(
+  motivationMessage,
+  name: r'motivationMessageProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$postDiaryNotifierHash,
+      : _$motivationMessageHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$PostDiaryNotifier = AutoDisposeAsyncNotifier<DiaryWriteModel>;
+typedef MotivationMessageRef
+    = AutoDisposeFutureProviderRef<MotivationMessageModel>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
