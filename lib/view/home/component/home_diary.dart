@@ -43,33 +43,40 @@ class HomeDiary extends ConsumerWidget {
                     builder: (context) => const VegeDiaryScreen()),
               );
             },
-            child: Row(
+            child: Column(
               children: [
-                FarmusPictureFix(
-                  size: 64,
-                  image: diary.image,
-                ),
                 const SizedBox(
-                  width: 16,
+                  height: 12,
                 ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        diary.date!,
-                        style: FarmusThemeTextStyle.gray1Medium13,
+                Row(
+                  children: [
+                    FarmusPictureFix(
+                      size: 64,
+                      image: diary.image,
+                    ),
+                    const SizedBox(
+                      width: 16,
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            diary.date!,
+                            style: FarmusThemeTextStyle.gray1Medium13,
+                          ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          Text(
+                            diary.content!,
+                            style: FarmusThemeTextStyle.darkMedium15,
+                          ),
+                        ],
                       ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                        diary.content!,
-                        style: FarmusThemeTextStyle.darkMedium15,
-                      ),
-                    ],
-                  ),
-                )
+                    )
+                  ],
+                ),
               ],
             ),
           );

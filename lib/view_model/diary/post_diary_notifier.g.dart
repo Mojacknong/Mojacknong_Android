@@ -6,7 +6,7 @@ part of 'post_diary_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$postDiaryNotifierHash() => r'8dabf86df610bbfbca09278816f2729062cc9380';
+String _$postDiaryNotifierHash() => r'6d7d3eefbeb46f3180ebabd2b3c516bb722861e8';
 
 /// See also [PostDiaryNotifier].
 @ProviderFor(PostDiaryNotifier)
