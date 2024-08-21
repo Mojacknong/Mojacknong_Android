@@ -61,6 +61,7 @@ class MyFarmclubService {
       throw Exception(errorMessage);
     }
   }
+
   Future<String> myMissionComplete(
       File file,
       String content,
@@ -86,7 +87,7 @@ class MyFarmclubService {
     if (response.statusCode == 200) {
       return utf8.decode(response.bodyBytes);
     } else {
-      throw Exception('일기 추가 실패');
+      throw Exception('미션 완료 실패');
     }
   }
 }
