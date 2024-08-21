@@ -28,7 +28,7 @@ class SearchWelcomeText extends ConsumerWidget {
               ),
               const SizedBox(height: 8),
               const Text(
-                '홈파밍 초보도 도전할 수 있는 채소예요.',
+                '홈파밍 이유와 경험을 고려해 추천해드려요!',
                 style: FarmusThemeTextStyle.gray2Medium15,
               ),
             ],
