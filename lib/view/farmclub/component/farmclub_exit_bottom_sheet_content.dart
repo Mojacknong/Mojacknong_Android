@@ -1,18 +1,14 @@
 import 'package:farmus/common/button/primary_color_button.dart';
-import 'package:farmus/common/button/select_box_basic_content.dart';
 import 'package:farmus/common/button/white_color_button.dart';
-import 'package:farmus/common/select_box.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
-
-import '../../../model/my_farmclub/my_farmclub_info_model.dart';
 
 class FarmclubExitBottomSheetContent extends ConsumerWidget {
   final String farmClubName;
-  const FarmclubExitBottomSheetContent({super.key,  required this.farmClubName});
+
+  const FarmclubExitBottomSheetContent({super.key, required this.farmClubName});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -41,8 +37,8 @@ class FarmclubExitBottomSheetContent extends ConsumerWidget {
                           const SizedBox(
                             height: 8.0,
                           ),
-                           Text(
-                             farmClubName,
+                          Text(
+                            farmClubName,
                             style: FarmusThemeTextStyle.gray1Medium13,
                           ),
                           const SizedBox(
