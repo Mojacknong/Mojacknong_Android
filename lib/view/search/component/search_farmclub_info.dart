@@ -5,6 +5,7 @@ import 'package:farmus/view_model/search/search_detail_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../common/content_empty.dart';
 import 'search_farmclub_info_widget.dart';
 
 class SearchFarmclubInfo extends ConsumerWidget {
@@ -28,7 +29,7 @@ class SearchFarmclubInfo extends ConsumerWidget {
 
     return farmclubs.when(
       data: (data) {
-        if (data != null && data.isNotEmpty) {
+        if (data != null && data!.isNotEmpty) {
           final filteredData = data.where((farmclub) {
             return difficultiesToFilter.contains(farmclub.difficulty);
           }).toList();
@@ -78,11 +79,22 @@ class SearchFarmclubInfo extends ConsumerWidget {
               },
             );
           } else {
-            return const Center(
-                child: Text('No farmclubs match the selected difficulties.'));
+            return const Center(child: SizedBox(
+              width: double.infinity,
+              child: ContentEmpty(
+                text: '개설된 팜클럽이 없어요',
+                padding: 60.0,
+              ),
+            ),);
           }
         } else {
-          return const Center(child: Text('No farmclubs found'));
+          return const Center(child: SizedBox(
+            width: double.infinity,
+            child: ContentEmpty(
+              text: '개설된 팜클럽이 없어요',
+              padding: 60.0,
+            ),
+          ),);
         }
       },
       loading: () => const Center(
