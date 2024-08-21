@@ -14,7 +14,6 @@ class SearchFarmclubBackground extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 100.0),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SvgPicture.asset(
             imageUrl,
