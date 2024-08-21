@@ -8,8 +8,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../model/my_farmclub/my_farmclub_info_model.dart';
+
 class FarmclubExitBottomSheetContent extends ConsumerWidget {
-  const FarmclubExitBottomSheetContent({super.key});
+  final String farmClubName;
+  const FarmclubExitBottomSheetContent({super.key,  required this.farmClubName});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -17,7 +20,7 @@ class FarmclubExitBottomSheetContent extends ConsumerWidget {
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: SizedBox(
-        height: MediaQuery.of(context).size.height * 0.5,
+        height: MediaQuery.of(context).size.height * 0.4,
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -38,50 +41,19 @@ class FarmclubExitBottomSheetContent extends ConsumerWidget {
                           const SizedBox(
                             height: 8.0,
                           ),
-                          const Text(
-                            '상추는현실이되다',
+                           Text(
+                             farmClubName,
                             style: FarmusThemeTextStyle.gray1Medium13,
                           ),
                           const SizedBox(
                             height: 24.0,
                           ),
-                          SelectBox(
-                            selectBox: () {},
-                            enabled: false,
-                            selectBoxContent: const SelectBoxBasicContent(
-                              text: '채소를 더 이상 키우지 않아요',
-                            ),
+                          const Text(
+                            '팜클럽을 나가면 \n지금까지의 팜클럽 기록이 모두 사라져요\n정말로 나가시겠어요?',
+                            style: FarmusThemeTextStyle.darkMedium15,
                           ),
                           const SizedBox(
-                            height: 16.0,
-                          ),
-                          SelectBox(
-                            selectBox: () {},
-                            enabled: false,
-                            selectBoxContent: const SelectBoxBasicContent(
-                              text: '채소는 계속 키우지만 팜클럽은 나갈래요',
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 16.0,
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SvgPicture.asset(
-                                  'assets/image/ic_alert_circle.svg'),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              const Text(
-                                "지금까지의 팜클럽 기록이 모두 사라져요",
-                                style: FarmusThemeTextStyle.redMedium13,
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 16.0,
+                            height: 24.0,
                           ),
                           Row(
                             children: [

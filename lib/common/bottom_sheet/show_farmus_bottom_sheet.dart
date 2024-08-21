@@ -9,6 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../model/my_farmclub/my_farmclub_info_model.dart';
 import '../../view/farmclub/component/farmclub_change_bottom_sheet_content.dart';
 import '../../view/farmclub/component/farmclub_exit_bottom_sheet_content.dart';
 import '../../view/main/main_screen.dart';
@@ -117,16 +118,18 @@ void showQuitActionSheet(BuildContext context) {
       });
 }
 
-void showFarmclubExitBottomSheet(BuildContext context) {
+void showFarmclubExitBottomSheet(BuildContext context, String farmClubName) {
   showModalBottomSheet<void>(
     context: context,
     isScrollControlled: true,
     backgroundColor: FarmusThemeColor.white,
     builder: (BuildContext context) {
-      return const FarmclubExitBottomSheetContent();
+      return FarmclubExitBottomSheetContent(farmClubName:farmClubName);
     },
   );
 }
+
+
 
 void showFarmclubChangeBottomSheet(BuildContext context) {
   showModalBottomSheet<void>(
