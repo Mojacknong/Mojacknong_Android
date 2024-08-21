@@ -61,4 +61,32 @@ class MyFarmclubService {
       throw Exception(errorMessage);
     }
   }
+  Future<String> myMissionComplete(
+      File file,
+      String content,
+      int farmClubId,
+      ) async {
+    const url = '/api/farm-club/mission';
+
+    final jsonBody = {
+      'requestDto': {
+        "farmClubId": farmClubId,
+        'content': content,
+      }
+    };
+
+    final response = await apiClient.postMultipart(
+      url,
+      'requestDto',
+      'image',
+      jsonBody,
+      file,
+    );
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('일기 추가 실패');
+    }
+  }
 }
