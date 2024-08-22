@@ -5,6 +5,7 @@ import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 import '../../../model/my_farmclub/farmclub_help_model.dart';
 import '../../../model/search/farmclub_help_info_model.dart';
+import '../../my_farmclub/component/farmclub_widget_pic.dart';
 
 class TipExpandCard extends ConsumerWidget {
   const TipExpandCard(
@@ -12,14 +13,6 @@ class TipExpandCard extends ConsumerWidget {
 
   final FarmclubHelpModel helpModel;
   final FarmclubHelpInfoModel helpInfoModel;
-
-  Color _hexToColor(String hex) {
-    hex = hex.replaceFirst('#', '');
-    if (hex.length == 6) {
-      hex = 'FF$hex';
-    }
-    return Color(int.parse(hex, radix: 16));
-  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -33,15 +26,10 @@ class TipExpandCard extends ConsumerWidget {
       child: Theme(
         data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
         child: ExpansionTile(
-          leading: Container(
-            width: 40,
-            height: 40,
-            decoration: ShapeDecoration(
-              color: _hexToColor(helpModel.backgroundColor),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
-              ),
-            ),
+          leading: FarmclubWidgetPic(
+            size: 40,
+            imageUrl: helpModel.veggieImage,
+            backgroundColor: Color(int.parse(helpModel.backgroundColor)),
           ),
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

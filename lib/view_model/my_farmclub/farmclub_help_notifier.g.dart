@@ -7,7 +7,7 @@ part of 'farmclub_help_notifier.dart';
 // **************************************************************************
 
 String _$farmclubHelpNotifierHash() =>
-    r'faae7c7102d90b240d2d9180f6b67c2b5ab74c9d';
+    r'b52fe335de895d348e14c20548e271e7a05ed2dc';
 
 /// Copied from Dart SDK
 class _SystemHash {

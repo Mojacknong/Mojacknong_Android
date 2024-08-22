@@ -9,6 +9,7 @@ part 'farmclub_help_model.g.dart';
 class FarmclubHelpModel with _$FarmclubHelpModel {
   const factory FarmclubHelpModel({
     required String veggieName,
+    required String veggieImage,
     required String backgroundColor,
     required FarmclubHelpInfoModel help,
     required List<HelpStep> steps,

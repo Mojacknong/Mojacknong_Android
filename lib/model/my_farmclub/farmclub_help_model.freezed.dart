@@ -21,6 +21,7 @@ FarmclubHelpModel _$FarmclubHelpModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FarmclubHelpModel {
   String get veggieName => throw _privateConstructorUsedError;
+  String get veggieImage => throw _privateConstructorUsedError;
   String get backgroundColor => throw _privateConstructorUsedError;
   FarmclubHelpInfoModel get help => throw _privateConstructorUsedError;
   List<HelpStep> get steps => throw _privateConstructorUsedError;
@@ -39,6 +40,7 @@ abstract class $FarmclubHelpModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String veggieName,
+      String veggieImage,
       String backgroundColor,
       FarmclubHelpInfoModel help,
       List<HelpStep> steps});
@@ -60,6 +62,7 @@ class _$FarmclubHelpModelCopyWithImpl<$Res, $Val extends FarmclubHelpModel>
   @override
   $Res call({
     Object? veggieName = null,
+    Object? veggieImage = null,
     Object? backgroundColor = null,
     Object? help = null,
     Object? steps = null,
@@ -68,6 +71,10 @@ class _$FarmclubHelpModelCopyWithImpl<$Res, $Val extends FarmclubHelpModel>
       veggieName: null == veggieName
           ? _value.veggieName
           : veggieName // ignore: cast_nullable_to_non_nullable
+              as String,
+      veggieImage: null == veggieImage
+          ? _value.veggieImage
+          : veggieImage // ignore: cast_nullable_to_non_nullable
               as String,
       backgroundColor: null == backgroundColor
           ? _value.backgroundColor
@@ -103,6 +110,7 @@ abstract class _$$FarmclubHelpModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {String veggieName,
+      String veggieImage,
       String backgroundColor,
       FarmclubHelpInfoModel help,
       List<HelpStep> steps});
@@ -123,6 +131,7 @@ class __$$FarmclubHelpModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? veggieName = null,
+    Object? veggieImage = null,
     Object? backgroundColor = null,
     Object? help = null,
     Object? steps = null,
@@ -131,6 +140,10 @@ class __$$FarmclubHelpModelImplCopyWithImpl<$Res>
       veggieName: null == veggieName
           ? _value.veggieName
           : veggieName // ignore: cast_nullable_to_non_nullable
+              as String,
+      veggieImage: null == veggieImage
+          ? _value.veggieImage
+          : veggieImage // ignore: cast_nullable_to_non_nullable
               as String,
       backgroundColor: null == backgroundColor
           ? _value.backgroundColor
@@ -153,6 +166,7 @@ class __$$FarmclubHelpModelImplCopyWithImpl<$Res>
 class _$FarmclubHelpModelImpl implements _FarmclubHelpModel {
   const _$FarmclubHelpModelImpl(
       {required this.veggieName,
+      required this.veggieImage,
       required this.backgroundColor,
       required this.help,
       required final List<HelpStep> steps})
@@ -163,6 +177,8 @@ class _$FarmclubHelpModelImpl implements _FarmclubHelpModel {
 
   @override
   final String veggieName;
+  @override
+  final String veggieImage;
   @override
   final String backgroundColor;
   @override
@@ -177,7 +193,7 @@ class _$FarmclubHelpModelImpl implements _FarmclubHelpModel {
 
   @override
   String toString() {
-    return 'FarmclubHelpModel(veggieName: $veggieName, backgroundColor: $backgroundColor, help: $help, steps: $steps)';
+    return 'FarmclubHelpModel(veggieName: $veggieName, veggieImage: $veggieImage, backgroundColor: $backgroundColor, help: $help, steps: $steps)';
   }
 
   @override
@@ -187,6 +203,8 @@ class _$FarmclubHelpModelImpl implements _FarmclubHelpModel {
             other is _$FarmclubHelpModelImpl &&
             (identical(other.veggieName, veggieName) ||
                 other.veggieName == veggieName) &&
+            (identical(other.veggieImage, veggieImage) ||
+                other.veggieImage == veggieImage) &&
             (identical(other.backgroundColor, backgroundColor) ||
                 other.backgroundColor == backgroundColor) &&
             (identical(other.help, help) || other.help == help) &&
@@ -195,8 +213,8 @@ class _$FarmclubHelpModelImpl implements _FarmclubHelpModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, veggieName, backgroundColor,
-      help, const DeepCollectionEquality().hash(_steps));
+  int get hashCode => Object.hash(runtimeType, veggieName, veggieImage,
+      backgroundColor, help, const DeepCollectionEquality().hash(_steps));
 
   @JsonKey(ignore: true)
   @override
@@ -216,6 +234,7 @@ class _$FarmclubHelpModelImpl implements _FarmclubHelpModel {
 abstract class _FarmclubHelpModel implements FarmclubHelpModel {
   const factory _FarmclubHelpModel(
       {required final String veggieName,
+      required final String veggieImage,
       required final String backgroundColor,
       required final FarmclubHelpInfoModel help,
       required final List<HelpStep> steps}) = _$FarmclubHelpModelImpl;
@@ -225,6 +244,8 @@ abstract class _FarmclubHelpModel implements FarmclubHelpModel {
 
   @override
   String get veggieName;
+  @override
+  String get veggieImage;
   @override
   String get backgroundColor;
   @override

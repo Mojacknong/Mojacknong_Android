@@ -41,6 +41,7 @@ class FarmclubHelpNotifier extends _$FarmclubHelpNotifier {
 
     return FarmclubHelpModel(
       veggieName: data['veggieName'] as String,
+      veggieImage: data['veggieImage'] as String,
       backgroundColor: data['backgroundColor'] as String,
       help: help,
       steps: steps,
