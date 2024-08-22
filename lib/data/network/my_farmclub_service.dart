@@ -76,6 +76,34 @@ class MyFarmclubService {
       return utf8.decode(response.bodyBytes);
     } else {
       throw Exception('팜클럽 탈퇴 실패');
+
+  Future<String> myMissionComplete(
+      File file,
+      String content,
+      int farmClubId,
+      ) async {
+    const url = '/api/farm-club/mission';
+
+    final jsonBody = {
+      'requestDto': {
+        "farmClubId": farmClubId,
+        'content': content,
+      }
+    };
+
+    final response = await apiClient.postMultipart(
+      url,
+      'requestDto',
+      'image',
+      jsonBody,
+      file,
+    );
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('미션 완료 실패');
+
     }
   }
 }

@@ -11,7 +11,7 @@ class FarmclubMissionCertificationNotifier
     extends _$FarmclubMissionCertificationNotifier {
   @override
   Future<MissionWriteModel> build() async {
-    return MissionWriteModel(content: '', image: XFile(''), isComplete: false);
+    return MissionWriteModel(content: '', file: XFile(''), isComplete: false, farmClubId: 0);
   }
 
   Future<void> postMissionCertification(
