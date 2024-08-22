@@ -6,6 +6,8 @@ import 'package:farmus/repository/my_farmclub_repository.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../my_farmclub/my_farmclub_info_notifier.dart';
+
 part 'post_mission_notifier.g.dart';
 
 @riverpod
@@ -81,6 +83,6 @@ class PostMissionNotifier extends _$PostMissionNotifier {
 
   Future<void> postMission(File image, String content, int farmClubId) async {
     await MyFarmclubRepository.postMission(image, content, farmClubId);
-    ref.invalidateSelf();
+    ref.invalidate(myFarmclubInfoModelProvider);
   }
 }
