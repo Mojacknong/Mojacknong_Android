@@ -40,7 +40,8 @@ class FarmclubScreen extends ConsumerWidget {
               GestureDetector(
                 onTap: () {
                   final farmClubName = farmclub[0].farmClubName;
-                  showFarmclubExitBottomSheet(context, farmClubName);                },
+                  final farmClubId = farmclub[0].farmClubId;
+                  showFarmclubExitBottomSheet(context, farmClubName, farmClubId);                },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: SvgPicture.asset('assets/image/ic_exit.svg'),

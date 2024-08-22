@@ -1,14 +1,18 @@
 import 'package:farmus/common/button/primary_color_button.dart';
 import 'package:farmus/common/button/white_color_button.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../common/dialog/check_dialog.dart';
+import '../../../view_model/my_farmclub/my_farmclub_delete_notifier.dart';
+
 class FarmclubExitBottomSheetContent extends ConsumerWidget {
   final String farmClubName;
+  final int farmClubId;
 
-  const FarmclubExitBottomSheetContent({super.key, required this.farmClubName});
+  const FarmclubExitBottomSheetContent(
+      {super.key, required this.farmClubName, required this.farmClubId});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -66,13 +70,29 @@ class FarmclubExitBottomSheetContent extends ConsumerWidget {
                                 child: PrimaryColorButton(
                                   text: '나가기',
                                   onPressed: () {
+                                    ref
+                                        .read(myFarmclubDeleteNotifierProvider
+                                            .notifier)
+                                        .myFarmclubDelete(farmClubId);
                                     Navigator.pop(context);
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        Future.delayed(
+                                            const Duration(seconds: 2), () {
+                                          Navigator.of(context).pop();
+                                        });
+                                        return const CheckDialog(
+                                          text: '팜클럽을 탈퇴했어요',
+                                        );
+                                      },
+                                    );
                                   },
                                   enabled: true,
                                 ),
-                              ),
+                              )
                             ],
-                          )
+                          ),
                         ],
                       ),
                     ),

@@ -93,7 +93,7 @@ class FarmclubOpenScreen extends ConsumerWidget {
                             Future.delayed(const Duration(seconds: 2), () {
                               Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
-                                    builder: (context) => const MainScreen(selectedIndex: 1),
+                                    builder: (context) => const MainScreen(selectedIndex: 2),
                                   ),
                               );
                             });

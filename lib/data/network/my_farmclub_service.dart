@@ -61,4 +61,21 @@ class MyFarmclubService {
       throw Exception(errorMessage);
     }
   }
+
+  Future<String> myFarmclubDelete(int farmClubId) async {
+    final url = '/api/farm-club/$farmClubId';
+
+    final body = jsonEncode({
+      'farmClubId': farmClubId,
+    });
+
+    final response = await apiClient.delete(url, body: body);
+
+    if (response.statusCode == 200) {
+      print(utf8.decode(response.bodyBytes));
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('팜클럽 탈퇴 실패');
+    }
+  }
 }

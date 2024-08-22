@@ -80,7 +80,7 @@ void showFarmclubSignupBottomSheet(
               context,
               MaterialPageRoute(
                   builder: (context) => const MainScreen(
-                        selectedIndex: 1,
+                        selectedIndex: 2,
                       )),
               (route) => false);
           showDialog(
@@ -117,13 +117,13 @@ void showQuitActionSheet(BuildContext context) {
       });
 }
 
-void showFarmclubExitBottomSheet(BuildContext context, String farmClubName) {
+void showFarmclubExitBottomSheet(BuildContext context, String farmClubName, int farmClubId) {
   showModalBottomSheet<void>(
     context: context,
     isScrollControlled: true,
     backgroundColor: FarmusThemeColor.white,
     builder: (BuildContext context) {
-      return FarmclubExitBottomSheetContent(farmClubName: farmClubName);
+      return FarmclubExitBottomSheetContent(farmClubName: farmClubName, farmClubId : farmClubId);
     },
   );
 }

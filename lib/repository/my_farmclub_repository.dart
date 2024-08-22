@@ -30,4 +30,9 @@ class MyFarmclubRepository {
         .farmclubMissionCertification(mission, farmclubId, stepNum);
     return response;
   }
+
+  static Future<String> myFarmclubDelete(int farmClubId) async {
+    String? response = await MyFarmclubService().myFarmclubDelete(farmClubId);
+    return response;
+  }
 }
