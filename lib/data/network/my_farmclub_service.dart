@@ -76,6 +76,8 @@ class MyFarmclubService {
       return utf8.decode(response.bodyBytes);
     } else {
       throw Exception('팜클럽 탈퇴 실패');
+    }
+  }
 
   Future<String> myMissionComplete(
       File file,

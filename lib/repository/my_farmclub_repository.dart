@@ -36,6 +36,8 @@ class MyFarmclubRepository {
 
   static Future<String> myFarmclubDelete(int farmClubId) async {
     String? response = await MyFarmclubService().myFarmclubDelete(farmClubId);
+    return response;
+  }
 
   static Future<String> postMission(File file, String content, int farmClubId) async {
     String response = await MyFarmclubService()
