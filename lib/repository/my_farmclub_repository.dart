@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:farmus/data/network/my_farmclub_service.dart';
 
 import '../model/mission/mission_write_model.dart';
@@ -28,6 +30,12 @@ class MyFarmclubRepository {
       MissionWriteModel mission, int farmclubId, int stepNum) async {
     String? response = await MyFarmclubService()
         .farmclubMissionCertification(mission, farmclubId, stepNum);
+    return response;
+  }
+
+  static Future<String> postMission(File file, String content, int farmClubId) async {
+    String response = await MyFarmclubService()
+        .myMissionComplete(file, content, farmClubId);
     return response;
   }
 }

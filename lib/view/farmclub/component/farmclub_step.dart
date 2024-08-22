@@ -130,18 +130,21 @@ class FarmclubStep extends ConsumerWidget {
                   const SizedBox(
                     height: 8,
                   ),
-                  Row(
-                    children: step.images.isNotEmpty
-                        ? step.images.map((image) {
-                            return Padding(
-                              padding: const EdgeInsets.only(right: 8.0),
-                              child: FarmusPictureFix(
-                                size: 82,
-                                image: image,
-                              ),
-                            );
-                          }).toList()
-                        : [const SizedBox()],
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: step.images.isNotEmpty
+                          ? step.images.map((image) {
+                              return Padding(
+                                padding: const EdgeInsets.only(right: 8.0),
+                                child: FarmusPictureFix(
+                                  size: 82,
+                                  image: image,
+                                ),
+                              );
+                            }).toList()
+                          : [const SizedBox()],
+                    ),
                   ),
                 ],
               ),

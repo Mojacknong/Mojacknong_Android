@@ -10,11 +10,19 @@ class OnBoardingService {
     ApiClient apiClient = ApiClient();
 
     final jsonData = {
-      'nickname': nickname,
+      'userNickname': {
+        'nickname': nickname,
+      }
     };
 
-    final response =
-    await apiClient.postMultipart(url, 'nickname', 'image', jsonData, file);
+
+    final response = await apiClient.postMultipart(
+        url,
+        'userNickname',
+        'image',
+        jsonData,
+        file
+    );
 
     if (response.statusCode == 200) {
       return utf8.decode(response.bodyBytes);
