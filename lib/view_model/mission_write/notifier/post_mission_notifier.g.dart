@@ -7,7 +7,7 @@ part of 'post_mission_notifier.dart';
 // **************************************************************************
 
 String _$postMissionNotifierHash() =>
-    r'20fa4adba4152cda67120b183c158c9b099ac6de';
+    r'c076f8cf971b9f9ddc6da315f24fea3cd8779c32';
 
 /// See also [PostMissionNotifier].
 @ProviderFor(PostMissionNotifier)

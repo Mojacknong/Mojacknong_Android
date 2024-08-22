@@ -1,7 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
 import '../../model/mission/mission_write_model.dart';
+import '../../view/farmclub/farmclub_success_screen.dart';
 import 'base_api_services.dart';
 
 class MyFarmclubService {
@@ -83,6 +87,7 @@ class MyFarmclubService {
       File file,
       String content,
       int farmClubId,
+      BuildContext context,
       ) async {
     const url = '/api/farm-club/mission';
 
@@ -102,10 +107,48 @@ class MyFarmclubService {
     );
 
     if (response.statusCode == 200) {
-      return utf8.decode(response.bodyBytes);
+      final Map<String, dynamic> responseData = jsonDecode(utf8.decode(response.bodyBytes));
+
+      if (responseData['data']['isLastStep'] == true) {
+        try {
+          await postMissionSuccess(farmClubId);
+
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => FarmclubSuccessScreen()),
+            );
+          });
+        } catch (e) {
+          print('Error during postMissionSuccess: $e');
+          throw Exception('미션 완료 후 성공 처리 실패');
+        }
+      }
+
+      return responseData['message'];
     } else {
       throw Exception('미션 완료 실패');
-
     }
   }
+
+  Future<String> postMissionSuccess(
+      int farmClubId) async {
+    final url = '/api/farm-club/$farmClubId/success';
+
+    Map<String, String> headers = {
+      HttpHeaders.contentTypeHeader: 'application/json',
+    };
+    final body = jsonEncode({
+      'farmClubId': farmClubId,
+    });
+    ApiClient apiClient = ApiClient();
+    final response = await apiClient.post(url, headers: headers, body: body);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('팜클럽 성공 실패');
+    }
+  }
+
 }

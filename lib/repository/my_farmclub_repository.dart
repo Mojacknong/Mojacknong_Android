@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:farmus/data/network/my_farmclub_service.dart';
+import 'package:flutter/cupertino.dart';
 
 import '../model/mission/mission_write_model.dart';
 
@@ -39,9 +40,15 @@ class MyFarmclubRepository {
     return response;
   }
 
-  static Future<String> postMission(File file, String content, int farmClubId) async {
+  static Future<String> postMission(
+      File file,
+      String content,
+      int farmClubId,
+      BuildContext context
+      ) async {
     String response = await MyFarmclubService()
-        .myMissionComplete(file, content, farmClubId);
+        .myMissionComplete(file, content, farmClubId, context);
     return response;
   }
+
 }

@@ -44,7 +44,7 @@ class MissionWriteScreen extends ConsumerWidget {
             onPressed: () {
               ref
                   .read(postMissionNotifierProvider.notifier)
-                  .postMission(File(file!.path), content, selectedVeggieId!
+                  .postMission(File(file!.path), content, selectedVeggieId!,context
                   )
                   .then((_) {
                 Navigator.pop(context);
