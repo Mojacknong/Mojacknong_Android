@@ -58,7 +58,7 @@ class FarmclubHistoryProfile extends ConsumerWidget {
                             child: FarmclubWidgetPic(
                               imageUrl: farmclub.image,
                               size: 60,
-                              backgroundColor: Color(int.parse(farmclub.backgroundColor.replaceFirst('#', '0xff'))),
+                              backgroundColor: Color(int.parse(farmclub.backgroundColor)),
                             ),
                           ),
                         ],
