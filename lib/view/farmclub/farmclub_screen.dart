@@ -39,8 +39,9 @@ class FarmclubScreen extends ConsumerWidget {
             if (farmclub.isNotEmpty)
               GestureDetector(
                 onTap: () {
-                  showFarmclubExitBottomSheet(context);
-                },
+                  final farmClubName = farmclub[0].farmClubName;
+                  final farmClubId = farmclub[0].farmClubId;
+                  showFarmclubExitBottomSheet(context, farmClubName, farmClubId);                },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: SvgPicture.asset('assets/image/ic_exit.svg'),
@@ -52,7 +53,7 @@ class FarmclubScreen extends ConsumerWidget {
           actions: [
             GestureDetector(
               onTap: () {
-                showFarmclubExitBottomSheet(context);
+                // showFarmclubExitBottomSheet(context,"");
               },
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -65,7 +66,7 @@ class FarmclubScreen extends ConsumerWidget {
           actions: [
             GestureDetector(
               onTap: () {
-                showFarmclubExitBottomSheet(context);
+                // showFarmclubExitBottomSheet(context,"");
               },
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
