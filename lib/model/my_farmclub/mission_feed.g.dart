@@ -8,32 +8,6 @@ part of 'mission_feed.dart';
 
 _$MissionFeedImpl _$$MissionFeedImplFromJson(Map<String, dynamic> json) =>
     _$MissionFeedImpl(
-      code: (json['code'] as num).toInt(),
-      message: json['message'] as String,
-      data: MissionData.fromJson(json['data'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$$MissionFeedImplToJson(_$MissionFeedImpl instance) =>
-    <String, dynamic>{
-      'code': instance.code,
-      'message': instance.message,
-      'data': instance.data,
-    };
-
-_$MissionDataImpl _$$MissionDataImplFromJson(Map<String, dynamic> json) =>
-    _$MissionDataImpl(
-      missionPosts: (json['missionPosts'] as List<dynamic>)
-          .map((e) => MissionPost.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
-
-Map<String, dynamic> _$$MissionDataImplToJson(_$MissionDataImpl instance) =>
-    <String, dynamic>{
-      'missionPosts': instance.missionPosts,
-    };
-
-_$MissionPostImpl _$$MissionPostImplFromJson(Map<String, dynamic> json) =>
-    _$MissionPostImpl(
       missionPostId: (json['missionPostId'] as num).toInt(),
       nickname: json['nickname'] as String,
       profileImage: json['profileImage'] as String,
@@ -45,7 +19,7 @@ _$MissionPostImpl _$$MissionPostImplFromJson(Map<String, dynamic> json) =>
       isLiked: json['isLiked'] as bool,
     );
 
-Map<String, dynamic> _$$MissionPostImplToJson(_$MissionPostImpl instance) =>
+Map<String, dynamic> _$$MissionFeedImplToJson(_$MissionFeedImpl instance) =>
     <String, dynamic>{
       'missionPostId': instance.missionPostId,
       'nickname': instance.nickname,

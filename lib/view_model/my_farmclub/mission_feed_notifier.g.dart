@@ -6,7 +6,7 @@ part of 'mission_feed_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$missionFeedHash() => r'e7b684b9ffdfaeb114c2c202a38450059ee4d088';
+String _$missionFeedHash() => r'44b56dd5b2ba27ca61d921f805ca42f3d7d8f0f4';
 
 /// Copied from Dart SDK
 class _SystemHash {

@@ -18,10 +18,12 @@ Future<List<MissionFeed>> missionFeed(
 
   final response = await MyFarmclubRepository.farmclubMission(farmclubId);
   final json = jsonDecode(response);
-  final List<dynamic> dataList = json['data'];
+  final data = json['data'] as Map<String, dynamic>;
+  final dataList = data['missionPosts'] as List<dynamic>;
 
-  final List<MissionFeed> missionFeed =
-      dataList.map((item) => MissionFeed.fromJson(item)).toList();
+  final List<MissionFeed> missionFeed = dataList
+      .map((data) => MissionFeed.fromJson(data as Map<String, dynamic>))
+      .toList();
 
   return missionFeed;
 }
