@@ -27,6 +27,8 @@ class FarmusThemeColor {
   static const Color greenLight = Color(0xFFEFFEEE);
   static const Color greenLight2 = Color(0xFFDAF3EB);
   static const Color greenLight3 = Color(0xFFEBFAE9);
+  static const Color greenLight4 = Color(0xFFE0F490);
+
 
   static const Color red1 = Color(0xFFFFDDD8);
   static const Color red2 = Color(0xFFFF5E48);

@@ -1,3 +1,4 @@
+import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -29,7 +30,7 @@ class HomeMotivation extends ConsumerWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
                 decoration: ShapeDecoration(
-                  color: const Color(0xFFE0F490),
+                  color: FarmusThemeColor.greenLight4,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(24),
                   ),
