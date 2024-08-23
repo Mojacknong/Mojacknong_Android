@@ -61,4 +61,15 @@ class MyFarmclubRepository {
     String? response = await MyFarmclubService().missionComment(missionPostId);
     return response;
   }
+
+  static Future<String> missionLike(int missionPostId) async {
+    String? response = await MyFarmclubService().missionLike(missionPostId);
+    return response;
+  }
+
+  static Future<String> missionLikeDelete(int missionPostId) async {
+    String? response = await MyFarmclubService().missionLikeDelete(missionPostId);
+    return response;
+  }
+
 }

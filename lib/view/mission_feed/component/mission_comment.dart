@@ -49,7 +49,8 @@ class MissionComment extends ConsumerWidget {
               feedId: feed.missionPostId,
               commentCount: feed.commentCount,
               likeCount: feed.likeCount,
-              myLike: myLike,
+              myLike: feed.isLiked,
+              type: "미션 인증",
             ),
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 16.0),
