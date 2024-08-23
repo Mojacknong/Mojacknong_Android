@@ -135,14 +135,11 @@ class MyFarmclubService {
       int farmClubId) async {
     final url = '/api/farm-club/$farmClubId/success';
 
-    Map<String, String> headers = {
-      HttpHeaders.contentTypeHeader: 'application/json',
-    };
     final body = jsonEncode({
       'farmClubId': farmClubId,
     });
     ApiClient apiClient = ApiClient();
-    final response = await apiClient.post(url, headers: headers, body: body);
+    final response = await apiClient.delete(url, body: body);
 
     if (response.statusCode == 200) {
       return utf8.decode(response.bodyBytes);
