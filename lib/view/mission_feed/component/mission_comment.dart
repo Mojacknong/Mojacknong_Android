@@ -1,4 +1,3 @@
-import 'package:farmus/model/diary/diary_comment_model.dart';
 import 'package:farmus/model/my_farmclub/mission_data_model.dart';
 import 'package:farmus/view/feed_detail/component/feed_detail_comment.dart';
 import 'package:farmus/view/feed_detail/component/feed_detail_icon.dart';
