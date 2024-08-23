@@ -147,10 +147,10 @@ class OnBoardingScreen extends ConsumerWidget {
                               motivationList.add('알뜰살뜰');
                             }
                             if (motivation.value!.isSecondSelect) {
-                              motivationList.add('건강과 웰빙');
+                              motivationList.add('건강과웰빙');
                             }
                             if (motivation.value!.isThirdSelect) {
-                              motivationList.add('심리적 안정');
+                              motivationList.add('심리적안정');
                             }
                             ref
                                 .read(onBoardingMotivationNotifierProvider

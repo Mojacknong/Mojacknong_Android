@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final myVeggieInfoModeProvider =
-    StateNotifierProvider<MyVeggieInfoModeNotifier, bool>((ref) {
+    StateNotifierProvider.autoDispose<MyVeggieInfoModeNotifier, bool>((ref) {
   return MyVeggieInfoModeNotifier();
 });
 

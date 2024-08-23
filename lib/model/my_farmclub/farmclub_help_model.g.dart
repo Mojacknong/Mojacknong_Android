@@ -9,8 +9,11 @@ part of 'farmclub_help_model.dart';
 _$FarmclubHelpModelImpl _$$FarmclubHelpModelImplFromJson(
         Map<String, dynamic> json) =>
     _$FarmclubHelpModelImpl(
-      farmclubHelpInfoModel: FarmclubHelpInfoModel.fromJson(
-          json['farmclubHelpInfoModel'] as Map<String, dynamic>),
+      veggieName: json['veggieName'] as String,
+      veggieImage: json['veggieImage'] as String,
+      backgroundColor: json['backgroundColor'] as String,
+      help:
+          FarmclubHelpInfoModel.fromJson(json['help'] as Map<String, dynamic>),
       steps: (json['steps'] as List<dynamic>)
           .map((e) => HelpStep.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -19,7 +22,10 @@ _$FarmclubHelpModelImpl _$$FarmclubHelpModelImplFromJson(
 Map<String, dynamic> _$$FarmclubHelpModelImplToJson(
         _$FarmclubHelpModelImpl instance) =>
     <String, dynamic>{
-      'farmclubHelpInfoModel': instance.farmclubHelpInfoModel,
+      'veggieName': instance.veggieName,
+      'veggieImage': instance.veggieImage,
+      'backgroundColor': instance.backgroundColor,
+      'help': instance.help,
       'steps': instance.steps,
     };
 

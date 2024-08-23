@@ -3,11 +3,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
+import '../../../model/my_farmclub/farmclub_help_model.dart';
 import '../../../model/search/farmclub_help_info_model.dart';
+import '../../my_farmclub/component/farmclub_widget_pic.dart';
 
 class TipExpandCard extends ConsumerWidget {
-  const TipExpandCard({super.key, required this.helpInfoModel});
+  const TipExpandCard(
+      {super.key, required this.helpModel, required this.helpInfoModel});
 
+  final FarmclubHelpModel helpModel;
   final FarmclubHelpInfoModel helpInfoModel;
 
   @override
@@ -22,15 +26,10 @@ class TipExpandCard extends ConsumerWidget {
       child: Theme(
         data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
         child: ExpansionTile(
-          leading: Container(
-            width: 40,
-            height: 40,
-            decoration: ShapeDecoration(
-              color: FarmusThemeColor.black,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
-              ),
-            ),
+          leading: FarmclubWidgetPic(
+            size: 40,
+            imageUrl: helpModel.veggieImage,
+            backgroundColor: Color(int.parse(helpModel.backgroundColor)),
           ),
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

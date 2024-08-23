@@ -1,3 +1,4 @@
+import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/model/home/my_veggie_list_model.dart';
 import 'package:farmus/view/home/component/home_diary.dart';
 import 'package:farmus/view/home/component/home_farmclub_mission.dart';
@@ -57,7 +58,9 @@ class HomeScreen extends ConsumerWidget {
                       data: (value) =>
                           HomeMyVegeNone(recommendVeggieInfo: value),
                       error: (error, stack) => const Text('추천 채소 불러오기 실패'),
-                      loading: () => const CircularProgressIndicator(),
+                      loading: () => const CircularProgressIndicator(
+                        color: FarmusThemeColor.primary,
+                      ),
                     )
                   else ...[
                     const HomeMyVegeList(),
@@ -139,7 +142,7 @@ class HomeScreen extends ConsumerWidget {
         },
         error: (error, stack) =>
             Center(child: Text('Error: ${error.toString()}')),
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => Container(),
       ),
     );
   }
