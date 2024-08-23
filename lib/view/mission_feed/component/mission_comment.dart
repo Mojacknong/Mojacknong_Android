@@ -29,9 +29,9 @@ class MissionComment extends ConsumerWidget {
     final selectedFarmclubId = ref.watch(selectedFarmclubIdProvider);
 
     final AsyncValue<List<MissionFeed>> missionFeed =
-        ref.watch(missionFeedProvider(selectedFarmclubId));
+    ref.watch(missionFeedProvider(selectedFarmclubId));
     final AsyncValue<MissionDataModel> missionData =
-        ref.watch(missionCommentNotifierProvider(missionPostCommentId));
+    ref.watch(missionCommentNotifierProvider(missionPostCommentId));
 
     return missionFeed.when(
       data: (feeds) {
@@ -40,7 +40,7 @@ class MissionComment extends ConsumerWidget {
         }
 
         final feed = feeds.firstWhere(
-          (feed) => feed.missionPostId == missionPostCommentId,
+              (feed) => feed.missionPostId == missionPostCommentId,
           orElse: () => feeds[0],
         );
 
@@ -79,35 +79,38 @@ class MissionComment extends ConsumerWidget {
 
                 return comments.isNotEmpty
                     ? Column(
-                        children: comments.asMap().entries.map((entry) {
-                          int idx = entry.key;
-                          MissionCommentModel comment = entry.value;
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8.0),
-                            child: FeedDetailComment(
-                              profileImage: comment.profileImage,
-                              nickname: comment.nickname,
-                              date: comment.date,
-                              content: comment.content,
-                              isLast: idx == comments.length - 1,
-                              myComment: comment.isMyComment,
-                              commentId: comment.missionPostCommentId,
-                            ),
-                          );
-                        }).toList(),
-                      )
+                  children: comments.asMap().entries.map((entry) {
+                    int idx = entry.key;
+                    MissionCommentModel comment = entry.value;
+                    return Padding(
+                      padding:
+                      const EdgeInsets.symmetric(vertical: 8.0),
+                      child: FeedDetailComment(
+                        profileImage: comment.profileImage,
+                        nickname: comment.nickname,
+                        date: comment.date,
+                        content: comment.content,
+                        isLast: idx == comments.length - 1,
+                        myComment: comment.isMyComment,
+                        commentId: comment.missionPostCommentId,
+                      ),
+                    );
+                  }).toList(),
+                )
                     : const Center(
-                        child: Padding(
-                          padding: EdgeInsets.only(top: 24.0),
-                          child: Text(
-                            '작성된 댓글이 없어요',
-                            style: FarmusThemeTextStyle.gray2Medium13,
-                          ),
-                        ),
-                      );
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 24.0),
+                    child: Text(
+                      '작성된 댓글이 없어요',
+                      style: FarmusThemeTextStyle.gray2Medium13,
+                    ),
+                  ),
+                );
               },
-              loading: () => const Center(child: CircularProgressIndicator()),
-              error: (error, stack) => Center(child: Text('Error: $error')),
+              loading: () =>
+              const Center(child: CircularProgressIndicator()),
+              error: (error, stack) =>
+                  Center(child: Text('Error: $error')),
             ),
           ],
         );

@@ -32,6 +32,9 @@ class _CommentTextFormFieldState extends ConsumerState<CommentTextFormField> {
 
   @override
   Widget build(BuildContext context) {
+    final notifier = widget.notifierType == "성장 일기"
+        ? ref.watch(diaryCommentAddNotifierProvider.notifier)
+        : ref.watch(missionCommentAddNotifierProvider.notifier);
 
     return Padding(
       padding: const EdgeInsets.only(
