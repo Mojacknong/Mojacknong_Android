@@ -9,6 +9,7 @@ part of 'my_farmclub_info_model.dart';
 _$MyFarmclubInfoModelImpl _$$MyFarmclubInfoModelImplFromJson(
         Map<String, dynamic> json) =>
     _$MyFarmclubInfoModelImpl(
+      farmClubId: (json['farmClubId'] as num).toInt(),
       farmClubName: json['farmClubName'] as String,
       farmClubImage: json['farmClubImage'] as String,
       wholeMemberCount: (json['wholeMemberCount'] as num).toInt(),
@@ -23,6 +24,7 @@ _$MyFarmclubInfoModelImpl _$$MyFarmclubInfoModelImplFromJson(
 Map<String, dynamic> _$$MyFarmclubInfoModelImplToJson(
         _$MyFarmclubInfoModelImpl instance) =>
     <String, dynamic>{
+      'farmClubId': instance.farmClubId,
       'farmClubName': instance.farmClubName,
       'farmClubImage': instance.farmClubImage,
       'wholeMemberCount': instance.wholeMemberCount,

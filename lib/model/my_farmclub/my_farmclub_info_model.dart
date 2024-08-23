@@ -6,6 +6,7 @@ part 'my_farmclub_info_model.g.dart';
 @freezed
 abstract class MyFarmclubInfoModel with _$MyFarmclubInfoModel {
   const factory MyFarmclubInfoModel({
+    required int farmClubId,
     required String farmClubName,
     required String farmClubImage,
     required int wholeMemberCount,
