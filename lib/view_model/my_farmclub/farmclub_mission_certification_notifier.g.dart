@@ -7,7 +7,7 @@ part of 'farmclub_mission_certification_notifier.dart';
 // **************************************************************************
 
 String _$farmclubMissionCertificationNotifierHash() =>
-    r'25ee66d163c5046bfd6d9bf37eb50c63284bc938';
+    r'45e43e6ecc5045af56c2cf1a1b477ed18a0b2f7c';
 
 /// See also [FarmclubMissionCertificationNotifier].
 @ProviderFor(FarmclubMissionCertificationNotifier)

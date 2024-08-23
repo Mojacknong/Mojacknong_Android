@@ -23,13 +23,12 @@ class MyFarmclubDeleteNotifier extends _$MyFarmclubDeleteNotifier {
     );
   }
 
-
   Future<void> myFarmclubDelete(int farmClubId) async {
     await MyFarmclubRepository.myFarmclubDelete(farmClubId);
     ref.invalidate(farmclubMissionCertificationNotifierProvider);
     ref.invalidate(myFarmclubInfoModelProvider);
     ref.invalidate(myFarmclubModelProvider);
-    ref.invalidate(farmclubHelpModelProvider);
+    ref.invalidate(farmclubHelpNotifierProvider);
     ref.invalidateSelf();
   }
 }
