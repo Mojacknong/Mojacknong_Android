@@ -3,12 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../view_model/my_farmclub/mission_comment_add_notifier.dart';
 import '../theme/farmus_theme_color.dart';
 
 class CommentTextFormField extends ConsumerStatefulWidget {
-  const CommentTextFormField({super.key, required this.feedId});
+  const CommentTextFormField({
+    super.key,
+    required this.feedId,
+    required this.notifierType,
+
+  });
 
   final int feedId;
+  final String notifierType;
 
   @override
   _CommentTextFormFieldState createState() => _CommentTextFormFieldState();
@@ -25,7 +32,6 @@ class _CommentTextFormFieldState extends ConsumerState<CommentTextFormField> {
 
   @override
   Widget build(BuildContext context) {
-    var notifier = ref.watch(diaryCommentAddNotifierProvider);
 
     return Padding(
       padding: const EdgeInsets.only(
@@ -46,10 +52,16 @@ class _CommentTextFormFieldState extends ConsumerState<CommentTextFormField> {
           suffixIcon: IconButton(
             onPressed: () {
               FocusManager.instance.primaryFocus?.unfocus();
-              if (notifier.value!.isNotEmpty) {
-                ref
-                    .read(diaryCommentAddNotifierProvider.notifier)
-                    .addDiaryComment(widget.feedId);
+              final comment = _controller.text;
+
+              if (comment.isNotEmpty) {
+                if (widget.notifierType == "성장 일기") {
+                  ref.read(diaryCommentAddNotifierProvider.notifier)
+                      .addDiaryComment(widget.feedId);
+                } else {
+                  ref.read(missionCommentAddNotifierProvider.notifier)
+                      .addMissionComment(widget.feedId);
+                }
                 _controller.clear();
               }
             },
@@ -75,9 +87,13 @@ class _CommentTextFormFieldState extends ConsumerState<CommentTextFormField> {
           ),
         ),
         onChanged: (value) {
-          ref
-              .read(diaryCommentAddNotifierProvider.notifier)
-              .updateComment(value);
+          if (widget.notifierType == "성장 일기") {
+            ref.read(diaryCommentAddNotifierProvider.notifier)
+                .updateComment(value);
+          } else {
+            ref.read(missionCommentAddNotifierProvider.notifier)
+                .updateComment(value);
+          }
         },
       ),
     );

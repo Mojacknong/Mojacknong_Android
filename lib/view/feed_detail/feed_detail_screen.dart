@@ -11,6 +11,7 @@ import '../../common/theme/farmus_theme_text_style.dart';
 import '../../model/home/my_veggie_list_model.dart';
 import '../../view_model/home/home_provider.dart';
 import '../../view_model/my_vege/notifier/my_veggie_list.dart';
+import '../mission_feed/component/mission_comment.dart';
 import 'component/diary_comment.dart';
 import 'component/feed_detail_content.dart';
 
@@ -44,11 +45,13 @@ class FeedDetailScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var selectedVeggieId = ref.watch(selectedVegeIdProvider);
     final AsyncValue<List<MyVeggieListModel>> veggieList =
-        ref.watch(myVeggieListModelProvider);
+    ref.watch(myVeggieListModelProvider);
 
     if (selectedVeggieId == null && veggieList.value?.isNotEmpty == true) {
       selectedVeggieId = veggieList.value!.first.myVeggieId;
     }
+
+    final String notifierType = state != null ? "성장 일기" : "미션 인증";
 
     return Scaffold(
       appBar: BackLeftTitleAppBar(
@@ -91,9 +94,8 @@ class FeedDetailScreen extends ConsumerWidget {
                       content: content,
                       image: image,
                     ),
-                    Visibility(
-                      visible: state != null,
-                      child: Container(
+                    if (state != null) ...[
+                      Container(
                         padding: const EdgeInsets.all(16),
                         decoration: ShapeDecoration(
                           shape: RoundedRectangleBorder(
@@ -115,12 +117,18 @@ class FeedDetailScreen extends ConsumerWidget {
                           ],
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 64.0,
-                    ),
-                    DiaryComment(
+                      const SizedBox(
+                        height: 64.0,
+                      ),
+                    ],
+                    state != null
+                        ? DiaryComment(
                       diaryId: feedId,
+                      commentCount: commentCount,
+                      myLike: myLike,
+                    )
+                        : MissionComment(
+                      missionPostCommentId: feedId,
                       commentCount: commentCount,
                       myLike: myLike,
                     ),
@@ -136,6 +144,7 @@ class FeedDetailScreen extends ConsumerWidget {
             ),
             child: CommentTextFormField(
               feedId: feedId,
+              notifierType: notifierType,
             ),
           ),
         ],
