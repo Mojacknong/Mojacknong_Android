@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:farmus/model/mission/mission_write_model.dart';
 import 'package:farmus/repository/my_farmclub_repository.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'package:image_picker/image_picker.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -65,7 +66,6 @@ class PostMissionNotifier extends _$PostMissionNotifier {
   void _checkCompletion() {
     if (state.value?.content.isNotEmpty == true &&
             state.value?.file?.path.isNotEmpty == true
-        // && state.value?.farmClubId.isNotEmpty == true
         ) {
       _isMissionComplete = true;
     } else {
@@ -81,8 +81,8 @@ class PostMissionNotifier extends _$PostMissionNotifier {
     );
   }
 
-  Future<void> postMission(File image, String content, int farmClubId) async {
-    await MyFarmclubRepository.postMission(image, content, farmClubId);
+  Future<void> postMission(File image, String content, int farmClubId, BuildContext context) async {
+    await MyFarmclubRepository.postMission(image, content, farmClubId, context);
     ref.invalidate(myFarmclubInfoModelProvider);
   }
 }

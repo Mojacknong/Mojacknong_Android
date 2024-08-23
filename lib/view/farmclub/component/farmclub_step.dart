@@ -9,13 +9,16 @@ import '../../../model/my_farmclub/my_farmclub_info_model.dart';
 import '../../mission_feed/mission_feed_screen.dart';
 import '../../mission_write/mission_write_screen.dart';
 
+import 'package:flutter/material.dart';
+
 class FarmclubStep extends ConsumerWidget {
-  const FarmclubStep(
-      {super.key,
-      required this.wholeMember,
-      required this.step,
-      required this.farmclubInfo,
-      required this.isButton});
+  const FarmclubStep({
+    super.key,
+    required this.wholeMember,
+    required this.step,
+    required this.farmclubInfo,
+    required this.isButton,
+  });
 
   final int wholeMember;
   final StepModel step;
@@ -26,11 +29,13 @@ class FarmclubStep extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
       onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (builder) => MissionFeedScreen(
-                    farmclubInfo: farmclubInfo,
-                  ))),
+        context,
+        MaterialPageRoute(
+          builder: (context) => MissionFeedScreen(
+            farmclubInfo: farmclubInfo,
+          ),
+        ),
+      ),
       child: Container(
         width: double.infinity,
         decoration: ShapeDecoration(
@@ -42,7 +47,6 @@ class FarmclubStep extends ConsumerWidget {
         margin: const EdgeInsets.symmetric(vertical: 8.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(16.0),
@@ -50,20 +54,17 @@ class FarmclubStep extends ConsumerWidget {
                 children: [
                   Expanded(
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           "Step ${step.stepNum}",
                           style: FarmusThemeTextStyle.gray2SemiBold13,
                         ),
-                        const SizedBox(
-                          height: 8,
-                        ),
+                        const SizedBox(height: 8),
                         Text(
                           step.stepName,
                           style: FarmusThemeTextStyle.darkSemiBold17,
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -72,7 +73,7 @@ class FarmclubStep extends ConsumerWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (builder) => MissionWriteScreen(
+                          builder: (context) => MissionWriteScreen(
                             step: step,
                           ),
                         ),
@@ -80,45 +81,43 @@ class FarmclubStep extends ConsumerWidget {
                     },
                     isButton: isButton,
                     text: '인증하기',
-                  )
+                  ),
                 ],
               ),
             ),
-            const SizedBox(
-              height: 16,
-            ),
+            const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.only(left: 16.0, bottom: 16.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [
                       Text.rich(
                         TextSpan(
                           style: FarmusThemeTextStyle.gray2SemiBold13,
-                          //apply style to all
                           children: [
                             TextSpan(
                               text: '$wholeMember명 중 ',
                             ),
                             TextSpan(
-                                text: '${step.completeMemberCount}명',
-                                style: FarmusThemeTextStyle.redSemiBold13),
+                              text: '${step.completeMemberCount}명',
+                              style: FarmusThemeTextStyle.redSemiBold13,
+                            ),
                             const TextSpan(
                               text: '이 완료했어요',
                             ),
                           ],
                         ),
                       ),
-                      const SizedBox(
-                        width: 8,
-                      ),
+                      const SizedBox(width: 8),
                       Container(
                         padding: const EdgeInsets.all(4),
                         decoration: ShapeDecoration(
                           color: FarmusThemeColor.greenLight3,
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(4)),
+                            borderRadius: BorderRadius.circular(4),
+                          ),
                         ),
                         child: Text(
                           farmclubInfo.farmClubName,
@@ -127,22 +126,22 @@ class FarmclubStep extends ConsumerWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 8,
-                  ),
+                  const SizedBox(height: 8),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
                       children: step.images.isNotEmpty
                           ? step.images.map((image) {
-                              return Padding(
-                                padding: const EdgeInsets.only(right: 8.0),
-                                child: FarmusPictureFix(
-                                  size: 82,
-                                  image: image,
-                                ),
-                              );
-                            }).toList()
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: FarmusPictureFix(
+                            size: 82,
+                            image: image,
+                          ),
+                        );
+                      }).toList()
                           : [const SizedBox()],
                     ),
                   ),

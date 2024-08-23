@@ -58,7 +58,7 @@ class VeggieHistoryProfile extends ConsumerWidget {
                               imageUrl: veggie.image,
                               size: 60,
                               backgroundColor: Color(int.parse(
-                                veggie.backgroundColor.replaceFirst('#', '0xff'),
+                                veggie.backgroundColor,
                               )),
                             ),
                           ),

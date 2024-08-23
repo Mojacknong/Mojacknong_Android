@@ -118,12 +118,15 @@ class MyVegeStackBox extends ConsumerWidget {
                       child: Row(
                         children: myVeggieHistory.veggieHistoryIcons.map(
                           (icon) {
-                            return FarmclubWidgetPic(
-                              size: 60,
-                              imageUrl: icon.url,
-                              backgroundColor: Color(int.parse(icon
-                                  .backgroundColor!
-                                  .replaceFirst('#', '0xff'))),
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: FarmclubWidgetPic(
+                                size: 60,
+                                imageUrl: icon.url,
+                                backgroundColor: Color(int.parse(icon
+                                    .backgroundColor!
+                                    )),
+                              ),
                             );
                           },
                         ).toList(),

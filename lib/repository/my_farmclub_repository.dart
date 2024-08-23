@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:farmus/data/network/my_farmclub_service.dart';
+import 'package:flutter/cupertino.dart';
 
 import '../model/mission/mission_write_model.dart';
 
@@ -36,10 +37,18 @@ class MyFarmclubRepository {
 
   static Future<String> myFarmclubDelete(int farmClubId) async {
     String? response = await MyFarmclubService().myFarmclubDelete(farmClubId);
-
-  static Future<String> postMission(File file, String content, int farmClubId) async {
-    String response = await MyFarmclubService()
-        .myMissionComplete(file, content, farmClubId);
     return response;
   }
+
+  static Future<String> postMission(
+      File file,
+      String content,
+      int farmClubId,
+      BuildContext context
+      ) async {
+    String response = await MyFarmclubService()
+        .myMissionComplete(file, content, farmClubId, context);
+    return response;
+  }
+
 }
