@@ -75,6 +75,7 @@ class FarmclubStep extends ConsumerWidget {
                         MaterialPageRoute(
                           builder: (context) => MissionWriteScreen(
                             step: step,
+                            farmClubId: farmclubInfo.farmClubId,
                           ),
                         ),
                       );
