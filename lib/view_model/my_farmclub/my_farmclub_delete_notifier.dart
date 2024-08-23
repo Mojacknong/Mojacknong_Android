@@ -29,7 +29,6 @@ class MyFarmclubDeleteNotifier extends _$MyFarmclubDeleteNotifier {
     ref.invalidate(farmclubMissionCertificationNotifierProvider);
     ref.invalidate(myFarmclubInfoModelProvider);
     ref.invalidate(myFarmclubModelProvider);
-    ref.invalidate(farmclubHelpModelProvider);
     ref.invalidateSelf();
   }
 }

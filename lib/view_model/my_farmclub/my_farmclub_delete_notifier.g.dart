@@ -7,7 +7,7 @@ part of 'my_farmclub_delete_notifier.dart';
 // **************************************************************************
 
 String _$myFarmclubDeleteNotifierHash() =>
-    r'e2cee5dbaf74190ea8b17f903b1e27716dd822ea';
+    r'd200de74d9e8b891d0b0670372050d823732f320';
 
 /// See also [MyFarmclubDeleteNotifier].
 @ProviderFor(MyFarmclubDeleteNotifier)
