@@ -1,13 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'farmclub_help_notifier.dart';
+part of 'mission_feed_notifier.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$farmclubHelpNotifierHash() =>
-    r'e57bbb70d877bfbad52529745d833a819a8e7e55';
+String _$missionFeedHash() => r'44b56dd5b2ba27ca61d921f805ca42f3d7d8f0f4';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,36 +29,27 @@ class _SystemHash {
   }
 }
 
-abstract class _$FarmclubHelpNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<FarmclubHelpModel> {
-  late final int? farmclubId;
+/// See also [missionFeed].
+@ProviderFor(missionFeed)
+const missionFeedProvider = MissionFeedFamily();
 
-  FutureOr<FarmclubHelpModel> build(
-    int? farmclubId,
-  );
-}
+/// See also [missionFeed].
+class MissionFeedFamily extends Family<AsyncValue<List<MissionFeed>>> {
+  /// See also [missionFeed].
+  const MissionFeedFamily();
 
-/// See also [FarmclubHelpNotifier].
-@ProviderFor(FarmclubHelpNotifier)
-const farmclubHelpNotifierProvider = FarmclubHelpNotifierFamily();
-
-/// See also [FarmclubHelpNotifier].
-class FarmclubHelpNotifierFamily extends Family<AsyncValue<FarmclubHelpModel>> {
-  /// See also [FarmclubHelpNotifier].
-  const FarmclubHelpNotifierFamily();
-
-  /// See also [FarmclubHelpNotifier].
-  FarmclubHelpNotifierProvider call(
+  /// See also [missionFeed].
+  MissionFeedProvider call(
     int? farmclubId,
   ) {
-    return FarmclubHelpNotifierProvider(
+    return MissionFeedProvider(
       farmclubId,
     );
   }
 
   @override
-  FarmclubHelpNotifierProvider getProviderOverride(
-    covariant FarmclubHelpNotifierProvider provider,
+  MissionFeedProvider getProviderOverride(
+    covariant MissionFeedProvider provider,
   ) {
     return call(
       provider.farmclubId,
@@ -78,30 +68,32 @@ class FarmclubHelpNotifierFamily extends Family<AsyncValue<FarmclubHelpModel>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'farmclubHelpNotifierProvider';
+  String? get name => r'missionFeedProvider';
 }
 
-/// See also [FarmclubHelpNotifier].
-class FarmclubHelpNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    FarmclubHelpNotifier, FarmclubHelpModel> {
-  /// See also [FarmclubHelpNotifier].
-  FarmclubHelpNotifierProvider(
+/// See also [missionFeed].
+class MissionFeedProvider extends AutoDisposeFutureProvider<List<MissionFeed>> {
+  /// See also [missionFeed].
+  MissionFeedProvider(
     int? farmclubId,
   ) : this._internal(
-          () => FarmclubHelpNotifier()..farmclubId = farmclubId,
-          from: farmclubHelpNotifierProvider,
-          name: r'farmclubHelpNotifierProvider',
+          (ref) => missionFeed(
+            ref as MissionFeedRef,
+            farmclubId,
+          ),
+          from: missionFeedProvider,
+          name: r'missionFeedProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$farmclubHelpNotifierHash,
-          dependencies: FarmclubHelpNotifierFamily._dependencies,
+                  : _$missionFeedHash,
+          dependencies: MissionFeedFamily._dependencies,
           allTransitiveDependencies:
-              FarmclubHelpNotifierFamily._allTransitiveDependencies,
+              MissionFeedFamily._allTransitiveDependencies,
           farmclubId: farmclubId,
         );
 
-  FarmclubHelpNotifierProvider._internal(
+  MissionFeedProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -114,20 +106,13 @@ class FarmclubHelpNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   final int? farmclubId;
 
   @override
-  FutureOr<FarmclubHelpModel> runNotifierBuild(
-    covariant FarmclubHelpNotifier notifier,
+  Override overrideWith(
+    FutureOr<List<MissionFeed>> Function(MissionFeedRef provider) create,
   ) {
-    return notifier.build(
-      farmclubId,
-    );
-  }
-
-  @override
-  Override overrideWith(FarmclubHelpNotifier Function() create) {
     return ProviderOverride(
       origin: this,
-      override: FarmclubHelpNotifierProvider._internal(
-        () => create()..farmclubId = farmclubId,
+      override: MissionFeedProvider._internal(
+        (ref) => create(ref as MissionFeedRef),
         from: from,
         name: null,
         dependencies: null,
@@ -139,15 +124,13 @@ class FarmclubHelpNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<FarmclubHelpNotifier,
-      FarmclubHelpModel> createElement() {
-    return _FarmclubHelpNotifierProviderElement(this);
+  AutoDisposeFutureProviderElement<List<MissionFeed>> createElement() {
+    return _MissionFeedProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is FarmclubHelpNotifierProvider &&
-        other.farmclubId == farmclubId;
+    return other is MissionFeedProvider && other.farmclubId == farmclubId;
   }
 
   @override
@@ -159,19 +142,18 @@ class FarmclubHelpNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   }
 }
 
-mixin FarmclubHelpNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<FarmclubHelpModel> {
+mixin MissionFeedRef on AutoDisposeFutureProviderRef<List<MissionFeed>> {
   /// The parameter `farmclubId` of this provider.
   int? get farmclubId;
 }
 
-class _FarmclubHelpNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<FarmclubHelpNotifier,
-        FarmclubHelpModel> with FarmclubHelpNotifierRef {
-  _FarmclubHelpNotifierProviderElement(super.provider);
+class _MissionFeedProviderElement
+    extends AutoDisposeFutureProviderElement<List<MissionFeed>>
+    with MissionFeedRef {
+  _MissionFeedProviderElement(super.provider);
 
   @override
-  int? get farmclubId => (origin as FarmclubHelpNotifierProvider).farmclubId;
+  int? get farmclubId => (origin as MissionFeedProvider).farmclubId;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
