@@ -30,13 +30,12 @@ class MissionFeedTabBar extends ConsumerWidget {
         data: (feeds) => SingleChildScrollView(
           child: Column(
             children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
-                    children: const [
+                    children: [
                       MissionFeedSelectProfile(),
                       MissionFeedBasicProfile(nickname: '감자'),
                       MissionFeedBasicProfile(nickname: '홈프로텍터'),
@@ -56,7 +55,7 @@ class MissionFeedTabBar extends ConsumerWidget {
                         feedId: feed.missionPostId,
                         profileImage: feed.profileImage,
                         nickname: feed.nickname,
-                        writeDateTime: feed.date.toIso8601String(),
+                        writeDateTime: feed.date,
                         content: feed.content,
                         image: feed.image,
                         commentCount: feed.commentCount,
