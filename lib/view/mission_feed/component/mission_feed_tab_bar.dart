@@ -24,7 +24,6 @@ class MissionFeedTabBar extends ConsumerWidget {
 
     List<Widget> tabViews = [];
 
-    // 전체 탭에 missionFeed 데이터를 추가
     tabViews.add(
       missionFeed.when(
         data: (feeds) => SingleChildScrollView(
@@ -72,21 +71,42 @@ class MissionFeedTabBar extends ConsumerWidget {
       ),
     );
 
-    // farmclubInfo.steps 추가
     for (var step in farmclubInfo.steps) {
       tabViews.add(
-        SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                MissionStepInfo(
-                  step: step,
-                  isButton: true,
+        missionFeed.when(
+          data: (feeds) {
+            final stepFeeds =
+                feeds.where((feed) => feed.stepNum == step.stepNum).toList();
+
+            return SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    MissionStepInfo(
+                      step: step,
+                      isButton: true,
+                    ),
+                    const SizedBox(height: 16.0),
+                    ...stepFeeds.map((feed) {
+                      return FarmusFeed(
+                          feedId: feed.missionPostId,
+                          profileImage: feed.profileImage,
+                          nickname: feed.nickname,
+                          writeDateTime: feed.date,
+                          content: feed.content,
+                          image: feed.image,
+                          commentCount: feed.commentCount,
+                          likeCount: feed.likeCount,
+                          myLike: feed.isLiked);
+                    }),
+                  ],
                 ),
-              ],
-            ),
-          ),
+              ),
+            );
+          },
+          loading: () => const Center(child: CircularProgressIndicator()),
+          error: (err, stack) => Center(child: Text('Error: $err')),
         ),
       );
     }
