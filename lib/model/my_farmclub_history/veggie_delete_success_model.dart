@@ -1,12 +1,12 @@
 import 'package:image_picker/image_picker.dart';
 
-class VeggieSuccessModel {
+class VeggieDeleteSuccessModel {
   final XFile? file;
   final String content;
   final int veggieId;
   final bool? isComplete;
 
-  VeggieSuccessModel({
+  VeggieDeleteSuccessModel({
     this.file,
     required this.content,
     required this.veggieId,

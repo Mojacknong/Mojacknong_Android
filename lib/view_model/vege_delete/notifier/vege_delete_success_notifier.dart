@@ -1,16 +1,20 @@
-import 'package:farmus/model/my_farmclub_history/veggie_success_model.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'dart:io';
+
+import 'package:farmus/model/my_farmclub_history/veggie_delete_success_model.dart';
+import 'package:farmus/view_model/my_vege/notifier/my_veggie_info_notifier.dart';
+import 'package:farmus/view_model/my_vege/notifier/my_veggie_list.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'vege_delete_success_notifier.g.dart';
+import '../../../repository/my_veggie_garden_repository.dart';
 
+part 'vege_delete_success_notifier.g.dart';
 
 @riverpod
 class VegeDeleteSuccessNotifier extends _$VegeDeleteSuccessNotifier {
   @override
-  Future<VeggieSuccessModel> build() async {
-    return VeggieSuccessModel(
+  Future<VeggieDeleteSuccessModel> build() async {
+    return VeggieDeleteSuccessModel(
       file: null,
       content: '',
       veggieId: -1,
@@ -21,9 +25,10 @@ class VegeDeleteSuccessNotifier extends _$VegeDeleteSuccessNotifier {
   bool _isVegeDeleteComplete = false;
 
   bool get isVegeDeleteComplete => _isVegeDeleteComplete;
+
   void updateImage(XFile? image) {
     state = AsyncData(
-      VeggieSuccessModel(
+      VeggieDeleteSuccessModel(
         file: image,
         content: state.value!.content,
         veggieId: state.value!.veggieId,
@@ -37,7 +42,7 @@ class VegeDeleteSuccessNotifier extends _$VegeDeleteSuccessNotifier {
       return;
     }
     state = AsyncData(
-      VeggieSuccessModel(
+      VeggieDeleteSuccessModel(
         file: state.value!.file,
         content: content,
         veggieId: state.value!.veggieId,
@@ -48,7 +53,7 @@ class VegeDeleteSuccessNotifier extends _$VegeDeleteSuccessNotifier {
 
   void deleteImage() {
     state = AsyncData(
-      VeggieSuccessModel(
+      VeggieDeleteSuccessModel(
         file: null,
         content: state.value!.content,
         veggieId: state.value!.veggieId,
@@ -59,19 +64,27 @@ class VegeDeleteSuccessNotifier extends _$VegeDeleteSuccessNotifier {
 
   void _checkCompletion() {
     if (state.value?.content.isNotEmpty == true &&
-        state.value?.file?.path.isNotEmpty == true
-    ) {
+        state.value?.file?.path.isNotEmpty == true) {
       _isVegeDeleteComplete = true;
     } else {
       _isVegeDeleteComplete = false;
     }
     state = AsyncData(
-      VeggieSuccessModel(
+      VeggieDeleteSuccessModel(
         file: state.value!.file,
         content: state.value!.content,
         veggieId: state.value!.veggieId,
         isComplete: _isVegeDeleteComplete,
       ),
     );
+  }
+
+  Future<void> myVeggieSuccess(
+      File image, String content, int myVeggieId) async {
+    await MyVeggieGardenRepository.myVeggieSuccess(image, content, myVeggieId);
+
+    ref.invalidateSelf();
+    ref.invalidate(myVeggieListModelProvider);
+    ref.invalidate(myVeggieInfoProvider);
   }
 }

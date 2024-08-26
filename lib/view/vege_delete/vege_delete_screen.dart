@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:farmus/common/app_bar/page_index_app_bar.dart';
 import 'package:farmus/common/button/white_color_button.dart';
 import 'package:farmus/view/vege_delete/component/vege_delete_fail.dart';
@@ -11,7 +13,6 @@ import '../../common/button/primary_color_button.dart';
 import '../../common/dialog/check_dialog.dart';
 import '../../common/theme/farmus_theme_color.dart';
 import '../../view_model/vege_delete/vege_delete_provider.dart';
-import '../main/main_screen.dart';
 import 'component/vege_delete_reason.dart';
 import 'component/vege_delete_success.dart';
 
@@ -23,9 +24,11 @@ class VegeDeleteScreen extends ConsumerWidget {
     final boxIndex = ref.watch(vegeDeleteReasonProvider);
     final currentPageIndex = ref.watch(homeVegeAddMoveProvider);
     final movePage = ref.read(homeVegeAddMoveProvider.notifier);
-    final successButtonText = ref.watch(vegeDeleteSuccessNotifierProvider);
+    final vegeDeleteNotifier = ref.watch(vegeDeleteSuccessNotifierProvider);
     final failProvider = ref.watch(vegeDeleteFailProvider);
-    final selectProvider = ref.watch(vegeDeleteFailProvider);
+
+    var file = vegeDeleteNotifier.value?.file;
+    var content = vegeDeleteNotifier.value?.content ?? '';
 
     String nextButtonText = '다음';
     String currentIndex;
@@ -50,7 +53,7 @@ class VegeDeleteScreen extends ConsumerWidget {
         switch (boxIndex) {
           case 'success':
             nextButtonText = '완료';
-            if (successButtonText.value!.isComplete != true) {
+            if (vegeDeleteNotifier.value!.isComplete != true) {
               enabled = false;
             } else {
               enabled = true;
@@ -62,41 +65,34 @@ class VegeDeleteScreen extends ConsumerWidget {
           case "fail":
           case 'noting':
             enabled = failProvider != '';
-            nextButtonText = '다음';
+            nextButtonText = '확인';
             screenChild = const SingleChildScrollView(
               child: VegeDeleteFail(),
             );
             break;
         }
-        onPressed = selectProvider == 'fin'
-            ? () {
-                ref
-                    .read(myVeggieDeleteNotifierProvider.notifier)
-                    .veggieDelete();
-                Navigator.pop(context);
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    Future.delayed(const Duration(seconds: 2), () {
-                      Navigator.of(context).pop();
-                    });
-                    return const CheckDialog(
-                      text: "홈파밍을 종료했어요",
-                    );
-                  },
-                );
-              }
-            : () {
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return const MainScreen(selectedIndex: 2);
-                    },
-                  ),
-                  (route) => false,
-                );
-              };
+        onPressed = () {
+          if (boxIndex == 'success') {
+            ref
+                .read(vegeDeleteSuccessNotifierProvider.notifier)
+                .myVeggieSuccess(File(file!.path), content,
+                    ref.read(myVeggieDeleteNotifierProvider).value!.myVeggieId);
+          } else {
+            ref.read(myVeggieDeleteNotifierProvider.notifier).veggieDelete();
+          }
+          Navigator.pop(context);
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              Future.delayed(const Duration(seconds: 2), () {
+                Navigator.of(context).pop();
+              });
+              return const CheckDialog(
+                text: "홈파밍을 종료했어요",
+              );
+            },
+          );
+        };
         break;
       default:
         currentIndex = "0";
