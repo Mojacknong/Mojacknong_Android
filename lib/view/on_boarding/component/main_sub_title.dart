@@ -17,10 +17,7 @@ class MainSubTitle extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(
-          mainText,
-          style: FarmusThemeTextStyle.darkSemiBold20,
-        ),
+
         const SizedBox(height: 4),
         Text(
           subText,

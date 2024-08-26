@@ -3,6 +3,7 @@ import 'package:farmus/common/button/white_color_button.dart';
 import 'package:farmus/view/vege_delete/component/vege_delete_fail.dart';
 import 'package:farmus/view_model/home/home_vege_add_provider.dart';
 import 'package:farmus/view_model/my_vege/notifier/my_veggie_delete_notifier.dart';
+import 'package:farmus/view_model/vege_delete/notifier/vege_delete_success_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -22,7 +23,7 @@ class VegeDeleteScreen extends ConsumerWidget {
     final boxIndex = ref.watch(vegeDeleteReasonProvider);
     final currentPageIndex = ref.watch(homeVegeAddMoveProvider);
     final movePage = ref.read(homeVegeAddMoveProvider.notifier);
-    final successButtonText = ref.watch(vegeDeleteSuccessProvider);
+    final successButtonText = ref.watch(vegeDeleteSuccessNotifierProvider);
     final failProvider = ref.watch(vegeDeleteFailProvider);
     final selectProvider = ref.watch(vegeDeleteFailProvider);
 
@@ -40,7 +41,6 @@ class VegeDeleteScreen extends ConsumerWidget {
           child: VegeDeleteReason(),
         );
         onPressed = () {
-          ref.read(vegeDeleteSuccessProvider.notifier).reset();
           ref.read(vegeDeleteFailProvider.notifier).selectedBox('');
           movePage.moveToSecondPage();
         };
@@ -49,11 +49,11 @@ class VegeDeleteScreen extends ConsumerWidget {
         currentIndex = "2";
         switch (boxIndex) {
           case 'success':
-            enabled = true;
-            if (successButtonText.isComplete != true) {
-              nextButtonText = '나중에 등록하기';
+            nextButtonText = '완료';
+            if (successButtonText.value!.isComplete != true) {
+              enabled = false;
             } else {
-              nextButtonText = '다음';
+              enabled = true;
             }
             screenChild = const SingleChildScrollView(
               child: VegeDeleteSuccess(),

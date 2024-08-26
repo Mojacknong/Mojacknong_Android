@@ -9,12 +9,6 @@ final vegeDeleteReasonProvider =
   return VegeDeleteReasonNotifier();
 });
 
-final vegeDeleteSuccessProvider =
-    StateNotifierProvider<VegeDeleteSuccessNotifier, VegeDeleteSuccessModel>(
-        (ref) {
-  return VegeDeleteSuccessNotifier();
-});
-
 final vegeDeleteFailProvider =
     StateNotifierProvider<VegeDeleteReasonNotifier, String>((ref) {
   return VegeDeleteReasonNotifier();
