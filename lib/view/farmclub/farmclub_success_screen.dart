@@ -38,12 +38,12 @@ class FarmclubSuccessScreen extends ConsumerWidget {
                     const Text(
                       '축하해요\n팜클럽을 끝까지 완주했어요!',
                       style: FarmusThemeTextStyle.darkSemiBold20,
-                      textAlign: TextAlign.start, // Align text to the start
+                      textAlign: TextAlign.start,
                     ),
                     const Text(
                       '앞으로의 홈파밍 여정도 팜어스와 함께해요!',
                       style: FarmusThemeTextStyle.gray2Medium14,
-                      textAlign: TextAlign.start, // Align text to the start
+                      textAlign: TextAlign.start,
                     ),
                     myFarmclubSuccessList.when(
                       data: (data) {
