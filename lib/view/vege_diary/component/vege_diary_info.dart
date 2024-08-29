@@ -2,10 +2,11 @@ import 'package:farmus/common/theme/farmus_theme_color.dart';
 import 'package:farmus/common/theme/farmus_theme_text_style.dart';
 import 'package:farmus/model/home/my_veggie_profile.dart';
 import 'package:farmus/model/diary/my_veggie_diary.dart';
-import 'package:farmus/view/vege_diary/component/vege_diary_write_open_info.dart';
 import 'package:farmus/view_model/my_vege/notifier/my_veggie_profile_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../common/two_info_box.dart';
 
 class VegeDiaryInfo extends ConsumerWidget {
   final List<MyVeggieDiary> myVeggieDiaryList;
@@ -77,13 +78,13 @@ class VegeDiaryInfo extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    VegeDiaryWriteOpenInfo(
+                    TwoInfoBox(
                         type: '작성한 일기', count: writtenDiaryCount.toString()),
                     const VerticalDivider(
                       thickness: 1,
                       color: FarmusThemeColor.gray4,
                     ),
-                    VegeDiaryWriteOpenInfo(
+                    TwoInfoBox(
                         type: '공개한 일기', count: publicDiaryCount.toString()),
                   ],
                 ),

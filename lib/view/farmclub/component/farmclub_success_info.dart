@@ -4,7 +4,7 @@ import 'package:farmus/model/my_farmclub/farmclub_success_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'farmclub_success_box.dart';
+import '../../../common/two_info_box.dart';
 
 class FarmclubSuccessInfo extends ConsumerWidget {
   final FarmclubSuccessModel myFarmclubSuccessList;
@@ -98,13 +98,13 @@ class FarmclubSuccessInfo extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    FarmclubSuccessBox(
+                    TwoInfoBox(
                         type: '성장 일기', count: writtenDiaryCount.toString()),
                     const VerticalDivider(
                       thickness: 1,
                       color: FarmusThemeColor.gray4,
                     ),
-                    FarmclubSuccessBox(
+                    TwoInfoBox(
                         type: '미션 인증', count: missionPostCount.toString()),
                   ],
                 ),
