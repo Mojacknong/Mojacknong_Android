@@ -16,9 +16,10 @@ import '../../view_model/mission_write/notifier/post_mission_notifier.dart';
 import '../../view_model/my_farmclub/my_farmclub_notifier.dart';
 
 class MissionWriteScreen extends ConsumerWidget {
-  const MissionWriteScreen({super.key, required this.step});
+  const MissionWriteScreen({super.key, required this.step, this.farmClubId});
 
   final StepModel step;
+  final int? farmClubId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -44,7 +45,7 @@ class MissionWriteScreen extends ConsumerWidget {
             onPressed: () {
               ref
                   .read(postMissionNotifierProvider.notifier)
-                  .postMission(File(file!.path), content, selectedVeggieId!,context
+                  .postMission(File(file!.path), content, farmClubId!,context
                   )
                   .then((_) {
                 Navigator.pop(context);
