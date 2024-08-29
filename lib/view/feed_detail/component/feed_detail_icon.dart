@@ -31,22 +31,31 @@ class FeedDetailIcon extends ConsumerWidget {
           padding: const EdgeInsets.only(right: 4.0),
           child: GestureDetector(
             onTap: () {
-              if (type == "미션 인증") {
-                myLike
-                    ? ref
-                    .read(missionLikeNotifierProvider.notifier)
-                    .missionLikeDelete(feedId)
-                    : ref
-                    .read(missionLikeNotifierProvider.notifier)
-                    .missionLike(feedId);
-              } else {
-                myLike
-                    ? ref
-                    .read(diaryLikeNotifierProvider.notifier)
-                    .diaryLikeDelete(feedId)
-                    : ref
-                    .read(diaryLikeNotifierProvider.notifier)
-                    .diaryLike(feedId);
+              switch (type) {
+                case "미션 인증":
+                  if (myLike) {
+                    ref
+                        .read(missionLikeNotifierProvider.notifier)
+                        .missionLikeDelete(feedId);
+                  } else {
+                    ref
+                        .read(missionLikeNotifierProvider.notifier)
+                        .missionLike(feedId);
+                  }
+                  break;
+
+                case "성장 일기":
+                default:
+                  if (myLike) {
+                    ref
+                        .read(diaryLikeNotifierProvider.notifier)
+                        .diaryLikeDelete(feedId);
+                  } else {
+                    ref
+                        .read(diaryLikeNotifierProvider.notifier)
+                        .diaryLike(feedId);
+                  }
+                  break;
               }
             },
             child: myLike
