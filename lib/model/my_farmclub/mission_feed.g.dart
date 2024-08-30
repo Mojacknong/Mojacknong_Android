@@ -9,9 +9,10 @@ part of 'mission_feed.dart';
 _$MissionFeedImpl _$$MissionFeedImplFromJson(Map<String, dynamic> json) =>
     _$MissionFeedImpl(
       missionPostId: (json['missionPostId'] as num).toInt(),
+      stepNum: (json['stepNum'] as num).toInt(),
       nickname: json['nickname'] as String,
       profileImage: json['profileImage'] as String,
-      date: DateTime.parse(json['date'] as String),
+      date: json['date'] as String,
       image: json['image'] as String,
       content: json['content'] as String,
       likeCount: (json['likeCount'] as num).toInt(),
@@ -22,9 +23,10 @@ _$MissionFeedImpl _$$MissionFeedImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$MissionFeedImplToJson(_$MissionFeedImpl instance) =>
     <String, dynamic>{
       'missionPostId': instance.missionPostId,
+      'stepNum': instance.stepNum,
       'nickname': instance.nickname,
       'profileImage': instance.profileImage,
-      'date': instance.date.toIso8601String(),
+      'date': instance.date,
       'image': instance.image,
       'content': instance.content,
       'likeCount': instance.likeCount,

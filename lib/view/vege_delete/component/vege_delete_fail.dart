@@ -19,23 +19,8 @@ class VegeDeleteFail extends ConsumerWidget {
     return Column(
       children: <Widget>[
         const MainSubTitle(
-          mainText: "홈파밍에 어려움을 겪고 있나요?\n팜클럽에서 도움을 얻을 수 있어요.",
+          mainText: '홈파밍을 정말 종료하시겠어요?',
           subText: '',
-        ),
-        const SizedBox(
-          height: 32,
-        ),
-        SelectBox(
-          selectBox: () {
-            selectProvider.selectedBox('farmclub');
-          },
-          enabled: boxIndex == 'farmclub',
-          selectBoxContent: const SelectBoxBasicContent(
-            text: '팜클럽에서 도움을 받아볼래요',
-          ),
-        ),
-        const SizedBox(
-          height: 16,
         ),
         SelectBox(
           selectBox: () {

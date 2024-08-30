@@ -1,3 +1,4 @@
+import 'package:farmus/common/content_empty.dart';
 import 'package:farmus/common/farmus_feed.dart';
 import 'package:farmus/model/my_farmclub/mission_feed.dart';
 import 'package:farmus/view_model/my_farmclub/mission_feed_notifier.dart';
@@ -24,19 +25,17 @@ class MissionFeedTabBar extends ConsumerWidget {
 
     List<Widget> tabViews = [];
 
-    // 전체 탭에 missionFeed 데이터를 추가
     tabViews.add(
       missionFeed.when(
         data: (feeds) => SingleChildScrollView(
           child: Column(
             children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
-                    children: const [
+                    children: [
                       MissionFeedSelectProfile(),
                       MissionFeedBasicProfile(nickname: '감자'),
                       MissionFeedBasicProfile(nickname: '홈프로텍터'),
@@ -51,18 +50,28 @@ class MissionFeedTabBar extends ConsumerWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Column(
-                  children: feeds.map((feed) {
-                    return FarmusFeed(
-                        feedId: feed.missionPostId,
-                        profileImage: feed.profileImage,
-                        nickname: feed.nickname,
-                        writeDateTime: feed.date.toIso8601String(),
-                        content: feed.content,
-                        image: feed.image,
-                        commentCount: feed.commentCount,
-                        likeCount: feed.likeCount,
-                        myLike: feed.isLiked);
-                  }).toList(),
+                  children: feeds.isEmpty
+                      ? const [
+                          SizedBox(
+                            width: double.infinity,
+                            child: ContentEmpty(
+                              text: '아직 미션을 완료한 파머가 없어요',
+                              padding: 48.0,
+                            ),
+                          )
+                        ]
+                      : feeds.map((feed) {
+                          return FarmusFeed(
+                              feedId: feed.missionPostId,
+                              profileImage: feed.profileImage,
+                              nickname: feed.nickname,
+                              writeDateTime: feed.date,
+                              content: feed.content,
+                              image: feed.image,
+                              commentCount: feed.commentCount,
+                              likeCount: feed.likeCount,
+                              myLike: feed.isLiked);
+                        }).toList(),
                 ),
               ),
             ],
@@ -73,21 +82,52 @@ class MissionFeedTabBar extends ConsumerWidget {
       ),
     );
 
-    // farmclubInfo.steps 추가
     for (var step in farmclubInfo.steps) {
       tabViews.add(
-        SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                MissionStepInfo(
-                  step: step,
-                  isButton: true,
+        missionFeed.when(
+          data: (feeds) {
+            final stepFeeds =
+                feeds.where((feed) => feed.stepNum == step.stepNum).toList();
+
+            return SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    MissionStepInfo(
+                      step: step,
+                      isButton: true,
+                    ),
+                    const SizedBox(height: 16.0),
+                    stepFeeds.isEmpty
+                        ? const SizedBox(
+                            width: double.infinity,
+                            child: ContentEmpty(
+                              text: '아직 미션을 완료한 파머가 없어요',
+                              padding: 48.0,
+                            ),
+                          )
+                        : Column(
+                            children: stepFeeds.map((feed) {
+                              return FarmusFeed(
+                                  feedId: feed.missionPostId,
+                                  profileImage: feed.profileImage,
+                                  nickname: feed.nickname,
+                                  writeDateTime: feed.date,
+                                  content: feed.content,
+                                  image: feed.image,
+                                  commentCount: feed.commentCount,
+                                  likeCount: feed.likeCount,
+                                  myLike: feed.isLiked);
+                            }).toList(),
+                          ),
+                  ],
                 ),
-              ],
-            ),
-          ),
+              ),
+            );
+          },
+          loading: () => const Center(child: CircularProgressIndicator()),
+          error: (err, stack) => Center(child: Text('Error: $err')),
         ),
       );
     }
