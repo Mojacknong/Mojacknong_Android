@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:farmus/common/app_bar/page_index_app_bar.dart';
 import 'package:farmus/common/button/white_color_button.dart';
 import 'package:farmus/view/vege_delete/component/vege_delete_fail.dart';
 import 'package:farmus/view_model/home/home_vege_add_provider.dart';
 import 'package:farmus/view_model/my_vege/notifier/my_veggie_delete_notifier.dart';
+import 'package:farmus/view_model/vege_delete/notifier/vege_delete_success_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -10,7 +13,6 @@ import '../../common/button/primary_color_button.dart';
 import '../../common/dialog/check_dialog.dart';
 import '../../common/theme/farmus_theme_color.dart';
 import '../../view_model/vege_delete/vege_delete_provider.dart';
-import '../main/main_screen.dart';
 import 'component/vege_delete_reason.dart';
 import 'component/vege_delete_success.dart';
 
@@ -22,9 +24,11 @@ class VegeDeleteScreen extends ConsumerWidget {
     final boxIndex = ref.watch(vegeDeleteReasonProvider);
     final currentPageIndex = ref.watch(homeVegeAddMoveProvider);
     final movePage = ref.read(homeVegeAddMoveProvider.notifier);
-    final successButtonText = ref.watch(vegeDeleteSuccessProvider);
+    final vegeDeleteNotifier = ref.watch(vegeDeleteSuccessNotifierProvider);
     final failProvider = ref.watch(vegeDeleteFailProvider);
-    final selectProvider = ref.watch(vegeDeleteFailProvider);
+
+    var file = vegeDeleteNotifier.value?.file;
+    var content = vegeDeleteNotifier.value?.content ?? '';
 
     String nextButtonText = '다음';
     String currentIndex;
@@ -40,7 +44,6 @@ class VegeDeleteScreen extends ConsumerWidget {
           child: VegeDeleteReason(),
         );
         onPressed = () {
-          ref.read(vegeDeleteSuccessProvider.notifier).reset();
           ref.read(vegeDeleteFailProvider.notifier).selectedBox('');
           movePage.moveToSecondPage();
         };
@@ -49,11 +52,11 @@ class VegeDeleteScreen extends ConsumerWidget {
         currentIndex = "2";
         switch (boxIndex) {
           case 'success':
-            enabled = true;
-            if (successButtonText.isComplete != true) {
-              nextButtonText = '나중에 등록하기';
+            nextButtonText = '완료';
+            if (vegeDeleteNotifier.value!.isComplete != true) {
+              enabled = false;
             } else {
-              nextButtonText = '다음';
+              enabled = true;
             }
             screenChild = const SingleChildScrollView(
               child: VegeDeleteSuccess(),
@@ -62,41 +65,34 @@ class VegeDeleteScreen extends ConsumerWidget {
           case "fail":
           case 'noting':
             enabled = failProvider != '';
-            nextButtonText = '다음';
+            nextButtonText = '확인';
             screenChild = const SingleChildScrollView(
               child: VegeDeleteFail(),
             );
             break;
         }
-        onPressed = selectProvider == 'fin'
-            ? () {
-                ref
-                    .read(myVeggieDeleteNotifierProvider.notifier)
-                    .veggieDelete();
-                Navigator.pop(context);
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    Future.delayed(const Duration(seconds: 2), () {
-                      Navigator.of(context).pop();
-                    });
-                    return const CheckDialog(
-                      text: "홈파밍을 종료했어요",
-                    );
-                  },
-                );
-              }
-            : () {
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return const MainScreen(selectedIndex: 2);
-                    },
-                  ),
-                  (route) => false,
-                );
-              };
+        onPressed = () {
+          if (boxIndex == 'success') {
+            ref
+                .read(vegeDeleteSuccessNotifierProvider.notifier)
+                .myVeggieSuccess(File(file!.path), content,
+                    ref.read(myVeggieDeleteNotifierProvider).value!.myVeggieId);
+          } else {
+            ref.read(myVeggieDeleteNotifierProvider.notifier).veggieDelete();
+          }
+          Navigator.pop(context);
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              Future.delayed(const Duration(seconds: 2), () {
+                Navigator.of(context).pop();
+              });
+              return const CheckDialog(
+                text: "홈파밍을 종료했어요",
+              );
+            },
+          );
+        };
         break;
       default:
         currentIndex = "0";

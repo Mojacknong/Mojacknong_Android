@@ -20,6 +20,7 @@ MyFarmclubInfoModel _$MyFarmclubInfoModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MyFarmclubInfoModel {
+  int get farmClubId => throw _privateConstructorUsedError;
   String get farmClubName => throw _privateConstructorUsedError;
   String get farmClubImage => throw _privateConstructorUsedError;
   int get wholeMemberCount => throw _privateConstructorUsedError;
@@ -41,7 +42,8 @@ abstract class $MyFarmclubInfoModelCopyWith<$Res> {
       _$MyFarmclubInfoModelCopyWithImpl<$Res, MyFarmclubInfoModel>;
   @useResult
   $Res call(
-      {String farmClubName,
+      {int farmClubId,
+      String farmClubName,
       String farmClubImage,
       int wholeMemberCount,
       int currentStep,
@@ -63,6 +65,7 @@ class _$MyFarmclubInfoModelCopyWithImpl<$Res, $Val extends MyFarmclubInfoModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? farmClubId = null,
     Object? farmClubName = null,
     Object? farmClubImage = null,
     Object? wholeMemberCount = null,
@@ -72,6 +75,10 @@ class _$MyFarmclubInfoModelCopyWithImpl<$Res, $Val extends MyFarmclubInfoModel>
     Object? daysSinceStart = null,
   }) {
     return _then(_value.copyWith(
+      farmClubId: null == farmClubId
+          ? _value.farmClubId
+          : farmClubId // ignore: cast_nullable_to_non_nullable
+              as int,
       farmClubName: null == farmClubName
           ? _value.farmClubName
           : farmClubName // ignore: cast_nullable_to_non_nullable
@@ -113,7 +120,8 @@ abstract class _$$MyFarmclubInfoModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String farmClubName,
+      {int farmClubId,
+      String farmClubName,
       String farmClubImage,
       int wholeMemberCount,
       int currentStep,
@@ -133,6 +141,7 @@ class __$$MyFarmclubInfoModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? farmClubId = null,
     Object? farmClubName = null,
     Object? farmClubImage = null,
     Object? wholeMemberCount = null,
@@ -142,6 +151,10 @@ class __$$MyFarmclubInfoModelImplCopyWithImpl<$Res>
     Object? daysSinceStart = null,
   }) {
     return _then(_$MyFarmclubInfoModelImpl(
+      farmClubId: null == farmClubId
+          ? _value.farmClubId
+          : farmClubId // ignore: cast_nullable_to_non_nullable
+              as int,
       farmClubName: null == farmClubName
           ? _value.farmClubName
           : farmClubName // ignore: cast_nullable_to_non_nullable
@@ -178,7 +191,8 @@ class __$$MyFarmclubInfoModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$MyFarmclubInfoModelImpl implements _MyFarmclubInfoModel {
   const _$MyFarmclubInfoModelImpl(
-      {required this.farmClubName,
+      {required this.farmClubId,
+      required this.farmClubName,
       required this.farmClubImage,
       required this.wholeMemberCount,
       required this.currentStep,
@@ -190,6 +204,8 @@ class _$MyFarmclubInfoModelImpl implements _MyFarmclubInfoModel {
   factory _$MyFarmclubInfoModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$MyFarmclubInfoModelImplFromJson(json);
 
+  @override
+  final int farmClubId;
   @override
   final String farmClubName;
   @override
@@ -213,7 +229,7 @@ class _$MyFarmclubInfoModelImpl implements _MyFarmclubInfoModel {
 
   @override
   String toString() {
-    return 'MyFarmclubInfoModel(farmClubName: $farmClubName, farmClubImage: $farmClubImage, wholeMemberCount: $wholeMemberCount, currentStep: $currentStep, steps: $steps, advice: $advice, daysSinceStart: $daysSinceStart)';
+    return 'MyFarmclubInfoModel(farmClubId: $farmClubId, farmClubName: $farmClubName, farmClubImage: $farmClubImage, wholeMemberCount: $wholeMemberCount, currentStep: $currentStep, steps: $steps, advice: $advice, daysSinceStart: $daysSinceStart)';
   }
 
   @override
@@ -221,6 +237,8 @@ class _$MyFarmclubInfoModelImpl implements _MyFarmclubInfoModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MyFarmclubInfoModelImpl &&
+            (identical(other.farmClubId, farmClubId) ||
+                other.farmClubId == farmClubId) &&
             (identical(other.farmClubName, farmClubName) ||
                 other.farmClubName == farmClubName) &&
             (identical(other.farmClubImage, farmClubImage) ||
@@ -239,6 +257,7 @@ class _$MyFarmclubInfoModelImpl implements _MyFarmclubInfoModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      farmClubId,
       farmClubName,
       farmClubImage,
       wholeMemberCount,
@@ -264,7 +283,8 @@ class _$MyFarmclubInfoModelImpl implements _MyFarmclubInfoModel {
 
 abstract class _MyFarmclubInfoModel implements MyFarmclubInfoModel {
   const factory _MyFarmclubInfoModel(
-      {required final String farmClubName,
+      {required final int farmClubId,
+      required final String farmClubName,
       required final String farmClubImage,
       required final int wholeMemberCount,
       required final int currentStep,
@@ -275,6 +295,8 @@ abstract class _MyFarmclubInfoModel implements MyFarmclubInfoModel {
   factory _MyFarmclubInfoModel.fromJson(Map<String, dynamic> json) =
       _$MyFarmclubInfoModelImpl.fromJson;
 
+  @override
+  int get farmClubId;
   @override
   String get farmClubName;
   @override

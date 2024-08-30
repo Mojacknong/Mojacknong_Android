@@ -270,4 +270,33 @@ class MyVeggieService {
       throw Exception('응원말 조회 실패');
     }
   }
+
+  Future<String> myVeggieSuccess(
+    File file,
+    String content,
+    int myVeggieId,
+  ) async {
+    const url = '/api/my-veggie/success';
+
+    final jsonBody = {
+      'requestDto': {
+        'content': content,
+        'myVeggieId': myVeggieId,
+      }
+    };
+
+    final response = await apiClient.postMultipart(
+      url,
+      'requestDto',
+      'image',
+      jsonBody,
+      file,
+    );
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('채소 재배 성공 실패');
+    }
+  }
 }
