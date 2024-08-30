@@ -111,7 +111,7 @@ class MyFarmclubService {
 
       if (responseData['data']['isLastStep'] == true) {
         try {
-          await postMissionSuccess(farmClubId);
+          await myMissionSuccess(farmClubId);
 
           WidgetsBinding.instance.addPostFrameCallback((_) {
             Navigator.pushReplacement(
@@ -120,7 +120,6 @@ class MyFarmclubService {
             );
           });
         } catch (e) {
-          print('Error during postMissionSuccess: $e');
           throw Exception('미션 완료 후 성공 처리 실패');
         }
       }
@@ -131,7 +130,7 @@ class MyFarmclubService {
     }
   }
 
-  Future<String> postMissionSuccess(
+  Future<String> myMissionSuccess(
       int farmClubId) async {
     final url = '/api/farm-club/$farmClubId/success';
 
