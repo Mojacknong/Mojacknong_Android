@@ -1,12 +1,12 @@
 import 'dart:io';
 
+import 'package:farmus/view_model/vege_delete/notifier/vege_delete_success_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../common/bottom_sheet/farmus_image_picker.dart';
 import '../../../common/theme/farmus_theme_color.dart';
-import '../../../view_model/vege_delete/vege_delete_provider.dart';
 
 class VegeSuccessImage extends ConsumerStatefulWidget {
   const VegeSuccessImage({super.key});
@@ -18,7 +18,7 @@ class VegeSuccessImage extends ConsumerStatefulWidget {
 class _VegeSuccessImageState extends ConsumerState<VegeSuccessImage> {
   @override
   Widget build(BuildContext context) {
-    var successImage = ref.watch(vegeDeleteSuccessProvider).image;
+    var successImage = ref.watch(vegeDeleteSuccessNotifierProvider).value!.file;
 
     void showActionSheet(BuildContext context) {
       FarmusImagePicker.showActionSheet(context, (value) {
@@ -26,8 +26,8 @@ class _VegeSuccessImageState extends ConsumerState<VegeSuccessImage> {
           setState(() {
             successImage = value;
             ref
-                .read(vegeDeleteSuccessProvider.notifier)
-                .updateSuccessImage(successImage);
+                .read(vegeDeleteSuccessNotifierProvider.notifier)
+                .updateImage(successImage);
           });
         }
       });
@@ -80,8 +80,8 @@ class _VegeSuccessImageState extends ConsumerState<VegeSuccessImage> {
                     (successImage == null)
                         ? showActionSheet(context)
                         : ref
-                            .read(vegeDeleteSuccessProvider.notifier)
-                            .deleteSuccessImage();
+                            .read(vegeDeleteSuccessNotifierProvider.notifier)
+                            .deleteImage();
                   },
                   child: (successImage == null)
                       ? SvgPicture.asset('assets/image/ic_camera.svg',

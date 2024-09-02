@@ -72,4 +72,8 @@ class MyFarmclubRepository {
     return response;
   }
 
+  static Future<String> getMissionSuccess(int farmClubId) async {
+    String? response = await MyFarmclubService().myMissionSuccess(farmClubId);
+    return response;
+  }
 }

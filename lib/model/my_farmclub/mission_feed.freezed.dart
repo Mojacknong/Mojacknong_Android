@@ -21,9 +21,10 @@ MissionFeed _$MissionFeedFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$MissionFeed {
   int get missionPostId => throw _privateConstructorUsedError;
+  int get stepNum => throw _privateConstructorUsedError;
   String get nickname => throw _privateConstructorUsedError;
   String get profileImage => throw _privateConstructorUsedError;
-  DateTime get date => throw _privateConstructorUsedError;
+  String get date => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
   int get likeCount => throw _privateConstructorUsedError;
@@ -44,9 +45,10 @@ abstract class $MissionFeedCopyWith<$Res> {
   @useResult
   $Res call(
       {int missionPostId,
+      int stepNum,
       String nickname,
       String profileImage,
-      DateTime date,
+      String date,
       String image,
       String content,
       int likeCount,
@@ -68,6 +70,7 @@ class _$MissionFeedCopyWithImpl<$Res, $Val extends MissionFeed>
   @override
   $Res call({
     Object? missionPostId = null,
+    Object? stepNum = null,
     Object? nickname = null,
     Object? profileImage = null,
     Object? date = null,
@@ -82,6 +85,10 @@ class _$MissionFeedCopyWithImpl<$Res, $Val extends MissionFeed>
           ? _value.missionPostId
           : missionPostId // ignore: cast_nullable_to_non_nullable
               as int,
+      stepNum: null == stepNum
+          ? _value.stepNum
+          : stepNum // ignore: cast_nullable_to_non_nullable
+              as int,
       nickname: null == nickname
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
@@ -93,7 +100,7 @@ class _$MissionFeedCopyWithImpl<$Res, $Val extends MissionFeed>
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -128,9 +135,10 @@ abstract class _$$MissionFeedImplCopyWith<$Res>
   @useResult
   $Res call(
       {int missionPostId,
+      int stepNum,
       String nickname,
       String profileImage,
-      DateTime date,
+      String date,
       String image,
       String content,
       int likeCount,
@@ -150,6 +158,7 @@ class __$$MissionFeedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? missionPostId = null,
+    Object? stepNum = null,
     Object? nickname = null,
     Object? profileImage = null,
     Object? date = null,
@@ -164,6 +173,10 @@ class __$$MissionFeedImplCopyWithImpl<$Res>
           ? _value.missionPostId
           : missionPostId // ignore: cast_nullable_to_non_nullable
               as int,
+      stepNum: null == stepNum
+          ? _value.stepNum
+          : stepNum // ignore: cast_nullable_to_non_nullable
+              as int,
       nickname: null == nickname
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
@@ -175,7 +188,7 @@ class __$$MissionFeedImplCopyWithImpl<$Res>
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -205,6 +218,7 @@ class __$$MissionFeedImplCopyWithImpl<$Res>
 class _$MissionFeedImpl implements _MissionFeed {
   const _$MissionFeedImpl(
       {required this.missionPostId,
+      required this.stepNum,
       required this.nickname,
       required this.profileImage,
       required this.date,
@@ -220,11 +234,13 @@ class _$MissionFeedImpl implements _MissionFeed {
   @override
   final int missionPostId;
   @override
+  final int stepNum;
+  @override
   final String nickname;
   @override
   final String profileImage;
   @override
-  final DateTime date;
+  final String date;
   @override
   final String image;
   @override
@@ -238,7 +254,7 @@ class _$MissionFeedImpl implements _MissionFeed {
 
   @override
   String toString() {
-    return 'MissionFeed(missionPostId: $missionPostId, nickname: $nickname, profileImage: $profileImage, date: $date, image: $image, content: $content, likeCount: $likeCount, commentCount: $commentCount, isLiked: $isLiked)';
+    return 'MissionFeed(missionPostId: $missionPostId, stepNum: $stepNum, nickname: $nickname, profileImage: $profileImage, date: $date, image: $image, content: $content, likeCount: $likeCount, commentCount: $commentCount, isLiked: $isLiked)';
   }
 
   @override
@@ -248,6 +264,7 @@ class _$MissionFeedImpl implements _MissionFeed {
             other is _$MissionFeedImpl &&
             (identical(other.missionPostId, missionPostId) ||
                 other.missionPostId == missionPostId) &&
+            (identical(other.stepNum, stepNum) || other.stepNum == stepNum) &&
             (identical(other.nickname, nickname) ||
                 other.nickname == nickname) &&
             (identical(other.profileImage, profileImage) ||
@@ -264,7 +281,7 @@ class _$MissionFeedImpl implements _MissionFeed {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, missionPostId, nickname,
+  int get hashCode => Object.hash(runtimeType, missionPostId, stepNum, nickname,
       profileImage, date, image, content, likeCount, commentCount, isLiked);
 
   @JsonKey(ignore: true)
@@ -284,9 +301,10 @@ class _$MissionFeedImpl implements _MissionFeed {
 abstract class _MissionFeed implements MissionFeed {
   const factory _MissionFeed(
       {required final int missionPostId,
+      required final int stepNum,
       required final String nickname,
       required final String profileImage,
-      required final DateTime date,
+      required final String date,
       required final String image,
       required final String content,
       required final int likeCount,
@@ -299,11 +317,13 @@ abstract class _MissionFeed implements MissionFeed {
   @override
   int get missionPostId;
   @override
+  int get stepNum;
+  @override
   String get nickname;
   @override
   String get profileImage;
   @override
-  DateTime get date;
+  String get date;
   @override
   String get image;
   @override

@@ -96,4 +96,13 @@ class MyVeggieGardenRepository {
     String? response = await MyVeggieService().motivationMessage();
     return response;
   }
+
+  static Future<String> myVeggieSuccess(
+      File file,
+      String content,
+      int myVeggieId,
+      ) async {
+    String? response = await MyVeggieService().myVeggieSuccess(file, content, myVeggieId);
+    return response;
+  }
 }

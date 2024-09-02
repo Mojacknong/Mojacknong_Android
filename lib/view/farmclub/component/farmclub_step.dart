@@ -3,13 +3,12 @@ import 'package:farmus/common/farmus_picture_fix.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../common/content_empty.dart';
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 import '../../../model/my_farmclub/my_farmclub_info_model.dart';
 import '../../mission_feed/mission_feed_screen.dart';
 import '../../mission_write/mission_write_screen.dart';
-
-import 'package:flutter/material.dart';
 
 class FarmclubStep extends ConsumerWidget {
   const FarmclubStep({
@@ -75,6 +74,7 @@ class FarmclubStep extends ConsumerWidget {
                         MaterialPageRoute(
                           builder: (context) => MissionWriteScreen(
                             step: step,
+                            farmClubId: farmclubInfo.farmClubId,
                           ),
                         ),
                       );
@@ -127,24 +127,28 @@ class FarmclubStep extends ConsumerWidget {
                     ],
                   ),
                   const SizedBox(height: 8),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: step.images.isNotEmpty
-                          ? step.images.map((image) {
-                        return Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child: FarmusPictureFix(
-                            size: 82,
-                            image: image,
+                  step.images.isNotEmpty
+                      ? SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: step.images.map((image) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(right: 8.0),
+                                  child: FarmusPictureFix(
+                                    size: 82,
+                                    image: image,
+                                  ),
+                                );
+                              }).toList()),
+                        )
+                      : const SizedBox(
+                          width: double.infinity,
+                          child: ContentEmpty(
+                            text: '아직 미션을 완료한 파머가 없어요',
                           ),
-                        );
-                      }).toList()
-                          : [const SizedBox()],
-                    ),
-                  ),
+                        ),
                 ],
               ),
             ),

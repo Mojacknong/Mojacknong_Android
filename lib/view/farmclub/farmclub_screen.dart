@@ -39,8 +39,8 @@ class FarmclubScreen extends ConsumerWidget {
             if (farmclub.isNotEmpty)
               GestureDetector(
                 onTap: () {
-                  final farmClubName = farmclub[0].farmClubName;
-                  final farmClubId = farmclub[0].farmClubId;
+                  final farmClubName =  myFarmclubInfo.value!.farmClubName;
+                  final farmClubId =myFarmclubInfo.value!.farmClubId;
                   showFarmclubExitBottomSheet(context, farmClubName, farmClubId);                },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),

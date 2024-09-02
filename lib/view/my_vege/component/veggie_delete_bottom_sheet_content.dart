@@ -5,7 +5,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../common/bottom_sheet/primary_action_sheet.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
 import '../../../view_model/home/home_vege_add_provider.dart';
-import '../../../view_model/vege_delete/vege_delete_provider.dart';
 import '../../vege_delete/vege_delete_screen.dart';
 
 class VeggieDeleteBottomSheetContent extends ConsumerWidget {
@@ -29,7 +28,6 @@ class VeggieDeleteBottomSheetContent extends ConsumerWidget {
           onPressed: () {
             Navigator.pop(context);
             ref.read(homeVegeAddMoveProvider.notifier).moveToFirstPage();
-            ref.read(vegeDeleteReasonProvider.notifier).reset();
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const VegeDeleteScreen()),

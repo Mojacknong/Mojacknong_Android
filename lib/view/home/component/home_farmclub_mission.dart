@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../model/my_farmclub/my_farmclub_info_model.dart';
 import '../../../view_model/home/home_provider.dart';
 import '../../../view_model/my_farmclub/my_farmclub_info_notifier.dart';
+import '../../../view_model/my_vege/notifier/my_veggie_profile_notifier.dart';
 import '../../farmclub/component/farmclub_step.dart';
 import 'none/home_none_container.dart';
 
@@ -15,54 +16,44 @@ class HomeFarmclubMission extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final selectedVegeId = ref.watch(selectedVegeIdProvider);
+    var profile = ref.watch(myVeggieProfileProvider(selectedVegeId));
+
     final selectedFarmclubId = ref.watch(selectedFarmclubIdProvider);
-    final farmclubData = ref.watch(myFarmclubInfoModelProvider(selectedFarmclubId));
+    final AsyncValue<MyFarmclubInfoModel> myFarmclubInfo =
+    ref.watch(myFarmclubInfoModelProvider(selectedFarmclubId));
 
-    return farmclubData.when(
-      data: (farmclubs) {
-        if (farmclubs == null) {
-          return HomeNoneContainer(
-            title: '가입한 팜클럽이 없어요',
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (builder) => const MainScreen(selectedIndex: 1),
-                ),
-              );
-            },
-            buttonText: '팜클럽 가입하기',
-          );
-        } else {
-          final currentStepIndex = farmclubs.currentStep - 1;
-          final currentStep = farmclubs.steps[currentStepIndex];
-
-          return GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const MainScreen(selectedIndex: 1),
-                ),
-              );
-            },
-            child: Column(
-              children: [
-                FarmclubStep(
-                  wholeMember: farmclubs.wholeMemberCount,
-                  step: currentStep,
-                  farmclubInfo: farmclubs,
-                  isButton: true,
-                ),
-              ],
+    return profile.when(
+      data: (profileInfo) => profileInfo.step == -1
+          ? HomeNoneContainer(
+        title: '가입한 팜클럽이 없어요',
+        onPressed: () {
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+              builder: (builder) => const MainScreen(
+                selectedIndex: 2,
+              ),
             ),
+                (route) => false,
           );
-        }
-      },
-      loading: () => const CircularProgressIndicator(),
-      error: (error, stackTrace) => Center(
-        child: Text('Error: $error'),
+        },
+        buttonText: '팜클럽 가입하기',
+      )
+          : myFarmclubInfo.when(
+        data: (farmclubInfo) => FarmclubStep(
+          wholeMember: farmclubInfo.wholeMemberCount,
+          step: farmclubInfo.steps[farmclubInfo.currentStep - 1],
+          farmclubInfo: farmclubInfo,
+          isButton: true,
+        ),
+        error: (error, stack) =>
+            Center(child: Text('Error: ${error.toString()}')),
+        loading: () => Container(),
       ),
+      error: (error, stack) =>
+          Center(child: Text('Error: ${error.toString()}')),
+      loading: () => Container(),
     );
   }
 }
