@@ -21,36 +21,36 @@ class HomeFarmclubMission extends ConsumerWidget {
 
     final selectedFarmclubId = ref.watch(selectedFarmclubIdProvider);
     final AsyncValue<MyFarmclubInfoModel> myFarmclubInfo =
-        ref.watch(myFarmclubInfoModelProvider(selectedFarmclubId));
+    ref.watch(myFarmclubInfoModelProvider(selectedFarmclubId));
 
     return profile.when(
       data: (profileInfo) => profileInfo.step == -1
           ? HomeNoneContainer(
-              title: '가입한 팜클럽이 없어요',
-              onPressed: () {
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(
-                    builder: (builder) => const MainScreen(
-                      selectedIndex: 2,
-                    ),
-                  ),
-                  (route) => false,
-                );
-              },
-              buttonText: '팜클럽 가입하기',
-            )
-          : myFarmclubInfo.when(
-              data: (farmclubInfo) => FarmclubStep(
-                wholeMember: farmclubInfo.wholeMemberCount,
-                step: farmclubInfo.steps[farmclubInfo.currentStep - 1],
-                farmclubInfo: farmclubInfo,
-                isButton: true,
+        title: '가입한 팜클럽이 없어요',
+        onPressed: () {
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+              builder: (builder) => const MainScreen(
+                selectedIndex: 2,
               ),
-              error: (error, stack) =>
-                  Center(child: Text('Error: ${error.toString()}')),
-              loading: () => Container(),
             ),
+                (route) => false,
+          );
+        },
+        buttonText: '팜클럽 가입하기',
+      )
+          : myFarmclubInfo.when(
+        data: (farmclubInfo) => FarmclubStep(
+          wholeMember: farmclubInfo.wholeMemberCount,
+          step: farmclubInfo.steps[farmclubInfo.currentStep - 1],
+          farmclubInfo: farmclubInfo,
+          isButton: true,
+        ),
+        error: (error, stack) =>
+            Center(child: Text('Error: ${error.toString()}')),
+        loading: () => Container(),
+      ),
       error: (error, stack) =>
           Center(child: Text('Error: ${error.toString()}')),
       loading: () => Container(),

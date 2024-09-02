@@ -146,5 +146,62 @@ class MyFarmclubService {
       throw Exception('팜클럽 성공 실패');
     }
   }
+  Future<String> missionCommentAdd(int missionPostId, String content) async {
+    const url = '/api/farm-club/mission/comment';
 
+    final body = jsonEncode({
+      'missionPostId': missionPostId,
+      'content': content,
+    });
+
+    final response = await apiClient.post(url, body: body);
+
+    if (response.statusCode == 200) {
+      print(utf8.decode(response.bodyBytes));
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('미션 댓글 추가 실패');
+    }
+  }
+  Future<String> missionComment(int missionPostId) async {
+    final url = '/api/farm-club/mission/$missionPostId';
+
+    final response = await apiClient.get(url);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('미션 댓글 조회 실패');
+    }
+  }
+
+  Future<String> missionLike(int missionPostId) async {
+    final url = '/api/farm-club/mission/like/$missionPostId';
+
+
+    final response = await apiClient.post(url);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('미션 좋아요 실패');
+    }
+  }
+
+  Future<String> missionLikeDelete(int missionPostId) async {
+    final url = '/api/farm-club/mission/like/$missionPostId';
+
+
+    final response = await apiClient.delete(url);
+
+    if (response.statusCode == 200) {
+      print(utf8.decode(response.bodyBytes));
+
+      return utf8.decode(response.bodyBytes);
+    } else {
+      print(utf8.decode(response.bodyBytes));
+
+      throw Exception('미션 좋아요 삭제 실패');
+    }
+  }
 }

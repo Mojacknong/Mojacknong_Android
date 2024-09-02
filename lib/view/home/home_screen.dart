@@ -18,6 +18,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../common/app_bar/home_app_bar.dart';
 import '../../model/veggie_info/recommend_veggie_model.dart';
 import '../../view_model/home/home_provider.dart';
+import '../main/main_screen.dart';
 import 'component/home_my_vege.dart';
 import 'component/none/home_my_vege_none.dart';
 
@@ -127,7 +128,14 @@ class HomeScreen extends ConsumerWidget {
                   const SizedBox(height: 32),
                   HomeSubTitle(
                     title: '팜클럽 미션',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (builder) => const MainScreen(selectedIndex: 1,),
+                        ),
+                      );
+                    },
                     visible: veggieList.value!.isNotEmpty,
                   ),
                   veggieList.value!.isNotEmpty
