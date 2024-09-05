@@ -18,7 +18,7 @@ class FarmclubTabBar extends StatelessWidget {
     final List<StepModel> currentSteps = [steps[currentStepIndex]];
 
     final List<StepModel> previousSteps =
-        (currentStepIndex > 0) ? steps.sublist(0, currentStepIndex - 1) : [];
+        (currentStepIndex > 0) ? steps.sublist(0, currentStepIndex) : [];
     final List<StepModel> nextSteps = (currentStepIndex < steps.length - 1)
         ? steps.sublist(currentStepIndex + 1)
         : [];
