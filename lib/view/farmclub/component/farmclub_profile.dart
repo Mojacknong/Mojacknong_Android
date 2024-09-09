@@ -25,6 +25,7 @@ class FarmclubProfile extends ConsumerWidget {
               FarmclubSelectProfile(
                 image: farmclubInfoModel!.farmClubImage,
                 size: 64,
+                isSelected: true,
               ),
               SvgPicture.asset('assets/image/ic_farmclub_mark.svg'),
             ],

@@ -76,7 +76,6 @@ class MyFarmclubService {
     final response = await apiClient.delete(url, body: body);
 
     if (response.statusCode == 200) {
-      print(utf8.decode(response.bodyBytes));
       return utf8.decode(response.bodyBytes);
     } else {
       throw Exception('팜클럽 탈퇴 실패');
@@ -84,11 +83,11 @@ class MyFarmclubService {
   }
 
   Future<String> myMissionComplete(
-      File file,
-      String content,
-      int farmClubId,
-      BuildContext context,
-      ) async {
+    File file,
+    String content,
+    int farmClubId,
+    BuildContext context,
+  ) async {
     const url = '/api/farm-club/mission';
 
     final jsonBody = {
@@ -107,7 +106,8 @@ class MyFarmclubService {
     );
 
     if (response.statusCode == 200) {
-      final Map<String, dynamic> responseData = jsonDecode(utf8.decode(response.bodyBytes));
+      final Map<String, dynamic> responseData =
+          jsonDecode(utf8.decode(response.bodyBytes));
 
       if (responseData['data']['isLastStep'] == true) {
         try {
@@ -130,8 +130,7 @@ class MyFarmclubService {
     }
   }
 
-  Future<String> myMissionSuccess(
-      int farmClubId) async {
+  Future<String> myMissionSuccess(int farmClubId) async {
     final url = '/api/farm-club/$farmClubId/success';
 
     final body = jsonEncode({
@@ -146,6 +145,7 @@ class MyFarmclubService {
       throw Exception('팜클럽 성공 실패');
     }
   }
+
   Future<String> missionCommentAdd(int missionPostId, String content) async {
     const url = '/api/farm-club/mission/comment';
 
@@ -163,6 +163,7 @@ class MyFarmclubService {
       throw Exception('미션 댓글 추가 실패');
     }
   }
+
   Future<String> missionComment(int missionPostId) async {
     final url = '/api/farm-club/mission/$missionPostId';
 
@@ -178,7 +179,6 @@ class MyFarmclubService {
   Future<String> missionLike(int missionPostId) async {
     final url = '/api/farm-club/mission/like/$missionPostId';
 
-
     final response = await apiClient.post(url);
 
     if (response.statusCode == 200) {
@@ -191,17 +191,17 @@ class MyFarmclubService {
   Future<String> missionLikeDelete(int missionPostId) async {
     final url = '/api/farm-club/mission/like/$missionPostId';
 
-
     final response = await apiClient.delete(url);
 
     if (response.statusCode == 200) {
-      print(utf8.decode(response.bodyBytes));
-
       return utf8.decode(response.bodyBytes);
     } else {
-      print(utf8.decode(response.bodyBytes));
-
       throw Exception('미션 좋아요 삭제 실패');
     }
+  }
+
+  Future<String> farmclubUserList(int farmClubId) async {
+    final url = '/api/farm-club/$farmClubId/user';
+    return _fetchData(url, '팜 클럽 유저 불러오기 실패');
   }
 }
