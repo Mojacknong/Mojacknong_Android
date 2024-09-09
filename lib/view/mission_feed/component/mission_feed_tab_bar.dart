@@ -49,6 +49,7 @@ class _MissionFeedTabBarState extends ConsumerState<MissionFeedTabBar> {
 
           return SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -75,7 +76,6 @@ class _MissionFeedTabBarState extends ConsumerState<MissionFeedTabBar> {
                             }
 
                             return Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
                               children: sortedUsers.map((user) {
                                 bool isSelected =
                                     selectedUserNickname == user.nickname;
