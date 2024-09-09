@@ -69,11 +69,7 @@ class _MissionFeedTabBarState extends ConsumerState<MissionFeedTabBar> {
                                 .toList();
 
                             List<MissionUserListModel> sortedUsers = [];
-                            if (myAccount != null) {
-                              sortedUsers = [myAccount, ...otherUsers];
-                            } else {
-                              sortedUsers = users;
-                            }
+                            sortedUsers = [myAccount, ...otherUsers];
 
                             return Row(
                               children: sortedUsers.map((user) {
