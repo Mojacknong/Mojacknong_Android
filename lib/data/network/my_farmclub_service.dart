@@ -202,6 +202,6 @@ class MyFarmclubService {
 
   Future<String> farmclubUserList(int farmClubId) async {
     final url = '/api/farm-club/$farmClubId/user';
-    return _fetchData(url, '팜 클럽 유저 불러오기 실패');
+    return _fetchData(url, '팜클럽 유저 불러오기 실패');
   }
 }
