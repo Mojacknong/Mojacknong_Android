@@ -28,6 +28,7 @@ class FeedDetailScreen extends ConsumerWidget {
     required this.likeCount,
     required this.myLike,
     this.state,
+    required this.categoryType,
   });
 
   final int feedId;
@@ -40,12 +41,13 @@ class FeedDetailScreen extends ConsumerWidget {
   final int likeCount;
   final bool myLike;
   final String? state;
+  final String categoryType;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var selectedVeggieId = ref.watch(selectedVegeIdProvider);
     final AsyncValue<List<MyVeggieListModel>> veggieList =
-    ref.watch(myVeggieListModelProvider);
+        ref.watch(myVeggieListModelProvider);
 
     if (selectedVeggieId == null && veggieList.value?.isNotEmpty == true) {
       selectedVeggieId = veggieList.value!.first.myVeggieId;
@@ -59,11 +61,7 @@ class FeedDetailScreen extends ConsumerWidget {
           IconButton(
             onPressed: () {
               showDeleteBottomSheet(
-                context,
-                feedId,
-                selectedVeggieId,
-                '게시물',
-              );
+                  context, feedId, selectedVeggieId, '게시물', categoryType);
             },
             icon: SvgPicture.asset('assets/image/ic_more_vertical.svg'),
           )
@@ -80,13 +78,13 @@ class FeedDetailScreen extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     FeedProfile(
-                      isDetail: false,
-                      profileImage: profileImage,
-                      nickname: nickname,
-                      writeDateTime: writeDateTime,
-                      myComment: false,
-                      commentId: commentCount,
-                    ),
+                        isDetail: false,
+                        profileImage: profileImage,
+                        nickname: nickname,
+                        writeDateTime: writeDateTime,
+                        myComment: false,
+                        commentId: commentCount,
+                        categoryType: categoryType),
                     const SizedBox(
                       height: 16.0,
                     ),
@@ -123,15 +121,15 @@ class FeedDetailScreen extends ConsumerWidget {
                     ],
                     state != null
                         ? DiaryComment(
-                      diaryId: feedId,
-                      commentCount: commentCount,
-                      myLike: myLike,
-                    )
+                            diaryId: feedId,
+                            commentCount: commentCount,
+                            myLike: myLike,
+                          )
                         : MissionComment(
-                      missionPostCommentId: feedId,
-                      commentCount: commentCount,
-                      myLike: myLike,
-                    ),
+                            missionPostCommentId: feedId,
+                            commentCount: commentCount,
+                            myLike: myLike,
+                          ),
                   ],
                 ),
               ),

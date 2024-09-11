@@ -117,13 +117,15 @@ void showQuitActionSheet(BuildContext context) {
       });
 }
 
-void showFarmclubExitBottomSheet(BuildContext context, String farmClubName, int farmClubId) {
+void showFarmclubExitBottomSheet(
+    BuildContext context, String farmClubName, int farmClubId) {
   showModalBottomSheet<void>(
     context: context,
     isScrollControlled: true,
     backgroundColor: FarmusThemeColor.white,
     builder: (BuildContext context) {
-      return FarmclubExitBottomSheetContent(farmClubName: farmClubName, farmClubId : farmClubId);
+      return FarmclubExitBottomSheetContent(
+          farmClubName: farmClubName, farmClubId: farmClubId);
     },
   );
 }
@@ -156,15 +158,18 @@ void showVeggieDeleteBottomSheet(BuildContext context) {
   );
 }
 
-void showDeleteBottomSheet(
-    BuildContext context, int id, int? myVeggieId, String type) {
+void showDeleteBottomSheet(BuildContext context, int id, int? myVeggieId,
+    String contentType, String categoryType) {
   showModalBottomSheet<void>(
     context: context,
     isScrollControlled: true,
     backgroundColor: FarmusThemeColor.white,
     builder: (BuildContext context) {
       return DeleteBottomSheetContent(
-          id: id, myVeggieId: myVeggieId, type: type);
+          id: id,
+          myVeggieId: myVeggieId,
+          contentType: contentType,
+          categoryType: categoryType);
     },
   );
 }

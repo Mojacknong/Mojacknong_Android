@@ -62,15 +62,17 @@ class MissionFeedTabBar extends ConsumerWidget {
                         ]
                       : feeds.map((feed) {
                           return FarmusFeed(
-                              feedId: feed.missionPostId,
-                              profileImage: feed.profileImage,
-                              nickname: feed.nickname,
-                              writeDateTime: feed.date,
-                              content: feed.content,
-                              image: feed.image,
-                              commentCount: feed.commentCount,
-                              likeCount: feed.likeCount,
-                              myLike: feed.isLiked);
+                            feedId: feed.missionPostId,
+                            profileImage: feed.profileImage,
+                            nickname: feed.nickname,
+                            writeDateTime: feed.date,
+                            content: feed.content,
+                            image: feed.image,
+                            commentCount: feed.commentCount,
+                            likeCount: feed.likeCount,
+                            myLike: feed.isLiked,
+                            categoryType: 'mission',
+                          );
                         }).toList(),
                 ),
               ),
@@ -110,15 +112,17 @@ class MissionFeedTabBar extends ConsumerWidget {
                         : Column(
                             children: stepFeeds.map((feed) {
                               return FarmusFeed(
-                                  feedId: feed.missionPostId,
-                                  profileImage: feed.profileImage,
-                                  nickname: feed.nickname,
-                                  writeDateTime: feed.date,
-                                  content: feed.content,
-                                  image: feed.image,
-                                  commentCount: feed.commentCount,
-                                  likeCount: feed.likeCount,
-                                  myLike: feed.isLiked);
+                                feedId: feed.missionPostId,
+                                profileImage: feed.profileImage,
+                                nickname: feed.nickname,
+                                writeDateTime: feed.date,
+                                content: feed.content,
+                                image: feed.image,
+                                commentCount: feed.commentCount,
+                                likeCount: feed.likeCount,
+                                myLike: feed.isLiked,
+                                categoryType: 'mission',
+                              );
                             }).toList(),
                           ),
                   ],

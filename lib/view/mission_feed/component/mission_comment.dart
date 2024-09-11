@@ -92,6 +92,7 @@ class MissionComment extends ConsumerWidget {
                               isLast: idx == comments.length - 1,
                               myComment: comment.isMyComment,
                               commentId: comment.missionPostCommentId,
+                              categoryType: 'mission',
                             ),
                           );
                         }).toList(),
