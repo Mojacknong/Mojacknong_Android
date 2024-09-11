@@ -109,7 +109,7 @@ class _MissionFeedTabBarState extends ConsumerState<MissionFeedTabBar> {
                       SizedBox(
                         width: double.infinity,
                         child: ContentEmpty(
-                          text: '아직 완료한 미션이 없어요',
+                          text: '아직 미션을 완료하지 않았어요',
                           padding: 48.0,
                         ),
                       )
