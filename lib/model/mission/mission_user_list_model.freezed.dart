@@ -15,11 +15,12 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 MissionUserListModel _$MissionUserListModelFromJson(Map<String, dynamic> json) {
-  return _MissionUserListModelt.fromJson(json);
+  return _MissionUserListModel.fromJson(json);
 }
 
 /// @nodoc
 mixin _$MissionUserListModel {
+  int get userId => throw _privateConstructorUsedError;
   String get nickname => throw _privateConstructorUsedError;
   String get profileImage => throw _privateConstructorUsedError;
 
@@ -35,7 +36,7 @@ abstract class $MissionUserListModelCopyWith<$Res> {
           $Res Function(MissionUserListModel) then) =
       _$MissionUserListModelCopyWithImpl<$Res, MissionUserListModel>;
   @useResult
-  $Res call({String nickname, String profileImage});
+  $Res call({int userId, String nickname, String profileImage});
 }
 
 /// @nodoc
@@ -52,10 +53,15 @@ class _$MissionUserListModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? userId = null,
     Object? nickname = null,
     Object? profileImage = null,
   }) {
     return _then(_value.copyWith(
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
       nickname: null == nickname
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
@@ -69,33 +75,36 @@ class _$MissionUserListModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$MissionUserListModeltImplCopyWith<$Res>
+abstract class _$$MissionUserListModelImplCopyWith<$Res>
     implements $MissionUserListModelCopyWith<$Res> {
-  factory _$$MissionUserListModeltImplCopyWith(
-          _$MissionUserListModeltImpl value,
-          $Res Function(_$MissionUserListModeltImpl) then) =
-      __$$MissionUserListModeltImplCopyWithImpl<$Res>;
+  factory _$$MissionUserListModelImplCopyWith(_$MissionUserListModelImpl value,
+          $Res Function(_$MissionUserListModelImpl) then) =
+      __$$MissionUserListModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String nickname, String profileImage});
+  $Res call({int userId, String nickname, String profileImage});
 }
 
 /// @nodoc
-class __$$MissionUserListModeltImplCopyWithImpl<$Res>
-    extends _$MissionUserListModelCopyWithImpl<$Res,
-        _$MissionUserListModeltImpl>
-    implements _$$MissionUserListModeltImplCopyWith<$Res> {
-  __$$MissionUserListModeltImplCopyWithImpl(_$MissionUserListModeltImpl _value,
-      $Res Function(_$MissionUserListModeltImpl) _then)
+class __$$MissionUserListModelImplCopyWithImpl<$Res>
+    extends _$MissionUserListModelCopyWithImpl<$Res, _$MissionUserListModelImpl>
+    implements _$$MissionUserListModelImplCopyWith<$Res> {
+  __$$MissionUserListModelImplCopyWithImpl(_$MissionUserListModelImpl _value,
+      $Res Function(_$MissionUserListModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? userId = null,
     Object? nickname = null,
     Object? profileImage = null,
   }) {
-    return _then(_$MissionUserListModeltImpl(
+    return _then(_$MissionUserListModelImpl(
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
       nickname: null == nickname
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
@@ -110,13 +119,17 @@ class __$$MissionUserListModeltImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$MissionUserListModeltImpl implements _MissionUserListModelt {
-  const _$MissionUserListModeltImpl(
-      {required this.nickname, required this.profileImage});
+class _$MissionUserListModelImpl implements _MissionUserListModel {
+  const _$MissionUserListModelImpl(
+      {required this.userId,
+      required this.nickname,
+      required this.profileImage});
 
-  factory _$MissionUserListModeltImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MissionUserListModeltImplFromJson(json);
+  factory _$MissionUserListModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MissionUserListModelImplFromJson(json);
 
+  @override
+  final int userId;
   @override
   final String nickname;
   @override
@@ -124,14 +137,15 @@ class _$MissionUserListModeltImpl implements _MissionUserListModelt {
 
   @override
   String toString() {
-    return 'MissionUserListModel(nickname: $nickname, profileImage: $profileImage)';
+    return 'MissionUserListModel(userId: $userId, nickname: $nickname, profileImage: $profileImage)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MissionUserListModeltImpl &&
+            other is _$MissionUserListModelImpl &&
+            (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.nickname, nickname) ||
                 other.nickname == nickname) &&
             (identical(other.profileImage, profileImage) ||
@@ -140,37 +154,41 @@ class _$MissionUserListModeltImpl implements _MissionUserListModelt {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, nickname, profileImage);
+  int get hashCode => Object.hash(runtimeType, userId, nickname, profileImage);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$MissionUserListModeltImplCopyWith<_$MissionUserListModeltImpl>
-      get copyWith => __$$MissionUserListModeltImplCopyWithImpl<
-          _$MissionUserListModeltImpl>(this, _$identity);
+  _$$MissionUserListModelImplCopyWith<_$MissionUserListModelImpl>
+      get copyWith =>
+          __$$MissionUserListModelImplCopyWithImpl<_$MissionUserListModelImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$MissionUserListModeltImplToJson(
+    return _$$MissionUserListModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _MissionUserListModelt implements MissionUserListModel {
-  const factory _MissionUserListModelt(
-      {required final String nickname,
-      required final String profileImage}) = _$MissionUserListModeltImpl;
+abstract class _MissionUserListModel implements MissionUserListModel {
+  const factory _MissionUserListModel(
+      {required final int userId,
+      required final String nickname,
+      required final String profileImage}) = _$MissionUserListModelImpl;
 
-  factory _MissionUserListModelt.fromJson(Map<String, dynamic> json) =
-      _$MissionUserListModeltImpl.fromJson;
+  factory _MissionUserListModel.fromJson(Map<String, dynamic> json) =
+      _$MissionUserListModelImpl.fromJson;
 
+  @override
+  int get userId;
   @override
   String get nickname;
   @override
   String get profileImage;
   @override
   @JsonKey(ignore: true)
-  _$$MissionUserListModeltImplCopyWith<_$MissionUserListModeltImpl>
+  _$$MissionUserListModelImplCopyWith<_$MissionUserListModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

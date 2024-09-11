@@ -21,6 +21,7 @@ MissionFeed _$MissionFeedFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$MissionFeed {
   int get missionPostId => throw _privateConstructorUsedError;
+  int get userId => throw _privateConstructorUsedError;
   int get stepNum => throw _privateConstructorUsedError;
   String get nickname => throw _privateConstructorUsedError;
   String get profileImage => throw _privateConstructorUsedError;
@@ -45,6 +46,7 @@ abstract class $MissionFeedCopyWith<$Res> {
   @useResult
   $Res call(
       {int missionPostId,
+      int userId,
       int stepNum,
       String nickname,
       String profileImage,
@@ -70,6 +72,7 @@ class _$MissionFeedCopyWithImpl<$Res, $Val extends MissionFeed>
   @override
   $Res call({
     Object? missionPostId = null,
+    Object? userId = null,
     Object? stepNum = null,
     Object? nickname = null,
     Object? profileImage = null,
@@ -84,6 +87,10 @@ class _$MissionFeedCopyWithImpl<$Res, $Val extends MissionFeed>
       missionPostId: null == missionPostId
           ? _value.missionPostId
           : missionPostId // ignore: cast_nullable_to_non_nullable
+              as int,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
               as int,
       stepNum: null == stepNum
           ? _value.stepNum
@@ -135,6 +142,7 @@ abstract class _$$MissionFeedImplCopyWith<$Res>
   @useResult
   $Res call(
       {int missionPostId,
+      int userId,
       int stepNum,
       String nickname,
       String profileImage,
@@ -158,6 +166,7 @@ class __$$MissionFeedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? missionPostId = null,
+    Object? userId = null,
     Object? stepNum = null,
     Object? nickname = null,
     Object? profileImage = null,
@@ -172,6 +181,10 @@ class __$$MissionFeedImplCopyWithImpl<$Res>
       missionPostId: null == missionPostId
           ? _value.missionPostId
           : missionPostId // ignore: cast_nullable_to_non_nullable
+              as int,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
               as int,
       stepNum: null == stepNum
           ? _value.stepNum
@@ -218,6 +231,7 @@ class __$$MissionFeedImplCopyWithImpl<$Res>
 class _$MissionFeedImpl implements _MissionFeed {
   const _$MissionFeedImpl(
       {required this.missionPostId,
+      required this.userId,
       required this.stepNum,
       required this.nickname,
       required this.profileImage,
@@ -233,6 +247,8 @@ class _$MissionFeedImpl implements _MissionFeed {
 
   @override
   final int missionPostId;
+  @override
+  final int userId;
   @override
   final int stepNum;
   @override
@@ -254,7 +270,7 @@ class _$MissionFeedImpl implements _MissionFeed {
 
   @override
   String toString() {
-    return 'MissionFeed(missionPostId: $missionPostId, stepNum: $stepNum, nickname: $nickname, profileImage: $profileImage, date: $date, image: $image, content: $content, likeCount: $likeCount, commentCount: $commentCount, isLiked: $isLiked)';
+    return 'MissionFeed(missionPostId: $missionPostId, userId: $userId, stepNum: $stepNum, nickname: $nickname, profileImage: $profileImage, date: $date, image: $image, content: $content, likeCount: $likeCount, commentCount: $commentCount, isLiked: $isLiked)';
   }
 
   @override
@@ -264,6 +280,7 @@ class _$MissionFeedImpl implements _MissionFeed {
             other is _$MissionFeedImpl &&
             (identical(other.missionPostId, missionPostId) ||
                 other.missionPostId == missionPostId) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.stepNum, stepNum) || other.stepNum == stepNum) &&
             (identical(other.nickname, nickname) ||
                 other.nickname == nickname) &&
@@ -281,8 +298,19 @@ class _$MissionFeedImpl implements _MissionFeed {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, missionPostId, stepNum, nickname,
-      profileImage, date, image, content, likeCount, commentCount, isLiked);
+  int get hashCode => Object.hash(
+      runtimeType,
+      missionPostId,
+      userId,
+      stepNum,
+      nickname,
+      profileImage,
+      date,
+      image,
+      content,
+      likeCount,
+      commentCount,
+      isLiked);
 
   @JsonKey(ignore: true)
   @override
@@ -301,6 +329,7 @@ class _$MissionFeedImpl implements _MissionFeed {
 abstract class _MissionFeed implements MissionFeed {
   const factory _MissionFeed(
       {required final int missionPostId,
+      required final int userId,
       required final int stepNum,
       required final String nickname,
       required final String profileImage,
@@ -316,6 +345,8 @@ abstract class _MissionFeed implements MissionFeed {
 
   @override
   int get missionPostId;
+  @override
+  int get userId;
   @override
   int get stepNum;
   @override
