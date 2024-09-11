@@ -204,4 +204,35 @@ class MyFarmclubService {
       throw Exception('미션 좋아요 삭제 실패');
     }
   }
+
+  Future<String> missionCommentDelete(int missionPostCommentId) async {
+    final url = '/api/farm-club/mission/comment/$missionPostCommentId';
+
+    final body = jsonEncode({
+      'missionPostCommentId': missionPostCommentId,
+    });
+
+    final response = await apiClient.delete(url, body: body);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('미션 댓글 삭제 실패');
+    }
+  }
+
+  Future<String> missionDelete(int missionPostId) async {
+    final url = '/api/farm-club/mission/$missionPostId';
+    final body = jsonEncode({
+      'missionPostId': missionPostId,
+    });
+
+    final response = await apiClient.delete(url, body: body);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('미션 삭제 실패');
+    }
+  }
 }
