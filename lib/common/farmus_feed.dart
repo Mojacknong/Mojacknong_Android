@@ -18,6 +18,8 @@ class FarmusFeed extends ConsumerWidget {
     required this.commentCount,
     required this.likeCount,
     required this.myLike,
+    required this.categoryType,
+
     this.state,
   });
 
@@ -31,6 +33,7 @@ class FarmusFeed extends ConsumerWidget {
   final int likeCount;
   final bool myLike;
   final String? state;
+  final String categoryType;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -49,6 +52,7 @@ class FarmusFeed extends ConsumerWidget {
                     likeCount: likeCount,
                     myLike: myLike,
                     state: state,
+                    categoryType: categoryType,
                   ))),
       child: Column(
         children: [
@@ -61,6 +65,7 @@ class FarmusFeed extends ConsumerWidget {
               profileImage: profileImage,
               myComment: false,
               commentId: -1,
+              categoryType: categoryType,
             ),
           ),
           FeedDetailContent(

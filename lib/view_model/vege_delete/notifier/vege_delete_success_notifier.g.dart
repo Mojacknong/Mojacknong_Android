@@ -7,7 +7,7 @@ part of 'vege_delete_success_notifier.dart';
 // **************************************************************************
 
 String _$vegeDeleteSuccessNotifierHash() =>
-    r'a3b6ce3df756c75e650c6f35c8a0bfde7223a50b';
+    r'2db7bfa6b6d8c2f4768da6528d1e21171f63362c';
 
 /// See also [VegeDeleteSuccessNotifier].
 @ProviderFor(VegeDeleteSuccessNotifier)

@@ -29,10 +29,10 @@ class _MissionFeedTabBarState extends ConsumerState<MissionFeedTabBar> {
   Widget build(BuildContext context) {
     final selectedFarmclubId = ref.watch(selectedFarmclubIdProvider);
     final AsyncValue<List<MissionFeed>> missionFeed =
-    ref.watch(missionFeedProvider(selectedFarmclubId));
+        ref.watch(missionFeedProvider(selectedFarmclubId));
 
     final AsyncValue<List<MissionUserListModel>> missionUserList =
-    ref.watch(missionUserListModelProvider(selectedFarmclubId));
+        ref.watch(missionUserListModelProvider(selectedFarmclubId));
 
     List<Widget> tabViews = [];
 
@@ -60,19 +60,24 @@ class _MissionFeedTabBarState extends ConsumerState<MissionFeedTabBar> {
                               final firstFeedUserId = feeds.first.userId;
 
                               final myAccount = users.firstWhere(
-                                    (user) => user.userId == firstFeedUserId,
+                                (user) => user.userId == firstFeedUserId,
                                 orElse: () => users.first,
                               );
 
                               final otherUsers = users
-                                  .where((user) => user.userId != firstFeedUserId)
+                                  .where(
+                                      (user) => user.userId != firstFeedUserId)
                                   .toList();
 
-                              List<MissionUserListModel> sortedUsers = [myAccount, ...otherUsers];
+                              List<MissionUserListModel> sortedUsers = [
+                                myAccount,
+                                ...otherUsers
+                              ];
 
                               return Row(
                                 children: sortedUsers.map((user) {
-                                  bool isSelected = selectedUserId == user.userId;
+                                  bool isSelected =
+                                      selectedUserId == user.userId;
 
                                   return GestureDetector(
                                     onTap: () {
@@ -106,27 +111,28 @@ class _MissionFeedTabBarState extends ConsumerState<MissionFeedTabBar> {
                   child: Column(
                     children: filteredFeeds.isEmpty
                         ? const [
-                      SizedBox(
-                        width: double.infinity,
-                        child: ContentEmpty(
-                          text: '아직 미션을 완료하지 않았어요',
-                          padding: 48.0,
-                        ),
-                      )
-                    ]
+                            SizedBox(
+                              width: double.infinity,
+                              child: ContentEmpty(
+                                text: '아직 미션을 완료하지 않았어요',
+                                padding: 48.0,
+                              ),
+                            )
+                          ]
                         : filteredFeeds.map((feed) {
-                      return FarmusFeed(
-                        feedId: feed.missionPostId,
-                        profileImage: feed.profileImage,
-                        nickname: feed.nickname,
-                        writeDateTime: feed.date,
-                        content: feed.content,
-                        image: feed.image,
-                        commentCount: feed.commentCount,
-                        likeCount: feed.likeCount,
-                        myLike: feed.isLiked,
-                      );
-                    }).toList(),
+                            return FarmusFeed(
+                              feedId: feed.missionPostId,
+                              profileImage: feed.profileImage,
+                              nickname: feed.nickname,
+                              writeDateTime: feed.date,
+                              content: feed.content,
+                              image: feed.image,
+                              commentCount: feed.commentCount,
+                              likeCount: feed.likeCount,
+                              myLike: feed.isLiked,
+                              categoryType: 'mission',
+                            );
+                          }).toList(),
                   ),
                 ),
               ],
@@ -143,7 +149,7 @@ class _MissionFeedTabBarState extends ConsumerState<MissionFeedTabBar> {
         missionFeed.when(
           data: (feeds) {
             final stepFeeds =
-            feeds.where((feed) => feed.stepNum == step.stepNum).toList();
+                feeds.where((feed) => feed.stepNum == step.stepNum).toList();
 
             return SingleChildScrollView(
               child: Padding(
@@ -157,27 +163,28 @@ class _MissionFeedTabBarState extends ConsumerState<MissionFeedTabBar> {
                     const SizedBox(height: 16.0),
                     stepFeeds.isEmpty
                         ? const SizedBox(
-                      width: double.infinity,
-                      child: ContentEmpty(
-                        text: '아직 미션을 완료한 파머가 없어요',
-                        padding: 48.0,
-                      ),
-                    )
+                            width: double.infinity,
+                            child: ContentEmpty(
+                              text: '아직 미션을 완료한 파머가 없어요',
+                              padding: 48.0,
+                            ),
+                          )
                         : Column(
-                      children: stepFeeds.map((feed) {
-                        return FarmusFeed(
-                          feedId: feed.missionPostId,
-                          profileImage: feed.profileImage,
-                          nickname: feed.nickname,
-                          writeDateTime: feed.date,
-                          content: feed.content,
-                          image: feed.image,
-                          commentCount: feed.commentCount,
-                          likeCount: feed.likeCount,
-                          myLike: feed.isLiked,
-                        );
-                      }).toList(),
-                    ),
+                            children: stepFeeds.map((feed) {
+                              return FarmusFeed(
+                                feedId: feed.missionPostId,
+                                profileImage: feed.profileImage,
+                                nickname: feed.nickname,
+                                writeDateTime: feed.date,
+                                content: feed.content,
+                                image: feed.image,
+                                commentCount: feed.commentCount,
+                                likeCount: feed.likeCount,
+                                myLike: feed.isLiked,
+                                categoryType: 'mission',
+                              );
+                            }).toList(),
+                          ),
                   ],
                 ),
               ),

@@ -15,6 +15,7 @@ class FeedProfile extends ConsumerWidget {
     required this.writeDateTime,
     required this.myComment,
     required this.commentId,
+    required this.categoryType,
   });
 
   final String? profileImage;
@@ -23,6 +24,7 @@ class FeedProfile extends ConsumerWidget {
   final String writeDateTime;
   final bool myComment;
   final int commentId;
+  final String categoryType;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -49,8 +51,8 @@ class FeedProfile extends ConsumerWidget {
                         ? GestureDetector(
                             onTap: myComment
                                 ? () {
-                                    showDeleteBottomSheet(
-                                        context, commentId, null, '댓글');
+                                    showDeleteBottomSheet(context, commentId,
+                                        null, '댓글', categoryType);
                                   }
                                 : () {
                                     showReportBottomSheet(

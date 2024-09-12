@@ -4,24 +4,31 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../view_model/mission_write/notifier/mission_commemt_delete_notifier.dart';
+import '../../view_model/mission_write/notifier/mission_delete_notifier.dart';
 import '../button/primary_color_button.dart';
 import '../button/white_color_button.dart';
 import '../dialog/check_dialog.dart';
 import '../theme/farmus_theme_text_style.dart';
 
 class DeleteBottomSheetContent extends ConsumerWidget {
-  const DeleteBottomSheetContent(
-      {super.key, required this.id, this.myVeggieId, required this.type});
+  const DeleteBottomSheetContent({
+    super.key,
+    required this.id,
+    this.myVeggieId,
+    required this.contentType,
+    required this.categoryType,
+  });
 
   final int id;
   final int? myVeggieId;
-  final String type;
+  final String contentType;
+  final String categoryType;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
-      padding:
-          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: SizedBox(
         child: SingleChildScrollView(
           child: Column(
@@ -38,7 +45,7 @@ class DeleteBottomSheetContent extends ConsumerWidget {
                         children: [
                           Center(
                             child: Text(
-                              '$type을 삭제하시겠어요?',
+                              '$contentType을 삭제하시겠어요?',
                               style: FarmusThemeTextStyle.gray1Medium15,
                             ),
                           ),
@@ -61,43 +68,84 @@ class DeleteBottomSheetContent extends ConsumerWidget {
                                   text: '삭제',
                                   onPressed: () {
                                     Navigator.pop(context);
-                                    switch (type) {
-                                      case '댓글':
-                                        ref
-                                            .read(
-                                                diaryCommentDeleteNotifierProvider
-                                                    .notifier)
-                                            .diaryCommentDelete(id);
-                                        showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) {
-                                            Future.delayed(const Duration(seconds: 2), () {
-                                              Navigator.of(context).pop();
-                                            });
-                                            return const CheckDialog(
-                                              text: '댓글이 삭제 되었어요',
-                                            );
-                                          },
-                                        );
-                                        break;
-                                      case '게시물':
-                                        ref
-                                            .read(diaryDeleteNotifierProvider
-                                                .notifier)
-                                            .diaryDelete(id, myVeggieId!);
-                                        Navigator.pop(context);
-                                        showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) {
-                                            Future.delayed(const Duration(seconds: 2), () {
-                                              Navigator.of(context).pop();
-                                            });
-                                            return const CheckDialog(
-                                              text: '게시물이 삭제 되었어요',
-                                            );
-                                          },
-                                        );
-                                        break;
+                                    if (categoryType == 'diary') {
+                                      switch (contentType) {
+                                        case '댓글':
+                                          ref
+                                              .read(diaryCommentDeleteNotifierProvider
+                                              .notifier)
+                                              .diaryCommentDelete(id);
+                                          showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              Future.delayed(
+                                                  const Duration(seconds: 2), () {
+                                                Navigator.of(context).pop();
+                                              });
+                                              return const CheckDialog(
+                                                text: '댓글이 삭제 되었어요',
+                                              );
+                                            },
+                                          );
+                                          break;
+                                        case '게시물':
+                                          ref
+                                              .read(diaryDeleteNotifierProvider
+                                              .notifier)
+                                              .diaryDelete(id, myVeggieId!);
+                                          showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              Future.delayed(
+                                                  const Duration(seconds: 2), () {
+                                                Navigator.of(context).pop();
+                                              });
+                                              return const CheckDialog(
+                                                text: '게시물이 삭제 되었어요',
+                                              );
+                                            },
+                                          );
+                                          break;
+                                      }
+                                    } else if (categoryType == 'mission') {
+                                      switch (contentType) {
+                                        case '댓글':
+                                          ref
+                                              .read(missionCommentDeleteNotifierProvider
+                                              .notifier)
+                                              .missionCommentDelete(id);
+                                          showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              Future.delayed(
+                                                  const Duration(seconds: 2), () {
+                                                Navigator.of(context).pop();
+                                              });
+                                              return const CheckDialog(
+                                                text: '댓글이 삭제 되었어요',
+                                              );
+                                            },
+                                          );
+                                          break;
+                                        case '게시물':
+                                          ref
+                                              .read(missionDeleteNotifierProvider
+                                              .notifier)
+                                              .missionDelete(id);
+                                          showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              Future.delayed(
+                                                  const Duration(seconds: 2), () {
+                                                Navigator.of(context).pop();
+                                              });
+                                              return const CheckDialog(
+                                                text: '게시물이 삭제 되었어요',
+                                              );
+                                            },
+                                          );
+                                          break;
+                                      }
                                     }
                                   },
                                   enabled: true,

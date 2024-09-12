@@ -15,6 +15,7 @@ class FeedDetailComment extends ConsumerWidget {
     this.isLast = false,
     required this.myComment,
     required this.commentId,
+    required this.categoryType,
   });
 
   final String? profileImage;
@@ -24,6 +25,7 @@ class FeedDetailComment extends ConsumerWidget {
   final bool isLast;
   final bool myComment;
   final int commentId;
+  final String categoryType;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -37,6 +39,7 @@ class FeedDetailComment extends ConsumerWidget {
           profileImage: profileImage,
           myComment: myComment,
           commentId: commentId,
+          categoryType: categoryType,
         ),
         const SizedBox(
           height: 6.0,
