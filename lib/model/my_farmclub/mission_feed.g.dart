@@ -9,6 +9,7 @@ part of 'mission_feed.dart';
 _$MissionFeedImpl _$$MissionFeedImplFromJson(Map<String, dynamic> json) =>
     _$MissionFeedImpl(
       missionPostId: (json['missionPostId'] as num).toInt(),
+      userId: (json['userId'] as num).toInt(),
       stepNum: (json['stepNum'] as num).toInt(),
       nickname: json['nickname'] as String,
       profileImage: json['profileImage'] as String,
@@ -23,6 +24,7 @@ _$MissionFeedImpl _$$MissionFeedImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$MissionFeedImplToJson(_$MissionFeedImpl instance) =>
     <String, dynamic>{
       'missionPostId': instance.missionPostId,
+      'userId': instance.userId,
       'stepNum': instance.stepNum,
       'nickname': instance.nickname,
       'profileImage': instance.profileImage,

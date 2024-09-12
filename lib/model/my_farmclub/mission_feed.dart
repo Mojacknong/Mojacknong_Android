@@ -7,6 +7,7 @@ part 'mission_feed.g.dart';
 class MissionFeed with _$MissionFeed {
   const factory MissionFeed({
     required int missionPostId,
+    required int userId,
     required int stepNum,
     required String nickname,
     required String profileImage,
