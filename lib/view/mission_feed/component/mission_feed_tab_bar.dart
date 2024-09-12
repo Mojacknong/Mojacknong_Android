@@ -56,52 +56,40 @@ class _MissionFeedTabBarState extends ConsumerState<MissionFeedTabBar> {
                       children: [
                         missionUserList.when(
                           data: (users) {
-                            if (feeds.isNotEmpty) {
-                              final firstFeedUserId = feeds.first.userId;
+                            final myUserId =  ref.watch(missionUserListModelProvider(selectedFarmclubId));
 
-                              final myAccount = users.firstWhere(
-                                (user) => user.userId == firstFeedUserId,
-                                orElse: () => users.first,
-                              );
+                            final otherUsers = users.where((user) => user.userId != myUserId).toList();
 
-                              final otherUsers = users
-                                  .where(
-                                      (user) => user.userId != firstFeedUserId)
-                                  .toList();
+                            List<MissionUserListModel> sortedUsers = [
+                              ...otherUsers,
+                            ];
 
-                              List<MissionUserListModel> sortedUsers = [
-                                myAccount,
-                                ...otherUsers
-                              ];
+                            return Row(
+                              children: sortedUsers.map((user) {
+                                bool isSelected = selectedUserId == user.userId;
 
-                              return Row(
-                                children: sortedUsers.map((user) {
-                                  bool isSelected =
-                                      selectedUserId == user.userId;
-
-                                  return GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        if (selectedUserId == user.userId) {
-                                          selectedUserId = null;
-                                        } else {
-                                          selectedUserId = user.userId;
-                                        }
-                                      });
-                                    },
-                                    child: MissionFeedSelectProfile(
-                                      user: user,
-                                      isSelected: isSelected,
-                                    ),
-                                  );
-                                }).toList(),
-                              );
-                            }
-                            return const SizedBox.shrink();
+                                return GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      if (selectedUserId == user.userId) {
+                                        selectedUserId = null;
+                                      } else {
+                                        selectedUserId = user.userId;
+                                      }
+                                    });
+                                  },
+                                  child: MissionFeedSelectProfile(
+                                    user: user,
+                                    isSelected: isSelected,
+                                  ),
+                                );
+                              }).toList(),
+                            );
                           },
                           loading: () => const CircularProgressIndicator(),
                           error: (err, stack) => Text('Error: $err'),
                         ),
+
                       ],
                     ),
                   ),
