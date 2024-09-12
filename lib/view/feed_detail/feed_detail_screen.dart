@@ -29,6 +29,7 @@ class FeedDetailScreen extends ConsumerWidget {
     required this.myLike,
     this.state,
     required this.categoryType,
+    required this.myPost
   });
 
   final int feedId;
@@ -42,6 +43,7 @@ class FeedDetailScreen extends ConsumerWidget {
   final bool myLike;
   final String? state;
   final String categoryType;
+  final bool myPost;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -60,8 +62,11 @@ class FeedDetailScreen extends ConsumerWidget {
         actions: [
           IconButton(
             onPressed: () {
-              showDeleteBottomSheet(
-                  context, feedId, selectedVeggieId, '게시물', categoryType);
+              if (notifierType == "미션 인증" && !myPost) {
+                showReportBottomSheet(context, '게시물 신고', '게시물을 신고했어요');
+              } else {
+                showDeleteBottomSheet(context, feedId, selectedVeggieId, '게시물', categoryType);
+              }
             },
             icon: SvgPicture.asset('assets/image/ic_more_vertical.svg'),
           )
@@ -83,7 +88,9 @@ class FeedDetailScreen extends ConsumerWidget {
                         nickname: nickname,
                         writeDateTime: writeDateTime,
                         myComment: false,
+                        myPost: false,
                         commentId: commentCount,
+                        feedId: feedId,
                         categoryType: categoryType),
                     const SizedBox(
                       height: 16.0,

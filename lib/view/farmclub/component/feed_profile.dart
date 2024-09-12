@@ -14,7 +14,9 @@ class FeedProfile extends ConsumerWidget {
     required this.nickname,
     required this.writeDateTime,
     required this.myComment,
+    required this.myPost,
     required this.commentId,
+    this.feedId,
     required this.categoryType,
   });
 
@@ -23,7 +25,9 @@ class FeedProfile extends ConsumerWidget {
   final String nickname;
   final String writeDateTime;
   final bool myComment;
+  final bool myPost;
   final int commentId;
+  final int? feedId;
   final String categoryType;
 
   @override
@@ -47,21 +51,39 @@ class FeedProfile extends ConsumerWidget {
                       nickname,
                       style: FarmusThemeTextStyle.darkMedium15,
                     ),
-                    isDetail
-                        ? GestureDetector(
-                            onTap: myComment
-                                ? () {
-                                    showDeleteBottomSheet(context, commentId,
-                                        null, '댓글', categoryType);
-                                  }
-                                : () {
-                                    showReportBottomSheet(
-                                        context, '댓글 신고', '댓글을 신고했어요');
-                                  },
-                            child: SvgPicture.asset(
-                                'assets/image/ic_more_vertical.svg'),
-                          )
-                        : Container(),
+                    if (isDetail)
+                      GestureDetector(
+                        onTap: () {
+                          if (myComment) {
+                            showDeleteBottomSheet(
+                              context,
+                              commentId,
+                              null,
+                              '댓글',
+                              categoryType,
+                            );
+                          } else if (myPost) {
+                            showDeleteBottomSheet(
+                              context,
+                              feedId!,
+                              null,
+                              '게시물',
+                              categoryType,
+                            );
+                          } else {
+                            showReportBottomSheet(
+                              context,
+                              myComment ? '댓글 신고' : '게시물 신고',
+                              myPost
+                                  ? '댓글을 신고했어요'
+                                  : '게시물을 신고했어요',
+                            );
+                          }
+                        },
+                        child: SvgPicture.asset(
+                          'assets/image/ic_more_vertical.svg',
+                        ),
+                      ),
                   ],
                 ),
                 Text(

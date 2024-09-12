@@ -89,7 +89,6 @@ class _MissionFeedTabBarState extends ConsumerState<MissionFeedTabBar> {
                           loading: () => const CircularProgressIndicator(),
                           error: (err, stack) => Text('Error: $err'),
                         ),
-
                       ],
                     ),
                   ),
@@ -108,6 +107,8 @@ class _MissionFeedTabBarState extends ConsumerState<MissionFeedTabBar> {
                             )
                           ]
                         : filteredFeeds.map((feed) {
+                            final user = missionUserList.value?.first;
+
                             return FarmusFeed(
                               feedId: feed.missionPostId,
                               profileImage: feed.profileImage,
@@ -119,6 +120,7 @@ class _MissionFeedTabBarState extends ConsumerState<MissionFeedTabBar> {
                               likeCount: feed.likeCount,
                               myLike: feed.isLiked,
                               categoryType: 'mission',
+                              myPost: user?.userId == feed.userId,
                             );
                           }).toList(),
                   ),
@@ -159,6 +161,8 @@ class _MissionFeedTabBarState extends ConsumerState<MissionFeedTabBar> {
                           )
                         : Column(
                             children: stepFeeds.map((feed) {
+                              final user = missionUserList.value?.first;
+
                               return FarmusFeed(
                                 feedId: feed.missionPostId,
                                 profileImage: feed.profileImage,
@@ -170,6 +174,7 @@ class _MissionFeedTabBarState extends ConsumerState<MissionFeedTabBar> {
                                 likeCount: feed.likeCount,
                                 myLike: feed.isLiked,
                                 categoryType: 'mission',
+                                myPost: user?.userId == feed.userId,
                               );
                             }).toList(),
                           ),
