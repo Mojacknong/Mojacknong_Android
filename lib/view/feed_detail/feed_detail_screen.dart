@@ -61,7 +61,6 @@ class FeedDetailScreen extends ConsumerWidget {
     }
 
     final String notifierType = state != null ? "성장 일기" : "미션 인증";
-    print(myPost);
     return Scaffold(
       appBar: BackLeftTitleAppBar(
         actions: [
@@ -140,6 +139,7 @@ class FeedDetailScreen extends ConsumerWidget {
                         : MissionComment(
                             missionPostCommentId: feedId,
                             commentCount: commentCount,
+                            likeCount: likeCount,
                             myLike: myLike,
                           ),
                   ],

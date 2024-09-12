@@ -112,8 +112,6 @@ class _MissionFeedTabBarState extends ConsumerState<MissionFeedTabBar> {
                           ]
                         : filteredFeeds.map((feed) {
                             final user = missionUserList.value?.first;
-                            print(user?.userId);
-                            print(feed.userId);
 
                             return FarmusFeed(
                               feedId: feed.missionPostId,

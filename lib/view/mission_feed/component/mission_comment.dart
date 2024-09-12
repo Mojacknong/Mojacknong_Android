@@ -16,11 +16,13 @@ class MissionComment extends ConsumerWidget {
     super.key,
     required this.missionPostCommentId,
     required this.commentCount,
+    required this.likeCount,
     required this.myLike,
   });
 
   final int missionPostCommentId;
   final int commentCount;
+  final int likeCount;
   final bool myLike;
 
   @override
@@ -35,13 +37,29 @@ class MissionComment extends ConsumerWidget {
     return missionFeed.when(
       data: (feeds) {
         if (feeds.isEmpty) {
-          return const Center(child: Text('No feed data available.'));
+          return const Center(
+            child: Text(
+              '작성된 댓글이 없어요',
+              style: FarmusThemeTextStyle.gray2Medium13,
+            ),
+          );
         }
 
-        // Find the feed that matches the given missionPostCommentId
         final feed = feeds.firstWhere(
               (feed) => feed.missionPostId == missionPostCommentId,
-          orElse: () => feeds[0],
+          orElse: () => MissionFeed(
+            missionPostId: missionPostCommentId,
+            userId: 0,
+            stepNum: 0,
+            nickname: '',
+            profileImage: '',
+            date: '',
+            image: '',
+            content: '',
+            likeCount: likeCount,
+            commentCount: commentCount,
+            isLiked: false,
+          ),
         );
 
         return Column(
@@ -111,13 +129,13 @@ class MissionComment extends ConsumerWidget {
                 );
               },
               loading: () => const Center(child: CircularProgressIndicator()),
-              error: (error, stack) => Center(child: Text('Error: $error')),
+              error: (error, stack) => Center(child: Text('삭제된 게시물입니다.')),
             ),
           ],
         );
       },
       loading: () => const Center(child: CircularProgressIndicator()),
-      error: (error, stack) => Center(child: Text('Error: $error')),
+      error: (error, stack) => Center(child: Text('Error2: $error')),
     );
   }
 }
