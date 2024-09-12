@@ -77,7 +77,7 @@ class MyFarmclubRepository {
     return response;
   }
 
-  static Future<String> missionCommentDelete(int missionPostCommentId) async {
+static Future<String> missionCommentDelete(int missionPostCommentId) async {
     String? response =
     await MyFarmclubService().missionCommentDelete(missionPostCommentId);
     return response;
@@ -86,6 +86,11 @@ class MyFarmclubRepository {
   static Future<String> missionDelete(int missionPostId) async {
     String? response =
     await MyFarmclubService().missionDelete(missionPostId);
+    return response;
+  }
+  
+  static Future<String> farmclubUserList(int farmClubId) async {
+    String? response = await MyFarmclubService().farmclubUserList(farmClubId);
     return response;
   }
 }

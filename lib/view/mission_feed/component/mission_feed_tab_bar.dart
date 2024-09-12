@@ -6,85 +6,145 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../common/tab_bar/primary_tab_bar.dart';
+import '../../../model/mission/mission_user_list_model.dart';
 import '../../../model/my_farmclub/my_farmclub_info_model.dart';
 import '../../../view_model/home/home_provider.dart';
+import '../../../view_model/mission_feed/mission_user_list_model_notifier.dart';
 import '../../mission_write/component/mission_step_info.dart';
-import 'mission_feed_basic_profile.dart';
 import 'mission_feed_select_profile.dart';
 
-class MissionFeedTabBar extends ConsumerWidget {
+class MissionFeedTabBar extends ConsumerStatefulWidget {
   const MissionFeedTabBar({super.key, required this.farmclubInfo});
 
   final MyFarmclubInfoModel farmclubInfo;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  _MissionFeedTabBarState createState() => _MissionFeedTabBarState();
+}
+
+class _MissionFeedTabBarState extends ConsumerState<MissionFeedTabBar> {
+  int? selectedUserId;
+
+  @override
+  Widget build(BuildContext context) {
     final selectedFarmclubId = ref.watch(selectedFarmclubIdProvider);
     final AsyncValue<List<MissionFeed>> missionFeed =
         ref.watch(missionFeedProvider(selectedFarmclubId));
+
+    final AsyncValue<List<MissionUserListModel>> missionUserList =
+        ref.watch(missionUserListModelProvider(selectedFarmclubId));
 
     List<Widget> tabViews = [];
 
     tabViews.add(
       missionFeed.when(
-        data: (feeds) => SingleChildScrollView(
-          child: Column(
-            children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      MissionFeedSelectProfile(),
-                      MissionFeedBasicProfile(nickname: '감자'),
-                      MissionFeedBasicProfile(nickname: '홈프로텍터'),
-                      MissionFeedBasicProfile(nickname: '갓팜'),
-                      MissionFeedBasicProfile(nickname: '푸우'),
-                      MissionFeedBasicProfile(nickname: '종강언제함'),
-                      MissionFeedBasicProfile(nickname: '배고파'),
-                    ],
+        data: (feeds) {
+          List<MissionFeed> filteredFeeds = selectedUserId != null
+              ? feeds.where((feed) => feed.userId == selectedUserId).toList()
+              : feeds;
+
+          return SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 8.0, vertical: 16.0),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        missionUserList.when(
+                          data: (users) {
+                            if (feeds.isNotEmpty) {
+                              final firstFeedUserId = feeds.first.userId;
+
+                              final myAccount = users.firstWhere(
+                                (user) => user.userId == firstFeedUserId,
+                                orElse: () => users.first,
+                              );
+
+                              final otherUsers = users
+                                  .where(
+                                      (user) => user.userId != firstFeedUserId)
+                                  .toList();
+
+                              List<MissionUserListModel> sortedUsers = [
+                                myAccount,
+                                ...otherUsers
+                              ];
+
+                              return Row(
+                                children: sortedUsers.map((user) {
+                                  bool isSelected =
+                                      selectedUserId == user.userId;
+
+                                  return GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        if (selectedUserId == user.userId) {
+                                          selectedUserId = null;
+                                        } else {
+                                          selectedUserId = user.userId;
+                                        }
+                                      });
+                                    },
+                                    child: MissionFeedSelectProfile(
+                                      user: user,
+                                      isSelected: isSelected,
+                                    ),
+                                  );
+                                }).toList(),
+                              );
+                            }
+                            return const SizedBox.shrink();
+                          },
+                          loading: () => const CircularProgressIndicator(),
+                          error: (err, stack) => Text('Error: $err'),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Column(
-                  children: feeds.isEmpty
-                      ? const [
-                          SizedBox(
-                            width: double.infinity,
-                            child: ContentEmpty(
-                              text: '아직 미션을 완료한 파머가 없어요',
-                              padding: 48.0,
-                            ),
-                          )
-                        ]
-                      : feeds.map((feed) {
-                          return FarmusFeed(
-                            feedId: feed.missionPostId,
-                            profileImage: feed.profileImage,
-                            nickname: feed.nickname,
-                            writeDateTime: feed.date,
-                            content: feed.content,
-                            image: feed.image,
-                            commentCount: feed.commentCount,
-                            likeCount: feed.likeCount,
-                            myLike: feed.isLiked,
-                            categoryType: 'mission',
-                          );
-                        }).toList(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Column(
+                    children: filteredFeeds.isEmpty
+                        ? const [
+                            SizedBox(
+                              width: double.infinity,
+                              child: ContentEmpty(
+                                text: '아직 미션을 완료하지 않았어요',
+                                padding: 48.0,
+                              ),
+                            )
+                          ]
+                        : filteredFeeds.map((feed) {
+                            return FarmusFeed(
+                              feedId: feed.missionPostId,
+                              profileImage: feed.profileImage,
+                              nickname: feed.nickname,
+                              writeDateTime: feed.date,
+                              content: feed.content,
+                              image: feed.image,
+                              commentCount: feed.commentCount,
+                              likeCount: feed.likeCount,
+                              myLike: feed.isLiked,
+                              categoryType: 'mission',
+                            );
+                          }).toList(),
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ),
+              ],
+            ),
+          );
+        },
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (err, stack) => Center(child: Text('Error: $err')),
       ),
     );
 
-    for (var step in farmclubInfo.steps) {
+    for (var step in widget.farmclubInfo.steps) {
       tabViews.add(
         missionFeed.when(
           data: (feeds) {
@@ -138,7 +198,9 @@ class MissionFeedTabBar extends ConsumerWidget {
 
     return PrimaryTabBar(
       tab: ['전체'] +
-          farmclubInfo.steps.map((step) => 'Step ${step.stepNum}').toList(),
+          widget.farmclubInfo.steps
+              .map((step) => 'Step ${step.stepNum}')
+              .toList(),
       tabView: tabViews,
     );
   }

@@ -6,25 +6,31 @@ import '../../../common/theme/farmus_theme_color.dart';
 class FarmclubSelectProfile extends ConsumerWidget {
   final String image;
   final double size;
+  final bool isSelected;
 
-  const FarmclubSelectProfile(
-      {super.key, required this.image, required this.size});
+  const FarmclubSelectProfile({
+    super.key,
+    required this.image,
+    required this.size,
+    this.isSelected = false,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Stack(
       alignment: Alignment.center,
       children: [
-        Container(
-          width: size,
-          height: size,
-          decoration: const BoxDecoration(
-            shape: BoxShape.circle,
+        if (isSelected)
+          Container(
+            width: size,
+            height: size,
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+            ),
+            child: Image.asset(
+              'assets/image/image_farmclub_profile_background.png',
+            ),
           ),
-          child: Image.asset(
-            'assets/image/image_farmclub_profile_background.png',
-          ),
-        ),
         Container(
           width: 56,
           height: 56,
