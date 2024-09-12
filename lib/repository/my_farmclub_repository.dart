@@ -93,4 +93,14 @@ static Future<String> missionCommentDelete(int missionPostCommentId) async {
     String? response = await MyFarmclubService().farmclubUserList(farmClubId);
     return response;
   }
+
+  static Future<String> missionReport(int missionPostId, String reason) async {
+    String? response = await MyFarmclubService().missionReport(missionPostId, reason);
+    return response;
+  }
+
+  static Future<String> missionCommentReport(int missionPostCommentId, String reason) async {
+    String? response = await MyFarmclubService().missionCommentReport(missionPostCommentId, reason);
+    return response;
+  }
 }

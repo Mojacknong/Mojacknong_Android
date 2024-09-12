@@ -68,7 +68,7 @@ class FarmusFeed extends ConsumerWidget {
               myComment: false,
               myPost: false,
               commentId: -1,
-              feedId : -1,
+              feedId : feedId,
               categoryType: categoryType,
             ),
           ),

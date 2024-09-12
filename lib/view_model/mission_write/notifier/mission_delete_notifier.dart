@@ -17,7 +17,7 @@ class MissionDeleteNotifier extends _$MissionDeleteNotifier {
   Future<void> missionDelete(int missionPostId) async {
     await MyFarmclubService().missionDelete(missionPostId);
     ref.invalidate(missionFeedProvider);
-    ref.invalidate(myFarmclubModelProvider);
+    // ref.invalidate(myFarmclubModelProvider);
     ref.invalidate(farmclubMissionCertificationNotifierProvider);
     ref.invalidateSelf();
   }

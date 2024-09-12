@@ -16,7 +16,7 @@ class FeedProfile extends ConsumerWidget {
     required this.myComment,
     required this.myPost,
     required this.commentId,
-    this.feedId,
+    required this.feedId,
     required this.categoryType,
   });
 
@@ -27,7 +27,7 @@ class FeedProfile extends ConsumerWidget {
   final bool myComment;
   final bool myPost;
   final int commentId;
-  final int? feedId;
+  final int feedId;
   final String categoryType;
 
   @override
@@ -65,19 +65,14 @@ class FeedProfile extends ConsumerWidget {
                           } else if (myPost) {
                             showDeleteBottomSheet(
                               context,
-                              feedId!,
+                              feedId,
                               null,
                               '게시물',
                               categoryType,
                             );
-                          } else {
+                          } else{
                             showReportBottomSheet(
-                              context,
-                              myComment ? '댓글 신고' : '게시물 신고',
-                              myPost
-                                  ? '댓글을 신고했어요'
-                                  : '게시물을 신고했어요',
-                            );
+                                context, '댓글 신고', '댓글을 신고했어요', commentId, 'missionComment');
                           }
                         },
                         child: SvgPicture.asset(

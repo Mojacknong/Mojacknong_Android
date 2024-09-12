@@ -56,9 +56,13 @@ class _MissionFeedTabBarState extends ConsumerState<MissionFeedTabBar> {
                       children: [
                         missionUserList.when(
                           data: (users) {
-                            final myUserId =  ref.watch(missionUserListModelProvider(selectedFarmclubId));
+                            final myUserId = ref.watch(
+                                missionUserListModelProvider(
+                                    selectedFarmclubId));
 
-                            final otherUsers = users.where((user) => user.userId != myUserId).toList();
+                            final otherUsers = users
+                                .where((user) => user.userId != myUserId)
+                                .toList();
 
                             List<MissionUserListModel> sortedUsers = [
                               ...otherUsers,
@@ -108,6 +112,8 @@ class _MissionFeedTabBarState extends ConsumerState<MissionFeedTabBar> {
                           ]
                         : filteredFeeds.map((feed) {
                             final user = missionUserList.value?.first;
+                            print(user?.userId);
+                            print(feed.userId);
 
                             return FarmusFeed(
                               feedId: feed.missionPostId,
