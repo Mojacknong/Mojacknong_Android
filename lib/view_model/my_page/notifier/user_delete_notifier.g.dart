@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'mission_delete_notifier.dart';
+part of 'user_delete_notifier.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$missionDeleteNotifierHash() =>
-    r'20fd949971b771afef6f43a7e6645d6f4dd45e44';
+String _$userDeleteNotifierHash() =>
+    r'bb0e79474752767c50447bd5edc2147b9b4353fb';
 
-/// See also [MissionDeleteNotifier].
-@ProviderFor(MissionDeleteNotifier)
-final missionDeleteNotifierProvider =
-    AutoDisposeAsyncNotifierProvider<MissionDeleteNotifier, void>.internal(
-  MissionDeleteNotifier.new,
-  name: r'missionDeleteNotifierProvider',
+/// See also [UserDeleteNotifier].
+@ProviderFor(UserDeleteNotifier)
+final userDeleteNotifierProvider =
+    AutoDisposeAsyncNotifierProvider<UserDeleteNotifier, void>.internal(
+  UserDeleteNotifier.new,
+  name: r'userDeleteNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$missionDeleteNotifierHash,
+      : _$userDeleteNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$MissionDeleteNotifier = AutoDisposeAsyncNotifier<void>;
+typedef _$UserDeleteNotifier = AutoDisposeAsyncNotifier<void>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
