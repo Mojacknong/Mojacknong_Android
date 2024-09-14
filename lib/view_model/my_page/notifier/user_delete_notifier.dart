@@ -1,4 +1,3 @@
-import 'package:farmus/view_model/my_page/my_page_info_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../repository/user_repository.dart';
@@ -14,6 +13,5 @@ class UserDeleteNotifier extends _$UserDeleteNotifier {
 
   Future<void> userDelete() async {
     await UserRepository.userDelete();
-    ref.invalidate(myPageInfoModelProvider);
   }
 }
