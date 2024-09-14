@@ -175,13 +175,16 @@ void showDeleteBottomSheet(BuildContext context, int id, int? myVeggieId,
 }
 
 void showReportBottomSheet(
-    BuildContext context, String title, String dialogText) {
+    BuildContext context, String title, String dialogText, int? reportId, String? reportType) {
   showCupertinoModalPopup(
     context: context,
     builder: (BuildContext context) {
+      print(reportId);
       return ReportBottomSheet(
         title: title,
         dialogText: dialogText,
+        reportId: reportId,
+        reportType: reportType,
       );
     },
   );

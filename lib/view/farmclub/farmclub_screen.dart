@@ -143,6 +143,7 @@ class FarmclubScreen extends ConsumerWidget {
                                             myLike: diary.myLike,
                                             state: diary.state,
                                             categoryType: 'diary',
+                                            myPost: true,
                                           );
                                         }).toList(),
                                       )

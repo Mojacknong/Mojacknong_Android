@@ -80,7 +80,9 @@ class DiaryComment extends ConsumerWidget {
                                 commentsData.diaryCommentContent.length - 1,
                             myComment: comment.myComment,
                             commentId: comment.commentId,
+                            feedId: -1,
                             categoryType: "diary",
+                            myPost: true,
                           ),
                         );
                       }).toList(),

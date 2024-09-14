@@ -1,3 +1,4 @@
+import 'package:farmus/model/my_farmclub/mission_feed.dart';
 import 'package:farmus/model/my_farmclub/mission_data_model.dart';
 import 'package:farmus/view/feed_detail/component/feed_detail_comment.dart';
 import 'package:farmus/view/feed_detail/component/feed_detail_icon.dart';
@@ -6,7 +7,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../common/theme/farmus_theme_color.dart';
 import '../../../common/theme/farmus_theme_text_style.dart';
-import '../../../model/my_farmclub/mission_feed.dart';
 import '../../../view_model/home/home_provider.dart';
 import '../../../view_model/my_farmclub/mission_comment_notifier.dart';
 import '../../../view_model/my_farmclub/mission_feed_notifier.dart';
@@ -16,11 +16,13 @@ class MissionComment extends ConsumerWidget {
     super.key,
     required this.missionPostCommentId,
     required this.commentCount,
+    required this.likeCount,
     required this.myLike,
   });
 
   final int missionPostCommentId;
   final int commentCount;
+  final int likeCount;
   final bool myLike;
 
   @override
@@ -28,19 +30,36 @@ class MissionComment extends ConsumerWidget {
     final selectedFarmclubId = ref.watch(selectedFarmclubIdProvider);
 
     final AsyncValue<List<MissionFeed>> missionFeed =
-        ref.watch(missionFeedProvider(selectedFarmclubId));
+    ref.watch(missionFeedProvider(selectedFarmclubId));
     final AsyncValue<MissionDataModel> missionData =
-        ref.watch(missionCommentNotifierProvider(missionPostCommentId));
+    ref.watch(missionCommentNotifierProvider(missionPostCommentId));
 
     return missionFeed.when(
       data: (feeds) {
         if (feeds.isEmpty) {
-          return const Center(child: Text('No feed data available.'));
+          return const Center(
+            child: Text(
+              '작성된 댓글이 없어요',
+              style: FarmusThemeTextStyle.gray2Medium13,
+            ),
+          );
         }
 
         final feed = feeds.firstWhere(
-          (feed) => feed.missionPostId == missionPostCommentId,
-          orElse: () => feeds[0],
+              (feed) => feed.missionPostId == missionPostCommentId,
+          orElse: () => MissionFeed(
+            missionPostId: missionPostCommentId,
+            userId: 0,
+            stepNum: 0,
+            nickname: '',
+            profileImage: '',
+            date: '',
+            image: '',
+            content: '',
+            likeCount: likeCount,
+            commentCount: commentCount,
+            isLiked: false,
+          ),
         );
 
         return Column(
@@ -76,45 +95,47 @@ class MissionComment extends ConsumerWidget {
             missionData.when(
               data: (data) {
                 final List<MissionCommentModel> comments = data.comments;
-
                 return comments.isNotEmpty
                     ? Column(
-                        children: comments.asMap().entries.map((entry) {
-                          int idx = entry.key;
-                          MissionCommentModel comment = entry.value;
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8.0),
-                            child: FeedDetailComment(
-                              profileImage: comment.profileImage,
-                              nickname: comment.nickname,
-                              date: comment.date,
-                              content: comment.content,
-                              isLast: idx == comments.length - 1,
-                              myComment: comment.isMyComment,
-                              commentId: comment.missionPostCommentId,
-                              categoryType: 'mission',
-                            ),
-                          );
-                        }).toList(),
-                      )
+                  children: comments.asMap().entries.map((entry) {
+                    int idx = entry.key;
+                    MissionCommentModel comment = entry.value;
+
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: FeedDetailComment(
+                        feedId: feed.missionPostId,
+                        profileImage: comment.profileImage,
+                        nickname: comment.nickname,
+                        date: comment.date,
+                        content: comment.content,
+                        isLast: idx == comments.length - 1,
+                        myComment: comment.isMyComment,
+                        commentId: comment.missionPostCommentId,
+                        categoryType: 'mission',
+                        myPost: comment.isMyComment,
+                      ),
+                    );
+                  }).toList(),
+                )
                     : const Center(
-                        child: Padding(
-                          padding: EdgeInsets.only(top: 24.0),
-                          child: Text(
-                            '작성된 댓글이 없어요',
-                            style: FarmusThemeTextStyle.gray2Medium13,
-                          ),
-                        ),
-                      );
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 24.0),
+                    child: Text(
+                      '작성된 댓글이 없어요',
+                      style: FarmusThemeTextStyle.gray2Medium13,
+                    ),
+                  ),
+                );
               },
               loading: () => const Center(child: CircularProgressIndicator()),
-              error: (error, stack) => Center(child: Text('Error: $error')),
+              error: (error, stack) => Center(child: Text('삭제된 게시물입니다.')),
             ),
           ],
         );
       },
       loading: () => const Center(child: CircularProgressIndicator()),
-      error: (error, stack) => Center(child: Text('Error: $error')),
+      error: (error, stack) => Center(child: Text('Error2: $error')),
     );
   }
 }

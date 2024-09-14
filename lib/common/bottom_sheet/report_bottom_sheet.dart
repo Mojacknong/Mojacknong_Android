@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../view_model/mission_feed/mission_post_report_notifier.dart';
+import '../../view_model/mission_feed/mission_comment_report_notifier.dart'; // Add the comment report notifier
 import '../dialog/check_dialog.dart';
 import '../theme/farmus_theme_text_style.dart';
 
@@ -10,13 +12,34 @@ class ReportBottomSheet extends ConsumerWidget {
     super.key,
     required this.title,
     required this.dialogText,
+    this.reportId,
+    this.reportType,
   });
 
   final String title;
   final String dialogText;
+  final int? reportId;
+  final String? reportType;
 
-  void _report(BuildContext context, String reportType) {
+  void _report(BuildContext context, WidgetRef ref, String reason) {
     Navigator.pop(context);
+
+    if (reportType == 'missionPost') {
+      ref
+          .read(missionPostReportModelProvider(reportId!, reason).future)
+          .then((value) {
+        _showConfirmationDialog(context);
+      });
+    } else if (reportType == 'missionComment') {
+      ref
+          .read(missionCommentReportNotifierProvider(reportId!, reason).future)
+          .then((value) {
+        _showConfirmationDialog(context);
+      });
+    }
+  }
+
+  void _showConfirmationDialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -47,7 +70,7 @@ class ReportBottomSheet extends ConsumerWidget {
       ),
       actions: reportOptions.map((option) {
         return CupertinoActionSheetAction(
-          onPressed: () => _report(context, option),
+          onPressed: () => _report(context, ref, option),
           child: Text(
             option,
             style: FarmusThemeTextStyle.darkMedium14,

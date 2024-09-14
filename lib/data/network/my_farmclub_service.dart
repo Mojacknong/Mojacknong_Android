@@ -235,4 +235,38 @@ class MyFarmclubService {
     final url = '/api/farm-club/$farmClubId/user';
     return _fetchData(url, '팜클럽 유저 불러오기 실패');
   }
+
+  Future<String> missionReport(int missionPostId, String reason) async {
+    const url = '/api/farm-club/report/mission';
+
+    final body = jsonEncode({
+      'missionPostId': missionPostId,
+      'reason': reason,
+    });
+
+    final response = await apiClient.post(url, body: body);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('미션 글 신고 실패');
+    }
+  }
+
+  Future<String> missionCommentReport(int missionPostCommentId, String reason) async {
+    const url = '/api/farm-club/report/comment';
+
+    final body = jsonEncode({
+      'missionPostCommentId': missionPostCommentId,
+      'reason': reason,
+    });
+
+    final response = await apiClient.post(url, body: body);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('미션 댓글 신고 실패');
+    }
+  }
 }
