@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MySettingScreen extends ConsumerStatefulWidget {
-  const MySettingScreen({Key? key}) : super(key: key);
+  const MySettingScreen({super.key});
 
   @override
   _MySettingScreenState createState() => _MySettingScreenState();
