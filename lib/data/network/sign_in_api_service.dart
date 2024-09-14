@@ -100,4 +100,20 @@ class SignInApiServices {
       throw Exception('로그아웃 실패');
     }
   }
+
+  Future<String> userDelete() async {
+    const url = '/api/user';
+
+    final response = await apiClient.delete(url);
+
+    if (response.statusCode == 200) {
+      await storage.delete(key: "accessToken");
+      await storage.delete(key: "refreshToken");
+      await storage.delete(key: "early");
+
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('회원탈퇴 실패');
+    }
+  }
 }

@@ -46,4 +46,9 @@ class UserRepository {
     String response = await SignInApiServices().logout();
     return response;
   }
+
+  static Future<String> userDelete() async {
+    String response = await SignInApiServices().userDelete();
+    return response;
+  }
 }

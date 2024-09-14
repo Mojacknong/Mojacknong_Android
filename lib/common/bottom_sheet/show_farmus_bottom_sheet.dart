@@ -110,11 +110,14 @@ void showLogoutActionSheet(BuildContext context) {
 }
 
 void showQuitActionSheet(BuildContext context) {
-  showCupertinoModalPopup(
-      context: context,
-      builder: (BuildContext context) {
-        return const FarmclubQuitBottomSheetContent();
-      });
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: FarmusThemeColor.white,
+    builder: (BuildContext context) {
+      return const FarmclubQuitBottomSheetContent();
+    },
+  );
 }
 
 void showFarmclubExitBottomSheet(

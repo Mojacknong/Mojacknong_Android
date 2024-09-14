@@ -81,7 +81,6 @@ class MyPageInfo extends ConsumerWidget {
         },
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (err, stack) {
-          print('Error in FutureBuilder: $err');
           return Center(
             child: Text('Error: $err'),
           );
