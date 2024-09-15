@@ -16,20 +16,21 @@ import 'component/diary_comment.dart';
 import 'component/feed_detail_content.dart';
 
 class FeedDetailScreen extends ConsumerWidget {
-  const FeedDetailScreen(
-      {super.key,
-      required this.feedId,
-      required this.nickname,
-      this.profileImage,
-      required this.writeDateTime,
-      required this.content,
-      required this.image,
-      required this.commentCount,
-      required this.likeCount,
-      required this.myLike,
-      this.state,
-      required this.categoryType,
-      required this.myPost});
+  const FeedDetailScreen({
+    super.key,
+    required this.feedId,
+    required this.nickname,
+    this.profileImage,
+    required this.writeDateTime,
+    required this.content,
+    required this.image,
+    required this.commentCount,
+    required this.likeCount,
+    required this.myLike,
+    this.state,
+    required this.categoryType,
+    required this.myPost,
+  });
 
   final int feedId;
   final String nickname;
@@ -55,19 +56,41 @@ class FeedDetailScreen extends ConsumerWidget {
       selectedVeggieId = veggieList.value!.first.myVeggieId;
     }
 
-    final String notifierType = state != null ? "성장 일기" : "미션 인증";
+    final isDiary = categoryType == '성장 일기';
+    final postAction = isDiary
+        ? DiaryComment(
+            diaryId: feedId,
+            commentCount: commentCount,
+            myLike: myLike,
+          )
+        : MissionComment(
+            missionPostCommentId: feedId,
+            commentCount: commentCount,
+            likeCount: likeCount,
+            myLike: myLike,
+          );
+
     return Scaffold(
       appBar: BackLeftTitleAppBar(
         actions: [
           IconButton(
             onPressed: () {
-              if (notifierType == "미션 인증" ||
-                  notifierType == "성장 일기" && !myPost) {
+              if (!myPost) {
                 showReportBottomSheet(
-                    context, '게시물 신고', '게시물을 신고했어요', feedId, 'missionPost');
+                  context,
+                  '게시물 신고',
+                  '게시물을 신고했어요',
+                  feedId,
+                  isDiary ? 'diaryPost' : 'missionPost',
+                );
               } else {
                 showDeleteBottomSheet(
-                    context, feedId, selectedVeggieId, '게시물', categoryType);
+                  context,
+                  feedId,
+                  selectedVeggieId,
+                  '게시물',
+                  categoryType,
+                );
               }
             },
             icon: SvgPicture.asset('assets/image/ic_more_vertical.svg'),
@@ -85,23 +108,22 @@ class FeedDetailScreen extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     FeedProfile(
-                        isDetail: false,
-                        profileImage: profileImage,
-                        nickname: nickname,
-                        writeDateTime: writeDateTime,
-                        myComment: false,
-                        myPost: myPost,
-                        commentId: commentCount,
-                        feedId: feedId,
-                        categoryType: categoryType),
-                    const SizedBox(
-                      height: 16.0,
+                      isDetail: false,
+                      profileImage: profileImage,
+                      nickname: nickname,
+                      writeDateTime: writeDateTime,
+                      myComment: false,
+                      myPost: myPost,
+                      commentId: commentCount,
+                      feedId: feedId,
+                      categoryType: categoryType,
                     ),
+                    const SizedBox(height: 16.0),
                     FeedDetailContent(
                       content: content,
                       image: image,
                     ),
-                    if (state != null) ...[
+                    if (state != null)
                       Container(
                         padding: const EdgeInsets.all(16),
                         decoration: ShapeDecoration(
@@ -124,22 +146,8 @@ class FeedDetailScreen extends ConsumerWidget {
                           ],
                         ),
                       ),
-                      const SizedBox(
-                        height: 64.0,
-                      ),
-                    ],
-                    state != null
-                        ? DiaryComment(
-                            diaryId: feedId,
-                            commentCount: commentCount,
-                            myLike: myLike,
-                          )
-                        : MissionComment(
-                            missionPostCommentId: feedId,
-                            commentCount: commentCount,
-                            likeCount: likeCount,
-                            myLike: myLike,
-                          ),
+                    const SizedBox(height: 64.0),
+                    postAction,
                   ],
                 ),
               ),
@@ -152,7 +160,7 @@ class FeedDetailScreen extends ConsumerWidget {
             ),
             child: CommentTextFormField(
               feedId: feedId,
-              notifierType: notifierType,
+              notifierType: categoryType,
             ),
           ),
         ],

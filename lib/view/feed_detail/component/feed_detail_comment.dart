@@ -14,7 +14,6 @@ class FeedDetailComment extends ConsumerWidget {
     required this.content,
     this.isLast = false,
     required this.myComment,
-    required this.myPost,
     required this.commentId,
     required this.feedId,
     required this.categoryType,
@@ -26,10 +25,10 @@ class FeedDetailComment extends ConsumerWidget {
   final String content;
   final bool isLast;
   final bool myComment;
-  final bool myPost;
   final int commentId;
   final int feedId;
   final String categoryType;
+  final bool myPost = false;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -42,10 +41,9 @@ class FeedDetailComment extends ConsumerWidget {
           writeDateTime: date,
           profileImage: profileImage,
           myComment: myComment,
-          myPost: myPost,
           commentId: commentId,
           feedId: feedId,
-          categoryType: categoryType,
+          categoryType: categoryType, myPost: myComment,
         ),
         const SizedBox(
           height: 6.0,

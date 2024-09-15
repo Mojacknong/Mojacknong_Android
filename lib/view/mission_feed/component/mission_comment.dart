@@ -113,7 +113,6 @@ class MissionComment extends ConsumerWidget {
                         myComment: comment.isMyComment,
                         commentId: comment.missionPostCommentId,
                         categoryType: 'mission',
-                        myPost: comment.isMyComment,
                       ),
                     );
                   }).toList(),

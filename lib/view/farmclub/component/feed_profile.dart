@@ -62,17 +62,14 @@ class FeedProfile extends ConsumerWidget {
                               '댓글',
                               categoryType,
                             );
-                          } else if (myPost) {
-                            showDeleteBottomSheet(
-                              context,
-                              feedId,
-                              null,
-                              '게시물',
-                              categoryType,
-                            );
-                          } else{
-                            showReportBottomSheet(
-                                context, '댓글 신고', '댓글을 신고했어요', commentId, 'missionComment');
+                          } else {
+                            if (categoryType == 'diary') {
+                              showReportBottomSheet(context, '댓글 신고',
+                                  '댓글을 신고했어요', commentId, 'diaryComment');
+                            } else {
+                              showReportBottomSheet(context, '댓글 신고',
+                                  '댓글을 신고했어요', commentId, 'missionComment');
+                            }
                           }
                         },
                         child: SvgPicture.asset(
