@@ -48,6 +48,17 @@ class HomeScreen extends ConsumerWidget {
       ),
       body: veggieList.when(
         data: (veggieListData) {
+          int? selectedFarmclubId;
+          if (selectedVegeId != null) {
+            final selectedVeggie = veggieListData.firstWhere(
+              (veggie) => veggie.myVeggieId == selectedVegeId,
+              orElse: () => veggieListData.first,
+            );
+            if (selectedVeggie.userFarmClubId != -1) {
+              selectedFarmclubId = selectedVeggie.userFarmClubId;
+            }
+          }
+
           return SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
@@ -129,14 +140,22 @@ class HomeScreen extends ConsumerWidget {
                   HomeSubTitle(
                     title: '팜클럽 미션',
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const MainScreen(
-                            selectedIndex: 1,
-                          ),
-                        ),
+                      final selectedVeggie = veggieListData.firstWhere(
+                            (veggie) => veggie.myVeggieId == selectedVegeId,
+                        orElse: () => veggieListData.first,
                       );
+                      if (selectedVeggie.userFarmClubId != -1) {
+                        ref.read(selectedFarmclubIdProvider.notifier).state =
+                            selectedFarmclubId;
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const MainScreen(
+                              selectedIndex: 1,
+                            ),
+                          ),
+                        );
+                      }
                     },
                     visible: veggieListData.isNotEmpty,
                   ),
