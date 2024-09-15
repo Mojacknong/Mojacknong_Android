@@ -98,11 +98,18 @@ class MyVeggieGardenRepository {
   }
 
   static Future<String> myVeggieSuccess(
-      File file,
-      String content,
-      int myVeggieId,
-      ) async {
-    String? response = await MyVeggieService().myVeggieSuccess(file, content, myVeggieId);
+    File file,
+    String content,
+    int myVeggieId,
+  ) async {
+    String? response =
+        await MyVeggieService().myVeggieSuccess(file, content, myVeggieId);
+    return response;
+  }
+
+  static Future<String> diaryCommentReport(int commentId, String reason) async {
+    String? response =
+        await MyVeggieService().diaryCommentReport(commentId, reason);
     return response;
   }
 }
