@@ -56,8 +56,9 @@ class HomeScreen extends ConsumerWidget {
                 children: [
                   if (veggieListData.isEmpty)
                     recommend.when(
-                      data: (value) =>
-                          HomeMyVegeNone(recommendVeggieInfo: value),
+                      data: (value) => HomeMyVegeNone(
+                        recommendVeggieInfo: value,
+                      ),
                       error: (error, stack) => const Text('추천 채소 불러오기 실패'),
                       loading: () => const CircularProgressIndicator(
                         color: FarmusThemeColor.primary,
@@ -66,25 +67,24 @@ class HomeScreen extends ConsumerWidget {
                   else ...[
                     const HomeMyVegeList(),
                     const SizedBox(height: 8),
-                    if (selectedVegeId != null)
-                      ref.watch(myVeggieProfileProvider(selectedVegeId)).when(
-                            data: (profile) {
-                              return HomeMyVege(size: size, profile: profile);
-                            },
-                            loading: () => const CircularProgressIndicator(),
-                            error: (error, stack) => Text('Error: $error'),
-                          )
-                    else
-                      ref
-                          .watch(myVeggieProfileProvider(
-                              veggieListData.first.myVeggieId))
-                          .when(
-                            data: (profile) {
-                              return HomeMyVege(size: size, profile: profile);
-                            },
-                            loading: () => const CircularProgressIndicator(),
-                            error: (error, stack) => Text('Error: $error'),
-                          ),
+                    selectedVegeId != null
+                        ? ref
+                            .watch(myVeggieProfileProvider(selectedVegeId))
+                            .when(
+                              data: (profile) =>
+                                  HomeMyVege(size: size, profile: profile),
+                              loading: () => const CircularProgressIndicator(),
+                              error: (error, stack) => Text('Error: $error'),
+                            )
+                        : ref
+                            .watch(myVeggieProfileProvider(
+                                veggieListData.first.myVeggieId))
+                            .when(
+                              data: (profile) =>
+                                  HomeMyVege(size: size, profile: profile),
+                              loading: () => const CircularProgressIndicator(),
+                              error: (error, stack) => Text('Error: $error'),
+                            ),
                     const HomeMotivation(
                       motivation: '텃밭에서 식탁까지 팜어스와 늘 함께해요!',
                     ),
@@ -96,13 +96,13 @@ class HomeScreen extends ConsumerWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (builder) => const RoutineScreen(),
+                          builder: (context) => const RoutineScreen(),
                         ),
                       );
                     },
-                    visible: veggieList.value!.isNotEmpty,
+                    visible: veggieListData.isNotEmpty,
                   ),
-                  veggieList.value!.isNotEmpty
+                  veggieListData.isNotEmpty
                       ? const HomeRoutine()
                       : const HomeNoneContainer(
                           title: null,
@@ -114,13 +114,13 @@ class HomeScreen extends ConsumerWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (builder) => const VegeDiaryScreen(),
+                          builder: (context) => const VegeDiaryScreen(),
                         ),
                       );
                     },
-                    visible: veggieList.value!.isNotEmpty,
+                    visible: veggieListData.isNotEmpty,
                   ),
-                  veggieList.value!.isNotEmpty
+                  veggieListData.isNotEmpty
                       ? const HomeDiary()
                       : const HomeNoneContainer(
                           title: null,
@@ -132,15 +132,15 @@ class HomeScreen extends ConsumerWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (builder) => const MainScreen(
+                          builder: (context) => const MainScreen(
                             selectedIndex: 1,
                           ),
                         ),
                       );
                     },
-                    visible: veggieList.value!.isNotEmpty,
+                    visible: veggieListData.isNotEmpty,
                   ),
-                  veggieList.value!.isNotEmpty
+                  veggieListData.isNotEmpty
                       ? const HomeFarmclubMission()
                       : const HomeNoneContainer(
                           title: null,
