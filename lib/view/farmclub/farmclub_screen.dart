@@ -1,6 +1,6 @@
 import 'package:farmus/common/content_empty.dart';
-import 'package:farmus/model/diary/farmclub_open_diary_model.dart';
 import 'package:farmus/common/farmus_feed.dart';
+import 'package:farmus/model/diary/farmclub_open_diary_model.dart';
 import 'package:farmus/view_model/diary/farmclub_open_diary_notifier.dart';
 import 'package:farmus/view_model/home/home_provider.dart';
 import 'package:flutter/material.dart';
@@ -39,9 +39,11 @@ class FarmclubScreen extends ConsumerWidget {
             if (farmclub.isNotEmpty)
               GestureDetector(
                 onTap: () {
-                  final farmClubName =  myFarmclubInfo.value!.farmClubName;
-                  final farmClubId =myFarmclubInfo.value!.farmClubId;
-                  showFarmclubExitBottomSheet(context, farmClubName, farmClubId);                },
+                  final farmClubName = myFarmclubInfo.value!.farmClubName;
+                  final farmClubId = myFarmclubInfo.value!.farmClubId;
+                  showFarmclubExitBottomSheet(
+                      context, farmClubName, farmClubId);
+                },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: SvgPicture.asset('assets/image/ic_exit.svg'),
@@ -143,7 +145,7 @@ class FarmclubScreen extends ConsumerWidget {
                                             myLike: diary.myLike,
                                             state: diary.state,
                                             categoryType: 'diary',
-                                            myPost: true,
+                                            myPost: diary.myDiary,
                                           );
                                         }).toList(),
                                       )

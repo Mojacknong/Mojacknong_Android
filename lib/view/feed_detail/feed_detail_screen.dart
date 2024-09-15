@@ -1,6 +1,5 @@
 import 'package:farmus/common/app_bar/back_left_title_app_bar.dart';
 import 'package:farmus/common/form/comment_text_form_field.dart';
-import 'package:farmus/model/my_farmclub/mission_feed.dart';
 import 'package:farmus/view/farmclub/component/feed_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -11,28 +10,26 @@ import '../../common/theme/farmus_theme_color.dart';
 import '../../common/theme/farmus_theme_text_style.dart';
 import '../../model/home/my_veggie_list_model.dart';
 import '../../view_model/home/home_provider.dart';
-import '../../view_model/my_farmclub/mission_feed_notifier.dart';
 import '../../view_model/my_vege/notifier/my_veggie_list.dart';
 import '../mission_feed/component/mission_comment.dart';
 import 'component/diary_comment.dart';
 import 'component/feed_detail_content.dart';
 
 class FeedDetailScreen extends ConsumerWidget {
-  const FeedDetailScreen({
-    super.key,
-    required this.feedId,
-    required this.nickname,
-    this.profileImage,
-    required this.writeDateTime,
-    required this.content,
-    required this.image,
-    required this.commentCount,
-    required this.likeCount,
-    required this.myLike,
-    this.state,
-    required this.categoryType,
-    required this.myPost
-  });
+  const FeedDetailScreen(
+      {super.key,
+      required this.feedId,
+      required this.nickname,
+      this.profileImage,
+      required this.writeDateTime,
+      required this.content,
+      required this.image,
+      required this.commentCount,
+      required this.likeCount,
+      required this.myLike,
+      this.state,
+      required this.categoryType,
+      required this.myPost});
 
   final int feedId;
   final String nickname;
@@ -54,8 +51,6 @@ class FeedDetailScreen extends ConsumerWidget {
     final AsyncValue<List<MyVeggieListModel>> veggieList =
         ref.watch(myVeggieListModelProvider);
 
-
-
     if (selectedVeggieId == null && veggieList.value?.isNotEmpty == true) {
       selectedVeggieId = veggieList.value!.first.myVeggieId;
     }
@@ -66,10 +61,13 @@ class FeedDetailScreen extends ConsumerWidget {
         actions: [
           IconButton(
             onPressed: () {
-              if (notifierType == "미션 인증" && !myPost) {
-                showReportBottomSheet(context, '게시물 신고', '게시물을 신고했어요', feedId, 'missionPost');
+              if (notifierType == "미션 인증" ||
+                  notifierType == "성장 일기" && !myPost) {
+                showReportBottomSheet(
+                    context, '게시물 신고', '게시물을 신고했어요', feedId, 'missionPost');
               } else {
-                showDeleteBottomSheet(context, feedId, selectedVeggieId, '게시물', categoryType);
+                showDeleteBottomSheet(
+                    context, feedId, selectedVeggieId, '게시물', categoryType);
               }
             },
             icon: SvgPicture.asset('assets/image/ic_more_vertical.svg'),

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../view_model/diary/diary_comment_report_notifier.dart';
 import '../../view_model/mission_feed/mission_post_report_notifier.dart';
 import '../../view_model/mission_feed/mission_comment_report_notifier.dart'; // Add the comment report notifier
 import '../dialog/check_dialog.dart';
@@ -24,19 +25,22 @@ class ReportBottomSheet extends ConsumerWidget {
   void _report(BuildContext context, WidgetRef ref, String reason) {
     Navigator.pop(context);
 
-    if (reportType == 'missionPost') {
-      ref
+    final reportActions = {
+      'missionPost': () => ref
           .read(missionPostReportModelProvider(reportId!, reason).future)
-          .then((value) {
-        _showConfirmationDialog(context);
-      });
-    } else if (reportType == 'missionComment') {
-      ref
+          .then((value) => _showConfirmationDialog(context)),
+      'missionComment': () => ref
           .read(missionCommentReportNotifierProvider(reportId!, reason).future)
-          .then((value) {
-        _showConfirmationDialog(context);
-      });
-    }
+          .then((value) => _showConfirmationDialog(context)),
+      // 'diaryPost': () => ref
+      //     .read(diaryPostReportNotifierProvider(reportId!, reason).future)
+      //     .then((value) => _showConfirmationDialog(context)),
+      'diaryComment': () => ref
+          .read(diaryCommentReportNotifierProvider(reportId!, reason).future)
+          .then((value) => _showConfirmationDialog(context)),
+    };
+
+    reportActions[reportType]?.call();
   }
 
   void _showConfirmationDialog(BuildContext context) {
