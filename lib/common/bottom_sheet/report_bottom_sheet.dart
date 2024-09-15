@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../view_model/diary/diary_comment_report_notifier.dart';
-import '../../view_model/mission_feed/mission_comment_report_notifier.dart'; // Add the comment report notifier
+import '../../view_model/diary/diary_post_report_notifier.dart';
+import '../../view_model/mission_feed/mission_comment_report_notifier.dart';
 import '../../view_model/mission_feed/mission_post_report_notifier.dart';
 import '../dialog/check_dialog.dart';
 import '../theme/farmus_theme_text_style.dart';
@@ -26,21 +27,31 @@ class ReportBottomSheet extends ConsumerWidget {
     Navigator.pop(context);
 
     final reportActions = {
-      'missionPost': () => ref
-          .read(missionPostReportNotifierProvider(reportId!, reason).future)
-          .then((value) => _showConfirmationDialog(context)),
+      'missionPost': () async {
+        await ref
+            .read(missionPostReportNotifierProvider(reportId!, reason).future);
+        _navigateBackAndShowDialog(context);
+      },
       'missionComment': () => ref
           .read(missionCommentReportNotifierProvider(reportId!, reason).future)
           .then((value) => _showConfirmationDialog(context)),
-      // 'diaryPost': () => ref
-      //     .read(diaryPostReportNotifierProvider(reportId!, reason).future)
-      //     .then((value) => _showConfirmationDialog(context)),
+      'diaryPost': () async {
+        await ref
+            .read(diaryPostReportNotifierProvider(reportId!, reason).future);
+        _navigateBackAndShowDialog(context);
+      },
       'diaryComment': () => ref
           .read(diaryCommentReportNotifierProvider(reportId!, reason).future)
           .then((value) => _showConfirmationDialog(context)),
     };
 
     reportActions[reportType]?.call();
+  }
+
+  void _navigateBackAndShowDialog(BuildContext context) {
+    Navigator.pop(context);
+
+    _showConfirmationDialog(context);
   }
 
   void _showConfirmationDialog(BuildContext context) {
