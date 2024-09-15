@@ -2,11 +2,11 @@ import 'dart:io';
 
 import 'package:farmus/model/my_farmclub_history/veggie_delete_success_model.dart';
 import 'package:farmus/view_model/my_vege/notifier/my_veggie_info_notifier.dart';
-import 'package:farmus/view_model/my_vege/notifier/my_veggie_list.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../repository/my_veggie_garden_repository.dart';
+import '../../my_vege/notifier/my_veggie_list.dart';
 
 part 'vege_delete_success_notifier.g.dart';
 

@@ -22,6 +22,7 @@ MyVeggieListModel _$MyVeggieListModelFromJson(Map<String, dynamic> json) {
 mixin _$MyVeggieListModel {
   int get myVeggieId => throw _privateConstructorUsedError;
   String get nickname => throw _privateConstructorUsedError;
+  int get userFarmClubId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,7 @@ abstract class $MyVeggieListModelCopyWith<$Res> {
           MyVeggieListModel value, $Res Function(MyVeggieListModel) then) =
       _$MyVeggieListModelCopyWithImpl<$Res, MyVeggieListModel>;
   @useResult
-  $Res call({int myVeggieId, String nickname});
+  $Res call({int myVeggieId, String nickname, int userFarmClubId});
 }
 
 /// @nodoc
@@ -53,6 +54,7 @@ class _$MyVeggieListModelCopyWithImpl<$Res, $Val extends MyVeggieListModel>
   $Res call({
     Object? myVeggieId = null,
     Object? nickname = null,
+    Object? userFarmClubId = null,
   }) {
     return _then(_value.copyWith(
       myVeggieId: null == myVeggieId
@@ -63,6 +65,10 @@ class _$MyVeggieListModelCopyWithImpl<$Res, $Val extends MyVeggieListModel>
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
               as String,
+      userFarmClubId: null == userFarmClubId
+          ? _value.userFarmClubId
+          : userFarmClubId // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -75,7 +81,7 @@ abstract class _$$MyVeggieListModelImplCopyWith<$Res>
       __$$MyVeggieListModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int myVeggieId, String nickname});
+  $Res call({int myVeggieId, String nickname, int userFarmClubId});
 }
 
 /// @nodoc
@@ -91,6 +97,7 @@ class __$$MyVeggieListModelImplCopyWithImpl<$Res>
   $Res call({
     Object? myVeggieId = null,
     Object? nickname = null,
+    Object? userFarmClubId = null,
   }) {
     return _then(_$MyVeggieListModelImpl(
       myVeggieId: null == myVeggieId
@@ -101,6 +108,10 @@ class __$$MyVeggieListModelImplCopyWithImpl<$Res>
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
               as String,
+      userFarmClubId: null == userFarmClubId
+          ? _value.userFarmClubId
+          : userFarmClubId // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -109,7 +120,9 @@ class __$$MyVeggieListModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$MyVeggieListModelImpl implements _MyVeggieListModel {
   const _$MyVeggieListModelImpl(
-      {required this.myVeggieId, required this.nickname});
+      {required this.myVeggieId,
+      required this.nickname,
+      required this.userFarmClubId});
 
   factory _$MyVeggieListModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$MyVeggieListModelImplFromJson(json);
@@ -118,10 +131,12 @@ class _$MyVeggieListModelImpl implements _MyVeggieListModel {
   final int myVeggieId;
   @override
   final String nickname;
+  @override
+  final int userFarmClubId;
 
   @override
   String toString() {
-    return 'MyVeggieListModel(myVeggieId: $myVeggieId, nickname: $nickname)';
+    return 'MyVeggieListModel(myVeggieId: $myVeggieId, nickname: $nickname, userFarmClubId: $userFarmClubId)';
   }
 
   @override
@@ -132,12 +147,15 @@ class _$MyVeggieListModelImpl implements _MyVeggieListModel {
             (identical(other.myVeggieId, myVeggieId) ||
                 other.myVeggieId == myVeggieId) &&
             (identical(other.nickname, nickname) ||
-                other.nickname == nickname));
+                other.nickname == nickname) &&
+            (identical(other.userFarmClubId, userFarmClubId) ||
+                other.userFarmClubId == userFarmClubId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, myVeggieId, nickname);
+  int get hashCode =>
+      Object.hash(runtimeType, myVeggieId, nickname, userFarmClubId);
 
   @JsonKey(ignore: true)
   @override
@@ -157,7 +175,8 @@ class _$MyVeggieListModelImpl implements _MyVeggieListModel {
 abstract class _MyVeggieListModel implements MyVeggieListModel {
   const factory _MyVeggieListModel(
       {required final int myVeggieId,
-      required final String nickname}) = _$MyVeggieListModelImpl;
+      required final String nickname,
+      required final int userFarmClubId}) = _$MyVeggieListModelImpl;
 
   factory _MyVeggieListModel.fromJson(Map<String, dynamic> json) =
       _$MyVeggieListModelImpl.fromJson;
@@ -166,6 +185,8 @@ abstract class _MyVeggieListModel implements MyVeggieListModel {
   int get myVeggieId;
   @override
   String get nickname;
+  @override
+  int get userFarmClubId;
   @override
   @JsonKey(ignore: true)
   _$$MyVeggieListModelImplCopyWith<_$MyVeggieListModelImpl> get copyWith =>

@@ -8,7 +8,9 @@ class MyVeggieListModel with _$MyVeggieListModel {
   const factory MyVeggieListModel({
     required int myVeggieId,
     required String nickname,
+    required int userFarmClubId,
   }) = _MyVeggieListModel;
 
-  factory MyVeggieListModel.fromJson(Map<String, dynamic> json) => _$MyVeggieListModelFromJson(json);
+  factory MyVeggieListModel.fromJson(Map<String, dynamic> json) =>
+      _$MyVeggieListModelFromJson(json);
 }

@@ -9,7 +9,6 @@ import 'package:farmus/view/home/component/home_sub_title.dart';
 import 'package:farmus/view/home/component/none/home_none_container.dart';
 import 'package:farmus/view/routine/routine_screen.dart';
 import 'package:farmus/view/vege_diary/vege_diary_screen.dart';
-import 'package:farmus/view_model/my_vege/notifier/my_veggie_list.dart';
 import 'package:farmus/view_model/my_vege/notifier/my_veggie_profile_notifier.dart';
 import 'package:farmus/view_model/veggie_info/recommend_veggie_info_notifier.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +17,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../common/app_bar/home_app_bar.dart';
 import '../../model/veggie_info/recommend_veggie_model.dart';
 import '../../view_model/home/home_provider.dart';
+import '../../view_model/my_vege/notifier/my_veggie_list.dart';
 import '../main/main_screen.dart';
 import 'component/home_my_vege.dart';
 import 'component/none/home_my_vege_none.dart';
@@ -132,7 +132,9 @@ class HomeScreen extends ConsumerWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (builder) => const MainScreen(selectedIndex: 1,),
+                          builder: (builder) => const MainScreen(
+                            selectedIndex: 1,
+                          ),
                         ),
                       );
                     },
