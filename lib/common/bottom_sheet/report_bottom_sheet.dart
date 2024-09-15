@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../view_model/diary/diary_comment_report_notifier.dart';
-import '../../view_model/mission_feed/mission_post_report_notifier.dart';
 import '../../view_model/mission_feed/mission_comment_report_notifier.dart'; // Add the comment report notifier
+import '../../view_model/mission_feed/mission_post_report_notifier.dart';
 import '../dialog/check_dialog.dart';
 import '../theme/farmus_theme_text_style.dart';
 
@@ -27,7 +27,7 @@ class ReportBottomSheet extends ConsumerWidget {
 
     final reportActions = {
       'missionPost': () => ref
-          .read(missionPostReportModelProvider(reportId!, reason).future)
+          .read(missionPostReportNotifierProvider(reportId!, reason).future)
           .then((value) => _showConfirmationDialog(context)),
       'missionComment': () => ref
           .read(missionCommentReportNotifierProvider(reportId!, reason).future)

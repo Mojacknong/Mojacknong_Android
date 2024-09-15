@@ -7,7 +7,7 @@ part of 'diary_comment_report_notifier.dart';
 // **************************************************************************
 
 String _$diaryCommentReportNotifierHash() =>
-    r'22917c38984f98a5d67eeb7dfc51a1ca35dfc207';
+    r'a284c92bd86c9ddce0370e0a323abb25530b7fac';
 
 /// Copied from Dart SDK
 class _SystemHash {

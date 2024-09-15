@@ -316,4 +316,21 @@ class MyVeggieService {
       throw Exception('일기 댓글 신고 실패');
     }
   }
+
+  Future<String> diaryPostReport(int diaryId, String reason) async {
+    const url = '/api/my-veggie/diary/report';
+
+    final body = jsonEncode({
+      'diaryId': diaryId,
+      'reason': reason,
+    });
+
+    final response = await apiClient.post(url, body: body);
+
+    if (response.statusCode == 200) {
+      return utf8.decode(response.bodyBytes);
+    } else {
+      throw Exception('일기 글 신고 실패');
+    }
+  }
 }

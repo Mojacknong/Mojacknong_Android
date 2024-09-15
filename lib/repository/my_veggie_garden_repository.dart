@@ -112,4 +112,9 @@ class MyVeggieGardenRepository {
         await MyVeggieService().diaryCommentReport(commentId, reason);
     return response;
   }
+
+  static Future<String> diaryPostReport(int diaryId, String reason) async {
+    String? response = await MyVeggieService().diaryPostReport(diaryId, reason);
+    return response;
+  }
 }
