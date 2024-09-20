@@ -182,7 +182,6 @@ void showReportBottomSheet(
   showCupertinoModalPopup(
     context: context,
     builder: (BuildContext context) {
-      print(reportId);
       return ReportBottomSheet(
         title: title,
         dialogText: dialogText,

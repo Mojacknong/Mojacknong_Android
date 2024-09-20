@@ -11,6 +11,7 @@ _$MyVeggieListModelImpl _$$MyVeggieListModelImplFromJson(
     _$MyVeggieListModelImpl(
       myVeggieId: (json['myVeggieId'] as num).toInt(),
       nickname: json['nickname'] as String,
+      userFarmClubId: (json['userFarmClubId'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$MyVeggieListModelImplToJson(
@@ -18,4 +19,5 @@ Map<String, dynamic> _$$MyVeggieListModelImplToJson(
     <String, dynamic>{
       'myVeggieId': instance.myVeggieId,
       'nickname': instance.nickname,
+      'userFarmClubId': instance.userFarmClubId,
     };

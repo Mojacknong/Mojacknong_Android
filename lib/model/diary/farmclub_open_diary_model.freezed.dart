@@ -30,6 +30,7 @@ mixin _$FarmclubOpenDiaryModel {
   String get nickname => throw _privateConstructorUsedError;
   String? get profileImage => throw _privateConstructorUsedError;
   bool get myLike => throw _privateConstructorUsedError;
+  bool get myDiary => throw _privateConstructorUsedError;
   String get state => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -54,6 +55,7 @@ abstract class $FarmclubOpenDiaryModelCopyWith<$Res> {
       String nickname,
       String? profileImage,
       bool myLike,
+      bool myDiary,
       String state});
 }
 
@@ -80,6 +82,7 @@ class _$FarmclubOpenDiaryModelCopyWithImpl<$Res,
     Object? nickname = null,
     Object? profileImage = freezed,
     Object? myLike = null,
+    Object? myDiary = null,
     Object? state = null,
   }) {
     return _then(_value.copyWith(
@@ -119,6 +122,10 @@ class _$FarmclubOpenDiaryModelCopyWithImpl<$Res,
           ? _value.myLike
           : myLike // ignore: cast_nullable_to_non_nullable
               as bool,
+      myDiary: null == myDiary
+          ? _value.myDiary
+          : myDiary // ignore: cast_nullable_to_non_nullable
+              as bool,
       state: null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
@@ -146,6 +153,7 @@ abstract class _$$FarmclubOpenDiaryModelImplCopyWith<$Res>
       String nickname,
       String? profileImage,
       bool myLike,
+      bool myDiary,
       String state});
 }
 
@@ -171,6 +179,7 @@ class __$$FarmclubOpenDiaryModelImplCopyWithImpl<$Res>
     Object? nickname = null,
     Object? profileImage = freezed,
     Object? myLike = null,
+    Object? myDiary = null,
     Object? state = null,
   }) {
     return _then(_$FarmclubOpenDiaryModelImpl(
@@ -210,6 +219,10 @@ class __$$FarmclubOpenDiaryModelImplCopyWithImpl<$Res>
           ? _value.myLike
           : myLike // ignore: cast_nullable_to_non_nullable
               as bool,
+      myDiary: null == myDiary
+          ? _value.myDiary
+          : myDiary // ignore: cast_nullable_to_non_nullable
+              as bool,
       state: null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
@@ -231,6 +244,7 @@ class _$FarmclubOpenDiaryModelImpl implements _FarmclubOpenDiaryModel {
       required this.nickname,
       this.profileImage,
       required this.myLike,
+      required this.myDiary,
       required this.state});
 
   factory _$FarmclubOpenDiaryModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -255,11 +269,13 @@ class _$FarmclubOpenDiaryModelImpl implements _FarmclubOpenDiaryModel {
   @override
   final bool myLike;
   @override
+  final bool myDiary;
+  @override
   final String state;
 
   @override
   String toString() {
-    return 'FarmclubOpenDiaryModel(diaryId: $diaryId, diaryImage: $diaryImage, diaryContent: $diaryContent, writeDateTime: $writeDateTime, likeCount: $likeCount, commentCount: $commentCount, nickname: $nickname, profileImage: $profileImage, myLike: $myLike, state: $state)';
+    return 'FarmclubOpenDiaryModel(diaryId: $diaryId, diaryImage: $diaryImage, diaryContent: $diaryContent, writeDateTime: $writeDateTime, likeCount: $likeCount, commentCount: $commentCount, nickname: $nickname, profileImage: $profileImage, myLike: $myLike, myDiary: $myDiary, state: $state)';
   }
 
   @override
@@ -283,6 +299,7 @@ class _$FarmclubOpenDiaryModelImpl implements _FarmclubOpenDiaryModel {
             (identical(other.profileImage, profileImage) ||
                 other.profileImage == profileImage) &&
             (identical(other.myLike, myLike) || other.myLike == myLike) &&
+            (identical(other.myDiary, myDiary) || other.myDiary == myDiary) &&
             (identical(other.state, state) || other.state == state));
   }
 
@@ -299,6 +316,7 @@ class _$FarmclubOpenDiaryModelImpl implements _FarmclubOpenDiaryModel {
       nickname,
       profileImage,
       myLike,
+      myDiary,
       state);
 
   @JsonKey(ignore: true)
@@ -327,6 +345,7 @@ abstract class _FarmclubOpenDiaryModel implements FarmclubOpenDiaryModel {
       required final String nickname,
       final String? profileImage,
       required final bool myLike,
+      required final bool myDiary,
       required final String state}) = _$FarmclubOpenDiaryModelImpl;
 
   factory _FarmclubOpenDiaryModel.fromJson(Map<String, dynamic> json) =
@@ -350,6 +369,8 @@ abstract class _FarmclubOpenDiaryModel implements FarmclubOpenDiaryModel {
   String? get profileImage;
   @override
   bool get myLike;
+  @override
+  bool get myDiary;
   @override
   String get state;
   @override

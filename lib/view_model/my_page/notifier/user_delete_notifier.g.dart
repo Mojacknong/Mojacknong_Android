@@ -7,7 +7,7 @@ part of 'user_delete_notifier.dart';
 // **************************************************************************
 
 String _$userDeleteNotifierHash() =>
-    r'bb0e79474752767c50447bd5edc2147b9b4353fb';
+    r'de562f893759846529a3ad07b4ca385e5fb43275';
 
 /// See also [UserDeleteNotifier].
 @ProviderFor(UserDeleteNotifier)

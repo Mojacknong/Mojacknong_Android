@@ -15,6 +15,7 @@ class FarmclubOpenDiaryModel with _$FarmclubOpenDiaryModel {
     required String nickname,
     String? profileImage,
     required bool myLike,
+    required bool myDiary,
     required String state,
   }) = _FarmclubOpenDiaryModel;
 

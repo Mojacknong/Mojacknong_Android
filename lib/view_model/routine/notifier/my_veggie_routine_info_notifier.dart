@@ -2,8 +2,9 @@ import 'dart:convert';
 
 import 'package:farmus/model/routine/my_veggie_routine_info_model.dart';
 import 'package:farmus/repository/routine_repository.dart';
-import 'package:farmus/view_model/my_vege/notifier/my_veggie_list.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import '../../my_vege/notifier/my_veggie_list.dart';
 
 part 'my_veggie_routine_info_notifier.g.dart';
 

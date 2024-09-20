@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:farmus/repository/my_veggie_garden_repository.dart';
-import 'package:farmus/view_model/my_vege/notifier/my_veggie_list.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../model/home/my_veggie_profile.dart';
+import 'my_veggie_list.dart';
 
 part 'my_veggie_profile_notifier.g.dart';
 

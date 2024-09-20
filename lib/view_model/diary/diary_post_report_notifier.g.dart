@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'mission_post_report_notifier.dart';
+part of 'diary_post_report_notifier.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$missionPostReportNotifierHash() =>
-    r'4f14e9a3d25684960a90176a13d6d34d28460dfe';
+String _$diaryPostReportNotifierHash() =>
+    r'e21299bd3befc728308100574e79b6fedfb15da7';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,32 +30,32 @@ class _SystemHash {
   }
 }
 
-/// See also [missionPostReportNotifier].
-@ProviderFor(missionPostReportNotifier)
-const missionPostReportNotifierProvider = MissionPostReportNotifierFamily();
+/// See also [diaryPostReportNotifier].
+@ProviderFor(diaryPostReportNotifier)
+const diaryPostReportNotifierProvider = DiaryPostReportNotifierFamily();
 
-/// See also [missionPostReportNotifier].
-class MissionPostReportNotifierFamily extends Family<AsyncValue<String>> {
-  /// See also [missionPostReportNotifier].
-  const MissionPostReportNotifierFamily();
+/// See also [diaryPostReportNotifier].
+class DiaryPostReportNotifierFamily extends Family<AsyncValue<String>> {
+  /// See also [diaryPostReportNotifier].
+  const DiaryPostReportNotifierFamily();
 
-  /// See also [missionPostReportNotifier].
-  MissionPostReportNotifierProvider call(
-    int missionPostId,
+  /// See also [diaryPostReportNotifier].
+  DiaryPostReportNotifierProvider call(
+    int diaryId,
     String reason,
   ) {
-    return MissionPostReportNotifierProvider(
-      missionPostId,
+    return DiaryPostReportNotifierProvider(
+      diaryId,
       reason,
     );
   }
 
   @override
-  MissionPostReportNotifierProvider getProviderOverride(
-    covariant MissionPostReportNotifierProvider provider,
+  DiaryPostReportNotifierProvider getProviderOverride(
+    covariant DiaryPostReportNotifierProvider provider,
   ) {
     return call(
-      provider.missionPostId,
+      provider.diaryId,
       provider.reason,
     );
   }
@@ -72,63 +72,63 @@ class MissionPostReportNotifierFamily extends Family<AsyncValue<String>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'missionPostReportNotifierProvider';
+  String? get name => r'diaryPostReportNotifierProvider';
 }
 
-/// See also [missionPostReportNotifier].
-class MissionPostReportNotifierProvider
+/// See also [diaryPostReportNotifier].
+class DiaryPostReportNotifierProvider
     extends AutoDisposeFutureProvider<String> {
-  /// See also [missionPostReportNotifier].
-  MissionPostReportNotifierProvider(
-    int missionPostId,
+  /// See also [diaryPostReportNotifier].
+  DiaryPostReportNotifierProvider(
+    int diaryId,
     String reason,
   ) : this._internal(
-          (ref) => missionPostReportNotifier(
-            ref as MissionPostReportNotifierRef,
-            missionPostId,
+          (ref) => diaryPostReportNotifier(
+            ref as DiaryPostReportNotifierRef,
+            diaryId,
             reason,
           ),
-          from: missionPostReportNotifierProvider,
-          name: r'missionPostReportNotifierProvider',
+          from: diaryPostReportNotifierProvider,
+          name: r'diaryPostReportNotifierProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$missionPostReportNotifierHash,
-          dependencies: MissionPostReportNotifierFamily._dependencies,
+                  : _$diaryPostReportNotifierHash,
+          dependencies: DiaryPostReportNotifierFamily._dependencies,
           allTransitiveDependencies:
-              MissionPostReportNotifierFamily._allTransitiveDependencies,
-          missionPostId: missionPostId,
+              DiaryPostReportNotifierFamily._allTransitiveDependencies,
+          diaryId: diaryId,
           reason: reason,
         );
 
-  MissionPostReportNotifierProvider._internal(
+  DiaryPostReportNotifierProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
     required super.allTransitiveDependencies,
     required super.debugGetCreateSourceHash,
     required super.from,
-    required this.missionPostId,
+    required this.diaryId,
     required this.reason,
   }) : super.internal();
 
-  final int missionPostId;
+  final int diaryId;
   final String reason;
 
   @override
   Override overrideWith(
-    FutureOr<String> Function(MissionPostReportNotifierRef provider) create,
+    FutureOr<String> Function(DiaryPostReportNotifierRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
-      override: MissionPostReportNotifierProvider._internal(
-        (ref) => create(ref as MissionPostReportNotifierRef),
+      override: DiaryPostReportNotifierProvider._internal(
+        (ref) => create(ref as DiaryPostReportNotifierRef),
         from: from,
         name: null,
         dependencies: null,
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
-        missionPostId: missionPostId,
+        diaryId: diaryId,
         reason: reason,
       ),
     );
@@ -136,44 +136,43 @@ class MissionPostReportNotifierProvider
 
   @override
   AutoDisposeFutureProviderElement<String> createElement() {
-    return _MissionPostReportNotifierProviderElement(this);
+    return _DiaryPostReportNotifierProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is MissionPostReportNotifierProvider &&
-        other.missionPostId == missionPostId &&
+    return other is DiaryPostReportNotifierProvider &&
+        other.diaryId == diaryId &&
         other.reason == reason;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, missionPostId.hashCode);
+    hash = _SystemHash.combine(hash, diaryId.hashCode);
     hash = _SystemHash.combine(hash, reason.hashCode);
 
     return _SystemHash.finish(hash);
   }
 }
 
-mixin MissionPostReportNotifierRef on AutoDisposeFutureProviderRef<String> {
-  /// The parameter `missionPostId` of this provider.
-  int get missionPostId;
+mixin DiaryPostReportNotifierRef on AutoDisposeFutureProviderRef<String> {
+  /// The parameter `diaryId` of this provider.
+  int get diaryId;
 
   /// The parameter `reason` of this provider.
   String get reason;
 }
 
-class _MissionPostReportNotifierProviderElement
+class _DiaryPostReportNotifierProviderElement
     extends AutoDisposeFutureProviderElement<String>
-    with MissionPostReportNotifierRef {
-  _MissionPostReportNotifierProviderElement(super.provider);
+    with DiaryPostReportNotifierRef {
+  _DiaryPostReportNotifierProviderElement(super.provider);
 
   @override
-  int get missionPostId =>
-      (origin as MissionPostReportNotifierProvider).missionPostId;
+  int get diaryId => (origin as DiaryPostReportNotifierProvider).diaryId;
   @override
-  String get reason => (origin as MissionPostReportNotifierProvider).reason;
+  String get reason => (origin as DiaryPostReportNotifierProvider).reason;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

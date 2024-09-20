@@ -7,7 +7,7 @@ part of 'on_boarding_finish_notifier.dart';
 // **************************************************************************
 
 String _$onBoardingFinishNotifierHash() =>
-    r'973eed566a6efdbe6aad899565651a1985f8d4d2';
+    r'e995996eab5279d52d27eb326236adf43585f4a0';
 
 /// See also [OnBoardingFinishNotifier].
 @ProviderFor(OnBoardingFinishNotifier)

@@ -18,6 +18,7 @@ _$FarmclubOpenDiaryModelImpl _$$FarmclubOpenDiaryModelImplFromJson(
       nickname: json['nickname'] as String,
       profileImage: json['profileImage'] as String?,
       myLike: json['myLike'] as bool,
+      myDiary: json['myDiary'] as bool,
       state: json['state'] as String,
     );
 
@@ -33,5 +34,6 @@ Map<String, dynamic> _$$FarmclubOpenDiaryModelImplToJson(
       'nickname': instance.nickname,
       'profileImage': instance.profileImage,
       'myLike': instance.myLike,
+      'myDiary': instance.myDiary,
       'state': instance.state,
     };
