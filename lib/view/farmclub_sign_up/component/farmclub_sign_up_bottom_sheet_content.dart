@@ -107,9 +107,6 @@ class FarmclubSignUpBottomSheetContent extends ConsumerWidget {
                                       ref.watch(signUpVeggieProvider(
                                           data.farmClubId,
                                           myVeggieModel.myVeggieId));
-                                      print(
-                                          'farmClubId: ${data.farmClubId}, myVeggieId: ${myVeggieModel.myVeggieId}');
-
                                       Navigator.pop(context);
                                       onPressed?.call();
                                     },

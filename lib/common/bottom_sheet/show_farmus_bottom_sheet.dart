@@ -69,7 +69,6 @@ void showFarmclubSignupBottomSheet(
     isScrollControlled: true,
     backgroundColor: Colors.white,
     builder: (BuildContext context) {
-      print(myVeggieInfoId);
       return FarmclubSignUpBottomSheetContent(
         infoId: myVeggieInfoId,
         id: farmClubId,
