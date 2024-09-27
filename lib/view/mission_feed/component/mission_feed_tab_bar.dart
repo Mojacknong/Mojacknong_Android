@@ -153,6 +153,7 @@ class _MissionFeedTabBarState extends ConsumerState<MissionFeedTabBar> {
                     MissionStepInfo(
                       step: step,
                       isButton: true,
+                      isLast: true,
                     ),
                     const SizedBox(height: 16.0),
                     stepFeeds.isEmpty

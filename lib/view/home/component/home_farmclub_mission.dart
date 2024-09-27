@@ -42,7 +42,7 @@ class _HomeFarmclubMissionState extends ConsumerState<HomeFarmclubMission> {
           orElse: () => veggieList.first,
         );
 
-        if (selectedVeggie.userFarmClubId == -1) {
+        if (selectedVeggie.farmClubId == -1) {
           return HomeNoneContainer(
             title: '가입한 팜클럽이 없어요',
             onPressed: () {
@@ -61,16 +61,20 @@ class _HomeFarmclubMissionState extends ConsumerState<HomeFarmclubMission> {
         }
 
         final AsyncValue<MyFarmclubInfoModel> myFarmclubInfo = ref.watch(
-          myFarmclubInfoModelProvider(selectedVeggie.userFarmClubId),
+          myFarmclubInfoModelProvider(selectedVeggie.farmClubId),
         );
 
         return myFarmclubInfo.when(
+
           data: (farmclubInfo) => FarmclubStep(
             wholeMember: farmclubInfo.wholeMemberCount,
             step: farmclubInfo.steps[farmclubInfo.currentStep - 1],
             farmclubInfo: farmclubInfo,
             isButton: true,
+            isLast:farmclubInfo.steps.length == farmclubInfo.currentStep,
+
           ),
+
           error: (error, stack) =>
               Center(child: Text('Error: ${error.toString()}')),
           loading: () => const Center(child: CircularProgressIndicator()),

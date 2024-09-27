@@ -31,7 +31,6 @@ class FarmclubScreen extends ConsumerWidget {
         ref.watch(myFarmclubInfoModelProvider(selectedFarmclubId));
     final AsyncValue<List<FarmclubOpenDiaryModel>> farmclubOpenDiary =
         ref.watch(farmclubOpenDiaryModelProvider(selectedFarmclubId));
-
     return Scaffold(
       appBar: myFarmclub.when(
         data: (farmclub) => FarmusLogoAppBar(
@@ -172,7 +171,18 @@ class FarmclubScreen extends ConsumerWidget {
                 );
               },
               loading: () => const Center(child: CircularProgressIndicator()),
-              error: (error, stack) => Center(child: Text('Error: $error')),
+              error: (error, stack) {
+                print('Error: $error');
+                return const Center(
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: ContentEmpty(
+                      text: '이미 완료한 팜클럽입니다. 재실행해주세요',
+                      padding: 45,
+                    ),
+                  ),
+                );
+              },
             );
           }
         },

@@ -14,12 +14,14 @@ import '../../model/my_farmclub/my_farmclub_model.dart';
 import '../../view_model/home/home_provider.dart';
 import '../../view_model/mission_write/notifier/post_mission_notifier.dart';
 import '../../view_model/my_farmclub/my_farmclub_notifier.dart';
+import '../farmclub/farmclub_success_screen.dart'; // 추가
 
 class MissionWriteScreen extends ConsumerWidget {
-  const MissionWriteScreen({super.key, required this.step, this.farmClubId});
+  const MissionWriteScreen({super.key, required this.step, this.farmClubId,required this.isLast});
 
   final StepModel step;
   final int? farmClubId;
+  final bool isLast;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -45,27 +47,47 @@ class MissionWriteScreen extends ConsumerWidget {
             onPressed: () {
               ref
                   .read(postMissionNotifierProvider.notifier)
-                  .postMission(File(file!.path), content, farmClubId!,context
-                  )
+                  .postMission(File(file!.path), content, farmClubId!, context)
                   .then((_) {
-                Navigator.pop(context);
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    Future.delayed(const Duration(seconds: 2), () {
-                      Navigator.of(context).pop();
-                    });
-                    return  CheckDialog(
-                      text: "Step ${step.stepNum } 미션을 인증했어요",
-                    );
-                  },
-                );
+
+                if (isLast) {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      Future.delayed(const Duration(seconds: 1), () {
+                        Navigator.of(context).pop();
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => FarmclubSuccessScreen(),
+                          ),
+                        );
+                      });
+                      return CheckDialog(
+                        text: "Step ${step.stepNum } 미션을 인증했어요",
+                      );
+                    },
+                  );
+                } else {
+                  Navigator.pop(context);
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      Future.delayed(const Duration(seconds: 2), () {
+                        Navigator.of(context).pop();
+                      });
+                      return  CheckDialog(
+                        text: "Step ${step.stepNum } 미션을 인증했어요",
+                      );
+                    },
+                  );
+                }
               });
             },
+
             text: '완료',
             fontPadding: 0,
           ),
-
         ],
       ),
       body: SingleChildScrollView(
@@ -76,6 +98,7 @@ class MissionWriteScreen extends ConsumerWidget {
               child: MissionStepInfo(
                 step: step,
                 isButton: false,
+                isLast: isLast,
               ),
             ),
             Padding(
@@ -85,8 +108,9 @@ class MissionWriteScreen extends ConsumerWidget {
               ),
               child: WriteImagePicker(
                 imageProvider: postNotifier.value?.file,
-                updateImage: (value) =>
-                    ref.read(postMissionNotifierProvider.notifier).updateImage(value),
+                updateImage: (value) => ref
+                    .read(postMissionNotifierProvider.notifier)
+                    .updateImage(value),
                 deleteImage: (value) =>
                     ref.read(postMissionNotifierProvider.notifier).deleteImage(),
               ),

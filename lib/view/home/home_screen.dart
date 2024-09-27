@@ -54,8 +54,8 @@ class HomeScreen extends ConsumerWidget {
               (veggie) => veggie.myVeggieId == selectedVegeId,
               orElse: () => veggieListData.first,
             );
-            if (selectedVeggie.userFarmClubId != -1) {
-              selectedFarmclubId = selectedVeggie.userFarmClubId;
+            if (selectedVeggie.farmClubId != -1) {
+              selectedFarmclubId = selectedVeggie.farmClubId;
             }
           }
 
@@ -144,7 +144,7 @@ class HomeScreen extends ConsumerWidget {
                             (veggie) => veggie.myVeggieId == selectedVegeId,
                         orElse: () => veggieListData.first,
                       );
-                      if (selectedVeggie.userFarmClubId != -1) {
+                      if (selectedVeggie.farmClubId != -1) {
                         ref.read(selectedFarmclubIdProvider.notifier).state =
                             selectedFarmclubId;
                         Navigator.push(

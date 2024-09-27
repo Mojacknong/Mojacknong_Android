@@ -9,10 +9,11 @@ import '../../../common/button/round_gray_button.dart';
 
 class MissionStepInfo extends ConsumerWidget {
   const MissionStepInfo(
-      {super.key, required this.step, required this.isButton});
+      {super.key, required this.step, required this.isButton, required this.isLast});
 
   final StepModel step;
   final bool isButton;
+  final bool isLast;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -57,6 +58,7 @@ class MissionStepInfo extends ConsumerWidget {
                 MaterialPageRoute(
                   builder: (builder) => MissionWriteScreen(
                     step: step,
+                    isLast: isLast,
                   ),
                 ),
               );

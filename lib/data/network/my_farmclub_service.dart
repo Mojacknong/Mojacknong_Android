@@ -109,21 +109,6 @@ class MyFarmclubService {
       final Map<String, dynamic> responseData =
           jsonDecode(utf8.decode(response.bodyBytes));
 
-      if (responseData['data']['isLastStep'] == true) {
-        try {
-          await myMissionSuccess(farmClubId);
-
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => FarmclubSuccessScreen()),
-            );
-          });
-        } catch (e) {
-          throw Exception('미션 완료 후 성공 처리 실패');
-        }
-      }
-
       return responseData['message'];
     } else {
       throw Exception('미션 완료 실패');
@@ -140,11 +125,15 @@ class MyFarmclubService {
     final response = await apiClient.delete(url, body: body);
 
     if (response.statusCode == 200) {
-      return utf8.decode(response.bodyBytes);
+      final responseBody = utf8.decode(response.bodyBytes);
+      return responseBody;
     } else {
+      final errorBody = utf8.decode(response.bodyBytes);
       throw Exception('팜클럽 성공 실패');
     }
   }
+
+
 
   Future<String> missionCommentAdd(int missionPostId, String content) async {
     const url = '/api/farm-club/mission/comment';
