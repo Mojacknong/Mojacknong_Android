@@ -128,7 +128,6 @@ class MyFarmclubService {
       final responseBody = utf8.decode(response.bodyBytes);
       return responseBody;
     } else {
-      final errorBody = utf8.decode(response.bodyBytes);
       throw Exception('팜클럽 성공 실패');
     }
   }

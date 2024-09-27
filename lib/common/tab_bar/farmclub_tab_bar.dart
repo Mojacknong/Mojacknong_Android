@@ -2,8 +2,7 @@ import 'package:farmus/common/content_empty.dart';
 import 'package:farmus/common/tab_bar/primary_tab_bar.dart';
 import 'package:farmus/model/my_farmclub/my_farmclub_info_model.dart';
 import 'package:farmus/view/farmclub/component/farmclub_step.dart';
-import 'package:farmus/view/farmclub/component/farmclub_step_tip.dart'; // 추가
-import 'package:farmus/view/farmclub/farmclub_success_screen.dart'; // 추가
+import 'package:farmus/view/farmclub/component/farmclub_step_tip.dart';
 import 'package:flutter/material.dart';
 
 class FarmclubTabBar extends StatelessWidget {
