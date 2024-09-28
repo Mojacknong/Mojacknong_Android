@@ -2,7 +2,7 @@ import 'package:farmus/common/content_empty.dart';
 import 'package:farmus/common/tab_bar/primary_tab_bar.dart';
 import 'package:farmus/model/my_farmclub/my_farmclub_info_model.dart';
 import 'package:farmus/view/farmclub/component/farmclub_step.dart';
-import 'package:farmus/view/farmclub/component/farmclub_step_tip.dart'; // 추가
+import 'package:farmus/view/farmclub/component/farmclub_step_tip.dart';
 import 'package:flutter/material.dart';
 
 class FarmclubTabBar extends StatelessWidget {
@@ -18,12 +18,12 @@ class FarmclubTabBar extends StatelessWidget {
     final List<StepModel> currentSteps = [steps[currentStepIndex]];
 
     final List<StepModel> previousSteps =
-        (currentStepIndex > 0) ? steps.sublist(0, currentStepIndex) : [];
+    (currentStepIndex > 0) ? steps.sublist(0, currentStepIndex) : [];
     final List<StepModel> nextSteps = (currentStepIndex < steps.length - 1)
         ? steps.sublist(currentStepIndex + 1)
         : [];
 
-    Widget buildStepView(List<StepModel> stepModels, {bool addTip = false}) {
+    Widget buildStepView(List<StepModel> stepModels, {bool addTip = false, bool isLast = false}) {
       return Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
@@ -37,20 +37,21 @@ class FarmclubTabBar extends StatelessWidget {
                     step: step,
                     farmclubInfo: farmclubInfo,
                     isButton: step.stepNum == currentStepIndex + 1,
+                    isLast: farmclubInfo.steps.length == farmclubInfo.currentStep,
                   ),
                 );
               }),
               if (addTip) FarmclubStepTip(tip: farmclubInfo.advice),
+
             ],
           ),
         ),
       );
     }
 
-    Widget buildTabView(List<StepModel> steps,
-        {bool isLast = false, bool addTip = false}) {
+    Widget buildTabView(List<StepModel> steps, {bool isLast = false, bool addTip = false}) {
       return steps.isNotEmpty
-          ? buildStepView(steps, addTip: addTip)
+          ? buildStepView(steps, addTip: addTip, isLast: isLast)
           : ContentEmpty(text: isLast ? '마지막 미션을 진행 중이에요!' : '아직 완료한 미션이 없어요');
     }
 

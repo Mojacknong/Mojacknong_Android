@@ -17,12 +17,14 @@ class FarmclubStep extends ConsumerWidget {
     required this.step,
     required this.farmclubInfo,
     required this.isButton,
+    required this.isLast,
   });
 
   final int wholeMember;
   final StepModel step;
   final MyFarmclubInfoModel farmclubInfo;
   final bool isButton;
+  final bool isLast;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -75,6 +77,7 @@ class FarmclubStep extends ConsumerWidget {
                           builder: (context) => MissionWriteScreen(
                             step: step,
                             farmClubId: farmclubInfo.farmClubId,
+                            isLast: isLast,
                           ),
                         ),
                       );
