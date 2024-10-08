@@ -29,7 +29,7 @@ class SearchFarmclubInfo extends ConsumerWidget {
 
     return farmclubs.when(
       data: (data) {
-        if (data != null && data!.isNotEmpty) {
+        if (data != null && data.isNotEmpty) {
           final filteredData = data.where((farmclub) {
             return difficultiesToFilter.contains(farmclub.difficulty);
           }).toList();
