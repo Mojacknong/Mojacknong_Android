@@ -20,7 +20,7 @@ import 'component/on_boarding_fourth.dart';
 import 'component/on_boarding_second.dart';
 
 class OnBoardingScreen extends ConsumerWidget {
-  const OnBoardingScreen({Key? key}) : super(key: key);
+  const OnBoardingScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
