@@ -167,6 +167,7 @@ class VegeInfoScreen extends ConsumerWidget {
                                             .first
                                         : createdVeggieDateString,
                                   );
+                              Navigator.pop(context);
                             }
                           },
                           text: '수정',
