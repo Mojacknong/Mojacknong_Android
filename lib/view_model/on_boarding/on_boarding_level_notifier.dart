@@ -146,7 +146,6 @@ class OnBoardingLevelNotifier extends _$OnBoardingLevelNotifier {
       skill = '홈파밍 고수';
     }
 
-    final response = await UserRepository.postLevel(time, skill);
-    print(response);
+    await UserRepository.postLevel(time, skill);
   }
 }

@@ -8,8 +8,8 @@ import 'package:farmus/view/on_boarding/component/on_boarding_first.dart';
 import 'package:farmus/view/on_boarding/component/on_boarding_third.dart';
 import 'package:farmus/view/on_boarding/on_boarding_finish_screen.dart';
 import 'package:farmus/view_model/on_boarding//on_boarding_motivation_notifier.dart';
-import 'package:farmus/view_model/on_boarding/on_boarding_user_profile.dart';
 import 'package:farmus/view_model/on_boarding/on_boarding_provider.dart';
+import 'package:farmus/view_model/on_boarding/on_boarding_user_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -34,7 +34,6 @@ class OnBoardingScreen extends ConsumerWidget {
     String nextButtonText = "다음";
     String currentIndex;
     bool enabled = false;
-
     List<String> motivationList = [];
 
     switch (currentPageIndex) {
@@ -45,7 +44,6 @@ class OnBoardingScreen extends ConsumerWidget {
       case "second":
         currentIndex = "2";
         enabled = true;
-        nextButtonText = motivation.value!.buttonText;
         break;
       case "third":
         currentIndex = "3";
@@ -147,10 +145,10 @@ class OnBoardingScreen extends ConsumerWidget {
                               motivationList.add('알뜰살뜰');
                             }
                             if (motivation.value!.isSecondSelect) {
-                              motivationList.add('건강과웰빙');
+                              motivationList.add('건강과 웰빙');
                             }
                             if (motivation.value!.isThirdSelect) {
-                              motivationList.add('심리적안정');
+                              motivationList.add('심리적 안정');
                             }
                             ref
                                 .read(onBoardingMotivationNotifierProvider
@@ -163,7 +161,9 @@ class OnBoardingScreen extends ConsumerWidget {
                             ref
                                 .read(onBoardingLevelNotifierProvider.notifier)
                                 .postLevel();
-                            ref.read(onBoardingFinishNotifierProvider.notifier).onBoardingComplete();
+                            ref
+                                .read(onBoardingFinishNotifierProvider.notifier)
+                                .onBoardingComplete();
                             Navigator.pop(context);
                             Navigator.push(
                               context,

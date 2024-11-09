@@ -7,7 +7,7 @@ part of 'on_boarding_motivation_notifier.dart';
 // **************************************************************************
 
 String _$onBoardingMotivationNotifierHash() =>
-    r'9eab06cfd2ed65596eaaa531ae7fddfe4c608361';
+    r'0bc6f057b219baa328a852610b466e1401ee4a7e';
 
 /// See also [OnBoardingMotivationNotifier].
 @ProviderFor(OnBoardingMotivationNotifier)
@@ -25,4 +25,4 @@ final onBoardingMotivationNotifierProvider = AutoDisposeAsyncNotifierProvider<
 typedef _$OnBoardingMotivationNotifier
     = AutoDisposeAsyncNotifier<OnBoardingMotivationModel>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
