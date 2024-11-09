@@ -23,8 +23,12 @@ RoutineMonthListModel _$RoutineMonthListModelFromJson(
 mixin _$RoutineMonthListModel {
   List<String> get date => throw _privateConstructorUsedError;
 
+  /// Serializes this RoutineMonthListModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RoutineMonthListModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $RoutineMonthListModelCopyWith<RoutineMonthListModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$RoutineMonthListModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of RoutineMonthListModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -84,6 +90,8 @@ class __$$RoutineMonthListModelImplCopyWithImpl<$Res>
       $Res Function(_$RoutineMonthListModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RoutineMonthListModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -128,12 +136,14 @@ class _$RoutineMonthListModelImpl implements _RoutineMonthListModel {
             const DeepCollectionEquality().equals(other._date, _date));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_date));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RoutineMonthListModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RoutineMonthListModelImplCopyWith<_$RoutineMonthListModelImpl>
@@ -157,8 +167,11 @@ abstract class _RoutineMonthListModel implements RoutineMonthListModel {
 
   @override
   List<String> get date;
+
+  /// Create a copy of RoutineMonthListModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RoutineMonthListModelImplCopyWith<_$RoutineMonthListModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

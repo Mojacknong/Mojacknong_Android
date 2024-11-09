@@ -1,8 +1,8 @@
 class OnBoardingMotivationModel {
-  String buttonText;
-  bool isFirstSelect;
-  bool isSecondSelect;
-  bool isThirdSelect;
+  final String buttonText;
+  final bool isFirstSelect;
+  final bool isSecondSelect;
+  final bool isThirdSelect;
 
   OnBoardingMotivationModel({
     required this.buttonText,
@@ -12,16 +12,16 @@ class OnBoardingMotivationModel {
   });
 
   OnBoardingMotivationModel copyWith({
-    String? buttonText,
-    bool? isFirstSelect,
-    bool? isSecondSelect,
-    bool? isThirdSelect,
+    required String buttonText,
+    required bool isFirstSelect,
+    required bool isSecondSelect,
+    required bool isThirdSelect,
   }) {
     return OnBoardingMotivationModel(
-      buttonText: buttonText ?? this.buttonText,
-      isFirstSelect: isFirstSelect ?? this.isFirstSelect,
-      isSecondSelect: isSecondSelect ?? this.isSecondSelect,
-      isThirdSelect: isThirdSelect ?? this.isThirdSelect,
+      buttonText: buttonText,
+      isFirstSelect: isFirstSelect,
+      isSecondSelect: isSecondSelect,
+      isThirdSelect: isThirdSelect,
     );
   }
 }

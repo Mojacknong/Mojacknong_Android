@@ -24,8 +24,12 @@ mixin _$VeggieDiaryOneModel {
   String? get content => throw _privateConstructorUsedError;
   String? get date => throw _privateConstructorUsedError;
 
+  /// Serializes this VeggieDiaryOneModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of VeggieDiaryOneModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $VeggieDiaryOneModelCopyWith<VeggieDiaryOneModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$VeggieDiaryOneModelCopyWithImpl<$Res, $Val extends VeggieDiaryOneModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of VeggieDiaryOneModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$VeggieDiaryModelImplCopyWithImpl<$Res>
       $Res Function(_$VeggieDiaryModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VeggieDiaryOneModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -146,11 +154,13 @@ class _$VeggieDiaryModelImpl implements _VeggieDiaryModel {
             (identical(other.date, date) || other.date == date));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, image, content, date);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VeggieDiaryOneModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$VeggieDiaryModelImplCopyWith<_$VeggieDiaryModelImpl> get copyWith =>
@@ -180,8 +190,11 @@ abstract class _VeggieDiaryModel implements VeggieDiaryOneModel {
   String? get content;
   @override
   String? get date;
+
+  /// Create a copy of VeggieDiaryOneModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VeggieDiaryModelImplCopyWith<_$VeggieDiaryModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

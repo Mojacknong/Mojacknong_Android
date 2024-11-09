@@ -26,8 +26,12 @@ mixin _$MyVeggieRoutineInfoModel {
   int get period => throw _privateConstructorUsedError;
   int get routineId => throw _privateConstructorUsedError;
 
+  /// Serializes this MyVeggieRoutineInfoModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MyVeggieRoutineInfoModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MyVeggieRoutineInfoModelCopyWith<MyVeggieRoutineInfoModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$MyVeggieRoutineInfoModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MyVeggieRoutineInfoModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -103,6 +109,8 @@ class __$$MyVeggieRoutineInfoModelImplCopyWithImpl<$Res>
       $Res Function(_$MyVeggieRoutineInfoModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MyVeggieRoutineInfoModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -171,12 +179,14 @@ class _$MyVeggieRoutineInfoModelImpl implements _MyVeggieRoutineInfoModel {
                 other.routineId == routineId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, complete, content, period, routineId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MyVeggieRoutineInfoModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MyVeggieRoutineInfoModelImplCopyWith<_$MyVeggieRoutineInfoModelImpl>
@@ -209,8 +219,11 @@ abstract class _MyVeggieRoutineInfoModel implements MyVeggieRoutineInfoModel {
   int get period;
   @override
   int get routineId;
+
+  /// Create a copy of MyVeggieRoutineInfoModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MyVeggieRoutineInfoModelImplCopyWith<_$MyVeggieRoutineInfoModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

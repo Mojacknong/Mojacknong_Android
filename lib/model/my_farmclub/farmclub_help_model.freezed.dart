@@ -26,8 +26,12 @@ mixin _$FarmclubHelpModel {
   FarmclubHelpInfoModel get help => throw _privateConstructorUsedError;
   List<HelpStep> get steps => throw _privateConstructorUsedError;
 
+  /// Serializes this FarmclubHelpModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FarmclubHelpModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FarmclubHelpModelCopyWith<FarmclubHelpModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +62,8 @@ class _$FarmclubHelpModelCopyWithImpl<$Res, $Val extends FarmclubHelpModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FarmclubHelpModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -91,6 +97,8 @@ class _$FarmclubHelpModelCopyWithImpl<$Res, $Val extends FarmclubHelpModel>
     ) as $Val);
   }
 
+  /// Create a copy of FarmclubHelpModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FarmclubHelpInfoModelCopyWith<$Res> get help {
@@ -127,6 +135,8 @@ class __$$FarmclubHelpModelImplCopyWithImpl<$Res>
       $Res Function(_$FarmclubHelpModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FarmclubHelpModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -211,12 +221,14 @@ class _$FarmclubHelpModelImpl implements _FarmclubHelpModel {
             const DeepCollectionEquality().equals(other._steps, _steps));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, veggieName, veggieImage,
       backgroundColor, help, const DeepCollectionEquality().hash(_steps));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FarmclubHelpModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FarmclubHelpModelImplCopyWith<_$FarmclubHelpModelImpl> get copyWith =>
@@ -252,8 +264,11 @@ abstract class _FarmclubHelpModel implements FarmclubHelpModel {
   FarmclubHelpInfoModel get help;
   @override
   List<HelpStep> get steps;
+
+  /// Create a copy of FarmclubHelpModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FarmclubHelpModelImplCopyWith<_$FarmclubHelpModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -268,8 +283,12 @@ mixin _$HelpStep {
   String get content => throw _privateConstructorUsedError;
   List<String> get tips => throw _privateConstructorUsedError;
 
+  /// Serializes this HelpStep to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of HelpStep
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $HelpStepCopyWith<HelpStep> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -292,6 +311,8 @@ class _$HelpStepCopyWithImpl<$Res, $Val extends HelpStep>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of HelpStep
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -335,6 +356,8 @@ class __$$HelpStepImplCopyWithImpl<$Res>
       _$HelpStepImpl _value, $Res Function(_$HelpStepImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of HelpStep
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -398,12 +421,14 @@ class _$HelpStepImpl implements _HelpStep {
             const DeepCollectionEquality().equals(other._tips, _tips));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, num, content, const DeepCollectionEquality().hash(_tips));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HelpStep
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$HelpStepImplCopyWith<_$HelpStepImpl> get copyWith =>
@@ -432,8 +457,11 @@ abstract class _HelpStep implements HelpStep {
   String get content;
   @override
   List<String> get tips;
+
+  /// Create a copy of HelpStep
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$HelpStepImplCopyWith<_$HelpStepImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

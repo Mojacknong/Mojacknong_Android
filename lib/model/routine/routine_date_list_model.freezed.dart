@@ -26,8 +26,12 @@ mixin _$RoutineDateListModel {
   List<MyVeggieRoutineInfoModel> get myVeggieRoutineList =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this RoutineDateListModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RoutineDateListModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $RoutineDateListModelCopyWith<RoutineDateListModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,6 +60,8 @@ class _$RoutineDateListModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of RoutineDateListModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -108,6 +114,8 @@ class __$$RoutineDateListModelImplCopyWithImpl<$Res>
       $Res Function(_$RoutineDateListModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RoutineDateListModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -185,12 +193,14 @@ class _$RoutineDateListModelImpl implements _RoutineDateListModel {
                 .equals(other._myVeggieRoutineList, _myVeggieRoutineList));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, nickname, veggieName, myVeggieId,
       const DeepCollectionEquality().hash(_myVeggieRoutineList));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RoutineDateListModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RoutineDateListModelImplCopyWith<_$RoutineDateListModelImpl>
@@ -225,8 +235,11 @@ abstract class _RoutineDateListModel implements RoutineDateListModel {
   int get myVeggieId;
   @override
   List<MyVeggieRoutineInfoModel> get myVeggieRoutineList;
+
+  /// Create a copy of RoutineDateListModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RoutineDateListModelImplCopyWith<_$RoutineDateListModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -22,8 +22,12 @@ DiaryCheckModel _$DiaryCheckModelFromJson(Map<String, dynamic> json) {
 mixin _$DiaryCheckModel {
   bool get state => throw _privateConstructorUsedError;
 
+  /// Serializes this DiaryCheckModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DiaryCheckModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DiaryCheckModelCopyWith<DiaryCheckModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -47,6 +51,8 @@ class _$DiaryCheckModelCopyWithImpl<$Res, $Val extends DiaryCheckModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DiaryCheckModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -80,6 +86,8 @@ class __$$DiaryCheckModelImplCopyWithImpl<$Res>
       _$DiaryCheckModelImpl _value, $Res Function(_$DiaryCheckModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DiaryCheckModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -118,11 +126,13 @@ class _$DiaryCheckModelImpl implements _DiaryCheckModel {
             (identical(other.state, state) || other.state == state));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, state);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DiaryCheckModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DiaryCheckModelImplCopyWith<_$DiaryCheckModelImpl> get copyWith =>
@@ -146,8 +156,11 @@ abstract class _DiaryCheckModel implements DiaryCheckModel {
 
   @override
   bool get state;
+
+  /// Create a copy of DiaryCheckModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DiaryCheckModelImplCopyWith<_$DiaryCheckModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

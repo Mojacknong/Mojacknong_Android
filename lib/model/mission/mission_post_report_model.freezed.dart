@@ -24,8 +24,12 @@ mixin _$MissionPostReportModel {
   int get missionPostId => throw _privateConstructorUsedError;
   String get reason => throw _privateConstructorUsedError;
 
+  /// Serializes this MissionPostReportModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MissionPostReportModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MissionPostReportModelCopyWith<MissionPostReportModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$MissionPostReportModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MissionPostReportModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -91,6 +97,8 @@ class __$$MissionPostReportModelImplCopyWithImpl<$Res>
       $Res Function(_$MissionPostReportModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MissionPostReportModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -139,11 +147,13 @@ class _$MissionPostReportModelImpl implements _MissionPostReportModel {
             (identical(other.reason, reason) || other.reason == reason));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, missionPostId, reason);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MissionPostReportModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MissionPostReportModelImplCopyWith<_$MissionPostReportModelImpl>
@@ -170,8 +180,11 @@ abstract class _MissionPostReportModel implements MissionPostReportModel {
   int get missionPostId;
   @override
   String get reason;
+
+  /// Create a copy of MissionPostReportModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MissionPostReportModelImplCopyWith<_$MissionPostReportModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

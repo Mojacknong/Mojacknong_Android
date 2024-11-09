@@ -23,8 +23,12 @@ mixin _$MissionDataModel {
   bool get isMyPost => throw _privateConstructorUsedError;
   List<MissionCommentModel> get comments => throw _privateConstructorUsedError;
 
+  /// Serializes this MissionDataModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MissionDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MissionDataModelCopyWith<MissionDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$MissionDataModelCopyWithImpl<$Res, $Val extends MissionDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MissionDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$MissionDataModelImplCopyWithImpl<$Res>
       $Res Function(_$MissionDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MissionDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -141,12 +149,14 @@ class _$MissionDataModelImpl implements _MissionDataModel {
             const DeepCollectionEquality().equals(other._comments, _comments));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, isMyPost, const DeepCollectionEquality().hash(_comments));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MissionDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MissionDataModelImplCopyWith<_$MissionDataModelImpl> get copyWith =>
@@ -174,8 +184,11 @@ abstract class _MissionDataModel implements MissionDataModel {
   bool get isMyPost;
   @override
   List<MissionCommentModel> get comments;
+
+  /// Create a copy of MissionDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MissionDataModelImplCopyWith<_$MissionDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -193,8 +206,12 @@ mixin _$MissionCommentModel {
   String get content => throw _privateConstructorUsedError;
   bool get isMyComment => throw _privateConstructorUsedError;
 
+  /// Serializes this MissionCommentModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MissionCommentModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MissionCommentModelCopyWith<MissionCommentModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -224,6 +241,8 @@ class _$MissionCommentModelCopyWithImpl<$Res, $Val extends MissionCommentModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MissionCommentModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -288,6 +307,8 @@ class __$$MissionCommentModelImplCopyWithImpl<$Res>
       $Res Function(_$MissionCommentModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MissionCommentModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -376,12 +397,14 @@ class _$MissionCommentModelImpl implements _MissionCommentModel {
                 other.isMyComment == isMyComment));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, missionPostCommentId, nickname,
       profileImage, date, content, isMyComment);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MissionCommentModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MissionCommentModelImplCopyWith<_$MissionCommentModelImpl> get copyWith =>
@@ -420,8 +443,11 @@ abstract class _MissionCommentModel implements MissionCommentModel {
   String get content;
   @override
   bool get isMyComment;
+
+  /// Create a copy of MissionCommentModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MissionCommentModelImplCopyWith<_$MissionCommentModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -30,8 +30,12 @@ mixin _$MyVeggieDiary {
   int get commentCount => throw _privateConstructorUsedError;
   bool get myLike => throw _privateConstructorUsedError;
 
+  /// Serializes this MyVeggieDiary to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MyVeggieDiary
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MyVeggieDiaryCopyWith<MyVeggieDiary> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -64,6 +68,8 @@ class _$MyVeggieDiaryCopyWithImpl<$Res, $Val extends MyVeggieDiary>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MyVeggieDiary
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -146,6 +152,8 @@ class __$$MyVeggieDiaryImplCopyWithImpl<$Res>
       _$MyVeggieDiaryImpl _value, $Res Function(_$MyVeggieDiaryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MyVeggieDiary
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -259,12 +267,14 @@ class _$MyVeggieDiaryImpl implements _MyVeggieDiary {
             (identical(other.myLike, myLike) || other.myLike == myLike));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, date, image, content, state,
       isOpen, diaryId, likeCount, commentCount, myLike);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MyVeggieDiary
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MyVeggieDiaryImplCopyWith<_$MyVeggieDiaryImpl> get copyWith =>
@@ -311,8 +321,11 @@ abstract class _MyVeggieDiary implements MyVeggieDiary {
   int get commentCount;
   @override
   bool get myLike;
+
+  /// Create a copy of MyVeggieDiary
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MyVeggieDiaryImplCopyWith<_$MyVeggieDiaryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

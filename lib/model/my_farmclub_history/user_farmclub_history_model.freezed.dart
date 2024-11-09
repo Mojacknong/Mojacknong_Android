@@ -25,8 +25,12 @@ mixin _$UserFarmclubHistoryModel {
   List<FarmclubHistoryIconModel> get farmClubHistoryIcons =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this UserFarmclubHistoryModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UserFarmclubHistoryModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UserFarmclubHistoryModelCopyWith<UserFarmclubHistoryModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -53,6 +57,8 @@ class _$UserFarmclubHistoryModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UserFarmclubHistoryModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -96,6 +102,8 @@ class __$$UserFarmclubHistoryModelImplCopyWithImpl<$Res>
       $Res Function(_$UserFarmclubHistoryModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserFarmclubHistoryModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -153,12 +161,14 @@ class _$UserFarmclubHistoryModelImpl implements _UserFarmclubHistoryModel {
                 .equals(other._farmClubHistoryIcons, _farmClubHistoryIcons));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, farmClubHistoryCount,
       const DeepCollectionEquality().hash(_farmClubHistoryIcons));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserFarmclubHistoryModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UserFarmclubHistoryModelImplCopyWith<_$UserFarmclubHistoryModelImpl>
@@ -186,8 +196,11 @@ abstract class _UserFarmclubHistoryModel implements UserFarmclubHistoryModel {
   int get farmClubHistoryCount;
   @override
   List<FarmclubHistoryIconModel> get farmClubHistoryIcons;
+
+  /// Create a copy of UserFarmclubHistoryModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserFarmclubHistoryModelImplCopyWith<_$UserFarmclubHistoryModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

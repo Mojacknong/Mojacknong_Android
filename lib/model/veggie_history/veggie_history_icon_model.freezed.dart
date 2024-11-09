@@ -24,8 +24,12 @@ mixin _$VeggieHistoryIconModel {
   String? get url => throw _privateConstructorUsedError;
   String? get backgroundColor => throw _privateConstructorUsedError;
 
+  /// Serializes this VeggieHistoryIconModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of VeggieHistoryIconModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $VeggieHistoryIconModelCopyWith<VeggieHistoryIconModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$VeggieHistoryIconModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of VeggieHistoryIconModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -91,6 +97,8 @@ class __$$VeggieHistoryIconModelImplCopyWithImpl<$Res>
       $Res Function(_$VeggieHistoryIconModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VeggieHistoryIconModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -139,11 +147,13 @@ class _$VeggieHistoryIconModelImpl implements _VeggieHistoryIconModel {
                 other.backgroundColor == backgroundColor));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, url, backgroundColor);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VeggieHistoryIconModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$VeggieHistoryIconModelImplCopyWith<_$VeggieHistoryIconModelImpl>
@@ -170,8 +180,11 @@ abstract class _VeggieHistoryIconModel implements VeggieHistoryIconModel {
   String? get url;
   @override
   String? get backgroundColor;
+
+  /// Create a copy of VeggieHistoryIconModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VeggieHistoryIconModelImplCopyWith<_$VeggieHistoryIconModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

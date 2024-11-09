@@ -28,8 +28,12 @@ mixin _$MyVeggieProfile {
   int get step => throw _privateConstructorUsedError;
   int get stepCount => throw _privateConstructorUsedError;
 
+  /// Serializes this MyVeggieProfile to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MyVeggieProfile
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MyVeggieProfileCopyWith<MyVeggieProfile> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -60,6 +64,8 @@ class _$MyVeggieProfileCopyWithImpl<$Res, $Val extends MyVeggieProfile>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MyVeggieProfile
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -130,6 +136,8 @@ class __$$MyVeggieProfileImplCopyWithImpl<$Res>
       _$MyVeggieProfileImpl _value, $Res Function(_$MyVeggieProfileImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MyVeggieProfile
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -228,12 +236,14 @@ class _$MyVeggieProfileImpl implements _MyVeggieProfile {
                 other.stepCount == stepCount));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, nickname, veggieName,
       veggieImage, createdVeggie, period, step, stepCount);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MyVeggieProfile
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MyVeggieProfileImplCopyWith<_$MyVeggieProfileImpl> get copyWith =>
@@ -275,8 +285,11 @@ abstract class _MyVeggieProfile implements MyVeggieProfile {
   int get step;
   @override
   int get stepCount;
+
+  /// Create a copy of MyVeggieProfile
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MyVeggieProfileImplCopyWith<_$MyVeggieProfileImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

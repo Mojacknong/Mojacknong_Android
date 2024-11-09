@@ -25,8 +25,12 @@ mixin _$UserVeggieHistoryModel {
   List<VeggieHistoryIconModel> get veggieHistoryIcons =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this UserVeggieHistoryModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UserVeggieHistoryModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UserVeggieHistoryModelCopyWith<UserVeggieHistoryModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -53,6 +57,8 @@ class _$UserVeggieHistoryModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UserVeggieHistoryModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -96,6 +102,8 @@ class __$$UserVeggieHistoryModelImplCopyWithImpl<$Res>
       $Res Function(_$UserVeggieHistoryModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserVeggieHistoryModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -153,12 +161,14 @@ class _$UserVeggieHistoryModelImpl implements _UserVeggieHistoryModel {
                 .equals(other._veggieHistoryIcons, _veggieHistoryIcons));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, veggieHistoryCount,
       const DeepCollectionEquality().hash(_veggieHistoryIcons));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserVeggieHistoryModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UserVeggieHistoryModelImplCopyWith<_$UserVeggieHistoryModelImpl>
@@ -186,8 +196,11 @@ abstract class _UserVeggieHistoryModel implements UserVeggieHistoryModel {
   int get veggieHistoryCount;
   @override
   List<VeggieHistoryIconModel> get veggieHistoryIcons;
+
+  /// Create a copy of UserVeggieHistoryModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserVeggieHistoryModelImplCopyWith<_$UserVeggieHistoryModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

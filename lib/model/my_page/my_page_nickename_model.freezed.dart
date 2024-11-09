@@ -22,8 +22,12 @@ MyPageNickenameModel _$MyPageNickenameModelFromJson(Map<String, dynamic> json) {
 mixin _$MyPageNickenameModel {
   String get nickname => throw _privateConstructorUsedError;
 
+  /// Serializes this MyPageNickenameModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MyPageNickenameModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MyPageNickenameModelCopyWith<MyPageNickenameModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$MyPageNickenameModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MyPageNickenameModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +87,8 @@ class __$$MyPageNickenameModelImplCopyWithImpl<$Res>
       $Res Function(_$MyPageNickenameModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MyPageNickenameModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -120,11 +128,13 @@ class _$MyPageNickenameModelImpl implements _MyPageNickenameModel {
                 other.nickname == nickname));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, nickname);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MyPageNickenameModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MyPageNickenameModelImplCopyWith<_$MyPageNickenameModelImpl>
@@ -149,8 +159,11 @@ abstract class _MyPageNickenameModel implements MyPageNickenameModel {
 
   @override
   String get nickname;
+
+  /// Create a copy of MyPageNickenameModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MyPageNickenameModelImplCopyWith<_$MyPageNickenameModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

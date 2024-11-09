@@ -26,8 +26,12 @@ mixin _$VeggieInfoModel {
   String get veggieImage => throw _privateConstructorUsedError;
   String get period => throw _privateConstructorUsedError;
 
+  /// Serializes this VeggieInfoModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of VeggieInfoModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $VeggieInfoModelCopyWith<VeggieInfoModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,6 +60,8 @@ class _$VeggieInfoModelCopyWithImpl<$Res, $Val extends VeggieInfoModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of VeggieInfoModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,6 +120,8 @@ class __$$VeggieInfoModelImplCopyWithImpl<$Res>
       _$VeggieInfoModelImpl _value, $Res Function(_$VeggieInfoModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VeggieInfoModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -191,12 +199,14 @@ class _$VeggieInfoModelImpl implements _VeggieInfoModel {
             (identical(other.period, period) || other.period == period));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, name, difficulty, veggieImage, period);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VeggieInfoModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$VeggieInfoModelImplCopyWith<_$VeggieInfoModelImpl> get copyWith =>
@@ -232,8 +242,11 @@ abstract class _VeggieInfoModel implements VeggieInfoModel {
   String get veggieImage;
   @override
   String get period;
+
+  /// Create a copy of VeggieInfoModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VeggieInfoModelImplCopyWith<_$VeggieInfoModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

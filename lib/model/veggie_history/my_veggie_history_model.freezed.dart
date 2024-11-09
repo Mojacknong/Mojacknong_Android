@@ -27,8 +27,12 @@ mixin _$MyVeggieHistoryModel {
   String get name => throw _privateConstructorUsedError;
   String get period => throw _privateConstructorUsedError;
 
+  /// Serializes this MyVeggieHistoryModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MyVeggieHistoryModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MyVeggieHistoryModelCopyWith<MyVeggieHistoryModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -59,6 +63,8 @@ class _$MyVeggieHistoryModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MyVeggieHistoryModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -123,6 +129,8 @@ class __$$MyVeggieHistoryModelImplCopyWithImpl<$Res>
       $Res Function(_$MyVeggieHistoryModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MyVeggieHistoryModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -210,12 +218,14 @@ class _$MyVeggieHistoryModelImpl implements _MyVeggieHistoryModel {
             (identical(other.period, period) || other.period == period));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, detailId, image, historyName, backgroundColor, name, period);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MyVeggieHistoryModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MyVeggieHistoryModelImplCopyWith<_$MyVeggieHistoryModelImpl>
@@ -255,8 +265,11 @@ abstract class _MyVeggieHistoryModel implements MyVeggieHistoryModel {
   String get name;
   @override
   String get period;
+
+  /// Create a copy of MyVeggieHistoryModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MyVeggieHistoryModelImplCopyWith<_$MyVeggieHistoryModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

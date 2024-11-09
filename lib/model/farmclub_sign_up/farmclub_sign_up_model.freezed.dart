@@ -23,8 +23,12 @@ mixin _$FarmclubSignupModel {
   int get myVeggieId => throw _privateConstructorUsedError;
   String get nickname => throw _privateConstructorUsedError;
 
+  /// Serializes this FarmclubSignupModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FarmclubSignupModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FarmclubSignupModelCopyWith<FarmclubSignupModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$FarmclubSignupModelCopyWithImpl<$Res, $Val extends FarmclubSignupModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FarmclubSignupModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$FarmclubSignupModelImplCopyWithImpl<$Res>
       $Res Function(_$FarmclubSignupModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FarmclubSignupModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -134,11 +142,13 @@ class _$FarmclubSignupModelImpl implements _FarmclubSignupModel {
                 other.nickname == nickname));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, myVeggieId, nickname);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FarmclubSignupModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FarmclubSignupModelImplCopyWith<_$FarmclubSignupModelImpl> get copyWith =>
@@ -165,8 +175,11 @@ abstract class _FarmclubSignupModel implements FarmclubSignupModel {
   int get myVeggieId;
   @override
   String get nickname;
+
+  /// Create a copy of FarmclubSignupModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FarmclubSignupModelImplCopyWith<_$FarmclubSignupModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

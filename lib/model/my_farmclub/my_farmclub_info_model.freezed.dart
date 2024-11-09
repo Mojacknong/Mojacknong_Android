@@ -29,8 +29,12 @@ mixin _$MyFarmclubInfoModel {
   String get advice => throw _privateConstructorUsedError;
   int get daysSinceStart => throw _privateConstructorUsedError;
 
+  /// Serializes this MyFarmclubInfoModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MyFarmclubInfoModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MyFarmclubInfoModelCopyWith<MyFarmclubInfoModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,6 +66,8 @@ class _$MyFarmclubInfoModelCopyWithImpl<$Res, $Val extends MyFarmclubInfoModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MyFarmclubInfoModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -138,6 +144,8 @@ class __$$MyFarmclubInfoModelImplCopyWithImpl<$Res>
       $Res Function(_$MyFarmclubInfoModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MyFarmclubInfoModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -253,7 +261,7 @@ class _$MyFarmclubInfoModelImpl implements _MyFarmclubInfoModel {
                 other.daysSinceStart == daysSinceStart));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -266,7 +274,9 @@ class _$MyFarmclubInfoModelImpl implements _MyFarmclubInfoModel {
       advice,
       daysSinceStart);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MyFarmclubInfoModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MyFarmclubInfoModelImplCopyWith<_$MyFarmclubInfoModelImpl> get copyWith =>
@@ -311,8 +321,11 @@ abstract class _MyFarmclubInfoModel implements MyFarmclubInfoModel {
   String get advice;
   @override
   int get daysSinceStart;
+
+  /// Create a copy of MyFarmclubInfoModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MyFarmclubInfoModelImplCopyWith<_$MyFarmclubInfoModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -328,8 +341,12 @@ mixin _$StepModel {
   String get stepName => throw _privateConstructorUsedError;
   int get completeMemberCount => throw _privateConstructorUsedError;
 
+  /// Serializes this StepModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StepModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StepModelCopyWith<StepModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -356,6 +373,8 @@ class _$StepModelCopyWithImpl<$Res, $Val extends StepModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StepModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -408,6 +427,8 @@ class __$$StepModelImplCopyWithImpl<$Res>
       _$StepModelImpl _value, $Res Function(_$StepModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StepModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -483,7 +504,7 @@ class _$StepModelImpl implements _StepModel {
                 other.completeMemberCount == completeMemberCount));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -492,7 +513,9 @@ class _$StepModelImpl implements _StepModel {
       stepName,
       completeMemberCount);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StepModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StepModelImplCopyWith<_$StepModelImpl> get copyWith =>
@@ -524,8 +547,11 @@ abstract class _StepModel implements StepModel {
   String get stepName;
   @override
   int get completeMemberCount;
+
+  /// Create a copy of StepModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StepModelImplCopyWith<_$StepModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

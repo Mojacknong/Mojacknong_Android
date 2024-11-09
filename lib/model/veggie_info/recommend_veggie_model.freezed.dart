@@ -25,8 +25,12 @@ mixin _$RecommendVeggieModel {
   String get difficulty => throw _privateConstructorUsedError;
   String get period => throw _privateConstructorUsedError;
 
+  /// Serializes this RecommendVeggieModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RecommendVeggieModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $RecommendVeggieModelCopyWith<RecommendVeggieModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$RecommendVeggieModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of RecommendVeggieModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -99,6 +105,8 @@ class __$$RecommendVeggieModelImplCopyWithImpl<$Res>
       $Res Function(_$RecommendVeggieModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RecommendVeggieModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -166,11 +174,13 @@ class _$RecommendVeggieModelImpl implements _RecommendVeggieModel {
             (identical(other.period, period) || other.period == period));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, image, name, difficulty, period);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RecommendVeggieModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RecommendVeggieModelImplCopyWith<_$RecommendVeggieModelImpl>
@@ -204,8 +214,11 @@ abstract class _RecommendVeggieModel implements RecommendVeggieModel {
   String get difficulty;
   @override
   String get period;
+
+  /// Create a copy of RecommendVeggieModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RecommendVeggieModelImplCopyWith<_$RecommendVeggieModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

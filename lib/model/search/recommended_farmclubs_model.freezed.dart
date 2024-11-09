@@ -24,8 +24,12 @@ mixin _$RecommendedFarmclubsModel {
   SearchFarmclubDetailModel get recFirst => throw _privateConstructorUsedError;
   SearchFarmclubDetailModel get recSecond => throw _privateConstructorUsedError;
 
+  /// Serializes this RecommendedFarmclubsModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RecommendedFarmclubsModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $RecommendedFarmclubsModelCopyWith<RecommendedFarmclubsModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -55,6 +59,8 @@ class _$RecommendedFarmclubsModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of RecommendedFarmclubsModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -73,6 +79,8 @@ class _$RecommendedFarmclubsModelCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of RecommendedFarmclubsModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SearchFarmclubDetailModelCopyWith<$Res> get recFirst {
@@ -81,6 +89,8 @@ class _$RecommendedFarmclubsModelCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of RecommendedFarmclubsModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SearchFarmclubDetailModelCopyWith<$Res> get recSecond {
@@ -119,6 +129,8 @@ class __$$RecommendedFarmclubsModelImplCopyWithImpl<$Res>
       $Res Function(_$RecommendedFarmclubsModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RecommendedFarmclubsModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -168,11 +180,13 @@ class _$RecommendedFarmclubsModelImpl implements _RecommendedFarmclubsModel {
                 other.recSecond == recSecond));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, recFirst, recSecond);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RecommendedFarmclubsModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RecommendedFarmclubsModelImplCopyWith<_$RecommendedFarmclubsModelImpl>
@@ -200,8 +214,11 @@ abstract class _RecommendedFarmclubsModel implements RecommendedFarmclubsModel {
   SearchFarmclubDetailModel get recFirst;
   @override
   SearchFarmclubDetailModel get recSecond;
+
+  /// Create a copy of RecommendedFarmclubsModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RecommendedFarmclubsModelImplCopyWith<_$RecommendedFarmclubsModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

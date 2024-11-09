@@ -7,7 +7,7 @@ part of 'on_boarding_motivation_notifier.dart';
 // **************************************************************************
 
 String _$onBoardingMotivationNotifierHash() =>
-    r'0bc6f057b219baa328a852610b466e1401ee4a7e';
+    r'f22550434c2d454c0c27533067bb0e69b60a2c7d';
 
 /// See also [OnBoardingMotivationNotifier].
 @ProviderFor(OnBoardingMotivationNotifier)

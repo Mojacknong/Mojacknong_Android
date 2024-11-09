@@ -32,8 +32,12 @@ mixin _$MissionFeed {
   int get commentCount => throw _privateConstructorUsedError;
   bool get isLiked => throw _privateConstructorUsedError;
 
+  /// Serializes this MissionFeed to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MissionFeed
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MissionFeedCopyWith<MissionFeed> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -68,6 +72,8 @@ class _$MissionFeedCopyWithImpl<$Res, $Val extends MissionFeed>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MissionFeed
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -162,6 +168,8 @@ class __$$MissionFeedImplCopyWithImpl<$Res>
       _$MissionFeedImpl _value, $Res Function(_$MissionFeedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MissionFeed
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -296,7 +304,7 @@ class _$MissionFeedImpl implements _MissionFeed {
             (identical(other.isLiked, isLiked) || other.isLiked == isLiked));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -312,7 +320,9 @@ class _$MissionFeedImpl implements _MissionFeed {
       commentCount,
       isLiked);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MissionFeed
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MissionFeedImplCopyWith<_$MissionFeedImpl> get copyWith =>
@@ -365,8 +375,11 @@ abstract class _MissionFeed implements MissionFeed {
   int get commentCount;
   @override
   bool get isLiked;
+
+  /// Create a copy of MissionFeed
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MissionFeedImplCopyWith<_$MissionFeedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

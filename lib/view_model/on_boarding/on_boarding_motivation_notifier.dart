@@ -52,11 +52,25 @@ class OnBoardingMotivationNotifier extends _$OnBoardingMotivationNotifier {
       newButtonText = '다음';
     }
 
-    state = AsyncData(currentState.copyWith(buttonText: newButtonText));
+    state = AsyncData(currentState.copyWith(
+        isFirstSelect: state.value!.isFirstSelect,
+        isSecondSelect: state.value!.isSecondSelect,
+        isThirdSelect: state.value!.isThirdSelect,
+        buttonText: newButtonText));
   }
 
+  Future<void> postMotivation() async {
+    List<String> motivation = [];
+    if (state.value!.isFirstSelect) {
+      motivation.add('알뜰살뜰');
+    }
+    if (state.value!.isSecondSelect) {
+      motivation.add('건강과 웰빙');
+    }
+    if (state.value!.isThirdSelect) {
+      motivation.add('심리적 안정');
+    }
 
-  Future<void> postMotivation(List<String> motivation) async {
     await UserRepository.postMotivation(motivation);
   }
 }

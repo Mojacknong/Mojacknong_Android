@@ -26,8 +26,12 @@ mixin _$DiaryDataModel {
   int get commentCount => throw _privateConstructorUsedError;
   bool get myLike => throw _privateConstructorUsedError;
 
+  /// Serializes this DiaryDataModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DiaryDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DiaryDataModelCopyWith<DiaryDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -55,6 +59,8 @@ class _$DiaryDataModelCopyWithImpl<$Res, $Val extends DiaryDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DiaryDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -107,6 +113,8 @@ class __$$DiaryDataModelImplCopyWithImpl<$Res>
       _$DiaryDataModelImpl _value, $Res Function(_$DiaryDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DiaryDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -184,7 +192,7 @@ class _$DiaryDataModelImpl implements _DiaryDataModel {
             (identical(other.myLike, myLike) || other.myLike == myLike));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -193,7 +201,9 @@ class _$DiaryDataModelImpl implements _DiaryDataModel {
       commentCount,
       myLike);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DiaryDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DiaryDataModelImplCopyWith<_$DiaryDataModelImpl> get copyWith =>
@@ -226,8 +236,11 @@ abstract class _DiaryDataModel implements DiaryDataModel {
   int get commentCount;
   @override
   bool get myLike;
+
+  /// Create a copy of DiaryDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DiaryDataModelImplCopyWith<_$DiaryDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -245,8 +258,12 @@ mixin _$DiaryCommentModel {
   String? get profileImage => throw _privateConstructorUsedError;
   int get commentId => throw _privateConstructorUsedError;
 
+  /// Serializes this DiaryCommentModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DiaryCommentModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DiaryCommentModelCopyWith<DiaryCommentModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -276,6 +293,8 @@ class _$DiaryCommentModelCopyWithImpl<$Res, $Val extends DiaryCommentModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DiaryCommentModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -340,6 +359,8 @@ class __$$DiaryCommentModelImplCopyWithImpl<$Res>
       $Res Function(_$DiaryCommentModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DiaryCommentModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -428,12 +449,14 @@ class _$DiaryCommentModelImpl implements _DiaryCommentModel {
                 other.commentId == commentId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, myComment, content, date, nickname, profileImage, commentId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DiaryCommentModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DiaryCommentModelImplCopyWith<_$DiaryCommentModelImpl> get copyWith =>
@@ -472,8 +495,11 @@ abstract class _DiaryCommentModel implements DiaryCommentModel {
   String? get profileImage;
   @override
   int get commentId;
+
+  /// Create a copy of DiaryCommentModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DiaryCommentModelImplCopyWith<_$DiaryCommentModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

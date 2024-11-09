@@ -30,8 +30,12 @@ mixin _$SearchFarmclubInfoModel {
   int get maxUser => throw _privateConstructorUsedError;
   int get curUser => throw _privateConstructorUsedError;
 
+  /// Serializes this SearchFarmclubInfoModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchFarmclubInfoModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SearchFarmclubInfoModelCopyWith<SearchFarmclubInfoModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -64,6 +68,8 @@ class _$SearchFarmclubInfoModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SearchFarmclubInfoModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -143,6 +149,8 @@ class __$$SearchFarmclubInfoModelImplCopyWithImpl<$Res>
       $Res Function(_$SearchFarmclubInfoModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchFarmclubInfoModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -249,12 +257,14 @@ class _$SearchFarmclubInfoModelImpl implements _SearchFarmclubInfoModel {
             (identical(other.curUser, curUser) || other.curUser == curUser));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, veggieName,
       veggieImage, difficulty, startedAt, maxUser, curUser);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchFarmclubInfoModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SearchFarmclubInfoModelImplCopyWith<_$SearchFarmclubInfoModelImpl>
@@ -299,8 +309,11 @@ abstract class _SearchFarmclubInfoModel implements SearchFarmclubInfoModel {
   int get maxUser;
   @override
   int get curUser;
+
+  /// Create a copy of SearchFarmclubInfoModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SearchFarmclubInfoModelImplCopyWith<_$SearchFarmclubInfoModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

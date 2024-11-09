@@ -32,8 +32,12 @@ mixin _$SearchFarmclubDetailModel {
   String get veggieInfoId => throw _privateConstructorUsedError;
   FarmclubHelpInfoModel get help => throw _privateConstructorUsedError;
 
+  /// Serializes this SearchFarmclubDetailModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchFarmclubDetailModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SearchFarmclubDetailModelCopyWith<SearchFarmclubDetailModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -70,6 +74,8 @@ class _$SearchFarmclubDetailModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SearchFarmclubDetailModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -128,6 +134,8 @@ class _$SearchFarmclubDetailModelCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of SearchFarmclubDetailModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FarmclubHelpInfoModelCopyWith<$Res> get help {
@@ -172,6 +180,8 @@ class __$$SearchFarmclubDetailModelImplCopyWithImpl<$Res>
       $Res Function(_$SearchFarmclubDetailModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchFarmclubDetailModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -301,7 +311,7 @@ class _$SearchFarmclubDetailModelImpl implements _SearchFarmclubDetailModel {
             (identical(other.help, help) || other.help == help));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -316,7 +326,9 @@ class _$SearchFarmclubDetailModelImpl implements _SearchFarmclubDetailModel {
       veggieInfoId,
       help);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchFarmclubDetailModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SearchFarmclubDetailModelImplCopyWith<_$SearchFarmclubDetailModelImpl>
@@ -368,8 +380,11 @@ abstract class _SearchFarmclubDetailModel implements SearchFarmclubDetailModel {
   String get veggieInfoId;
   @override
   FarmclubHelpInfoModel get help;
+
+  /// Create a copy of SearchFarmclubDetailModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SearchFarmclubDetailModelImplCopyWith<_$SearchFarmclubDetailModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

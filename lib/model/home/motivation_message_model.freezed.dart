@@ -23,8 +23,12 @@ MotivationMessageModel _$MotivationMessageModelFromJson(
 mixin _$MotivationMessageModel {
   String get encouragementMessage => throw _privateConstructorUsedError;
 
+  /// Serializes this MotivationMessageModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MotivationMessageModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MotivationMessageModelCopyWith<MotivationMessageModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$MotivationMessageModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MotivationMessageModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -85,6 +91,8 @@ class __$$MotivationMessageModelImplCopyWithImpl<$Res>
       $Res Function(_$MotivationMessageModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MotivationMessageModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -124,11 +132,13 @@ class _$MotivationMessageModelImpl implements _MotivationMessageModel {
                 other.encouragementMessage == encouragementMessage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, encouragementMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MotivationMessageModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MotivationMessageModelImplCopyWith<_$MotivationMessageModelImpl>
@@ -153,8 +163,11 @@ abstract class _MotivationMessageModel implements MotivationMessageModel {
 
   @override
   String get encouragementMessage;
+
+  /// Create a copy of MotivationMessageModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MotivationMessageModelImplCopyWith<_$MotivationMessageModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

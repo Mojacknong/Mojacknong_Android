@@ -27,8 +27,12 @@ mixin _$FarmclubSuccessModel {
   int get diaryCount => throw _privateConstructorUsedError;
   int get missionPostCount => throw _privateConstructorUsedError;
 
+  /// Serializes this FarmclubSuccessModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FarmclubSuccessModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FarmclubSuccessModelCopyWith<FarmclubSuccessModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -59,6 +63,8 @@ class _$FarmclubSuccessModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FarmclubSuccessModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -123,6 +129,8 @@ class __$$FarmclubSuccessModelImplCopyWithImpl<$Res>
       $Res Function(_$FarmclubSuccessModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FarmclubSuccessModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -211,12 +219,14 @@ class _$FarmclubSuccessModelImpl implements _FarmclubSuccessModel {
                 other.missionPostCount == missionPostCount));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, farmClubName, veggieImage, date,
       period, diaryCount, missionPostCount);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FarmclubSuccessModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FarmclubSuccessModelImplCopyWith<_$FarmclubSuccessModelImpl>
@@ -256,8 +266,11 @@ abstract class _FarmclubSuccessModel implements FarmclubSuccessModel {
   int get diaryCount;
   @override
   int get missionPostCount;
+
+  /// Create a copy of FarmclubSuccessModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FarmclubSuccessModelImplCopyWith<_$FarmclubSuccessModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

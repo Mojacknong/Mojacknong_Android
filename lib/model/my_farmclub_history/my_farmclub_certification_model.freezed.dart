@@ -23,8 +23,12 @@ MyFarmclubCertificationModel _$MyFarmclubCertificationModelFromJson(
 mixin _$MyFarmclubCertificationModel {
   List<MissionPost> get missionPosts => throw _privateConstructorUsedError;
 
+  /// Serializes this MyFarmclubCertificationModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MyFarmclubCertificationModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MyFarmclubCertificationModelCopyWith<MyFarmclubCertificationModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$MyFarmclubCertificationModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MyFarmclubCertificationModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +93,8 @@ class __$$MyFarmclubCertificationModelImplCopyWithImpl<$Res>
       $Res Function(_$MyFarmclubCertificationModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MyFarmclubCertificationModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -135,12 +143,14 @@ class _$MyFarmclubCertificationModelImpl
                 .equals(other._missionPosts, _missionPosts));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_missionPosts));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MyFarmclubCertificationModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MyFarmclubCertificationModelImplCopyWith<
@@ -167,8 +177,11 @@ abstract class _MyFarmclubCertificationModel
 
   @override
   List<MissionPost> get missionPosts;
+
+  /// Create a copy of MyFarmclubCertificationModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MyFarmclubCertificationModelImplCopyWith<
           _$MyFarmclubCertificationModelImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -186,8 +199,12 @@ mixin _$MissionPost {
   String get content => throw _privateConstructorUsedError;
   String get date => throw _privateConstructorUsedError;
 
+  /// Serializes this MissionPost to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MissionPost
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MissionPostCopyWith<MissionPost> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -216,6 +233,8 @@ class _$MissionPostCopyWithImpl<$Res, $Val extends MissionPost>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MissionPost
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -274,6 +293,8 @@ class __$$MissionPostImplCopyWithImpl<$Res>
       _$MissionPostImpl _value, $Res Function(_$MissionPostImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MissionPost
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -351,12 +372,14 @@ class _$MissionPostImpl implements _MissionPost {
             (identical(other.date, date) || other.date == date));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, stepNum, stepName, postImage, content, date);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MissionPost
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MissionPostImplCopyWith<_$MissionPostImpl> get copyWith =>
@@ -391,8 +414,11 @@ abstract class _MissionPost implements MissionPost {
   String get content;
   @override
   String get date;
+
+  /// Create a copy of MissionPost
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MissionPostImplCopyWith<_$MissionPostImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

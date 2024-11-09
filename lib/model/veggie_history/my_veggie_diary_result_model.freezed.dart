@@ -24,8 +24,12 @@ mixin _$MyVeggieDiaryResultModel {
   List<Diary> get diaries => throw _privateConstructorUsedError;
   FarmResult get farmResult => throw _privateConstructorUsedError;
 
+  /// Serializes this MyVeggieDiaryResultModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MyVeggieDiaryResultModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MyVeggieDiaryResultModelCopyWith<MyVeggieDiaryResultModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$MyVeggieDiaryResultModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MyVeggieDiaryResultModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -70,6 +76,8 @@ class _$MyVeggieDiaryResultModelCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of MyVeggieDiaryResultModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FarmResultCopyWith<$Res> get farmResult {
@@ -104,6 +112,8 @@ class __$$MyVeggieDiaryResultModelImplCopyWithImpl<$Res>
       $Res Function(_$MyVeggieDiaryResultModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MyVeggieDiaryResultModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -159,12 +169,14 @@ class _$MyVeggieDiaryResultModelImpl implements _MyVeggieDiaryResultModel {
                 other.farmResult == farmResult));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_diaries), farmResult);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MyVeggieDiaryResultModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MyVeggieDiaryResultModelImplCopyWith<_$MyVeggieDiaryResultModelImpl>
@@ -191,8 +203,11 @@ abstract class _MyVeggieDiaryResultModel implements MyVeggieDiaryResultModel {
   List<Diary> get diaries;
   @override
   FarmResult get farmResult;
+
+  /// Create a copy of MyVeggieDiaryResultModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MyVeggieDiaryResultModelImplCopyWith<_$MyVeggieDiaryResultModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -207,8 +222,12 @@ mixin _$Diary {
   String get content => throw _privateConstructorUsedError;
   String get dateTime => throw _privateConstructorUsedError;
 
+  /// Serializes this Diary to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Diary
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DiaryCopyWith<Diary> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -230,6 +249,8 @@ class _$DiaryCopyWithImpl<$Res, $Val extends Diary>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Diary
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -272,6 +293,8 @@ class __$$DiaryImplCopyWithImpl<$Res>
       _$DiaryImpl _value, $Res Function(_$DiaryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Diary
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -329,11 +352,13 @@ class _$DiaryImpl implements _Diary {
                 other.dateTime == dateTime));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, postImage, content, dateTime);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Diary
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DiaryImplCopyWith<_$DiaryImpl> get copyWith =>
@@ -361,8 +386,11 @@ abstract class _Diary implements Diary {
   String get content;
   @override
   String get dateTime;
+
+  /// Create a copy of Diary
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DiaryImplCopyWith<_$DiaryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -377,8 +405,12 @@ mixin _$FarmResult {
   String get content => throw _privateConstructorUsedError;
   String get dateTime => throw _privateConstructorUsedError;
 
+  /// Serializes this FarmResult to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FarmResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FarmResultCopyWith<FarmResult> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -402,6 +434,8 @@ class _$FarmResultCopyWithImpl<$Res, $Val extends FarmResult>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FarmResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -445,6 +479,8 @@ class __$$FarmResultImplCopyWithImpl<$Res>
       _$FarmResultImpl _value, $Res Function(_$FarmResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FarmResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -502,11 +538,13 @@ class _$FarmResultImpl implements _FarmResult {
                 other.dateTime == dateTime));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, postImage, content, dateTime);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FarmResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FarmResultImplCopyWith<_$FarmResultImpl> get copyWith =>
@@ -535,8 +573,11 @@ abstract class _FarmResult implements FarmResult {
   String get content;
   @override
   String get dateTime;
+
+  /// Create a copy of FarmResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FarmResultImplCopyWith<_$FarmResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

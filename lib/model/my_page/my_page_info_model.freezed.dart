@@ -24,8 +24,12 @@ mixin _$MyPageInfoModel {
   String get userImageUrl => throw _privateConstructorUsedError;
   int get dday => throw _privateConstructorUsedError;
 
+  /// Serializes this MyPageInfoModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MyPageInfoModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MyPageInfoModelCopyWith<MyPageInfoModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$MyPageInfoModelCopyWithImpl<$Res, $Val extends MyPageInfoModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MyPageInfoModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$MyPageInfoModelImplCopyWithImpl<$Res>
       _$MyPageInfoModelImpl _value, $Res Function(_$MyPageInfoModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MyPageInfoModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -149,11 +157,13 @@ class _$MyPageInfoModelImpl implements _MyPageInfoModel {
             (identical(other.dday, dday) || other.dday == dday));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, nickName, userImageUrl, dday);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MyPageInfoModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MyPageInfoModelImplCopyWith<_$MyPageInfoModelImpl> get copyWith =>
@@ -183,8 +193,11 @@ abstract class _MyPageInfoModel implements MyPageInfoModel {
   String get userImageUrl;
   @override
   int get dday;
+
+  /// Create a copy of MyPageInfoModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MyPageInfoModelImplCopyWith<_$MyPageInfoModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

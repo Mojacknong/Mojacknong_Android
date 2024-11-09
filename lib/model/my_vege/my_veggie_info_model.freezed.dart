@@ -27,8 +27,12 @@ mixin _$MyVeggieInfoModel {
   int get period => throw _privateConstructorUsedError;
   int get myVeggieId => throw _privateConstructorUsedError;
 
+  /// Serializes this MyVeggieInfoModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MyVeggieInfoModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MyVeggieInfoModelCopyWith<MyVeggieInfoModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +62,8 @@ class _$MyVeggieInfoModelCopyWithImpl<$Res, $Val extends MyVeggieInfoModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MyVeggieInfoModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -122,6 +128,8 @@ class __$$MyVeggieInfoModelImplCopyWithImpl<$Res>
       $Res Function(_$MyVeggieInfoModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MyVeggieInfoModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -210,12 +218,14 @@ class _$MyVeggieInfoModelImpl implements _MyVeggieInfoModel {
                 other.myVeggieId == myVeggieId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, nickname, image, veggieName, birthDay, period, myVeggieId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MyVeggieInfoModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MyVeggieInfoModelImplCopyWith<_$MyVeggieInfoModelImpl> get copyWith =>
@@ -254,8 +264,11 @@ abstract class _MyVeggieInfoModel implements MyVeggieInfoModel {
   int get period;
   @override
   int get myVeggieId;
+
+  /// Create a copy of MyVeggieInfoModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MyVeggieInfoModelImplCopyWith<_$MyVeggieInfoModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

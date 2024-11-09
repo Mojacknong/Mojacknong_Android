@@ -23,8 +23,12 @@ FarmclubPossibleModel _$FarmclubPossibleModelFromJson(
 mixin _$FarmclubPossibleModel {
   int get reason => throw _privateConstructorUsedError;
 
+  /// Serializes this FarmclubPossibleModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FarmclubPossibleModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FarmclubPossibleModelCopyWith<FarmclubPossibleModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$FarmclubPossibleModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FarmclubPossibleModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -84,6 +90,8 @@ class __$$FarmclubPossibleModelImplCopyWithImpl<$Res>
       $Res Function(_$FarmclubPossibleModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FarmclubPossibleModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -122,11 +130,13 @@ class _$FarmclubPossibleModelImpl implements _FarmclubPossibleModel {
             (identical(other.reason, reason) || other.reason == reason));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, reason);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FarmclubPossibleModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FarmclubPossibleModelImplCopyWith<_$FarmclubPossibleModelImpl>
@@ -150,8 +160,11 @@ abstract class _FarmclubPossibleModel implements FarmclubPossibleModel {
 
   @override
   int get reason;
+
+  /// Create a copy of FarmclubPossibleModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FarmclubPossibleModelImplCopyWith<_$FarmclubPossibleModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -24,8 +24,12 @@ mixin _$MissionUserListModel {
   String get nickname => throw _privateConstructorUsedError;
   String get profileImage => throw _privateConstructorUsedError;
 
+  /// Serializes this MissionUserListModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MissionUserListModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MissionUserListModelCopyWith<MissionUserListModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$MissionUserListModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MissionUserListModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -93,6 +99,8 @@ class __$$MissionUserListModelImplCopyWithImpl<$Res>
       $Res Function(_$MissionUserListModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MissionUserListModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -152,11 +160,13 @@ class _$MissionUserListModelImpl implements _MissionUserListModel {
                 other.profileImage == profileImage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, userId, nickname, profileImage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MissionUserListModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MissionUserListModelImplCopyWith<_$MissionUserListModelImpl>
@@ -187,8 +197,11 @@ abstract class _MissionUserListModel implements MissionUserListModel {
   String get nickname;
   @override
   String get profileImage;
+
+  /// Create a copy of MissionUserListModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MissionUserListModelImplCopyWith<_$MissionUserListModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
